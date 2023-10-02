@@ -9,25 +9,26 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### Freddy Chen You Ren
 
-<img src="images/freddychenyouren2.png" width="200px">
+### Chew En Le Jaryl
+
+<img src="images/techjay-c.png" width="200px">
 
 [[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/freddychenyouren2)]
+[[github](http://github.com/techjay-c)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Project Advisor
 
-### Jane Doe
+### Freddy Chen You Ren
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/freddychenyouren2.png" width="200px">
 
-[[github](http://github.com/johndoe)]
+[[github](https://github.com/freddychenyouren2)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Team Lead
-* Responsibilities: UI
+* Responsibilities: Team Lead
 
 ### Johnny Doe
 
@@ -38,11 +39,11 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Data
 
-### Jean Doe
+### Ruth Lim
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/ruth-lim.png" width="200px">
 
-[[github](http://github.com/johndoe)]
+[[github](http://github.com/ruth-lim)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Developer
