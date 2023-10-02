@@ -18,11 +18,11 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Project Advisor
 
-### Jane Doe
+### Qin Yan Er
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/qyaner.png" width="200px">
 
-[[github](http://github.com/johndoe)]
+[[github](http://github.com/qyaner)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Team Lead
