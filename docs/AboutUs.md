@@ -25,16 +25,18 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/freddychenyouren2.png" width="200px">
 
 [[github](https://github.com/freddychenyouren2)]
+
 [[portfolio](team/johndoe.md)]
 
 * Role: Team Lead
 * Responsibilities: Team Lead
 
-### Johnny Doe
+### Qin Yan Er
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/qyaner.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/qyaner)] 
+[[portfolio](team/johndoe.md)]
 
 * Role: Developer
 * Responsibilities: Data
