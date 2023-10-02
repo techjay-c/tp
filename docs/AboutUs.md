@@ -25,7 +25,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 [[github](https://github.com/freddychenyouren2)]
 
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/freddychenyouren2.md)]
 
 * Role: Team Lead
 * Responsibilities: Team Lead
