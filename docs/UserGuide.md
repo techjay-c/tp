@@ -186,12 +186,59 @@ _Details coming soon ..._
 
 ## Command summary
 
-Action | Format, Examples
---------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
-**Clear** | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**List** | `list`
-**Help** | `help`
+| Action    | Format, Examples |
+|-----------|------------------ |
+| **Add**   | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` |
+| **Clear** | `clear` |
+| **Delete** | `delete INDEX`<br> e.g., `delete 3` |
+| **Edit**  | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com` |
+| **Find**  | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake` |
+| **List**  | `list` |
+| **Help**  | `help` |
+
+--------------------------------------------------------------------------------------------------------------------
+
+## Dentist Commands (Freddy)
+
+### Add a dentist : `add-dentist`
+
+Adds a dentist to ToothTracker list of dentists. This is helpful when:
+* You are using ToothTracker for the first time and you have to add your dentists' particulars.
+* A new dentist has joined your dental clinic.
+
+**Format:** `add-dentist n/NAME p/PHONE s/SPECIALIZATION [t/TAG]…​`
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+A person can have any number of tags (including 0)
+</div>
+
+Examples:
+* `add-dentist n/Bob p/12345678 s/braces`  adds a dentist named 'Bob' with phone number '12345678' and specializing in 'braces' into ToothTracker dentist list.
+* `add-dentist n/Emmanuel Chua p/99887766 s/surgery t/extraction` adds a dentist named 'Emmanuel Chua' with phone number '99887766' and specializing in 'surgery' with a tag of 'extraction' into ToothTracker dentist list.
+
+### Delete a dentist: `delete DENTIST_ID`
+
+Deletes the specified dentist from ToothTracker.
+
+[!WARNING]
+> This command is DESTRUCTIVE! 
+> Dentists deleted will need to be added back and their previous records may be removed.
+> Proceed with caution!
+
+[!NOTE]
+> The `DENTIST_ID` refers to the index number shown in the displayed list of dentists.
+> You may use `list-dentist` to check out the dentists' ID first.
+
+**Format:** `delete-dentist DENTIST_ID`
+
+Examples:
+* `delete-dentist 2` deletes dentist with DENTIST_ID 2 from ToothTracker.
+
+### List all dentists : `list-dentist`
+
+Shows a list of all dentists in ToothTracker. This is useful when:
+* You want to retrieve the information of all dentists.
+* You want to verify a dentist is added successfully in ToothTracker.
+* You want to verify a dentist is updated successfully in ToothTracker.
+
+**Format:** `list-dentist` (No extra parameters required)
