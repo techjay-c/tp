@@ -8,6 +8,8 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
+import seedu.address.model.person.dentist.Dentist;
+import seedu.address.model.person.dentist.UniqueDentistList;
 
 /**
  * Wraps all data at the address-book level
@@ -16,6 +18,7 @@ import seedu.address.model.person.UniquePersonList;
 public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniquePersonList persons;
+    private final UniqueDentistList dentists;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -26,6 +29,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     {
         persons = new UniquePersonList();
+        dentists = new UniqueDentistList();
     }
 
     public AddressBook() {}
@@ -49,12 +53,21 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Replaces the contents of the dentist list with {@code dentists}.
+     * {@code dentists} must not contain duplicate dentists.
+     */
+    public void setDentists(List<Dentist> dentists) {
+        this.dentists.setDentists(dentists);
+    }
+
+    /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
     public void resetData(ReadOnlyAddressBook newData) {
         requireNonNull(newData);
 
         setPersons(newData.getPersonList());
+        setDentists(newData.getDentistList());
     }
 
     //// person-level operations
@@ -68,11 +81,33 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Returns true if a dentist with the same identity as {@code dentist} exists in the address book.
+     */
+    public boolean hasDentist(Dentist dentist) {
+        requireNonNull(dentist);
+        return dentists.contains(dentist);
+    }
+
+    /**
      * Adds a person to the address book.
      * The person must not already exist in the address book.
      */
     public void addPerson(Person p) {
         persons.add(p);
+    }
+
+    /**
+     * Adds a dentist to the address book.
+     * The dentist must not already exist in the address book.
+     * @param dentist to be added to the address book
+     */
+    public void addDentist(Dentist dentist) {
+        //TBC if we need loggers
+//        if (dentist == null) {
+//            logger.warning("You are not allowed to add a NULL dentist into ToothTracker!");
+//            return;
+//        }
+        dentists.add(dentist);
     }
 
     /**
@@ -84,6 +119,23 @@ public class AddressBook implements ReadOnlyAddressBook {
         requireNonNull(editedPerson);
 
         persons.setPerson(target, editedPerson);
+    }
+
+    /**
+     * Replaces the given dentist {@code target} in the list with {@code editedDentist}.
+     * {@code target} must exist in the address book.
+     * The person identity of {@code editedDentist} must not be the same as another existing person in the address book.
+     */
+    public void setDentist(Dentist target, Dentist editedDentist) {
+        requireNonNull(editedDentist);
+
+        dentists.setDentist(target, editedDentist);
+    }
+
+    public Dentist getDentist(int targetIndex) {
+        requireNonNull(targetIndex);
+
+        return dentists.getDentist(targetIndex);
     }
 
     /**
@@ -109,6 +161,11 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     @Override
+    public ObservableList<Dentist> getDentistList() {
+        return dentists.asUnmodifiableObservableList();
+    }
+
+    @Override
     public boolean equals(Object other) {
         if (other == this) {
             return true;
@@ -120,7 +177,8 @@ public class AddressBook implements ReadOnlyAddressBook {
         }
 
         AddressBook otherAddressBook = (AddressBook) other;
-        return persons.equals(otherAddressBook.persons);
+        return persons.equals(otherAddressBook.persons)
+                && dentists.equals(otherAddressBook.dentists);
     }
 
     @Override

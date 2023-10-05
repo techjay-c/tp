@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.dentist.Dentist;
 
 /**
  * The API of the Model component.
@@ -13,6 +14,7 @@ import seedu.address.model.person.Person;
 public interface Model {
     /** {@code Predicate} that always evaluate to true */
     Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
+    Predicate<Person> PREDICATE_SHOW_ALL_DENTISTS = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -53,9 +55,14 @@ public interface Model {
     ReadOnlyAddressBook getAddressBook();
 
     /**
-     * Returns true if a person with the same identity as {@code person} exists in the address book.
+     * Returns true if a person with the same identity as {@code person} exists in ToothTracker address book.
      */
     boolean hasPerson(Person person);
+
+    /**
+     * Returns true if a dentist with the same identity as {@code dentist} exists in ToothTracker address book.
+     */
+    boolean hasDentist(Dentist dentist);
 
     /**
      * Deletes the given person.
@@ -65,9 +72,15 @@ public interface Model {
 
     /**
      * Adds the given person.
-     * {@code person} must not already exist in the address book.
+     * {@code person} must not already exist in ToothTracker address book.
      */
     void addPerson(Person person);
+
+    /**
+     * Adds the given dentist.
+     * {@code dentist} must not already exist in ToothTracker address book.
+     */
+    void addDentist(Dentist dentist);
 
     /**
      * Replaces the given person {@code target} with {@code editedPerson}.
@@ -78,6 +91,9 @@ public interface Model {
 
     /** Returns an unmodifiable view of the filtered person list */
     ObservableList<Person> getFilteredPersonList();
+
+    /** Returns an unmodifiable view of the filtered dentist list */
+    // ObservableList<Dentist> getFilteredDentistList();
 
     /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.
