@@ -102,7 +102,7 @@ public class Dentist extends Person {
             builder.append("; Tags: ");
             tags.forEach(builder::append);
         }
-        
+
         return builder.toString();
     }
 }

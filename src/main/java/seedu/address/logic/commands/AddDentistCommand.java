@@ -79,6 +79,5 @@ public class AddDentistCommand extends Command {
         return other == this // short circuit if same object
                 || (other instanceof AddDentistCommand // instanceof handles nulls
                 && toAdd.equals(((AddDentistCommand) other).toAdd));
-        }
     }
 }
