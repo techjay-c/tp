@@ -289,6 +289,28 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
 
+---
+
+**Add Dentist**
+
+**MSS**
+1. User submits a request to include a new dentist, detailing information about the dentist.
+2. ToothTracker acknowledges the addition of the new dentist.
+3. Use case concludes.
+
+**Extensions**
+
+- **1a. User inputs an incorrect command.**
+    - ToothTracker identifies the command error.
+        - ToothTracker asks the user to adjust and provide the command in the correct format.
+    - Steps within 1a repeat until a proper add dentist command is given.
+    - The main scenario continues from step 2.
+
+- **1b. ToothTracker finds a pre-existing dentist entry.**
+    - ToothTracker alerts the user about the duplicate entry and asks to provide unique data.
+    - Steps within 1b loop until a new, unique entry is provided.
+    - The main scenario resumes from step 2.
+
 **Use case: Delete a person**
 
 **MSS**
