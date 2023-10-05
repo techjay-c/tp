@@ -36,7 +36,7 @@ public class ModelManager implements Model {
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
-        filteredDentists = new FilteredList<>(this.addressBook.getDentistList()); // No actual filtering yet for now.
+        filteredDentists = new FilteredList<>(this.addressBook.getDentistList());
     }
 
     public ModelManager() {
@@ -137,9 +137,20 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public ObservableList<Dentist> getFilteredDentistList() {
+        return filteredDentists;
+    }
+
+    @Override
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
+    }
+
+    @Override
+    public void updateFilteredDentistList(Predicate<Dentist> predicate) {
+        requireNonNull(predicate);
+        filteredDentists.setPredicate(predicate);
     }
 
     @Override
