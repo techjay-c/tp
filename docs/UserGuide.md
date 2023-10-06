@@ -198,47 +198,74 @@ _Details coming soon ..._
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Dentist Commands (Freddy)
+## Dentist Features (Freddy)
 
-### Add a dentist : `add-dentist`
+### Adding a dentist : `add-dentist`
 
 Adds a dentist to ToothTracker list of dentists. This is helpful when:
 * You are using ToothTracker for the first time and you have to add your dentists' particulars.
 * A new dentist has joined your dental clinic.
 
-**Format:** `add-dentist n/NAME p/PHONE s/SPECIALIZATION [t/TAG]…​`
+**Format:** `add-dentist n/NAME p/PHONE e/EMAIL s/SPECIALIZATION y/YOE [t/TAG]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A person can have any number of tags (including 0)
 </div>
 
 Examples:
-* `add-dentist n/Bob p/12345678 s/braces`  adds a dentist named 'Bob' with phone number '12345678' and specializing in 'braces' into ToothTracker dentist list.
-* `add-dentist n/Emmanuel Chua p/99887766 s/surgery t/extraction` adds a dentist named 'Emmanuel Chua' with phone number '99887766' and specializing in 'surgery' with a tag of 'extraction' into ToothTracker dentist list.
+* `add-dentist n/Bob p/12345678 e/bobjune@gmail.com y/6 s/braces`  adds a dentist named 'Bob' with phone number '12345678' and email ‘bobjune@gmail.com’, who has 6 years of experience and specializing in 'braces' into ToothTracker dentist list.
+* `add-dentist n/Emmanuel Chua p/99887766 y/8 s/surgery t/extraction` adds a dentist named 'Emmanuel Chua' with phone number '99887766' who has 8 years of experience specializing in 'surgery' with a tag of 'extraction' into ToothTracker dentist list.
 
-### Delete a dentist: `delete DENTIST_ID`
+### Editing a dentist: `edit-dentist`
+
+Edits one or more details of the dentist at the specified Dentist ID. This is helpful when:
+The particulars of a dentist need to be updated.
+You accidentally entered incorrect information about a dentist into the ToothTrack database.
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+You can edit the particulars in any order and you can edit more than one detail of the dentist.
+</div>
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+To check the Dentist ID for a dentist, you can simply enter the command `list-dentist`.
+</div>
+
+<div markdown="block" class="alert alert-info">
+When editing tags, you have to include any previous tags that was already included in the dentist, or else these tags will be removed. This also means that you can use `t/` to remove all tags from a dentist using the edit-dentist command.
+</div>
+
+**Format:** `edit-dentist DENTIST_ID [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SPECIALIZATION] [y/YOE] [t/TAG]…​`
+
+Examples:
+* `edit-dentist 1 p/98987676 e/bobjuly@gmail.com` edits the phone number and email of the dentist with Dentist ID of 1 into 98987676 and bobjuly@gmail.com respectively.
+* `edit-dentist 2 n/Emmanuel Alexandra t/` edits the name of the dentist with Dentist ID of 2 into ‘Emmanual Alexandra’ and removes all tags of the dentist.
+
+### Deleting a dentist: `delete-dentist DENTIST_ID`
 
 Deletes the specified dentist from ToothTracker.
 
-[!WARNING]
-> This command is DESTRUCTIVE! 
-> Dentists deleted will need to be added back and their previous records may be removed.
-> Proceed with caution!
+<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
+This command is DESTRUCTIVE! 
+Dentists deleted will need to be added back and their previous records may be removed.
+Proceed with caution!
+</div>
 
-[!NOTE]
-> The `DENTIST_ID` refers to the index number shown in the displayed list of dentists.
-> You may use `list-dentist` to check out the dentists' ID first.
+
+<div markdown="block" class="alert alert-info">
+The `DENTIST_ID` refers to the index number shown in the displayed list of dentists.
+You may use `list-dentists` to check out the dentists' ID first.
+</div>
 
 **Format:** `delete-dentist DENTIST_ID`
 
 Examples:
 * `delete-dentist 2` deletes dentist with DENTIST_ID 2 from ToothTracker.
 
-### List all dentists : `list-dentist`
+### Listing all dentists : `list-dentists`
 
 Shows a list of all dentists in ToothTracker. This is useful when:
 * You want to retrieve the information of all dentists.
 * You want to verify a dentist is added successfully in ToothTracker.
 * You want to verify a dentist is updated successfully in ToothTracker.
 
-**Format:** `list-dentist` (No extra parameters required)
+**Format:** `list-dentists` (No extra parameters required)
