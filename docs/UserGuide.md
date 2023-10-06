@@ -79,6 +79,103 @@ Shows a message explaning how to access the help page.
 
 Format: `help`
 
+## Dentist Features (Freddy)
+
+### Adding a dentist : `add-dentist`
+
+Adds a dentist to ToothTracker list of dentists. This is helpful when:
+* You are using ToothTracker for the first time and you have to add your dentists' particulars.
+* A new dentist has joined your dental clinic.
+
+**Format:** `add-dentist n/NAME p/PHONE e/EMAIL s/SPECIALIZATION y/YOE [t/TAG]…​`
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+A person can have any number of tags (including 0)
+</div>
+
+Examples:
+* `add-dentist n/Bob p/12345678 e/bobjune@gmail.com y/6 s/braces`  adds a dentist named 'Bob' with phone number '12345678' and email ‘bobjune@gmail.com’, who has 6 years of experience and specializing in 'braces' into ToothTracker dentist list.
+* `add-dentist n/Emmanuel Chua p/99887766 y/8 s/surgery t/extraction` adds a dentist named 'Emmanuel Chua' with phone number '99887766' who has 8 years of experience specializing in 'surgery' with a tag of 'extraction' into ToothTracker dentist list.
+
+### Editing a dentist: `edit-dentist`
+
+Edits one or more details of the dentist at the specified Dentist ID. This is helpful when:
+The particulars of a dentist need to be updated.
+You accidentally entered incorrect information about a dentist into the ToothTrack database.
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+You can edit the particulars in any order and you can edit more than one detail of the dentist.
+</div>
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+To check the Dentist ID for a dentist, you can simply enter the command `list-dentist`.
+</div>
+
+<div markdown="block" class="alert alert-info">
+When editing tags, you have to include any previous tags that was already included in the dentist, or else these tags will be removed. This also means that you can use `t/` to remove all tags from a dentist using the edit-dentist command.
+</div>
+
+**Format:** `edit-dentist DENTIST_ID [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SPECIALIZATION] [y/YOE] [t/TAG]…​`
+
+Examples:
+* `edit-dentist 1 p/98987676 e/bobjuly@gmail.com` edits the phone number and email of the dentist with Dentist ID of 1 into 98987676 and bobjuly@gmail.com respectively.
+* `edit-dentist 2 n/Emmanuel Alexandra t/` edits the name of the dentist with Dentist ID of 2 into ‘Emmanual Alexandra’ and removes all tags of the dentist.
+
+### Searching a dentist by Dentist ID: `search-dentist DENTIST_ID`
+
+Searches for the  dentist at the specified Dentist ID in ToothTracker
+
+<div markdown="block" class="alert alert-info">
+The `DENTIST_ID` refers to the index number shown in the displayed list of dentists.
+You may use `list-dentists` to check out the dentists' ID first.
+</div>
+
+**Format:** `search-dentist DENTIST_ID`
+
+### Searching a dentist by name: `search-dentist NAME`
+
+Searches for the dentist whose name contains `NAME`  in ToothTracker
+
+<div markdown="block" class="alert alert-info">
+The `DENTIST_ID` refers to the index number shown in the displayed list of dentists.
+You may use `list-dentists` to check out the dentists' ID first.
+</div>
+
+**Format:** `search-dentist NAME`
+
+### Deleting a dentist: `delete-dentist DENTIST_ID`
+
+Deletes the specified dentist from ToothTracker.
+
+<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
+This command is DESTRUCTIVE! 
+Dentists deleted will need to be added back and their previous records may be removed.
+Proceed with caution!
+</div>
+
+
+<div markdown="block" class="alert alert-info">
+The `DENTIST_ID` refers to the index number shown in the displayed list of dentists.
+You may use `list-dentists` to check out the dentists' ID first.
+</div>
+
+**Format:** `delete-dentist DENTIST_ID`
+
+Examples:
+* `delete-dentist 2` deletes dentist with DENTIST_ID 2 from ToothTracker.
+
+### Listing all dentists : `list-dentists`
+
+Shows a list of all dentists in ToothTracker. This is useful when:
+* You want to retrieve the information of all dentists.
+* You want to verify a dentist is added successfully in ToothTracker.
+* You want to verify a dentist is updated successfully in ToothTracker.
+
+**Format:** `list-dentists` (No extra parameters required)
+
+
+## Patient Features (Jaryl)
+
 ### Adding a patient: `add`
 
 Adds a patient to ToothTracker.
@@ -124,7 +221,6 @@ Format: `search-patient [KEYWORD]`
 * Only full words will be matched, e.g., `Mel` will not match `Melissa`
 
 Examples:
-
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
@@ -178,12 +274,15 @@ the data of your previous AddressBook home folder.
 
 ## Command summary
 
- Action     | Format, Examples                                                                                                                                                      
-------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
- **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` 
- **Clear**  | `clear`                                                                                                                                                               
- **Delete** | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                   
- **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                           
- **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                            
- **List**   | `list`                                                                                                                                                                
- **Help**   | `help`                                                                                                                                                                
+| Action    | Format, Examples |
+|-----------|------------------ |
+| **Add**   | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` |
+| **Clear** | `clear` |
+| **Delete** | `delete INDEX`<br> e.g., `delete 3` |
+| **Edit**  | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com` |
+| **Find**  | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake` |
+| **List**  | `list` |
+| **Help**  | `help` |
+
+--------------------------------------------------------------------------------------------------------------------
+
