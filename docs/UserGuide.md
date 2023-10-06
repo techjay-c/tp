@@ -240,6 +240,28 @@ Examples:
 * `edit-dentist 1 p/98987676 e/bobjuly@gmail.com` edits the phone number and email of the dentist with Dentist ID of 1 into 98987676 and bobjuly@gmail.com respectively.
 * `edit-dentist 2 n/Emmanuel Alexandra t/` edits the name of the dentist with Dentist ID of 2 into ‘Emmanual Alexandra’ and removes all tags of the dentist.
 
+### Searching a dentist by Dentist ID: `search-dentist DENTIST_ID`
+
+Searches for the  dentist at the specified Dentist ID in ToothTracker
+
+<div markdown="block" class="alert alert-info">
+The `DENTIST_ID` refers to the index number shown in the displayed list of dentists.
+You may use `list-dentists` to check out the dentists' ID first.
+</div>
+
+**Format:** `search-dentist DENTIST_ID`
+
+### Searching a dentist by name: `search-dentist NAME`
+
+Searches for the dentist whose name contains `NAME`  in ToothTracker
+
+<div markdown="block" class="alert alert-info">
+The `DENTIST_ID` refers to the index number shown in the displayed list of dentists.
+You may use `list-dentists` to check out the dentists' ID first.
+</div>
+
+**Format:** `search-dentist NAME`
+
 ### Deleting a dentist: `delete-dentist DENTIST_ID`
 
 Deletes the specified dentist from ToothTracker.
