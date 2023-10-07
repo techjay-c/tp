@@ -60,6 +60,11 @@ public interface Model {
     boolean hasPerson(Person person);
 
     /**
+     * Returns true if a patient with the same identity as {@code person} exists in the address book.
+     */
+    boolean hasPatient(Patient person);
+
+    /**
      * Deletes the given person.
      * The person must exist in the address book.
      */
