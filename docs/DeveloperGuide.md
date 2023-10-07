@@ -256,34 +256,59 @@ _{Explain here how the data archiving feature will be implemented}_
 ### Product scope
 
 **Target user profile**:
+Front Desk Dental Clinic Administrative Staff who
 
-* has a need to manage a significant number of contacts
+* need to obtain patient/dentist personal details quickly
+* need find out the most recent appointments
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: Easily obtain patient/dentist records through a CLI
 
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
+| Priority | As a …​                                    | I want to …​                                                      | So that I can…​                                 |
+| -------- |--------------------------------------------|-------------------------------------------------------------------|-------------------------------------------------|
+| `* * *`  | receptionist                               | create new patient profiles by entering their name, address, etc. | i can maintain patient records                  |
+| `* * *`  | receptionist                               | create a new dentist profile                                      | maintain dentist records                        |
+| `* * *`  | receptionist                               | delete a patient/dentist                                          | remove people who are no longer with the clinic |
+| `* * *`  | receptionist                               | list all patients/dentists                                        | find out the total number of patients/dentists  |
+| `* * *`  | receptionist                               | edit a dentist/patient profile                                    | keep my records up to date                      |
+| `* * *`  | receptionist                               | search for patients by name or ID                                 | i have quick access to patient profiles         |
+| `* * *`  | receptionist                               | search for dentists by name or ID                                 | i have quick access to dentist profiles         |
+| `* *`    | receptionist                               | view costs of various dental treatments                           | tell customers the price of a dental treatment  |
 
 *{More to be added}*
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+
+---
+
+**Add Dentist**
+
+**MSS**
+1. User submits a request to include a new dentist, detailing information about the dentist.
+2. ToothTracker acknowledges the addition of the new dentist.
+3. Use case concludes.
+
+**Extensions**
+
+- **1a. User inputs an incorrect command.**
+    - ToothTracker identifies the command error.
+        - ToothTracker asks the user to adjust and provide the command in the correct format.
+    - Steps within 1a repeat until a proper add dentist command is given.
+    - The main scenario continues from step 2.
+
+- **1b. ToothTracker finds a pre-existing dentist entry.**
+    - ToothTracker alerts the user about the duplicate entry and asks to provide unique data.
+    - Steps within 1b loop until a new, unique entry is provided.
+    - The main scenario resumes from step 2.
 
 **Use case: Delete a person**
 
@@ -313,15 +338,19 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 ### Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
+2.  Should be able to hold up to 1000 Dentists and 1000 Patients without any major performance issues.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+4. Should not use more than 2GB of RAM
+5. Jar file size should not exceed 150MB
 
-*{More to be added}*
 
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Private contact detail**: A contact detail that is not meant to be shared with others
+* **CLI**: command line interface
+* **GUI**: graphical user interface, a visual way of interacting with a computer program
+* **PlantUML**: A tool which is used to create diagrams
+* **API**: Application Programming Interface
 
 --------------------------------------------------------------------------------------------------------------------
 
