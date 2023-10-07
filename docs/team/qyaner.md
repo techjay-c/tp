@@ -3,14 +3,14 @@ layout: page
 title: Qin Yan Er's Project Portfolio Page
 ---
 
-### Project: AddressBook Level 3
+### Project: ToothTracker
 
 **Overview**
 
-to be added soon
+ToothTracker is an all-in-one solution designed to revolutionize 
+the management of dental clinic records.
 
 Given below are my contributions to the project.
-
 
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=qyaner&breakdown=false&sort=groupTitle%20dsc&sortWithin=title&since=2023-09-22&timeframe=commit&mergegroup=&groupSelect=groupByRepos)
 

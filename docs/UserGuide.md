@@ -3,9 +3,9 @@ layout: page
 title: User Guide
 ---
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (
-CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact
-management tasks done faster than traditional GUI apps.
+ToothTracker is an **All-in-One solution for Effortless Dental Clinic Record Management**.
+From adding new patient and dentist profiles to seamlessly deleting records, 
+ToothTracker is engineered to simplify every aspect of your administrative responsibilities.
 
 * Table of Contents
   {:toc}
@@ -16,11 +16,11 @@ management tasks done faster than traditional GUI apps.
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `addressbook.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).
+1. Download the latest `ToothTracker.jar` from [here]().
 
-1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+1. Copy the file to the folder you want to use as the _home folder_ for your ToothTracker.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar`
+1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar ToothTracker.jar`
    command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
@@ -29,12 +29,12 @@ management tasks done faster than traditional GUI apps.
    open the help window.<br>
    Some example commands you can try:
 
-    * `list` : Lists all contacts.
+    * `list-dentists` : Lists all dentists.
 
-    * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe`
-      to the Address Book.
+    * `add-dentist n/Bob p/12345678 e/bobjune@gmail.com y/6 s/braces` : Adds a dentist named `Bob`
+      to the ToothTracker.
 
-    * `delete 3` : Deletes the 3rd contact shown in the current list.
+    * `delete-dentist 3` : Deletes the dentist with id 2.
 
     * `clear` : Deletes all contacts.
 
@@ -176,7 +176,7 @@ Shows a list of all dentists in ToothTracker. This is useful when:
 
 ## Patient Features (Jaryl)
 
-### Adding a patient: `add`
+### Adding a patient: `add-patient`
 
 Adds a patient to ToothTracker.
 
@@ -187,33 +187,45 @@ Examples:
 * `add-patient n/John Tan p/90676622 e/johntan@gmail.com b/06-06-1998 g/M a/10-08-2023 s/Cleaning h/60 Jalan Kempinski Road`
 * `add-patient n/Megan Chua p/88756298 e/megan@outlook.com b/10-09-1993 g/M a/02-11-2023 s/Cleaning h/34 Changi Rise`
 
-### Listing all patients : `list`
+### Listing all patients : `list-patients`
 
 Shows a list of all patients in ToothTracker.
 
-Format: `list`
+Format: `list-patients`
 
-### Deleting a patient : `delete`
+### Deleting a patient : `delete-patient`
 
 Deletes the specified patient from ToothTracker.
 
-Format: `delete INDEX`
+**Caution:** This command is DESTRUCTIVE! Dentists deleted will need to be added back and their previous records may be removed. 
+**Proceed with caution!**
 
-* Deletes the patient at the specified `INDEX`.
-* The index refers to the index number shown in the displayed patient list.
-* The index **must be a positive integer** 1, 2, 3, …​
-* You may use `list-patients` to obtain the patient's ID first.
+The `DENTIST_ID` refers to the index number shown in the displayed list of dentists. 
+You may use `list-patients` to check out the patients' ID first.
 
-Format: `delete-patient [PATIENT_ID]`
+Format: `delete-patient PATIENT_ID`
 
 Examples:
 * `delete-patient 034` deletes patient with PATIENT_ID 34 from ToothTracker.
 
-### Searching patients by ID or keyword: `search`
+### Searching patients by ID: `search-patient PATIENT_ID`
 
-Search for patients with the specified ID or keyword.
+Search for patients with the specified Patient ID.
 
-Format: `search-patient [KEYWORD]`
+The `PATIENT_ID` refers to the index number shown in the displayed list of patients. 
+You may use `list-patients` to check out the dentists' ID first.
+
+Format: `search-patient PATIENT_ID`
+
+Examples:
+* `search-patient 2` returns the patient with PATIENT_ID 2.
+
+
+### Searching patients by name: `search-patient NAME`
+
+Search for patient whose name contains `NAME' in ToothTracker.
+
+Format: `search-patient NAME`
 
 * The search is case-insensitive. e.g., `Thomas` will match `thomas`
 * The order of the keywords does not matter. e.g., `Thomas Tan` will match `Tan Thomas`
@@ -221,12 +233,11 @@ Format: `search-patient [KEYWORD]`
 * Only full words will be matched, e.g., `Mel` will not match `Melissa`
 
 Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+* `search-patient Bob` returns patients with the name Bob.
 
 ### Clearing all entries : `clear`
 
-Clears all entries from the address book.
+Clears all entries from ToothTracker.
 
 Format: `clear`
 
@@ -238,16 +249,16 @@ Format: `exit`
 
 ### Saving the data
 
-AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to
+ToothTracker data are saved in the hard disk automatically after any command that changes the data. There is no need to
 save manually.
 
 ### Editing the data file
 
-AddressBook data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are
+ToothTracker data are saved automatically as a JSON file `[JAR file location]/data/ToothTracker.json`. Advanced users are
 welcome to update data directly by editing that data file.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.
+If your changes to the data file makes its format invalid, ToothTracker will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.
 </div>
 
 ### Archiving data files `[coming in v2.0]`
@@ -274,15 +285,22 @@ the data of your previous AddressBook home folder.
 
 ## Command summary
 
-| Action    | Format, Examples |
-|-----------|------------------ |
-| **Add**   | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` |
-| **Clear** | `clear` |
-| **Delete** | `delete INDEX`<br> e.g., `delete 3` |
-| **Edit**  | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com` |
-| **Find**  | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake` |
-| **List**  | `list` |
-| **Help**  | `help` |
+| Action                           | Format, Examples                                                                                                                                                                                                                  |
+|----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add Dentist**                  | `add-dentist n/NAME p/PHONE e/EMAIL s/SPECIALIZATION y/YOE [t/TAG]…​` <br> e.g., `add-dentist n/Bob p/12345678 e/bobjune@gmail.com y/6 s/braces`                                                                                  |
+| **Edit Dentist**                 | `edit-dentist DENTIST_ID [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SPECIALIZATION] [y/YOE] [t/TAG]…​` <br> e.g., `edit-dentist 1 p/98987676 e/bobjuly@gmail.com`                                                                |
+| **Delete Dentist**               | `delete-dentist DENTIST_ID`<br> e.g., `delete-dentist 3`                                                                                                                                                                          |
+| **List Dentists**                | `list-dentists`                                                                                                                                                                                                                   |
+| **Search Dentist by Dentist ID** | `search-dentist DENTIST_ID`                                                                                                                                                                                                       |
+| **Search Dentist by Name**       | `search-dentist NAME`                                                                                                                                                                                                             |
+| **Add Patient**                  | `add-patient n/NAME p/PHONE b/BIRTHDATE g/GENDER a/APPOINTMENT s/SERVICE h/ADDRESS e/EMAIL` <br> e.g., `add-patient n/John Tan p/90676622 e/johntan@gmail.com b/06-06-1998 g/M a/10-08-2023 s/Cleaning h/60 Jalan Kempinski Road` |
+| **Delete Patient**               | `delete-patient PATIENT_ID`<br> e.g., `delete-dentist 3`                                                                                                                                                                          |
+| **List Patients**                | `list-patients`                                                                                                                                                                                                                   |
+| **Search Patient by Dentist ID** | `search-patient PATIENT_ID`                                                                                                                                                                                                       |
+| **Search Patient by Name**       | `search-patient NAME`                                                                                                                                                                                                             |
+| **Clear all Profiles**           | `clear`                                                                                                                                                                                                                           |
+| **Exit programme**               | `exit`                                                                                                                                                                                                                            |
+| **Help**                         | `help`                                                                                                                                                                                                                            |
 
 --------------------------------------------------------------------------------------------------------------------
 
