@@ -452,6 +452,32 @@ Use case ends.
     - ToothTracker cancels the deletion process.
     - Use Case ends.
 
+**Use case: List Dentist Data**
+
+**MSS**
+
+1. User submits a request to list all dentist data.
+2. ToothTracker retrieves the list of all dentist data saved in the system.
+3. ToothTracker displays the list of dentist data to the user.
+
+    Use case ends.
+
+**Extensions**
+
+- **1a. User inputs an invalid command.**
+    - ToothTracker identifies the command error.
+        - ToothTracker prompts the user to make the necessary adjustments and provide the command in the correct format.
+    - Steps within 1a repeat until a valid add dentist command is provided.
+
+      Use case continues from step 2.
+
+
+- **2a. No dentist data available.**
+    - ToothTracker checks and finds that there are no dentist records in the system.
+    - ToothTracker informs the user that no dentist data is available.
+
+      Use case continues from step 2.
+
 *{More to be added}*
 
 ### Non-Functional Requirements
