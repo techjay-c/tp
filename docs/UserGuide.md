@@ -79,7 +79,7 @@ Shows a message explaning how to access the help page.
 
 Format: `help`
 
-## Dentist Features (Freddy)
+## Dentist Features
 
 ### Adding a dentist : `add-dentist`
 
@@ -233,8 +233,10 @@ Examples:
 
 Deletes the specified patient from ToothTracker.
 
-**Caution:** This command is DESTRUCTIVE! Dentists deleted will need to be added back and their previous records may be removed. 
+<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
+This command is DESTRUCTIVE! Dentists deleted will need to be added back and their previous records may be removed. 
 **Proceed with caution!**
+</div>
 
 * Deletes the patient at the specified `INDEX`.
 * The index refers to the index number shown in the displayed patient list.
@@ -305,7 +307,7 @@ _Details coming soon ..._
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains
-the data of your previous AddressBook home folder.
+the data of your previous ToothTracker home folder.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -328,12 +330,12 @@ the data of your previous AddressBook home folder.
 | **Search Dentist by Dentist ID** | `search-dentist DENTIST_ID`                                                                                                                                                                                                       |
 | **Search Dentist by Name**       | `search-dentist NAME`                                                                                                                                                                                                             |
 | **Add Patient**                  | `add-patient n/NAME p/PHONE b/BIRTHDATE g/GENDER a/APPOINTMENT s/SERVICE h/ADDRESS e/EMAIL` <br> e.g., `add-patient n/John Tan p/90676622 e/johntan@gmail.com b/06-06-1998 g/M a/10-08-2023 s/Cleaning h/60 Jalan Kempinski Road` |
-| **Delete Patient**               | `delete-patient PATIENT_ID`<br> e.g., `delete-dentist 3`                                                                                                                                                                          |
+| **Delete Patient**               | `delete-patient PATIENT_ID`<br> e.g., `delete-patient 3`                                                                                                                                                                          |
 | **List Patients**                | `list-patients`                                                                                                                                                                                                                   |
-| **Search Patient by Dentist ID** | `search-patient PATIENT_ID`                                                                                                                                                                                                       |
+| **Search Patient by Patient ID** | `search-patient PATIENT_ID`                                                                                                                                                                                                       |
 | **Search Patient by Name**       | `search-patient NAME`                                                                                                                                                                                                             |
 | **Clear all Profiles**           | `clear`                                                                                                                                                                                                                           |
-| **Exit programme**               | `exit`                                                                                                                                                                                                                            |
+| **Exit Programme**               | `exit`                                                                                                                                                                                                                            |
 | **Help**                         | `help`                                                                                                                                                                                                                            |
 
 --------------------------------------------------------------------------------------------------------------------
