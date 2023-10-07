@@ -10,9 +10,13 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Appointmentdate;
+import seedu.address.model.person.Birthdate;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Gender;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.Service;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -79,6 +83,67 @@ public class ParserUtil {
         }
         return new Address(trimmedAddress);
     }
+
+    /**
+     * Parses a {@code String birthdate} into an {@code birthdate}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code Birthdate} is invalid.
+     */
+    public static Birthdate parseBirthdate(String birthdate) throws ParseException {
+        requireNonNull(birthdate);
+        String trimmedbirthdate = birthdate.trim();
+        if (!Birthdate.isValidDate(trimmedbirthdate)) {
+            throw new ParseException(Birthdate.MESSAGE_CONSTRAINTS);
+        }
+        return new Birthdate(trimmedbirthdate);
+    }
+
+    /**
+     * Parses a {@code String gender} into an {@code gender}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code Gender} is invalid.
+     */
+    public static Gender parseGender(String gender) throws ParseException {
+        requireNonNull(gender);
+        String trimmedgender = gender.trim();
+        if (!Gender.isValidGender(trimmedgender)) {
+            throw new ParseException(Gender.MESSAGE_CONSTRAINTS);
+        }
+        return new Gender(trimmedgender);
+    }
+
+    /**
+     * Parses a {@code String Appointment} into an {@code Appointment}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code Appointment} is invalid.
+     */
+    public static Appointmentdate parseAppointment(String appointment) throws ParseException {
+        requireNonNull(appointment);
+        String trimmedAppointment = appointment.trim();
+        if (!Appointmentdate.isValidDate(trimmedAppointment)) {
+            throw new ParseException(Appointmentdate.MESSAGE_CONSTRAINTS);
+        }
+        return new Appointmentdate(trimmedAppointment);
+    }
+
+    /**
+     * Parses a {@code String service} into an {@code Service}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code Service} is invalid.
+     */
+    public static Service parseService(String service) throws ParseException {
+        requireNonNull(service);
+        String trimmedService = service.trim();
+        if (!Service.isValidService(trimmedService)) {
+            throw new ParseException(Appointmentdate.MESSAGE_CONSTRAINTS);
+        }
+        return new Service(trimmedService);
+    }
+
 
     /**
      * Parses a {@code String email} into an {@code Email}.
