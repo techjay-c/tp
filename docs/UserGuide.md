@@ -84,6 +84,7 @@ Format: `help`
 ### Adding a dentist : `add-dentist`
 
 Adds a dentist to ToothTracker list of dentists. This is helpful when:
+
 * You are using ToothTracker for the first time and you have to add your dentists' particulars.
 * A new dentist has joined your dental clinic.
 
@@ -94,8 +95,13 @@ A person can have any number of tags (including 0)
 </div>
 
 Examples:
-* `add-dentist n/Bob p/12345678 e/bobjune@gmail.com y/6 s/braces`  adds a dentist named 'Bob' with phone number '12345678' and email ‘bobjune@gmail.com’, who has 6 years of experience and specializing in 'braces' into ToothTracker dentist list.
-* `add-dentist n/Emmanuel Chua p/99887766 y/8 s/surgery t/extraction` adds a dentist named 'Emmanuel Chua' with phone number '99887766' who has 8 years of experience specializing in 'surgery' with a tag of 'extraction' into ToothTracker dentist list.
+
+* `add-dentist n/Bob p/12345678 e/bobjune@gmail.com y/6 s/braces`  adds a dentist named 'Bob' with phone number '
+  12345678' and email ‘bobjune@gmail.com’, who has 6 years of experience and specializing in 'braces' into ToothTracker
+  dentist list.
+* `add-dentist n/Emmanuel Chua p/99887766 y/8 s/surgery t/extraction` adds a dentist named 'Emmanuel Chua' with phone
+  number '99887766' who has 8 years of experience specializing in 'surgery' with a tag of 'extraction' into ToothTracker
+  dentist list.
 
 ### Editing a dentist: `edit-dentist`
 
@@ -118,12 +124,15 @@ When editing tags, you have to include any previous tags that was already includ
 **Format:** `edit-dentist DENTIST_ID [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SPECIALIZATION] [y/YOE] [t/TAG]…​`
 
 Examples:
-* `edit-dentist 1 p/98987676 e/bobjuly@gmail.com` edits the phone number and email of the dentist with Dentist ID of 1 into 98987676 and bobjuly@gmail.com respectively.
-* `edit-dentist 2 n/Emmanuel Alexandra t/` edits the name of the dentist with Dentist ID of 2 into ‘Emmanual Alexandra’ and removes all tags of the dentist.
+
+* `edit-dentist 1 p/98987676 e/bobjuly@gmail.com` edits the phone number and email of the dentist with Dentist ID of 1
+  into 98987676 and bobjuly@gmail.com respectively.
+* `edit-dentist 2 n/Emmanuel Alexandra t/` edits the name of the dentist with Dentist ID of 2 into ‘Emmanual Alexandra’
+  and removes all tags of the dentist.
 
 ### Searching a dentist by Dentist ID: `search-dentist DENTIST_ID`
 
-Searches for the  dentist at the specified Dentist ID in ToothTracker
+Searches for the dentist at the specified Dentist ID in ToothTracker
 
 <div markdown="block" class="alert alert-info">
 The `DENTIST_ID` refers to the index number shown in the displayed list of dentists.
@@ -162,19 +171,40 @@ You may use `list-dentists` to check out the dentists' ID first.
 **Format:** `delete-dentist DENTIST_ID`
 
 Examples:
+
 * `delete-dentist 2` deletes dentist with DENTIST_ID 2 from ToothTracker.
 
 ### Listing all dentists : `list-dentists`
 
 Shows a list of all dentists in ToothTracker. This is useful when:
+
 * You want to retrieve the information of all dentists.
 * You want to verify a dentist is added successfully in ToothTracker.
 * You want to verify a dentist is updated successfully in ToothTracker.
 
 **Format:** `list-dentists` (No extra parameters required)
 
+## General Features
 
-## Patient Features (Jaryl)
+### Adding a treatment: `add-treatment`
+
+You can add a new dental treatment to the ToothTracker system using the `add-treatment` command. This command allows you
+to specify the name of the treatment and its associated price.
+
+Format: `add-treatment [name] [price]`
+
+Examples:
+
+* `add-treatment "Tooth Extraction" 150` adds a Tooth Extraction Treatment to ToothTracker with a cost of $150.
+
+**Important Notes:**
+
+- Ensure that you provide both the treatment name and its cost when using the `add-treatment` command.
+- The system will not allow duplicate treatment names. If a treatment with the same name already exists, you will be
+  prompted to provide a unique name.
+
+
+## Patient Features
 
 ### Adding a patient: `add-patient`
 
@@ -187,11 +217,17 @@ Examples:
 * `add-patient n/John Tan p/90676622 e/johntan@gmail.com b/06-06-1998 g/M a/10-08-2023 s/Cleaning h/60 Jalan Kempinski Road`
 * `add-patient n/Megan Chua p/88756298 e/megan@outlook.com b/10-09-1993 g/M a/02-11-2023 s/Cleaning h/34 Changi Rise`
 
-### Listing all patients : `list-patients`
+
+### Listing all patients : `list-patient`
 
 Shows a list of all patients in ToothTracker.
 
-Format: `list-patients`
+Format: `list-patient`
+
+Examples:
+
+* `list-patient 296` shows the details of the patient with PATIENT_ID 296 from ToothTracker.
+
 
 ### Deleting a patient : `delete-patient`
 
@@ -200,40 +236,37 @@ Deletes the specified patient from ToothTracker.
 **Caution:** This command is DESTRUCTIVE! Dentists deleted will need to be added back and their previous records may be removed. 
 **Proceed with caution!**
 
-The `DENTIST_ID` refers to the index number shown in the displayed list of dentists. 
-You may use `list-patients` to check out the patients' ID first.
+* Deletes the patient at the specified `INDEX`.
+* The index refers to the index number shown in the displayed patient list.
+* The index **must be a positive integer** 1, 2, 3, …​
+* You may use `list-patient` to obtain the patient's ID first.
 
 Format: `delete-patient PATIENT_ID`
 
 Examples:
+
 * `delete-patient 034` deletes patient with PATIENT_ID 34 from ToothTracker.
 
-### Searching patients by ID: `search-patient PATIENT_ID`
 
-Search for patients with the specified Patient ID.
+### Searching patients by ID or keyword: `search-patient`
 
-The `PATIENT_ID` refers to the index number shown in the displayed list of patients. 
-You may use `list-patients` to check out the dentists' ID first.
+Search for patients with the specified ID or keyword. This command allows you to find patient records that match your
+search criteria. Here are the details:
 
-Format: `search-patient PATIENT_ID`
+Format: `search-patient [KEYWORD]`, `search-patient [PATIENT_ID]`
 
-Examples:
-* `search-patient 2` returns the patient with PATIENT_ID 2.
-
-
-### Searching patients by name: `search-patient NAME`
-
-Search for patient whose name contains `NAME' in ToothTracker.
-
-Format: `search-patient NAME`
-
-* The search is case-insensitive. e.g., `Thomas` will match `thomas`
-* The order of the keywords does not matter. e.g., `Thomas Tan` will match `Tan Thomas`
-* Only the name is searched.
-* Only full words will be matched, e.g., `Mel` will not match `Melissa`
+* The search is case-insensitive, meaning that the search will match both uppercase and lowercase characters. For
+  example, searching for `Thomas` will match both `Thomas` and `thomas`.
+* The order of the keywords in the name does not matter. For instance, searching for `Thomas Tan` will
+  match `Tan Thomas` as well.
+* The search is performed only on the patient's name.
+* Only full words will be matched. For example, if you search for `Mel`, it will not match `Melissa`.
 
 Examples:
-* `search-patient Bob` returns patients with the name Bob.
+
+* `search-patient Thomas` will search for patients with the name containing the keyword `Thomas`.
+* `search-patient 088` will search for a patient with the ID `088`. If one or more matching patients are found based on
+  your search criteria, the system will list the matching patients along with their details.
 
 ### Clearing all entries : `clear`
 
@@ -249,16 +282,17 @@ Format: `exit`
 
 ### Saving the data
 
-ToothTracker data are saved in the hard disk automatically after any command that changes the data. There is no need to
+ToothTracker data is saved in the hard disk automatically after any command that changes the data. There is no need to
 save manually.
 
 ### Editing the data file
 
-ToothTracker data are saved automatically as a JSON file `[JAR file location]/data/ToothTracker.json`. Advanced users are
+ToothTracker data is saved automatically as a JSON file `[JAR file location]/data/toothtracker.json`. Advanced users are
 welcome to update data directly by editing that data file.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-If your changes to the data file makes its format invalid, ToothTracker will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.
+If your changes to the data file makes its format invalid, ToothTracker will discard all data and start with an empty 
+data file at the next run. Hence, it is recommended to take a backup of the file before editing it.
 </div>
 
 ### Archiving data files `[coming in v2.0]`
