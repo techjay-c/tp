@@ -101,7 +101,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      * Adds a patient to the address book. The patient must not already exist in the address book.
      */
     public void addPatient(Patient p) {
-        persons.add(p);
+        patients.add(p);
     }
 
     /**
