@@ -184,6 +184,26 @@ Shows a list of all dentists in ToothTracker. This is useful when:
 
 **Format:** `list-dentists` (No extra parameters required)
 
+## General Features
+
+### Adding a treatment: `add-treatment`
+
+You can add a new dental treatment to the ToothTracker system using the `add-treatment` command. This command allows you
+to specify the name of the treatment and its associated price.
+
+Format: `add-treatment [name] [price]`
+
+Examples:
+
+* `add-treatment "Tooth Extraction" 150` adds a Tooth Extraction Treatment to ToothTracker with a cost of $150.
+
+**Important Notes:**
+
+- Ensure that you provide both the treatment name and its cost when using the `add-treatment` command.
+- The system will not allow duplicate treatment names. If a treatment with the same name already exists, you will be
+  prompted to provide a unique name.
+
+
 ## Patient Features
 
 ### Adding a patient: `add-patient`
