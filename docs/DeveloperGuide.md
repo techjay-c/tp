@@ -362,7 +362,7 @@ Use case ends.
 - **1a. User inputs an invalid command.**
     - ToothTracker identifies the command error.
         - ToothTracker prompts the user to make the necessary adjustments and provide the command in the correct format.
-    - Steps within 1a repeat until a valid add dentist command is provided.
+    - Steps within 1a repeat until a valid `add-dentist` command is provided.
 
       Use case continues from step 2.
 
@@ -460,14 +460,14 @@ Use case ends.
 2. ToothTracker retrieves the list of all dentist data saved in the system.
 3. ToothTracker displays the list of dentist data to the user.
 
-    Use case ends.
+   Use case ends.
 
 **Extensions**
 
 - **1a. User inputs an invalid command.**
     - ToothTracker identifies the command error.
         - ToothTracker prompts the user to make the necessary adjustments and provide the command in the correct format.
-    - Steps within 1a repeat until a valid add dentist command is provided.
+    - Steps within 1a repeat until a valid `list-dentist` command is provided.
 
       Use case continues from step 2.
 
@@ -477,6 +477,47 @@ Use case ends.
     - ToothTracker informs the user that no dentist data is available.
 
       Use case continues from step 2.
+
+**Use case: Add Treatment**
+
+**MSS**
+
+1. User submits a request to add a new type of dental treatment, providing information about the treatment name and its
+   cost.
+2. ToothTracker acknowledges the request to add the new treatment.
+
+   Use case ends.
+
+**Extensions**
+
+- **1a. User inputs an invalid command.**
+    - ToothTracker identifies the command error.
+        - ToothTracker prompts the user to make the necessary adjustments and provide the command in the correct format.
+    - Steps within 1a repeat until a valid `add-treatment` is provided.
+
+      Use case continues from step 2.
+
+
+- **1b. User inputs incomplete or missing information.**
+    - ToothTracker detects that the user did not provide all required information, such as the treatment name or cost.
+    - ToothTracker prompts the user to provide both the treatment name and its cost.
+
+      Use case resumes at step 1.
+
+
+- **1c. User inputs an invalid cost.**
+    - ToothTracker checks the provided cost and determines that it is not a valid numeric value.
+    - ToothTracker prompts the user to provide a valid numeric value.
+
+      Use case resumes at step 1.
+
+
+- **1d. Duplicate treatment name.**
+    - ToothTracker checks the database and finds that a treatment with the same name.
+    - ToothTracker alerts the user about the duplicate entry.
+    - Steps within 1d loop until a new, unique treatment name is provided.
+
+      Use case resumes at step 1.
 
 *{More to be added}*
 
