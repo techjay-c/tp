@@ -15,7 +15,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/techjay-c.png" width="200px">
 
 [[github](http://github.com/techjay-c)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/techjay-c.md)]
 
 * Role: Project Advisor
 
@@ -35,7 +35,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/qyaner.png" width="200px">
 
 [[github](http://github.com/qyaner)] 
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/qyaner.md)]
 
 * Role: Developer
 * Responsibilities: Data
@@ -45,7 +45,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/ruth-lim.png" width="200px">
 
 [[github](http://github.com/ruth-lim)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/ruth-lim.md)]
 
 * Role: Developer
 * Responsibilities: Dev Ops + Threading
@@ -55,7 +55,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/synapseprogramming.png" width="200px">
 
 [[github](http://github.com/SynapseProgramming)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/synapseprogramming.md)]
 
 * Role: Developer
 * Responsibilities: UI
