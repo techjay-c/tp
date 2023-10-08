@@ -12,6 +12,10 @@ import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.person.patients.Patient;
 
+
+/**
+ * A list of patients which is unique
+ */
 public class UniquePatientList implements Iterable<Patient> {
 
     private final ObservableList<Patient> internalList = FXCollections.observableArrayList();
@@ -44,7 +48,6 @@ public class UniquePatientList implements Iterable<Patient> {
      */
     public void setPatient(Patient target, Patient editedPatient) {
         requireAllNonNull(target, editedPatient);
-//  TODO: maybe separate exceptions are needed here
         int index = internalList.indexOf(target);
         if (index == -1) {
             throw new PersonNotFoundException();
@@ -57,11 +60,11 @@ public class UniquePatientList implements Iterable<Patient> {
         internalList.set(index, editedPatient);
     }
 
+
     /**
      * Removes the equivalent person from the list. The person must exist in the list.
      */
     public void remove(Patient toRemove) {
-//  TODO: maybe separate exceptions are needed here
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {
             throw new PersonNotFoundException();
