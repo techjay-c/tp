@@ -15,7 +15,7 @@ import seedu.address.model.person.Phone;
 //import seedu.address.model.person.patient.Patient;
 import seedu.address.model.tag.Tag;
 /**
- * Represents a Doctor in the address book.
+ * Represents a Dentist in the address book.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Dentist extends Person {
