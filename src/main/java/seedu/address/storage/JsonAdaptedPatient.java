@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Address;
-import seedu.address.model.person.Appointmentdate;
+import seedu.address.model.person.AppointmentDate;
 import seedu.address.model.person.Birthdate;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Gender;
@@ -154,12 +154,12 @@ class JsonAdaptedPatient {
 
         if (appointment == null) {
             throw new IllegalValueException(
-                String.format(MISSING_FIELD_MESSAGE_FORMAT, Appointmentdate.class.getSimpleName()));
+                String.format(MISSING_FIELD_MESSAGE_FORMAT, AppointmentDate.class.getSimpleName()));
         }
-        if (!Appointmentdate.isValidDate(appointment)) {
-            throw new IllegalValueException(Appointmentdate.MESSAGE_CONSTRAINTS);
+        if (!AppointmentDate.isValidDate(appointment)) {
+            throw new IllegalValueException(AppointmentDate.MESSAGE_CONSTRAINTS);
         }
-        final Appointmentdate modelAppointment = new Appointmentdate(appointment);
+        final AppointmentDate modelAppointment = new AppointmentDate(appointment);
 
         if (service == null) {
             throw new IllegalValueException(

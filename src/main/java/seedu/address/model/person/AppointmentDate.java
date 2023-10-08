@@ -7,7 +7,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  * Represents a Date in the address book. Guarantees: immutable; is valid as declared in
  * {@link #isValidDate(String)}
  */
-public class Appointmentdate {
+public class AppointmentDate {
 
     public static final String MESSAGE_CONSTRAINTS = "Appointment date should be in the following format: dd-mm-yy";
 
@@ -24,7 +24,7 @@ public class Appointmentdate {
      *
      * @param date A valid date
      */
-    public Appointmentdate(String date) {
+    public AppointmentDate(String date) {
         requireNonNull(date);
         checkArgument(isValidDate(date), MESSAGE_CONSTRAINTS);
         value = date;
@@ -49,11 +49,11 @@ public class Appointmentdate {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof Appointmentdate)) {
+        if (!(other instanceof AppointmentDate)) {
             return false;
         }
 
-        Appointmentdate otherBirthdate = (Appointmentdate) other;
+        AppointmentDate otherBirthdate = (AppointmentDate) other;
         return value.equals(otherBirthdate.value);
     }
 

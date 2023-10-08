@@ -3,14 +3,13 @@ package seedu.address.model.person.patients;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.person.Address;
-import seedu.address.model.person.Appointmentdate;
+import seedu.address.model.person.AppointmentDate;
 import seedu.address.model.person.Birthdate;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Gender;
@@ -29,12 +28,12 @@ public class Patient extends Person {
 
     private final Gender gender;
     private final Birthdate birthdate;
-    private final Appointmentdate appointmentdate;
+    private final AppointmentDate appointmentdate;
 
     private final Service service;
 
     public Patient(Name name, Phone phone, Birthdate birthdate, Gender gender,
-        Appointmentdate appointment, Service service, Address address, Email email, Set<Tag> tags
+        AppointmentDate appointment, Service service, Address address, Email email, Set<Tag> tags
     ) {
         super(name, phone, email, address, tags);
         requireAllNonNull(name, phone, birthdate, gender, appointment, service, address, email,
@@ -55,7 +54,7 @@ public class Patient extends Person {
         return birthdate;
     }
 
-    public Appointmentdate getAppointmentdate() {
+    public AppointmentDate getAppointmentdate() {
         return appointmentdate;
     }
 

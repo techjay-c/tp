@@ -10,7 +10,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
-import seedu.address.model.person.Appointmentdate;
+import seedu.address.model.person.AppointmentDate;
 import seedu.address.model.person.Birthdate;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Gender;
@@ -120,13 +120,13 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code Appointment} is invalid.
      */
-    public static Appointmentdate parseAppointment(String appointment) throws ParseException {
+    public static AppointmentDate parseAppointment(String appointment) throws ParseException {
         requireNonNull(appointment);
         String trimmedAppointment = appointment.trim();
-        if (!Appointmentdate.isValidDate(trimmedAppointment)) {
-            throw new ParseException(Appointmentdate.MESSAGE_CONSTRAINTS);
+        if (!AppointmentDate.isValidDate(trimmedAppointment)) {
+            throw new ParseException(AppointmentDate.MESSAGE_CONSTRAINTS);
         }
-        return new Appointmentdate(trimmedAppointment);
+        return new AppointmentDate(trimmedAppointment);
     }
 
     /**
@@ -139,7 +139,7 @@ public class ParserUtil {
         requireNonNull(service);
         String trimmedService = service.trim();
         if (!Service.isValidService(trimmedService)) {
-            throw new ParseException(Appointmentdate.MESSAGE_CONSTRAINTS);
+            throw new ParseException(AppointmentDate.MESSAGE_CONSTRAINTS);
         }
         return new Service(trimmedService);
     }
