@@ -1,6 +1,5 @@
 package seedu.address.model.person.patients;
 
-import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
@@ -32,6 +31,19 @@ public class Patient extends Person {
 
     private final Service service;
 
+    /**
+     * A class which represents a patient
+     *
+     * @param name name of patient
+     * @param phone phone number of patient
+     * @param birthdate patients birthday
+     * @param gender patients gender
+     * @param appointment patients dental appointment date
+     * @param service dental service that the patients needs
+     * @param address address of patient
+     * @param email email of patient
+     * @param tags tags
+     */
     public Patient(Name name, Phone phone, Birthdate birthdate, Gender gender,
         AppointmentDate appointment, Service service, Address address, Email email, Set<Tag> tags
     ) {
