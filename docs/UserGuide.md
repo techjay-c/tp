@@ -212,7 +212,6 @@ Adds a patient to ToothTracker list of patients. This is helpful when:
 - You are using ToothTracker for the first time and you have to add your patients' particulars.
 - A new patient has joined your clinic.
 
-
 Format: `add-patient n/NAME p/PHONE e/EMAIL b/BIRTHDATE g/GENDER a/APPOINTMENT s/SERVICE h/ADDRESS `
 
 Examples:
@@ -261,10 +260,17 @@ Examples:
 
 ### Searching patients by ID or keyword: `search-patient`
 
-Search for patients with the specified ID or keyword. This command allows you to find patient records that match your
-search criteria. Here are the details:
+Searches for the patient with the specified ID or patients that matches the keyword. This command allows you to find patient records that match your
+search criteria.
 
 Format: `search-patient [KEYWORD]`, `search-patient [PATIENT_ID]`
+
+<div markdown="block" class="alert alert-info">
+The `PATIENT_ID` refers to the index number shown in the displayed list of patients. <br>
+You may use `list-patients` to check out the patient' ID first.
+</div>
+
+**Important Notes:**
 
 * The search is case-insensitive, meaning that the search will match both uppercase and lowercase characters. For
   example, searching for `Thomas` will match both `Thomas` and `thomas`.
@@ -272,6 +278,7 @@ Format: `search-patient [KEYWORD]`, `search-patient [PATIENT_ID]`
   match `Tan Thomas` as well.
 * The search is performed only on the patient's name.
 * Only full words will be matched. For example, if you search for `Mel`, it will not match `Melissa`.
+
 
 Examples:
 
