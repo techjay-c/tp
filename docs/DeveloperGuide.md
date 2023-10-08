@@ -375,6 +375,8 @@ Use case ends.
 
 **Use Case: Search Dentist**
 
+**MSS**
+
 1. User submits a request to search for a dentist:
     - User specifies search criteria, which can be either a dentist ID [PATIENT ID] or a dentist name [dentist name].
 
@@ -384,11 +386,11 @@ Use case ends.
     - If the request specifies [dentist name]:
         - ToothTracker searches for a dentist with the matching name.
 
-    3. ToothTracker displays the search results:
-        - If one or more matching dentists are found:
-            - ToothTracker lists the matching dentists and their details.
+3. ToothTracker displays the search results:
+    - If one or more matching dentists are found:
+        - ToothTracker lists the matching dentists and their details.
 
-       Use Case Ends.
+   Use Case Ends.
 
 **Extensions**
 
@@ -410,6 +412,8 @@ Use case ends.
       Use Case Ends.
 
 **Use Case: Delete a Dentist**
+
+**MSS**
 
 1. User submits a request to delete a dentist:
     - User specifies the dentist ID [PATIENT ID] or dentist name [dentist name] to delete.
