@@ -208,14 +208,22 @@ Examples:
 
 ### Adding a patient: `add-patient`
 
-Adds a patient to ToothTracker.
+Adds a patient to ToothTracker list of patients. This is helpful when:
+- You are using ToothTracker for the first time and you have to add your patients' particulars.
+- A new patient has joined your clinic.
 
-Format: `add-patient n/NAME p/PHONE b/BIRTHDATE g/GENDER a/APPOINTMENT s/SERVICE h/ADDRESS e/EMAIL`
+Format: `add-patient n/NAME p/PHONE e/EMAIL b/BIRTHDATE g/GENDER a/APPOINTMENT s/SERVICE h/ADDRESS `
 
 Examples:
 
-* `add-patient n/John Tan p/90676622 e/johntan@gmail.com b/06-06-1998 g/M a/10-08-2023 s/Cleaning h/60 Jalan Kempinski Road`
-* `add-patient n/Megan Chua p/88756298 e/megan@outlook.com b/10-09-1993 g/M a/02-11-2023 s/Cleaning h/34 Changi Rise`
+* `Add-patient n/John Tan p/90676622 e/johntan@gmail.com b/06-06-1998 g/M a/10-08-2023 s/Cleaning h/60 Jalan Kempinski Road` <br>
+Adds a new patient named ‘John Tan’, with phone number ‘90676622’ and email of ‘johntan@gmail.com’,
+birthdate of 06 June 1998, Gender Male, appointment date of 10 August 2023, requesting for cleaning treatment 
+and with an address at 60 Jalan Kempinski Road.
+* `Add-patient n/Megan Chua p/88756298 e/megan@outlook.com b/10-09-1993 g/F a/02-11-2023 s/Cleaning h/34 Changi Rise` <br>
+Adds a new patient named ‘Megan Chua’, with phone number ‘88756298’ and email of ‘megan@outlook.com’,
+birthdate of 10 Sep 1993, Gender Female, appointment date of 02 Nov 2023, requesting for cleaning treatment and with
+an address at 34 Changi Rise.
 
 
 ### Listing all patients : `list-patient`
@@ -252,10 +260,17 @@ Examples:
 
 ### Searching patients by ID or keyword: `search-patient`
 
-Search for patients with the specified ID or keyword. This command allows you to find patient records that match your
-search criteria. Here are the details:
+Searches for the patient with the specified ID or patients that matches the keyword. This command allows you to find patient records that match your
+search criteria.
 
 Format: `search-patient [KEYWORD]`, `search-patient [PATIENT_ID]`
+
+<div markdown="block" class="alert alert-info">
+The `PATIENT_ID` refers to the index number shown in the displayed list of patients. <br>
+You may use `list-patients` to check out the patient' ID first.
+</div>
+
+**Important Notes:**
 
 * The search is case-insensitive, meaning that the search will match both uppercase and lowercase characters. For
   example, searching for `Thomas` will match both `Thomas` and `thomas`.
@@ -263,6 +278,7 @@ Format: `search-patient [KEYWORD]`, `search-patient [PATIENT_ID]`
   match `Tan Thomas` as well.
 * The search is performed only on the patient's name.
 * Only full words will be matched. For example, if you search for `Mel`, it will not match `Melissa`.
+
 
 Examples:
 
@@ -329,7 +345,7 @@ the data of your previous ToothTracker home folder.
 | **List Dentists**                | `list-dentists`                                                                                                                                                                                                                   |
 | **Search Dentist by Dentist ID** | `search-dentist DENTIST_ID`                                                                                                                                                                                                       |
 | **Search Dentist by Name**       | `search-dentist NAME`                                                                                                                                                                                                             |
-| **Add Patient**                  | `add-patient n/NAME p/PHONE b/BIRTHDATE g/GENDER a/APPOINTMENT s/SERVICE h/ADDRESS e/EMAIL` <br> e.g., `add-patient n/John Tan p/90676622 e/johntan@gmail.com b/06-06-1998 g/M a/10-08-2023 s/Cleaning h/60 Jalan Kempinski Road` |
+| **Add Patient**                  | `add-patient n/NAME p/PHONE e/EMAIL b/BIRTHDATE g/GENDER a/APPOINTMENT s/SERVICE h/ADDRESS` <br> e.g., `add-patient n/John Tan p/90676622 e/johntan@gmail.com b/06-06-1998 g/M a/10-08-2023 s/Cleaning h/60 Jalan Kempinski Road` |
 | **Delete Patient**               | `delete-patient PATIENT_ID`<br> e.g., `delete-patient 3`                                                                                                                                                                          |
 | **List Patients**                | `list-patients`                                                                                                                                                                                                                   |
 | **Search Patient by Patient ID** | `search-patient PATIENT_ID`                                                                                                                                                                                                       |
