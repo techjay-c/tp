@@ -11,6 +11,8 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.dentist.Dentist;
+import seedu.address.model.person.dentist.Specialization;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -40,11 +42,27 @@ public class SampleDataUtil {
         };
     }
 
+    public static Dentist[] getSampleDentist() {
+        return new Dentist[] {
+                new Dentist(new Name("Alex Yeoh"), new Phone("87438807"), new Email("alexyeoh@example.com"),
+                        new Address("Blk 30 Geylang Street 29, #06-40"), new Specialization("Orthodintics"),
+                        "6", getTagSet("friends")),
+                new Dentist(new Name("Bernice Yu"), new Phone("99272758"), new Email("berniceyu@example.com"),
+                        new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"), new Specialization("Whitening"),
+                        "5", getTagSet("colleagues", "friends"))
+        };
+    }
+
     public static ReadOnlyAddressBook getSampleAddressBook() {
         AddressBook sampleAb = new AddressBook();
         for (Person samplePerson : getSamplePersons()) {
             sampleAb.addPerson(samplePerson);
         }
+
+        for (Dentist sampleDentist : getSampleDentist()) {
+            sampleAb.addDentist(sampleDentist);
+        }
+
         return sampleAb;
     }
 
