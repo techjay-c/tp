@@ -377,15 +377,8 @@ Use case ends.
 
 **MSS**
 
-1. User submits a request to search for a dentist:
-    - User specifies search criteria, which can be either a dentist ID [PATIENT ID] or a dentist name [dentist name].
-
-2. ToothTracker searches for the dentist based on the criteria:
-    - If the request specifies [PATIENT ID]:
-        - ToothTracker looks for a dentist with the matching ID.
-    - If the request specifies [dentist name]:
-        - ToothTracker searches for a dentist with the matching name.
-
+1. User submits a request to search for a dentist by specifying a dentist name.
+2. ToothTracker searches for the dentist based on the provided name criteria.
 3. ToothTracker displays the search results:
     - If one or more matching dentists are found:
         - ToothTracker lists the matching dentists and their details.
@@ -405,29 +398,15 @@ Use case ends.
 
       Use Case Ends.
 
-
-* 3b. Invalid dentist ID or name format:
-    - ToothTracker displays an error message.
-
-      Use Case Ends.
-
 **Use Case: Delete a Dentist**
 
 **MSS**
 
-1. User submits a request to delete a dentist:
-    - User specifies the dentist ID [PATIENT ID] or dentist name [dentist name] to delete.
-
-2. ToothTracker searches for the dentist entry:
-    - If the request specifies [PATIENT ID]:
-        - ToothTracker looks for a dentist with the matching ID.
-    - If the request specifies [dentist name]:
-        - ToothTracker searches for a dentist with the matching name.
-
+1. User submits a request to delete a dentist by specifying a keyword string.
+2. ToothTracker searches for the dentist entry based on the provided keyword string.
 3. ToothTracker shows the dentist entry that matches the request:
     - If a match is found:
         - User confirms the deletion of the specified dentist.
-
 4. ToothTracker deletes the dentist:
     - Dentist entry is removed from the database.
 
@@ -446,11 +425,6 @@ Use case ends.
 
       Use Case resumes at step 2.
 
-
-* 3b. Invalid dentist ID or name format:
-    - ToothTracker displays an error message.
-
-      Use Case ends.
 
 * 4a. Deletion is cancelled by the user:
     - ToothTracker cancels the deletion process.
@@ -523,7 +497,113 @@ Use case ends.
 
       Use case resumes at step 1.
 
-*{More to be added}*
+**Use case: Add a Patient**
+
+**MSS**
+
+1. User submits a request to create a new patient, and provides information about the patient.
+2. ToothTracker acknowledges the request to add a new patient.
+
+Use case ends.
+
+**Extensions**
+
+- **1a. User inputs an invalid command.**
+    - ToothTracker identifies the command error.
+        - ToothTracker prompts the user to make the necessary adjustments and provide the command in the correct format.
+    - Steps within 1a repeat until a valid `add-patient` command is provided.
+
+      Use case continues from step 2.
+
+
+- **1b. ToothTracker finds a pre-existing dentist entry.**
+    - ToothTracker alerts the user about the duplicate entry.
+    - Steps within 1b loop until a new, unique entry is provided.
+
+      Use case continues from step 2.
+
+**Use case: Delete a Patient**
+
+**MSS**
+
+1. User submits a request to delete a patient by specifying a keyword string.
+2. ToothTracker searches for the patient entry based on the provided keyword string.
+3. ToothTracker shows the patient entry that matches the request:
+    - If a match is found:
+      User confirms the deletion of the specified patient.
+4. ToothTracker deletes the patient:
+    - Patient entry is removed from the database.
+
+      Use Case Ends.
+
+**Extensions**
+
+* 2a. The list is empty:
+    - ToothTracker displays a message indicating no patients are available.
+
+      Use Case Ends.
+
+
+* 3a. No matching dentist found:
+    - ToothTracker displays an error message.
+
+      Use Case resumes at step 2.
+
+
+* 4a. Deletion is cancelled by the user:
+    - ToothTracker cancels the deletion process.
+    - Use Case ends.
+
+**Use case: List Patient Data**
+
+**MSS**
+
+1. User submits a request to list all patient data.
+2. ToothTracker retrieves the list of all patient data saved in the system.
+3. ToothTracker displays the list of patient data to the user.
+
+   Use case ends.
+
+**Extensions**
+
+- **1a. User inputs an invalid command.**
+    - ToothTracker identifies the command error.
+        - ToothTracker prompts the user to make the necessary adjustments and provide the command in the correct format.
+    - Steps within 1a repeat until a valid `list-patient` command is provided.
+
+      Use case continues from step 2.
+
+
+- **2a. No dentist data available.**
+    - ToothTracker checks and finds that there are no patient records in the system.
+    - ToothTracker informs the user that no patient data is available.
+
+      Use case continues from step 2.
+
+**Use Case: Search Patient**
+
+**MSS**
+
+1. User submits a request to search for a patient by specifying a patient name.
+2. ToothTracker searches for the dentist based on the provided name criteria.
+3. ToothTracker displays the search results:
+    - If one or more matching patient are found:
+        - ToothTracker lists the matching patient and their details.
+
+   Use Case Ends.
+
+**Extensions**
+
+* 2a. The list of patients is empty:
+    - ToothTracker displays a message indicating that no patients are available.
+
+      Use Case Ends.
+
+
+* 3a. No matching patient found:
+    - ToothTracker displays a message indicating no matching patients were found.
+
+      Use Case Ends.
 
 ### Non-Functional Requirements
 

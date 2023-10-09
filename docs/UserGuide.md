@@ -4,7 +4,7 @@ title: User Guide
 ---
 
 ToothTracker is an **All-in-One solution for Effortless Dental Clinic Record Management**.
-From adding new patient and dentist profiles to seamlessly deleting records, 
+From adding new patient and dentist profiles to seamlessly deleting records,
 ToothTracker is engineered to simplify every aspect of your administrative responsibilities.
 
 * Table of Contents
@@ -29,16 +29,24 @@ ToothTracker is engineered to simplify every aspect of your administrative respo
    open the help window.<br>
    Some example commands you can try:
 
-    * `list-dentists` : Lists all dentists.
+    * `list-dentist` : Lists all dentists.
 
     * `add-dentist n/Bob p/12345678 e/bobjune@gmail.com y/6 s/braces` : Adds a dentist named `Bob`
       to the ToothTracker.
 
-    * `delete-dentist 3` : Deletes the dentist with id 2.
+    * `delete-dentist` : Deletes the dentist with id 2.
 
-    * `clear` : Deletes all contacts.
+    * `list-patient` : Lists all patients.
 
-    * `exit` : Exits the app.
+    * `add-patient n/John Tan p/90676622 e/johntan@gmail.com b/06-06-1998 g/M a/10-08-2023 s/Cleaning h/60 Jalan Kempinski Road`` : Adds a dentist named `
+      Bob`
+      to the ToothTracker.
+
+    * `delete-dentist` : Deletes the dentist with id 2.
+
+* `clear` : Deletes all contacts.
+
+* `exit` : Exits the app.
 
 1. Refer to the [Features](#features) below for details of each command.
 
@@ -105,7 +113,9 @@ Examples:
 
 ### Editing a dentist: `edit-dentist`
 
-Edits one or more details of the dentist at the specified Dentist ID. This is helpful when:
+Edits one or more details of the dentist at the specified Dentist ID.
+
+This is helpful when:
 The particulars of a dentist need to be updated.
 You accidentally entered incorrect information about a dentist into the ToothTrack database.
 
@@ -113,46 +123,31 @@ You accidentally entered incorrect information about a dentist into the ToothTra
 You can edit the particulars in any order and you can edit more than one detail of the dentist.
 </div>
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-To check the Dentist ID for a dentist, you can simply enter the command `list-dentist`.
+<div markdown="block" class="alert alert-info">:bulb: **Tip:**
+ You can use `t/` to remove all tags from a dentist using the `edit-dentist` command.
 </div>
 
-<div markdown="block" class="alert alert-info">
-When editing tags, you have to include any previous tags that was already included in the dentist, or else these tags will be removed. This also means that you can use `t/` to remove all tags from a dentist using the edit-dentist command.
-</div>
-
-**Format:** `edit-dentist DENTIST_ID [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SPECIALIZATION] [y/YOE] [t/TAG]…​`
+**Format:** `edit-dentist [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SPECIALIZATION] [y/YOE] [t/TAG]…​`
 
 Examples:
 
-* `edit-dentist 1 p/98987676 e/bobjuly@gmail.com` edits the phone number and email of the dentist with Dentist ID of 1
+* `edit-dentist p/98987676 e/bobjuly@gmail.com` edits the phone number and email of the dentist with Dentist ID of 1
   into 98987676 and bobjuly@gmail.com respectively.
-* `edit-dentist 2 n/Emmanuel Alexandra t/` edits the name of the dentist with Dentist ID of 2 into ‘Emmanual Alexandra’
+* `edit-dentist n/Emmanuel Alexandra t/` edits the name of the dentist with Dentist ID of 2 into ‘Emmanual Alexandra’
   and removes all tags of the dentist.
 
-### Searching a dentist by Dentist ID: `search-dentist DENTIST_ID`
+### Searching a dentist by name: `search-dentist`
 
-Searches for the dentist at the specified Dentist ID in ToothTracker
+You can search for a dentist in ToothTracker by specifying the keyword to search for using the `search-dentist` command.
+This command allows you to find a dentist whose name matches or contains the keyword you entered.
 
-<div markdown="block" class="alert alert-info">
-The `DENTIST_ID` refers to the index number shown in the displayed list of dentists.
-You may use `list-dentists` to check out the dentists' ID first.
-</div>
+**Format:** `search-dentist [KEYWORD]`
 
-**Format:** `search-dentist DENTIST_ID`
+Examples:
 
-### Searching a dentist by name: `search-dentist NAME`
+* `search-dentist Smith` find a dentist with the name containing the keyword 'Smith'.
 
-Searches for the dentist whose name contains `NAME`  in ToothTracker
-
-<div markdown="block" class="alert alert-info">
-The `DENTIST_ID` refers to the index number shown in the displayed list of dentists.
-You may use `list-dentists` to check out the dentists' ID first.
-</div>
-
-**Format:** `search-dentist NAME`
-
-### Deleting a dentist: `delete-dentist DENTIST_ID`
+### Deleting a dentist: `delete-dentist`
 
 Deletes the specified dentist from ToothTracker.
 
@@ -162,19 +157,13 @@ Dentists deleted will need to be added back and their previous records may be re
 Proceed with caution!
 </div>
 
-
-<div markdown="block" class="alert alert-info">
-The `DENTIST_ID` refers to the index number shown in the displayed list of dentists.
-You may use `list-dentists` to check out the dentists' ID first.
-</div>
-
-**Format:** `delete-dentist DENTIST_ID`
+**Format:** `delete-dentist [NAME]`
 
 Examples:
 
-* `delete-dentist 2` deletes dentist with DENTIST_ID 2 from ToothTracker.
+* `delete-dentist Jane` deletes dentist with the name 'Jane' from ToothTracker.
 
-### Listing all dentists : `list-dentists`
+### Listing all dentists : `list-dentist`
 
 Shows a list of all dentists in ToothTracker. This is useful when:
 
@@ -182,7 +171,7 @@ Shows a list of all dentists in ToothTracker. This is useful when:
 * You want to verify a dentist is added successfully in ToothTracker.
 * You want to verify a dentist is updated successfully in ToothTracker.
 
-**Format:** `list-dentists` (No extra parameters required)
+**Format:** `list-dentist` (No extra parameters required)
 
 ## General Features
 
@@ -203,7 +192,6 @@ Examples:
 - The system will not allow duplicate treatment names. If a treatment with the same name already exists, you will be
   prompted to provide a unique name.
 
-
 ## Patient Features
 
 ### Adding a patient: `add-patient`
@@ -217,17 +205,11 @@ Examples:
 * `add-patient n/John Tan p/90676622 e/johntan@gmail.com b/06-06-1998 g/M a/10-08-2023 s/Cleaning h/60 Jalan Kempinski Road`
 * `add-patient n/Megan Chua p/88756298 e/megan@outlook.com b/10-09-1993 g/M a/02-11-2023 s/Cleaning h/34 Changi Rise`
 
-
 ### Listing all patients : `list-patient`
 
 Shows a list of all patients in ToothTracker.
 
 Format: `list-patient`
-
-Examples:
-
-* `list-patient 296` shows the details of the patient with PATIENT_ID 296 from ToothTracker.
-
 
 ### Deleting a patient : `delete-patient`
 
@@ -238,36 +220,32 @@ This command is DESTRUCTIVE! Dentists deleted will need to be added back and the
 **Proceed with caution!**
 </div>
 
-* Deletes the patient at the specified `INDEX`.
-* The index refers to the index number shown in the displayed patient list.
-* The index **must be a positive integer** 1, 2, 3, …​
-* You may use `list-patient` to obtain the patient's ID first.
+* Deletes the patient with the specified `[NAME]`.
+* The `[NAME]` refers to the exact name of the patient as it appears in ToothTracker.
 
-Format: `delete-patient PATIENT_ID`
+Format: `delete-patient [NAME]`
 
 Examples:
 
-* `delete-patient 034` deletes patient with PATIENT_ID 34 from ToothTracker.
+* `delete-patient Adam Ong` deletes patient with the name Adam Ong from ToothTracker.
 
-
-### Searching patients by ID or keyword: `search-patient`
+### Searching patients by keyword: `search-patient`
 
 Search for patients with the specified ID or keyword. This command allows you to find patient records that match your
 search criteria. Here are the details:
 
-Format: `search-patient [KEYWORD]`, `search-patient [PATIENT_ID]`
+Format: `search-patient [KEYWORD]`
 
 * The search is case-insensitive, meaning that the search will match both uppercase and lowercase characters. For
   example, searching for `Thomas` will match both `Thomas` and `thomas`.
 * The order of the keywords in the name does not matter. For instance, searching for `Thomas Tan` will
   match `Tan Thomas` as well.
 * The search is performed only on the patient's name.
-* Only full words will be matched. For example, if you search for `Mel`, it will not match `Melissa`.
 
 Examples:
 
-* `search-patient Thomas` will search for patients with the name containing the keyword `Thomas`.
-* `search-patient 088` will search for a patient with the ID `088`. If one or more matching patients are found based on
+* `search-patient Thomas` will search for patients with the name containing the keyword `Thomas`. If one or more
+  matching patients are found based on
   your search criteria, the system will list the matching patients along with their details.
 
 ### Clearing all entries : `clear`
