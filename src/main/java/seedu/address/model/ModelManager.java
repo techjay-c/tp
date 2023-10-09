@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.patients.Patient;
 
@@ -154,7 +155,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void updateFilteredPatientList(Predicate<Patient> predicate) {
+    public void updateFilteredPatientList(NameContainsKeywordsPredicate predicate) {
         requireNonNull(predicate);
         filteredPatients.setPredicate(predicate);
     }
