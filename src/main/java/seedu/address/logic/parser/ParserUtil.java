@@ -17,6 +17,7 @@ import seedu.address.model.person.Gender;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Service;
+import seedu.address.model.person.dentist.Specialization;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -185,5 +186,40 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    // Parse Methods for Dentists
+
+    /**
+     * Parses a {@code String specialization} into an {@code Specialization}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code specialization} is invalid.
+     */
+    public static Specialization parseSpecialization(String specialization) throws ParseException {
+        requireNonNull(specialization);
+        String trimmedSpecialization = specialization.trim();
+        if (!Specialization.isValidSpecialization(trimmedSpecialization)) {
+            throw new ParseException(Specialization.MESSAGE_CONSTRAINTS);
+        }
+        return new Specialization(trimmedSpecialization);
+    }
+
+    /**
+     * Parses a {@code String yoe} into an {@code String}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code yoe} is invalid.
+     */
+    public static String parseYoe(String yoe) {
+        requireNonNull(yoe);
+        String trimmedYoe = yoe.trim();
+
+//        // The following code is used if yoe becomes a custom class.
+//        if (!Yoe.isValidYoe(trimmedYoe)) {
+//            throw new ParseException(Yoe.MESSAGE_CONSTRAINTS);
+//        }
+//        return new Yoe(trimmedYoe);
+        return trimmedYoe;
     }
 }

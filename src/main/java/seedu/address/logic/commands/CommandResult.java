@@ -3,8 +3,11 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import java.util.Objects;
+import java.util.Optional;
 
 import seedu.address.commons.util.ToStringBuilder;
+
+import seedu.address.model.person.dentist.Dentist;
 
 /**
  * Represents the result of a command execution.
@@ -18,6 +21,12 @@ public class CommandResult {
 
     /** The application should exit. */
     private final boolean exit;
+
+    /** This command interacts directly with the GUI. Default value is {@code false}. */
+    private boolean hasGuiInteraction = false;
+
+    /** Dentist selected by user. This value can be null. */
+    private Dentist selectedDentist = null;
 
     /**
      * Constructs a {@code CommandResult} with the specified fields.
@@ -36,6 +45,18 @@ public class CommandResult {
         this(feedbackToUser, false, false);
     }
 
+    /**
+     * Constructs a {@code CommandResult} with selected doctor.
+     */
+    public CommandResult(String feedbackToUser,
+                         Dentist selectedDentist) {
+        this.feedbackToUser = requireNonNull(feedbackToUser);
+        this.selectedDentist = requireNonNull(selectedDentist);
+        this.showHelp = false;
+        this.exit = false;
+        this.hasGuiInteraction = true;
+    }
+
     public String getFeedbackToUser() {
         return feedbackToUser;
     }
@@ -46,6 +67,14 @@ public class CommandResult {
 
     public boolean isExit() {
         return exit;
+    }
+
+    public boolean hasGuiInteraction() {
+        return this.hasGuiInteraction;
+    }
+
+    public Optional<Dentist> getSelectedDentist() {
+        return Optional.ofNullable(selectedDentist);
     }
 
     @Override
@@ -62,12 +91,13 @@ public class CommandResult {
         CommandResult otherCommandResult = (CommandResult) other;
         return feedbackToUser.equals(otherCommandResult.feedbackToUser)
                 && showHelp == otherCommandResult.showHelp
-                && exit == otherCommandResult.exit;
+                && exit == otherCommandResult.exit
+                && hasGuiInteraction == otherCommandResult.hasGuiInteraction;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(feedbackToUser, showHelp, exit);
+        return Objects.hash(feedbackToUser, showHelp, exit, hasGuiInteraction);
     }
 
     @Override
@@ -76,6 +106,7 @@ public class CommandResult {
                 .add("feedbackToUser", feedbackToUser)
                 .add("showHelp", showHelp)
                 .add("exit", exit)
+                .add("hasGuiInteraction", hasGuiInteraction)
                 .toString();
     }
 
