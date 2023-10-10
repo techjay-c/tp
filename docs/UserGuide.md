@@ -184,36 +184,6 @@ Shows a list of all dentists in ToothTracker. This is useful when:
 
 **Format:** `list-dentists` (No extra parameters required)
 
-## General Features
-
-### Adding a treatment: `add-treatment`
-
-You can add a new dental treatment to the ToothTracker system using the `add-treatment` command. This command allows you
-to specify the name of the treatment and its associated price.
-
-Format: `add-treatment [name] [price]`
-
-Examples:
-
-* `add-treatment "Tooth Extraction" 150` adds a Tooth Extraction Treatment to ToothTracker with a cost of $150.
-
-**Important Notes:**
-
-- Ensure that you provide both the treatment name and its cost when using the `add-treatment` command.
-- The system will not allow duplicate treatment names. If a treatment with the same name already exists, you will be
-  prompted to provide a unique name.
-
-### Filter Appointments by service type, date or dentist: `filter KEYWORD`
-
-You can filter appointments by their service type, date or dentists in the ToothTracker system 
-using the `filter` command. 
-
-Format: `filter KEYWORD`
-
-Examples:
-
-* `filter "Tooth Extraction"` return all Tooth Extraction appointments.
-
 
 ## Patient Features
 
@@ -297,6 +267,39 @@ Examples:
 * `search-patient 088` will search for a patient with the ID `088`. If one or more matching patients are found based on
   your search criteria, the system will list the matching patients along with their details.
 
+## General Features
+
+### Adding a treatment: `add-treatment`
+
+You can add a new dental treatment to the ToothTracker system using the `add-treatment` command. This command allows you
+to specify the name of the treatment and its associated price.
+
+Format: `add-treatment [name] [price]`
+
+Examples:
+
+* `add-treatment "Tooth Extraction" 150` adds a Tooth Extraction Treatment to ToothTracker with a cost of $150.
+
+**Important Notes:**
+
+- Ensure that you provide both the treatment name and its cost when using the `add-treatment` command.
+- The system will not allow duplicate treatment names. If a treatment with the same name already exists, you will be
+  prompted to provide a unique name.
+
+### Filter Appointments by service type, date or dentist: `filter KEYWORD`
+
+You can filter appointments by their service type, date or dentists in the ToothTracker system
+using the `filter` command.
+
+Format: `filter s/SERVICE_TYPE`, `filter t/DATE`, `filter d/DENTIST`
+
+Examples:
+
+* `filter s/Tooth Extraction` return all Tooth Extraction appointments.
+* `filter t/20-11-2023` return all appointments happening on 20 November 2023.
+* `filter d/Tom` return all appointments with Tom as the dentist. 
+
+
 ### Clearing all entries : `clear`
 
 Clears all entries from ToothTracker.
@@ -348,22 +351,26 @@ the data of your previous ToothTracker home folder.
 
 ## Command summary
 
-| Action                           | Format, Examples                                                                                                                                                                                                                  |
-|----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add Dentist**                  | `add-dentist n/NAME p/PHONE e/EMAIL s/SPECIALIZATION y/YOE [t/TAG]…​` <br> e.g., `add-dentist n/Bob p/12345678 e/bobjune@gmail.com y/6 s/braces`                                                                                  |
-| **Edit Dentist**                 | `edit-dentist DENTIST_ID [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SPECIALIZATION] [y/YOE] [t/TAG]…​` <br> e.g., `edit-dentist 1 p/98987676 e/bobjuly@gmail.com`                                                                |
-| **Delete Dentist**               | `delete-dentist DENTIST_ID`<br> e.g., `delete-dentist 3`                                                                                                                                                                          |
-| **List Dentists**                | `list-dentists`                                                                                                                                                                                                                   |
-| **Search Dentist by Dentist ID** | `search-dentist DENTIST_ID`                                                                                                                                                                                                       |
-| **Search Dentist by Name**       | `search-dentist NAME`                                                                                                                                                                                                             |
-| **Add Patient**                  | `add-patient n/NAME p/PHONE e/EMAIL b/BIRTHDATE g/GENDER a/APPOINTMENT s/SERVICE h/ADDRESS` <br> e.g., `add-patient n/John Tan p/90676622 e/johntan@gmail.com b/06-06-1998 g/M a/10-08-2023 s/Cleaning h/60 Jalan Kempinski Road` |
-| **Delete Patient**               | `delete-patient PATIENT_ID`<br> e.g., `delete-patient 3`                                                                                                                                                                          |
-| **List Patients**                | `list-patients`                                                                                                                                                                                                                   |
-| **Search Patient by Patient ID** | `search-patient PATIENT_ID`                                                                                                                                                                                                       |
-| **Search Patient by Name**       | `search-patient NAME`                                                                                                                                                                                                             |
-| **Clear all Profiles**           | `clear`                                                                                                                                                                                                                           |
-| **Exit Programme**               | `exit`                                                                                                                                                                                                                            |
-| **Help**                         | `help`                                                                                                                                                                                                                            |
+| Action                                  | Format, Examples                                                                                                                                                                                                                  |
+|-----------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add Dentist**                         | `add-dentist n/NAME p/PHONE e/EMAIL s/SPECIALIZATION y/YOE [t/TAG]…​` <br> e.g., `add-dentist n/Bob p/12345678 e/bobjune@gmail.com y/6 s/braces`                                                                                  |
+| **Edit Dentist**                        | `edit-dentist DENTIST_ID [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SPECIALIZATION] [y/YOE] [t/TAG]…​` <br> e.g., `edit-dentist 1 p/98987676 e/bobjuly@gmail.com`                                                                |
+| **Delete Dentist**                      | `delete-dentist DENTIST_ID`<br> e.g., `delete-dentist 3`                                                                                                                                                                          |
+| **List Dentists**                       | `list-dentists`                                                                                                                                                                                                                   |
+| **Search Dentist by Dentist ID**        | `search-dentist DENTIST_ID` <br> e.g., `search-dentist 2`                                                                                                                                                                         |
+| **Search Dentist by Name**              | `search-dentist NAME` <br> e.g., `search-dentist Tom`                                                                                                                                                                             |
+| **Add Patient**                         | `add-patient n/NAME p/PHONE e/EMAIL b/BIRTHDATE g/GENDER a/APPOINTMENT s/SERVICE h/ADDRESS` <br> e.g., `add-patient n/John Tan p/90676622 e/johntan@gmail.com b/06-06-1998 g/M a/10-08-2023 s/Cleaning h/60 Jalan Kempinski Road` |
+| **Delete Patient**                      | `delete-patient PATIENT_ID`<br> e.g., `delete-patient 3`                                                                                                                                                                          |
+| **List Patients**                       | `list-patients`                                                                                                                                                                                                                   |
+| **Search Patient by Patient ID**        | `search-patient PATIENT_ID`  <br> e.g., `search-patient 3`                                                                                                                                                                        |
+| **Search Patient by Name**              | `search-patient NAME` <br> e.g., `search-patient John`                                                                                                                                                                            |
+| **Add a Treatment**                     | `add-treatment [NAME] [PRICE]` <br> e.g., `add-treatment "Tooth Extraction" 150`                                                                                                                                                  |
+| **Filter Appointments by Service Type** | `filter s/SERVICE_TYPE` <br> e.g., `filter s/Tooth Extraction`                                                                                                                                                                    |
+| **Filter Appointments by Date**         | `filter t/DATE` <br> e.g., `filter t/20-11-2023`                                                                                                                                                                                  |
+| **Filter Appointments by Dentist**      | `filter d/DENTIST_ID` <br> e.g., `filter d/Tom`                                                                                                                                                                                   |
+| **Clear all Profiles**                  | `clear`                                                                                                                                                                                                                           |
+| **Exit Programme**                      | `exit`                                                                                                                                                                                                                            |
+| **Help**                                | `help`                                                                                                                                                                                                                            |
 
 --------------------------------------------------------------------------------------------------------------------
 
