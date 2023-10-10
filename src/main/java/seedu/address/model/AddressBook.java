@@ -9,9 +9,9 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePatientList;
 import seedu.address.model.person.UniquePersonList;
-import seedu.address.model.person.patients.Patient;
 import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.dentist.UniqueDentistList;
+import seedu.address.model.person.patients.Patient;
 
 /**
  * Wraps all data at the address-book level Duplicates are not allowed (by .isSamePerson
@@ -96,7 +96,6 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-<<<<<<< HEAD
      * Returns true if a patient with the same identity as {@code patient} exists in the address
      * book.
      */
@@ -107,7 +106,6 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Adds a person to the address book. The person must not already exist in the address book.
-=======
      * Returns true if a dentist with the same identity as {@code dentist} exists in the address book.
      */
     public boolean hasDentist(Dentist dentist) {
@@ -118,7 +116,6 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Adds a person to the address book.
      * The person must not already exist in the address book.
->>>>>>> branch-addDentistCommand
      */
     public void addPerson(Person p) {
         persons.add(p);
@@ -136,11 +133,6 @@ public class AddressBook implements ReadOnlyAddressBook {
      * @param dentist to be added to the address book
      */
     public void addDentist(Dentist dentist) {
-        //TBC if we need loggers
-//        if (dentist == null) {
-//            logger.warning("You are not allowed to add a NULL dentist into ToothTracker!");
-//            return;
-//        }
         dentists.add(dentist);
     }
 
@@ -156,7 +148,6 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-<<<<<<< HEAD
      * Replaces the given person {@code target} in the list with {@code editedPerson}.
      * {@code target} must exist in the address book. The person identity of {@code editedPerson}
      * must not be the same as another existing person in the address book.
@@ -168,9 +159,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Removes {@code key} from this {@code AddressBook}. {@code key} must exist in the address
-     * book.
-=======
+     * Removes {@code key} from this {@code AddressBook}. {@code key} must exist in the address book.
      * Replaces the given dentist {@code target} in the list with {@code editedDentist}.
      * {@code target} must exist in the address book.
      * The person identity of {@code editedDentist} must not be the same as another existing person in the address book.
@@ -190,7 +179,6 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Removes {@code key} from this {@code AddressBook}.
      * {@code key} must exist in the address book.
->>>>>>> branch-addDentistCommand
      */
     public void removePerson(Person key) {
         persons.remove(key);

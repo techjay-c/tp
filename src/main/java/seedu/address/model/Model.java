@@ -6,8 +6,8 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.person.Person;
-import seedu.address.model.person.patients.Patient;
 import seedu.address.model.person.dentist.Dentist;
+import seedu.address.model.person.patients.Patient;
 
 /**
  * The API of the Model component.
@@ -110,7 +110,7 @@ public interface Model {
     ObservableList<Patient> getFilteredPatientList();
 
     /** Returns an unmodifiable view of the filtered dentist list */
-     ObservableList<Dentist> getFilteredDentistList();
+    ObservableList<Dentist> getFilteredDentistList();
 
     /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.
@@ -128,5 +128,5 @@ public interface Model {
      * Updates the filter of the filtered dentist list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
-     void updateFilteredDentistList(Predicate<Dentist> predicate);
+    void updateFilteredDentistList(Predicate<Dentist> predicate);
 }

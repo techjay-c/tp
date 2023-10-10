@@ -1,9 +1,7 @@
 package seedu.address.model.person.dentist;
 
-import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -12,7 +10,6 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
-//import seedu.address.model.person.patient.Patient;
 import seedu.address.model.tag.Tag;
 /**
  * Represents a Dentist in the address book.

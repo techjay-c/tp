@@ -12,8 +12,8 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.person.Person;
-import seedu.address.model.person.patients.Patient;
 import seedu.address.model.person.dentist.Dentist;
+import seedu.address.model.person.patients.Patient;
 
 /**
  * An Immutable AddressBook that is serializable to JSON format.

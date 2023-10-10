@@ -40,9 +40,9 @@ public class AddDentistCommandParser implements Parser<AddDentistCommand> {
                         PREFIX_SPECIALIZATION, PREFIX_YOE, PREFIX_TAG);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
-                PREFIX_SPECIALIZATION, PREFIX_YOE)
-                || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddDentistCommand.getCommandUsage()));
+                PREFIX_SPECIALIZATION, PREFIX_YOE) || !argMultimap.getPreamble().isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    AddDentistCommand.getCommandUsage()));
         }
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());

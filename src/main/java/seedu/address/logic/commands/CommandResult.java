@@ -6,7 +6,6 @@ import java.util.Objects;
 import java.util.Optional;
 
 import seedu.address.commons.util.ToStringBuilder;
-
 import seedu.address.model.person.dentist.Dentist;
 
 /**

@@ -14,10 +14,11 @@ import seedu.address.model.person.exceptions.PersonNotFoundException;
 
 /**
  * A list of dentists that enforces uniqueness between its elements and does not allow nulls.
- * A dentist is considered unique by comparing using {@code Dentist#isSameDentist(Dentist)}. As such, adding and updating of
- * dentists uses Dentist#isSameDentist(Dentist) for equality so as to ensure that the dentist being added or updated is
- * unique in terms of identity in the UniqueDentistList. However, the removal of a dentist uses Dentist#equals(Object) so
- * as to ensure that the dentist with exactly the same fields will be removed.
+ * A dentist is considered unique by comparing using {@code Dentist#isSameDentist(Dentist)}.
+ * As such, adding and updating of dentists uses Dentist#isSameDentist(Dentist) for equality
+ * so as to ensure that the dentist being added or updated isunique in terms of identity in the UniqueDentistList.
+ * However, the removal of a dentist uses Dentist#equals(Object) so as to ensure that the dentist with
+ * exactly the same fields will be removed.
  *
  * Supports a minimal set of list operations.
  *

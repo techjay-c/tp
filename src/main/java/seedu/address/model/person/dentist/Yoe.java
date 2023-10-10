@@ -41,7 +41,7 @@ public class Yoe {
     @Override
     public boolean equals(Object other) {
         return other == this // Short Circuit
-                || (other instanceof  Yoe)
+                || (other instanceof Yoe)
                 && value.equals(((Yoe) other).value);
     }
 
