@@ -46,7 +46,7 @@ public class CommandResult {
     }
 
     /**
-     * Constructs a {@code CommandResult} with selected doctor.
+     * Constructs a {@code CommandResult} with selected dentist.
      */
     public CommandResult(String feedbackToUser,
                          Dentist selectedDentist) {

@@ -20,7 +20,6 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.dentist.Specialization;
-//import seedu.address.model.person.dentist.Yoe; // To be discussed on custom class YOE
 import seedu.address.model.person.dentist.Yoe;
 import seedu.address.model.tag.Tag;
 
