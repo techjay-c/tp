@@ -6,10 +6,12 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
-import seedu.address.model.person.patients.Patient;
 
-import java.util.function.Predicate;
-
+/**
+ * Represents a command to search for patients whose names contain specified keywords.
+ * The search is case-insensitive, and the matching patients are displayed as a list
+ * with index numbers.
+ */
 public class SearchPatientCommand extends Command {
 
     public static final String COMMAND_WORD = "search-patient";
@@ -21,10 +23,21 @@ public class SearchPatientCommand extends Command {
 
     private final NameContainsKeywordsPredicate predicate;
 
+    /**
+     * Constructs a SearchPatientCommand with the specified predicate.
+     *
+     * @param predicate The predicate used for searching patients.
+     */
     public SearchPatientCommand(NameContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }
 
+    /**
+     * Executes the search operation on the provided model.
+     *
+     * @param model The model containing the patient data.
+     * @return A CommandResult containing the search result message.
+     */
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
@@ -33,6 +46,12 @@ public class SearchPatientCommand extends Command {
             String.format(Messages.MESSAGE_PATIENTS_LISTED_OVERVIEW, model.getFilteredPatientList().size()));
     }
 
+    /**
+     * Checks if this SearchPatientCommand is equal to another object.
+     *
+     * @param other The object to compare with.
+     * @return True if the objects are equal, false otherwise.
+     */
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -48,6 +67,11 @@ public class SearchPatientCommand extends Command {
         return predicate.equals(otherSearchPatientCommand.predicate);
     }
 
+    /**
+     * Returns a string representation of this SearchPatientCommand.
+     *
+     * @return A string containing information about the command.
+     */
     @Override
     public String toString() {
         return new ToStringBuilder(this)
