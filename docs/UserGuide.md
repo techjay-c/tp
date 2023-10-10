@@ -203,6 +203,17 @@ Examples:
 - The system will not allow duplicate treatment names. If a treatment with the same name already exists, you will be
   prompted to provide a unique name.
 
+### Filter Appointments by service type, date or dentist: `filter KEYWORD`
+
+You can filter appointments by their service type, date or dentists in the ToothTracker system 
+using the `filter` command. 
+
+Format: `filter KEYWORD`
+
+Examples:
+
+* `filter "Tooth Extraction"` return all Tooth Extraction appointments.
+
 
 ## Patient Features
 
