@@ -21,6 +21,7 @@ import seedu.address.model.person.Phone;
 import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.dentist.Specialization;
 //import seedu.address.model.person.dentist.Yoe; // To be discussed on custom class YOE
+import seedu.address.model.person.dentist.Yoe;
 import seedu.address.model.tag.Tag;
 
 
@@ -50,7 +51,7 @@ public class AddDentistCommandParser implements Parser<AddDentistCommand> {
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         Specialization specialty = ParserUtil.parseSpecialization(argMultimap.getValue(PREFIX_SPECIALIZATION).get());
-        String yoe = ParserUtil.parseYoe(argMultimap.getValue(PREFIX_YOE).get());
+        Yoe yoe = ParserUtil.parseYoe(argMultimap.getValue(PREFIX_YOE).get());
         Set<Tag> tags = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
         Dentist dentist = new Dentist(name, phone, email, address, specialty, yoe, tags);

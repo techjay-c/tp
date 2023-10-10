@@ -21,14 +21,14 @@ import seedu.address.model.tag.Tag;
 public class Dentist extends Person {
     // Identity fields
     private final Specialization specialization;
-    private final String yoe;
+    private final Yoe yoe;
 
     /**
      * Initializes {@code Dentist} object without {@code patients}.
      * Every field must be present and not null.
      */
     public Dentist(Name name, Phone phone, Email email, Address address,
-                   Specialization specialization, String yoe, Set<Tag> tags) {
+                   Specialization specialization, Yoe yoe, Set<Tag> tags) {
         super(name, phone, email, address, tags);
         requireAllNonNull(name, phone, email, address, specialization, yoe, tags);
         this.specialization = specialization;
@@ -39,7 +39,7 @@ public class Dentist extends Person {
         return specialization;
     }
 
-    public String getYoe() {
+    public Yoe getYoe() {
         return yoe;
     }
 

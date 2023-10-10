@@ -16,6 +16,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.dentist.Specialization;
 import seedu.address.model.person.dentist.Dentist;
+import seedu.address.model.person.dentist.Yoe;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -66,7 +67,7 @@ class JsonAdaptedDentist {
         email = source.getEmail().value;
         address = source.getAddress().value;
         specialization = source.getSpecialization().getValue();
-        yearsOfExperience = source.getYoe();
+        yearsOfExperience = source.getYoe().getValue();
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -89,7 +90,7 @@ class JsonAdaptedDentist {
         final Email modelEmail = validateEmail();
         final Address modelAddress = validateAddress();
         final Specialization modelSpecialization = validateSpecialization();
-        final String modelYoe = validateYoe();
+        final Yoe modelYoe = validateYoe();
         final Set<Tag> modelTags = validateTags();
 
         return new Dentist(modelName, modelPhone, modelEmail, modelAddress,
@@ -176,7 +177,7 @@ class JsonAdaptedDentist {
                     String.format(MISSING_FIELD_MESSAGE_FORMAT, Specialization.class.getSimpleName()));
         }
         if (!Specialization.isValidSpecialization(specialization)) {
-            throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(Specialization.MESSAGE_CONSTRAINTS);
         }
         return new Specialization(specialization);
     }
@@ -187,13 +188,16 @@ class JsonAdaptedDentist {
      * @return a valid years of experience object.
      * @throws IllegalValueException if years of experience supplied is not valid.
      */
-    private String validateYoe() throws IllegalValueException {
+    private Yoe validateYoe() throws IllegalValueException {
         if (yearsOfExperience == null) {
             throw new IllegalValueException(
                     String.format(MISSING_FIELD_MESSAGE_FORMAT, "Years of Experience")); // To be changed
         }
+        if (!Yoe.isValidYoe(yearsOfExperience)) {
+            throw new IllegalValueException(Yoe.MESSAGE_CONSTRAINTS);
+        }
         //To be added more
-        return yearsOfExperience;
+        return new Yoe(yearsOfExperience);
     }
 
 

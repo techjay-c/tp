@@ -18,6 +18,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Service;
 import seedu.address.model.person.dentist.Specialization;
+import seedu.address.model.person.dentist.Yoe;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -211,15 +212,14 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code yoe} is invalid.
      */
-    public static String parseYoe(String yoe) {
+    public static Yoe parseYoe(String yoe) throws ParseException {
         requireNonNull(yoe);
         String trimmedYoe = yoe.trim();
 
-//        // The following code is used if yoe becomes a custom class.
-//        if (!Yoe.isValidYoe(trimmedYoe)) {
-//            throw new ParseException(Yoe.MESSAGE_CONSTRAINTS);
-//        }
-//        return new Yoe(trimmedYoe);
-        return trimmedYoe;
+        // The following code is used if yoe becomes a custom class.
+        if (!Yoe.isValidYoe(trimmedYoe)) {
+            throw new ParseException(Yoe.MESSAGE_CONSTRAINTS);
+        }
+        return new Yoe(trimmedYoe);
     }
 }

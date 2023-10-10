@@ -58,7 +58,7 @@ public class DentistCard extends UiPart<Region> {
         address.setText(dentist.getAddress().value);
         email.setText(dentist.getEmail().value);
         specialization.setText(dentist.getSpecialization().getValue());
-        yoe.setText(dentist.getYoe());
+        yoe.setText(dentist.getYoe().getValue());
         dentist.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
