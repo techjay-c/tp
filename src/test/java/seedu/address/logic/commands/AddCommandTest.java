@@ -24,6 +24,7 @@ import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.patients.Patient;
 import seedu.address.testutil.PersonBuilder;
 
@@ -172,12 +173,27 @@ public class AddCommandTest {
         }
 
         @Override
+        public ObservableList<Dentist> getFilteredDentistList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void addPatient(Patient patient) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
+        public void addDentist(Dentist dentist) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public boolean hasPatient(Patient patient) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasDentist(Dentist dentist) {
             throw new AssertionError("This method should not be called.");
         }
     }

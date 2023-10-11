@@ -13,6 +13,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.patients.Patient;
 
 /**
@@ -26,6 +27,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Patient> filteredPatients;
+    private final FilteredList<Dentist> filteredDentists;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -40,6 +42,7 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         filteredPatients = new FilteredList<>(this.addressBook.getPatientList());
+        filteredDentists = new FilteredList<>(this.addressBook.getDentistList());
     }
 
     public ModelManager() {
@@ -106,6 +109,12 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public boolean hasDentist(Dentist dentist) {
+        requireNonNull(dentist);
+        return addressBook.hasDentist(dentist);
+    }
+
+    @Override
     public void deletePerson(Person target) {
         addressBook.removePerson(target);
     }
@@ -119,6 +128,11 @@ public class ModelManager implements Model {
     @Override
     public void addPatient(Patient patient) {
         addressBook.addPatient(patient);
+    }
+
+    @Override
+    public void addDentist(Dentist dentist) {
+        addressBook.addDentist(dentist);
     }
 
     @Override
@@ -146,6 +160,11 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<Patient> getFilteredPatientList() {
         return filteredPatients;
+    }
+
+    @Override
+    public ObservableList<Dentist> getFilteredDentistList() {
+        return filteredDentists;
     }
 
     @Override

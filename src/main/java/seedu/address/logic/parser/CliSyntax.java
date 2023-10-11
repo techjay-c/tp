@@ -6,6 +6,8 @@ package seedu.address.logic.parser;
 public class CliSyntax {
 
     /* Prefix definitions */
+
+    // Commands for both patients and dentists.
     public static final Prefix PREFIX_NAME = new Prefix("n/");
     public static final Prefix PREFIX_PHONE = new Prefix("p/");
     public static final Prefix PREFIX_EMAIL = new Prefix("e/");
@@ -15,5 +17,13 @@ public class CliSyntax {
     public static final Prefix PREFIX_GENDER = new Prefix("g/");
     public static final Prefix PREFIX_APPOINTMENT = new Prefix("a/");
     public static final Prefix PREFIX_SERVICE = new Prefix("s/");
+
+    // Commands for dentists only
+    public static final Prefix PREFIX_DENTIST = new Prefix("dentist/");
+    public static final Prefix PREFIX_SPECIALIZATION = new Prefix("s/");
+    public static final Prefix PREFIX_YOE = new Prefix("y/");
+
+    // Commands for patients only
+
 
 }
