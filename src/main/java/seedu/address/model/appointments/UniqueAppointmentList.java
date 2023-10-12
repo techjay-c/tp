@@ -1,13 +1,16 @@
 package seedu.address.model.appointments;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Iterator;
+import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.person.UniquePatientList;
 import seedu.address.model.person.dentist.Dentist;
+import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.patients.Patient;
 
 public class UniqueAppointmentList implements Iterable<Appointment> {
@@ -19,6 +22,11 @@ public class UniqueAppointmentList implements Iterable<Appointment> {
         requireNonNull(toAdd);
         internalList.add(toAdd);
 
+    }
+
+    public void setAppointments(List<Appointment> appointments) {
+        requireAllNonNull(appointments);
+        internalList.setAll(appointments);
     }
 
     public ObservableList<Appointment> asUnmodifiableObservableList() {

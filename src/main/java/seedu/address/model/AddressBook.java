@@ -77,6 +77,10 @@ public class AddressBook implements ReadOnlyAddressBook {
         this.dentists.setDentists(dentists);
     }
 
+    public void setAppointments(List<Appointment> appointments) {
+        this.appointments.setAppointments(appointments);
+    }
+
     /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
@@ -86,6 +90,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         setPersons(newData.getPersonList());
         setPatients(newData.getPatientList());
         setDentists(newData.getDentistList());
+        setAppointments(newData.getAppointmentList());
     }
 
     //// person-level operations
