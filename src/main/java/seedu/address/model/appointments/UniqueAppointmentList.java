@@ -12,11 +12,17 @@ import seedu.address.model.person.patients.Patient;
 
 public class UniqueAppointmentList implements Iterable<Appointment> {
     private final ObservableList<Appointment> internalList = FXCollections.observableArrayList();
+    private final ObservableList<Appointment> internalUnmodifiableList =
+            FXCollections.unmodifiableObservableList(internalList);
 
     public void add(Appointment toAdd) {
         requireNonNull(toAdd);
         internalList.add(toAdd);
 
+    }
+
+    public ObservableList<Appointment> asUnmodifiableObservableList() {
+        return internalUnmodifiableList;
     }
 
     @Override
