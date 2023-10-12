@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.address.logic.parser.Prefix;
+import seedu.address.model.appointments.Appointment;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.patients.Patient;
 
@@ -72,6 +73,19 @@ public class Messages {
             .append(person.getEmail())
             .append("; Tags: ");
         person.getTags().forEach(builder::append);
+        return builder.toString();
+    }
+
+    public static String format(Appointment appointment) {
+        final StringBuilder builder = new StringBuilder();
+        builder.append("; Dentist: ")
+                .append(appointment.getDentist())
+                .append("; Patient: ")
+                .append(appointment.getPatient())
+                .append("; Appointment: ")
+                .append(appointment.getAppointmentDate())
+                .append("; Duration: ")
+                .append(appointment.getDuration());
         return builder.toString();
     }
 
