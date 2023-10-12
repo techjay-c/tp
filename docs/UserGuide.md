@@ -82,32 +82,40 @@ Format: `help`
 ## Dentist Features
 
 ### Adding a dentist : `add-dentist`
-
 Adds a dentist to ToothTracker list of dentists. This is helpful when:
 
-* You are using ToothTracker for the first time and you have to add your dentists' particulars.
-* A new dentist has joined your dental clinic.
+* You are using ToothTracker for the first time, and you have to add your dentists' particulars.
+* You are adding a new dentist who has joined your dental clinic.
 
-**Format:** `add-dentist n/NAME p/PHONE e/EMAIL s/SPECIALIZATION y/YOE [t/TAG]…​`
+**Format:** `add-dentist n/NAME p/PHONE s/SPECIALIZATION y/YOE [e/EMAIL] [h/ADDRESS] [t/TAG]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-A person can have any number of tags (including 0)
+A dentist can have any number of <code>TAG</code>s (including zero tags).
+
+<code>EMAIL</code> and <code>ADDRESS</code> are optional to be put.
+You may use edit-dentist command to update them in the future.
 </div>
 
 Examples:
 
-* `add-dentist n/Bob p/12345678 e/bobjune@gmail.com y/6 s/braces`  adds a dentist named 'Bob' with phone number '
-  12345678' and email ‘bobjune@gmail.com’, who has 6 years of experience and specializing in 'braces' into ToothTracker
-  dentist list.
-* `add-dentist n/Emmanuel Chua p/99887766 y/8 s/surgery t/extraction` adds a dentist named 'Emmanuel Chua' with phone
-  number '99887766' who has 8 years of experience specializing in 'surgery' with a tag of 'extraction' into ToothTracker
-  dentist list.
+* `add-dentist n/Xavier Ronald p/99773311 s/Whitening y/1 e/roaldxavier@hotmail.com 
+  h/Yishun Street 72, Blk 742, #03-354, Singapore 512742 t/Undergraduate Trainee`
+  This adds a dentist named 'Xavier Roald' with phone number '99773311', email 'roaldxavier@hotmail.com', 
+  address 'Yishun Street 72, Blk 742, #03-354, Singapore 512742',
+  specialising in 'Whitening' with 1 year of experience, who is undergoing University Training program under Dentistry.
+* `add-dentist n/Bob p/12345678 e/bobjune@gmail.com y/6 s/braces`  
+  This adds a dentist named 'Bob' with phone number '12345678' and email ‘bobjune@gmail.com’,
+  who has 6 years of experience and specializing in 'braces' into ToothTracker dentist list.
+* `add-dentist n/Emmanuel Chua p/99887766 y/8 s/surgery t/extraction` 
+  This adds a dentist named 'Emmanuel Chua' with phone number '99887766' who has 8 years of experience
+  specializing in 'surgery' with a tag of 'extraction' into ToothTracker dentist list.
 
 ### Editing a dentist: `edit-dentist`
 
 Edits one or more details of the dentist at the specified Dentist ID. This is helpful when:
-The particulars of a dentist need to be updated.
-You accidentally entered incorrect information about a dentist into the ToothTrack database.
+* The particulars of a dentist need to be updated.
+* Optional dentist details were not provided previously.
+* You accidentally entered incorrect information about a dentist into the ToothTrack database.
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 You can edit the particulars in any order and you can edit more than one detail of the dentist.
@@ -339,7 +347,7 @@ the data of your previous ToothTracker home folder.
 
 | Action                           | Format, Examples                                                                                                                                                                                                                  |
 |----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add Dentist**                  | `add-dentist n/NAME p/PHONE e/EMAIL s/SPECIALIZATION y/YOE [t/TAG]…​` <br> e.g., `add-dentist n/Bob p/12345678 e/bobjune@gmail.com y/6 s/braces`                                                                                  |
+| **Add Dentist**                  | `add-dentist n/NAME p/PHONE s/SPECIALIZATION y/YOE [e/EMAIL] [h/ADDRESS] [t/TAG]…​` <br> e.g., `add-dentist n/Bob p/12345678 e/bobjune@gmail.com y/6 s/braces`                                                                    |
 | **Edit Dentist**                 | `edit-dentist DENTIST_ID [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SPECIALIZATION] [y/YOE] [t/TAG]…​` <br> e.g., `edit-dentist 1 p/98987676 e/bobjuly@gmail.com`                                                                |
 | **Delete Dentist**               | `delete-dentist DENTIST_ID`<br> e.g., `delete-dentist 3`                                                                                                                                                                          |
 | **List Dentists**                | `list-dentists`                                                                                                                                                                                                                   |
