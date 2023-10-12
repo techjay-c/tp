@@ -10,6 +10,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_YOE;
 
 import java.util.Set;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.AddDentistCommand;
@@ -39,16 +40,24 @@ public class AddDentistCommandParser implements Parser<AddDentistCommand> {
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
                         PREFIX_SPECIALIZATION, PREFIX_YOE, PREFIX_TAG);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
-                PREFIX_SPECIALIZATION, PREFIX_YOE) || !argMultimap.getPreamble().isEmpty()) {
+        if (!arePrefixesPresent(argMultimap,
+                PREFIX_NAME,
+                PREFIX_PHONE,
+                // PREFIX_EMAIL,
+                // PREFIX_ADDRESS,
+                PREFIX_SPECIALIZATION,
+                PREFIX_YOE)
+                || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     AddDentistCommand.getCommandUsage()));
         }
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
-        Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
-        Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
+        Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL)
+                .orElse("NoEmailProvided@ToBeAdded.com"));
+        Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS)
+                .orElse("No Address Provided"));
         Specialization specialty = ParserUtil.parseSpecialization(argMultimap.getValue(PREFIX_SPECIALIZATION).get());
         Yoe yoe = ParserUtil.parseYoe(argMultimap.getValue(PREFIX_YOE).get());
         Set<Tag> tags = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));

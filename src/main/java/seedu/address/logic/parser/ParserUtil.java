@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
@@ -215,8 +216,6 @@ public class ParserUtil {
     public static Yoe parseYoe(String yoe) throws ParseException {
         requireNonNull(yoe);
         String trimmedYoe = yoe.trim();
-
-        // The following code is used if yoe becomes a custom class.
         if (!Yoe.isValidYoe(trimmedYoe)) {
             throw new ParseException(Yoe.MESSAGE_CONSTRAINTS);
         }
