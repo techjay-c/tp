@@ -119,6 +119,11 @@ public class AddressBookTest {
         }
 
         @Override
+        public long getPatientId() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public ObservableList<Dentist> getDentistList() {
             return dentists;
         }

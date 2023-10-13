@@ -80,7 +80,7 @@ public class Patient extends Person {
     ) {
         super(name, phone, email, address, tags);
         requireAllNonNull(name, phone, birthdate, gender, appointment, service, address, email,
-            tags,id);
+            tags, id);
 
         this.gender = gender;
         this.birthdate = birthdate;
