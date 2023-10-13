@@ -23,6 +23,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     private final UniquePatientList patients;
     private final UniqueDentistList dentists;
 
+    private long patientId;
+
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
      * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
@@ -46,6 +48,21 @@ public class AddressBook implements ReadOnlyAddressBook {
     public AddressBook(ReadOnlyAddressBook toBeCopied) {
         this();
         resetData(toBeCopied);
+    }
+
+
+    // ID operations
+    public void setPatientId(long id){
+        patientId = id;
+    }
+
+    @Override
+    public long getPatientId(){
+        return patientId;
+    }
+
+    public void incrementPatientId(){
+        patientId = patientId + 1;
     }
 
     //// list overwrite operations
@@ -82,6 +99,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         setPersons(newData.getPersonList());
         setPatients(newData.getPatientList());
         setDentists(newData.getDentistList());
+        setPatientId(newData.getPatientId());
     }
 
     //// person-level operations
@@ -126,6 +144,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void addPatient(Patient p) {
         patients.add(p);
+        incrementPatientId();
     }
     /**
      * Adds a dentist to the address book.
