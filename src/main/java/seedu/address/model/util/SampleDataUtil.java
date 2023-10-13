@@ -61,6 +61,7 @@ public class SampleDataUtil {
 
     public static ReadOnlyAddressBook getSampleAddressBook() {
         AddressBook sampleAb = new AddressBook();
+        sampleAb.setPatientId(1);
         for (Person samplePerson : getSamplePersons()) {
             sampleAb.addPerson(samplePerson);
         }
@@ -72,7 +73,6 @@ public class SampleDataUtil {
             sampleAb.addDentist(sampleDentist);
         }
 
-        sampleAb.setPatientId(2);
         return sampleAb;
     }
 
