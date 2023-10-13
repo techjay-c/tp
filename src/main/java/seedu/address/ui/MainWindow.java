@@ -34,6 +34,7 @@ public class MainWindow extends UiPart<Stage> {
     private PersonListPanel personListPanel;
     private PatientListPanel patientListPanel;
     private DentistListPanel dentistListPanel;
+    private AppointmentListPanel appointmentListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -51,6 +52,8 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private StackPane dentistListPanelPlaceholder;
 
+    @FXML
+    private StackPane appointmentListPanelPlaceholder;
     @FXML
     private StackPane resultDisplayPlaceholder;
 
@@ -123,6 +126,9 @@ public class MainWindow extends UiPart<Stage> {
 
         dentistListPanel = new DentistListPanel(logic.getFilteredDentistList());
         dentistListPanelPlaceholder.getChildren().add(dentistListPanel.getRoot());
+
+        appointmentListPanel = new AppointmentListPanel(logic.getFilteredAppointmentList());
+        appointmentListPanelPlaceholder.getChildren().add(appointmentListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());

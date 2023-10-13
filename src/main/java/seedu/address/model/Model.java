@@ -128,6 +128,8 @@ public interface Model {
      */
     ObservableList<Dentist> getFilteredDentistList();
 
+    ObservableList<Appointment> getFilteredAppointmentList();
+
     /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.
      *

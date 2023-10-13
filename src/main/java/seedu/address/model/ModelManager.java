@@ -29,6 +29,7 @@ public class ModelManager implements Model {
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Patient> filteredPatients;
     private final FilteredList<Dentist> filteredDentists;
+    private final FilteredList<Appointment> filteredAppointments;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -44,6 +45,7 @@ public class ModelManager implements Model {
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         filteredPatients = new FilteredList<>(this.addressBook.getPatientList());
         filteredDentists = new FilteredList<>(this.addressBook.getDentistList());
+        filteredAppointments = new FilteredList<>(this.addressBook.getAppointmentList());
     }
 
     public ModelManager() {
@@ -171,6 +173,11 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<Dentist> getFilteredDentistList() {
         return filteredDentists;
+    }
+
+    @Override
+    public ObservableList<Appointment> getFilteredAppointmentList() {
+        return filteredAppointments;
     }
 
     @Override
