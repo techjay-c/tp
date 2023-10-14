@@ -31,4 +31,9 @@ public interface ReadOnlyAddressBook {
     ObservableList<Dentist> getDentistList();
 
     ObservableList<Appointment> getAppointmentList();
+    /**
+     * Returns an integer which represents the next available patient id
+     */
+    long getPatientId();
+
 }
