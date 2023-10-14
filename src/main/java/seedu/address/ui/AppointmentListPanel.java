@@ -10,6 +10,9 @@ import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.appointments.Appointment;
 
+/**
+ * Represents a graphical user interface component that displays a list of {@link Appointment}s.
+ */
 public class AppointmentListPanel extends UiPart<Region> {
     private static final String FXML = "AppointmentListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(AppointmentListPanel.class);
@@ -17,12 +20,20 @@ public class AppointmentListPanel extends UiPart<Region> {
     @FXML
     private ListView<Appointment> appointmentListView;
 
+    /**
+     * Constructs an {@code AppointmentListPanel} with the given list of appointments.
+     *
+     * @param appointmentList The list of appointments to display.
+     */
     public AppointmentListPanel(ObservableList<Appointment> appointmentList) {
         super(FXML);
         appointmentListView.setItems(appointmentList);
         appointmentListView.setCellFactory(listView -> new AppointmentListViewCell());
     }
 
+    /**
+     * Custom {@code ListCell} that displays the content of an {@link Appointment}.
+     */
     class AppointmentListViewCell extends ListCell<Appointment> {
         @Override
         protected void updateItem(Appointment appointment, boolean empty) {

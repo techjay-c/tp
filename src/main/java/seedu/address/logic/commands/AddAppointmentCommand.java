@@ -8,6 +8,9 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.appointments.Appointment;
 import seedu.address.model.Model;
 
+/**
+ * Adds an appointment to ToothTracker.
+ */
 public class AddAppointmentCommand extends Command {
     public static final String COMMAND_WORD = "add-appointment";
 
@@ -31,12 +34,24 @@ public class AddAppointmentCommand extends Command {
 
     private final Appointment toAdd;
 
+    /**
+     * Constructs an AddAppointmentCommand with the specified appointment.
+     *
+     * @param appointment The appointment to be added.
+     */
     public AddAppointmentCommand(Appointment appointment) {
         requireNonNull(appointment);
         toAdd = appointment;
     }
 
 
+    /**
+     * Executes the command to add the appointment to the model.
+     *
+     * @param model The model in which the appointment is to be added.
+     * @return The result of the command execution.
+     * @throws CommandException If the appointment clashes with an existing one.
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         if (model.hasAppointment(toAdd)) {
