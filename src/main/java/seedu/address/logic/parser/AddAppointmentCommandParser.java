@@ -11,15 +11,16 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.appointments.Appointment;
 import seedu.address.model.appointments.AppointmentTime;
 import seedu.address.model.person.AppointmentDate;
+import seedu.address.model.person.Service;
 
 public class AddAppointmentCommandParser implements Parser<AddAppointmentCommand> {
 
     public AddAppointmentCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_DENTIST, PREFIX_PATIENT, PREFIX_START,
-                        PREFIX_DURATION);
+                        PREFIX_DURATION, PREFIX_SERVICE);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_DENTIST, PREFIX_PATIENT, PREFIX_START, PREFIX_DURATION) || !argMultimap.getPreamble().isEmpty()) {
+        if (!arePrefixesPresent(argMultimap, PREFIX_DENTIST, PREFIX_PATIENT, PREFIX_START, PREFIX_DURATION, PREFIX_SERVICE) || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     AddAppointmentCommand.MESSAGE_USAGE));
         }
@@ -36,7 +37,8 @@ public class AddAppointmentCommandParser implements Parser<AddAppointmentCommand
         }
         String duration = argMultimap.getValue(PREFIX_DURATION).get();
         AppointmentTime appointmentTime = ParserUtil.parseAppointmentTime(startParsed, duration);
-        Appointment appointment = new Appointment(dentist, patient, appointmentTime, duration);
+        String treatment = argMultimap.getValue(PREFIX_SERVICE).get();
+        Appointment appointment = new Appointment(dentist, patient, appointmentTime, duration, treatment);
         return new AddAppointmentCommand(appointment);
     }
 

@@ -16,12 +16,14 @@ public class AddAppointmentCommand extends Command {
             + PREFIX_DENTIST + "DENTIST "
             + PREFIX_PATIENT + "PATIENT "
             + PREFIX_START + "START_TIME "
-            + PREFIX_DURATION + "DURATION \n"
+            + PREFIX_DURATION + "DURATION "
+            + PREFIX_SERVICE + "SERVICE \n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_DENTIST + "TOM "
             + PREFIX_PATIENT + "JOHN "
             + PREFIX_START + "2023-10-12 16:00 "
-            + PREFIX_DURATION + "PT1H30M ";
+            + PREFIX_DURATION + "PT1H30M "
+            + PREFIX_SERVICE + "Braces";
 
     public static final String MESSAGE_SUCCESS = "New Appointment added: %1$s";
 

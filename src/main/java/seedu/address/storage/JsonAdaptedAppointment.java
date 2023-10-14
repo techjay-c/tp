@@ -7,6 +7,7 @@ import seedu.address.model.appointments.Appointment;
 import seedu.address.model.appointments.AppointmentTime;
 import seedu.address.model.person.AppointmentDate;
 import seedu.address.model.person.Name;
+import seedu.address.model.person.Service;
 
 public class JsonAdaptedAppointment {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Appointment's %s field is missing!";
@@ -15,14 +16,17 @@ public class JsonAdaptedAppointment {
     private final String patient;
     private final String start;
     private final String duration;
+    private final String treatment;
 
     @JsonCreator
     public JsonAdaptedAppointment(@JsonProperty("dentist") String dentist, @JsonProperty("patient") String patient,
-                             @JsonProperty("start") String start, @JsonProperty("duration") String duration) {
+                             @JsonProperty("start") String start, @JsonProperty("duration") String duration,
+                                  @JsonProperty("treatment") String treatment) {
         this.dentist = dentist;
         this.patient = patient;
         this.start = start;
         this.duration = duration;
+        this.treatment = treatment;
 
     }
 
@@ -31,7 +35,7 @@ public class JsonAdaptedAppointment {
         patient = source.getPatient();
         start = source.getAppointmentTime().startToString();
         duration = source.getAppointmentTime().durationToString();
-
+        treatment = source.getTreatment();
     }
 
     public Appointment toModelType() throws IllegalValueException {
@@ -51,7 +55,11 @@ public class JsonAdaptedAppointment {
             throw new IllegalValueException(
                     String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
         }
+        if (treatment == null) {
+            throw new IllegalValueException(
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
+        }
         final AppointmentTime appointmentTime = new AppointmentTime(start, duration);
-        return new Appointment(dentist, patient, appointmentTime, duration);
+        return new Appointment(dentist, patient, appointmentTime, duration, treatment);
     }
 }

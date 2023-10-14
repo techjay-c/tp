@@ -29,6 +29,7 @@
             <Label fx:id="appointmentTime" styleClass="cell_small_label" text="\$appointmentTime" />
             <Label fx:id="dentist" styleClass="cell_small_label" text="\$dentist" />
             <Label fx:id="patient" styleClass="cell_small_label" text="\$patient" />
+            <Label fx:id="service" styleClass="cell_small_label" text="\$service" />
         </VBox>
     </GridPane>
 </HBox>

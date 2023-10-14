@@ -34,7 +34,9 @@ public class AppointmentTime {
         LocalDateTime otherEndTime = other.getEnd();
         return ((this.getStart().isBefore(otherEndTime))
                 && (this.getStart().isAfter(otherStartTime))) ||
-                (otherStartTime.isEqual(this.getStart()));
+                (otherStartTime.isEqual(this.getStart())) ||
+                ((this.getEnd().isBefore(otherEndTime))
+                        && (this.getEnd().isAfter(otherStartTime)));
     }
 
     public static boolean isValidDate(String test) {
