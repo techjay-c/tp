@@ -28,4 +28,9 @@ public interface ReadOnlyAddressBook {
      */
 
     ObservableList<Dentist> getDentistList();
+
+    /**
+     * Returns an integer which represents the next available patient id
+     */
+    long getPatientId();
 }

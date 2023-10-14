@@ -29,6 +29,10 @@ class JsonSerializableAddressBook {
     private final List<JsonAdaptedPerson> persons = new ArrayList<>();
     private final List<JsonAdaptedPatient> patients = new ArrayList<>();
 
+    private String patientId;
+
+
+
 
     /**
      * Constructs a {@code JsonSerializableAddressBook} with the given persons.
@@ -47,6 +51,7 @@ class JsonSerializableAddressBook {
         dentists.addAll(source.getDentistList().stream().map(JsonAdaptedDentist::new).collect(Collectors.toList()));
         persons.addAll(source.getPersonList().stream().map(JsonAdaptedPerson::new).collect(Collectors.toList()));
         patients.addAll(source.getPatientList().stream().map(JsonAdaptedPatient::new).collect(Collectors.toList()));
+        patientId = String.valueOf(source.getPatientId());
     }
 
     /**
@@ -79,6 +84,8 @@ class JsonSerializableAddressBook {
             }
             addressBook.addDentist(dentist);
         }
+
+        addressBook.setPatientId(Long.parseLong(patientId));
         return addressBook;
     }
 

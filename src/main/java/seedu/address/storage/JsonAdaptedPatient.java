@@ -39,6 +39,8 @@ class JsonAdaptedPatient {
     private final String appointment;
 
     private final String service;
+
+    private final String id;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
 
 
@@ -54,6 +56,7 @@ class JsonAdaptedPatient {
         @JsonProperty("service") String service,
         @JsonProperty("address") String address,
         @JsonProperty("email") String email,
+        @JsonProperty("id") String id,
         @JsonProperty("tags") List<JsonAdaptedTag> tags) {
 
         this.name = name;
@@ -64,6 +67,7 @@ class JsonAdaptedPatient {
         this.gender = gender;
         this.appointment = appointment;
         this.service = service;
+        this.id = id;
         if (tags != null) {
             this.tags.addAll(tags);
         }
@@ -81,6 +85,7 @@ class JsonAdaptedPatient {
         birthdate = source.getBirthdate().value;
         appointment = source.getAppointmentdate().value;
         service = source.getService().value;
+        id = String.valueOf(source.getId());
         tags.addAll(source.getTags().stream()
             .map(JsonAdaptedTag::new)
             .collect(Collectors.toList()));
@@ -172,9 +177,15 @@ class JsonAdaptedPatient {
 
         final Set<Tag> modelTags = new HashSet<>(patientags);
 
+        if (id == null) {
+            throw new IllegalValueException(
+                "id value does not exist!");
+        }
+        long lid = Long.parseLong(id);
+
         return new Patient(modelName, modelPhone, modelBirthdate, modelGender, modelAppointment,
             modelService,
-            modelAddress, modelEmail, modelTags);
+            modelAddress, modelEmail, lid, modelTags);
     }
 
 }
