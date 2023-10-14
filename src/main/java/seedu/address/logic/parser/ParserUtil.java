@@ -132,6 +132,15 @@ public class ParserUtil {
         return new AppointmentDate(trimmedAppointment);
     }
 
+    /**
+     * Parses the given start time and duration strings to create an AppointmentTime object.
+     *
+     * @param startTime The string representation of the appointment start time.
+     * @param duration  The string representation of the appointment duration.
+     * @return An AppointmentTime object representing the parsed start time and duration.
+     * @throws ParseException if the start time or duration is in an invalid format.
+     * @throws NullPointerException if either startTime or duration is null.
+     */
     public static AppointmentTime parseAppointmentTime(String startTime, String duration) throws ParseException {
         requireNonNull(startTime);
         requireNonNull(duration);

@@ -1,7 +1,11 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.*;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DENTIST;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PATIENT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SERVICE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
 
 import java.util.stream.Stream;
 
@@ -27,7 +31,8 @@ public class AddAppointmentCommandParser implements Parser<AddAppointmentCommand
                 ArgumentTokenizer.tokenize(args, PREFIX_DENTIST, PREFIX_PATIENT, PREFIX_START,
                         PREFIX_DURATION, PREFIX_SERVICE);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_DENTIST, PREFIX_PATIENT, PREFIX_START, PREFIX_DURATION, PREFIX_SERVICE) || !argMultimap.getPreamble().isEmpty()) {
+        if (!arePrefixesPresent(argMultimap, PREFIX_DENTIST, PREFIX_PATIENT, PREFIX_START,
+                PREFIX_DURATION, PREFIX_SERVICE) || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     AddAppointmentCommand.MESSAGE_USAGE));
         }

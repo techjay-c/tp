@@ -8,9 +8,10 @@ import java.time.LocalDateTime;
  * Provides methods for manipulation and validation of appointment times.
  */
 public class AppointmentTime {
+
+    public static final String VALIDATION_REGEX = "[^\\s].*";
     private LocalDateTime start;
     private Duration duration;
-    public static final String VALIDATION_REGEX = "[^\\s].*";
 
     /**
      * Constructs an AppointmentTime object with the specified start time and duration.
@@ -49,9 +50,9 @@ public class AppointmentTime {
         LocalDateTime otherStartTime = other.getStart();
         LocalDateTime otherEndTime = other.getEnd();
         return ((this.getStart().isBefore(otherEndTime))
-                && (this.getStart().isAfter(otherStartTime))) ||
-                (otherStartTime.isEqual(this.getStart())) ||
-                ((this.getEnd().isBefore(otherEndTime))
+                && (this.getStart().isAfter(otherStartTime)))
+                || (otherStartTime.isEqual(this.getStart()))
+                || ((this.getEnd().isBefore(otherEndTime))
                         && (this.getEnd().isAfter(otherStartTime)));
     }
 
@@ -75,7 +76,7 @@ public class AppointmentTime {
         return this.start.toLocalTime().toString();
     }
 
-    public String DateToString() {
+    public String dateToString() {
         return this.start.toLocalDate().toString();
     }
     public String appointmentTimeToString() {

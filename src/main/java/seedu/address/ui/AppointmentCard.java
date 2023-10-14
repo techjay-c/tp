@@ -38,7 +38,7 @@ public class AppointmentCard extends UiPart<Region> {
         dentist.setText("Dentist: " + appointment.getDentist());
         patient.setText("Patient: " + appointment.getPatient());
         appointmentTime.setText(appointment.getAppointmentTime().appointmentTimeToString());
-        date.setText(appointment.getAppointmentTime().DateToString());
+        date.setText(appointment.getAppointmentTime().dateToString());
         service.setText("Treatment: " + appointment.getTreatment());
     }
 }

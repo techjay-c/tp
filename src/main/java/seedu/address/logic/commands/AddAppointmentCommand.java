@@ -1,12 +1,17 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.*;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DENTIST;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PATIENT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SERVICE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
 
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.appointments.Appointment;
 import seedu.address.model.Model;
+import seedu.address.model.appointments.Appointment;
+
 
 /**
  * Adds an appointment to ToothTracker.

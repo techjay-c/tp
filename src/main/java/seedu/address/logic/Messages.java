@@ -76,6 +76,14 @@ public class Messages {
         return builder.toString();
     }
 
+    /**
+     * Formats the given appointment as a string.
+     * The string format includes information about the dentist, patient, appointment start time, and duration.
+     *
+     * @param appointment The appointment to be formatted.
+     * @return A formatted string representation of the appointment.
+     * @throws NullPointerException if the appointment is null.
+     */
     public static String format(Appointment appointment) {
         final StringBuilder builder = new StringBuilder();
         builder.append("; Dentist: ")

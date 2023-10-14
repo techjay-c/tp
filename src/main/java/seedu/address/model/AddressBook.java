@@ -122,6 +122,13 @@ public class AddressBook implements ReadOnlyAddressBook {
         return dentists.contains(dentist);
     }
 
+    /**
+     * Returns true if the internal list of appointments contains the specified appointment.
+     *
+     * @param appointment The appointment to check for existence.
+     * @return True if the appointment is found in the list, false otherwise.
+     * @throws NullPointerException if the given appointment is null.
+     */
     public boolean hasAppointment(Appointment appointment) {
         requireNonNull(appointment);
         return appointments.contains(appointment);

@@ -12,7 +12,6 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.appointments.Appointment;
-import seedu.address.model.person.AppointmentDate;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.patients.Patient;
@@ -51,7 +50,8 @@ class JsonSerializableAddressBook {
         dentists.addAll(source.getDentistList().stream().map(JsonAdaptedDentist::new).collect(Collectors.toList()));
         persons.addAll(source.getPersonList().stream().map(JsonAdaptedPerson::new).collect(Collectors.toList()));
         patients.addAll(source.getPatientList().stream().map(JsonAdaptedPatient::new).collect(Collectors.toList()));
-        appointments.addAll(source.getAppointmentList().stream().map(JsonAdaptedAppointment::new).collect(Collectors.toList()));
+        appointments.addAll(source.getAppointmentList().stream()
+                .map(JsonAdaptedAppointment::new).collect(Collectors.toList()));
 
     }
 
