@@ -1,10 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DENTIST;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PATIENT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_APPOINTMENT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
+import static seedu.address.logic.parser.CliSyntax.*;
 
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -18,13 +15,13 @@ public class AddAppointmentCommand extends Command {
             + "Parameters: "
             + PREFIX_DENTIST + "DENTIST "
             + PREFIX_PATIENT + "PATIENT "
-            + PREFIX_APPOINTMENT + "APPOINTMENT "
+            + PREFIX_START + "START_TIME "
             + PREFIX_DURATION + "DURATION \n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_DENTIST + "TOM "
             + PREFIX_PATIENT + "JOHN "
-            + PREFIX_APPOINTMENT + "11-11-23 "
-            + PREFIX_DURATION + "2 ";
+            + PREFIX_START + "2023-10-12 16:00 "
+            + PREFIX_DURATION + "PT1H30M ";
 
     public static final String MESSAGE_SUCCESS = "New Appointment added: %1$s";
 
@@ -40,6 +37,9 @@ public class AddAppointmentCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
+        if (model.hasAppointment(toAdd)) {
+            throw new CommandException(MESSAGE_CLASHING_APPOINTMENTS);
+        }
         model.addAppointment(toAdd);
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
     }

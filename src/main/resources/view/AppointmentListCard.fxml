@@ -26,9 +26,9 @@
                 </Label>
                 <Label fx:id="date" styleClass="cell_small_label" text="\$date" />
             </HBox>
+            <Label fx:id="appointmentTime" styleClass="cell_small_label" text="\$appointmentTime" />
             <Label fx:id="dentist" styleClass="cell_small_label" text="\$dentist" />
             <Label fx:id="patient" styleClass="cell_small_label" text="\$patient" />
-            <Label fx:id="duration" styleClass="cell_small_label" text="\$duration" />
         </VBox>
     </GridPane>
 </HBox>

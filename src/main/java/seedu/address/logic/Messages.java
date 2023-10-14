@@ -83,9 +83,9 @@ public class Messages {
                 .append("; Patient: ")
                 .append(appointment.getPatient())
                 .append("; Appointment: ")
-                .append(appointment.getAppointmentDate())
+                .append(appointment.getAppointmentTime().startToString())
                 .append("; Duration: ")
-                .append(appointment.getDuration());
+                .append(appointment.getAppointmentTime().durationToString());
         return builder.toString();
     }
 

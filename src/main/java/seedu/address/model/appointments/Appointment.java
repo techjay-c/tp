@@ -5,13 +5,13 @@ import seedu.address.model.person.AppointmentDate;
 public class Appointment {
     private final String dentist;
     private final String patient;
-    private final AppointmentDate appointmentDate;
+    private final AppointmentTime appointmentTime;
     private final String duration;
 
-    public Appointment(String dentist, String patient, AppointmentDate appointmentDate, String duration) {
+    public Appointment(String dentist, String patient, AppointmentTime appointmentTime, String duration) {
         this.dentist = dentist;
         this.patient = patient;
-        this.appointmentDate = appointmentDate;
+        this.appointmentTime = appointmentTime;
         this.duration = duration;
     }
 
@@ -27,7 +27,11 @@ public class Appointment {
         return this.duration;
     }
 
-    public AppointmentDate getAppointmentDate() {
-        return this.appointmentDate;
+    public AppointmentTime getAppointmentTime() {
+        return this.appointmentTime;
+    }
+
+    public boolean isSameAppointmentTime(Appointment appointment) {
+        return this.appointmentTime.isStartTimeBetween(appointment.getAppointmentTime());
     }
 }

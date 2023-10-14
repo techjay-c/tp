@@ -76,6 +76,8 @@ public interface Model {
      */
     boolean hasDentist(Dentist dentist);
 
+    boolean hasAppointment(Appointment appointment);
+
     /**
      * Deletes the given person.
      * The person must exist in the address book.

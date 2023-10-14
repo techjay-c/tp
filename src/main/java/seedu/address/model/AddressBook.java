@@ -122,6 +122,11 @@ public class AddressBook implements ReadOnlyAddressBook {
         return dentists.contains(dentist);
     }
 
+    public boolean hasAppointment(Appointment appointment) {
+        requireNonNull(appointment);
+        return appointments.contains(appointment);
+    }
+
     /**
      * Adds a person to the address book.
      * The person must not already exist in the address book.

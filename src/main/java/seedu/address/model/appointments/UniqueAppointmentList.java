@@ -8,10 +8,7 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.person.UniquePatientList;
 import seedu.address.model.person.dentist.Dentist;
-import seedu.address.model.person.exceptions.DuplicatePersonException;
-import seedu.address.model.person.patients.Patient;
 
 public class UniqueAppointmentList implements Iterable<Appointment> {
     private final ObservableList<Appointment> internalList = FXCollections.observableArrayList();
@@ -31,6 +28,11 @@ public class UniqueAppointmentList implements Iterable<Appointment> {
 
     public ObservableList<Appointment> asUnmodifiableObservableList() {
         return internalUnmodifiableList;
+    }
+
+    public boolean contains(Appointment toCheck) {
+        requireNonNull(toCheck);
+        return internalList.stream().anyMatch(toCheck::isSameAppointmentTime);
     }
 
     @Override

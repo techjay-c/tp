@@ -18,17 +18,17 @@ public class AppointmentCard extends UiPart<Region> {
     @FXML
     private Label patient;
     @FXML
-    private Label date;
+    private Label appointmentTime;
     @FXML
-    private Label duration;
+    private Label date;
 
     public AppointmentCard(Appointment appointment) {
         super(FXML);
         this.appointment = appointment;
-        dentist.setText(appointment.getDentist());
-        patient.setText(appointment.getPatient());
-        date.setText(appointment.getAppointmentDate().toString());
-        duration.setText(appointment.getDuration());
+        dentist.setText("Dentist: " + appointment.getDentist());
+        patient.setText("Patient: " + appointment.getPatient());
+        appointmentTime.setText(appointment.getAppointmentTime().appointmentTimeToString());
+        date.setText(appointment.getAppointmentTime().DateToString());
 
     }
 }

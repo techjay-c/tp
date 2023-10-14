@@ -9,26 +9,34 @@ import seedu.address.logic.commands.AddAppointmentCommand;
 import seedu.address.logic.commands.AddDentistCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.appointments.Appointment;
+import seedu.address.model.appointments.AppointmentTime;
 import seedu.address.model.person.AppointmentDate;
 
 public class AddAppointmentCommandParser implements Parser<AddAppointmentCommand> {
 
     public AddAppointmentCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_DENTIST, PREFIX_PATIENT, PREFIX_APPOINTMENT,
+                ArgumentTokenizer.tokenize(args, PREFIX_DENTIST, PREFIX_PATIENT, PREFIX_START,
                         PREFIX_DURATION);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_DENTIST, PREFIX_PATIENT, PREFIX_APPOINTMENT, PREFIX_DURATION) || !argMultimap.getPreamble().isEmpty()) {
+        if (!arePrefixesPresent(argMultimap, PREFIX_DENTIST, PREFIX_PATIENT, PREFIX_START, PREFIX_DURATION) || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     AddAppointmentCommand.MESSAGE_USAGE));
         }
 
         String dentist = argMultimap.getValue(PREFIX_DENTIST).get();
         String patient = argMultimap.getValue(PREFIX_PATIENT).get();
-        AppointmentDate appointmentdate = ParserUtil.parseAppointment(
-                argMultimap.getValue(PREFIX_APPOINTMENT).get());
+        String start = argMultimap.getValue(PREFIX_START).get();
+        String[] parts = start.split("\\s+");
+        String startParsed = null;
+        if (parts.length == 2) {
+            startParsed = parts[0] + "T" + parts[1];
+        } else {
+            throw new ParseException("Please enter start time in correct format: yyyy-MM-dd HH:mm");
+        }
         String duration = argMultimap.getValue(PREFIX_DURATION).get();
-        Appointment appointment = new Appointment(dentist, patient, appointmentdate, duration);
+        AppointmentTime appointmentTime = ParserUtil.parseAppointmentTime(startParsed, duration);
+        Appointment appointment = new Appointment(dentist, patient, appointmentTime, duration);
         return new AddAppointmentCommand(appointment);
     }
 
