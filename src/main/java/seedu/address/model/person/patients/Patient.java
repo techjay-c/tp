@@ -30,18 +30,20 @@ public class Patient extends Person {
 
     private final Service service;
 
+    private long id;
+
     /**
      * A class which represents a patient
      *
-     * @param name name of patient
-     * @param phone phone number of patient
-     * @param birthdate patients birthday
-     * @param gender patients gender
+     * @param name        name of patient
+     * @param phone       phone number of patient
+     * @param birthdate   patients birthday
+     * @param gender      patients gender
      * @param appointment patients dental appointment date
-     * @param service dental service that the patients needs
-     * @param address address of patient
-     * @param email email of patient
-     * @param tags tags
+     * @param service     dental service that the patients needs
+     * @param address     address of patient
+     * @param email       email of patient
+     * @param tags        tags
      */
     public Patient(Name name, Phone phone, Birthdate birthdate, Gender gender,
         AppointmentDate appointment, Service service, Address address, Email email, Set<Tag> tags
@@ -54,7 +56,46 @@ public class Patient extends Person {
         this.birthdate = birthdate;
         this.appointmentdate = appointment;
         this.service = service;
+        this.id = -1;
 
+    }
+
+    /**
+     * A class which represents a patient
+     *
+     * @param name        name of patient
+     * @param phone       phone number of patient
+     * @param birthdate   patients birthday
+     * @param gender      patients gender
+     * @param appointment patients dental appointment date
+     * @param service     dental service that the patients needs
+     * @param address     address of patient
+     * @param email       email of patient
+     * @param id          id of patient
+     * @param tags        tags
+     */
+    public Patient(Name name, Phone phone, Birthdate birthdate, Gender gender,
+        AppointmentDate appointment, Service service, Address address, Email email, long id,
+        Set<Tag> tags
+    ) {
+        super(name, phone, email, address, tags);
+        requireAllNonNull(name, phone, birthdate, gender, appointment, service, address, email,
+            tags, id);
+
+        this.gender = gender;
+        this.birthdate = birthdate;
+        this.appointmentdate = appointment;
+        this.service = service;
+        this.id = id;
+
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public Gender getGender() {
@@ -111,14 +152,15 @@ public class Patient extends Person {
             && getGender().equals(otherPerson.getGender())
             && getBirthdate().equals(otherPerson.getBirthdate())
             && getAppointmentdate().equals(otherPerson.getAppointmentdate())
-            && getService().equals(otherPerson.getService());
+            && getService().equals(otherPerson.getService())
+            && id == otherPerson.getId();
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
         return Objects.hash(super.getName(), super.getPhone(), super.getEmail(), super.getAddress(),
-            super.getTags(), getGender(), getBirthdate(), getAppointmentdate(), getService());
+            super.getTags(), getGender(), getBirthdate(), getAppointmentdate(), getService(), id);
     }
 
     @Override
@@ -132,6 +174,7 @@ public class Patient extends Person {
             .add("service", getService())
             .add("address", super.getAddress())
             .add("email", super.getEmail())
+            .add("id", id)
             .add("tags", super.getTags())
             .toString();
     }

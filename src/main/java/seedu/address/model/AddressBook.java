@@ -26,6 +26,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     private final UniqueDentistList dentists;
     private final UniqueAppointmentList appointments;
 
+    private long patientId;
+
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
      * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
@@ -52,6 +54,21 @@ public class AddressBook implements ReadOnlyAddressBook {
         resetData(toBeCopied);
     }
 
+
+    // ID operations
+    public void setPatientId(long id) {
+        patientId = id;
+    }
+
+    @Override
+    public long getPatientId() {
+        return patientId;
+    }
+
+    public void incrementPatientId() {
+        patientId = patientId + 1;
+    }
+
     //// list overwrite operations
 
     /**
@@ -69,9 +86,10 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void setPatients(List<Patient> patients) {
         this.patients.setPatients(patients);
     }
+
     /**
-     * Replaces the contents of the dentist list with {@code dentists}.
-     * {@code dentists} must not contain duplicate dentists.
+     * Replaces the contents of the dentist list with {@code dentists}. {@code dentists} must not
+     * contain duplicate dentists.
      */
     public void setDentists(List<Dentist> dentists) {
         this.dentists.setDentists(dentists);
@@ -91,6 +109,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         setPatients(newData.getPatientList());
         setDentists(newData.getDentistList());
         setAppointments(newData.getAppointmentList());
+        setPatientId(newData.getPatientId());
     }
 
     //// person-level operations
@@ -115,7 +134,8 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Adds a person to the address book. The person must not already exist in the address book.
-     * Returns true if a dentist with the same identity as {@code dentist} exists in the address book.
+     * Returns true if a dentist with the same identity as {@code dentist} exists in the address
+     * book.
      */
     public boolean hasDentist(Dentist dentist) {
         requireNonNull(dentist);
@@ -135,8 +155,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Adds a person to the address book.
-     * The person must not already exist in the address book.
+     * Adds a person to the address book. The person must not already exist in the address book.
      */
     public void addPerson(Person p) {
         persons.add(p);
@@ -146,11 +165,18 @@ public class AddressBook implements ReadOnlyAddressBook {
      * Adds a patient to the address book. The patient must not already exist in the address book.
      */
     public void addPatient(Patient p) {
-        patients.add(p);
+        if (p.getId() == -1) {
+            p.setId(patientId);
+            patients.add(p);
+            incrementPatientId();
+        } else {
+            patients.add(p);
+        }
     }
+
     /**
-     * Adds a dentist to the address book.
-     * The dentist must not already exist in the address book.
+     * Adds a dentist to the address book. The dentist must not already exist in the address book.
+     *
      * @param dentist to be added to the address book
      */
     public void addDentist(Dentist dentist) {
@@ -184,10 +210,10 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Removes {@code key} from this {@code AddressBook}. {@code key} must exist in the address book.
-     * Replaces the given dentist {@code target} in the list with {@code editedDentist}.
-     * {@code target} must exist in the address book.
-     * The person identity of {@code editedDentist} must not be the same as another existing person in the address book.
+     * Removes {@code key} from this {@code AddressBook}. {@code key} must exist in the address
+     * book. Replaces the given dentist {@code target} in the list with {@code editedDentist}.
+     * {@code target} must exist in the address book. The person identity of {@code editedDentist}
+     * must not be the same as another existing person in the address book.
      */
     public void setDentist(Dentist target, Dentist editedDentist) {
         requireNonNull(editedDentist);
@@ -202,8 +228,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Removes {@code key} from this {@code AddressBook}.
-     * {@code key} must exist in the address book.
+     * Removes {@code key} from this {@code AddressBook}. {@code key} must exist in the address
+     * book.
      */
     public void removePerson(Person key) {
         persons.remove(key);
@@ -260,7 +286,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
         AddressBook otherAddressBook = (AddressBook) other;
         return persons.equals(otherAddressBook.persons)
-                && dentists.equals(otherAddressBook.dentists);
+            && dentists.equals(otherAddressBook.dentists);
     }
 
     @Override
