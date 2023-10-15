@@ -19,10 +19,19 @@ public class Dentist extends Person {
     // Identity fields
     private final Specialization specialization;
     private final Yoe yoe;
+    private long id;
 
     /**
-     * Initializes {@code Dentist} object without {@code patients}.
+     * Initializes {@code Dentist} object without {@code id}.
      * Every field must be present and not null.
+     *
+     * @param name              name of dentist
+     * @param phone             phone number of dentist
+     * @param email             email of dentist
+     * @param address           address of dentist
+     * @param specialization    specialization of dentist
+     * @param yoe               number of years of experience of dentist
+     * @param tags              tags
      */
     public Dentist(Name name, Phone phone, Email email, Address address,
                    Specialization specialization, Yoe yoe, Set<Tag> tags) {
@@ -30,6 +39,37 @@ public class Dentist extends Person {
         requireAllNonNull(name, phone, email, address, specialization, yoe, tags);
         this.specialization = specialization;
         this.yoe = yoe;
+        this.id = -1;
+    }
+
+    /**
+     * Initializes {@code Dentist} object with {@code id}.
+     * Every field must be present and not null.
+     *
+     * @param name              name of dentist
+     * @param phone             phone number of dentist
+     * @param email             email of dentist
+     * @param address           address of dentist
+     * @param specialization    specialization of dentist
+     * @param yoe               number of years of experience of dentist
+     * @param dentistId         dentist ID
+     * @param tags              tags
+     */
+    public Dentist(Name name, Phone phone, Email email, Address address,
+                   Specialization specialization, Yoe yoe, long dentistId, Set<Tag> tags) {
+        super(name, phone, email, address, tags);
+        requireAllNonNull(name, phone, email, address, specialization, yoe, tags);
+        this.specialization = specialization;
+        this.yoe = yoe;
+        this.id = dentistId;
+    }
+
+    public void setId(long dentistId) {
+        this.id = dentistId;
+    }
+
+    public long getId() {
+        return this.id;
     }
 
     public Specialization getSpecialization() {
@@ -72,13 +112,14 @@ public class Dentist extends Person {
                 && otherDentist.getEmail().equals(getEmail())
                 && otherDentist.getSpecialization().equals(getSpecialization())
                 && otherDentist.getYoe().equals(getYoe())
-                && otherDentist.getTags().equals(getTags());
+                && otherDentist.getTags().equals(getTags())
+                && this.getId() == otherDentist.getId();
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(getName(), getPhone(), getEmail(), getSpecialization(), getYoe(), getTags());
+        return Objects.hash(getName(), getPhone(), getEmail(), getSpecialization(), getYoe(), getTags(),getId());
     }
 
     @Override
@@ -92,7 +133,9 @@ public class Dentist extends Person {
                 .append("; Specialization: ")
                 .append(getSpecialization())
                 .append("; Years Of Experience: ")
-                .append(getYoe());
+                .append(getYoe())
+                .append(": Dentist ID: ")
+                .append(getId());
 
         Set<Tag> tags = getTags();
         if (!tags.isEmpty()) {

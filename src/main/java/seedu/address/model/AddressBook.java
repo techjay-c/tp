@@ -27,6 +27,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     private final UniqueAppointmentList appointments;
 
     private long patientId;
+    private long dentistId;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -69,6 +70,19 @@ public class AddressBook implements ReadOnlyAddressBook {
         patientId = patientId + 1;
     }
 
+    public void setDentistId(long id) {
+        dentistId = id;
+    }
+
+    @Override
+    public long getDentistId() {
+        return dentistId;
+    }
+
+    public void incrementDentistId() {
+        dentistId = dentistId + 1;
+    }
+
     //// list overwrite operations
 
     /**
@@ -80,7 +94,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Replaces the contents of the patients list with {@code persons}. {@code persons} must not
+     * Replaces the contents of the patients list with {@code patients}. {@code patients} must not
      * contain duplicate persons.
      */
     public void setPatients(List<Patient> patients) {
@@ -110,6 +124,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         setDentists(newData.getDentistList());
         setAppointments(newData.getAppointmentList());
         setPatientId(newData.getPatientId());
+        setDentistId(newData.getDentistId());
     }
 
     //// person-level operations
@@ -180,6 +195,11 @@ public class AddressBook implements ReadOnlyAddressBook {
      * @param dentist to be added to the address book
      */
     public void addDentist(Dentist dentist) {
+        if (dentist.getId() == -1) {
+            dentist.setId(dentistId);
+            dentists.add(dentist);
+            incrementDentistId();
+        }
         dentists.add(dentist);
     }
 
@@ -248,9 +268,10 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-            .add("persons", persons)
-            .add("patients", patients)
-            .toString();
+                .add("persons", persons)
+                .add("patients", patients)
+                .add("dentists", dentists)
+                .toString();
     }
 
     @Override
