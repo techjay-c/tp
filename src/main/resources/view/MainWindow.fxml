@@ -51,7 +51,8 @@
 
         <SplitPane fx:id="splitPane" dividerPositions="0.4" VBox.vgrow="ALWAYS">
           <!-- Left Side: Lists -->
-          <VBox fx:id="personList" styleClass="pane-with-border" minWidth="340" prefWidth="340">
+          <VBox fx:id="patientList" styleClass="pane-with-border" minWidth="340" prefWidth="340">
+            <Label text="Patient List:"/>
             <padding>
               <Insets top="10" right="10" bottom="10" left="10"/>
             </padding>
@@ -60,8 +61,8 @@
           </VBox>
 
           <!-- Right Side: Details -->
-          <VBox styleClass="pane-with-border">
-            <Label text="Details will be displayed here."/>
+          <VBox fx:id="dentistList" styleClass="pane-with-border">
+            <Label text="Dentist List:"/>
             <StackPane fx:id="dentistListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
           </VBox>
         </SplitPane>
