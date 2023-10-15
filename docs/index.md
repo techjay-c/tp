@@ -8,7 +8,7 @@ title: Tooth Tracker
 
 ![Ui](images/Ui.png)
 
-ToothTracker is an **All-in-One solution for Effortless Dental Clinic Record Management.** 
+ToothTracker is an **All-in-One solution for Effortless Dental Clinic Record Management.**
 While it has a GUI, most of the user interactions happen using a CLI (Command Line Interface).
 
 * If you are interested in using ToothTracker, head over to the [_Quick Start_ section of the **User Guide**](UserGuide.html#quick-start).

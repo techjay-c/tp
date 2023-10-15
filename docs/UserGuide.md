@@ -4,7 +4,7 @@ title: User Guide
 ---
 
 ToothTracker is an **All-in-One solution for Effortless Dental Clinic Record Management**.
-From adding new patient and dentist profiles to seamlessly deleting records, 
+From adding new patient and dentist profiles to seamlessly deleting records,
 ToothTracker is engineered to simplify every aspect of your administrative responsibilities.
 
 * Table of Contents
@@ -157,7 +157,7 @@ You may use `list-dentists` to check out the dentists' ID first.
 Deletes the specified dentist from ToothTracker.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-This command is DESTRUCTIVE! 
+This command is DESTRUCTIVE!
 Dentists deleted will need to be added back and their previous records may be removed.
 Proceed with caution!
 </div>
@@ -199,7 +199,7 @@ Examples:
 
 * `Add-patient n/John Tan p/90676622 e/johntan@gmail.com b/06-06-1998 g/M a/10-08-2023 s/Cleaning h/60 Jalan Kempinski Road` <br>
 Adds a new patient named ‘John Tan’, with phone number ‘90676622’ and email of ‘johntan@gmail.com’,
-birthdate of 06 June 1998, Gender Male, appointment date of 10 August 2023, requesting for cleaning treatment 
+birthdate of 06 June 1998, Gender Male, appointment date of 10 August 2023, requesting for cleaning treatment
 and with an address at 60 Jalan Kempinski Road.
 * `Add-patient n/Megan Chua p/88756298 e/megan@outlook.com b/10-09-1993 g/F a/02-11-2023 s/Cleaning h/34 Changi Rise` <br>
 Adds a new patient named ‘Megan Chua’, with phone number ‘88756298’ and email of ‘megan@outlook.com’,
@@ -223,7 +223,7 @@ Examples:
 Deletes the specified patient from ToothTracker.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-This command is DESTRUCTIVE! Dentists deleted will need to be added back and their previous records may be removed. 
+This command is DESTRUCTIVE! Dentists deleted will need to be added back and their previous records may be removed.
 **Proceed with caution!**
 </div>
 
@@ -297,7 +297,7 @@ Examples:
 
 * `filter s/Tooth Extraction` return all Tooth Extraction appointments.
 * `filter t/20-11-2023` return all appointments happening on 20 November 2023.
-* `filter d/Tom` return all appointments with Tom as the dentist. 
+* `filter d/Tom` return all appointments with Tom as the dentist.
 
 
 ### Clearing all entries : `clear`
@@ -323,7 +323,7 @@ ToothTracker data is saved automatically as a JSON file `[JAR file location]/dat
 welcome to update data directly by editing that data file.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-If your changes to the data file makes its format invalid, ToothTracker will discard all data and start with an empty 
+If your changes to the data file makes its format invalid, ToothTracker will discard all data and start with an empty
 data file at the next run. Hence, it is recommended to take a backup of the file before editing it.
 </div>
 

@@ -7,7 +7,7 @@ title: Qin Yan Er's Project Portfolio Page
 
 **Overview**
 
-ToothTracker is an all-in-one solution designed to revolutionize 
+ToothTracker is an all-in-one solution designed to revolutionize
 the management of dental clinic records.
 
 Given below are my contributions to the project.
@@ -16,7 +16,7 @@ Given below are my contributions to the project.
 
 * **Enhancements implemented**:
     * to be added soon
-  
+
 * **Documentation**:
     * User Guide:
         * to be added soon
@@ -25,7 +25,7 @@ Given below are my contributions to the project.
 
 * **Team-based Tasks**:
     * to be added soon
-  
+
 * **Review/mentoring contributions**:
     * to be added soon
 
