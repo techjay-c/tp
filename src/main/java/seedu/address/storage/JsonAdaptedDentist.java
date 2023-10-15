@@ -212,7 +212,7 @@ class JsonAdaptedDentist {
      * @throws IllegalValueException if the provided Dentist ID is invalid.
      */
     private long validateDentistId() throws IllegalValueException {
-        if(id == null) {
+        if (id == null) {
             throw new IllegalValueException("Dentist ID value does not exist!");
         }
         return Long.parseLong(id);

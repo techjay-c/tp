@@ -119,7 +119,7 @@ public class Dentist extends Person {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(getName(), getPhone(), getEmail(), getSpecialization(), getYoe(), getTags(),getId());
+        return Objects.hash(getName(), getPhone(), getEmail(), getSpecialization(), getYoe(), getTags(), getId());
     }
 
     @Override
