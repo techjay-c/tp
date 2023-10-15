@@ -6,6 +6,8 @@ import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.model.appointments.Appointment;
+import seedu.address.model.appointments.UniqueAppointmentList;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePatientList;
 import seedu.address.model.person.UniquePersonList;
@@ -22,6 +24,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     private final UniquePersonList persons;
     private final UniquePatientList patients;
     private final UniqueDentistList dentists;
+    private final UniqueAppointmentList appointments;
 
     private long patientId;
 
@@ -37,6 +40,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons = new UniquePersonList();
         patients = new UniquePatientList();
         dentists = new UniqueDentistList();
+        appointments = new UniqueAppointmentList();
     }
 
     public AddressBook() {
@@ -91,6 +95,10 @@ public class AddressBook implements ReadOnlyAddressBook {
         this.dentists.setDentists(dentists);
     }
 
+    public void setAppointments(List<Appointment> appointments) {
+        this.appointments.setAppointments(appointments);
+    }
+
     /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
@@ -100,6 +108,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         setPersons(newData.getPersonList());
         setPatients(newData.getPatientList());
         setDentists(newData.getDentistList());
+        setAppointments(newData.getAppointmentList());
         setPatientId(newData.getPatientId());
     }
 
@@ -134,6 +143,18 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Returns true if the internal list of appointments contains the specified appointment.
+     *
+     * @param appointment The appointment to check for existence.
+     * @return True if the appointment is found in the list, false otherwise.
+     * @throws NullPointerException if the given appointment is null.
+     */
+    public boolean hasAppointment(Appointment appointment) {
+        requireNonNull(appointment);
+        return appointments.contains(appointment);
+    }
+
+    /**
      * Adds a person to the address book. The person must not already exist in the address book.
      */
     public void addPerson(Person p) {
@@ -160,6 +181,10 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void addDentist(Dentist dentist) {
         dentists.add(dentist);
+    }
+
+    public void addAppointment(Appointment appointment) {
+        appointments.add(appointment);
     }
 
     /**
@@ -241,6 +266,11 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public ObservableList<Dentist> getDentistList() {
         return dentists.asUnmodifiableObservableList();
+    }
+
+    @Override
+    public ObservableList<Appointment> getAppointmentList() {
+        return appointments.asUnmodifiableObservableList();
     }
 
     @Override

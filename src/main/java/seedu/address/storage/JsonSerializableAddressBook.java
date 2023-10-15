@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.appointments.Appointment;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.patients.Patient;
@@ -24,10 +25,12 @@ class JsonSerializableAddressBook {
     public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
     public static final String MESSAGE_DUPLICATE_DENTIST = "Dentists list contains duplicate person(s).";
     public static final String MESSAGE_DUPLICATE_PATIENT = "Patients list contains duplicate person(s).";
+    public static final String MESSAGE_CLASHING_APPOINTMENTS = "Dentist is not free for this time slot";
 
     private final List<JsonAdaptedDentist> dentists = new ArrayList<>();
     private final List<JsonAdaptedPerson> persons = new ArrayList<>();
     private final List<JsonAdaptedPatient> patients = new ArrayList<>();
+    private final List<JsonAdaptedAppointment> appointments = new ArrayList<>();
 
     private String patientId;
 
@@ -51,6 +54,9 @@ class JsonSerializableAddressBook {
         dentists.addAll(source.getDentistList().stream().map(JsonAdaptedDentist::new).collect(Collectors.toList()));
         persons.addAll(source.getPersonList().stream().map(JsonAdaptedPerson::new).collect(Collectors.toList()));
         patients.addAll(source.getPatientList().stream().map(JsonAdaptedPatient::new).collect(Collectors.toList()));
+        appointments.addAll(source.getAppointmentList().stream()
+                .map(JsonAdaptedAppointment::new).collect(Collectors.toList()));
+
         patientId = String.valueOf(source.getPatientId());
     }
 
@@ -83,6 +89,14 @@ class JsonSerializableAddressBook {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_DENTIST);
             }
             addressBook.addDentist(dentist);
+        }
+
+        for (JsonAdaptedAppointment jsonAdaptedAppointment : appointments) {
+            Appointment appointment = jsonAdaptedAppointment.toModelType();
+            if (addressBook.hasAppointment(appointment)) {
+                throw new IllegalValueException(MESSAGE_CLASHING_APPOINTMENTS);
+            }
+            addressBook.addAppointment(appointment);
         }
 
         addressBook.setPatientId(Long.parseLong(patientId));
