@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.address.logic.parser.Prefix;
+import seedu.address.model.appointments.Appointment;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.patients.Patient;
 
@@ -72,6 +73,27 @@ public class Messages {
             .append(person.getEmail())
             .append("; Tags: ");
         person.getTags().forEach(builder::append);
+        return builder.toString();
+    }
+
+    /**
+     * Formats the given appointment as a string.
+     * The string format includes information about the dentist, patient, appointment start time, and duration.
+     *
+     * @param appointment The appointment to be formatted.
+     * @return A formatted string representation of the appointment.
+     * @throws NullPointerException if the appointment is null.
+     */
+    public static String format(Appointment appointment) {
+        final StringBuilder builder = new StringBuilder();
+        builder.append("; Dentist: ")
+                .append(appointment.getDentist())
+                .append("; Patient: ")
+                .append(appointment.getPatient())
+                .append("; Appointment: ")
+                .append(appointment.getAppointmentTime().startToString())
+                .append("; Duration: ")
+                .append(appointment.getAppointmentTime().durationToString());
         return builder.toString();
     }
 

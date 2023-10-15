@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.appointments.Appointment;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.dentist.Dentist;
@@ -75,6 +76,8 @@ public interface Model {
      */
     boolean hasDentist(Dentist dentist);
 
+    boolean hasAppointment(Appointment appointment);
+
     /**
      * Deletes the given person.
      * The person must exist in the address book.
@@ -101,6 +104,11 @@ public interface Model {
     void addDentist(Dentist dentist);
 
     /**
+     * Adds the given appointment.
+     */
+    void addAppointment(Appointment appointment);
+
+    /**
      * Replaces the given person {@code target} with {@code editedPerson}.
      * {@code target} must exist in the address book.
      * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
@@ -121,6 +129,8 @@ public interface Model {
      * Returns an unmodifiable view of the filtered dentist list
      */
     ObservableList<Dentist> getFilteredDentistList();
+
+    ObservableList<Appointment> getFilteredAppointmentList();
 
     /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.

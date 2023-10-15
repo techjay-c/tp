@@ -24,6 +24,10 @@ public class CliSyntax {
     public static final Prefix PREFIX_YOE = new Prefix("y/");
 
     // Commands for patients only
+    public static final Prefix PREFIX_PATIENT = new Prefix("patient/");
+
+    public static final Prefix PREFIX_DURATION = new Prefix("duration/");
+    public static final Prefix PREFIX_START = new Prefix("start/");
 
 
 }
