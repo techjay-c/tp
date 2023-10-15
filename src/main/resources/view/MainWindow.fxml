@@ -21,7 +21,7 @@
   <scene>
     <Scene>
       <stylesheets>
-        <URL value="@DarkTheme.css"/>
+        <URL value="@LightTheme.css"/>
         <URL value="@Extensions.css"/>
       </stylesheets>
 
@@ -49,7 +49,7 @@
           </padding>
         </StackPane>
 
-        <SplitPane dividerPositions="0.5" VBox.vgrow="ALWAYS">
+        <SplitPane fx:id="splitPane" dividerPositions="0.4" VBox.vgrow="ALWAYS">
           <!-- Left Side: Lists -->
           <VBox fx:id="personList" styleClass="pane-with-border" minWidth="340" prefWidth="340">
             <padding>
