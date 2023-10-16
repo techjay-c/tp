@@ -12,7 +12,7 @@ public class ListDentistsCommand extends Command {
 
     public static final String COMMAND_WORD = "list-dentists";
 
-    public static final String MESSAGE_SUCCESS = "Listed all dentists";
+    public static final String MESSAGE_SUCCESS = "Listed all dentists!";
 
 
     @Override
