@@ -16,14 +16,17 @@ public class Messages {
 
     public static final String MESSAGE_UNKNOWN_COMMAND = "Unknown command";
     public static final String MESSAGE_INVALID_COMMAND_FORMAT = "Invalid command format! \n%1$s";
+    public static final String MESSAGE_INVALID_PERSON_DISPLAYED_INDEX = "The person index provided is invalid";
+    public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d dentists listed!";
     public static final String MESSAGE_INVALID_PATIENT_DISPLAYED_INDEX = "The patient index provided is invalid";
-    public static final String MESSAGE_INVALID_PERSON_DISPLAYED_INDEX = "The patient index provided is invalid";
-    public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d persons listed!";
     public static final String MESSAGE_PATIENTS_LISTED_OVERVIEW = "%1$d patients listed!";
     public static final String MESSAGE_DUPLICATE_FIELDS =
         "Multiple values specified for the following single-valued field(s): ";
     public static final String MESSAGE_DELETE_PATIENT_SUCCESS = "Deleted Patient: %1$s";
+    public static final String MESSAGE_DELETE_DENTIST_SUCCESS = "Deleted Dentist: %1$s";
     public static final String MESSAGE_NO_SUCH_PATIENT = "There is no patient in the address book with ID: %1$s";
+    public static final String MESSAGE_NO_SUCH_DENTIST = "There is no dentist in the address book with ID: %1$s";
+
 
     /**
      * Returns an error message indicating the duplicate prefixes.
