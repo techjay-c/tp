@@ -124,8 +124,44 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public Patient getPatientById(long patientId) {
+        requireNonNull(patientId);
+        ObservableList<Patient> filteredPatients = getFilteredPatientList();
+
+        for (Patient patient : filteredPatients) {
+            if (patient.getId() == patientId) {
+                return patient;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Dentist getDentistById(long dentistId) {
+        requireNonNull(dentistId);
+        ObservableList<Dentist> filteredDentist = getFilteredDentistList();
+
+        for (Dentist dentist : filteredDentist) {
+            if (dentist.getId() == dentistId) {
+                return dentist;
+            }
+        }
+        return null;
+    }
+
+    @Override
     public void deletePerson(Person target) {
         addressBook.removePerson(target);
+    }
+
+    @Override
+    public void deletePatient(Patient patient) {
+        addressBook.removePatient(patient);
+    }
+
+    @Override
+    public void deleteDentist(Dentist dentist) {
+        addressBook.removeDentist(dentist);
     }
 
     @Override
@@ -196,6 +232,12 @@ public class ModelManager implements Model {
     public void updateFilteredPatientList(NameContainsKeywordsPredicate predicate) {
         requireNonNull(predicate);
         filteredPatients.setPredicate(predicate);
+    }
+
+    @Override
+    public void updateFilteredDentistList(NameContainsKeywordsPredicate predicate) {
+        requireNonNull(predicate);
+        filteredDentists.setPredicate(predicate);
     }
 
     @Override

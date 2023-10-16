@@ -144,7 +144,17 @@ public class AddCommandTest {
         }
 
         @Override
-        public void deletePerson(Person target) {
+        public void deletePerson(Person person) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deletePatient(Patient patient) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deleteDentist(Dentist dentist) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -165,6 +175,11 @@ public class AddCommandTest {
 
         @Override
         public void updateFilteredPatientList(NameContainsKeywordsPredicate predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredDentistList(NameContainsKeywordsPredicate predicate) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -210,6 +225,16 @@ public class AddCommandTest {
 
         @Override
         public boolean hasAppointment(Appointment appointment) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Patient getPatientById(long patientId) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Dentist getDentistById(long dentistId) {
             throw new AssertionError("This method should not be called.");
         }
     }
