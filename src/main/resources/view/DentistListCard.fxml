@@ -14,25 +14,29 @@
     <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150" />
     </columnConstraints>
-    <VBox alignment="CENTER_LEFT" minHeight="105" GridPane.columnIndex="0">
+    <VBox alignment="CENTER_LEFT" minHeight="105" GridPane.columnIndex="0" styleClass="card">
+      <GridPane.margin>
+        <Insets top="5" right="10" bottom="5" left="5" />
+      </GridPane.margin>
       <padding>
-        <Insets top="5" right="5" bottom="5" left="15" />
+        <Insets top="5" right="5" bottom="5" left="5" />
       </padding>
       <HBox spacing="5" alignment="CENTER_LEFT">
-        <Label fx:id="id" styleClass="cell_big_label">
+        <Label fx:id="id" styleClass="details-title">
           <minWidth>
             <!-- Ensures that the label text is never truncated -->
             <Region fx:constant="USE_PREF_SIZE" />
           </minWidth>
         </Label>
-        <Label fx:id="name" text="\$first" styleClass="cell_big_label" />
+        <Label fx:id="name" text="\$first" styleClass="details-title" />
       </HBox>
       <FlowPane fx:id="tags" />
-      <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
-      <Label fx:id="address" styleClass="cell_small_label" text="\$address" />
-      <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
-      <Label fx:id="specialization" styleClass="cell_small_label" text="\$specialization" />
-      <Label fx:id="yoe" styleClass="cell_small_label" text="\$years of experience" />
+      <Label fx:id="phone" styleClass="details-text" text="\$phone" />
+      <Label fx:id="address" styleClass="details-text" text="\$address" />
+      <Label fx:id="email" styleClass="details-text" text="\$email" />
+      <Label fx:id="specialization" styleClass="details-text" text="\$specialization" />
+      <Label fx:id="yoe" styleClass="details-text" text="\$years of experience" />
+      <Label fx:id="dentistId" styleClass="details-text" text="\$dentistId" />
     </VBox>
   </GridPane>
 </HBox>

@@ -4,12 +4,12 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.appointments.AppointmentTime;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.AppointmentDate;
 import seedu.address.model.person.Birthdate;
@@ -130,6 +130,26 @@ public class ParserUtil {
             throw new ParseException(AppointmentDate.MESSAGE_CONSTRAINTS);
         }
         return new AppointmentDate(trimmedAppointment);
+    }
+
+    /**
+     * Parses the given start time and duration strings to create an AppointmentTime object.
+     *
+     * @param startTime The string representation of the appointment start time.
+     * @param duration  The string representation of the appointment duration.
+     * @return An AppointmentTime object representing the parsed start time and duration.
+     * @throws ParseException if the start time or duration is in an invalid format.
+     * @throws NullPointerException if either startTime or duration is null.
+     */
+    public static AppointmentTime parseAppointmentTime(String startTime, String duration) throws ParseException {
+        requireNonNull(startTime);
+        requireNonNull(duration);
+        String trimmedStartTime = startTime.trim();
+        String trimmedDuration = duration.trim();
+        if (!AppointmentDate.isValidDate(trimmedStartTime)) {
+            throw new ParseException(AppointmentDate.MESSAGE_CONSTRAINTS);
+        }
+        return new AppointmentTime(trimmedStartTime, trimmedDuration);
     }
 
     /**
