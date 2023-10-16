@@ -32,6 +32,7 @@ class JsonAdaptedDentist {
     private final String address;
     private final String specialization;
     private final String yearsOfExperience;
+    private final String id;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
 
 
@@ -45,6 +46,7 @@ class JsonAdaptedDentist {
                               @JsonProperty("address") String address,
                               @JsonProperty("specialization") String specialization,
                               @JsonProperty("yoe") String yearsOfExperience,
+                              @JsonProperty("id") String id,
                               @JsonProperty("tags") List<JsonAdaptedTag> tags) {
 
         this.name = name;
@@ -53,6 +55,7 @@ class JsonAdaptedDentist {
         this.address = address;
         this.specialization = specialization;
         this.yearsOfExperience = yearsOfExperience;
+        this.id = id;
         if (tags != null) {
             this.tags.addAll(tags);
         }
@@ -68,6 +71,7 @@ class JsonAdaptedDentist {
         address = source.getAddress().value;
         specialization = source.getSpecialization().getValue();
         yearsOfExperience = source.getYoe().getValue();
+        id = String.valueOf(source.getId());
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -91,10 +95,11 @@ class JsonAdaptedDentist {
         final Address modelAddress = validateAddress();
         final Specialization modelSpecialization = validateSpecialization();
         final Yoe modelYoe = validateYoe();
+        final long modelDentistId = validateDentistId();
         final Set<Tag> modelTags = validateTags();
 
         return new Dentist(modelName, modelPhone, modelEmail, modelAddress,
-                modelSpecialization, modelYoe, modelTags);
+                modelSpecialization, modelYoe, modelDentistId, modelTags);
     }
 
     /**
@@ -198,6 +203,19 @@ class JsonAdaptedDentist {
         }
         //To be added more
         return new Yoe(yearsOfExperience);
+    }
+
+    /**
+     * Validate the Dentist ID supplied from storage.
+     *
+     * @return a valid Dentist ID as a long integer.
+     * @throws IllegalValueException if the provided Dentist ID is invalid.
+     */
+    private long validateDentistId() throws IllegalValueException {
+        if (id == null) {
+            throw new IllegalValueException("Dentist ID value does not exist!");
+        }
+        return Long.parseLong(id);
     }
 
 
