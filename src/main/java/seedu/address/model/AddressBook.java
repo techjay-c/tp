@@ -199,8 +199,9 @@ public class AddressBook implements ReadOnlyAddressBook {
             dentist.setId(dentistId);
             dentists.add(dentist);
             incrementDentistId();
+        } else {
+            dentists.add(dentist);
         }
-        dentists.add(dentist);
     }
 
     public void addAppointment(Appointment appointment) {
@@ -268,10 +269,10 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("persons", persons)
-                .add("patients", patients)
-                .add("dentists", dentists)
-                .toString();
+            .add("persons", persons)
+            .add("patients", patients)
+            .add("dentists", dentists)
+            .toString();
     }
 
     @Override
