@@ -212,7 +212,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void updateFilteredPatientList(NameContainsKeywordsPredicate predicate) {
+    public void updateFilteredPatientList(Predicate<Patient> predicate) {
         requireNonNull(predicate);
         filteredPatients.setPredicate(predicate);
     }
