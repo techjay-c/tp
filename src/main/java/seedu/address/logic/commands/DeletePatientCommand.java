@@ -40,7 +40,8 @@ public class DeletePatientCommand extends Command {
             }
 
             model.deletePatient(patientToDelete);
-            return new CommandResult(String.format(Messages.MESSAGE_DELETE_PATIENT_SUCCESS, patientToDelete));
+            return new CommandResult(
+                    String.format(Messages.MESSAGE_DELETE_PATIENT_SUCCESS, Messages.format(patientToDelete)));
 
         } catch (Exception e) {
             throw new CommandException("An error occurred while deleting the patient: " + e.getMessage());

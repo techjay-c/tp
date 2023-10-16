@@ -1,14 +1,12 @@
 package seedu.address.logic.parser;
 
-
-
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
-import seedu.address.logic.commands.*;
-import seedu.address.logic.parser.exceptions.*;
+import seedu.address.logic.commands.DeleteDentistCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
- * Parses input arguments and creates a new DeleteCommand object
+ * Parses input arguments and creates a new DeleteDentistCommand object
  */
 public class DeleteDentistCommandParser implements Parser<DeleteDentistCommand> {
 

@@ -1,14 +1,14 @@
 package seedu.address.logic.commands;
 
-import static java.util.Objects.*;
+import static java.util.Objects.requireNonNull;
 
-import java.util.*;
+import java.util.Objects;
 
-import seedu.address.commons.util.*;
-import seedu.address.logic.*;
-import seedu.address.logic.commands.exceptions.*;
-import seedu.address.model.*;
-import seedu.address.model.person.dentist.*;
+import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.logic.Messages;
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.Model;
+import seedu.address.model.person.dentist.Dentist;
 
 /**
  * Deletes a dentist identified using it's displayed index from the address book.
