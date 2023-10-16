@@ -18,6 +18,7 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.model.appointments.Appointment;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
@@ -91,7 +92,8 @@ public class AddressBookTest {
     public void toStringMethod() {
         String expected =
             AddressBook.class.getCanonicalName() + "{persons=" + addressBook.getPersonList()
-                + ", patients=" + addressBook.getPatientList() + "}";
+                + ", patients=" + addressBook.getPatientList()
+                + ", dentists=" + addressBook.getDentistList() + "}";
         assertEquals(expected, addressBook.toString());
     }
 
@@ -102,6 +104,7 @@ public class AddressBookTest {
 
         private final ObservableList<Person> persons = FXCollections.observableArrayList();
         private final ObservableList<Dentist> dentists = FXCollections.observableArrayList();
+        private final ObservableList<Appointment> appointments = FXCollections.observableArrayList();
 
         AddressBookStub(Collection<Person> persons) {
             this.persons.setAll(persons);
@@ -119,8 +122,23 @@ public class AddressBookTest {
         }
 
         @Override
+        public long getPatientId() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public long getDentistId() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public ObservableList<Dentist> getDentistList() {
             return dentists;
+        }
+
+        @Override
+        public ObservableList<Appointment> getAppointmentList() {
+            return appointments;
         }
     }
 

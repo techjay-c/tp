@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.appointments.Appointment;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.dentist.Dentist;
@@ -75,6 +76,10 @@ public interface Model {
      */
     boolean hasDentist(Dentist dentist);
 
+    boolean hasAppointment(Appointment appointment);
+
+    Patient getPatientById(long patientId);
+
     /**
      * Deletes the given person.
      * The person must exist in the address book.
@@ -89,7 +94,6 @@ public interface Model {
      */
     void addPerson(Person person);
 
-
     /**
      * Adds the given Patient.
      * {@code Patient} must not already exist in the address book.
@@ -101,6 +105,11 @@ public interface Model {
      * {@code dentist} must not already exist in ToothTracker address book.
      */
     void addDentist(Dentist dentist);
+
+    /**
+     * Adds the given appointment.
+     */
+    void addAppointment(Appointment appointment);
 
     /**
      * Replaces the given person {@code target} with {@code editedPerson}.
@@ -124,6 +133,8 @@ public interface Model {
      */
     ObservableList<Dentist> getFilteredDentistList();
 
+    ObservableList<Appointment> getFilteredAppointmentList();
+
     /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.
      *
@@ -137,4 +148,5 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPatientList(NameContainsKeywordsPredicate predicate);
+
 }

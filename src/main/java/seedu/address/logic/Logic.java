@@ -8,6 +8,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.appointments.Appointment;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.patients.Patient;
@@ -40,6 +41,8 @@ public interface Logic {
     ObservableList<Patient> getFilteredPatientList();
     /** Returns an unmodifiable view of the filtered list of dentists */
     ObservableList<Dentist> getFilteredDentistList();
+
+    ObservableList<Appointment> getFilteredAppointmentList();
 
     /**
      * Returns the user prefs' address book file path.

@@ -2,9 +2,8 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
-import java.util.List;
+import java.util.Objects;
 
-import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -19,31 +18,33 @@ public class DeletePatientCommand extends Command {
     public static final String COMMAND_WORD = "delete-patient";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-        + ": Deletes the patient identified by the given patient ID.\n"
-        + "Parameters: ID (must be a valid patient ID)\n"
-        + "Example: " + COMMAND_WORD + "001";
+        + ": Deletes the patient identified by the index number used in the displayed patient list.\n"
+        + "Parameters: ID (must be a positive integer)\n"
+        + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_DELETE_PATIENT_SUCCESS = "Deleted Patient: %1$s";
+    private final long targetId;
 
-    private final int patientId;
-
-    public DeletePatientCommand(int patientId) {
-        this.patientId = patientId;
+    public DeletePatientCommand(long targetId) {
+        this.targetId = targetId;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        List<Patient> lastShownList = model.getFilteredPatientList();
+        try {
+            Patient patientToDelete = model.getPatientById(targetId);
 
-        if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PATIENT_DISPLAYED_INDEX);
+            if (patientToDelete == null) {
+                throw new CommandException(String.format(Messages.MESSAGE_NO_SUCH_PATIENT, targetId));
+            }
+
+            model.deletePatient(patientToDelete);
+            return new CommandResult(String.format(Messages.MESSAGE_DELETE_PATIENT_SUCCESS, patientToDelete));
+
+        } catch (Exception e) {
+            throw new CommandException("An error occurred while deleting the patient: " + e.getMessage());
         }
-
-        Patient patientToDelete = lastShownList.get(targetIndex.getZeroBased());
-        model.deletePatient(patientToDelete);
-        return new CommandResult(String.format(MESSAGE_DELETE_PATIENT_SUCCESS, Messages.format(patientToDelete)));
     }
 
     @Override
@@ -52,19 +53,18 @@ public class DeletePatientCommand extends Command {
             return true;
         }
 
-        // instanceof handles nulls
         if (!(other instanceof DeletePatientCommand)) {
             return false;
         }
 
         DeletePatientCommand otherDeletePatientCommand = (DeletePatientCommand) other;
-        return targetIndex.equals(otherDeletePatientCommand.targetIndex);
+        return Objects.equals(targetId, otherDeletePatientCommand.targetId);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-            .add("targetIndex", targetIndex)
+            .add("targetIndex", targetId)
             .toString();
     }
 }
