@@ -96,12 +96,12 @@ A person can have any number of tags (including 0)
 
 Examples:
 
-* `add-dentist n/Bob p/12345678 e/bobjune@gmail.com y/6 s/braces`  adds a dentist named 'Bob' with phone number '
-  12345678' and email ‘bobjune@gmail.com’, who has 6 years of experience and specializing in 'braces' into ToothTracker
-  dentist list.
+* `add-dentist n/Bob p/12345678 e/bobjune@gmail.com y/6 s/braces` adds a dentist named 'Bob' with phone number 
+'12345678' and email ‘bobjune@gmail.com’, who has 6 years of experience and specializing in 'braces' into ToothTracker
+dentist list.
 * `add-dentist n/Emmanuel Chua p/99887766 y/8 s/surgery t/extraction` adds a dentist named 'Emmanuel Chua' with phone
-  number '99887766' who has 8 years of experience specializing in 'surgery' with a tag of 'extraction' into ToothTracker
-  dentist list.
+number '99887766' who has 8 years of experience specializing in 'surgery' with a tag of 'extraction' into ToothTracker
+dentist list.
 
 ### Editing a dentist: `edit-dentist`
 
