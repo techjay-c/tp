@@ -34,7 +34,7 @@ ToothTracker is engineered to simplify every aspect of your administrative respo
     * `add-dentist n/Bob p/12345678 e/bobjune@gmail.com y/6 s/braces` : Adds a dentist named `Bob`
       to the ToothTracker.
 
-    * `delete-dentist 3` : Deletes the dentist with id 2.
+    * `delete-dentist 3` : Deletes the dentist with id 3.
 
     * `clear` : Deletes all contacts.
 
@@ -98,7 +98,7 @@ You may use edit-dentist command to update them in the future.
 
 Examples:
 
-* `add-dentist n/Xavier Ronald p/99773311 s/Whitening y/1 e/roaldxavier@hotmail.com 
+* `add-dentist n/Xavier Roald p/99773311 s/Whitening y/1 e/roaldxavier@hotmail.com 
 h/Yishun Street 72, Blk 742, #03-354, Singapore 512742 t/Undergraduate Trainee`
 This adds a dentist named 'Xavier Roald' with phone number '99773311', email 'roaldxavier@hotmail.com', 
 address 'Yishun Street 72, Blk 742, #03-354, Singapore 512742',
@@ -271,8 +271,8 @@ You may use `list-patients` to check out the patient' ID first.
 
 Examples:
 
-* `search-patient Thomas` will search for patients with the name containing the keyword `Thomas`.
-* `search-patient 088` will search for a patient with the ID `088`. If one or more matching patients are found based on
+* `search-patient Thomas` searches for patients with the name containing the keyword `Thomas`.
+* `search-patient 088` searches for a patient with the ID `088`. If one or more matching patients are found based on
   your search criteria, the system will list the matching patients along with their details.
 
 ## General Features
@@ -303,9 +303,9 @@ Format: `filter s/SERVICE_TYPE`, `filter t/DATE`, `filter d/DENTIST`
 
 Examples:
 
-* `filter s/Tooth Extraction` return all Tooth Extraction appointments.
-* `filter t/20-11-2023` return all appointments happening on 20 November 2023.
-* `filter d/Tom` return all appointments with Tom as the dentist.
+* `filter s/Tooth Extraction` returns all Tooth Extraction appointments.
+* `filter t/20-11-2023` returns all appointments happening on 20 November 2023.
+* `filter d/Tom` returns all appointments with Tom as the dentist.
 
 
 ### Clearing all entries : `clear`
