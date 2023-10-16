@@ -18,7 +18,9 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.model.appointments.Appointment;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.patients.Patient;
 import seedu.address.testutil.PersonBuilder;
@@ -90,7 +92,8 @@ public class AddressBookTest {
     public void toStringMethod() {
         String expected =
             AddressBook.class.getCanonicalName() + "{persons=" + addressBook.getPersonList()
-                + ", patients=" + addressBook.getPatientList() + "}";
+                + ", patients=" + addressBook.getPatientList()
+                + ", dentists=" + addressBook.getDentistList() + "}";
         assertEquals(expected, addressBook.toString());
     }
 
@@ -100,10 +103,13 @@ public class AddressBookTest {
     private static class AddressBookStub implements ReadOnlyAddressBook {
 
         private final ObservableList<Person> persons = FXCollections.observableArrayList();
+        private final ObservableList<Dentist> dentists = FXCollections.observableArrayList();
+        private final ObservableList<Appointment> appointments = FXCollections.observableArrayList();
 
         AddressBookStub(Collection<Person> persons) {
             this.persons.setAll(persons);
         }
+        //More types of stub to be added in the future.
 
         @Override
         public ObservableList<Person> getPersonList() {
@@ -113,6 +119,26 @@ public class AddressBookTest {
         @Override
         public ObservableList<Patient> getPatientList() {
             throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public long getPatientId() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public long getDentistId() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Dentist> getDentistList() {
+            return dentists;
+        }
+
+        @Override
+        public ObservableList<Appointment> getAppointmentList() {
+            return appointments;
         }
     }
 

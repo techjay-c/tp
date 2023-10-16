@@ -9,6 +9,7 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.appointments.AppointmentTime;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.AppointmentDate;
 import seedu.address.model.person.Birthdate;
@@ -17,6 +18,8 @@ import seedu.address.model.person.Gender;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Service;
+import seedu.address.model.person.dentist.Specialization;
+import seedu.address.model.person.dentist.Yoe;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -130,6 +133,26 @@ public class ParserUtil {
     }
 
     /**
+     * Parses the given start time and duration strings to create an AppointmentTime object.
+     *
+     * @param startTime The string representation of the appointment start time.
+     * @param duration  The string representation of the appointment duration.
+     * @return An AppointmentTime object representing the parsed start time and duration.
+     * @throws ParseException if the start time or duration is in an invalid format.
+     * @throws NullPointerException if either startTime or duration is null.
+     */
+    public static AppointmentTime parseAppointmentTime(String startTime, String duration) throws ParseException {
+        requireNonNull(startTime);
+        requireNonNull(duration);
+        String trimmedStartTime = startTime.trim();
+        String trimmedDuration = duration.trim();
+        if (!AppointmentDate.isValidDate(trimmedStartTime)) {
+            throw new ParseException(AppointmentDate.MESSAGE_CONSTRAINTS);
+        }
+        return new AppointmentTime(trimmedStartTime, trimmedDuration);
+    }
+
+    /**
      * Parses a {@code String service} into an {@code Service}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -185,5 +208,37 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    // Parse Methods for Dentists
+
+    /**
+     * Parses a {@code String specialization} into an {@code Specialization}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code specialization} is invalid.
+     */
+    public static Specialization parseSpecialization(String specialization) throws ParseException {
+        requireNonNull(specialization);
+        String trimmedSpecialization = specialization.trim();
+        if (!Specialization.isValidSpecialization(trimmedSpecialization)) {
+            throw new ParseException(Specialization.MESSAGE_CONSTRAINTS);
+        }
+        return new Specialization(trimmedSpecialization);
+    }
+
+    /**
+     * Parses a {@code String yoe} into an {@code String}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code yoe} is invalid.
+     */
+    public static Yoe parseYoe(String yoe) throws ParseException {
+        requireNonNull(yoe);
+        String trimmedYoe = yoe.trim();
+        if (!Yoe.isValidYoe(trimmedYoe)) {
+            throw new ParseException(Yoe.MESSAGE_CONSTRAINTS);
+        }
+        return new Yoe(trimmedYoe);
     }
 }

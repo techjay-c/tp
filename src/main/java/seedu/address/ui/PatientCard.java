@@ -17,11 +17,12 @@ public class PatientCard extends UiPart<Region> {
     private static final String FXML = "PatientListCard.fxml";
 
     /**
-     * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
-     * As a consequence, UI elements' variable names cannot be set to such keywords
-     * or an exception will be thrown by JavaFX during runtime.
+     * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX. As
+     * a consequence, UI elements' variable names cannot be set to such keywords or an exception
+     * will be thrown by JavaFX during runtime.
      *
-     * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
+     * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on
+     * AddressBook level 4</a>
      */
 
     public final Patient patient;
@@ -47,6 +48,9 @@ public class PatientCard extends UiPart<Region> {
     private Label appointment;
     @FXML
     private Label service;
+
+    @FXML
+    private Label patientid;
     @FXML
     private FlowPane tags;
 
@@ -58,17 +62,18 @@ public class PatientCard extends UiPart<Region> {
         super(FXML);
         this.patient = patient;
         id.setText(displayedIndex + ". ");
-        name.setText(patient.getName().fullName);
-        phone.setText(patient.getPhone().value);
-        address.setText(patient.getAddress().value);
-        email.setText(patient.getEmail().value);
-        gender.setText(patient.getGender().value);
-        birthdate.setText(patient.getBirthdate().value);
-        appointment.setText(patient.getAppointmentdate().value);
-        service.setText(patient.getService().value);
+        name.setText("Name: " + patient.getName().fullName);
+        phone.setText("Phone: " + patient.getPhone().value);
+        address.setText("Address: " + patient.getAddress().value);
+        email.setText("Email: " + patient.getEmail().value);
+        gender.setText("Gender: " + patient.getGender().value);
+        birthdate.setText("Birthday: " + patient.getBirthdate().value);
+        appointment.setText("Appointment: " + patient.getAppointmentdate().value);
+        service.setText("Service: " + patient.getService().value);
+        patientid.setText("ID: " + String.valueOf(patient.getId()));
 
         patient.getTags().stream()
-                .sorted(Comparator.comparing(tag -> tag.tagName))
-                .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+            .sorted(Comparator.comparing(tag -> tag.tagName))
+            .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
 }

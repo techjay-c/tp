@@ -11,7 +11,10 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.appointments.Appointment;
+import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.patients.Patient;
 
 /**
@@ -25,6 +28,8 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Patient> filteredPatients;
+    private final FilteredList<Dentist> filteredDentists;
+    private final FilteredList<Appointment> filteredAppointments;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -39,6 +44,8 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         filteredPatients = new FilteredList<>(this.addressBook.getPatientList());
+        filteredDentists = new FilteredList<>(this.addressBook.getDentistList());
+        filteredAppointments = new FilteredList<>(this.addressBook.getAppointmentList());
     }
 
     public ModelManager() {
@@ -105,8 +112,39 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public boolean hasDentist(Dentist dentist) {
+        requireNonNull(dentist);
+        return addressBook.hasDentist(dentist);
+    }
+
+    @Override
+    public boolean hasAppointment(Appointment appointment) {
+        requireNonNull(appointment);
+        return addressBook.hasAppointment(appointment);
+    }
+
+    @Override
+    public Patient getPatientById(long patientId) {
+        requireNonNull(patientId);
+        ObservableList<Patient> filteredPatients = getFilteredPatientList();
+
+        for (Patient patient : filteredPatients) {
+            if (patient.getId() == patientId) {
+                return patient;
+            }
+        }
+        return null;
+    }
+
+
+    @Override
     public void deletePerson(Person target) {
         addressBook.removePerson(target);
+    }
+
+    @Override
+    public void deletePatient(Patient patient) {
+        addressBook.removePatient(patient);
     }
 
     @Override
@@ -118,6 +156,16 @@ public class ModelManager implements Model {
     @Override
     public void addPatient(Patient patient) {
         addressBook.addPatient(patient);
+    }
+
+    @Override
+    public void addDentist(Dentist dentist) {
+        addressBook.addDentist(dentist);
+    }
+
+    @Override
+    public void addAppointment(Appointment appointment) {
+        addressBook.addAppointment(appointment);
     }
 
     @Override
@@ -148,15 +196,31 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public ObservableList<Dentist> getFilteredDentistList() {
+        return filteredDentists;
+    }
+
+    @Override
+    public ObservableList<Appointment> getFilteredAppointmentList() {
+        return filteredAppointments;
+    }
+
+    @Override
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
     }
 
     @Override
-    public void updateFilteredPatientList(Predicate<Patient> predicate) {
+    public void updateFilteredPatientList(NameContainsKeywordsPredicate predicate) {
         requireNonNull(predicate);
         filteredPatients.setPredicate(predicate);
+    }
+
+    @Override
+    public void updateFilteredDentistList(NameContainsKeywordsPredicate predicate) {
+        requireNonNull(predicate);
+        filteredDentists.setPredicate(predicate);
     }
 
     @Override
