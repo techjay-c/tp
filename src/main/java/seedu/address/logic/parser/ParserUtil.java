@@ -236,8 +236,6 @@ public class ParserUtil {
     public static Yoe parseYoe(String yoe) throws ParseException {
         requireNonNull(yoe);
         String trimmedYoe = yoe.trim();
-
-        // The following code is used if yoe becomes a custom class.
         if (!Yoe.isValidYoe(trimmedYoe)) {
             throw new ParseException(Yoe.MESSAGE_CONSTRAINTS);
         }

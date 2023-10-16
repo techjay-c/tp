@@ -43,6 +43,8 @@ public class DentistCard extends UiPart<Region> {
     @FXML
     private Label yoe;
     @FXML
+    private Label dentistId;
+    @FXML
     private FlowPane tags;
 
     /**
@@ -53,11 +55,13 @@ public class DentistCard extends UiPart<Region> {
         this.dentist = dentist;
         id.setText(displayedIndex + ". ");
         name.setText(dentist.getName().fullName);
-        phone.setText(dentist.getPhone().value);
-        address.setText(dentist.getAddress().value);
-        email.setText(dentist.getEmail().value);
-        specialization.setText(dentist.getSpecialization().getValue());
-        yoe.setText(dentist.getYoe().getValue());
+        phone.setText("Phone: " + dentist.getPhone().value);
+        address.setText("Address: " + dentist.getAddress().value);
+        email.setText("Email: " + dentist.getEmail().value);
+        specialization.setText("Specialization: " + dentist.getSpecialization().getValue());
+        String experience = dentist.getYoe().getValue();
+        yoe.setText("Experience: " + experience + ((experience == "0" || experience == "1") ? " Year" : " Years"));
+        dentistId.setText("Dentist ID: " + String.valueOf(dentist.getId()));
         dentist.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));

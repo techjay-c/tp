@@ -36,6 +36,7 @@
       <Label fx:id="email" styleClass="details-text" text="\$email" />
       <Label fx:id="specialization" styleClass="details-text" text="\$specialization" />
       <Label fx:id="yoe" styleClass="details-text" text="\$years of experience" />
+      <Label fx:id="dentistId" styleClass="details-text" text="\$dentistId" />
     </VBox>
   </GridPane>
 </HBox>

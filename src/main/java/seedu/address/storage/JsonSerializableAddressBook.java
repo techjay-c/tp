@@ -33,6 +33,7 @@ class JsonSerializableAddressBook {
     private final List<JsonAdaptedAppointment> appointments = new ArrayList<>();
 
     private String patientId;
+    private String dentistId;
 
 
 
@@ -58,6 +59,7 @@ class JsonSerializableAddressBook {
                 .map(JsonAdaptedAppointment::new).collect(Collectors.toList()));
 
         patientId = String.valueOf(source.getPatientId());
+        dentistId = String.valueOf(source.getDentistId());
     }
 
     /**
@@ -100,6 +102,7 @@ class JsonSerializableAddressBook {
         }
 
         addressBook.setPatientId(Long.parseLong(patientId));
+        // addressBook.setDentistId(Long.parseLong(dentistId));
         return addressBook;
     }
 
