@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.layout.StackPane?>
@@ -42,44 +43,60 @@
 
         <StackPane fx:id="resultDisplayPlaceholder" maxHeight="100" minHeight="100" prefHeight="100" styleClass="pane-with-border" VBox.vgrow="NEVER">
           <padding>
-            <Insets bottom="5" left="10" right="10" top="5" />
+            <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
           </padding>
         </StackPane>
+
+      <Separator />
 
         <SplitPane fx:id="splitPane" dividerPositions="0.4" VBox.vgrow="ALWAYS">
           <!-- Left Side: Lists -->
           <VBox fx:id="patientList" minWidth="340" prefWidth="340" styleClass="pane-with-border">
-            <padding>
-              <Insets bottom="10" left="10" right="10" top="10" />
-            </padding>
 
             <VBox VBox.vgrow="ALWAYS">
               <!-- Top: Patient List -->
               <VBox fx:id="patientListContainer">
-                <Label text="Patient List:" />
+                <Label styleClass="titleText" text="Patient List:">
+                   <VBox.margin>
+                      <Insets left="5.0" />
+                   </VBox.margin></Label>
                 <StackPane fx:id="patientListPanelPlaceholder" />
                         <VBox.margin>
                            <Insets bottom="5.0" />
                         </VBox.margin>
               </VBox>
 
+            <Separator>
+                        <padding>
+                           <Insets left="-10.0" />
+                        </padding></Separator>
+
               <!-- Bottom: Appointment List -->
               <VBox fx:id="appointmentListContainer">
-                <Label text="Appointments:" />
+                <Label styleClass="titleText" text="Appointments:">
+                   <VBox.margin>
+                      <Insets left="5.0" />
+                   </VBox.margin></Label>
                 <StackPane fx:id="appointmentListPanelPlaceholder" />
                         <VBox.margin>
                            <Insets top="5.0" />
                         </VBox.margin>
               </VBox>
             </VBox>
+                  <padding>
+                     <Insets bottom="10.0" left="10.0" top="10.0" />
+                  </padding>
           </VBox>
 
           <!-- Right Side: Details -->
           <VBox fx:id="dentistList" styleClass="pane-with-border">
             <padding>
-              <Insets bottom="10" left="10" right="10" top="10" />
+              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
             </padding>
-            <Label text="Dentist List:" />
+            <Label styleClass="titleText" text="Dentist List:">
+                     <VBox.margin>
+                        <Insets left="5.0" />
+                     </VBox.margin></Label>
             <StackPane fx:id="dentistListPanelPlaceholder" VBox.vgrow="ALWAYS" />
           </VBox>
         </SplitPane>
