@@ -5,7 +5,7 @@ import static java.util.Objects.requireNonNull;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.model.Model;
-import seedu.address.model.person.NameContainsKeywordsPredicate;
+import seedu.address.model.PatientNameContainsKeywordsPredicate;
 
 /**
  * Represents a command to search for patients whose names contain specified keywords.
@@ -21,14 +21,14 @@ public class SearchPatientCommand extends Command {
         + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
         + "Example: " + COMMAND_WORD + " John Tan";
 
-    private final NameContainsKeywordsPredicate predicate;
+    private final PatientNameContainsKeywordsPredicate predicate;
 
     /**
      * Constructs a SearchPatientCommand with the specified predicate.
      *
      * @param predicate The predicate used for searching patients.
      */
-    public SearchPatientCommand(NameContainsKeywordsPredicate predicate) {
+    public SearchPatientCommand(PatientNameContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }
 
