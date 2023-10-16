@@ -138,7 +138,7 @@
 }
 
 .pane-with-border {
-     -fx-background-color: #FFFFFF;
+     -fx-background-color: #F4F4F4;
      -fx-border-color: #D6D6D6;
      -fx-border-top-width: 1px;
 }
@@ -343,7 +343,7 @@
 }
 
 #resultDisplay .content {
-    -fx-background-color: transparent, #FFFFFF, transparent, #FFFFFF;
+    -fx-background-color: #FFFFFF;
     -fx-background-radius: 0;
 }
 

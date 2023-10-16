@@ -11,66 +11,80 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.stage.Stage?>
 
-<fx:root type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/17"
-         xmlns:fx="http://javafx.com/fxml/1"
-         title="ToothTracker" minWidth="650" minHeight="800" onCloseRequest="#handleExit">
+<fx:root minHeight="800" minWidth="650" onCloseRequest="#handleExit" title="ToothTracker" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <icons>
-    <Image url="@/images/address_book_32.png"/>
+    <Image url="@/images/address_book_32.png" />
   </icons>
   <scene>
     <Scene>
       <stylesheets>
-        <URL value="@LightTheme.css"/>
-        <URL value="@Extensions.css"/>
+        <URL value="@LightTheme.css" />
+        <URL value="@Extensions.css" />
       </stylesheets>
 
       <VBox>
         <MenuBar fx:id="menuBar" VBox.vgrow="NEVER">
           <Menu mnemonicParsing="false" text="File">
-            <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit"/>
+            <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
-            <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp"
-              text="Help"/>
+            <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp" text="Help" />
           </Menu>
         </MenuBar>
 
-        <StackPane VBox.vgrow="NEVER" fx:id="commandBoxPlaceholder" styleClass="pane-with-border">
+        <StackPane fx:id="commandBoxPlaceholder" styleClass="pane-with-border" VBox.vgrow="NEVER">
           <padding>
-            <Insets top="5" right="10" bottom="5" left="10"/>
+            <Insets bottom="5" left="10" right="10" top="5" />
           </padding>
         </StackPane>
 
-        <StackPane VBox.vgrow="NEVER" fx:id="resultDisplayPlaceholder" styleClass="pane-with-border"
-          minHeight="100" prefHeight="100" maxHeight="100">
+        <StackPane fx:id="resultDisplayPlaceholder" maxHeight="100" minHeight="100" prefHeight="100" styleClass="pane-with-border" VBox.vgrow="NEVER">
           <padding>
-            <Insets top="5" right="10" bottom="5" left="10"/>
+            <Insets bottom="5" left="10" right="10" top="5" />
           </padding>
         </StackPane>
 
         <SplitPane fx:id="splitPane" dividerPositions="0.4" VBox.vgrow="ALWAYS">
           <!-- Left Side: Lists -->
-          <VBox fx:id="patientList" styleClass="pane-with-border" minWidth="340" prefWidth="340">
-            <Label text="Patient List:"/>
+          <VBox fx:id="patientList" minWidth="340" prefWidth="340" styleClass="pane-with-border">
             <padding>
-              <Insets top="10" right="10" bottom="10" left="10"/>
+              <Insets bottom="10" left="10" right="10" top="10" />
             </padding>
-            <StackPane fx:id="patientListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
-            <StackPane fx:id="appointmentListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+
+            <VBox VBox.vgrow="ALWAYS">
+              <!-- Top: Patient List -->
+              <VBox fx:id="patientListContainer">
+                <Label text="Patient List:" />
+                <StackPane fx:id="patientListPanelPlaceholder" />
+                        <VBox.margin>
+                           <Insets bottom="5.0" />
+                        </VBox.margin>
+              </VBox>
+
+              <!-- Bottom: Appointment List -->
+              <VBox fx:id="appointmentListContainer">
+                <Label text="Appointments:" />
+                <StackPane fx:id="appointmentListPanelPlaceholder" />
+                        <VBox.margin>
+                           <Insets top="5.0" />
+                        </VBox.margin>
+              </VBox>
+            </VBox>
           </VBox>
 
           <!-- Right Side: Details -->
           <VBox fx:id="dentistList" styleClass="pane-with-border">
-            <Label text="Dentist List:"/>
             <padding>
-              <Insets top="10" right="10" bottom="10" left="10"/>
+              <Insets bottom="10" left="10" right="10" top="10" />
             </padding>
-            <StackPane fx:id="dentistListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+            <Label text="Dentist List:" />
+            <StackPane fx:id="dentistListPanelPlaceholder" VBox.vgrow="ALWAYS" />
           </VBox>
         </SplitPane>
 
-        <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER"/>
+        <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER" />
       </VBox>
     </Scene>
   </scene>
