@@ -80,6 +80,7 @@ public interface Model {
 
     Patient getPatientById(long patientId);
 
+    Dentist getDentistById(long dentistId);
     /**
      * Deletes the given person.
      * The person must exist in the address book.
@@ -87,6 +88,7 @@ public interface Model {
     void deletePerson(Person target);
 
     void deletePatient(Patient patient);
+    void deleteDentist(Dentist dentist);
 
     /**
      * Adds the given person.

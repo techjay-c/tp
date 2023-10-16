@@ -136,6 +136,18 @@ public class ModelManager implements Model {
         return null;
     }
 
+    @Override
+    public Dentist getDentistById(long dentistId) {
+        requireNonNull(dentistId);
+        ObservableList<Dentist> filteredDentist = getFilteredDentistList();
+
+        for (Dentist dentist : filteredDentist) {
+            if (dentist.getId() == dentistId) {
+                return dentist;
+            }
+        }
+        return null;
+    }
 
     @Override
     public void deletePerson(Person target) {
@@ -145,6 +157,11 @@ public class ModelManager implements Model {
     @Override
     public void deletePatient(Patient patient) {
         addressBook.removePatient(patient);
+    }
+
+    @Override
+    public void deleteDentist(Dentist dentist) {
+        addressBook.removeDentist(dentist);
     }
 
     @Override
