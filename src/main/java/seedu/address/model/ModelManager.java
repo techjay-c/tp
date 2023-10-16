@@ -124,8 +124,27 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public Patient getPatientById(long patientId) {
+        requireNonNull(patientId);
+        ObservableList<Patient> filteredPatients = getFilteredPatientList();
+
+        for (Patient patient : filteredPatients) {
+            if (patient.getId() == patientId) {
+                return patient;
+            }
+        }
+        return null;
+    }
+
+
+    @Override
     public void deletePerson(Person target) {
         addressBook.removePerson(target);
+    }
+
+    @Override
+    public void deletePatient(Patient patient) {
+        addressBook.removePatient(patient);
     }
 
     @Override

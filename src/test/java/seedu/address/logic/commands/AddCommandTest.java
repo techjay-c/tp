@@ -144,7 +144,12 @@ public class AddCommandTest {
         }
 
         @Override
-        public void deletePerson(Person target) {
+        public void deletePerson(Person person) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deletePatient(Patient patient) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -210,6 +215,11 @@ public class AddCommandTest {
 
         @Override
         public boolean hasAppointment(Appointment appointment) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Patient getPatientById(long patientID) {
             throw new AssertionError("This method should not be called.");
         }
     }

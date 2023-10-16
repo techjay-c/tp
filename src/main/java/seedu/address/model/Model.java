@@ -78,18 +78,21 @@ public interface Model {
 
     boolean hasAppointment(Appointment appointment);
 
+    Patient getPatientById(long patientId);
+
     /**
      * Deletes the given person.
      * The person must exist in the address book.
      */
     void deletePerson(Person target);
 
+    void deletePatient(Patient patient);
+
     /**
      * Adds the given person.
      * {@code person} must not already exist in ToothTracker address book.
      */
     void addPerson(Person person);
-
 
     /**
      * Adds the given Patient.
@@ -145,4 +148,5 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPatientList(NameContainsKeywordsPredicate predicate);
+
 }
