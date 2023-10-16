@@ -14,7 +14,7 @@
 
 <fx:root type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/17"
          xmlns:fx="http://javafx.com/fxml/1"
-         title="ToothTracker" minWidth="450" minHeight="600" onCloseRequest="#handleExit">
+         title="ToothTracker" minWidth="650" minHeight="800" onCloseRequest="#handleExit">
   <icons>
     <Image url="@/images/address_book_32.png"/>
   </icons>
@@ -63,6 +63,9 @@
           <!-- Right Side: Details -->
           <VBox fx:id="dentistList" styleClass="pane-with-border">
             <Label text="Dentist List:"/>
+            <padding>
+              <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
             <StackPane fx:id="dentistListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
           </VBox>
         </SplitPane>

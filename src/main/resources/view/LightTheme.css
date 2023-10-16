@@ -284,11 +284,11 @@
 }
 
 .scroll-bar {
-    -fx-background-color: derive(#1d1d1d, 20%);
+    -fx-background-color: #FFFFFF;
 }
 
 .scroll-bar .thumb {
-    -fx-background-color: derive(#1d1d1d, 50%);
+    -fx-background-color: rgba(217, 217, 217, 0.8);
     -fx-background-insets: 3;
 }
 
@@ -343,7 +343,7 @@
 }
 
 #resultDisplay .content {
-    -fx-background-color: transparent, #383838, transparent, #383838;
+    -fx-background-color: transparent, #FFFFFF, transparent, #FFFFFF;
     -fx-background-radius: 0;
 }
 
