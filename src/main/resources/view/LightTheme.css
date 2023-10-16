@@ -133,7 +133,7 @@
 }
 
 .result-display .label {
-    -fx-background-color: #FFFFFF
+    -fx-background-color: #FFFFFF;
     -fx-text-fill: black !important;
 }
 

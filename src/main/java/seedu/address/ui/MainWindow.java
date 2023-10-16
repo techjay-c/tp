@@ -58,6 +58,9 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane resultDisplayPlaceholder;
 
     @FXML
+    private StackPane quickNotesPlaceholder;
+
+    @FXML
     private StackPane statusbarPlaceholder;
 
     /**
@@ -138,6 +141,10 @@ public class MainWindow extends UiPart<Stage> {
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+
+        QuickNotes quickNotes = new QuickNotes();
+        quickNotesPlaceholder.getChildren().add(quickNotes.getRoot());
+
     }
 
     /**
