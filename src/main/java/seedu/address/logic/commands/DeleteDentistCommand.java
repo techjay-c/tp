@@ -8,23 +8,23 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.patients.Patient;
+import seedu.address.model.person.dentist.Dentist;
 
 /**
- * Deletes a patient identified using it's displayed index from the address book.
+ * Deletes a dentist identified using it's displayed index from the address book.
  */
-public class DeletePatientCommand extends Command {
+public class DeleteDentistCommand extends Command {
 
-    public static final String COMMAND_WORD = "delete-patient";
+    public static final String COMMAND_WORD = "delete-dentist";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-        + ": Deletes the patient identified by the index number used in the displayed patient list.\n"
+        + ": Deletes the dentist identified by the index number used in the displayed dentist list.\n"
         + "Parameters: ID (must be a positive integer)\n"
         + "Example: " + COMMAND_WORD + " 1";
 
     private final long targetId;
 
-    public DeletePatientCommand(long targetId) {
+    public DeleteDentistCommand(long targetId) {
         this.targetId = targetId;
     }
 
@@ -33,18 +33,18 @@ public class DeletePatientCommand extends Command {
         requireNonNull(model);
 
         try {
-            Patient patientToDelete = model.getPatientById(targetId);
+            Dentist dentistToDelete = model.getDentistById(targetId);
 
-            if (patientToDelete == null) {
-                throw new CommandException(String.format(Messages.MESSAGE_NO_SUCH_PATIENT, targetId));
+            if (dentistToDelete == null) {
+                throw new CommandException(String.format(Messages.MESSAGE_NO_SUCH_DENTIST, targetId));
             }
 
-            model.deletePatient(patientToDelete);
+            model.deleteDentist(dentistToDelete);
             return new CommandResult(
-                    String.format(Messages.MESSAGE_DELETE_PATIENT_SUCCESS, Messages.format(patientToDelete)));
+                    String.format(Messages.MESSAGE_DELETE_DENTIST_SUCCESS, Messages.format(dentistToDelete)));
 
         } catch (Exception e) {
-            throw new CommandException("An error occurred while deleting the patient: " + e.getMessage());
+            throw new CommandException("An error occurred while deleting the dentist: " + e.getMessage());
         }
     }
 
@@ -54,12 +54,12 @@ public class DeletePatientCommand extends Command {
             return true;
         }
 
-        if (!(other instanceof DeletePatientCommand)) {
+        if (!(other instanceof DeleteDentistCommand)) {
             return false;
         }
 
-        DeletePatientCommand otherDeletePatientCommand = (DeletePatientCommand) other;
-        return Objects.equals(targetId, otherDeletePatientCommand.targetId);
+        DeleteDentistCommand otherDeleteDentistCommand = (DeleteDentistCommand) other;
+        return Objects.equals(targetId, otherDeleteDentistCommand.targetId);
     }
 
     @Override
