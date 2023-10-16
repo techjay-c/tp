@@ -92,7 +92,8 @@ public class AddressBookTest {
     public void toStringMethod() {
         String expected =
             AddressBook.class.getCanonicalName() + "{persons=" + addressBook.getPersonList()
-                + ", patients=" + addressBook.getPatientList() + "}";
+                + ", patients=" + addressBook.getPatientList()
+                + ", dentists=" + addressBook.getDentistList() + "}";
         assertEquals(expected, addressBook.toString());
     }
 
@@ -122,6 +123,11 @@ public class AddressBookTest {
 
         @Override
         public long getPatientId() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public long getDentistId() {
             throw new AssertionError("This method should not be called.");
         }
 
