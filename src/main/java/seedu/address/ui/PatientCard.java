@@ -48,7 +48,6 @@ public class PatientCard extends UiPart<Region> {
     private Label appointment;
     @FXML
     private Label service;
-
     @FXML
     private FlowPane patientId;
     @FXML
@@ -62,9 +61,8 @@ public class PatientCard extends UiPart<Region> {
         super(FXML);
         this.patient = patient;
         name.setText(patient.getName().fullName);
-        Label idLabel = new Label("[ID: " + String.valueOf(patient.getId()) + "]");
+        Label idLabel = new Label("ID: " + String.valueOf(patient.getId()));
         patientId.getChildren().add(idLabel);
-
         phone.setText("Phone: " + patient.getPhone().value);
         address.setText("Address: " + patient.getAddress().value);
         email.setText("Email: " + patient.getEmail().value);
