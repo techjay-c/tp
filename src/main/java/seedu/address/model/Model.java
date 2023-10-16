@@ -20,6 +20,7 @@ public interface Model {
      */
     Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
     Predicate<Patient> PREDICATE_SHOW_ALL_PATIENTS = unused -> true;
+    Predicate<Dentist> PREDICATE_SHOW_ALL_DENTISTS = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -156,6 +157,6 @@ public interface Model {
      *
      * @throws NullPointerException if {@code predicate} is null.
      */
+    void updateFilteredDentistList(Predicate<Dentist> predicate);
     void updateFilteredDentistList(NameContainsKeywordsPredicate predicate);
-
 }
