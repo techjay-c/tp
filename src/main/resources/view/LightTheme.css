@@ -78,7 +78,8 @@
 
 .split-pane:horizontal .split-pane-divider {
     -fx-background-color: #F4F4F4;
-    -fx-border-color: transparent transparent transparent #4d4d4d;
+    -fx-border-color: transparent #4d4d4d transparent transparent;
+    -fx-padding: 0 3 0 0;
 }
 
 .split-pane {
@@ -127,6 +128,10 @@
 
 .result-display {
     -fx-background-color: #FFFFFF;
+    -fx-background-insets: 0;
+    -fx-border-color: #D6D6D6;
+    -fx-border-insets: 0;
+    -fx-border-width: 1;
     -fx-font-family: "Segoe UI Light";
     -fx-font-size: 13pt;
     -fx-text-fill: black;
@@ -329,6 +334,7 @@
 #tags {
     -fx-hgap: 7;
     -fx-vgap: 3;
+    -fx-padding: 2 0 0 0;
 }
 
 #tags .label {
@@ -359,6 +365,7 @@
     -fx-font-size: 13px;
     -fx-font-weight: bold;
     -fx-text-fill: black;
+    -fx-padding: 1 0 1 0;
 }
 
 #patientId {
