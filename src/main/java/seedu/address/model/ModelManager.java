@@ -4,8 +4,6 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
-import java.util.List;
-import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -123,17 +121,6 @@ public class ModelManager implements Model {
     public boolean hasAppointment(Appointment appointment) {
         requireNonNull(appointment);
         return addressBook.hasAppointment(appointment);
-    }
-
-    @Override
-    public Optional<Dentist> searchDentistById(long dentistID) {
-        ObservableList<Dentist> dentistList = getFilteredDentistList();
-        for (Dentist dentist: dentistList) {
-            if (dentist.getId() == dentistID) {
-                return Optional.of(dentist);
-            }
-        }
-        return Optional.empty();
     }
 
     @Override
