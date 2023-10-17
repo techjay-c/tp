@@ -1,52 +1,59 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
 
-  {%- include head.html -%}
+{%- include head.html -%}
 
-  <body>
+<body>
 
-  {%- include header.html -%}
+{%- include header.html -%}
 
+<main class="page-content" aria-label="Content">
   <div id="flex-body">
     <nav id="site-nav">
       <div class="site-nav-top">
         <div class="fw-bold mb-2" style="font-size: 1.25rem;">Site Map</div>
       </div>
-      <div class="nav-component slim-scroll">
-        <site-nav>
-          * [Home]({{ baseUrl }}/index.html)
-          * [User Guide]({{ baseUrl }}/UserGuide.html) :expanded:
-          * [Quick Start]({{ baseUrl }}/UserGuide.html#quick-start)
-          * [Features]({{ baseUrl }}/UserGuide.html#features)
-          * [FAQ]({{ baseUrl }}/UserGuide.html#faq)
-          * [Command Summary]({{ baseUrl }}/UserGuide.html#faq)
-          * [Developer Guide]({{ baseUrl }}/DeveloperGuide.html) :expanded:
-          * [Acknowledgements]({{ baseUrl }}/DeveloperGuide.html#acknowledgements)
-          * [Setting Up]({{ baseUrl }}/DeveloperGuide.html#setting-up-getting-started)
-          * [Design]({{ baseUrl }}/DeveloperGuide.html#design)
-          * [Implementation]({{ baseUrl }}/DeveloperGuide.html#implementation)
-          * [Documentation, logging, testing, configuration, dev-ops]({{ baseUrl }}/DeveloperGuide.html#documentation-logging-testing-configuration-dev-ops)
-          * [Appendix: Requirements]({{ baseUrl }}/DeveloperGuide.html#appendix-requirements)
-          * [Appendix: Instructions for manual testing]({{ baseUrl }}/DeveloperGuide.html#appendix-instructions-for-manual-testing)
-          * Tutorials
-          * [Tracing code]({{ baseUrl }}/tutorials/TracingCode.html)
-          * [Adding a command]({{ baseUrl }}/tutorials/AddRemark.html)
-          * [Removing Fields]({{ baseUrl }}/tutorials/RemovingFields.html)
-          * [About Us]({{ baseUrl }}/AboutUs.html)
-        </site-nav>
-      </div>
+      <ul class="sitemap">
+        <li><a href="{{baseUrl}}/index.html">Home</a></li>
+        <li>
+          <a href="{{baseUrl}}/UserGuide.html">User Guide</a>
+          <ul>
+            <li><a href="{{baseUrl}}/UserGuide.html#quick-start">Quick Start</a></li>
+            <li><a href="{{baseUrl}}/UserGuide.html#features">Features</a></li>
+            <li><a href="{{baseUrl}}/UserGuide.html#faq">FAQ</a></li>
+            <li><a href="{{baseUrl}}/UserGuide.html#command-summary">Command Summary</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="{{baseUrl}}/DeveloperGuide.html">Developer Guide</a>
+          <ul>
+            <li><a href="{{baseUrl}}/DeveloperGuide.html#acknowledgements">Acknowledgements</a></li>
+            <li><a href="{{baseUrl}}/DeveloperGuide.html#setting-up-getting-started">Setting Up & Getting Started</a></li>
+            <li><a href="{{baseUrl}}/DeveloperGuide.html#design">Design</a></li>
+            <li><a href="{{baseUrl}}/DeveloperGuide.html#implementation">Implementation</a></li>
+            <li><a href="{{baseUrl}}/DeveloperGuide.html#documentation-logging-testing-configuration-dev-ops">Documentation, Logging, Testing, Configuration, Dev-Ops</a></li>
+            <li><a href="{{baseUrl}}/DeveloperGuide.html#appendix-requirements">Appendix: Requirements</a></li>
+            <li><a href="{{baseUrl}}/DeveloperGuide.html#appendix-instructions-for-manual-testing">Appendix: Instructions for Manual Testing</a></li>
+          </ul>
+        </li>
+        <li><a href="{{baseUrl}}/AboutUs.html">About Us</a></li>
+      </ul>
+
     </nav>
+
     <div id="content-wrapper">
       {{ content }}
     </div>
+
     <nav id="page-nav">
       <div class="nav-component slim-scroll">
         <page-nav />
       </div>
     </nav>
-    <scroll-top-button></scroll-top-button>
+
   </div>
+  <scroll-top-button></scroll-top-button>
+</main>
 
-  </body>
-
+</body>
 </html>

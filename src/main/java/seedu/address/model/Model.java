@@ -5,14 +5,23 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.appointments.Appointment;
+import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.dentist.Dentist;
+import seedu.address.model.person.patients.Patient;
 
 /**
  * The API of the Model component.
  */
 public interface Model {
-    /** {@code Predicate} that always evaluate to true */
+
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
     Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
+    Predicate<Patient> PREDICATE_SHOW_ALL_PATIENTS = unused -> true;
+    Predicate<Dentist> PREDICATE_SHOW_ALL_DENTISTS = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -49,39 +58,108 @@ public interface Model {
      */
     void setAddressBook(ReadOnlyAddressBook addressBook);
 
-    /** Returns the AddressBook */
+    /**
+     * Returns the AddressBook
+     */
     ReadOnlyAddressBook getAddressBook();
 
     /**
-     * Returns true if a person with the same identity as {@code person} exists in the address book.
+     * Returns true if a person with the same identity as {@code person} exists in ToothTracker
+     * address book.
      */
     boolean hasPerson(Person person);
 
     /**
-     * Deletes the given person.
-     * The person must exist in the address book.
+     * Returns true if a patient with the same identity as {@code person} exists in the address
+     * book.
+     */
+    boolean hasPatient(Patient person);
+
+    /**
+     * Returns true if a dentist with the same identity as {@code dentist} exists in ToothTracker
+     * address book.
+     */
+    boolean hasDentist(Dentist dentist);
+
+    boolean hasAppointment(Appointment appointment);
+
+    Patient getPatientById(long patientId);
+
+    Dentist getDentistById(long dentistId);
+
+    /**
+     * Deletes the given person. The person must exist in the address book.
      */
     void deletePerson(Person target);
 
+    void deletePatient(Patient patient);
+
+    void deleteDentist(Dentist dentist);
+
     /**
-     * Adds the given person.
-     * {@code person} must not already exist in the address book.
+     * Adds the given person. {@code person} must not already exist in ToothTracker address book.
      */
     void addPerson(Person person);
 
     /**
-     * Replaces the given person {@code target} with {@code editedPerson}.
-     * {@code target} must exist in the address book.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
+     * Adds the given Patient. {@code Patient} must not already exist in the address book.
+     */
+    void addPatient(Patient patient);
+
+    /**
+     * Adds the given dentist. {@code dentist} must not already exist in ToothTracker address book.
+     */
+    void addDentist(Dentist dentist);
+
+    /**
+     * Adds the given appointment.
+     */
+    void addAppointment(Appointment appointment);
+
+    /**
+     * Replaces the given person {@code target} with {@code editedPerson}. {@code target} must exist
+     * in the address book. The person identity of {@code editedPerson} must not be the same as
+     * another existing person in the address book.
      */
     void setPerson(Person target, Person editedPerson);
 
-    /** Returns an unmodifiable view of the filtered person list */
+    /**
+     * Returns an unmodifiable view of the filtered person list
+     */
     ObservableList<Person> getFilteredPersonList();
 
     /**
+     * Returns an unmodifiable view of the filtered patient list
+     */
+    ObservableList<Patient> getFilteredPatientList();
+
+    /**
+     * Returns an unmodifiable view of the filtered dentist list
+     */
+    ObservableList<Dentist> getFilteredDentistList();
+
+    ObservableList<Appointment> getFilteredAppointmentList();
+
+    /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
+
+    /**
+     * Updates the filter of the filtered patient list to filter by the given {@code predicate}.
+     *
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredPatientList(Predicate<Patient> predicate);
+
+    /**
+     * Updates the filter of the filtered dentist list to filter by the given {@code predicate}.
+     *
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredDentistList(Predicate<Dentist> predicate);
+
+    void updateFilteredDentistList(NameContainsKeywordsPredicate predicate);
 }

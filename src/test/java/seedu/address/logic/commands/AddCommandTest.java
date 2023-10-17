@@ -22,7 +22,11 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.appointments.Appointment;
+import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.dentist.Dentist;
+import seedu.address.model.person.patients.Patient;
 import seedu.address.testutil.PersonBuilder;
 
 public class AddCommandTest {
@@ -40,7 +44,7 @@ public class AddCommandTest {
         CommandResult commandResult = new AddCommand(validPerson).execute(modelStub);
 
         assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, Messages.format(validPerson)),
-                commandResult.getFeedbackToUser());
+            commandResult.getFeedbackToUser());
         assertEquals(Arrays.asList(validPerson), modelStub.personsAdded);
     }
 
@@ -88,6 +92,7 @@ public class AddCommandTest {
      * A default model stub that have all of the methods failing.
      */
     private class ModelStub implements Model {
+
         @Override
         public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
             throw new AssertionError("This method should not be called.");
@@ -139,7 +144,17 @@ public class AddCommandTest {
         }
 
         @Override
-        public void deletePerson(Person target) {
+        public void deletePerson(Person person) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deletePatient(Patient patient) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deleteDentist(Dentist dentist) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -157,12 +172,82 @@ public class AddCommandTest {
         public void updateFilteredPersonList(Predicate<Person> predicate) {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public void updateFilteredPatientList(Predicate<Patient> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredDentistList(Predicate<Dentist> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+        @Override
+        public void updateFilteredDentistList(NameContainsKeywordsPredicate predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Patient> getFilteredPatientList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Dentist> getFilteredDentistList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Appointment> getFilteredAppointmentList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addPatient(Patient patient) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addDentist(Dentist dentist) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addAppointment(Appointment appointment) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasPatient(Patient patient) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasDentist(Dentist dentist) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasAppointment(Appointment appointment) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Patient getPatientById(long patientId) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Dentist getDentistById(long dentistId) {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**
      * A Model stub that contains a single person.
      */
     private class ModelStubWithPerson extends ModelStub {
+
         private final Person person;
 
         ModelStubWithPerson(Person person) {
@@ -181,6 +266,7 @@ public class AddCommandTest {
      * A Model stub that always accept the person being added.
      */
     private class ModelStubAcceptingPersonAdded extends ModelStub {
+
         final ArrayList<Person> personsAdded = new ArrayList<>();
 
         @Override

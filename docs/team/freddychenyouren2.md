@@ -7,7 +7,7 @@ title: Freddy Chen You Ren - Project Portfolio
 
 ### Overview
 
-ToothTracker, an all-in-one solution for Front Desk Dental Clinic Administrative Staff to manage patient and dentist records efficiently. 
+ToothTracker, an all-in-one solution for Front Desk Dental Clinic Administrative Staff to manage patient and dentist records efficiently.
 You can interact with ToothTracker via a Command Line Interface (CLI)
 along with a Graphical User Interface (GUI) created with JavaFX.
 ToothTracker is written in Java and only Java 11 supports ToothTracker.
@@ -46,7 +46,7 @@ With ToothTracker, you can add new student and dentist profiles, delete records,
 
 ### Contributions to User Guide
 
-The following section describes my contributions to the User Guide of ToothTracker. 
+The following section describes my contributions to the User Guide of ToothTracker.
 These documentations are meant for ToothTracker's end-users: Front line dental clinic administrative staff
 
 * _{you can add/remove categories in the list above}_
