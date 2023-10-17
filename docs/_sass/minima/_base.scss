@@ -1,5 +1,6 @@
 html {
   font-size: $base-font-size;
+  --sticky-header-height: 60px;
 }
 
 /**
@@ -290,6 +291,7 @@ table {
   .site-header:before {
     content: "ToothTracker";
     font-size: 32px;
+    z-index: 0;
   }
 }
 
