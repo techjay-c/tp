@@ -33,63 +33,63 @@ public class EditDentistCommandParser implements Parser<EditDentistCommand> {
      */
     public EditDentistCommand parse(String args) throws ParseException {
         requireNonNull(args);
-        String[] argsArray = args.split("\\s+");
-        String firstArg = argsArray[0].trim();
-        long dentistId = Long.parseLong(firstArg);
-
-        ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args,
-                        PREFIX_NAME,
-                        PREFIX_PHONE,
-                        PREFIX_EMAIL,
-                        PREFIX_ADDRESS,
-                        PREFIX_SPECIALIZATION,
-                        PREFIX_YOE,
-                        PREFIX_TAG);
-
-
-        //try {
-        //    dentistId = ParserUtil.parseIndex(argMultimap.getPreamble());
-        //} catch (ParseException pe) {
-        //    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE), pe);
-        //}
-
-        argMultimap.verifyNoDuplicatePrefixesFor(
-                PREFIX_NAME,
-                PREFIX_PHONE,
-                PREFIX_EMAIL,
-                PREFIX_ADDRESS,
-                PREFIX_SPECIALIZATION,
-                PREFIX_YOE,
-                PREFIX_TAG);
-
-        EditDentistCommand.EditDentistDescriptor editDentistDescriptor = new EditDentistDescriptor();
-
-        if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
-            editDentistDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()));
-        }
-        if (argMultimap.getValue(PREFIX_PHONE).isPresent()) {
-            editDentistDescriptor.setPhone(ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get()));
-        }
-        if (argMultimap.getValue(PREFIX_EMAIL).isPresent()) {
-            editDentistDescriptor.setEmail(ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get()));
-        }
-        if (argMultimap.getValue(PREFIX_ADDRESS).isPresent()) {
-            editDentistDescriptor.setAddress(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get()));
-        }
-        if (argMultimap.getValue(PREFIX_SPECIALIZATION).isPresent()) {
-            editDentistDescriptor.setSpecialization(ParserUtil.parseSpecialization(argMultimap.getValue(PREFIX_SPECIALIZATION).get()));
-        }
-        if (argMultimap.getValue(PREFIX_YOE).isPresent()) {
-            editDentistDescriptor.setYoe(ParserUtil.parseYoe(argMultimap.getValue(PREFIX_YOE).get()));
-        }
-        parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editDentistDescriptor::setTags);
-
-        if (!editDentistDescriptor.isAnyFieldEdited()) {
-            throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
-        }
-
         try {
+            String[] argsArray = args.split("\\s+");
+            String firstArg = argsArray[0].trim();
+            long dentistId = Long.parseLong(firstArg);
+
+            ArgumentMultimap argMultimap =
+                    ArgumentTokenizer.tokenize(args,
+                            PREFIX_NAME,
+                            PREFIX_PHONE,
+                            PREFIX_EMAIL,
+                            PREFIX_ADDRESS,
+                            PREFIX_SPECIALIZATION,
+                            PREFIX_YOE,
+                            PREFIX_TAG);
+
+
+            //try {
+            //    dentistId = ParserUtil.parseIndex(argMultimap.getPreamble());
+            //} catch (ParseException pe) {
+            //    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE), pe);
+            //}
+
+            argMultimap.verifyNoDuplicatePrefixesFor(
+                    PREFIX_NAME,
+                    PREFIX_PHONE,
+                    PREFIX_EMAIL,
+                    PREFIX_ADDRESS,
+                    PREFIX_SPECIALIZATION,
+                    PREFIX_YOE,
+                    PREFIX_TAG);
+
+            EditDentistCommand.EditDentistDescriptor editDentistDescriptor = new EditDentistDescriptor();
+
+            if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
+                editDentistDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()));
+            }
+            if (argMultimap.getValue(PREFIX_PHONE).isPresent()) {
+                editDentistDescriptor.setPhone(ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get()));
+            }
+            if (argMultimap.getValue(PREFIX_EMAIL).isPresent()) {
+                editDentistDescriptor.setEmail(ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get()));
+            }
+            if (argMultimap.getValue(PREFIX_ADDRESS).isPresent()) {
+                editDentistDescriptor.setAddress(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get()));
+            }
+            if (argMultimap.getValue(PREFIX_SPECIALIZATION).isPresent()) {
+                editDentistDescriptor.setSpecialization(ParserUtil.parseSpecialization(argMultimap.getValue(PREFIX_SPECIALIZATION).get()));
+            }
+            if (argMultimap.getValue(PREFIX_YOE).isPresent()) {
+                editDentistDescriptor.setYoe(ParserUtil.parseYoe(argMultimap.getValue(PREFIX_YOE).get()));
+            }
+            parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editDentistDescriptor::setTags);
+
+            if (!editDentistDescriptor.isAnyFieldEdited()) {
+                throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
+            }
+
             return new EditDentistCommand(dentistId, editDentistDescriptor);
         } catch (NumberFormatException | NullPointerException e) {
             throw new ParseException(
