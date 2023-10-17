@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.appointments.Appointment;
+import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.patients.Patient;
@@ -14,6 +15,7 @@ import seedu.address.model.person.patients.Patient;
  * The API of the Model component.
  */
 public interface Model {
+
     /**
      * {@code Predicate} that always evaluate to true
      */
@@ -62,17 +64,20 @@ public interface Model {
     ReadOnlyAddressBook getAddressBook();
 
     /**
-     * Returns true if a person with the same identity as {@code person} exists in ToothTracker address book.
+     * Returns true if a person with the same identity as {@code person} exists in ToothTracker
+     * address book.
      */
     boolean hasPerson(Person person);
 
     /**
-     * Returns true if a patient with the same identity as {@code person} exists in the address book.
+     * Returns true if a patient with the same identity as {@code person} exists in the address
+     * book.
      */
     boolean hasPatient(Patient person);
 
     /**
-     * Returns true if a dentist with the same identity as {@code dentist} exists in ToothTracker address book.
+     * Returns true if a dentist with the same identity as {@code dentist} exists in ToothTracker
+     * address book.
      */
     boolean hasDentist(Dentist dentist);
 
@@ -81,30 +86,28 @@ public interface Model {
     Patient getPatientById(long patientId);
 
     Dentist getDentistById(long dentistId);
+
     /**
-     * Deletes the given person.
-     * The person must exist in the address book.
+     * Deletes the given person. The person must exist in the address book.
      */
     void deletePerson(Person target);
 
     void deletePatient(Patient patient);
+
     void deleteDentist(Dentist dentist);
 
     /**
-     * Adds the given person.
-     * {@code person} must not already exist in ToothTracker address book.
+     * Adds the given person. {@code person} must not already exist in ToothTracker address book.
      */
     void addPerson(Person person);
 
     /**
-     * Adds the given Patient.
-     * {@code Patient} must not already exist in the address book.
+     * Adds the given Patient. {@code Patient} must not already exist in the address book.
      */
     void addPatient(Patient patient);
 
     /**
-     * Adds the given dentist.
-     * {@code dentist} must not already exist in ToothTracker address book.
+     * Adds the given dentist. {@code dentist} must not already exist in ToothTracker address book.
      */
     void addDentist(Dentist dentist);
 
@@ -114,9 +117,9 @@ public interface Model {
     void addAppointment(Appointment appointment);
 
     /**
-     * Replaces the given person {@code target} with {@code editedPerson}.
-     * {@code target} must exist in the address book.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
+     * Replaces the given person {@code target} with {@code editedPerson}. {@code target} must exist
+     * in the address book. The person identity of {@code editedPerson} must not be the same as
+     * another existing person in the address book.
      */
     void setPerson(Person target, Person editedPerson);
 
@@ -157,5 +160,6 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredDentistList(Predicate<Dentist> predicate);
+
     void updateFilteredDentistList(NameContainsKeywordsPredicate predicate);
 }

@@ -21,8 +21,8 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.ListDentistsCommand;
-import seedu.address.logic.commands.SearchDentistCommand;
 import seedu.address.logic.commands.ListPatientCommand;
+import seedu.address.logic.commands.SearchDentistCommand;
 import seedu.address.logic.commands.SearchPatientCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
