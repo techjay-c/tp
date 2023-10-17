@@ -94,7 +94,7 @@ public class EditDentistCommand extends Command {
 
         } catch (Exception e) {
             throw new CommandException("An error occurred while editing the dentist: " + e.getMessage()
-                    + "Please use list-dentists or search-dentist to get the Dentist ID on the screen first.");
+                    + " Please use list-dentists or search-dentist to get the intended Dentist on the screen first.");
         }
 
     }
@@ -112,7 +112,7 @@ public class EditDentistCommand extends Command {
         Address updatedAddress = editDentistDescriptor.getAddress().orElse(dentistToEdit.getAddress());
         Specialization updatedSpecialization = editDentistDescriptor.getSpecialization().orElse(dentistToEdit.getSpecialization());
         Yoe updatedYoe = editDentistDescriptor.getYoe().orElse(dentistToEdit.getYoe());
-        long dentistIdRemains = editDentistDescriptor.getDentistId().orElse(dentistToEdit.getId());
+        long dentistIdRemains = dentistToEdit.getId(); //ID Must not change!
         Set<Tag> updatedTags = editDentistDescriptor.getTags().orElse(dentistToEdit.getTags());
 
         return new Dentist(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedSpecialization,

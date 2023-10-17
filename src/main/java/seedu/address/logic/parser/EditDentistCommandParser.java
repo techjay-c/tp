@@ -34,7 +34,7 @@ public class EditDentistCommandParser implements Parser<EditDentistCommand> {
     public EditDentistCommand parse(String args) throws ParseException {
         requireNonNull(args);
         try {
-            String[] argsArray = args.split("\\s+");
+            String[] argsArray = args.trim().split("\\s+");
             String firstArg = argsArray[0].trim();
             long dentistId = Long.parseLong(firstArg);
 
