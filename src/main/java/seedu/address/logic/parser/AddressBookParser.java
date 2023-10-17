@@ -72,13 +72,11 @@ public class AddressBookParser {
 
         case EditCommand.COMMAND_WORD:
             return new EditCommandParser().parse(arguments);
-
         case EditDentistCommand.COMMAND_WORD:
-            return new EditDentistCommandParser().parse(arguments)
-;
+            return new EditDentistCommandParser().parse(arguments);
+
         case DeletePatientCommand.COMMAND_WORD:
             return new DeletePatientCommandParser().parse(arguments);
-
         case DeleteDentistCommand.COMMAND_WORD:
             return new DeleteDentistCommandParser().parse(arguments);
 

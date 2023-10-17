@@ -48,13 +48,6 @@ public class EditDentistCommandParser implements Parser<EditDentistCommand> {
                             PREFIX_YOE,
                             PREFIX_TAG);
 
-
-            //try {
-            //    dentistId = ParserUtil.parseIndex(argMultimap.getPreamble());
-            //} catch (ParseException pe) {
-            //    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE), pe);
-            //}
-
             argMultimap.verifyNoDuplicatePrefixesFor(
                     PREFIX_NAME,
                     PREFIX_PHONE,
@@ -79,7 +72,8 @@ public class EditDentistCommandParser implements Parser<EditDentistCommand> {
                 editDentistDescriptor.setAddress(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get()));
             }
             if (argMultimap.getValue(PREFIX_SPECIALIZATION).isPresent()) {
-                editDentistDescriptor.setSpecialization(ParserUtil.parseSpecialization(argMultimap.getValue(PREFIX_SPECIALIZATION).get()));
+                editDentistDescriptor.setSpecialization(
+                        ParserUtil.parseSpecialization(argMultimap.getValue(PREFIX_SPECIALIZATION).get()));
             }
             if (argMultimap.getValue(PREFIX_YOE).isPresent()) {
                 editDentistDescriptor.setYoe(ParserUtil.parseYoe(argMultimap.getValue(PREFIX_YOE).get()));

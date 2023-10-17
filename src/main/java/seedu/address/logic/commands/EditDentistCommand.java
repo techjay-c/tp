@@ -110,7 +110,8 @@ public class EditDentistCommand extends Command {
         Phone updatedPhone = editDentistDescriptor.getPhone().orElse(dentistToEdit.getPhone());
         Email updatedEmail = editDentistDescriptor.getEmail().orElse(dentistToEdit.getEmail());
         Address updatedAddress = editDentistDescriptor.getAddress().orElse(dentistToEdit.getAddress());
-        Specialization updatedSpecialization = editDentistDescriptor.getSpecialization().orElse(dentistToEdit.getSpecialization());
+        Specialization updatedSpecialization = editDentistDescriptor.getSpecialization()
+                .orElse(dentistToEdit.getSpecialization());
         Yoe updatedYoe = editDentistDescriptor.getYoe().orElse(dentistToEdit.getYoe());
         long dentistIdRemains = dentistToEdit.getId(); //ID Must not change!
         Set<Tag> updatedTags = editDentistDescriptor.getTags().orElse(dentistToEdit.getTags());
