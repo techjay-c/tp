@@ -1,15 +1,15 @@
 package seedu.address.ui;
 
-import javafx.event.ActionEvent;
-import java.io.IOException;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import javafx.fxml.FXML;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.Region;
@@ -32,6 +32,9 @@ public class QuickNotes extends UiPart<Region> {
     @FXML
     private Button clearButton;
 
+    /**
+     * Creates a {@code QuickNotes}.
+     */
     public QuickNotes() {
         super(FXML);
         initialize();
@@ -45,7 +48,7 @@ public class QuickNotes extends UiPart<Region> {
         quickNotes.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if(!oldValue.equals(newValue)) {
+                if (!oldValue.equals(newValue)) {
                     getRoot().getStyleClass().remove("saved-notes");
                 }
             }
