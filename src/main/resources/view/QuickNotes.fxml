@@ -6,8 +6,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane fx:id="placeHolder" styleClass="pane-with-border" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
-  <TextArea fx:id="quickNotes" editable="true" prefHeight="100" promptText="Type your notes here..." wrapText="true" />
+<StackPane fx:id="placeHolder" styleClass="stack-pane" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+  <TextArea fx:id="quickNotes" prefHeight="100" promptText="Type your notes here..." wrapText="true"/>
 
   <HBox alignment="BOTTOM_RIGHT" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity"
         minHeight="-Infinity" minWidth="-Infinity" spacing="10" StackPane.alignment="BOTTOM_RIGHT">
@@ -18,7 +18,7 @@
     </Button>
     <Button fx:id="clearButton" onAction="#handleClearNotes" text="Clear">
          <HBox.margin>
-            <Insets bottom="3.0" />
+            <Insets bottom="3.0" right="5.0" />
          </HBox.margin>
     </Button>
   </HBox>

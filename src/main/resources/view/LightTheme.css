@@ -116,6 +116,7 @@
 
 .stack-pane {
      -fx-background-color: #F4F4F4;
+     -fx-border-color: transparent;
 }
 
 .pane-with-border {
@@ -351,6 +352,46 @@
     -fx-text-color: #000000;
     -fx-text-fill: black;
     -fx-text-style: bold;
+}
+
+.saved-notes {
+    -fx-background-color: #FFFFFF;
+    -fx-background-insets: 0;
+    -fx-border-color: green;
+    -fx-border-insets: 0;
+    -fx-border-width: 1;
+}
+
+#quickNotes {
+    -fx-background-color: #FFFFFF;
+    -fx-background-insets: 0;
+    -fx-border-color: #D6D6D6;
+    -fx-border-insets: 0;
+    -fx-border-width: 1;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: black;
+}
+
+#quickNotes.text-area {
+    -fx-background-insets: 0;
+    -fx-background-color: transparent, white, transparent, white;
+}
+
+#quickNotes.text-area .content {
+    -fx-background-color: transparent, white, transparent, white;
+}
+
+#quickNotes.text-area:focused .content {
+    -fx-background-color: transparent, white, transparent, white;
+}
+
+#quickNotes.text-area:focused {
+    -fx-highlight-fill: #FFFFFF;
+}
+
+#quickNotes.text-area .content {
+    -fx-text-fill: gray;
+    -fx-highlight-fill: #FFFFFF;
 }
 
 /** Patient and Dentist Cards */

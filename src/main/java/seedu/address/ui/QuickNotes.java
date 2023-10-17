@@ -8,6 +8,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import javafx.fxml.FXML;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.Region;
@@ -39,7 +41,17 @@ public class QuickNotes extends UiPart<Region> {
         saveButton.setOnAction(this::handleSaveNotes);
         clearButton.setOnAction(this::handleClearNotes);
         loadNotesOnStartup();
+
+        quickNotes.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(!oldValue.equals(newValue)) {
+                    getRoot().getStyleClass().remove("saved-notes");
+                }
+            }
+        });
     }
+
 
     @FXML
     private void handleSaveNotes(ActionEvent event) {
@@ -54,6 +66,9 @@ public class QuickNotes extends UiPart<Region> {
             e.printStackTrace();
             // Insert error message
         }
+
+        // Change the style of the TextArea after saving
+        getRoot().getStyleClass().add("saved-notes");
     }
 
     @FXML
