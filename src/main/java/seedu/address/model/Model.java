@@ -1,6 +1,7 @@
 package seedu.address.model;
 
 import java.nio.file.Path;
+import java.util.Optional;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
@@ -162,4 +163,6 @@ public interface Model {
     void updateFilteredDentistList(Predicate<Dentist> predicate);
 
     void updateFilteredDentistList(NameContainsKeywordsPredicate predicate);
+
+    Optional<Dentist> searchDentistById(long dentistID);
 }
