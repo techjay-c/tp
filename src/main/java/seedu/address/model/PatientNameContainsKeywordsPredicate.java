@@ -10,6 +10,7 @@ import seedu.address.model.person.patients.Patient;
  * Tests that a {@code Person}'s {@code Name} matches any of the keywords given.
  */
 public class PatientNameContainsKeywordsPredicate implements Predicate<Patient> {
+
     private final List<String> keywords;
 
     public PatientNameContainsKeywordsPredicate(List<String> keywords) {
@@ -19,7 +20,8 @@ public class PatientNameContainsKeywordsPredicate implements Predicate<Patient> 
     @Override
     public boolean test(Patient person) {
         return keywords.stream()
-                .anyMatch(keyword -> person.getName().fullName.toLowerCase().contains(keyword.toLowerCase()));
+            .anyMatch(
+                keyword -> person.getName().fullName.toLowerCase().contains(keyword.toLowerCase()));
     }
 
     @Override
@@ -33,7 +35,8 @@ public class PatientNameContainsKeywordsPredicate implements Predicate<Patient> 
             return false;
         }
 
-        PatientNameContainsKeywordsPredicate otherNameContainsKeywordsPredicate = (PatientNameContainsKeywordsPredicate) other;
+        PatientNameContainsKeywordsPredicate otherNameContainsKeywordsPredicate =
+            (PatientNameContainsKeywordsPredicate) other;
         return keywords.equals(otherNameContainsKeywordsPredicate.keywords);
     }
 
