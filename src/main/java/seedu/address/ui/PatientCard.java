@@ -48,9 +48,8 @@ public class PatientCard extends UiPart<Region> {
     private Label appointment;
     @FXML
     private Label service;
-
     @FXML
-    private Label patientid;
+    private FlowPane patientId;
     @FXML
     private FlowPane tags;
 
@@ -61,8 +60,9 @@ public class PatientCard extends UiPart<Region> {
     public PatientCard(Patient patient, int displayedIndex) {
         super(FXML);
         this.patient = patient;
-        id.setText(displayedIndex + ". ");
         name.setText(patient.getName().fullName);
+        Label idLabel = new Label("ID: " + String.valueOf(patient.getId()));
+        patientId.getChildren().add(idLabel);
         phone.setText("Phone: " + patient.getPhone().value);
         address.setText("Address: " + patient.getAddress().value);
         email.setText("Email: " + patient.getEmail().value);
@@ -70,7 +70,6 @@ public class PatientCard extends UiPart<Region> {
         birthdate.setText("Birthday: " + patient.getBirthdate().value);
         appointment.setText("Appointment: " + patient.getAppointmentdate().value);
         service.setText("Service: " + patient.getService().value);
-        patientid.setText("ID: " + String.valueOf(patient.getId()));
 
         patient.getTags().stream()
             .sorted(Comparator.comparing(tag -> tag.tagName))
