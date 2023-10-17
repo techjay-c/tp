@@ -154,6 +154,8 @@ public interface Model {
      */
     void updateFilteredPatientList(Predicate<Patient> predicate);
 
+    void updateFilteredPatientList(NameContainsKeywordsPredicate predicate);
+
     /**
      * Updates the filter of the filtered dentist list to filter by the given {@code predicate}.
      *
