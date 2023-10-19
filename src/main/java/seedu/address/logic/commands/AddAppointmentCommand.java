@@ -33,7 +33,7 @@ public class AddAppointmentCommand extends Command {
             + PREFIX_DURATION + "PT1H30M "
             + PREFIX_SERVICE + "Braces";
 
-    public static final String MESSAGE_SUCCESS = "New Appointment added: 1$s%";
+    public static final String MESSAGE_SUCCESS = "New Appointment added: %1$s";
 
     public static final String MESSAGE_CLASHING_APPOINTMENTS = "This Appointment clashes with a current one.";
 
