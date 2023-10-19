@@ -41,4 +41,10 @@ public interface ReadOnlyAddressBook {
      * Returns an integer which represents the next available dentist id
      */
     long getDentistId();
+
+    /**
+     * Returns an integer which represents the next available appointment id
+     */
+    long getAppointmentId();
+
 }

@@ -19,6 +19,7 @@ public class JsonAdaptedAppointment {
     private final String start;
     private final String duration;
     private final String treatment;
+    private final String id;
 
     /**
      * Constructs a {@code JsonAdaptedAppointment} with the given appointment details.
@@ -32,12 +33,13 @@ public class JsonAdaptedAppointment {
     @JsonCreator
     public JsonAdaptedAppointment(@JsonProperty("dentist") String dentist, @JsonProperty("patient") String patient,
                              @JsonProperty("start") String start, @JsonProperty("duration") String duration,
-                                  @JsonProperty("treatment") String treatment) {
+                                  @JsonProperty("treatment") String treatment, @JsonProperty("id") String id) {
         this.dentist = dentist;
         this.patient = patient;
         this.start = start;
         this.duration = duration;
         this.treatment = treatment;
+        this.id = id;
 
     }
 
@@ -52,6 +54,7 @@ public class JsonAdaptedAppointment {
         start = source.getAppointmentTime().startToString();
         duration = source.getAppointmentTime().durationToString();
         treatment = source.getTreatment();
+        id = String.valueOf(source.getId());
     }
 
     /**
@@ -81,7 +84,13 @@ public class JsonAdaptedAppointment {
             throw new IllegalValueException(
                     String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
         }
+        if (id == null) {
+            throw new IllegalValueException(
+                    "id value does not exist!");
+        }
+        long lid = Long.parseLong(id);
+
         final AppointmentTime appointmentTime = new AppointmentTime(start, duration);
-        return new Appointment(dentist, patient, appointmentTime, duration, treatment);
+        return new Appointment(dentist, patient, appointmentTime, duration, treatment, lid);
     }
 }
