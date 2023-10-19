@@ -44,7 +44,8 @@ public class DeletePatientCommand extends Command {
                     String.format(Messages.MESSAGE_DELETE_PATIENT_SUCCESS, Messages.format(patientToDelete)));
 
         } catch (Exception e) {
-            throw new CommandException("An error occurred while deleting the patient: " + e.getMessage());
+            throw new CommandException("An error occurred while deleting the patient: " + e.getMessage()
+                + " Please use list-patients or search-patient to get intended Patient on the screen first.");
         }
     }
 

@@ -44,7 +44,8 @@ public class DeleteDentistCommand extends Command {
                     String.format(Messages.MESSAGE_DELETE_DENTIST_SUCCESS, Messages.format(dentistToDelete)));
 
         } catch (Exception e) {
-            throw new CommandException("An error occurred while deleting the dentist: " + e.getMessage());
+            throw new CommandException("An error occurred while deleting the dentist: " + e.getMessage()
+                + " Please use list-dentists or search-dentist to get the Dentist ID on the screen first.");
         }
     }
 

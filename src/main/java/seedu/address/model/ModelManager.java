@@ -192,6 +192,13 @@ public class ModelManager implements Model {
         addressBook.setPerson(target, editedPerson);
     }
 
+    @Override
+    public void setDentist(Dentist target, Dentist editedDentist) {
+        requireAllNonNull(target, editedDentist);
+
+        addressBook.setDentist(target, editedDentist);
+    }
+
     //=========== Filtered Person List Accessors =============================================================
 
     /**
@@ -229,9 +236,21 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void updateFilteredPatientList(Predicate<Patient> predicate) {
+        requireNonNull(predicate);
+        filteredPatients.setPredicate(predicate);
+    }
+
+    @Override
     public void updateFilteredPatientList(NameContainsKeywordsPredicate predicate) {
         requireNonNull(predicate);
         filteredPatients.setPredicate(predicate);
+    }
+
+    @Override
+    public void updateFilteredDentistList(Predicate<Dentist> predicate) {
+        requireNonNull(predicate);
+        filteredDentists.setPredicate(predicate);
     }
 
     @Override

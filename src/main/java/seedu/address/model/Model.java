@@ -15,11 +15,13 @@ import seedu.address.model.person.patients.Patient;
  * The API of the Model component.
  */
 public interface Model {
+
     /**
      * {@code Predicate} that always evaluate to true
      */
     Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
     Predicate<Patient> PREDICATE_SHOW_ALL_PATIENTS = unused -> true;
+    Predicate<Dentist> PREDICATE_SHOW_ALL_DENTISTS = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -62,17 +64,20 @@ public interface Model {
     ReadOnlyAddressBook getAddressBook();
 
     /**
-     * Returns true if a person with the same identity as {@code person} exists in ToothTracker address book.
+     * Returns true if a person with the same identity as {@code person} exists in ToothTracker
+     * address book.
      */
     boolean hasPerson(Person person);
 
     /**
-     * Returns true if a patient with the same identity as {@code person} exists in the address book.
+     * Returns true if a patient with the same identity as {@code person} exists in the address
+     * book.
      */
     boolean hasPatient(Patient person);
 
     /**
-     * Returns true if a dentist with the same identity as {@code dentist} exists in ToothTracker address book.
+     * Returns true if a dentist with the same identity as {@code dentist} exists in ToothTracker
+     * address book.
      */
     boolean hasDentist(Dentist dentist);
 
@@ -81,30 +86,28 @@ public interface Model {
     Patient getPatientById(long patientId);
 
     Dentist getDentistById(long dentistId);
+
     /**
-     * Deletes the given person.
-     * The person must exist in the address book.
+     * Deletes the given person. The person must exist in the address book.
      */
     void deletePerson(Person target);
 
     void deletePatient(Patient patient);
+
     void deleteDentist(Dentist dentist);
 
     /**
-     * Adds the given person.
-     * {@code person} must not already exist in ToothTracker address book.
+     * Adds the given person. {@code person} must not already exist in ToothTracker address book.
      */
     void addPerson(Person person);
 
     /**
-     * Adds the given Patient.
-     * {@code Patient} must not already exist in the address book.
+     * Adds the given Patient. {@code Patient} must not already exist in the address book.
      */
     void addPatient(Patient patient);
 
     /**
-     * Adds the given dentist.
-     * {@code dentist} must not already exist in ToothTracker address book.
+     * Adds the given dentist. {@code dentist} must not already exist in ToothTracker address book.
      */
     void addDentist(Dentist dentist);
 
@@ -114,11 +117,19 @@ public interface Model {
     void addAppointment(Appointment appointment);
 
     /**
-     * Replaces the given person {@code target} with {@code editedPerson}.
-     * {@code target} must exist in the address book.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
+     * Replaces the given person {@code target} with {@code editedPerson}. {@code target} must exist
+     * in the address book. The person identity of {@code editedPerson} must not be the same as
+     * another existing person in the address book.
      */
     void setPerson(Person target, Person editedPerson);
+
+    /**
+     * Replaces the given dentist {@code target} with {@code editedDentist}.
+     * {@code target} must exist in the address book.
+     * The dentist identity of {@code editedDentist} must not be the same as
+     * another existing dentist in the address book.
+     */
+    void setDentist(Dentist target, Dentist editedDentist);
 
     /**
      * Returns an unmodifiable view of the filtered person list
@@ -149,6 +160,8 @@ public interface Model {
      *
      * @throws NullPointerException if {@code predicate} is null.
      */
+    void updateFilteredPatientList(Predicate<Patient> predicate);
+
     void updateFilteredPatientList(NameContainsKeywordsPredicate predicate);
 
     /**
@@ -156,6 +169,8 @@ public interface Model {
      *
      * @throws NullPointerException if {@code predicate} is null.
      */
+    void updateFilteredDentistList(Predicate<Dentist> predicate);
+
     void updateFilteredDentistList(NameContainsKeywordsPredicate predicate);
 
 }
