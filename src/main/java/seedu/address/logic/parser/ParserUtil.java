@@ -21,6 +21,9 @@ import seedu.address.model.person.Service;
 import seedu.address.model.person.dentist.Specialization;
 import seedu.address.model.person.dentist.Yoe;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.treatment.TreatmentCost;
+import seedu.address.model.treatment.TreatmentName;
+import seedu.address.model.treatment.TreatmentTime;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -30,8 +33,9 @@ public class ParserUtil {
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
 
     /**
-     * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
-     * trimmed.
+     * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing
+     * whitespaces will be trimmed.
+     *
      * @throws ParseException if the specified index is invalid (not non-zero unsigned integer).
      */
     public static Index parseIndex(String oneBasedIndex) throws ParseException {
@@ -43,8 +47,8 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String name} into a {@code Name}.
-     * Leading and trailing whitespaces will be trimmed.
+     * Parses a {@code String name} into a {@code Name}. Leading and trailing whitespaces will be
+     * trimmed.
      *
      * @throws ParseException if the given {@code name} is invalid.
      */
@@ -58,8 +62,8 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String phone} into a {@code Phone}.
-     * Leading and trailing whitespaces will be trimmed.
+     * Parses a {@code String phone} into a {@code Phone}. Leading and trailing whitespaces will be
+     * trimmed.
      *
      * @throws ParseException if the given {@code phone} is invalid.
      */
@@ -73,8 +77,8 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String address} into an {@code Address}.
-     * Leading and trailing whitespaces will be trimmed.
+     * Parses a {@code String address} into an {@code Address}. Leading and trailing whitespaces
+     * will be trimmed.
      *
      * @throws ParseException if the given {@code address} is invalid.
      */
@@ -88,8 +92,8 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String birthdate} into an {@code birthdate}.
-     * Leading and trailing whitespaces will be trimmed.
+     * Parses a {@code String birthdate} into an {@code birthdate}. Leading and trailing whitespaces
+     * will be trimmed.
      *
      * @throws ParseException if the given {@code Birthdate} is invalid.
      */
@@ -103,8 +107,8 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String gender} into an {@code gender}.
-     * Leading and trailing whitespaces will be trimmed.
+     * Parses a {@code String gender} into an {@code gender}. Leading and trailing whitespaces will
+     * be trimmed.
      *
      * @throws ParseException if the given {@code Gender} is invalid.
      */
@@ -118,8 +122,8 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String Appointment} into an {@code Appointment}.
-     * Leading and trailing whitespaces will be trimmed.
+     * Parses a {@code String Appointment} into an {@code Appointment}. Leading and trailing
+     * whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code Appointment} is invalid.
      */
@@ -138,10 +142,11 @@ public class ParserUtil {
      * @param startTime The string representation of the appointment start time.
      * @param duration  The string representation of the appointment duration.
      * @return An AppointmentTime object representing the parsed start time and duration.
-     * @throws ParseException if the start time or duration is in an invalid format.
+     * @throws ParseException       if the start time or duration is in an invalid format.
      * @throws NullPointerException if either startTime or duration is null.
      */
-    public static AppointmentTime parseAppointmentTime(String startTime, String duration) throws ParseException {
+    public static AppointmentTime parseAppointmentTime(String startTime, String duration)
+        throws ParseException {
         requireNonNull(startTime);
         requireNonNull(duration);
         String trimmedStartTime = startTime.trim();
@@ -153,8 +158,8 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String service} into an {@code Service}.
-     * Leading and trailing whitespaces will be trimmed.
+     * Parses a {@code String service} into an {@code Service}. Leading and trailing whitespaces
+     * will be trimmed.
      *
      * @throws ParseException if the given {@code Service} is invalid.
      */
@@ -169,8 +174,8 @@ public class ParserUtil {
 
 
     /**
-     * Parses a {@code String email} into an {@code Email}.
-     * Leading and trailing whitespaces will be trimmed.
+     * Parses a {@code String email} into an {@code Email}. Leading and trailing whitespaces will be
+     * trimmed.
      *
      * @throws ParseException if the given {@code email} is invalid.
      */
@@ -184,8 +189,8 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String tag} into a {@code Tag}.
-     * Leading and trailing whitespaces will be trimmed.
+     * Parses a {@code String tag} into a {@code Tag}. Leading and trailing whitespaces will be
+     * trimmed.
      *
      * @throws ParseException if the given {@code tag} is invalid.
      */
@@ -213,8 +218,8 @@ public class ParserUtil {
     // Parse Methods for Dentists
 
     /**
-     * Parses a {@code String specialization} into an {@code Specialization}.
-     * Leading and trailing whitespaces will be trimmed.
+     * Parses a {@code String specialization} into an {@code Specialization}. Leading and trailing
+     * whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code specialization} is invalid.
      */
@@ -228,8 +233,8 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String yoe} into an {@code String}.
-     * Leading and trailing whitespaces will be trimmed.
+     * Parses a {@code String yoe} into an {@code String}. Leading and trailing whitespaces will be
+     * trimmed.
      *
      * @throws ParseException if the given {@code yoe} is invalid.
      */
@@ -241,4 +246,52 @@ public class ParserUtil {
         }
         return new Yoe(trimmedYoe);
     }
+
+    /**
+     * Parses a {@code String treatment cost} into an {@code String}. Leading and trailing
+     * whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code cost} is invalid.
+     */
+    public static TreatmentCost parseTreatmentCost(String cost) throws ParseException {
+        requireNonNull(cost);
+        String trimmedcost = cost.trim();
+        if (!TreatmentCost.isValidCost(trimmedcost)) {
+            throw new ParseException(TreatmentCost.MESSAGE_CONSTRAINTS);
+        }
+        return new TreatmentCost(trimmedcost);
+    }
+
+    /**
+     * Parses a {@code String TreatmentTime} into an {@code String}. Leading and trailing
+     * whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code time} is invalid.
+     */
+    public static TreatmentTime parseTreatmentTime(String time) throws ParseException {
+        requireNonNull(time);
+        String trimmedtime = time.trim();
+        if (!TreatmentTime.isValidTime(trimmedtime)) {
+            throw new ParseException(TreatmentTime.MESSAGE_CONSTRAINTS);
+        }
+        return new TreatmentTime(trimmedtime);
+    }
+
+    /**
+     * Parses a {@code String TreatmentName} into an {@code String}. Leading and trailing
+     * whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code name} is invalid.
+     */
+    public static TreatmentName parseTreatmentName(String name) throws ParseException {
+        requireNonNull(name);
+        String trimmedname = name.trim();
+        if (!TreatmentName.isValidName(trimmedname)) {
+            throw new ParseException(TreatmentName.MESSAGE_CONSTRAINTS);
+        }
+        return new TreatmentName(trimmedname);
+    }
+
+
+
 }
