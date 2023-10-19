@@ -217,6 +217,12 @@ public class AddressBook implements ReadOnlyAddressBook {
         }
     }
 
+    /**
+     * Adds an appointment to the list of appointments.
+     * If the appointment has an ID of -1, it assigns a new ID and increments the global appointment ID counter.
+     *
+     * @param appointment The appointment to be added.
+     */
     public void addAppointment(Appointment appointment) {
         if (appointment.getId() == -1) {
             appointment.setId(appointmentId);
