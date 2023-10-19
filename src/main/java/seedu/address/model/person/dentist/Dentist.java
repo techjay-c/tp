@@ -130,12 +130,16 @@ public class Dentist extends Person {
                 .append(getPhone())
                 .append("; Email: ")
                 .append(getEmail())
+                .append("; Address: ")
+                .append(getAddress())
                 .append("; Specialization: ")
                 .append(getSpecialization())
-                .append("; Years Of Experience: ")
+                .append("; Years of Experience: ")
                 .append(getYoe())
-                .append(": Dentist ID: ")
-                .append(getId());
+                .append("; Dentist ID: ")
+                .append(getId())
+                .append("; Tags: ");
+        this.getTags().forEach(builder::append);
 
         Set<Tag> tags = getTags();
         if (!tags.isEmpty()) {
