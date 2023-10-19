@@ -39,7 +39,7 @@ public class AddDentistCommand extends Command {
             + PREFIX_YOE + "5 "
             + PREFIX_TAG + "Braces";
 
-    private static final String MESSAGE_SUCCESS = "New dentist added: %1$s";
+    private static final String MESSAGE_SUCCESS = "New Dentist added: %1$s";
     private static final String MESSAGE_DUPLICATE_DENTIST = "This dentist already exists in ToothTracker address book!";
 
     private final Dentist toAdd;

@@ -72,7 +72,7 @@ public class SearchDentistCommand extends Command {
 
             model.updateFilteredDentistList(predicate);
             return new CommandResult(
-                String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredDentistList().size()));
+                String.format(Messages.MESSAGE_DENTISTS_LISTED_OVERVIEW, model.getFilteredDentistList().size()));
 
         } else if (searchType == SearchType.BY_ID) {
 
@@ -80,9 +80,13 @@ public class SearchDentistCommand extends Command {
                 Predicate<Dentist> dentistIdPredicate = dentist -> dentist.getId() == dentistID;
                 model.updateFilteredDentistList(dentistIdPredicate);
 
-                return new CommandResult("Dentist search for ID " + dentistID + " found.");
+                if (model.getFilteredDentistList().isEmpty()) {
+                    return new CommandResult("No dentist found with dentist ID " + dentistID + ".");
+                } else {
+                    return new CommandResult("Dentist with dentist ID " + dentistID + " found.");
+                }
             } else {
-                return new CommandResult("Invalid search");
+                return new CommandResult("No dentist with dentist ID 0");
             }
         }
         return new CommandResult("Invalid search");
