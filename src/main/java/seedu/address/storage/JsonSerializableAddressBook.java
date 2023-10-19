@@ -103,8 +103,8 @@ class JsonSerializableAddressBook {
             addressBook.addAppointment(appointment);
         }
 
+        addressBook.setDentistId(Long.parseLong(dentistId));
         addressBook.setPatientId(Long.parseLong(patientId));
-        // addressBook.setDentistId(Long.parseLong(dentistId));
         return addressBook;
     }
 

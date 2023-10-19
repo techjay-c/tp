@@ -124,6 +124,14 @@ public interface Model {
     void setPerson(Person target, Person editedPerson);
 
     /**
+     * Replaces the given dentist {@code target} with {@code editedDentist}.
+     * {@code target} must exist in the address book.
+     * The dentist identity of {@code editedDentist} must not be the same as
+     * another existing dentist in the address book.
+     */
+    void setDentist(Dentist target, Dentist editedDentist);
+
+    /**
      * Returns an unmodifiable view of the filtered person list
      */
     ObservableList<Person> getFilteredPersonList();
@@ -164,4 +172,5 @@ public interface Model {
     void updateFilteredDentistList(Predicate<Dentist> predicate);
 
     void updateFilteredDentistList(NameContainsKeywordsPredicate predicate);
+
 }
