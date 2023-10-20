@@ -8,6 +8,7 @@ import seedu.address.logic.parser.Prefix;
 import seedu.address.model.appointments.Appointment;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.patients.Patient;
+import seedu.address.model.treatment.Treatment;
 
 /**
  * Container for user visible messages.
@@ -57,6 +58,19 @@ public class Messages {
             .append(person.getAddress())
             .append("; Tags: ");
         person.getTags().forEach(builder::append);
+        return builder.toString();
+    }
+
+    /**
+     * Formats the {@code treatment} for display to the user.
+     */
+    public static String format(Treatment treatment) {
+        final StringBuilder builder = new StringBuilder();
+        builder.append(treatment.getName())
+            .append("; Cost: ")
+            .append(treatment.getCost())
+            .append("; Time: ")
+            .append(treatment.getTime());
         return builder.toString();
     }
 
