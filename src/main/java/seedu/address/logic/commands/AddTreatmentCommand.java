@@ -25,8 +25,8 @@ public class AddTreatmentCommand extends Command {
             + PREFIX_COST + "COST "
             + PREFIX_TIME + "TIME...\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_TREATMENT + "Braces"
-            + PREFIX_COST + "1080"
+            + PREFIX_TREATMENT + "Braces "
+            + PREFIX_COST + "1080 "
             + PREFIX_TIME + "10:30\n";
 
     public static final String MESSAGE_SUCCESS = "New Treatment added: %1$s";
