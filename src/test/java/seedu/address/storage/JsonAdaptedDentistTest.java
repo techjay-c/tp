@@ -3,7 +3,7 @@ package seedu.address.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.storage.JsonAdaptedDentist.MISSING_FIELD_MESSAGE_FORMAT;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalDentist.DENTIST_BENSON;
+import static seedu.address.testutil.TypicalDentists.DENTIST_BENSON;
 
 import java.util.ArrayList;
 import java.util.List;

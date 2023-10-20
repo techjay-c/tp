@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalDentist.DENTIST_ALICE;
+import static seedu.address.testutil.TypicalDentists.DENTIST_ALICE;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -54,8 +54,8 @@ public class AddDentistCommandTest {
         AddDentistCommand addDentistCommand = new AddDentistCommand(validDentist);
         ModelStub modelStub = new ModelStubWithDentist(validDentist);
 
-        assertThrows(CommandException.class, AddDentistCommand.MESSAGE_DUPLICATE_DENTIST,
-                () -> addDentistCommand.execute(modelStub));
+        assertThrows(CommandException.class,
+                AddDentistCommand.MESSAGE_DUPLICATE_DENTIST, () -> addDentistCommand.execute(modelStub));
     }
 
     @Test

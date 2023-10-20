@@ -19,6 +19,8 @@ import seedu.address.model.person.dentist.Dentist;
  */
 public class AddDentistCommand extends Command {
     public static final String COMMAND_WORD = "add-dentist";
+    public static final String MESSAGE_DUPLICATE_DENTIST = "This dentist already exists in ToothTracker address book!";
+    public static final String MESSAGE_SUCCESS = "New Dentist added: %1$s";
     public static final String SHORTHAND_COMMAND_WORD = "ad";
 
     private static final String MESSAGE_USAGE = COMMAND_WORD + " (short form: " + SHORTHAND_COMMAND_WORD + ")"
@@ -39,9 +41,6 @@ public class AddDentistCommand extends Command {
             + PREFIX_SPECIALIZATION + "Orthodontics "
             + PREFIX_YOE + "5 "
             + PREFIX_TAG + "Braces";
-
-    public static final String MESSAGE_SUCCESS = "New Dentist added: %1$s";
-    public static final String MESSAGE_DUPLICATE_DENTIST = "This dentist already exists in ToothTracker address book!";
 
     private final Dentist toAdd;
 

@@ -21,7 +21,7 @@ import seedu.address.model.person.dentist.Dentist;
 /**
  * A utility class containing a list of {@code Dentist} objects to be used in tests.
  */
-public class TypicalDentist {
+public class TypicalDentists {
 
     public static final Dentist DENTIST_ALICE = new DentistBuilder().withName("Alice Pauline")
             .withAddress("123, Jurong West Ave 6, #08-111").withEmail("alice@example.com")
@@ -101,7 +101,7 @@ public class TypicalDentist {
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 
-    private TypicalDentist() {} // prevents instantiation
+    private TypicalDentists() {} // prevents instantiation
 
     /**
      * Returns an {@code AddressBook} with all the typical dentists.
@@ -115,6 +115,7 @@ public class TypicalDentist {
     }
 
     public static List<Dentist> getTypicalDentists() {
-        return new ArrayList<>(Arrays.asList(DENTIST_ALICE, DENTIST_BENSON, DENTIST_CARL, DENTIST_DANIEL, DENTIST_ELLE, DENTIST_FIONA, DENTIST_GEORGE));
+        return new ArrayList<>(Arrays.asList(DENTIST_ALICE, DENTIST_BENSON, DENTIST_CARL,
+                DENTIST_DANIEL, DENTIST_ELLE, DENTIST_FIONA, DENTIST_GEORGE));
     }
 }

@@ -41,8 +41,8 @@ public class CommandTestUtil {
     public static final String VALID_TAG_FRIEND = "friend";
 
     // Valid Fields - Dentist specific
-    public static final String VALID_SPECIALTY_AMY = "Orthopaedics";
-    public static final String VALID_SPECIALTY_BOB = "Paediatrics";
+    public static final String VALID_SPECIALIZATION_AMY = "Orthopaedics";
+    public static final String VALID_SPECIALIZATION_BOB = "Paediatrics";
     public static final String VALID_YOE_AMY = "12";
     public static final String VALID_YOE_BOB = "4";
 
@@ -56,8 +56,8 @@ public class CommandTestUtil {
     public static final String ADDRESS_DESC_BOB = " " + PREFIX_ADDRESS + VALID_ADDRESS_BOB;
 
     // Input Fields - Dentist Specific
-    public static final String SPECIALTY_DESC_AMY = " " + PREFIX_SPECIALIZATION + VALID_SPECIALTY_AMY;
-    public static final String SPECIALTY_DESC_BOB = " " + PREFIX_SPECIALIZATION + VALID_SPECIALTY_BOB;
+    public static final String SPECIALIZATION_DESC_AMY = " " + PREFIX_SPECIALIZATION + VALID_SPECIALIZATION_AMY;
+    public static final String SPECIALIZATION_DESC_BOB = " " + PREFIX_SPECIALIZATION + VALID_SPECIALIZATION_BOB;
     public static final String YOE_DESC_AMY = " " + PREFIX_YOE + VALID_YOE_AMY;
     public static final String YOE_DESC_BOB = " " + PREFIX_YOE + VALID_YOE_BOB;
     public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_FRIEND;
@@ -69,7 +69,7 @@ public class CommandTestUtil {
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
 
     // Invalid Fields - Dentist Specific
-    public static final String INVALID_SPECIALTY_DESC = " " + PREFIX_SPECIALIZATION + "GP&"; // '&' not allowed in specialty
+    public static final String INVALID_SPECIALIZATION_DESC = " " + PREFIX_SPECIALIZATION + "GP&";
     public static final String INVALID_YOE_DESC = " " + PREFIX_YOE + "129037"; // YOE maximum 2 digits
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
 

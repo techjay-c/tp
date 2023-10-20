@@ -5,7 +5,8 @@
     "email": "hans@example.com",
     "address": "The Great Clinic",
     "specialization": "Orthodontics",
-    "yoe": "1"
+    "yoe": "1",
+    "id": "1"
   }, {
     "name": "Valid Dentist without Email",
     "phone": "9482424",
@@ -27,14 +28,14 @@
     "address": "The Great Clinic",
     "specialization": "Orthodontics",
     "yoe": "1",
-    "id": "1"
+    "id": "4"
   }, {
     "name": "Dentist With Invalid Dentist ID Field",
     "phone": "9482424",
     "email": "hans@example.com",
     "address": "The Great Clinic",
     "specialization": "Orthodontics",
-    "yoe": "1",
+    "yoe": "5",
     "id": null
   }]
 }
