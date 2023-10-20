@@ -10,7 +10,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
-public class UniqueTreatmentList implements Iterable<Treatment>{
+
+/**
+ * A list of unique  treatments
+ */
+public class UniqueTreatmentList implements Iterable<Treatment> {
+
     private final ObservableList<Treatment> internalList = FXCollections.observableArrayList();
     private final ObservableList<Treatment> internalUnmodifiableList =
         FXCollections.unmodifiableObservableList(internalList);
@@ -41,7 +46,6 @@ public class UniqueTreatmentList implements Iterable<Treatment>{
      */
     public void setTreatment(Treatment target, Treatment editedTreatment) {
         requireAllNonNull(target, editedTreatment);
-//  TODO: maybe separate exceptions are needed here
         int index = internalList.indexOf(target);
         if (index == -1) {
             throw new PersonNotFoundException();
@@ -58,7 +62,6 @@ public class UniqueTreatmentList implements Iterable<Treatment>{
      * Removes the equivalent person from the list. The person must exist in the list.
      */
     public void remove(Treatment toRemove) {
-//  TODO: maybe separate exceptions are needed here
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {
             throw new PersonNotFoundException();

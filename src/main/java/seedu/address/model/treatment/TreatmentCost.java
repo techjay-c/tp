@@ -4,6 +4,9 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 
+/**
+ * Class which represents the cost of a Treatment in sgd
+ */
 public class TreatmentCost {
 
 

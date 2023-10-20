@@ -1,20 +1,27 @@
 package seedu.address.model.treatment;
 
-import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
 
+
+/**
+ * Class which represents a Treatment offered by the dental clinic
+ */
 public class Treatment {
 
     public final TreatmentCost cost;
     public final TreatmentTime time;
     public final TreatmentName name;
 
+    /**
+     * Instantiates a treatment
+     * @param name name of the treatment
+     * @param cost cost of the treatment
+     * @param time estimated duration of the treatment
+     */
     public Treatment(TreatmentName name, TreatmentCost cost, TreatmentTime time) {
         requireAllNonNull(name, cost, time);
         this.cost = cost;

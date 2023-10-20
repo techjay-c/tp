@@ -146,7 +146,7 @@ public class ParserUtil {
      * @throws NullPointerException if either startTime or duration is null.
      */
     public static AppointmentTime parseAppointmentTime(String startTime, String duration)
-        throws ParseException {
+            throws ParseException {
         requireNonNull(startTime);
         requireNonNull(duration);
         String trimmedStartTime = startTime.trim();
