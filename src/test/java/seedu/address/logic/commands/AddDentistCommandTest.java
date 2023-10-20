@@ -27,6 +27,7 @@ import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.patients.Patient;
+import seedu.address.model.treatment.Treatment;
 import seedu.address.testutil.DentistBuilder;
 
 public class AddDentistCommandTest {
@@ -43,7 +44,8 @@ public class AddDentistCommandTest {
 
         CommandResult commandResult = new AddDentistCommand(validDentist).execute(modelStub);
 
-        assertEquals(String.format(AddDentistCommand.MESSAGE_SUCCESS, Messages.format(validDentist)),
+        assertEquals(
+            String.format(AddDentistCommand.MESSAGE_SUCCESS, Messages.format(validDentist)),
             commandResult.getFeedbackToUser());
         assertEquals(Arrays.asList(validDentist), modelStub.dentistAdded);
     }
@@ -55,7 +57,7 @@ public class AddDentistCommandTest {
         ModelStub modelStub = new ModelStubWithDentist(validDentist);
 
         assertThrows(CommandException.class,
-                AddDentistCommand.MESSAGE_DUPLICATE_DENTIST, () -> addDentistCommand.execute(modelStub));
+            AddDentistCommand.MESSAGE_DUPLICATE_DENTIST, () -> addDentistCommand.execute(modelStub));
     }
 
     @Test
@@ -85,7 +87,8 @@ public class AddDentistCommandTest {
     @Test
     public void toStringMethod() {
         AddDentistCommand addDentistCommand = new AddDentistCommand(DENTIST_ALICE);
-        String expected = AddDentistCommand.class.getCanonicalName() + "{toAdd=" + DENTIST_ALICE + "}";
+        String expected =
+            AddDentistCommand.class.getCanonicalName() + "{toAdd=" + DENTIST_ALICE + "}";
         assertEquals(expected, addDentistCommand.toString());
     }
 
@@ -193,6 +196,7 @@ public class AddDentistCommandTest {
         public void updateFilteredDentistList(Predicate<Dentist> predicate) {
             throw new AssertionError("This method should not be called.");
         }
+
         @Override
         public void updateFilteredDentistList(NameContainsKeywordsPredicate predicate) {
             throw new AssertionError("This method should not be called.");
@@ -252,6 +256,27 @@ public class AddDentistCommandTest {
         public Dentist getDentistById(long dentistId) {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public void updateFilteredTreatmentList(Predicate<Treatment> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Treatment> getFilteredTreatmentList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addTreatment(Treatment treatment) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasTreatment(Treatment treatment) {
+            throw new AssertionError("This method should not be called.");
+        }
+
     }
 
     /**
