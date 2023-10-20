@@ -29,5 +29,10 @@ public class CliSyntax {
     public static final Prefix PREFIX_DURATION = new Prefix("duration/");
     public static final Prefix PREFIX_START = new Prefix("start/");
 
+    // Commands for Treatment
+    public static final Prefix PREFIX_TREATMENT = new Prefix("tr/");
+    public static final Prefix PREFIX_COST = new Prefix("cs/");
+    public static final Prefix PREFIX_TIME = new Prefix("ti/");
+
 
 }

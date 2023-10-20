@@ -20,6 +20,10 @@ import seedu.address.model.person.dentist.Specialization;
 import seedu.address.model.person.dentist.Yoe;
 import seedu.address.model.person.patients.Patient;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.treatment.Treatment;
+import seedu.address.model.treatment.TreatmentCost;
+import seedu.address.model.treatment.TreatmentName;
+import seedu.address.model.treatment.TreatmentTime;
 
 /**
  * Contains utility methods for populating {@code AddressBook} with sample data.
@@ -42,6 +46,13 @@ public class SampleDataUtil {
                 new Address("Blk 30 Geylang Street 29, #06-40"),
                 new Email("alexyeoh@example.com"),
                 getTagSet("friends"))
+        };
+    }
+
+    public static Treatment[] getSampleTreatments() {
+        return new Treatment[]{
+            new Treatment(new TreatmentName("Braces"), new TreatmentCost("1080"),
+                new TreatmentTime("3"))
         };
     }
 
@@ -73,6 +84,10 @@ public class SampleDataUtil {
 
         for (Dentist sampleDentist : getSampleDentist()) {
             sampleAb.addDentist(sampleDentist);
+        }
+
+        for (Treatment sampleTreatment : getSampleTreatments()) {
+            sampleAb.addTreatment(sampleTreatment);
         }
 
         return sampleAb;

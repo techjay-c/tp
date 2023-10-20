@@ -23,6 +23,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.patients.Patient;
+import seedu.address.model.treatment.Treatment;
 import seedu.address.testutil.PersonBuilder;
 
 public class AddressBookTest {
@@ -93,7 +94,8 @@ public class AddressBookTest {
         String expected =
             AddressBook.class.getCanonicalName() + "{persons=" + addressBook.getPersonList()
                 + ", patients=" + addressBook.getPatientList()
-                + ", dentists=" + addressBook.getDentistList() + "}";
+                + ", dentists=" + addressBook.getDentistList() + ", treatments="
+                + addressBook.getTreatmentList() + "}";
         assertEquals(expected, addressBook.toString());
     }
 
@@ -135,6 +137,7 @@ public class AddressBookTest {
         public long getAppointmentId() {
             throw new AssertionError("This method should not be called.");
         }
+
         @Override
         public ObservableList<Dentist> getDentistList() {
             return dentists;
@@ -143,6 +146,11 @@ public class AddressBookTest {
         @Override
         public ObservableList<Appointment> getAppointmentList() {
             return appointments;
+        }
+
+        @Override
+        public ObservableList<Treatment> getTreatmentList() {
+            throw new AssertionError("This method should not be called.");
         }
     }
 

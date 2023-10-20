@@ -15,6 +15,7 @@ import seedu.address.model.appointments.Appointment;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.patients.Patient;
+import seedu.address.model.treatment.Treatment;
 
 /**
  * An Immutable AddressBook that is serializable to JSON format.
@@ -25,18 +26,18 @@ class JsonSerializableAddressBook {
     public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
     public static final String MESSAGE_DUPLICATE_DENTIST = "Dentists list contains duplicate person(s).";
     public static final String MESSAGE_DUPLICATE_PATIENT = "Patients list contains duplicate person(s).";
+    public static final String MESSAGE_DUPLICATE_TREATMENT = "Treatments list contains duplicate treatment(s).";
     public static final String MESSAGE_CLASHING_APPOINTMENTS = "Dentist is not free for this time slot";
 
     private final List<JsonAdaptedDentist> dentists = new ArrayList<>();
     private final List<JsonAdaptedPerson> persons = new ArrayList<>();
     private final List<JsonAdaptedPatient> patients = new ArrayList<>();
     private final List<JsonAdaptedAppointment> appointments = new ArrayList<>();
+    private final List<JsonAdaptedTreatment> treatments = new ArrayList<>();
 
     private String patientId;
     private String dentistId;
     private String appointmentId;
-
-
 
 
     /**
@@ -50,14 +51,20 @@ class JsonSerializableAddressBook {
     /**
      * Converts a given {@code ReadOnlyAddressBook} into this class for Jackson use.
      *
-     * @param source future changes to this will not affect the created {@code JsonSerializableAddressBook}.
+     * @param source future changes to this will not affect the created
+     *               {@code JsonSerializableAddressBook}.
      */
     public JsonSerializableAddressBook(ReadOnlyAddressBook source) {
-        dentists.addAll(source.getDentistList().stream().map(JsonAdaptedDentist::new).collect(Collectors.toList()));
-        persons.addAll(source.getPersonList().stream().map(JsonAdaptedPerson::new).collect(Collectors.toList()));
-        patients.addAll(source.getPatientList().stream().map(JsonAdaptedPatient::new).collect(Collectors.toList()));
+        dentists.addAll(source.getDentistList().stream().map(JsonAdaptedDentist::new)
+            .collect(Collectors.toList()));
+        persons.addAll(source.getPersonList().stream().map(JsonAdaptedPerson::new)
+            .collect(Collectors.toList()));
+        patients.addAll(source.getPatientList().stream().map(JsonAdaptedPatient::new)
+            .collect(Collectors.toList()));
         appointments.addAll(source.getAppointmentList().stream()
-                .map(JsonAdaptedAppointment::new).collect(Collectors.toList()));
+            .map(JsonAdaptedAppointment::new).collect(Collectors.toList()));
+        treatments.addAll(source.getTreatmentList().stream().map(JsonAdaptedTreatment::new)
+            .collect(Collectors.toList()));
 
         patientId = String.valueOf(source.getPatientId());
         dentistId = String.valueOf(source.getDentistId());
@@ -101,6 +108,14 @@ class JsonSerializableAddressBook {
                 throw new IllegalValueException(MESSAGE_CLASHING_APPOINTMENTS);
             }
             addressBook.addAppointment(appointment);
+        }
+
+        for (JsonAdaptedTreatment jsonAdaptedTreatment : treatments) {
+            Treatment treatment = jsonAdaptedTreatment.toModelType();
+            if (addressBook.hasTreatment(treatment)) {
+                throw new IllegalValueException(MESSAGE_DUPLICATE_TREATMENT);
+            }
+            addressBook.addTreatment(treatment);
         }
 
         addressBook.setDentistId(Long.parseLong(dentistId));

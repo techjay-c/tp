@@ -16,6 +16,7 @@ import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.patients.Patient;
+import seedu.address.model.treatment.Treatment;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -30,6 +31,7 @@ public class ModelManager implements Model {
     private final FilteredList<Patient> filteredPatients;
     private final FilteredList<Dentist> filteredDentists;
     private final FilteredList<Appointment> filteredAppointments;
+    private final FilteredList<Treatment> filteredTreatments;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -46,6 +48,7 @@ public class ModelManager implements Model {
         filteredPatients = new FilteredList<>(this.addressBook.getPatientList());
         filteredDentists = new FilteredList<>(this.addressBook.getDentistList());
         filteredAppointments = new FilteredList<>(this.addressBook.getAppointmentList());
+        filteredTreatments = new FilteredList<>(this.addressBook.getTreatmentList());
     }
 
     public ModelManager() {
@@ -199,6 +202,17 @@ public class ModelManager implements Model {
         addressBook.setDentist(target, editedDentist);
     }
 
+    @Override
+    public void addTreatment(Treatment treatment) {
+        addressBook.addTreatment(treatment);
+    }
+
+    @Override
+    public ObservableList<Treatment> getFilteredTreatmentList() {
+        return filteredTreatments;
+    }
+
+
     //=========== Filtered Person List Accessors =============================================================
 
     /**
@@ -227,6 +241,13 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<Appointment> getFilteredAppointmentList() {
         return filteredAppointments;
+    }
+
+
+    @Override
+    public void updateFilteredTreatmentList(Predicate<Treatment> predicate) {
+        requireNonNull(predicate);
+        filteredTreatments.setPredicate(predicate);
     }
 
     @Override
@@ -260,6 +281,12 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public boolean hasTreatment(Treatment treatment) {
+        requireNonNull(treatment);
+        return addressBook.hasTreatment(treatment);
+    }
+
+    @Override
     public boolean equals(Object other) {
         if (other == this) {
             return true;
@@ -274,7 +301,8 @@ public class ModelManager implements Model {
         return addressBook.equals(otherModelManager.addressBook)
             && userPrefs.equals(otherModelManager.userPrefs)
             && filteredPersons.equals(otherModelManager.filteredPersons)
-            && filteredPatients.equals(otherModelManager.filteredPatients);
+            && filteredPatients.equals(otherModelManager.filteredPatients)
+            && filteredTreatments.equals(otherModelManager.filteredTreatments);
     }
 
 }
