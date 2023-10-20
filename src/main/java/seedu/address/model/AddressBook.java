@@ -28,6 +28,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     private long patientId;
     private long dentistId;
+    private long appointmentId;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -83,6 +84,17 @@ public class AddressBook implements ReadOnlyAddressBook {
         dentistId = dentistId + 1;
     }
 
+    public void setAppointmentId(long id) {
+        appointmentId = id;
+    }
+    @Override
+    public long getAppointmentId() {
+        return appointmentId;
+    }
+    public void incrementAppointmentId() {
+        appointmentId = appointmentId + 1;
+    }
+
     //// list overwrite operations
 
     /**
@@ -125,6 +137,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         setAppointments(newData.getAppointmentList());
         setPatientId(newData.getPatientId());
         setDentistId(newData.getDentistId());
+        setAppointmentId(newData.getAppointmentId());
     }
 
     //// person-level operations
@@ -204,8 +217,20 @@ public class AddressBook implements ReadOnlyAddressBook {
         }
     }
 
+    /**
+     * Adds an appointment to the list of appointments.
+     * If the appointment has an ID of -1, it assigns a new ID and increments the global appointment ID counter.
+     *
+     * @param appointment The appointment to be added.
+     */
     public void addAppointment(Appointment appointment) {
-        appointments.add(appointment);
+        if (appointment.getId() == -1) {
+            appointment.setId(appointmentId);
+            appointments.add(appointment);
+            incrementAppointmentId();
+        } else {
+            appointments.add(appointment);
+        }
     }
 
     /**

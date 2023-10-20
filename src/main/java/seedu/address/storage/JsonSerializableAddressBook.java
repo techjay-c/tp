@@ -34,6 +34,7 @@ class JsonSerializableAddressBook {
 
     private String patientId;
     private String dentistId;
+    private String appointmentId;
 
 
 
@@ -63,6 +64,7 @@ class JsonSerializableAddressBook {
 
         patientId = String.valueOf(source.getPatientId());
         dentistId = String.valueOf(source.getDentistId());
+        appointmentId = String.valueOf(source.getAppointmentId());
     }
 
     /**
