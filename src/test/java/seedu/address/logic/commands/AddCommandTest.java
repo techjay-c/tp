@@ -27,6 +27,7 @@ import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.patients.Patient;
+import seedu.address.model.treatment.Treatment;
 import seedu.address.testutil.PersonBuilder;
 
 public class AddCommandTest {
@@ -192,6 +193,7 @@ public class AddCommandTest {
         public void updateFilteredDentistList(Predicate<Dentist> predicate) {
             throw new AssertionError("This method should not be called.");
         }
+
         @Override
         public void updateFilteredDentistList(NameContainsKeywordsPredicate predicate) {
             throw new AssertionError("This method should not be called.");
@@ -249,6 +251,26 @@ public class AddCommandTest {
 
         @Override
         public Dentist getDentistById(long dentistId) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredTreatmentList(Predicate<Treatment> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Treatment> getFilteredTreatmentList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addTreatment(Treatment treatment) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasTreatment(Treatment treatment) {
             throw new AssertionError("This method should not be called.");
         }
     }
