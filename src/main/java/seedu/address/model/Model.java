@@ -10,6 +10,7 @@ import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.patients.Patient;
+import seedu.address.model.treatment.Treatment;
 
 /**
  * The API of the Model component.
@@ -22,6 +23,7 @@ public interface Model {
     Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
     Predicate<Patient> PREDICATE_SHOW_ALL_PATIENTS = unused -> true;
     Predicate<Dentist> PREDICATE_SHOW_ALL_DENTISTS = unused -> true;
+    Predicate<Treatment> PREDICATE_SHOW_ALL_TREATMENTS = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -76,6 +78,12 @@ public interface Model {
     boolean hasPatient(Patient person);
 
     /**
+     * Returns true if a treatment with the same identity as {@code person} exists in the address
+     * book.
+     */
+    boolean hasTreatment(Treatment treatment);
+
+    /**
      * Returns true if a dentist with the same identity as {@code dentist} exists in ToothTracker
      * address book.
      */
@@ -124,10 +132,9 @@ public interface Model {
     void setPerson(Person target, Person editedPerson);
 
     /**
-     * Replaces the given dentist {@code target} with {@code editedDentist}.
-     * {@code target} must exist in the address book.
-     * The dentist identity of {@code editedDentist} must not be the same as
-     * another existing dentist in the address book.
+     * Replaces the given dentist {@code target} with {@code editedDentist}. {@code target} must
+     * exist in the address book. The dentist identity of {@code editedDentist} must not be the same
+     * as another existing dentist in the address book.
      */
     void setDentist(Dentist target, Dentist editedDentist);
 
@@ -172,5 +179,23 @@ public interface Model {
     void updateFilteredDentistList(Predicate<Dentist> predicate);
 
     void updateFilteredDentistList(NameContainsKeywordsPredicate predicate);
+
+    /**
+     * Adds the given Treatment. {@code Treatment} must not already exist in the address book.
+     */
+    void addTreatment(Treatment treatment);
+
+    /**
+     * Returns an unmodifiable view of the filtered treatment list
+     */
+    ObservableList<Treatment> getFilteredTreatmentList();
+
+    /**
+     * Updates the filter of the filtered treatment list to filter by the given {@code predicate}.
+     *
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredTreatmentList(Predicate<Treatment> predicate);
+
 
 }
