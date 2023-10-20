@@ -9,7 +9,7 @@ public class TreatmentCost {
 
     public static final String MESSAGE_CONSTRAINTS =
         "The cost of the treatment should be at least 1 dollar";
-    public static final String VALIDATION_REGEX = "\\d{1}";
+    public static final String VALIDATION_REGEX = "[^\\s].*";
     public final String value;
 
     /**
