@@ -14,6 +14,8 @@ import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.dentist.UniqueDentistList;
 import seedu.address.model.person.patients.Patient;
+import seedu.address.model.treatment.Treatment;
+import seedu.address.model.treatment.UniqueTreatmentList;
 
 /**
  * Wraps all data at the address-book level Duplicates are not allowed (by .isSamePerson
@@ -25,6 +27,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     private final UniquePatientList patients;
     private final UniqueDentistList dentists;
     private final UniqueAppointmentList appointments;
+    private final UniqueTreatmentList treatments;
 
     private long patientId;
     private long dentistId;
@@ -42,6 +45,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         patients = new UniquePatientList();
         dentists = new UniqueDentistList();
         appointments = new UniqueAppointmentList();
+        treatments = new UniqueTreatmentList();
     }
 
     public AddressBook() {
@@ -114,6 +118,14 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Replaces the contents of the Treatments list with {@code treatments}. {@code treatments} must
+     * not contain duplicate treatments.
+     */
+    public void setTreatments(List<Treatment> treatments) {
+        this.treatments.setTreatments(treatments);
+    }
+
+    /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
     public void resetData(ReadOnlyAddressBook newData) {
@@ -122,6 +134,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         setPersons(newData.getPersonList());
         setPatients(newData.getPatientList());
         setDentists(newData.getDentistList());
+        setTreatments(newData.getTreatmentList());
         setAppointments(newData.getAppointmentList());
         setPatientId(newData.getPatientId());
         setDentistId(newData.getDentistId());
@@ -145,6 +158,15 @@ public class AddressBook implements ReadOnlyAddressBook {
     public boolean hasPatient(Patient patient) {
         requireNonNull(patient);
         return patients.contains(patient);
+    }
+
+    /**
+     * Returns true if a treatment with the same fields as {@code treatment} exists in the address
+     * book.
+     */
+    public boolean hasTreatment(Treatment treatment) {
+        requireNonNull(treatment);
+        return treatments.contains(treatment);
     }
 
     /**
@@ -175,6 +197,35 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void addPerson(Person p) {
         persons.add(p);
     }
+
+    /**
+     * Adds a treatment to the address book. The treatment must not already exist in the address
+     * book.
+     */
+    public void addTreatment(Treatment p) {
+        treatments.add(p);
+    }
+
+    /**
+     * Removes {@code key} from this {@code AddressBook}. {@code key} must exist in the address
+     * book. Replaces the given treatment {@code target} in the list with {@code editedtreatment}.
+     * {@code target} must exist in the address book. The person identity of {@code editedtreatment}
+     * must not be the same as another existing treatment in the address book.
+     */
+    public void setTreatment(Treatment target, Treatment editedtreatment) {
+        requireNonNull(editedtreatment);
+
+        treatments.setTreatment(target, editedtreatment);
+    }
+
+    /**
+     * Removes {@code key} from this {@code AddressBook}. {@code key} must exist in the address
+     * book.
+     */
+    public void removeTreatment(Treatment key) {
+        treatments.remove(key);
+    }
+
 
     /**
      * Adds a patient to the address book. The patient must not already exist in the address book.
@@ -276,6 +327,7 @@ public class AddressBook implements ReadOnlyAddressBook {
             .add("persons", persons)
             .add("patients", patients)
             .add("dentists", dentists)
+            .add("treatments", treatments)
             .toString();
     }
 
@@ -287,6 +339,11 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public ObservableList<Patient> getPatientList() {
         return patients.asUnmodifiableObservableList();
+    }
+
+    @Override
+    public ObservableList<Treatment> getTreatmentList() {
+        return treatments.asUnmodifiableObservableList();
     }
 
     @Override
