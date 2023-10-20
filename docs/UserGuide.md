@@ -93,7 +93,7 @@ Adds a dentist to ToothTracker list of dentists. This is helpful when:
 A dentist can have any number of <code>TAG</code>s (including zero tags).
 
 <code>EMAIL</code> and <code>ADDRESS</code> are optional to be put.
-You may use edit-dentist command to update them in the future.
+You may use `edit-dentist` command to update them in the future.
 </div>
 
 Examples:
@@ -103,9 +103,13 @@ h/Yishun Street 72, Blk 742, #03-354, Singapore 512742 t/Undergraduate Trainee`
 This adds a dentist named 'Xavier Roald' with phone number '99773311', email 'roaldxavier@hotmail.com', 
 address 'Yishun Street 72, Blk 742, #03-354, Singapore 512742',
 specialising in 'Whitening' with 1 year of experience, who is undergoing University Training program under Dentistry.
+
+
 * `add-dentist n/Bob p/12345678 e/bobjune@gmail.com y/6 s/braces`  
 This adds a dentist named 'Bob' with phone number '12345678' and email ‘bobjune@gmail.com’,
 who has 6 years of experience and specializing in 'braces' into ToothTracker dentist list.
+
+
 * `add-dentist n/Emmanuel Chua p/99887766 y/8 s/surgery t/extraction` 
 This adds a dentist named 'Emmanuel Chua' with phone number '99887766' who has 8 years of experience
 specializing in 'surgery' with a tag of 'extraction' into ToothTracker dentist list.
@@ -117,18 +121,6 @@ Edits one or more details of the dentist at the specified Dentist ID. This is he
 * Optional dentist details were not provided previously.
 * You accidentally entered incorrect information about a dentist into the ToothTrack database.
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-You can edit the particulars in any order and you can edit more than one detail of the dentist.
-</div>
-
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-To check the Dentist ID for a dentist, you can simply enter the command `list-dentist`.
-</div>
-
-<div markdown="block" class="alert alert-info">
-When editing tags, you have to include any previous tags that was already included in the dentist, or else these tags will be removed. This also means that you can use `t/` to remove all tags from a dentist using the edit-dentist command.
-</div>
-
 **Format:** `edit-dentist DENTIST_ID [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SPECIALIZATION] [y/YOE] [t/TAG]…​`
 
 Examples:
@@ -138,9 +130,26 @@ Examples:
 * `edit-dentist 2 n/Emmanuel Alexandra t/` edits the name of the dentist with Dentist ID of 2 into ‘Emmanual Alexandra’
   and removes all tags of the dentist.
 
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+You can edit the particulars in any order and you can edit more than one detail of the dentist.
+</div>
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+To check the Dentist ID for a dentist, you can simply enter the command `list-dentists`.
+</div>
+
+<div markdown="block" class="alert alert-info">
+**:information_source: Notes about editing tags:**<br>
+When editing tags, you have to include any previous tags that was already included in the dentist, or else these tags will be removed. 
+This also means that you can use `t/` to remove all tags from a dentist using the <code>edit-dentist</code> command.
+</div>
+
 ### Searching a dentist by Dentist ID: `search-dentist DENTIST_ID`
 
-Searches for the dentist at the specified Dentist ID in ToothTracker
+Searches for the dentist with the specified Dentist ID in ToothTracker. 
+**This search returns one unique dentist.** This is helpful when:
+* You want quick access to one specific Dentist's particulars.
+* You want to confirm the identity of a Dentist before using further commands.
 
 <div markdown="block" class="alert alert-info">
 The `DENTIST_ID` refers to the index number shown in the displayed list of dentists.
@@ -151,7 +160,10 @@ You may use `list-dentists` to check out the dentists' ID first.
 
 ### Searching a dentist by name: `search-dentist NAME`
 
-Searches for the dentist whose name contains `NAME`  in ToothTracker
+Searches for dentists whose name contains `NAME`  in ToothTracker. 
+**This search may return more than one dentist.** This is helpful when:
+* You want quick access to one or more specific Dentists particulars, **but you forgot the `Dentist ID` of the dentists** you are searching for.
+* You want to confirm the identity of a Dentist before using further commands.
 
 <div markdown="block" class="alert alert-info">
 The `DENTIST_ID` refers to the index number shown in the displayed list of dentists.
@@ -347,6 +359,14 @@ _Details coming soon ..._
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains
 the data of your previous ToothTracker home folder.
 
+**Q**: Why do I get an error while trying to edit an existing dentist/patient?<br>
+**A**: The dentist/patient to be edited may not be shown in ToothTracker. 
+To display the to-be-edited dentist/patient, you may use these commands:
+1. `list-dentists` or `list-patients`
+2. `search-dentist` or `search-patient`
+
+Afterwards, you may edit the particulars using `edit-dentist` or `edit-patient` with their corresponding IDs.
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Known issues
@@ -375,7 +395,7 @@ the data of your previous ToothTracker home folder.
 | **Add a Treatment**                     | `add-treatment [NAME] [PRICE]` <br> e.g., `add-treatment "Tooth Extraction" 150`                                                                                                                                                  |
 | **Filter Appointments by Service Type** | `filter s/SERVICE_TYPE` <br> e.g., `filter s/Tooth Extraction`                                                                                                                                                                    |
 | **Filter Appointments by Date**         | `filter t/DATE` <br> e.g., `filter t/20-11-2023`                                                                                                                                                                                  |
-| **Filter Appointments by Dentist**      | `filter d/DENTIST_ID` <br> e.g., `filter d/Tom`                                                                                                                                                                                   |
+| **Filter Appointments by Dentist Name** | `filter d/NAME` <br> e.g., `filter d/Tom`                                                                                                                                                                                         |
 | **Clear all Profiles**                  | `clear`                                                                                                                                                                                                                           |
 | **Exit Programme**                      | `exit`                                                                                                                                                                                                                            |
 | **Help**                                | `help`                                                                                                                                                                                                                            |
