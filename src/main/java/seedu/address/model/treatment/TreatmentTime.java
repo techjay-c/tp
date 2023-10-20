@@ -18,7 +18,7 @@ public class TreatmentTime {
      */
     public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
 
-    public final String treatmentTime;
+    public final String value;
 
     /**
      * Constructs a {@code TreatmentName}.
@@ -28,7 +28,7 @@ public class TreatmentTime {
     public TreatmentTime(String time) {
         requireNonNull(time);
         checkArgument(isValidTime(time), MESSAGE_CONSTRAINTS);
-        treatmentTime = time;
+        value = time;
     }
 
     /**
@@ -41,7 +41,7 @@ public class TreatmentTime {
 
     @Override
     public String toString() {
-        return treatmentTime;
+        return value;
     }
 
     @Override
@@ -56,12 +56,12 @@ public class TreatmentTime {
         }
 
         TreatmentTime otherTime = (TreatmentTime) other;
-        return treatmentTime.equals(otherTime.treatmentTime);
+        return value.equals(otherTime.value);
     }
 
     @Override
     public int hashCode() {
-        return treatmentTime.hashCode();
+        return value.hashCode();
     }
 
 }

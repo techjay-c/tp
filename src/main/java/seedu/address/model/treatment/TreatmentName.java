@@ -18,7 +18,7 @@ public class TreatmentName {
      */
     public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
 
-    public final String treatmentName;
+    public final String value;
 
     /**
      * Constructs a {@code TreatmentName}.
@@ -28,7 +28,7 @@ public class TreatmentName {
     public TreatmentName(String name) {
         requireNonNull(name);
         checkArgument(isValidName(name), MESSAGE_CONSTRAINTS);
-        treatmentName = name;
+        value = name;
     }
 
     /**
@@ -41,7 +41,7 @@ public class TreatmentName {
 
     @Override
     public String toString() {
-        return treatmentName;
+        return value;
     }
 
     @Override
@@ -56,12 +56,12 @@ public class TreatmentName {
         }
 
         TreatmentName otherName = (TreatmentName) other;
-        return treatmentName.equals(otherName.treatmentName);
+        return value.equals(otherName.value);
     }
 
     @Override
     public int hashCode() {
-        return treatmentName.hashCode();
+        return value.hashCode();
     }
 
 }
