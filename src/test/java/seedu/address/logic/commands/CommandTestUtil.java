@@ -6,7 +6,9 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SPECIALIZATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_YOE;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
@@ -19,6 +21,7 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.dentist.Dentist;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 
 /**
@@ -37,6 +40,12 @@ public class CommandTestUtil {
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
 
+    // Valid Fields - Dentist specific
+    public static final String VALID_SPECIALIZATION_AMY = "Orthopaedics";
+    public static final String VALID_SPECIALIZATION_BOB = "Paediatrics";
+    public static final String VALID_YOE_AMY = "12";
+    public static final String VALID_YOE_BOB = "4";
+
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
     public static final String PHONE_DESC_AMY = " " + PREFIX_PHONE + VALID_PHONE_AMY;
@@ -45,6 +54,12 @@ public class CommandTestUtil {
     public static final String EMAIL_DESC_BOB = " " + PREFIX_EMAIL + VALID_EMAIL_BOB;
     public static final String ADDRESS_DESC_AMY = " " + PREFIX_ADDRESS + VALID_ADDRESS_AMY;
     public static final String ADDRESS_DESC_BOB = " " + PREFIX_ADDRESS + VALID_ADDRESS_BOB;
+
+    // Input Fields - Dentist Specific
+    public static final String SPECIALIZATION_DESC_AMY = " " + PREFIX_SPECIALIZATION + VALID_SPECIALIZATION_AMY;
+    public static final String SPECIALIZATION_DESC_BOB = " " + PREFIX_SPECIALIZATION + VALID_SPECIALIZATION_BOB;
+    public static final String YOE_DESC_AMY = " " + PREFIX_YOE + VALID_YOE_AMY;
+    public static final String YOE_DESC_BOB = " " + PREFIX_YOE + VALID_YOE_BOB;
     public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_FRIEND;
     public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
 
@@ -52,6 +67,10 @@ public class CommandTestUtil {
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
+
+    // Invalid Fields - Dentist Specific
+    public static final String INVALID_SPECIALIZATION_DESC = " " + PREFIX_SPECIALIZATION + "GP&";
+    public static final String INVALID_YOE_DESC = " " + PREFIX_YOE + "129037"; // YOE maximum 2 digits
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
@@ -125,4 +144,17 @@ public class CommandTestUtil {
         assertEquals(1, model.getFilteredPersonList().size());
     }
 
+    /**
+     * Updates {@code model}'s filtered list to show only the person at the given {@code dentistId} in the
+     * {@code model}'s address book.
+     */
+    public static void showDentistWithId(Model model, long dentistId) {
+        assertTrue(dentistId < model.getFilteredDentistList().size());
+
+        Dentist dentist = model.getDentistById(dentistId);
+        final String[] splitName = dentist.getName().fullName.split("\\s+");
+        model.updateFilteredDentistList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+
+        assertEquals(1, model.getFilteredDentistList().size());
+    }
 }

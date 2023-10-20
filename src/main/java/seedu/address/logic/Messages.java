@@ -7,6 +7,7 @@ import java.util.stream.Stream;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.model.appointments.Appointment;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.patients.Patient;
 import seedu.address.model.treatment.Treatment;
 
@@ -96,6 +97,29 @@ public class Messages {
             .append(person.getEmail())
             .append("; Tags: ");
         person.getTags().forEach(builder::append);
+        return builder.toString();
+    }
+
+    /**
+     * Formats the {@code dentist} for display to the user.
+     */
+    public static String format(Dentist dentist) {
+        final StringBuilder builder = new StringBuilder();
+        builder.append(dentist.getName())
+                .append("; Phone: ")
+                .append(dentist.getPhone())
+                .append("; Email: ")
+                .append(dentist.getEmail())
+                .append("; Address: ")
+                .append(dentist.getAddress())
+                .append("; Specialization: ")
+                .append(dentist.getSpecialization())
+                .append("; Years of Experience: ")
+                .append(dentist.getYoe())
+                .append("; Dentist ID: ")
+                .append(dentist.getId())
+                .append("; Tags: ");
+        dentist.getTags().forEach(builder::append);
         return builder.toString();
     }
 

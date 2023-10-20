@@ -9,6 +9,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_SPECIALIZATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_YOE;
 
+import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.dentist.Dentist;
@@ -18,6 +19,8 @@ import seedu.address.model.person.dentist.Dentist;
  */
 public class AddDentistCommand extends Command {
     public static final String COMMAND_WORD = "add-dentist";
+    public static final String MESSAGE_DUPLICATE_DENTIST = "This dentist already exists in ToothTracker address book!";
+    public static final String MESSAGE_SUCCESS = "New Dentist added: %1$s";
     public static final String SHORTHAND_COMMAND_WORD = "ad";
 
     private static final String MESSAGE_USAGE = COMMAND_WORD + " (short form: " + SHORTHAND_COMMAND_WORD + ")"
@@ -38,9 +41,6 @@ public class AddDentistCommand extends Command {
             + PREFIX_SPECIALIZATION + "Orthodontics "
             + PREFIX_YOE + "5 "
             + PREFIX_TAG + "Braces";
-
-    private static final String MESSAGE_SUCCESS = "New Dentist added: %1$s";
-    private static final String MESSAGE_DUPLICATE_DENTIST = "This dentist already exists in ToothTracker address book!";
 
     private final Dentist toAdd;
 
@@ -82,5 +82,12 @@ public class AddDentistCommand extends Command {
         return other == this // short circuit if same object
                 || (other instanceof AddDentistCommand // instanceof handles nulls
                 && toAdd.equals(((AddDentistCommand) other).toAdd));
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .add("toAdd", toAdd)
+                .toString();
     }
 }
