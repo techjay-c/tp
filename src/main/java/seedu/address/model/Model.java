@@ -197,5 +197,10 @@ public interface Model {
      */
     void updateFilteredTreatmentList(Predicate<Treatment> predicate);
 
-
+    /**
+     * Updates the filter of the filtered Appointment list to filter by the given {@code predicate}.
+     *
+     * @param appointmentPredicate The predicate to filter the list by.
+     */
+    void updateFilteredAppointmentList(Predicate<Appointment> appointmentPredicate);
 }
