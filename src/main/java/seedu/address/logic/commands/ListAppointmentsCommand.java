@@ -5,6 +5,9 @@ import static seedu.address.model.Model.PREDICATE_SHOW_ALL_APPOINTMENTS;
 
 import seedu.address.model.Model;
 
+/**
+ * Lists all appointments in ToothTracker to the user.
+ */
 public class ListAppointmentsCommand extends Command {
 
     public static final String COMMAND_WORD = "list-appointments";

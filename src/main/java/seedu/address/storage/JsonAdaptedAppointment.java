@@ -108,8 +108,7 @@ public class JsonAdaptedAppointment {
                     String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
         }
         if (id == null) {
-            throw new IllegalValueException(
-                    "id value does not exist!");
+            throw new IllegalValueException("id value does not exist!");
         }
         long lid = Long.parseLong(id);
 
