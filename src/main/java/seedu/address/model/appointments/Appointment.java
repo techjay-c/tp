@@ -38,6 +38,7 @@ public class Appointment {
      * @param appointmentTime The time and date of the appointment.
      * @param duration The duration of the appointment.
      * @param treatment The treatment provided.
+     * @param id The appointment id.
      */
     public Appointment(long dentist, long patient, AppointmentTime appointmentTime,
                        String duration, String treatment, long id) {

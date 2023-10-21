@@ -39,11 +39,11 @@ public class AddAppointmentCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New Appointment added: %1$s";
 
-    public static final String MESSAGE_CLASHING_DOCTORS = "This doctor already has a " +
-            "current appointment in the same time slot.";
+    public static final String MESSAGE_CLASHING_DOCTORS = "This doctor already has a "
+            + "current appointment in the same time slot.";
 
-    public static final String MESSAGE_CLASHING_PATIENTS = "This patient already has a " +
-            "current appointment in the same time slot.";
+    public static final String MESSAGE_CLASHING_PATIENTS = "This patient already has a "
+            + "current appointment in the same time slot.";
 
     private final Appointment toAdd;
     private final long dentistId;
@@ -107,7 +107,8 @@ public class AddAppointmentCommand extends Command {
             if (!model.getFilteredAppointmentList().isEmpty()) {
                 for (int i = 0; i < model.getFilteredAppointmentList().size(); i++) {
                     if (model.getFilteredAppointmentList().get(i).getPatient() == patientId) {
-                        throw new CommandException(MESSAGE_CLASHING_PATIENTS);                    }
+                        throw new CommandException(MESSAGE_CLASHING_PATIENTS);
+                    }
                 }
             }
         }
