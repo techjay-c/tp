@@ -49,8 +49,8 @@ public class JsonAdaptedAppointment {
      * @param source The source appointment to be adapted.
      */
     public JsonAdaptedAppointment(Appointment source) {
-        dentist = source.getDentist();
-        patient = source.getPatient();
+        dentist = String.valueOf(source.getDentist());
+        patient = String.valueOf(source.getPatient());
         start = source.getAppointmentTime().startToString();
         duration = source.getAppointmentTime().durationToString();
         treatment = source.getTreatment();
@@ -68,10 +68,12 @@ public class JsonAdaptedAppointment {
             throw new IllegalValueException(
                     String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
         }
+        long did = Long.parseLong(dentist);
         if (patient == null) {
             throw new IllegalValueException(
                     String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
         }
+        long pid = Long.parseLong(patient);
         if (start == null) {
             throw new IllegalValueException(
                     String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
@@ -91,6 +93,6 @@ public class JsonAdaptedAppointment {
         long lid = Long.parseLong(id);
 
         final AppointmentTime appointmentTime = new AppointmentTime(start, duration);
-        return new Appointment(dentist, patient, appointmentTime, duration, treatment, lid);
+        return new Appointment(did, pid, appointmentTime, duration, treatment, lid);
     }
 }

@@ -4,8 +4,8 @@ package seedu.address.model.appointments;
  * Represents an Appointment in ToothTracker.
  */
 public class Appointment {
-    private final String dentist;
-    private final String patient;
+    private final long dentist;
+    private final long patient;
     private final AppointmentTime appointmentTime;
     private final String duration;
     private final String treatment;
@@ -20,7 +20,7 @@ public class Appointment {
      * @param duration The duration of the appointment.
      * @param treatment The treatment provided.
      */
-    public Appointment(String dentist, String patient, AppointmentTime appointmentTime,
+    public Appointment(long dentist, long patient, AppointmentTime appointmentTime,
                        String duration, String treatment) {
         this.dentist = dentist;
         this.patient = patient;
@@ -39,7 +39,7 @@ public class Appointment {
      * @param duration The duration of the appointment.
      * @param treatment The treatment provided.
      */
-    public Appointment(String dentist, String patient, AppointmentTime appointmentTime,
+    public Appointment(long dentist, long patient, AppointmentTime appointmentTime,
                        String duration, String treatment, long id) {
         this.dentist = dentist;
         this.patient = patient;
@@ -49,11 +49,11 @@ public class Appointment {
         this.id = id;
     }
 
-    public String getDentist() {
+    public long getDentist() {
         return this.dentist;
     }
 
-    public String getPatient() {
+    public long getPatient() {
         return this.patient;
     }
 

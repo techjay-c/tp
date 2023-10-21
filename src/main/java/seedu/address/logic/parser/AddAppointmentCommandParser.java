@@ -37,8 +37,8 @@ public class AddAppointmentCommandParser implements Parser<AddAppointmentCommand
                     AddAppointmentCommand.MESSAGE_USAGE));
         }
 
-        String dentist = argMultimap.getValue(PREFIX_DENTIST).get();
-        String patient = argMultimap.getValue(PREFIX_PATIENT).get();
+        long dentist = Long.parseLong(argMultimap.getValue(PREFIX_DENTIST).get());
+        long patient = Long.parseLong(argMultimap.getValue(PREFIX_PATIENT).get());
         String start = argMultimap.getValue(PREFIX_START).get();
         String[] parts = start.split("\\s+");
         String startParsed = null;
