@@ -4,8 +4,10 @@ package seedu.address.model.appointments;
  * Represents an Appointment in ToothTracker.
  */
 public class Appointment {
-    private final long dentist;
-    private final long patient;
+    private final long dentistId;
+    private final long patientId;
+    private String dentistName;
+    private String patientName;
     private final AppointmentTime appointmentTime;
     private final String duration;
     private final String treatment;
@@ -14,16 +16,16 @@ public class Appointment {
     /**
      * Constructs an Appointment with the specified details.
      *
-     * @param dentist The name of the dentist for the appointment.
-     * @param patient The name of the patient for the appointment.
+     * @param dentistId The ID of the dentist for the appointment.
+     * @param patientId The ID of the patient for the appointment.
      * @param appointmentTime The time and date of the appointment.
      * @param duration The duration of the appointment.
      * @param treatment The treatment provided.
      */
-    public Appointment(long dentist, long patient, AppointmentTime appointmentTime,
+    public Appointment(long dentistId, long patientId, AppointmentTime appointmentTime,
                        String duration, String treatment) {
-        this.dentist = dentist;
-        this.patient = patient;
+        this.dentistId = dentistId;
+        this.patientId = patientId;
         this.appointmentTime = appointmentTime;
         this.duration = duration;
         this.treatment = treatment;
@@ -33,29 +35,45 @@ public class Appointment {
     /**
      * Constructs an Appointment with the specified details.
      *
-     * @param dentist The name of the dentist for the appointment.
-     * @param patient The name of the patient for the appointment.
+     * @param dentistId The ID of the dentist for the appointment.
+     * @param patientId The ID of the patient for the appointment.
      * @param appointmentTime The time and date of the appointment.
      * @param duration The duration of the appointment.
      * @param treatment The treatment provided.
      * @param id The appointment id.
      */
-    public Appointment(long dentist, long patient, AppointmentTime appointmentTime,
+    public Appointment(long dentistId, long patientId, AppointmentTime appointmentTime,
                        String duration, String treatment, long id) {
-        this.dentist = dentist;
-        this.patient = patient;
+        this.dentistId = dentistId;
+        this.patientId = patientId;
         this.appointmentTime = appointmentTime;
         this.duration = duration;
         this.treatment = treatment;
         this.id = id;
     }
 
-    public long getDentist() {
-        return this.dentist;
+    public long getDentistId() {
+        return this.dentistId;
     }
 
-    public long getPatient() {
-        return this.patient;
+    public long getPatientId() {
+        return this.patientId;
+    }
+
+    public void setDentistName(String dentistName) {
+        this.dentistName = dentistName;
+    }
+
+    public void setPatientName(String patientName) {
+        this.patientName = patientName;
+    }
+
+    public String getDentistName() {
+        return this.dentistName;
+    }
+
+    public String getPatientName() {
+        return this.patientName;
     }
 
     public String getDuration() {

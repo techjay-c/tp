@@ -14,8 +14,10 @@ import seedu.address.model.person.Name;
 public class JsonAdaptedAppointment {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Appointment's %s field is missing!";
 
-    private final String dentist;
-    private final String patient;
+    private final String dentistId;
+    private final String patientId;
+    private final String dentistName;
+    private final String patientName;
     private final String start;
     private final String duration;
     private final String treatment;
@@ -24,18 +26,27 @@ public class JsonAdaptedAppointment {
     /**
      * Constructs a {@code JsonAdaptedAppointment} with the given appointment details.
      *
-     * @param dentist The dentist's name.
-     * @param patient The patient's name.
+     * @param dentistId The dentist ID.
+     * @param patientId The patient ID.
+     * @param dentistName The name of the dentist.
+     * @param patientName The name of the patient.
      * @param start The start time of the appointment in string format.
      * @param duration The duration of the appointment in string format.
      * @param treatment The treatment provided during the appointment.
      */
     @JsonCreator
-    public JsonAdaptedAppointment(@JsonProperty("dentist") String dentist, @JsonProperty("patient") String patient,
-                             @JsonProperty("start") String start, @JsonProperty("duration") String duration,
-                                  @JsonProperty("treatment") String treatment, @JsonProperty("id") String id) {
-        this.dentist = dentist;
-        this.patient = patient;
+    public JsonAdaptedAppointment(@JsonProperty("dentistId") String dentistId,
+                                  @JsonProperty("patientId") String patientId,
+                                  @JsonProperty("dentistName") String dentistName,
+                                  @JsonProperty("patientName") String patientName,
+                                  @JsonProperty("start") String start,
+                                  @JsonProperty("duration") String duration,
+                                  @JsonProperty("treatment") String treatment,
+                                  @JsonProperty("id") String id) {
+        this.dentistId = dentistId;
+        this.patientId = patientId;
+        this.dentistName = dentistName;
+        this.patientName = patientName;
         this.start = start;
         this.duration = duration;
         this.treatment = treatment;
@@ -49,8 +60,10 @@ public class JsonAdaptedAppointment {
      * @param source The source appointment to be adapted.
      */
     public JsonAdaptedAppointment(Appointment source) {
-        dentist = String.valueOf(source.getDentist());
-        patient = String.valueOf(source.getPatient());
+        dentistId = String.valueOf(source.getDentistId());
+        patientId = String.valueOf(source.getPatientId());
+        dentistName = source.getDentistName();
+        patientName = source.getPatientName();
         start = source.getAppointmentTime().startToString();
         duration = source.getAppointmentTime().durationToString();
         treatment = source.getTreatment();
@@ -64,16 +77,24 @@ public class JsonAdaptedAppointment {
      * @throws IllegalValueException If there were any data constraints violated in the adapted appointment.
      */
     public Appointment toModelType() throws IllegalValueException {
-        if (dentist == null) {
+        if (dentistId == null) {
             throw new IllegalValueException(
                     String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
         }
-        long did = Long.parseLong(dentist);
-        if (patient == null) {
+        long did = Long.parseLong(dentistId);
+        if (patientId == null) {
             throw new IllegalValueException(
                     String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
         }
-        long pid = Long.parseLong(patient);
+        long pid = Long.parseLong(patientId);
+        if (dentistName == null) {
+            throw new IllegalValueException(
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
+        }
+        if (patientName == null) {
+            throw new IllegalValueException(
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
+        }
         if (start == null) {
             throw new IllegalValueException(
                     String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
@@ -93,6 +114,9 @@ public class JsonAdaptedAppointment {
         long lid = Long.parseLong(id);
 
         final AppointmentTime appointmentTime = new AppointmentTime(start, duration);
-        return new Appointment(did, pid, appointmentTime, duration, treatment, lid);
+        Appointment newAppointment = new Appointment(did, pid, appointmentTime, duration, treatment, lid);
+        newAppointment.setDentistName(dentistName);
+        newAppointment.setPatientName(patientName);
+        return newAppointment;
     }
 }

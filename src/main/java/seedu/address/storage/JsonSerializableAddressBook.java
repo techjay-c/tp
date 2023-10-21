@@ -107,9 +107,9 @@ class JsonSerializableAddressBook {
 
         for (JsonAdaptedAppointment jsonAdaptedAppointment : appointments) {
             Appointment appointment = jsonAdaptedAppointment.toModelType();
-            if (addressBook.hasAppointment(appointment)) {
+            /*if (addressBook.hasAppointment(appointment)) {
                 throw new IllegalValueException(MESSAGE_CLASHING_APPOINTMENTS);
-            }
+            }*/
             addressBook.addAppointment(appointment);
         }
 

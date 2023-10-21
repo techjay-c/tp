@@ -39,7 +39,7 @@ public class AddAppointmentCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New Appointment added: %1$s";
 
-    public static final String MESSAGE_CLASHING_DOCTORS = "This doctor already has a "
+    public static final String MESSAGE_CLASHING_DOCTORS = "This dentist already has a "
             + "current appointment in the same time slot.";
 
     public static final String MESSAGE_CLASHING_PATIENTS = "This patient already has a "
@@ -57,8 +57,8 @@ public class AddAppointmentCommand extends Command {
     public AddAppointmentCommand(Appointment appointment) {
         requireNonNull(appointment);
         toAdd = appointment;
-        dentistId = appointment.getDentist();
-        patientId = appointment.getPatient();
+        dentistId = appointment.getDentistId();
+        patientId = appointment.getPatientId();
     }
 
 
@@ -80,7 +80,8 @@ public class AddAppointmentCommand extends Command {
             if (model.getFilteredDentistList().isEmpty()) {
                 throw new CommandException("No dentist with ID " + dentistId);
             }
-
+            Dentist dentist = model.getFilteredDentistList().get(0);
+            toAdd.setDentistName(dentist.getName().fullName);
         }
 
         if (patientId >= 0) {
@@ -90,6 +91,8 @@ public class AddAppointmentCommand extends Command {
             if (model.getFilteredPatientList().isEmpty()) {
                 throw new CommandException("No patient with ID " + dentistId);
             }
+            Patient patient = model.getFilteredPatientList().get(0);
+            toAdd.setPatientName(patient.getName().fullName);
         }
 
         if (model.hasAppointment(toAdd)) {
@@ -98,7 +101,7 @@ public class AddAppointmentCommand extends Command {
 
             if (!model.getFilteredAppointmentList().isEmpty()) {
                 for (int i = 0; i < model.getFilteredAppointmentList().size(); i++) {
-                    if (model.getFilteredAppointmentList().get(i).getDentist() == dentistId) {
+                    if (model.getFilteredAppointmentList().get(i).getDentistId() == dentistId) {
                         throw new CommandException(MESSAGE_CLASHING_DOCTORS);
                     }
                 }
@@ -106,7 +109,7 @@ public class AddAppointmentCommand extends Command {
 
             if (!model.getFilteredAppointmentList().isEmpty()) {
                 for (int i = 0; i < model.getFilteredAppointmentList().size(); i++) {
-                    if (model.getFilteredAppointmentList().get(i).getPatient() == patientId) {
+                    if (model.getFilteredAppointmentList().get(i).getPatientId() == patientId) {
                         throw new CommandException(MESSAGE_CLASHING_PATIENTS);
                     }
                 }
