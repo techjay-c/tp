@@ -123,6 +123,7 @@ class JsonSerializableAddressBook {
 
         addressBook.setDentistId(Long.parseLong(dentistId));
         addressBook.setPatientId(Long.parseLong(patientId));
+        addressBook.setAppointmentId(Long.parseLong(appointmentId));
         return addressBook;
     }
 
