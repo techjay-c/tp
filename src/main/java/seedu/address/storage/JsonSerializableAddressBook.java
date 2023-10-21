@@ -41,12 +41,15 @@ class JsonSerializableAddressBook {
 
 
     /**
-     * Constructs a {@code JsonSerializableAddressBook} with the given persons.
+     * Constructs a {@code JsonSerializableAddressBook} with the given persons and dentists.
      */
     @JsonCreator
-    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons) {
+    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons,
+                                       @JsonProperty("dentists") List<JsonAdaptedDentist> dentists) {
         this.persons.addAll(persons);
+        this.dentists.addAll(dentists);
     }
+
 
     /**
      * Converts a given {@code ReadOnlyAddressBook} into this class for Jackson use.
