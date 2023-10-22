@@ -331,6 +331,7 @@
   top: var(--sticky-header-height);
   min-width: 0px;
   max-width: 250px;
+  width: 250px;
   max-height: calc(100vh - var(--sticky-header-height));
   margin: 0 20px 0 20px;
   overflow-y: auto;
@@ -375,5 +376,6 @@
   #site-nav, #page-nav {
     display: none;
   }
+
 
 }
