@@ -41,7 +41,7 @@ public class AddPatientCommand extends Command {
             + PREFIX_PHONE + "90676622 "
             + PREFIX_BIRTHDATE + "06-06-1998 "
             + PREFIX_GENDER + "M "
-            + PREFIX_REMARK + "Allergic to Peanuts"
+            + PREFIX_REMARK + "Allergic to Peanuts "
             + PREFIX_SERVICE + "Cleaning "
             + PREFIX_EMAIL + "johntan@gmail.com "
             + PREFIX_ADDRESS + "60 Jalan Road "
