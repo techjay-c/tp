@@ -40,8 +40,9 @@ public class Birthdate {
             return false;
         }
         try {
-            LocalDate.parse(test, DATE_TIME_FORMATTER);
-            return true;
+            // Ensure that date is not in the future
+            LocalDate date = LocalDate.parse(test, DATE_TIME_FORMATTER);
+            return !date.isAfter(LocalDate.now());
         } catch (DateTimeParseException e) {
             return false;
         }
