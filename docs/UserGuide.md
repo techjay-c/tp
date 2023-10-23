@@ -275,6 +275,70 @@ Examples:
 * `search-patient 088` searches for a patient with the ID `088`. If one or more matching patients are found based on
   your search criteria, the system will list the matching patients along with their details.
 
+## Appointment Features
+
+### Adding an appointment: `add-appointment`
+
+You can add a new dental appointment to the ToothTracker system using the `add-appointment` command.
+This command allows you to specify the dentist, patient, start time and duration of the appointment.
+You can also specify the treatment of the appointment.
+
+Format: `add-appointment dentist/DENTIST_ID patient/PATIENT_ID start/START_TIME duration/DURATION s/TREATMENT`
+
+Examples:
+
+* `add-appointment dentist/0 patient/0 start/2023-10-12 16:00 duration/PT1H30M s/Braces`
+  adds an appointment with patient whose ID is 0, dentist whose ID is 0.
+  The appointment starts on 12 October 2023, lasting for 1.5 hours. Treatment provided during the appointment is braces.
+
+**Important Notes:**
+
+- The system will not allow the addition of appointments that
+  clashes with existing appointments with the same dentist or patient.
+
+### Deleting a appointment: `delete-appointment`
+
+Deletes the specified appointment from ToothTracker.
+
+<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
+This command is DESTRUCTIVE!
+Appointments deleted will need to be added back and their previous records may be removed.
+Proceed with caution!
+</div>
+
+
+<div markdown="block" class="alert alert-info">
+The `APPOINTMENT_ID` refers to the index number shown in the displayed list of appointments.
+You may use `list-appointments` to check out the appointment's ID first.
+</div>
+
+
+**Format:** `delete-appointment APPOINTMENT_ID`
+
+Examples:
+
+* `delete-appointment 2` deletes appointment with APPOINTMENT_ID 2 from ToothTracker.
+
+
+### Listing all patients : `list-appointments`
+Shows a list of all appointments in ToothTracker.
+
+Format: `list-appointments`
+
+### Filter Appointments by service type, date or dentist: `filter KEYWORD`
+
+You can filter appointments by their service type, date or dentists in the ToothTracker system
+using the `filter` command.
+
+Format: `filter s/SERVICE_TYPE`, `filter t/DATE`, `filter d/DENTIST`
+
+Examples:
+
+* `filter s/Tooth Extraction` returns all Tooth Extraction appointments.
+* `filter t/20-11-2023` returns all appointments happening on 20 November 2023.
+* `filter d/Tom` returns all appointments with Tom as the dentist.
+
+
 ## General Features
 
 ### Adding a treatment: `add-treatment`
@@ -293,19 +357,6 @@ Examples:
 - Ensure that you provide both the treatment name and its cost when using the `add-treatment` command.
 - The system will not allow duplicate treatment names. If a treatment with the same name already exists, you will be
   prompted to provide a unique name.
-
-### Filter Appointments by service type, date or dentist: `filter KEYWORD`
-
-You can filter appointments by their service type, date or dentists in the ToothTracker system
-using the `filter` command.
-
-Format: `filter s/SERVICE_TYPE`, `filter t/DATE`, `filter d/DENTIST`
-
-Examples:
-
-* `filter s/Tooth Extraction` returns all Tooth Extraction appointments.
-* `filter t/20-11-2023` returns all appointments happening on 20 November 2023.
-* `filter d/Tom` returns all appointments with Tom as the dentist.
 
 
 ### Clearing all entries : `clear`
@@ -373,6 +424,9 @@ the data of your previous ToothTracker home folder.
 | **Search Patient by Patient ID**        | `search-patient PATIENT_ID`  <br> e.g., `search-patient 3`                                                                                                                                                                     |
 | **Search Patient by Name**              | `search-patient NAME` <br> e.g., `search-patient John`                                                                                                                                                                         |
 | **Add a Treatment**                     | `add-treatment [NAME] [PRICE]` <br> e.g., `add-treatment "Tooth Extraction" 150`                                                                                                                                               |
+| **Add Appointment**                     | `add-appointment dentist/DENTIST_ID patient/PATIENT_ID start/START_TIME duration/DURATION s/TREATMENT` <br> e.g.,`add-appointment dentist/0 patient/0 start/2023-10-12 16:00 duration/PT1H30M s/Braces`                        |
+| **Delete Appointment**                  | `delete-appointment APPOINTMENT_ID`<br> e.g., `delete-appointment 3`                                                                                                                                                           |
+| **List Appointments**                   | `list-appointments`                                                                                                                                                                                                            |
 | **Filter Appointments by Service Type** | `filter s/SERVICE_TYPE` <br> e.g., `filter s/Tooth Extraction`                                                                                                                                                                 |
 | **Filter Appointments by Date**         | `filter t/DATE` <br> e.g., `filter t/20-11-2023`                                                                                                                                                                               |
 | **Filter Appointments by Dentist**      | `filter d/DENTIST_ID` <br> e.g., `filter d/Tom`                                                                                                                                                                                |
