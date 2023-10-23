@@ -4,12 +4,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.model.person.Address;
-import seedu.address.model.person.AppointmentDate;
 import seedu.address.model.person.Birthdate;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Gender;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.Remark;
 import seedu.address.model.person.Service;
 import seedu.address.model.person.patients.Patient;
 import seedu.address.model.tag.Tag;
@@ -26,7 +26,7 @@ public class PatientBuilder {
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_GENDER = "F";
     public static final String DEFAULT_BIRTHDATE = "03-02-1999";
-    public static final String DEFAULT_APPOINTMENTDATE = "03-11-2023";
+    public static final String DEFAULT_REMARK = "Peanut Allergy";
     public static final String DEFAULT_SERVICE = "Cleaning";
 
     private Name name;
@@ -35,7 +35,7 @@ public class PatientBuilder {
     private Address address;
     private Gender gender;
     private Birthdate birthdate;
-    private AppointmentDate appointmentdate;
+    private Remark remark;
     private Service service;
     private Set<Tag> tags;
 
@@ -49,7 +49,7 @@ public class PatientBuilder {
         address = new Address(DEFAULT_ADDRESS);
         gender = new Gender(DEFAULT_GENDER);
         birthdate = new Birthdate(DEFAULT_BIRTHDATE);
-        appointmentdate = new AppointmentDate(DEFAULT_APPOINTMENTDATE);
+        remark = new Remark(DEFAULT_REMARK);
         service = new Service(DEFAULT_SERVICE);
         tags = new HashSet<>();
     }
@@ -64,7 +64,7 @@ public class PatientBuilder {
         address = patientToCopy.getAddress();
         gender = patientToCopy.getGender();
         birthdate = patientToCopy.getBirthdate();
-        appointmentdate = patientToCopy.getAppointmentdate();
+        remark = patientToCopy.getRemark();
         service = patientToCopy.getService();
         tags = new HashSet<>(patientToCopy.getTags());
     }
@@ -126,10 +126,10 @@ public class PatientBuilder {
     }
 
     /**
-     * Sets the {@code Appointmentdate} of the {@code Patient} that we are building.
+     * Sets the {@code Remark} of the {@code Patient} that we are building.
      */
-    public PatientBuilder withAppointmentdate(String appointmentdate) {
-        this.appointmentdate = new AppointmentDate(appointmentdate);
+    public PatientBuilder withRemark(String remark) {
+        this.remark = new Remark(remark);
         return this;
     }
 
@@ -142,7 +142,7 @@ public class PatientBuilder {
     }
 
     public Patient build() {
-        return new Patient(name, phone, birthdate, gender, appointmentdate, service, address, email, tags);
+        return new Patient(name, phone, birthdate, gender, remark, service, address, email, tags);
     }
 
 }

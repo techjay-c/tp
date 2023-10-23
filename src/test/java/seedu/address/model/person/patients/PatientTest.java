@@ -5,12 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_APPOINTMENTDATE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_BIRTHDATE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_GENDER_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_REMARK_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_SERVICE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -98,8 +98,8 @@ class PatientTest {
         editedAlice = new PatientBuilder(PATIENT_ALICE).withBirthdate(VALID_BIRTHDATE_BOB).build();
         assertFalse(PATIENT_ALICE.equals(editedAlice));
 
-        // different appointmentdate -> returns false
-        editedAlice = new PatientBuilder(PATIENT_ALICE).withAppointmentdate(VALID_APPOINTMENTDATE_BOB).build();
+        // different remarks -> returns false
+        editedAlice = new PatientBuilder(PATIENT_ALICE).withRemark(VALID_REMARK_BOB).build();
         assertFalse(PATIENT_ALICE.equals(editedAlice));
 
         // different service -> returns false
@@ -130,7 +130,7 @@ class PatientTest {
                 + ", phone=" + PATIENT_ALICE.getPhone()
                 + ", birthday=" + PATIENT_ALICE.getBirthdate()
                 + ", gender=" + PATIENT_ALICE.getGender()
-                + ", appointment=" + PATIENT_ALICE.getAppointmentdate()
+                + ", remark=" + PATIENT_ALICE.getRemark()
                 + ", service=" + PATIENT_ALICE.getService()
                 + ", address=" + PATIENT_ALICE.getAddress()
                 + ", email=" + PATIENT_ALICE.getEmail()

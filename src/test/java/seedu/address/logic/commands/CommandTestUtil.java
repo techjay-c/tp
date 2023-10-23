@@ -45,7 +45,7 @@ public class CommandTestUtil {
     // Valid Fields - Patient Specific
     public static final String VALID_GENDER_BOB = "M";
     public static final String VALID_BIRTHDATE_BOB = "01-01-1990";
-    public static final String VALID_APPOINTMENTDATE_BOB = "08-08-2023";
+    public static final String VALID_REMARK_BOB = "Allergy to anaesthesia";
     public static final String VALID_SERVICE_BOB = "Braces";
 
 
