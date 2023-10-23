@@ -95,28 +95,35 @@ public class AddAppointmentCommand extends Command {
 
         toAdd.setAppointmentTime(appointmentTime);
 
-        if (dentistId >= 0) {
-            Predicate<Dentist> dentistIdPredicate = dentist -> dentist.getId() == dentistId;
-            model.updateFilteredDentistList(dentistIdPredicate);
+        checkValidPersons(model);
 
-            if (model.getFilteredDentistList().isEmpty()) {
+        checkClash(model);
+
+        model.addAppointment(toAdd);
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
+    }
+
+    public void checkValidPersons(Model model) throws CommandException {
+        if (dentistId >= 0) {
+
+            Dentist dentist = model.getDentistById(dentistId);
+
+            if (dentist == null) {
                 throw new CommandException("No dentist with ID " + dentistId);
             }
-            Dentist dentist = model.getFilteredDentistList().get(0);
             toAdd.setDentistName(dentist.getName().fullName);
         }
 
         if (patientId >= 0) {
-            Predicate<Patient> patientIdPredicate = patient -> patient.getId() == patientId;
-            model.updateFilteredPatientList(patientIdPredicate);
-
-            if (model.getFilteredPatientList().isEmpty()) {
-                throw new CommandException("No patient with ID " + dentistId);
+            Patient patient = model.getPatientById(patientId);
+            if (patient == null) {
+                throw new CommandException("No patient with ID " + patientId);
             }
-            Patient patient = model.getFilteredPatientList().get(0);
             toAdd.setPatientName(patient.getName().fullName);
         }
+    }
 
+    public void checkClash(Model model) throws CommandException {
         if (model.hasAppointment(toAdd)) {
             Predicate<Appointment> appointmentPredicate = toAdd::isSameAppointmentTime;
             model.updateFilteredAppointmentList(appointmentPredicate);
@@ -137,9 +144,6 @@ public class AddAppointmentCommand extends Command {
                 }
             }
         }
-
-        model.addAppointment(toAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
     }
 
 }
