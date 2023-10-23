@@ -11,10 +11,14 @@ import java.util.function.Predicate;
 
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.parser.ParserUtil;
+import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.appointments.Appointment;
+import seedu.address.model.appointments.AppointmentTime;
 import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.patients.Patient;
+import seedu.address.model.treatment.Treatment;
 
 
 /**
@@ -28,13 +32,11 @@ public class AddAppointmentCommand extends Command {
             + PREFIX_DENTIST + "DENTIST "
             + PREFIX_PATIENT + "PATIENT "
             + PREFIX_START + "START_TIME "
-            + PREFIX_DURATION + "DURATION "
             + PREFIX_SERVICE + "SERVICE \n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_DENTIST + "0 "
             + PREFIX_PATIENT + "0 "
             + PREFIX_START + "2023-10-12 16:00 "
-            + PREFIX_DURATION + "PT1H30M "
             + PREFIX_SERVICE + "Braces";
 
     public static final String MESSAGE_SUCCESS = "New Appointment added: %1$s";
@@ -48,6 +50,8 @@ public class AddAppointmentCommand extends Command {
     private final Appointment toAdd;
     private final long dentistId;
     private final long patientId;
+    private final String treatmentName;
+    private final String start;
 
     /**
      * Constructs an AddAppointmentCommand with the specified appointment.
@@ -59,6 +63,8 @@ public class AddAppointmentCommand extends Command {
         toAdd = appointment;
         dentistId = appointment.getDentistId();
         patientId = appointment.getPatientId();
+        treatmentName = appointment.getTreatment();
+        start = appointment.getStart();
     }
 
 
@@ -72,6 +78,22 @@ public class AddAppointmentCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        Predicate<Treatment> treatmentPredicate = treatment -> treatment.getName().toString()
+                .equalsIgnoreCase(treatmentName);
+        model.updateFilteredTreatmentList(treatmentPredicate);
+
+        if (model.getFilteredTreatmentList().isEmpty()) {
+            throw new CommandException("Service is not provided in this clinic");
+        }
+        String duration = model.getFilteredTreatmentList().get(0).getTime().toString();
+        AppointmentTime appointmentTime;
+        try {
+            appointmentTime = ParserUtil.parseAppointmentTime(start, duration);
+        } catch (ParseException e) {
+            throw new CommandException("Appointment start time in wrong format.", e);
+        }
+
+        toAdd.setAppointmentTime(appointmentTime);
 
         if (dentistId >= 0) {
             Predicate<Dentist> dentistIdPredicate = dentist -> dentist.getId() == dentistId;

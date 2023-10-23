@@ -140,7 +140,9 @@ public class Messages {
             .append("; Appointment: ")
             .append(appointment.getAppointmentTime().startToString())
             .append("; Duration: ")
-            .append(appointment.getAppointmentTime().durationToString());
+            .append(appointment.getAppointmentTime().durationToString())
+            .append("; Treatment: ")
+            .append(appointment.getTreatment());
         return builder.toString();
     }
 
