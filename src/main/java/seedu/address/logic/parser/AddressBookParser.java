@@ -68,7 +68,6 @@ public class AddressBookParser {
         case AddCommand.COMMAND_WORD:
             return new AddCommandParser().parse(arguments);
 
-        case AddDentistCommand.SHORTHAND_COMMAND_WORD:
         case AddDentistCommand.COMMAND_WORD:
             return new AddDentistCommandParser().parse(arguments);
 
