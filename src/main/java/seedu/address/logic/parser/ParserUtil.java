@@ -9,9 +9,10 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.appointments.AppointmentDate;
 import seedu.address.model.appointments.AppointmentTime;
 import seedu.address.model.person.Address;
-import seedu.address.model.person.AppointmentDate;
+import seedu.address.model.person.Remark;
 import seedu.address.model.person.Birthdate;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Gender;
@@ -122,18 +123,18 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String Appointment} into an {@code Appointment}. Leading and trailing
+     * Parses a {@code String Remark} into an {@code Remark }. Leading and trailing
      * whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code Appointment} is invalid.
+     * @throws ParseException if the given {@code Remark} is invalid.
      */
-    public static AppointmentDate parseAppointment(String appointment) throws ParseException {
-        requireNonNull(appointment);
-        String trimmedAppointment = appointment.trim();
-        if (!AppointmentDate.isValidDate(trimmedAppointment)) {
-            throw new ParseException(AppointmentDate.MESSAGE_CONSTRAINTS);
+    public static Remark parseRemark(String remark) throws ParseException {
+        requireNonNull(remark);
+        String trimmedRemark = remark.trim();
+        if (!Remark.isValidRemark(trimmedRemark)) {
+            throw new ParseException(Remark.MESSAGE_CONSTRAINTS);
         }
-        return new AppointmentDate(trimmedAppointment);
+        return new Remark(trimmedRemark);
     }
 
     /**
