@@ -8,7 +8,6 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.person.exceptions.PersonNotFoundException;
 
 /**
  * A list of appointments that enforces uniqueness between its elements and does not allow nulls.
@@ -35,6 +34,10 @@ public class UniqueAppointmentList implements Iterable<Appointment> {
 
     }
 
+    /**
+     * Removes an appointment from the list.
+     * @param toRemove The appointment to be removed.
+     */
     public void remove(Appointment toRemove) {
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {

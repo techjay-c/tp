@@ -2,7 +2,6 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DENTIST;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PATIENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SERVICE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
@@ -103,6 +102,13 @@ public class AddAppointmentCommand extends Command {
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
     }
 
+    /**
+     * Checks the validity of dentist and patient IDs in the given model and
+     * updates the corresponding names in the Appointment to be added.
+     *
+     * @param model The model containing dentist and patient information.
+     * @throws CommandException If an invalid dentist or patient ID is encountered.
+     */
     public void checkValidPersons(Model model) throws CommandException {
         if (dentistId >= 0) {
 
@@ -123,6 +129,17 @@ public class AddAppointmentCommand extends Command {
         }
     }
 
+    /**
+     * Checks for appointment clashes in the given model and throws a CommandException if a clash is detected.
+     * The method uses the provided 'toAdd' appointment and compares its time with existing appointments in the model.
+     *
+     * @param model The model containing the list of appointments to check for clashes.
+     * @throws CommandException If a clash with another appointment is detected:
+     *                         - If the dentist ID clashes with another appointment's dentist ID,
+     *                              throws MESSAGE_CLASHING_DOCTORS.
+     *                         - If the patient ID clashes with another appointment's patient ID,
+     *                              throws MESSAGE_CLASHING_PATIENTS.
+     */
     public void checkClash(Model model) throws CommandException {
         if (model.hasAppointment(toAdd)) {
             Predicate<Appointment> appointmentPredicate = toAdd::isSameAppointmentTime;

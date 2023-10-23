@@ -2,7 +2,6 @@ package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DENTIST;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PATIENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SERVICE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
@@ -12,7 +11,6 @@ import java.util.stream.Stream;
 import seedu.address.logic.commands.AddAppointmentCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.appointments.Appointment;
-import seedu.address.model.appointments.AppointmentTime;
 
 /**
  * Parses input arguments and creates a new AddAppointmentCommand object.
