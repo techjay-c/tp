@@ -2,7 +2,7 @@ package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_APPOINTMENT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_BIRTHDATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_GENDER;
@@ -17,7 +17,7 @@ import java.util.stream.Stream;
 import seedu.address.logic.commands.AddPatientCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
-import seedu.address.model.person.AppointmentDate;
+import seedu.address.model.person.Remark;
 import seedu.address.model.person.Birthdate;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Gender;
@@ -45,7 +45,7 @@ public class AddPatientCommandParser implements Parser<AddPatientCommand> {
                     PREFIX_PHONE,
                     PREFIX_BIRTHDATE,
                     PREFIX_GENDER,
-                    PREFIX_APPOINTMENT,
+                PREFIX_REMARK,
                     PREFIX_SERVICE,
                     PREFIX_ADDRESS,
                     PREFIX_EMAIL,
@@ -56,7 +56,7 @@ public class AddPatientCommandParser implements Parser<AddPatientCommand> {
                 PREFIX_PHONE,
                 PREFIX_BIRTHDATE,
                 // PREFIX_GENDER,
-                PREFIX_APPOINTMENT,
+            PREFIX_REMARK,
                 PREFIX_SERVICE)
                 // PREFIX_ADDRESS,
                 // PREFIX_EMAIL)
@@ -70,7 +70,7 @@ public class AddPatientCommandParser implements Parser<AddPatientCommand> {
                 PREFIX_PHONE,
                 PREFIX_BIRTHDATE,
                 PREFIX_GENDER,
-                PREFIX_APPOINTMENT,
+            PREFIX_REMARK,
                 PREFIX_SERVICE,
                 PREFIX_ADDRESS,
                 PREFIX_EMAIL,
@@ -81,8 +81,8 @@ public class AddPatientCommandParser implements Parser<AddPatientCommand> {
         Birthdate birthdate = ParserUtil.parseBirthdate(
             argMultimap.getValue(PREFIX_BIRTHDATE).get());
         Gender gender = ParserUtil.parseGender(argMultimap.getValue(PREFIX_GENDER).orElse("NA"));
-        AppointmentDate appointmentdate = ParserUtil.parseAppointment(
-            argMultimap.getValue(PREFIX_APPOINTMENT).get());
+        Remark remark = ParserUtil.parseRemark(
+            argMultimap.getValue(PREFIX_REMARK).get());
         Service service = ParserUtil.parseService(argMultimap.getValue(PREFIX_SERVICE).get());
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL)
                 .orElse("NoEmailProvided@ToBeAdded.com"));
@@ -90,7 +90,7 @@ public class AddPatientCommandParser implements Parser<AddPatientCommand> {
                 .orElse("No Address Provided."));
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        Patient patient = new Patient(name, phone, birthdate, gender, appointmentdate, service,
+        Patient patient = new Patient(name, phone, birthdate, gender, remark, service,
             address, email, tagList);
 
         return new AddPatientCommand(patient);
