@@ -308,7 +308,7 @@ Examples:
 - The system will not allow the addition of appointments that
   clashes with existing appointments with the same dentist or patient.
 
-### Deleting a appointment: `delete-appointment`
+### Deleting an appointment: `delete-appointment`
 
 Deletes the specified appointment from ToothTracker.
 
@@ -332,7 +332,7 @@ Examples:
 * `delete-appointment 2` deletes appointment with APPOINTMENT_ID 2 from ToothTracker.
 
 
-### Listing all patients : `list-appointments`
+### Listing all appointments : `list-appointments`
 Shows a list of all appointments in ToothTracker.
 
 Format: `list-appointments`
