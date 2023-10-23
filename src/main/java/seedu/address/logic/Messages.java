@@ -87,8 +87,8 @@ public class Messages {
             .append(person.getBirthdate())
             .append("; Gender: ")
             .append(person.getGender())
-            .append("; Appointment: ")
-            .append(person.getAppointmentdate())
+            .append("; Remark: ")
+            .append(person.getRemark())
             .append("; Service: ")
             .append(person.getService())
             .append("; Address: ")
@@ -134,9 +134,9 @@ public class Messages {
     public static String format(Appointment appointment) {
         final StringBuilder builder = new StringBuilder();
         builder.append("; Dentist: ")
-            .append(appointment.getDentist())
+            .append(appointment.getDentistName())
             .append("; Patient: ")
-            .append(appointment.getPatient())
+            .append(appointment.getPatientName())
             .append("; Appointment: ")
             .append(appointment.getAppointmentTime().startToString())
             .append("; Duration: ")

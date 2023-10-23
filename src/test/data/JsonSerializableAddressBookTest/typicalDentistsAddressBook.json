@@ -66,5 +66,6 @@
     "tags" : [ "America" ]
   } ],
   "patientId" : "6",
-  "dentistId" : "7"
+  "dentistId" : "7",
+  "appointmentId" : "5"
 }

@@ -94,8 +94,9 @@ public class AddressBookTest {
         String expected =
             AddressBook.class.getCanonicalName() + "{persons=" + addressBook.getPersonList()
                 + ", patients=" + addressBook.getPatientList()
-                + ", dentists=" + addressBook.getDentistList() + ", treatments="
-                + addressBook.getTreatmentList() + "}";
+                + ", dentists=" + addressBook.getDentistList()
+                + ", appointments=" + addressBook.getAppointmentList()
+                + ", treatments=" + addressBook.getTreatmentList() + "}";
         assertEquals(expected, addressBook.toString());
     }
 

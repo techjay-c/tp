@@ -263,6 +263,11 @@ public class AddDentistCommandTest {
         }
 
         @Override
+        public void updateFilteredAppointmentList(Predicate<Appointment> appointmentPredicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public ObservableList<Treatment> getFilteredTreatmentList() {
             throw new AssertionError("This method should not be called.");
         }

@@ -107,9 +107,9 @@ class JsonSerializableAddressBook {
 
         for (JsonAdaptedAppointment jsonAdaptedAppointment : appointments) {
             Appointment appointment = jsonAdaptedAppointment.toModelType();
-            if (addressBook.hasAppointment(appointment)) {
+            /*if (addressBook.hasAppointment(appointment)) {
                 throw new IllegalValueException(MESSAGE_CLASHING_APPOINTMENTS);
-            }
+            }*/
             addressBook.addAppointment(appointment);
         }
 
@@ -123,6 +123,7 @@ class JsonSerializableAddressBook {
 
         addressBook.setDentistId(Long.parseLong(dentistId));
         addressBook.setPatientId(Long.parseLong(patientId));
+        addressBook.setAppointmentId(Long.parseLong(appointmentId));
         return addressBook;
     }
 

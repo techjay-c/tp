@@ -24,6 +24,8 @@ public interface Model {
     Predicate<Patient> PREDICATE_SHOW_ALL_PATIENTS = unused -> true;
     Predicate<Dentist> PREDICATE_SHOW_ALL_DENTISTS = unused -> true;
     Predicate<Treatment> PREDICATE_SHOW_ALL_TREATMENTS = unused -> true;
+    Predicate<Appointment> PREDICATE_SHOW_ALL_APPOINTMENTS = unused -> true;
+
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -197,5 +199,10 @@ public interface Model {
      */
     void updateFilteredTreatmentList(Predicate<Treatment> predicate);
 
-
+    /**
+     * Updates the filter of the filtered Appointment list to filter by the given {@code predicate}.
+     *
+     * @param appointmentPredicate The predicate to filter the list by.
+     */
+    void updateFilteredAppointmentList(Predicate<Appointment> appointmentPredicate);
 }

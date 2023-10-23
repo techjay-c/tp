@@ -21,6 +21,7 @@ import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditDentistCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.HelpCommand;
+import seedu.address.logic.commands.ListAppointmentsCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.ListDentistsCommand;
 import seedu.address.logic.commands.ListPatientCommand;
@@ -98,6 +99,9 @@ public class AddressBookParser {
 
         case ListDentistsCommand.COMMAND_WORD:
             return new ListDentistsCommand();
+
+        case ListAppointmentsCommand.COMMAND_WORD:
+            return new ListAppointmentsCommand();
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();

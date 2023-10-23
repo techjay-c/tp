@@ -352,6 +352,7 @@ public class AddressBook implements ReadOnlyAddressBook {
             .add("persons", persons)
             .add("patients", patients)
             .add("dentists", dentists)
+            .add("appointments", appointments)
             .add("treatments", treatments)
             .toString();
     }
