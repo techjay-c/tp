@@ -41,40 +41,40 @@ public class AddPatientCommandParser implements Parser<AddPatientCommand> {
     public AddPatientCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
             ArgumentTokenizer.tokenize(args,
-                    PREFIX_NAME,
-                    PREFIX_PHONE,
-                    PREFIX_BIRTHDATE,
-                    PREFIX_GENDER,
-                PREFIX_REMARK,
-                    PREFIX_SERVICE,
-                    PREFIX_ADDRESS,
-                    PREFIX_EMAIL,
-                    PREFIX_TAG);
-
-        if (!arePrefixesPresent(argMultimap,
                 PREFIX_NAME,
                 PREFIX_PHONE,
                 PREFIX_BIRTHDATE,
-                // PREFIX_GENDER,
-            PREFIX_REMARK,
-                PREFIX_SERVICE)
-                // PREFIX_ADDRESS,
-                // PREFIX_EMAIL)
-                || !argMultimap.getPreamble().isEmpty()) {
+                PREFIX_GENDER,
+                PREFIX_REMARK,
+                PREFIX_SERVICE,
+                PREFIX_ADDRESS,
+                PREFIX_EMAIL,
+                PREFIX_TAG);
+
+        if (!arePrefixesPresent(argMultimap,
+            PREFIX_NAME,
+            PREFIX_PHONE,
+            PREFIX_BIRTHDATE,
+            // PREFIX_GENDER,
+            // PREFIX_REMARK,
+            PREFIX_SERVICE)
+            // PREFIX_ADDRESS,
+            // PREFIX_EMAIL)
+            || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddPatientCommand.MESSAGE_USAGE));
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(
-                PREFIX_NAME,
-                PREFIX_PHONE,
-                PREFIX_BIRTHDATE,
-                PREFIX_GENDER,
+            PREFIX_NAME,
+            PREFIX_PHONE,
+            PREFIX_BIRTHDATE,
+            PREFIX_GENDER,
             PREFIX_REMARK,
-                PREFIX_SERVICE,
-                PREFIX_ADDRESS,
-                PREFIX_EMAIL,
-                PREFIX_TAG);
+            PREFIX_SERVICE,
+            PREFIX_ADDRESS,
+            PREFIX_EMAIL,
+            PREFIX_TAG);
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
@@ -82,12 +82,12 @@ public class AddPatientCommandParser implements Parser<AddPatientCommand> {
             argMultimap.getValue(PREFIX_BIRTHDATE).get());
         Gender gender = ParserUtil.parseGender(argMultimap.getValue(PREFIX_GENDER).orElse("NA"));
         Remark remark = ParserUtil.parseRemark(
-            argMultimap.getValue(PREFIX_REMARK).get());
+            argMultimap.getValue(PREFIX_REMARK).orElse("NIL"));
         Service service = ParserUtil.parseService(argMultimap.getValue(PREFIX_SERVICE).get());
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL)
-                .orElse("NoEmailProvided@ToBeAdded.com"));
+            .orElse("NoEmailProvided@ToBeAdded.com"));
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS)
-                .orElse("No Address Provided."));
+            .orElse("No Address Provided."));
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
         Patient patient = new Patient(name, phone, birthdate, gender, remark, service,
