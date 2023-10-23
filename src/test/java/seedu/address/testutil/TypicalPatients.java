@@ -32,7 +32,7 @@ public class TypicalPatients {
             .withAppointmentdate("10-11-2023")
             .withService("Cleaning")
             .withTags("friends").build();
-    public static final Patient PATIENT_BENSON = new PatientBuilder().withName("Benson Meier")
+    public static final Patient PATIENT_BOB = new PatientBuilder().withName("Benson Meier")
             .withAddress("311, Clementi Ave 2, #02-25")
             .withEmail("johnd@example.com")
             .withPhone("98765432")
@@ -118,7 +118,7 @@ public class TypicalPatients {
     }
 
     public static List<Patient> getTypicalPatients() {
-        return new ArrayList<>(Arrays.asList(PATIENT_ALICE, PATIENT_BENSON, PATIENT_CARL,
+        return new ArrayList<>(Arrays.asList(PATIENT_ALICE, PATIENT_BOB, PATIENT_CARL,
                 PATIENT_DANIEL, PATIENT_ELLE, PATIENT_FIONA, PATIENT_GEORGE));
     }
 }

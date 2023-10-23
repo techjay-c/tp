@@ -3,7 +3,7 @@ package seedu.address.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.storage.JsonAdaptedPatient.MISSING_FIELD_MESSAGE_FORMAT;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalPatients.PATIENT_BENSON;
+import static seedu.address.testutil.TypicalPatients.PATIENT_BOB;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,23 +32,23 @@ public class JsonAdaptedPatientTest {
     private static final String INVALID_EMAIL = "example.com";
     private static final String INVALID_TAG = "#friend";
 
-    private static final String VALID_NAME = PATIENT_BENSON.getName().toString();
-    private static final String VALID_PHONE = PATIENT_BENSON.getPhone().toString();
-    private static final String VALID_EMAIL = PATIENT_BENSON.getEmail().toString();
-    private static final String VALID_ADDRESS = PATIENT_BENSON.getAddress().toString();
+    private static final String VALID_NAME = PATIENT_BOB.getName().toString();
+    private static final String VALID_PHONE = PATIENT_BOB.getPhone().toString();
+    private static final String VALID_EMAIL = PATIENT_BOB.getEmail().toString();
+    private static final String VALID_ADDRESS = PATIENT_BOB.getAddress().toString();
     private static final String VALID_BIRTHDATE = "12-12-1990";
     private static final String VALID_GENDER = "M";
     private static final String VALID_SERVICE = "Cleaning";
     private static final String VALID_APPOINTMENTDATE = "12-12-2023";
     private static final String DEFAULT_PATIENT_ID = "1";
-    private static final List<JsonAdaptedTag> VALID_TAGS = PATIENT_BENSON.getTags().stream()
+    private static final List<JsonAdaptedTag> VALID_TAGS = PATIENT_BOB.getTags().stream()
             .map(JsonAdaptedTag::new)
             .collect(Collectors.toList());
 
     @Test
     public void toModelType_validPatientDetails_returnsPerson() throws Exception {
-        JsonAdaptedPatient patient = new JsonAdaptedPatient(PATIENT_BENSON);
-        assertEquals(PATIENT_BENSON, patient.toModelType());
+        JsonAdaptedPatient patient = new JsonAdaptedPatient(PATIENT_BOB);
+        assertEquals(PATIENT_BOB, patient.toModelType());
     }
 
     @Test

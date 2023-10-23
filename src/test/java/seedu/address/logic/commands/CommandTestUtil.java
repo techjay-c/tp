@@ -42,7 +42,14 @@ public class CommandTestUtil {
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
 
-    // Valid Fields - Dentist specific
+    // Valid Fields - Patient Specific
+    public static final String VALID_GENDER_BOB = "M";
+    public static final String VALID_BIRTHDATE_BOB = "01-01-1990";
+    public static final String VALID_APPOINTMENTDATE_BOB = "08-08-2023";
+    public static final String VALID_SERVICE_BOB = "Braces";
+
+
+    // Valid Fields - Dentist Specific
     public static final String VALID_SPECIALIZATION_AMY = "Orthopaedics";
     public static final String VALID_SPECIALIZATION_BOB = "Paediatrics";
     public static final String VALID_YOE_AMY = "12";
