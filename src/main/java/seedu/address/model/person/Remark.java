@@ -4,12 +4,12 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Date in the address book. Guarantees: immutable; is valid as declared in
- * {@link #isValidDate(String)}
+ * Represents a Remark in the address book. Guarantees: immutable; is valid as declared in
+ * {@link #isValidRemark(String)}
  */
-public class AppointmentDate {
+public class Remark {
 
-    public static final String MESSAGE_CONSTRAINTS = "Appointment date should be in the following format: dd-mm-yy";
+    public static final String MESSAGE_CONSTRAINTS = "Remark should be a valid string";
 
     /*
      * The first character of the address must not be a whitespace,
@@ -20,20 +20,20 @@ public class AppointmentDate {
     public final String value;
 
     /**
-     * Constructs a {@code Appointmentdate}.
+     * Constructs a {@code Remark}.
      *
-     * @param date A valid date
+     * @param remark A valid remark
      */
-    public AppointmentDate(String date) {
-        requireNonNull(date);
-        checkArgument(isValidDate(date), MESSAGE_CONSTRAINTS);
-        value = date;
+    public Remark(String remark) {
+        requireNonNull(remark);
+        checkArgument(isValidRemark(remark), MESSAGE_CONSTRAINTS);
+        value = remark;
     }
 
     /**
      * Returns true if a given string is valid
      */
-    public static boolean isValidDate(String test) {
+    public static boolean isValidRemark(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 
@@ -49,12 +49,12 @@ public class AppointmentDate {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof AppointmentDate)) {
+        if (!(other instanceof Remark)) {
             return false;
         }
 
-        AppointmentDate otherBirthdate = (AppointmentDate) other;
-        return value.equals(otherBirthdate.value);
+        Remark otherRemark = (Remark) other;
+        return value.equals(otherRemark.value);
     }
 
     @Override
