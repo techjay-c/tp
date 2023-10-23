@@ -134,9 +134,9 @@ public class Messages {
     public static String format(Appointment appointment) {
         final StringBuilder builder = new StringBuilder();
         builder.append("; Dentist: ")
-            .append(appointment.getDentist())
+            .append(appointment.getDentistName())
             .append("; Patient: ")
-            .append(appointment.getPatient())
+            .append(appointment.getPatientName())
             .append("; Appointment: ")
             .append(appointment.getAppointmentTime().startToString())
             .append("; Duration: ")
