@@ -7,13 +7,13 @@ import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.person.Address;
-import seedu.address.model.person.AppointmentDate;
 import seedu.address.model.person.Birthdate;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Gender;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.Remark;
 import seedu.address.model.person.Service;
 import seedu.address.model.tag.Tag;
 
@@ -26,7 +26,7 @@ public class Patient extends Person {
 
     private final Gender gender;
     private final Birthdate birthdate;
-    private final AppointmentDate appointmentdate;
+    private final Remark remark;
 
     private final Service service;
 
@@ -39,22 +39,22 @@ public class Patient extends Person {
      * @param phone       phone number of patient
      * @param birthdate   patients birthday
      * @param gender      patients gender
-     * @param appointment patients dental appointment date
+     * @param remark      general remark for the patient
      * @param service     dental service that the patients needs
      * @param address     address of patient
      * @param email       email of patient
      * @param tags        tags
      */
     public Patient(Name name, Phone phone, Birthdate birthdate, Gender gender,
-        AppointmentDate appointment, Service service, Address address, Email email, Set<Tag> tags
+        Remark remark, Service service, Address address, Email email, Set<Tag> tags
     ) {
         super(name, phone, email, address, tags);
-        requireAllNonNull(name, phone, birthdate, gender, appointment, service, address, email,
+        requireAllNonNull(name, phone, birthdate, gender, remark, service, address, email,
             tags);
 
         this.gender = gender;
         this.birthdate = birthdate;
-        this.appointmentdate = appointment;
+        this.remark = remark;
         this.service = service;
         this.id = -1;
 
@@ -67,7 +67,7 @@ public class Patient extends Person {
      * @param phone       phone number of patient
      * @param birthdate   patients birthday
      * @param gender      patients gender
-     * @param appointment patients dental appointment date
+     * @param remark      general remark for the patient
      * @param service     dental service that the patients needs
      * @param address     address of patient
      * @param email       email of patient
@@ -75,16 +75,16 @@ public class Patient extends Person {
      * @param tags        tags
      */
     public Patient(Name name, Phone phone, Birthdate birthdate, Gender gender,
-        AppointmentDate appointment, Service service, Address address, Email email, long id,
+        Remark remark, Service service, Address address, Email email, long id,
         Set<Tag> tags
     ) {
         super(name, phone, email, address, tags);
-        requireAllNonNull(name, phone, birthdate, gender, appointment, service, address, email,
+        requireAllNonNull(name, phone, birthdate, gender, remark, service, address, email,
             tags, id);
 
         this.gender = gender;
         this.birthdate = birthdate;
-        this.appointmentdate = appointment;
+        this.remark = remark;
         this.service = service;
         this.id = id;
 
@@ -106,8 +106,8 @@ public class Patient extends Person {
         return birthdate;
     }
 
-    public AppointmentDate getAppointmentdate() {
-        return appointmentdate;
+    public Remark getRemark() {
+        return remark;
     }
 
     public Service getService() {
@@ -151,7 +151,7 @@ public class Patient extends Person {
             && super.getTags().equals(otherPerson.getTags())
             && getGender().equals(otherPerson.getGender())
             && getBirthdate().equals(otherPerson.getBirthdate())
-            && getAppointmentdate().equals(otherPerson.getAppointmentdate())
+            && getRemark().equals(otherPerson.getRemark())
             && getService().equals(otherPerson.getService())
             && id == otherPerson.getId();
     }
@@ -160,7 +160,7 @@ public class Patient extends Person {
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
         return Objects.hash(super.getName(), super.getPhone(), super.getEmail(), super.getAddress(),
-            super.getTags(), getGender(), getBirthdate(), getAppointmentdate(), getService(), id);
+            super.getTags(), getGender(), getBirthdate(), getRemark(), getService(), id);
     }
 
     @Override
@@ -170,7 +170,7 @@ public class Patient extends Person {
             .add("phone", super.getPhone())
             .add("birthday", getBirthdate())
             .add("gender", getGender())
-            .add("appointment", getAppointmentdate())
+            .add("remark", getRemark())
             .add("service", getService())
             .add("address", super.getAddress())
             .add("email", super.getEmail())
