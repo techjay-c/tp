@@ -38,7 +38,7 @@ public class AddPatientCommandTest {
     }
 
     @Test
-    public void execute_dentistAcceptedByModel_addSuccessful() throws Exception {
+    public void execute_patientAcceptedByModel_addSuccessful() throws Exception {
         ModelStubAcceptingPatientAdded modelStub = new ModelStubAcceptingPatientAdded();
         Patient validPatient = new PatientBuilder().build();
 
@@ -51,7 +51,7 @@ public class AddPatientCommandTest {
     }
 
     @Test
-    public void execute_duplicatePerson_throwsCommandException() {
+    public void execute_duplicatePatient_throwsCommandException() {
         Patient validPatient = new PatientBuilder().build();
         AddPatientCommand addPatientCommand = new AddPatientCommand(validPatient);
         ModelStub modelStub = new ModelStubWithPatient(validPatient);
