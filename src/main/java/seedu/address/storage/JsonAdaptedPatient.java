@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Address;
-import seedu.address.model.person.AppointmentDate;
+import seedu.address.model.person.Remark;
 import seedu.address.model.person.Birthdate;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Gender;
@@ -36,7 +36,7 @@ class JsonAdaptedPatient {
 
     private final String gender;
     private final String birthdate;
-    private final String appointment;
+    private final String remark;
 
     private final String service;
 
@@ -52,7 +52,7 @@ class JsonAdaptedPatient {
         @JsonProperty("phone") String phone,
         @JsonProperty("birthdate") String birthdate,
         @JsonProperty("gender") String gender,
-        @JsonProperty("appointmentdate") String appointment,
+        @JsonProperty("remark") String remark,
         @JsonProperty("service") String service,
         @JsonProperty("address") String address,
         @JsonProperty("email") String email,
@@ -65,7 +65,7 @@ class JsonAdaptedPatient {
         this.address = address;
         this.birthdate = birthdate;
         this.gender = gender;
-        this.appointment = appointment;
+        this.remark = remark;
         this.service = service;
         this.id = id;
         if (tags != null) {
@@ -83,7 +83,7 @@ class JsonAdaptedPatient {
         address = source.getAddress().value;
         gender = source.getGender().value;
         birthdate = source.getBirthdate().value;
-        appointment = source.getAppointmentdate().value;
+        remark = source.getRemark().value;
         service = source.getService().value;
         id = String.valueOf(source.getId());
         tags.addAll(source.getTags().stream()
@@ -157,14 +157,14 @@ class JsonAdaptedPatient {
         }
         final Gender modelGender = new Gender(gender);
 
-        if (appointment == null) {
+        if (remark == null) {
             throw new IllegalValueException(
-                String.format(MISSING_FIELD_MESSAGE_FORMAT, AppointmentDate.class.getSimpleName()));
+                String.format(MISSING_FIELD_MESSAGE_FORMAT, Remark.class.getSimpleName()));
         }
-        if (!AppointmentDate.isValidDate(appointment)) {
-            throw new IllegalValueException(AppointmentDate.MESSAGE_CONSTRAINTS);
+        if (!Remark.isValidRemark(remark)) {
+            throw new IllegalValueException(Remark.MESSAGE_CONSTRAINTS);
         }
-        final AppointmentDate modelAppointment = new AppointmentDate(appointment);
+        final Remark modelRemark = new Remark(remark);
 
         if (service == null) {
             throw new IllegalValueException(
@@ -183,7 +183,7 @@ class JsonAdaptedPatient {
         }
         long lid = Long.parseLong(id);
 
-        return new Patient(modelName, modelPhone, modelBirthdate, modelGender, modelAppointment,
+        return new Patient(modelName, modelPhone, modelBirthdate, modelGender, modelRemark,
             modelService,
             modelAddress, modelEmail, lid, modelTags);
     }
