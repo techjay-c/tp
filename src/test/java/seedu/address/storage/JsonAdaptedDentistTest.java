@@ -41,7 +41,7 @@ public class JsonAdaptedDentistTest {
             .collect(Collectors.toList());
 
     @Test
-    public void toModelType_validPDentistDetails_returnsDentist() throws Exception {
+    public void toModelType_validDentistDetails_returnsDentist() throws Exception {
         JsonAdaptedDentist dentist = new JsonAdaptedDentist(DENTIST_BENSON);
         assertEquals(DENTIST_BENSON, dentist.toModelType());
     }
