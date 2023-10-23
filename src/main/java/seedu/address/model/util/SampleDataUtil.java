@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.person.Address;
-import seedu.address.model.person.AppointmentDate;
+import seedu.address.model.person.Remark;
 import seedu.address.model.person.Birthdate;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Gender;
@@ -42,7 +42,7 @@ public class SampleDataUtil {
     public static Patient[] getSamplePatients() {
         return new Patient[]{
             new Patient(new Name("Alex Yeohh"), new Phone("87438807"), new Birthdate("03-02-1999"),
-                new Gender("F"), new AppointmentDate("yes"), new Service("Cleaning"),
+                new Gender("F"), new Remark("Peanuts Allergy"), new Service("Cleaning"),
                 new Address("Blk 30 Geylang Street 29, #06-40"),
                 new Email("alexyeoh@example.com"),
                 getTagSet("friends"))
