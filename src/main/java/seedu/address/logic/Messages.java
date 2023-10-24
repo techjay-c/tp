@@ -144,7 +144,11 @@ public class Messages {
             .append("; Duration: ")
             .append(appointment.getAppointmentTime().durationToString())
             .append("; Treatment: ")
-            .append(appointment.getTreatment());
+            .append(appointment.getTreatment())
+            .append("; Cost: ")
+            .append(appointment.getCost())
+            .append("; ID: ")
+            .append(appointment.getId());
         return builder.toString();
     }
 
