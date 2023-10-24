@@ -20,7 +20,7 @@ public class AppointmentDate {
     public final String value;
 
     /**
-     * Constructs a {@code Appointmentdate}.
+     * Constructs a {@code AppointmentDate}.
      *
      * @param date A valid date
      */

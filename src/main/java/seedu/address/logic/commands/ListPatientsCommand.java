@@ -8,7 +8,7 @@ import seedu.address.model.Model;
 /**
  * Lists all patients in the address book to the user.
  */
-public class ListPatientCommand extends Command {
+public class ListPatientsCommand extends Command {
 
     public static final String COMMAND_WORD = "list-patients";
 
