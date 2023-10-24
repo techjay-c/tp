@@ -6,9 +6,13 @@
   border-bottom: 1px solid $brand-color-light;
   min-height: $spacing-unit * 1.865;
   line-height: $base-line-height * $base-font-size * 2.25;
+  height: var(--sticky-header-height);
+  background-color: inherit;
 
   // Positioning context for the mobile navigation icon
   position: sticky;
+  top: 0;
+  z-index: 1001;
 }
 
 .site-title {
@@ -150,8 +154,10 @@
  * Page content
  */
 .page-content {
-  padding: $spacing-unit 0;
-  flex: 1 0 auto;
+  width: 100%;
+  float: right;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .page-heading {
@@ -181,7 +187,11 @@
   @include relative-font-size(1.5);
 }
 
-
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
 /**
  * Posts
@@ -305,61 +315,67 @@
   min-width: 0;
   max-width: 1000px;
   overflow-x: auto;
-  padding: 0.8rem 20px 0 20px;
+  padding: 0.8rem 0.8rem 0 0.8rem;
   transition: 0.4s;
+  -webkit-transition: 0.4s;
 }
 
-// Site Navigation
+/**
+ * Site Navigation
+ */
 #site-nav,
 #page-nav {
   display: flex;
   flex-direction: column;
-  position: -webkit-sticky;
   position: sticky;
-  top: 0;
-  width: 250px;
+  top: var(--sticky-header-height);
+  min-width: 0px;
   max-width: 250px;
+  width: 250px;
   max-height: calc(100vh - var(--sticky-header-height));
-  margin-left: 20px;
+  margin: 0 20px 0 20px;
   overflow-y: auto;
 }
 
-.site-nav-top .fw-bold {
-  font-weight: bold;
-  margin: 0.8rem 0;
-  padding: 0 12px 12px 12px;
+#site-nav {
+  padding-bottom: 20px;
+  z-index: 999;
+  height: 100vh;
+  border-right: 1px solid #eaeaea;
 }
 
-// Site Map
-.sitemap {
+.site-nav-title .fw-bold {
+  font-weight: bold;
+  padding: 0.8rem 0 0 0;
+}
+
+.site-nav-list {
   list-style-type: none;
   padding: 0;
-  margin-left: 20px;
+  margin-left: 0;
 }
 
-.sitemap a {
-  text-decoration: none;
+.site-nav-list ul {
+  list-style-type: none;
+}
+
+.site-nav-list a {
   color: $brand-color-dark;
   padding: 5px 0;
   display: block;
-  transition: background 0.3s;
+  transition: 0.3s;
 }
 
-.sitemap a:hover {
+.site-nav a:hover {
   background-color: lighten($brand-color-dark, 25%); // adjust as needed
 }
 
-.nav-component {
-  overflow-y: auto;
-}
 
 /* Hide site navigation when printing */
 @media print {
-  #site-nav {
+  #site-nav, #page-nav {
     display: none;
   }
 
-  #page-nav {
-    display: none;
-  }
+
 }

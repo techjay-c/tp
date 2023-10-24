@@ -35,6 +35,17 @@ public class UniqueAppointmentList implements Iterable<Appointment> {
     }
 
     /**
+     * Removes an appointment from the list.
+     * @param toRemove The appointment to be removed.
+     */
+    public void remove(Appointment toRemove) {
+        requireNonNull(toRemove);
+        if (!internalList.remove(toRemove)) {
+            throw new AppointmentNotFoundException();
+        }
+    }
+
+    /**
      * Sets the appointments in the list with another list of appointments.
      *
      * @param appointments List of appointments to set.

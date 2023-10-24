@@ -52,7 +52,7 @@ public class SampleDataUtil {
     public static Treatment[] getSampleTreatments() {
         return new Treatment[]{
             new Treatment(new TreatmentName("Braces"), new TreatmentCost("1080"),
-                new TreatmentTime("3"))
+                new TreatmentTime("03:00"))
         };
     }
 
@@ -74,6 +74,7 @@ public class SampleDataUtil {
         AddressBook sampleAb = new AddressBook();
         sampleAb.setPatientId(1);
         sampleAb.setDentistId(1);
+        sampleAb.setAppointmentId(1);
 
         for (Person samplePerson : getSamplePersons()) {
             sampleAb.addPerson(samplePerson);

@@ -2,7 +2,6 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DENTIST;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PATIENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SERVICE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
@@ -11,10 +10,14 @@ import java.util.function.Predicate;
 
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.parser.ParserUtil;
+import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.appointments.Appointment;
+import seedu.address.model.appointments.AppointmentTime;
 import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.patients.Patient;
+import seedu.address.model.treatment.Treatment;
 
 
 /**
@@ -28,13 +31,11 @@ public class AddAppointmentCommand extends Command {
             + PREFIX_DENTIST + "DENTIST "
             + PREFIX_PATIENT + "PATIENT "
             + PREFIX_START + "START_TIME "
-            + PREFIX_DURATION + "DURATION "
             + PREFIX_SERVICE + "SERVICE \n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_DENTIST + "0 "
             + PREFIX_PATIENT + "0 "
             + PREFIX_START + "2023-10-12 16:00 "
-            + PREFIX_DURATION + "PT1H30M "
             + PREFIX_SERVICE + "Braces";
 
     public static final String MESSAGE_SUCCESS = "New Appointment added: %1$s";
@@ -48,6 +49,8 @@ public class AddAppointmentCommand extends Command {
     private final Appointment toAdd;
     private final long dentistId;
     private final long patientId;
+    private final String treatmentName;
+    private final String start;
 
     /**
      * Constructs an AddAppointmentCommand with the specified appointment.
@@ -59,6 +62,8 @@ public class AddAppointmentCommand extends Command {
         toAdd = appointment;
         dentistId = appointment.getDentistId();
         patientId = appointment.getPatientId();
+        treatmentName = appointment.getTreatment();
+        start = appointment.getStart();
     }
 
 
@@ -72,29 +77,77 @@ public class AddAppointmentCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        Predicate<Treatment> treatmentPredicate = treatment -> treatment.getName().toString()
+                .equalsIgnoreCase(treatmentName);
+        model.updateFilteredTreatmentList(treatmentPredicate);
 
+        if (model.getFilteredTreatmentList().isEmpty()) {
+            throw new CommandException("Service is not provided in this clinic");
+        }
+        String duration = model.getFilteredTreatmentList().get(0).getTime().toString();
+        AppointmentTime appointmentTime;
+        try {
+            appointmentTime = ParserUtil.parseAppointmentTime(start, duration);
+        } catch (ParseException e) {
+            throw new CommandException("Appointment start time in wrong format.", e);
+        }
+
+        toAdd.setAppointmentTime(appointmentTime);
+
+        String cost = model.getFilteredTreatmentList().get(0).getCost().toString();
+        toAdd.setCost(cost);
+
+        checkValidPersons(model);
+
+        checkClash(model);
+
+        model.addAppointment(toAdd);
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
+    }
+
+    /**
+     * Checks the validity of dentist and patient IDs in the given model and
+     * updates the corresponding names in the Appointment to be added.
+     *
+     * @param model The model containing dentist and patient information.
+     * @throws CommandException If an invalid dentist or patient ID is encountered.
+     */
+    public void checkValidPersons(Model model) throws CommandException {
         if (dentistId >= 0) {
-            Predicate<Dentist> dentistIdPredicate = dentist -> dentist.getId() == dentistId;
-            model.updateFilteredDentistList(dentistIdPredicate);
 
-            if (model.getFilteredDentistList().isEmpty()) {
+            Dentist dentist = model.getDentistById(dentistId);
+
+            if (dentist == null) {
                 throw new CommandException("No dentist with ID " + dentistId);
             }
-            Dentist dentist = model.getFilteredDentistList().get(0);
             toAdd.setDentistName(dentist.getName().fullName);
+        } else {
+            throw new CommandException("Dentist ID must be a valid input: ID must be positive.");
         }
 
         if (patientId >= 0) {
-            Predicate<Patient> patientIdPredicate = patient -> patient.getId() == patientId;
-            model.updateFilteredPatientList(patientIdPredicate);
-
-            if (model.getFilteredPatientList().isEmpty()) {
-                throw new CommandException("No patient with ID " + dentistId);
+            Patient patient = model.getPatientById(patientId);
+            if (patient == null) {
+                throw new CommandException("No patient with ID " + patientId);
             }
-            Patient patient = model.getFilteredPatientList().get(0);
             toAdd.setPatientName(patient.getName().fullName);
+        } else {
+            throw new CommandException("Patient ID must be valid: ID must be positive.");
         }
+    }
 
+    /**
+     * Checks for appointment clashes in the given model and throws a CommandException if a clash is detected.
+     * The method uses the provided 'toAdd' appointment and compares its time with existing appointments in the model.
+     *
+     * @param model The model containing the list of appointments to check for clashes.
+     * @throws CommandException If a clash with another appointment is detected:
+     *                         - If the dentist ID clashes with another appointment's dentist ID,
+     *                              throws MESSAGE_CLASHING_DOCTORS.
+     *                         - If the patient ID clashes with another appointment's patient ID,
+     *                              throws MESSAGE_CLASHING_PATIENTS.
+     */
+    public void checkClash(Model model) throws CommandException {
         if (model.hasAppointment(toAdd)) {
             Predicate<Appointment> appointmentPredicate = toAdd::isSameAppointmentTime;
             model.updateFilteredAppointmentList(appointmentPredicate);
@@ -115,9 +168,6 @@ public class AddAppointmentCommand extends Command {
                 }
             }
         }
-
-        model.addAppointment(toAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
     }
 
 }

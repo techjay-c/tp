@@ -153,6 +153,19 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public Appointment getAppointmentById(long appointmentId) {
+        requireNonNull(appointmentId);
+        ObservableList<Appointment> filteredAppointment = getFilteredAppointmentList();
+
+        for (Appointment appointment : filteredAppointment) {
+            if (appointment.getId() == appointmentId) {
+                return appointment;
+            }
+        }
+        return null;
+    }
+
+    @Override
     public void deletePerson(Person target) {
         addressBook.removePerson(target);
     }
@@ -165,6 +178,11 @@ public class ModelManager implements Model {
     @Override
     public void deleteDentist(Dentist dentist) {
         addressBook.removeDentist(dentist);
+    }
+
+    @Override
+    public void deleteAppointment(Appointment appointment) {
+        addressBook.removeAppointment(appointment);
     }
 
     @Override

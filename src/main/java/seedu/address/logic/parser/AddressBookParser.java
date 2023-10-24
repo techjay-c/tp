@@ -15,15 +15,20 @@ import seedu.address.logic.commands.AddPatientCommand;
 import seedu.address.logic.commands.AddTreatmentCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.DeleteAppointmentCommand;
 import seedu.address.logic.commands.DeleteDentistCommand;
 import seedu.address.logic.commands.DeletePatientCommand;
 import seedu.address.logic.commands.EditDentistCommand;
 import seedu.address.logic.commands.ExitCommand;
+<<<<<<< HEAD
 import seedu.address.logic.commands.FilterPatientCommand;
+=======
+import seedu.address.logic.commands.FilterAppointmentCommand;
+>>>>>>> 455c314eec269937720e293e1c41f9d456bafdda
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListAppointmentsCommand;
 import seedu.address.logic.commands.ListDentistsCommand;
-import seedu.address.logic.commands.ListPatientCommand;
+import seedu.address.logic.commands.ListPatientsCommand;
 import seedu.address.logic.commands.SearchDentistCommand;
 import seedu.address.logic.commands.SearchPatientCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -79,6 +84,8 @@ public class AddressBookParser {
 
         case DeleteDentistCommand.COMMAND_WORD:
             return new DeleteDentistCommandParser().parse(arguments);
+        case DeleteAppointmentCommand.COMMAND_WORD:
+            return new DeleteAppointmentCommandParser().parse(arguments);
 
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();
@@ -91,9 +98,12 @@ public class AddressBookParser {
 
         case SearchPatientCommand.COMMAND_WORD:
             return new SearchPatientCommandParser().parse(arguments);
+            
+        case FilterAppointmentCommand.COMMAND_WORD:
+            return new FilterAppointmentCommandParser().parse(arguments);
 
-        case ListPatientCommand.COMMAND_WORD:
-            return new ListPatientCommand();
+        case ListPatientsCommand.COMMAND_WORD:
+            return new ListPatientsCommand();
 
         case ListDentistsCommand.COMMAND_WORD:
             return new ListDentistsCommand();

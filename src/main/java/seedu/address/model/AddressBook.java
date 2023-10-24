@@ -344,6 +344,10 @@ public class AddressBook implements ReadOnlyAddressBook {
         dentists.remove(key);
     }
 
+    public void removeAppointment(Appointment key) {
+        appointments.remove(key);
+    }
+
     //// util methods
 
     @Override

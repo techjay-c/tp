@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalPersons.ALICE;
+import static seedu.address.testutil.TypicalTreatments.WISDOM;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -28,48 +28,50 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.patients.Patient;
 import seedu.address.model.treatment.Treatment;
-import seedu.address.testutil.PersonBuilder;
+import seedu.address.testutil.TreatmentBuilder;
 
-public class AddCommandTest {
+public class AddTreatmentCommandTest {
 
     @Test
-    public void constructor_nullPerson_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new AddCommand(null));
+    public void constructor_nullTreatment_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> new AddTreatmentCommand(null));
     }
 
     @Test
-    public void execute_personAcceptedByModel_addSuccessful() throws Exception {
-        ModelStubAcceptingPersonAdded modelStub = new ModelStubAcceptingPersonAdded();
-        Person validPerson = new PersonBuilder().build();
+    public void execute_treatmentAcceptedByModel_addSuccessful() throws Exception {
+        ModelStubAcceptingTreatmentAdded modelStub = new ModelStubAcceptingTreatmentAdded();
+        Treatment validTreatment = new TreatmentBuilder().build();
 
-        CommandResult commandResult = new AddCommand(validPerson).execute(modelStub);
+        CommandResult commandResult = new AddTreatmentCommand(validTreatment).execute(modelStub);
 
-        assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, Messages.format(validPerson)),
+        assertEquals(
+            String.format(AddTreatmentCommand.MESSAGE_SUCCESS, Messages.format(validTreatment)),
             commandResult.getFeedbackToUser());
-        assertEquals(Arrays.asList(validPerson), modelStub.personsAdded);
+        assertEquals(Arrays.asList(validTreatment), modelStub.treatmentAdded);
     }
 
     @Test
-    public void execute_duplicatePerson_throwsCommandException() {
-        Person validPerson = new PersonBuilder().build();
-        AddCommand addCommand = new AddCommand(validPerson);
-        ModelStub modelStub = new ModelStubWithPerson(validPerson);
+    public void execute_duplicateTreatment_throwsCommandException() {
+        Treatment validTreatment = new TreatmentBuilder().build();
+        AddTreatmentCommand addTreatmentCommand = new AddTreatmentCommand(validTreatment);
+        ModelStub modelStub = new ModelStubWithTreatment(validTreatment);
 
-        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_PERSON, () -> addCommand.execute(modelStub));
+        assertThrows(CommandException.class,
+            AddTreatmentCommand.MESSAGE_DUPLICATE_TREATMENT, () -> addTreatmentCommand.execute(modelStub));
     }
 
     @Test
     public void equals() {
-        Person alice = new PersonBuilder().withName("Alice").build();
-        Person bob = new PersonBuilder().withName("Bob").build();
-        AddCommand addAliceCommand = new AddCommand(alice);
-        AddCommand addBobCommand = new AddCommand(bob);
+        Treatment alice = new TreatmentBuilder().withName("Alice").build();
+        Treatment bob = new TreatmentBuilder().withName("Bob").build();
+        AddTreatmentCommand addAliceCommand = new AddTreatmentCommand(alice);
+        AddTreatmentCommand addBobCommand = new AddTreatmentCommand(bob);
 
         // same object -> returns true
         assertTrue(addAliceCommand.equals(addAliceCommand));
 
         // same values -> returns true
-        AddCommand addAliceCommandCopy = new AddCommand(alice);
+        AddTreatmentCommand addAliceCommandCopy = new AddTreatmentCommand(alice);
         assertTrue(addAliceCommand.equals(addAliceCommandCopy));
 
         // different types -> returns false
@@ -78,15 +80,16 @@ public class AddCommandTest {
         // null -> returns false
         assertFalse(addAliceCommand.equals(null));
 
-        // different person -> returns false
+        // different Treatment -> returns false
         assertFalse(addAliceCommand.equals(addBobCommand));
     }
 
     @Test
     public void toStringMethod() {
-        AddCommand addCommand = new AddCommand(ALICE);
-        String expected = AddCommand.class.getCanonicalName() + "{toAdd=" + ALICE + "}";
-        assertEquals(expected, addCommand.toString());
+        AddTreatmentCommand addTreatmentCommand = new AddTreatmentCommand(WISDOM);
+        String expected =
+            AddTreatmentCommand.class.getCanonicalName() + "{toAdd=" + WISDOM + "}";
+        assertEquals(expected, addTreatmentCommand.toString());
     }
 
     /**
@@ -205,11 +208,6 @@ public class AddCommandTest {
         }
 
         @Override
-        public void updateFilteredAppointmentList(Predicate<Appointment> predicate) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public ObservableList<Patient> getFilteredPatientList() {
             throw new AssertionError("This method should not be called.");
         }
@@ -275,6 +273,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public void updateFilteredAppointmentList(Predicate<Appointment> appointmentPredicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public ObservableList<Treatment> getFilteredTreatmentList() {
             throw new AssertionError("This method should not be called.");
         }
@@ -288,44 +291,45 @@ public class AddCommandTest {
         public boolean hasTreatment(Treatment treatment) {
             throw new AssertionError("This method should not be called.");
         }
+
     }
 
     /**
-     * A Model stub that contains a single person.
+     * A Model stub that contains a single Treatment.
      */
-    private class ModelStubWithPerson extends ModelStub {
+    private class ModelStubWithTreatment extends ModelStub {
 
-        private final Person person;
+        private final Treatment treatment;
 
-        ModelStubWithPerson(Person person) {
-            requireNonNull(person);
-            this.person = person;
+        ModelStubWithTreatment(Treatment dentist) {
+            requireNonNull(dentist);
+            this.treatment = dentist;
         }
 
         @Override
-        public boolean hasPerson(Person person) {
-            requireNonNull(person);
-            return this.person.isSamePerson(person);
+        public boolean hasTreatment(Treatment treatment) {
+            requireNonNull(treatment);
+            return this.treatment.isSameTreatment(treatment);
         }
     }
 
     /**
-     * A Model stub that always accept the person being added.
+     * A Model stub that always accept the dentist being added.
      */
-    private class ModelStubAcceptingPersonAdded extends ModelStub {
+    private class ModelStubAcceptingTreatmentAdded extends ModelStub {
 
-        final ArrayList<Person> personsAdded = new ArrayList<>();
+        final ArrayList<Treatment> treatmentAdded = new ArrayList<>();
 
         @Override
-        public boolean hasPerson(Person person) {
-            requireNonNull(person);
-            return personsAdded.stream().anyMatch(person::isSamePerson);
+        public boolean hasTreatment(Treatment treatment) {
+            requireNonNull(treatment);
+            return treatmentAdded.stream().anyMatch(treatment::isSameTreatment);
         }
 
         @Override
-        public void addPerson(Person person) {
-            requireNonNull(person);
-            personsAdded.add(person);
+        public void addTreatment(Treatment treatment) {
+            requireNonNull(treatment);
+            treatmentAdded.add(treatment);
         }
 
         @Override

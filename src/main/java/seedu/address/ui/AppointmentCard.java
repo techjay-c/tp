@@ -27,6 +27,8 @@ public class AppointmentCard extends UiPart<Region> {
     @FXML
     private Label service;
     @FXML
+    private Label cost;
+    @FXML
     private Label appointmentId;
 
     /**
@@ -42,6 +44,7 @@ public class AppointmentCard extends UiPart<Region> {
         appointmentTime.setText(appointment.getAppointmentTime().appointmentTimeToString());
         date.setText(appointment.getAppointmentTime().dateToString());
         service.setText("Treatment: " + appointment.getTreatment());
+        cost.setText("Cost: " + appointment.getCost());
         appointmentId.setText("Appointment ID: " + String.valueOf(appointment.getId()));
     }
 }
