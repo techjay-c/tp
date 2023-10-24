@@ -67,10 +67,10 @@ ModelManager -left-> "1" AddressBook
 ModelManager -right-> "1" UserPrefs
 UserPrefs .up..|> ReadOnlyUserPrefs
 
-AddressBook *--> "1" UniqueAppointmentList
+AddressBook *------> "1" UniqueAppointmentList
 AddressBook *--> "1" UniquePatientList
 AddressBook *--> "1" UniqueDentistList
-AddressBook *--> "1" UniqueTreatmentList
+AddressBook *------> "1" UniqueTreatmentList
 Person *---> Name
 Person *---> Phone
 Person *---> Email
