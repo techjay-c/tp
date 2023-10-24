@@ -98,9 +98,9 @@ You may use `edit-dentist` command to update them in the future.
 
 Examples:
 
-* `add-dentist n/Xavier Roald p/99773311 s/Whitening y/1 e/roaldxavier@hotmail.com 
+* `add-dentist n/Xavier Roald p/99773311 s/Whitening y/1 e/roaldxavier@hotmail.com
 h/Yishun Street 72, Blk 742, #03-354, Singapore 512742 t/Undergraduate Trainee`
-This adds a dentist named 'Xavier Roald' with phone number '99773311', email 'roaldxavier@hotmail.com', 
+This adds a dentist named 'Xavier Roald' with phone number '99773311', email 'roaldxavier@hotmail.com',
 address 'Yishun Street 72, Blk 742, #03-354, Singapore 512742',
 specialising in 'Whitening' with 1 year of experience, who is undergoing University Training program under Dentistry.
 
@@ -308,7 +308,7 @@ Examples:
 - The system will not allow the addition of appointments that
   clashes with existing appointments with the same dentist or patient.
 
-### Deleting a appointment: `delete-appointment`
+### Deleting an appointment: `delete-appointment`
 
 Deletes the specified appointment from ToothTracker.
 
@@ -332,7 +332,7 @@ Examples:
 * `delete-appointment 2` deletes appointment with APPOINTMENT_ID 2 from ToothTracker.
 
 
-### Listing all patients : `list-appointments`
+### Listing all appointments : `list-appointments`
 Shows a list of all appointments in ToothTracker.
 
 Format: `list-appointments`
