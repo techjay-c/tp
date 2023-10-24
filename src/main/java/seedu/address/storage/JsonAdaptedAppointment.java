@@ -113,9 +113,10 @@ public class JsonAdaptedAppointment {
         long lid = Long.parseLong(id);
 
         final AppointmentTime appointmentTime = new AppointmentTime(start, duration);
-        Appointment newAppointment = new Appointment(did, pid, appointmentTime, duration, treatment, lid);
+        Appointment newAppointment = new Appointment(did, pid, start, treatment, lid);
         newAppointment.setDentistName(dentistName);
         newAppointment.setPatientName(patientName);
+        newAppointment.setAppointmentTime(appointmentTime);
         return newAppointment;
     }
 }
