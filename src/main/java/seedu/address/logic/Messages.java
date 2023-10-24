@@ -32,7 +32,6 @@ public class Messages {
     public static final String MESSAGE_NO_SUCH_PATIENT = "There is no patient in the address book with ID: %1$s";
     public static final String MESSAGE_NO_SUCH_DENTIST = "There is no dentist in the address book with ID: %1$s";
 
-
     /**
      * Returns an error message indicating the duplicate prefixes.
      */

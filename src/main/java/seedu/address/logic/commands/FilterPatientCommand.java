@@ -1,12 +1,11 @@
 package seedu.address.logic.commands;
 
+import java.util.function.Predicate;
+
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.model.AttributeContainsKeywordsPredicate;
 import seedu.address.model.Model;
 import seedu.address.model.person.patients.Patient;
-import seedu.address.model.AttributeContainsKeywordsPredicate;
-
-import java.util.Collections;
-import java.util.function.Predicate;
 
 /**
  * Filters the list of patients based on specific criteria and updates the filtered list.
@@ -37,8 +36,14 @@ public class FilterPatientCommand extends Command {
     public CommandResult execute(Model model) {
         Predicate<Patient> predicate = new AttributeContainsKeywordsPredicate(attribute, keywords);
         model.updateFilteredPatientList(predicate);
-        return new CommandResult("Filtered patient list by " + attribute + " with keywords: " +
-            keywords);
+
+        if (model.getFilteredPatientList().isEmpty()) {
+            String errorMessage = String.format("No patients found with the %s: %s!", attribute, keywords);
+            return new CommandResult(String.format(errorMessage, keywords));
+        }
+
+        return new CommandResult("Filtered patients by " + attribute + " with: "
+            + keywords);
     }
 
     /**
@@ -59,8 +64,8 @@ public class FilterPatientCommand extends Command {
         }
 
         FilterPatientCommand otherFilterPatientCommand = (FilterPatientCommand) other;
-        return attribute.equals(otherFilterPatientCommand.attribute) &&
-            keywords.equals(otherFilterPatientCommand.keywords);
+        return attribute.equals(otherFilterPatientCommand.attribute)
+            && keywords.equals(otherFilterPatientCommand.keywords);
     }
 
     /**

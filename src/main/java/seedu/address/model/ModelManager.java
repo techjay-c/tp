@@ -269,10 +269,6 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void updateFilteredPatientList(String predicate) {
-    }
-
-    @Override
     public void updateFilteredDentistList(Predicate<Dentist> predicate) {
         requireNonNull(predicate);
         filteredDentists.setPredicate(predicate);

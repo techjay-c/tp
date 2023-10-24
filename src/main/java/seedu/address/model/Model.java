@@ -206,5 +206,4 @@ public interface Model {
      */
     void updateFilteredAppointmentList(Predicate<Appointment> appointmentPredicate);
 
-    void updateFilteredPatientList(String predicate);
 }

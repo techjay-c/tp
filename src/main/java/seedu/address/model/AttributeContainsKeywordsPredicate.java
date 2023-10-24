@@ -21,20 +21,23 @@ public class AttributeContainsKeywordsPredicate implements Predicate<Patient> {
         case "gender":
             return keywords.equalsIgnoreCase(patient.getGender().toString());
         case "birthday":
-            return keywords.equals(patient.getBirthdate().toString());
+            return keywords.equalsIgnoreCase(patient.getBirthdate().toString());
         case "email":
             return keywords.equalsIgnoreCase(patient.getEmail().toString());
         case "phone":
-            return keywords.equals(patient.getPhone().toString());
+            return keywords.equalsIgnoreCase(patient.getPhone().toString());
         case "tags":
-            return keywords.equals(patient.getTags().toString());
+            return keywords.equalsIgnoreCase(patient.getTags().toString());
         case "name":
-            return keywords.equals(patient.getName().toString());
+            return keywords.equalsIgnoreCase(patient.getName().toString());
+        case "remark":
+            return keywords.equalsIgnoreCase(patient.getRemark().toString());
+        case "service":
+            return keywords.equalsIgnoreCase(patient.getService().toString());
+        case "address":
+            return keywords.equalsIgnoreCase(patient.getAddress().toString());
         default:
             return false;
         }
     }
 }
-
-
-
