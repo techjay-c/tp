@@ -56,7 +56,7 @@ public class TreatmentName {
         }
 
         TreatmentName otherName = (TreatmentName) other;
-        return value.equals(otherName.value);
+        return value.equalsIgnoreCase(otherName.value);
     }
 
     @Override

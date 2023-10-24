@@ -2,7 +2,6 @@ package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DENTIST;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PATIENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SERVICE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
@@ -12,7 +11,6 @@ import java.util.stream.Stream;
 import seedu.address.logic.commands.AddAppointmentCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.appointments.Appointment;
-import seedu.address.model.appointments.AppointmentTime;
 
 /**
  * Parses input arguments and creates a new AddAppointmentCommand object.
@@ -28,11 +26,10 @@ public class AddAppointmentCommandParser implements Parser<AddAppointmentCommand
      */
     public AddAppointmentCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_DENTIST, PREFIX_PATIENT, PREFIX_START,
-                        PREFIX_DURATION, PREFIX_SERVICE);
+                ArgumentTokenizer.tokenize(args, PREFIX_DENTIST, PREFIX_PATIENT, PREFIX_START, PREFIX_SERVICE);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_DENTIST, PREFIX_PATIENT, PREFIX_START,
-                PREFIX_DURATION, PREFIX_SERVICE) || !argMultimap.getPreamble().isEmpty()) {
+        if (!arePrefixesPresent(argMultimap, PREFIX_DENTIST, PREFIX_PATIENT, PREFIX_START, PREFIX_SERVICE)
+                || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     AddAppointmentCommand.MESSAGE_USAGE));
         }
@@ -47,10 +44,9 @@ public class AddAppointmentCommandParser implements Parser<AddAppointmentCommand
         } else {
             throw new ParseException("Please enter start time in correct format: yyyy-MM-dd HH:mm");
         }
-        String duration = argMultimap.getValue(PREFIX_DURATION).get();
-        AppointmentTime appointmentTime = ParserUtil.parseAppointmentTime(startParsed, duration);
+        //String duration = argMultimap.getValue(PREFIX_DURATION).get();
         String treatment = argMultimap.getValue(PREFIX_SERVICE).get();
-        Appointment appointment = new Appointment(dentist, patient, appointmentTime, duration, treatment);
+        Appointment appointment = new Appointment(dentist, patient, startParsed, treatment);
         return new AddAppointmentCommand(appointment);
     }
 

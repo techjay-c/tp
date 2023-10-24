@@ -97,6 +97,8 @@ public interface Model {
 
     Dentist getDentistById(long dentistId);
 
+    Appointment getAppointmentById(long appointmentId);
+
     /**
      * Deletes the given person. The person must exist in the address book.
      */
@@ -105,6 +107,8 @@ public interface Model {
     void deletePatient(Patient patient);
 
     void deleteDentist(Dentist dentist);
+
+    void deleteAppointment(Appointment appointment);
 
     /**
      * Adds the given person. {@code person} must not already exist in ToothTracker address book.
