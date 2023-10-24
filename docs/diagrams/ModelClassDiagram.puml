@@ -97,8 +97,8 @@ Treatment *--> TreatmentCost
 Treatment *--> TreatmentName
 Treatment *--> TreatmentTime
 
-Person -[hidden]up--> I
-UniquePersonList -[hidden]right-> I
+'Person -[hidden]up--> I
+'UniquePersonList -[hidden]right-> I
 
 Name -[hidden]right-> Phone
 Phone -[hidden]right-> Address
