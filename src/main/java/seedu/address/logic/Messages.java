@@ -34,7 +34,6 @@ public class Messages {
     public static final String MESSAGE_NO_SUCH_DENTIST = "There is no dentist in ToothTracker with ID: %1$s";
     public static final String MESSAGE_NO_SUCH_APPOINTMENT = "There is no appointment in ToothTracker with ID: %1$s";
 
-
     /**
      * Returns an error message indicating the duplicate prefixes.
      */
