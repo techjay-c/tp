@@ -356,20 +356,21 @@ Examples:
 ### Adding a treatment: `add-treatment`
 
 You can add a new dental treatment to the ToothTracker system using the `add-treatment` command. This command allows you
-to specify the name of the treatment and its associated price.
+to specify the name of the treatment and its associated price, and how long the treatment would take. The treatment would
+be stored in ToothTrackers internal storage.
 
-Format: `add-treatment [name] [price]`
+Format: `add-treatment name price duration`
 
 Examples:
 
-* `add-treatment "Tooth Extraction" 150` adds a Tooth Extraction Treatment to ToothTracker with a cost of $150.
+* `add-treatment tr/Tooth Extraction cs/1080 ti/10:30` adds a tooth extraction treatment to ToothTracker with a cost of $1080 sgd, and
+  duration of 10 hours and 30 minutes.
 
 **Important Notes:**
 
-- Ensure that you provide both the treatment name and its cost when using the `add-treatment` command.
+- Ensure that you provide treatment name, its cost and its duration when using the `add-treatment` command.
 - The system will not allow duplicate treatment names. If a treatment with the same name already exists, you will be
   prompted to provide a unique name.
-
 
 ### Clearing all entries : `clear`
 
