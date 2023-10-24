@@ -33,6 +33,7 @@
             <Label fx:id="dentist" styleClass="details-text" text="\$dentist" />
             <Label fx:id="patient" styleClass="details-text" text="\$patient" />
             <Label fx:id="service" styleClass="details-text" text="\$service" />
+            <Label fx:id="cost" styleClass="details-text" text="\$cost" />
             <Label fx:id="appointmentId" styleClass="cell_small_label" text="\$appointmentId" />
         </VBox>
     </GridPane>

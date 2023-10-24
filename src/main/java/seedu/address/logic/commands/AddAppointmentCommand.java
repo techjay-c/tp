@@ -94,6 +94,9 @@ public class AddAppointmentCommand extends Command {
 
         toAdd.setAppointmentTime(appointmentTime);
 
+        String cost = model.getFilteredTreatmentList().get(0).getCost().toString();
+        toAdd.setCost(cost);
+
         checkValidPersons(model);
 
         checkClash(model);
@@ -118,6 +121,8 @@ public class AddAppointmentCommand extends Command {
                 throw new CommandException("No dentist with ID " + dentistId);
             }
             toAdd.setDentistName(dentist.getName().fullName);
+        } else {
+            throw new CommandException("Dentist ID must be a valid input: ID must be positive.");
         }
 
         if (patientId >= 0) {
@@ -126,6 +131,8 @@ public class AddAppointmentCommand extends Command {
                 throw new CommandException("No patient with ID " + patientId);
             }
             toAdd.setPatientName(patient.getName().fullName);
+        } else {
+            throw new CommandException("Patient ID must be valid: ID must be positive.");
         }
     }
 

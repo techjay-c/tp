@@ -12,6 +12,7 @@ public class Appointment {
     private String patientName;
     private AppointmentTime appointmentTime;
     private String duration;
+    private String cost;
     private long id;
 
     /**
@@ -80,6 +81,14 @@ public class Appointment {
     }
     public void setDuration(String other) {
         this.duration = other;
+    }
+
+    public String getCost() {
+        return this.cost;
+    }
+
+    public void setCost(String cost) {
+        this.cost = cost;
     }
 
     public AppointmentTime getAppointmentTime() {
