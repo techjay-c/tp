@@ -205,4 +205,6 @@ public interface Model {
      * @param appointmentPredicate The predicate to filter the list by.
      */
     void updateFilteredAppointmentList(Predicate<Appointment> appointmentPredicate);
+
+    void updateFilteredPatientList(String predicate);
 }
