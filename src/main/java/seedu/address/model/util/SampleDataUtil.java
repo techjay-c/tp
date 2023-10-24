@@ -52,7 +52,7 @@ public class SampleDataUtil {
     public static Treatment[] getSampleTreatments() {
         return new Treatment[]{
             new Treatment(new TreatmentName("Braces"), new TreatmentCost("1080"),
-                new TreatmentTime("3"))
+                new TreatmentTime("03:00"))
         };
     }
 
