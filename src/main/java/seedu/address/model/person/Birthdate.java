@@ -3,19 +3,21 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
+
 /**
  * Represents a Date in the address book. Guarantees: immutable; is valid as declared in
  * {@link #isValidDate(String)}
  */
 public class Birthdate {
 
-    public static final String MESSAGE_CONSTRAINTS = "Birthday should be in the following format: dd-mm-yy";
+    public static final String MESSAGE_CONSTRAINTS = "Birthday should be in the following format: dd-mm-yyyy";
 
-    /*
-     * The first character of the address must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
-     */
-    public static final String VALIDATION_REGEX = "[^\\s].*";
+    public static final String VALIDATION_REGEX = "\\d{2}-\\d{2}-\\d{4}";
+    public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
     public final String value;
 
@@ -34,7 +36,16 @@ public class Birthdate {
      * Returns true if a given string is a valid date
      */
     public static boolean isValidDate(String test) {
-        return test.matches(VALIDATION_REGEX);
+        if (!test.matches(VALIDATION_REGEX)) {
+            return false;
+        }
+        try {
+            // Ensure that date is not in the future
+            LocalDate date = LocalDate.parse(test, DATE_TIME_FORMATTER);
+            return !date.isAfter(LocalDate.now());
+        } catch (DateTimeParseException e) {
+            return false;
+        }
     }
 
     @Override

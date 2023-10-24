@@ -4,18 +4,14 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Date in the address book. Guarantees: immutable; is valid as declared in
- * {@link #isValidGender(String)}
+ * Represents a patient's Gender in ToothTracker address book.
+ * Guarantees: immutable; is valid as declared in {@link #isValidGender(String)}
  */
 public class Gender {
 
-    public static final String MESSAGE_CONSTRAINTS = "Gender should be either M/F";
+    public static final String MESSAGE_CONSTRAINTS = "Gender should be either M/F (case insensitive).";
 
-    /*
-     * The first character of the address must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
-     */
-    public static final String VALIDATION_REGEX = "[^\\s].*";
+    public static final String VALIDATION_REGEX = "[MFmf]";
 
     public final String value;
 
@@ -27,7 +23,7 @@ public class Gender {
     public Gender(String gender) {
         requireNonNull(gender);
         checkArgument(isValidGender(gender), MESSAGE_CONSTRAINTS);
-        value = gender;
+        value = gender.toUpperCase();
     }
 
     /**

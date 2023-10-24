@@ -48,7 +48,7 @@ public class AddPatientCommand extends Command {
             + PREFIX_TAG + "hello ";
 
     public static final String MESSAGE_SUCCESS = "New Patient added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This Patient already exists in ToothTracker";
+    public static final String MESSAGE_DUPLICATE_PATIENT = "This Patient already exists in ToothTracker";
 
     private final Patient toAdd;
 
@@ -65,7 +65,7 @@ public class AddPatientCommand extends Command {
         requireNonNull(model);
 
         if (model.hasPatient(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+            throw new CommandException(MESSAGE_DUPLICATE_PATIENT);
         }
 
         model.addPatient(toAdd);
