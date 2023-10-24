@@ -153,7 +153,7 @@ How the parsing works:
 
 The `Model` component,
 
-* stores the ToothTracker address book data i.e., all `Patient`, `Dentist`, `Appointment`, and `Treatment` objects 
+* stores the ToothTracker address book data i.e., all `Patient`, `Dentist`, `Appointment`, and `Treatment` objects
 (which are contained in a `UniquePatientList`, `UniqueDentistList`, `UniqueAppointmentList`, and `UniqueTreatmentList` objects respectively).
 * stores the currently 'selected' `Patient` or `Dentist` objects (e.g., results of a `search-patient` or `search-dentist`) as corresponding separate _filtered_ list which
   is exposed to outsiders as an unmodifiable `ObservableList<Patient>` (or `ObservableList<Dentist>`) that can be 'observed' e.g. the UI can be bound to
