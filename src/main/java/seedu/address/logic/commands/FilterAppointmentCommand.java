@@ -16,7 +16,8 @@ public class FilterAppointmentCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Filters appointments by dentists/patients using their dentist/patient ID. \n"
-            + "Example: " + COMMAND_WORD + " dentist/patient" + " DENTIST_ID/PATIENT_ID";
+            + "Parameters: " + "ID_TYPE[dentist/patient] " + "DENTIST_ID/PATIENT_ID \n"
+            + "Example: " + COMMAND_WORD + " dentist/patient" + " 1";
 
     private String attribute;
     private long id;

@@ -20,7 +20,7 @@ public class DeleteAppointmentCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the appointment identified by the given appointment ID.\n"
             + "Parameters: ID (must be a valid appointment ID)\n"
-            + "Example: " + COMMAND_WORD + "001";
+            + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_DELETE_APPOINTMENT_SUCCESS = "Deleted Appointment: %1$s";
 
