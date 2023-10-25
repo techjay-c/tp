@@ -21,15 +21,14 @@ public class AddDentistCommand extends Command {
     public static final String COMMAND_WORD = "add-dentist";
     public static final String MESSAGE_DUPLICATE_DENTIST = "This dentist already exists in ToothTracker address book!";
     public static final String MESSAGE_SUCCESS = "New Dentist added: %1$s";
-    public static final String SHORTHAND_COMMAND_WORD = "ad";
 
-    private static final String MESSAGE_USAGE = COMMAND_WORD + " (short form: " + SHORTHAND_COMMAND_WORD + ")"
+    private static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Adds a dentist to the address book. "
             + "Parameters: "
             + PREFIX_NAME + "NAME "
             + PREFIX_PHONE + "PHONE "
-            + PREFIX_EMAIL + "EMAIL "
-            + PREFIX_ADDRESS + "ADDRESS "
+            + "[" + PREFIX_EMAIL + "EMAIL] "
+            + "[" + PREFIX_ADDRESS + "ADDRESS] "
             + PREFIX_SPECIALIZATION + "SPECIALIZATION "
             + PREFIX_YOE + "YEARS OF EXPERIENCE "
             + "[" + PREFIX_TAG + "TAG]...\n"
