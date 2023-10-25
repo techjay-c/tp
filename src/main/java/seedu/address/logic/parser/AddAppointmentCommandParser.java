@@ -44,7 +44,6 @@ public class AddAppointmentCommandParser implements Parser<AddAppointmentCommand
         } else {
             throw new ParseException("Please enter start time in correct format: yyyy-MM-dd HH:mm");
         }
-        //String duration = argMultimap.getValue(PREFIX_DURATION).get();
         String treatment = argMultimap.getValue(PREFIX_SERVICE).get();
         Appointment appointment = new Appointment(dentist, patient, startParsed, treatment);
         return new AddAppointmentCommand(appointment);

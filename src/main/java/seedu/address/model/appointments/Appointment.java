@@ -117,7 +117,9 @@ public class Appointment {
      * @return true if this appointment clashes with another
      *         false if it does not clash with another appointment.
      */
-    public boolean isSameAppointmentTime(Appointment appointment) {
-        return this.appointmentTime.isClashingAppointment(appointment.getAppointmentTime());
+    public boolean isSameAppointment(Appointment appointment) {
+        return this.appointmentTime.isClashingAppointment(appointment.getAppointmentTime())
+                && ((this.dentistId == appointment.getDentistId())
+                || (this.patientId == appointment.getPatientId()));
     }
 }
