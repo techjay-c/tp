@@ -15,8 +15,8 @@ public class FilterAppointmentCommand extends Command {
     public static final String COMMAND_WORD = "filter-appointment";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Filters appointments by dentists using their dentist ID. \n"
-            + "Example: " + COMMAND_WORD + " 1";
+            + ": Filters appointments by dentists/patients using their dentist/patient ID. \n"
+            + "Example: " + COMMAND_WORD + " dentist/patient" + " DENTIST_ID/PATIENT_ID";
 
     private String attribute;
     private long id;
@@ -42,7 +42,8 @@ public class FilterAppointmentCommand extends Command {
             success = "Appointments with dentist whose dentist ID is " + id + " listed.";
             failure = "No appointments with dentist whose dentist ID is " + id + " found.";
         } else {
-            return new CommandResult("Invalid inputs");
+            return new CommandResult("Invalid inputs. Please key in correct format: "
+                    + "dentist/patient DENTIST_ID/PATIENT_ID");
         }
 
         if (id >= 0) {
@@ -54,7 +55,7 @@ public class FilterAppointmentCommand extends Command {
                 return new CommandResult(success);
             }
         } else {
-            return new CommandResult("Invalid ID");
+            return new CommandResult("Invalid ID. ID must be a positive number.");
         }
 
     }

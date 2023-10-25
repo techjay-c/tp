@@ -36,7 +36,8 @@ public class FilterAppointmentCommandParser implements Parser<FilterAppointmentC
                 throw new ParseException("ID should be a valid number");
             }
         } else {
-            throw new ParseException("Invalid filter format. Enter a number to search for.");
+            throw new ParseException("Invalid inputs. Please key in correct format: "
+                    + "dentist/patient DENTIST_ID/PATIENT_ID");
         }
     }
 }
