@@ -68,7 +68,7 @@ public class Patient extends Person {
      * @param birthdate   patients birthday
      * @param gender      patients gender
      * @param remark      general remark for the patient
-     * @param treatmentName     dental service that the patients needs
+     * @param treatmentName     dental treatment that the patients needs
      * @param address     address of patient
      * @param email       email of patient
      * @param id          id of patient

@@ -31,10 +31,10 @@ public class AddAppointmentCommand extends Command {
             + PREFIX_DENTIST + "DENTIST "
             + PREFIX_PATIENT + "PATIENT "
             + PREFIX_START + "START_TIME "
-            + PREFIX_TREATMENT + "SERVICE \n"
+            + PREFIX_TREATMENT + "TREATMENT \n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_DENTIST + "0 "
-            + PREFIX_PATIENT + "0 "
+            + PREFIX_DENTIST + "1 "
+            + PREFIX_PATIENT + "1 "
             + PREFIX_START + "2023-10-12 16:00 "
             + PREFIX_TREATMENT + "Braces";
 
@@ -82,7 +82,7 @@ public class AddAppointmentCommand extends Command {
         model.updateFilteredTreatmentList(treatmentPredicate);
 
         if (model.getFilteredTreatmentList().isEmpty()) {
-            throw new CommandException("Service is not provided in this clinic");
+            throw new CommandException("Treatment is not provided in this clinic");
         }
         String duration = model.getFilteredTreatmentList().get(0).getTime().toString();
         AppointmentTime appointmentTime;
