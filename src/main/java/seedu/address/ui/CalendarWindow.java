@@ -1,7 +1,11 @@
 package seedu.address.ui;
 
+import java.time.LocalTime;
 import java.util.logging.Logger;
 
+import com.calendarfx.view.CalendarView;
+
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
 
@@ -12,6 +16,7 @@ public class CalendarWindow extends UiPart<Stage> {
 
     private static final Logger logger = LogsCenter.getLogger(CalendarWindow.class);
 
+    private final CalendarView calendarView;
     /**
      * Creates a new CalendarWindow.
      *
@@ -19,6 +24,9 @@ public class CalendarWindow extends UiPart<Stage> {
      */
     public CalendarWindow(Stage root) {
         super(root);
+        this.calendarView = new CalendarView();
+        root.setScene(new Scene(calendarView));
+        initialiseCalendarSettings();
     }
 
     /**
@@ -71,6 +79,16 @@ public class CalendarWindow extends UiPart<Stage> {
      */
     public void focus() {
         getRoot().requestFocus();
+    }
+
+    private void initialiseCalendarSettings() {
+        calendarView.setShowAddCalendarButton(true);
+        calendarView.setShowPageToolBarControls(true);
+        calendarView.setRequestedTime(LocalTime.now());
+        calendarView.setShowAddCalendarButton(false);
+        calendarView.setShowPrintButton(false);
+        calendarView.setShowSourceTrayButton(false);
+        calendarView.setShowSearchField(false);
     }
 
 }
