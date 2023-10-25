@@ -101,9 +101,9 @@ public interface Model {
 
 
     /**
+     * returns the treatment by its name
      * @param treatmentName name of the treatment to find
-     * @return null if the treatment is not found. Otherwise, the corresponding Treatment object is
-     * returned
+     * @return null if the treatment is not found. Otherwise, the corresponding Treatment object is returned
      */
     Treatment getTreatmentByName(String treatmentName);
 
