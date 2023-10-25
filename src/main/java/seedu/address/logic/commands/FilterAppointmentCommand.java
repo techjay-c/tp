@@ -15,32 +15,55 @@ public class FilterAppointmentCommand extends Command {
     public static final String COMMAND_WORD = "filter-appointment";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Filters appointments by dentists using their dentist ID. \n"
-            + "Example: " + COMMAND_WORD + " 1";
+            + ": Filters appointments by dentists/patients using their dentist/patient ID. \n"
+            + "Parameters: " + "ID_TYPE[dentist/patient] " + "DENTIST_ID/PATIENT_ID \n"
+            + "Example: " + COMMAND_WORD + " dentist/patient" + " 1";
 
-    private long dentistId;
+    private String idType;
+    private long id;
 
-    public FilterAppointmentCommand(long dentistId) {
-        this.dentistId = dentistId;
+    /**
+     * Constructs a FilterAppointmentCommand to filter appointments based on the provided dentist or patient ID.
+     *
+     * @param idType Determines whether the given ID is a patient or dentist ID.
+     * @param id The dentist or patient ID.
+     */
+    public FilterAppointmentCommand(String idType, long id) {
+        this.idType = idType;
+        this.id = id;
     }
 
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
 
-        if (dentistId >= 0) {
-            Predicate<Appointment> appointmentPredicate = appointment -> appointment.getDentistId() == dentistId;
+        Predicate<Appointment> appointmentPredicate;
+        String success;
+        String failure;
+        if (idType.equalsIgnoreCase("patient")) {
+            appointmentPredicate = appointment -> appointment.getPatientId() == id;
+            success = "Appointments with patient whose patient ID is " + id + " listed.";
+            failure = "No appointments with patient whose patient ID is " + id + " found.";
+        } else if (idType.equalsIgnoreCase("dentist")) {
+            appointmentPredicate = appointment -> appointment.getDentistId() == id;
+            success = "Appointments with dentist whose dentist ID is " + id + " listed.";
+            failure = "No appointments with dentist whose dentist ID is " + id + " found.";
+        } else {
+            return new CommandResult("Invalid inputs. Please key in correct format: "
+                    + "dentist/patient DENTIST_ID/PATIENT_ID");
+        }
+
+        if (id >= 0) {
             model.updateFilteredAppointmentList(appointmentPredicate);
 
             if (model.getFilteredAppointmentList().isEmpty()) {
-                return new CommandResult("No appointments with dentist whose dentist ID is "
-                        + dentistId + " found.");
+                return new CommandResult(failure);
             } else {
-                return new CommandResult("Appointments with dentist whose dentist ID is "
-                        + dentistId + " listed.");
+                return new CommandResult(success);
             }
         } else {
-            return new CommandResult("Invalid dentist ID");
+            return new CommandResult("Invalid ID. ID must be a positive number.");
         }
+
     }
 }
