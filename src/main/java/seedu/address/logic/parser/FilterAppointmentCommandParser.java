@@ -28,12 +28,12 @@ public class FilterAppointmentCommandParser implements Parser<FilterAppointmentC
 
         String[] parts = trimmedArgs.split("\\s+");
 
-        if (parts.length == 1) {
+        if (parts.length == 2) {
             try {
-                long dentistId = Long.parseLong(parts[0]);
-                return new FilterAppointmentCommand(dentistId);
+                long id = Long.parseLong(parts[1]);
+                return new FilterAppointmentCommand(parts[0], id);
             } catch (NumberFormatException e) {
-                throw new ParseException("Dentist ID should be a valid number");
+                throw new ParseException("ID should be a valid number");
             }
         } else {
             throw new ParseException("Invalid filter format. Enter a number to search for.");

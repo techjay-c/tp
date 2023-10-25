@@ -18,29 +18,41 @@ public class FilterAppointmentCommand extends Command {
             + ": Filters appointments by dentists using their dentist ID. \n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    private long dentistId;
+    private String attribute;
+    private long id;
 
-    public FilterAppointmentCommand(long dentistId) {
-        this.dentistId = dentistId;
+    public FilterAppointmentCommand(String attribute, long id) {
+        this.attribute = attribute;
+        this.id = id;
     }
 
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
 
-        if (dentistId >= 0) {
-            Predicate<Appointment> appointmentPredicate = appointment -> appointment.getDentistId() == dentistId;
+        Predicate<Appointment> appointmentPredicate;
+        if (attribute.equalsIgnoreCase("patient")) {
+            appointmentPredicate = appointment -> appointment.getPatientId() == id;
+        } else if (attribute.equalsIgnoreCase("dentist")) {
+            appointmentPredicate = appointment -> appointment.getDentistId() == id;
+        } else {
+            return new CommandResult("Invalid inputs");
+        }
+
+        if (id >= 0) {
             model.updateFilteredAppointmentList(appointmentPredicate);
 
             if (model.getFilteredAppointmentList().isEmpty()) {
-                return new CommandResult("No appointments with dentist whose dentist ID is "
-                        + dentistId + " found.");
+                return new CommandResult("No appointments with dentist/patient"
+                        + " whose dentist/patient ID is "
+                        + id + " found.");
             } else {
-                return new CommandResult("Appointments with dentist whose dentist ID is "
-                        + dentistId + " listed.");
+                return new CommandResult("Appointments with dentist/patient whose dentist/patient ID is "
+                        + id + " listed.");
             }
         } else {
-            return new CommandResult("Invalid dentist ID");
+            return new CommandResult("Invalid ID");
         }
+
     }
 }
