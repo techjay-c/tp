@@ -40,11 +40,8 @@ public class AddAppointmentCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New Appointment added: %1$s";
 
-    public static final String MESSAGE_CLASHING_DOCTORS = "This dentist already has a "
-            + "current appointment in the same time slot.";
-
-    public static final String MESSAGE_CLASHING_PATIENTS = "This patient already has a "
-            + "current appointment in the same time slot.";
+    public static final String MESSAGE_CLASHING_APPOINTMENT = "Dentist or patient already has" +
+            " existing appointment in this time slot.";
 
     private final Appointment toAdd;
     private final long dentistId;
@@ -101,7 +98,7 @@ public class AddAppointmentCommand extends Command {
 
 
         if (model.hasAppointment(toAdd)) {
-            throw new CommandException("Dentist or patient already has existing appointment in this time slot.");
+            throw new CommandException(MESSAGE_CLASHING_APPOINTMENT);
         }
 
         model.addAppointment(toAdd);

@@ -1,16 +1,22 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.logic.Messages;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
@@ -21,6 +27,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.patients.Patient;
 import seedu.address.model.treatment.Treatment;
+import seedu.address.testutil.AppointmentBuilder;
 
 public class AddAppointmentCommandTest {
 
@@ -32,10 +39,58 @@ public class AddAppointmentCommandTest {
     @Test
     public void execute_appointmentAcceptedByModel_addSuccessful() throws Exception {
         ModelStubAcceptingAppointmentAdded modelStub = new ModelStubAcceptingAppointmentAdded();
+        Appointment validAppointment = new AppointmentBuilder().build();
+
+        CommandResult commandResult = new AddAppointmentCommand(validAppointment).execute(modelStub);
+
+        assertEquals(String.format(AddAppointmentCommand.MESSAGE_SUCCESS, Messages.format(validAppointment)),
+                commandResult.getFeedbackToUser());
+
+        assertEquals(Arrays.asList(validAppointment), modelStub.appointmentAdded);
+    }
+    
+    @Test
+    public void execute_duplicateAppointment_throwsCommandException() {
+        Appointment validAppointment = new AppointmentBuilder().build();
+        AddAppointmentCommand addAppointmentCommand = new AddAppointmentCommand(validAppointment);
+        ModelStub modelStub = new ModelStubWithAppointment(validAppointment);
+
+        assertThrows(CommandException.class,
+                AddAppointmentCommand.MESSAGE_CLASHING_APPOINTMENT,
+                () -> addAppointmentCommand.execute(modelStub));
+    }
+
+    @Test
+    public void equals() {
+        Appointment one = new AppointmentBuilder().withDentistId("1").build();
+        Appointment two = new AppointmentBuilder().withDentistId("2").build();
+        AddAppointmentCommand addOneCommand = new AddAppointmentCommand(one);
+        AddAppointmentCommand addTwoCommand = new AddAppointmentCommand(two);
+
+        // same object -> returns true
+        assertTrue(addOneCommand.equals(addOneCommand));
+
+        // same values -> returns true
+        AddAppointmentCommand addOneCommandCopy = new AddAppointmentCommand(one);
+        assertTrue(addOneCommand.equals(addOneCommandCopy));
+
+        // different types -> returns false
+        assertFalse(addOneCommand.equals(1));
+
+        // null -> returns false
+        assertFalse(addOneCommand.equals(null));
+
+        // different appointments -> returns false
+        assertFalse(addOneCommand.equals(addTwoCommand));
+    }
+
+    @Test
+    public void toStringMethod() {
+        //AddAppointmentCommand addAppointmentCommand = new AddAppointmentCommand()
     }
 
     /**
-     * A default model stub that has all of the methods failing.
+     * A default model stub that has all of its methods failing.
      */
     private class ModelStub implements Model {
 
