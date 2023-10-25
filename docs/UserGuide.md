@@ -186,7 +186,7 @@ one result that matches your search criteria.** This is helpful when:
 To check the attributes that you can filter by, you can simply enter the command `list-dentist`.
 </div>
 
-**Format:** `filter-dentist [a/ATTRIBUTE] [k/KEYWORD]`
+**Format:** `filter-dentist [a/ATTRIBUTE] [k/KEYWORDS]`
 
 Examples:
 
@@ -313,7 +313,7 @@ one result that matches your search criteria.** This is helpful when:
 To check the attributes that you can filter by, you can simply enter the command `list-patient`.
 </div>
 
-**Format:** `filter-patient [a/ATTRIBUTE] [k/KEYWORD]`
+**Format:** `filter-patient [a/ATTRIBUTE] [k/KEYWORDS]`
 
 Examples:
 
