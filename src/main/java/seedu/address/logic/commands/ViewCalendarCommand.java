@@ -16,7 +16,7 @@ public class ViewCalendarCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        return new CommandResult(SHOWING_CALENDAR_MESSAGE);
+        return new CommandResult(SHOWING_CALENDAR_MESSAGE, false, false, true);
     }
 }
 
