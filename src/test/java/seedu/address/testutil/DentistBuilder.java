@@ -119,4 +119,9 @@ public class DentistBuilder {
         return new Dentist(name, phone, email, address, specialization, yoe, tags);
     }
 
+    public Dentist buildWithId(long id) {
+        // For testing purposes
+        return new Dentist(name, phone, email, address, specialization, yoe, id, tags);
+    }
+
 }
