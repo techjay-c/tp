@@ -26,6 +26,11 @@ public class DeleteAppointmentCommand extends Command {
 
     private final long targetId;
 
+    /**
+     * Constructs a DeleteAppointmentCommand to delete an appointment from ToothTracker.
+     *
+     * @param targetId The ID of the appointment to be deleted.
+     */
     public DeleteAppointmentCommand(long targetId) {
         this.targetId = targetId;
     }

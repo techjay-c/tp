@@ -19,11 +19,17 @@ public class FilterAppointmentCommand extends Command {
             + "Parameters: " + "ID_TYPE[dentist/patient] " + "DENTIST_ID/PATIENT_ID \n"
             + "Example: " + COMMAND_WORD + " dentist/patient" + " 1";
 
-    private String attribute;
+    private String idType;
     private long id;
 
-    public FilterAppointmentCommand(String attribute, long id) {
-        this.attribute = attribute;
+    /**
+     * Constructs a FilterAppointmentCommand to filter appointments based on the provided dentist or patient ID.
+     *
+     * @param idType Determines whether the given ID is a patient or dentist ID.
+     * @param id The dentist or patient ID.
+     */
+    public FilterAppointmentCommand(String idType, long id) {
+        this.idType = idType;
         this.id = id;
     }
 
@@ -34,11 +40,11 @@ public class FilterAppointmentCommand extends Command {
         Predicate<Appointment> appointmentPredicate;
         String success;
         String failure;
-        if (attribute.equalsIgnoreCase("patient")) {
+        if (idType.equalsIgnoreCase("patient")) {
             appointmentPredicate = appointment -> appointment.getPatientId() == id;
             success = "Appointments with patient whose patient ID is " + id + " listed.";
             failure = "No appointments with patient whose patient ID is " + id + " found.";
-        } else if (attribute.equalsIgnoreCase("dentist")) {
+        } else if (idType.equalsIgnoreCase("dentist")) {
             appointmentPredicate = appointment -> appointment.getDentistId() == id;
             success = "Appointments with dentist whose dentist ID is " + id + " listed.";
             failure = "No appointments with dentist whose dentist ID is " + id + " found.";
