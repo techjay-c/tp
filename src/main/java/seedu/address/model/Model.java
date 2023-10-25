@@ -99,6 +99,14 @@ public interface Model {
 
     Appointment getAppointmentById(long appointmentId);
 
+
+    /**
+     * @param treatmentName name of the treatment to find
+     * @return null if the treatment is not found. Otherwise, the corresponding Treatment object is
+     * returned
+     */
+    Treatment getTreatmentByName(String treatmentName);
+
     /**
      * Deletes the given person. The person must exist in the address book.
      */
@@ -109,6 +117,9 @@ public interface Model {
     void deleteDentist(Dentist dentist);
 
     void deleteAppointment(Appointment appointment);
+
+    void deleteTreatment(Treatment treatment);
+
 
     /**
      * Adds the given person. {@code person} must not already exist in ToothTracker address book.
@@ -204,7 +215,8 @@ public interface Model {
     void updateFilteredTreatmentList(Predicate<Treatment> predicate);
 
     /**
-     * Updates the filter of the filtered Appointment list to filter by the given {@code predicate}.
+     * Updates the filter of the filtered Appointment list to filter by the given
+     * {@code predicate}.
      *
      * @param appointmentPredicate The predicate to filter the list by.
      */
