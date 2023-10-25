@@ -166,6 +166,22 @@ public class ModelManager implements Model {
         return null;
     }
 
+
+    @Override
+    public Treatment getTreatmentByName(String treatmentName) {
+        requireNonNull(treatmentName);
+        ObservableList<Treatment> filteredTreatment = getFilteredTreatmentList();
+
+        for (Treatment treatment : filteredTreatment) {
+            String trimmedInner = treatment.getName().toString().trim();
+            String trimmedTreatmentName = treatmentName.trim();
+            if (trimmedTreatmentName.equals(trimmedInner)) {
+                return treatment;
+            }
+        }
+        return null;
+    }
+
     @Override
     public void deletePerson(Person target) {
         addressBook.removePerson(target);
@@ -184,6 +200,11 @@ public class ModelManager implements Model {
     @Override
     public void deleteAppointment(Appointment appointment) {
         addressBook.removeAppointment(appointment);
+    }
+
+    @Override
+    public void deleteTreatment(Treatment treatment) {
+        addressBook.removeTreatment(treatment);
     }
 
     @Override
@@ -230,7 +251,6 @@ public class ModelManager implements Model {
     public ObservableList<Treatment> getFilteredTreatmentList() {
         return filteredTreatments;
     }
-
 
     //=========== Filtered Person List Accessors =============================================================
 

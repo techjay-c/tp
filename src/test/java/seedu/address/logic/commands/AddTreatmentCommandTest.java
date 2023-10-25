@@ -292,6 +292,16 @@ public class AddTreatmentCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        @Override
+        public void deleteTreatment(Treatment treatment) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Treatment getTreatmentByName(String treatmentName) {
+            throw new AssertionError("This method should not be called.");
+        }
+
     }
 
     /**

@@ -523,7 +523,29 @@ Use case ends.
 
       Use case resumes at step 1.
 
+
+**Use Case: Delete a Treatment**
+
+**MSS**
+
+1. User submits a request to delete a treatment:
+    - User specifies the [treatment_name] to delete.
+
+2. ToothTracker searches for the treatment entry.
+
+3. If a match is found, ToothTracker deletes the treatment.
+      - Use Case Ends.
+
+**Extensions**
+
+* 2a. No treatments match the given treatment name:
+    - ToothTracker displays a message indicating no treatments are available.
+    - Repeat step 1 till the user enters a treatment which exists.
+    - Use Case Ends.
+
+
 *{More to be added}*
+
 
 ### Non-Functional Requirements
 
