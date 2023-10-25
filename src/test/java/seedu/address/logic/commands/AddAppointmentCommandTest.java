@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalAppointments.APPOINTMENT_ONE;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -86,7 +87,10 @@ public class AddAppointmentCommandTest {
 
     @Test
     public void toStringMethod() {
-        //AddAppointmentCommand addAppointmentCommand = new AddAppointmentCommand()
+        AddAppointmentCommand addAppointmentCommand = new AddAppointmentCommand(APPOINTMENT_ONE);
+        String expected = AddAppointmentCommand.class.getCanonicalName()
+                + "{toAdd=" + APPOINTMENT_ONE + "}";
+        assertEquals(expected, addAppointmentCommand.toString());
     }
 
     /**
