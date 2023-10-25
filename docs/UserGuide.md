@@ -404,7 +404,7 @@ Examples:
   prompted to provide a unique name.
 
 
-### Deleting a treatment: `delete-treatment TREATMENT_NAME`
+### Deleting a treatment: `delete-treatment`
 
 Deletes the specified treatment from ToothTracker.
 
