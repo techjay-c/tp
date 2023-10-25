@@ -103,7 +103,7 @@ class PatientTest {
         assertFalse(PATIENT_ALICE.equals(editedAlice));
 
         // different service -> returns false
-        editedAlice = new PatientBuilder(PATIENT_ALICE).withService(VALID_SERVICE_BOB).build();
+        editedAlice = new PatientBuilder(PATIENT_ALICE).withTreatmentName(VALID_SERVICE_BOB).build();
         assertFalse(PATIENT_ALICE.equals(editedAlice));
 
         // different tags -> returns false
@@ -131,7 +131,7 @@ class PatientTest {
                 + ", birthday=" + PATIENT_ALICE.getBirthdate()
                 + ", gender=" + PATIENT_ALICE.getGender()
                 + ", remark=" + PATIENT_ALICE.getRemark()
-                + ", service=" + PATIENT_ALICE.getService()
+                + ", treatment=" + PATIENT_ALICE.getTreatmentName()
                 + ", address=" + PATIENT_ALICE.getAddress()
                 + ", email=" + PATIENT_ALICE.getEmail()
                 + ", id=" + PATIENT_ALICE.getId()

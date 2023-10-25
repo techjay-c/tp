@@ -21,11 +21,19 @@ public class UniqueTreatmentList implements Iterable<Treatment> {
         FXCollections.unmodifiableObservableList(internalList);
 
     /**
-     * Returns true if the list contains an equivalent person as the given argument.
+     * Returns true if the list contains an equivalent Treatment as the given argument.
      */
     public boolean contains(Treatment toCheck) {
         requireNonNull(toCheck);
         return internalList.stream().anyMatch(toCheck::isSameTreatment);
+    }
+
+    /**
+     * Returns true if the list contains an equivalent TreatmentName as the given argument.
+     */
+    public boolean contains(TreatmentName toCheck) {
+        requireNonNull(toCheck);
+        return internalList.stream().map(Treatment::getName).anyMatch(toCheck::isSameTreatmentName);
     }
 
     /**
