@@ -31,10 +31,16 @@ public class FilterAppointmentCommand extends Command {
         requireNonNull(model);
 
         Predicate<Appointment> appointmentPredicate;
+        String success;
+        String failure;
         if (attribute.equalsIgnoreCase("patient")) {
             appointmentPredicate = appointment -> appointment.getPatientId() == id;
+            success = "Appointments with patient whose patient ID is " + id + " listed.";
+            failure = "No appointments with patient whose patient ID is " + id + " found.";
         } else if (attribute.equalsIgnoreCase("dentist")) {
             appointmentPredicate = appointment -> appointment.getDentistId() == id;
+            success = "Appointments with dentist whose dentist ID is " + id + " listed.";
+            failure = "No appointments with dentist whose dentist ID is " + id + " found.";
         } else {
             return new CommandResult("Invalid inputs");
         }
@@ -43,12 +49,9 @@ public class FilterAppointmentCommand extends Command {
             model.updateFilteredAppointmentList(appointmentPredicate);
 
             if (model.getFilteredAppointmentList().isEmpty()) {
-                return new CommandResult("No appointments with dentist/patient"
-                        + " whose dentist/patient ID is "
-                        + id + " found.");
+                return new CommandResult(failure);
             } else {
-                return new CommandResult("Appointments with dentist/patient whose dentist/patient ID is "
-                        + id + " listed.");
+                return new CommandResult(success);
             }
         } else {
             return new CommandResult("Invalid ID");
