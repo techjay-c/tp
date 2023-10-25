@@ -12,7 +12,7 @@ You can interact with ToothTracker via a Command Line Interface (CLI)
 along with a Graphical User Interface (GUI) created with JavaFX.
 ToothTracker is written in Java and only Java 11 supports ToothTracker.
 ToothTracker is optimized for fast-typers interacting with it through CLI.
-With ToothTracker, you can add new student and dentist profiles, delete records, and even list all available profiles in the database, all with just a few simple commands!
+With ToothTracker, you can add new patient and dentist profiles, add treatments and schedule appointments, delete records, and even list all available profiles in the database, all with just a few simple commands!
 
 
 ### Summary of my contributions
