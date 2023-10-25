@@ -8,8 +8,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_GENDER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_SERVICE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TREATMENT;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
@@ -32,7 +32,7 @@ public class AddPatientCommand extends Command {
             + PREFIX_BIRTHDATE + "BIRTHDATE "
             + PREFIX_GENDER + "GENDER "
             + PREFIX_REMARK + "REMARK "
-            + PREFIX_SERVICE + "SERVICE "
+            + PREFIX_TREATMENT + "TREATMENT "
             + PREFIX_EMAIL + "EMAIL "
             + PREFIX_ADDRESS + "ADDRESS "
             + "[" + PREFIX_TAG + "TAG]...\n"
@@ -42,13 +42,14 @@ public class AddPatientCommand extends Command {
             + PREFIX_BIRTHDATE + "06-06-1998 "
             + PREFIX_GENDER + "M "
             + PREFIX_REMARK + "Allergic to Peanuts "
-            + PREFIX_SERVICE + "Cleaning "
+            + PREFIX_TREATMENT + "Cleaning "
             + PREFIX_EMAIL + "johntan@gmail.com "
             + PREFIX_ADDRESS + "60 Jalan Road "
             + PREFIX_TAG + "hello ";
 
     public static final String MESSAGE_SUCCESS = "New Patient added: %1$s";
     public static final String MESSAGE_DUPLICATE_PATIENT = "This Patient already exists in ToothTracker";
+    public static final String MESSAGE_INVALID_TREATMENT = "This Treatment does not exist in ToothTracker.";
 
     private final Patient toAdd;
 
@@ -66,6 +67,10 @@ public class AddPatientCommand extends Command {
 
         if (model.hasPatient(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_PATIENT);
+        }
+
+        if (!model.hasTreatmentName(toAdd.getTreatmentName())) {
+            throw new CommandException(MESSAGE_INVALID_TREATMENT);
         }
 
         model.addPatient(toAdd);

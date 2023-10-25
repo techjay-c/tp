@@ -38,7 +38,7 @@
       <Label fx:id="gender" styleClass="details-text" text="\$gender" />
       <Label fx:id="birthdate" styleClass="details-text" text="\$birthdate" />
       <Label fx:id="appointment" styleClass="details-text" text="\$appointment" />
-      <Label fx:id="service" styleClass="details-text" text="\$service" />
+      <Label fx:id="treatment" styleClass="details-text" text="\$treatment" />
     </VBox>
       <rowConstraints>
          <RowConstraints />
