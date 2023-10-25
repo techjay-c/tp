@@ -142,16 +142,14 @@ This command is DESTRUCTIVE! Dentists deleted will need to be added back and the
 **Proceed with caution!**
 </div>
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+<div markdown="span" class="alert alert-primary">:bulb: Tip:
 To check the Dentist ID of a dentist, you can simply enter the command `list-dentist`.
 </div>
 
 Examples:
 * `delete-dentist 6` deletes the dentist with the `DENTIST_ID` 6.
 
-**Format:** `delete-dentist DENTIST_ID`
-
-### Searches for a dentist by Dentist ID or keyword: `search-dentist`
+### Search for dentists by Dentist ID or keyword: `search-dentist`
 
 Search for dentists by their Dentist ID or matching names with a keyword. This command helps you find dentists records that match your search criteria.
 
@@ -182,7 +180,7 @@ one result that matches your search criteria.** This is helpful when:
 * You want to find dentists with specific attributes.
 * You want to confirm the identity of a Dentist before using further commands.
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+<div markdown="span" class="alert alert-primary">:bulb: Tip:
 To check the attributes that you can filter by, you can simply enter the command `list-dentist`.
 </div>
 
@@ -275,9 +273,9 @@ To check the Patient ID for a patient, you can simply enter the command `list-pa
 Examples:
 * `delete-patient 34` deletes the patient with the `PATIENT_ID` 34.
 
-### Searching for a patient by Patient ID or keyword: `search-patient`
+### Search for a patient by Patient ID or keyword: `search-patient`
 
-Searches for the patient with the specified `PATIENT_ID` or patients whose names match the given keyword. 
+Search for the patient with the specified `PATIENT_ID` or patients whose names match the given keyword. 
 This command allows you to find patient records that match your search criteria.
 
 **Format:** `search-patient KEYWORD` or `search-patient PATIENT_ID`
@@ -492,13 +490,13 @@ Afterwards, you may edit the particulars using `edit-dentist` or `edit-patient` 
 | **Delete Dentist**                      | `delete-dentist DENTIST_ID`<br> e.g., `delete-dentist 3`                                                                                                                                                                                       |
 | **List Dentist**                        | `list-dentist`                                                                                                                                                                                                                                 |
 | **Search Dentist by Dentist ID**        | `search-dentist DENTIST_ID` <br> e.g., `search-dentist 2`                                                                                                                                                                                      |
-| **Search Dentist by Name**              | `search-dentist NAME` <br> e.g., `search-dentist Tom`                                                                                                                                                                                          |
+| **Search Dentist by Keyword**           | `search-dentist KEYWORD` <br> e.g., `search-dentist Tom`                                                                                                                                                                                       |
 | **Filter Dentist**                      | `filter-dentist a/ATTRIBUTE k/KEYWORDS` <br> e.g., `filter-dentist a/phone k/90182211`                                                                                                                                                         |
 | **Add Patient**                         | `add-patient n/NAME p/PHONE b/BIRTHDATE g/GENDER s/SERVICE [e/EMAIL] [h/ADDRESS] [r/REMARK] [t/TAG]…​` <br> e.g., `add-patient n/John Tan p/90676622 e/johntan@gmail.com b/06-06-1998 g/M r/corn allergy s/Cleaning h/60 Jalan Kempinski Road` |
 | **Delete Patient**                      | `delete-patient PATIENT_ID`<br> e.g., `delete-patient 3`                                                                                                                                                                                       |
 | **List Patients**                       | `list-patient`                                                                                                                                                                                                                                 |
 | **Search Patient by Patient ID**        | `search-patient PATIENT_ID`  <br> e.g., `search-patient 3`                                                                                                                                                                                     |
-| **Search Patient by Name**              | `search-patient NAME` <br> e.g., `search-patient John`                                                                                                                                                                                         |
+| **Search Patient by Keyword**           | `search-patient KEYWORD` <br> e.g., `search-patient John`                                                                                                                                                                                      |
 | **Filter Patient**                      | `filter-patient a/ATTRIBUTE k/KEYWORDS` <br> e.g., `filter-patient a/phone k/98776211`                                                                                                                                                         |
 | **Add a Treatment**                     | `add-treatment tr/NAME cs/PRICE ti/DURATION` <br> e.g., `add-treatment tr/Tooth Extraction cs/150 ti/01:00`                                                                                                                                    |
 | **Delete a Treatment**                  | `delete-treatment NAME` <br> e.g., `delete-treatment Braces`                                                                                                                                                                                   |
