@@ -52,7 +52,7 @@ public class DentistAttributeContainsKeywordsPredicate implements Predicate<Dent
             return keywords.equalsIgnoreCase(dentist.getName().toString());
         case "experience":
             String exp = dentist.getYoe().toString();
-            return exp.toLowerCase().contains(keywords.toLowerCase());
+            return exp.contains(keywords.toLowerCase());
         case "address":
             String add = dentist.getAddress().toString();
             return add.toLowerCase().contains(keywords.toLowerCase());

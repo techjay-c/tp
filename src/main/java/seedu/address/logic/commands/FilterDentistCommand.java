@@ -15,8 +15,8 @@ public class FilterDentistCommand extends Command {
     public static final String COMMAND_WORD = "filter-dentist";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Filters the list of dentists by a specific criteria.\n"
-        + "Parameters: /a (attribute) k/ (keyword)\n"
-        + "Example: " + COMMAND_WORD + " /a gender k/ Male";
+        + "Parameters: a/ (attribute) k/ (keyword)\n"
+        + "Example: " + COMMAND_WORD + " a/ gender k/ Male";
 
     private final String attribute;
     private final String keywords;
