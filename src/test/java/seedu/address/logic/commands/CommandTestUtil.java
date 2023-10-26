@@ -14,6 +14,7 @@ import static seedu.address.testutil.Assert.assertThrows;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -22,6 +23,7 @@ import seedu.address.model.Model;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.dentist.Dentist;
+import seedu.address.model.person.patients.Patient;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 
 /**
@@ -40,7 +42,14 @@ public class CommandTestUtil {
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
 
-    // Valid Fields - Dentist specific
+    // Valid Fields - Patient Specific
+    public static final String VALID_GENDER_BOB = "M";
+    public static final String VALID_BIRTHDATE_BOB = "01-01-1990";
+    public static final String VALID_REMARK_BOB = "Allergy to anaesthesia";
+    public static final String VALID_TREATMENT_BOB = "Braces";
+
+
+    // Valid Fields - Dentist Specific
     public static final String VALID_SPECIALIZATION_AMY = "Orthopaedics";
     public static final String VALID_SPECIALIZATION_BOB = "Paediatrics";
     public static final String VALID_YOE_AMY = "12";
@@ -130,6 +139,7 @@ public class CommandTestUtil {
         assertEquals(expectedAddressBook, actualModel.getAddressBook());
         assertEquals(expectedFilteredList, actualModel.getFilteredPersonList());
     }
+
     /**
      * Updates {@code model}'s filtered list to show only the person at the given {@code targetIndex} in the
      * {@code model}'s address book.
@@ -156,5 +166,20 @@ public class CommandTestUtil {
         model.updateFilteredDentistList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
         assertEquals(1, model.getFilteredDentistList().size());
+    }
+
+    /**
+     * Updates {@code model}'s filtered list to show only the person at the given {@code patientId} in the
+     * {@code model}'s address book.
+     */
+    public static void showPatientWithId(Model model, long patientId) {
+        int zeroBasedIndex = (int) patientId - 1;
+
+        assertTrue(zeroBasedIndex < model.getFilteredPatientList().size() && zeroBasedIndex >= 0);
+
+        Predicate<Patient> patientIdPredicate = patient -> patient.getId() == patientId;
+        model.updateFilteredPatientList(patientIdPredicate);
+
+        assertEquals(1, model.getFilteredPatientList().size());
     }
 }

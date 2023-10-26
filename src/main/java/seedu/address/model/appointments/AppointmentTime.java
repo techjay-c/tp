@@ -21,8 +21,17 @@ public class AppointmentTime {
      */
     public AppointmentTime(String start, String duration) {
         this.start = LocalDateTime.parse(start);
-        this.duration = Duration.parse(duration);
+        String[] timeParts = duration.split(":");
+        if (timeParts.length == 1) {
+            this.duration = Duration.parse(duration);
+        } else {
+            int hours = Integer.parseInt(timeParts[0]);
+            int minutes = Integer.parseInt(timeParts[1]);
+            this.duration = Duration.ofHours(hours).plusMinutes(minutes);
+        }
+
     }
+
 
     public LocalDateTime getStart() {
         return this.start;

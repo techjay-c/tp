@@ -167,7 +167,7 @@ The `Model` component,
 **API
 ** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
 
-<img src="images/StorageClassDiagram.png" width="550" />
+<img src="images/ToothTrackerStorage.png" width="650" />
 
 The `Storage` component,
 
@@ -269,6 +269,15 @@ desktop applications follow.
 The following activity diagram summarizes what happens when a user executes a new command:
 
 <img src="images/CommitActivityDiagram.png" width="250" />
+
+The following activity diagram summarizes what happens when a user executes an `add-appointment` command:
+
+<img src="images/AddAppointmentActivityDiagram.png" width="750" />
+
+THe following activity diagram summarizes what happens when a user executes an `add-dentist` command.
+
+<img src="images/AddDentistActivityDiagram.png" width="350" />
+
 
 #### Design considerations:
 
@@ -476,6 +485,42 @@ Use case ends.
 
       Use case continues from step 2.
 
+**Use case: Add Appointment**
+
+**MSS**
+
+1. User submits a request to add a new future appointment, providing information about the appointment.
+ Information includes dentist ID, patient ID, appointment start time and treatment provided during the appointment.
+3. ToothTracker acknowledges the request to add the new appointment.
+
+   Use case ends.
+
+**Extensions**
+
+- **1a. User inputs an invalid command.**
+    - ToothTracker identifies the command error.
+        - ToothTracker prompts the user to make the necessary adjustments and provide the command in the correct format.
+    - Steps within 1a repeat until a valid `add-appointment` is provided.
+
+      Use case continues from step 2.
+
+- **1b. User inputs a treatment that does not exist in the database**
+    - ToothTracker checks the database and finds that the treatment provided does not exist.
+    - ToothTracker alerts the user that the treatment is not provided in the clinic.
+    - Steps within 1b loop until an existing treatment is provided.
+ 
+- **1c. User inputs a dentist or patient ID that does not exist in the database**
+    - ToothTracker checks the database and finds that the dentist or patient ID provided does not exist.
+    - ToothTracker alerts the user that the patient or dentist with the provided patient or dentist ID does not exist in this clinic.
+    - Steps within 1c loop until valid dentist and patient IDs are provided.
+ 
+- **1d. User inputs an appointment time slot that clashes with an existing one in the database**
+    - ToothTracker checks the database and finds that the appointment to be added clashes with an existing one.
+    - ToothTracker alerts the user about the clashing appointments.
+    - Steps within 1d loop until an appointment time slot that does not clash with an existing appointment is provided.
+
+      Use case resumes at step 1.
+
 **Use case: Add Treatment**
 
 **MSS**
@@ -517,7 +562,56 @@ Use case ends.
 
       Use case resumes at step 1.
 
+
+**Use Case: Delete a Treatment**
+
+**MSS**
+
+1. User submits a request to delete a treatment:
+    - User specifies the [treatment_name] to delete.
+
+2. ToothTracker searches for the treatment entry.
+
+3. If a match is found, ToothTracker deletes the treatment.
+      - Use Case Ends.
+
+**Extensions**
+
+* 2a. No treatments match the given treatment name:
+    - ToothTracker displays a message indicating no treatments are available.
+    - Repeat step 1 till the user enters a treatment which exists.
+    - Use Case Ends.
+
+
+**Use case: List Treatment Data**
+
+**MSS**
+
+1. User submits a request to list all treatment data.
+2. ToothTracker retrieves the list of all treatments saved in the system.
+3. ToothTracker displays all available treatments in the command result box.
+
+   Use case ends.
+
+**Extensions**
+
+- **1a. User inputs an invalid command.**
+    - ToothTracker identifies the command error.
+        - ToothTracker prompts the user to make the necessary adjustments and provide the command in the correct format.
+    - Steps within 1a repeat until a valid `list-treatment` command is provided.
+
+      Use case continues from step 2.
+
+
+- **2a. No treatment data available.**
+    - ToothTracker checks and finds that there are no treatments in the system.
+    - ToothTracker informs the user that no treatments are available.
+
+      Use case continues from step 2.
+
+
 *{More to be added}*
+
 
 ### Non-Functional Requirements
 

@@ -15,6 +15,7 @@ import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.dentist.UniqueDentistList;
 import seedu.address.model.person.patients.Patient;
 import seedu.address.model.treatment.Treatment;
+import seedu.address.model.treatment.TreatmentName;
 import seedu.address.model.treatment.UniqueTreatmentList;
 
 /**
@@ -183,6 +184,15 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Returns true if a treatmentName with the same fields as {@code treatmentName} exists in the address
+     * book.
+     */
+    public boolean hasTreatmentName(TreatmentName treatmentName) {
+        requireNonNull(treatmentName);
+        return treatments.contains(treatmentName);
+    }
+
+    /**
      * Adds a person to the address book. The person must not already exist in the address book.
      * Returns true if a dentist with the same identity as {@code dentist} exists in the address
      * book.
@@ -342,6 +352,10 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     public void removeDentist(Dentist key) {
         dentists.remove(key);
+    }
+
+    public void removeAppointment(Appointment key) {
+        appointments.remove(key);
     }
 
     //// util methods

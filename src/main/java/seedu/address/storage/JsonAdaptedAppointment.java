@@ -21,6 +21,7 @@ public class JsonAdaptedAppointment {
     private final String start;
     private final String duration;
     private final String treatment;
+    private final String cost;
     private final String id;
 
     /**
@@ -42,6 +43,7 @@ public class JsonAdaptedAppointment {
                                   @JsonProperty("start") String start,
                                   @JsonProperty("duration") String duration,
                                   @JsonProperty("treatment") String treatment,
+                                  @JsonProperty("cost") String cost,
                                   @JsonProperty("id") String id) {
         this.dentistId = dentistId;
         this.patientId = patientId;
@@ -50,6 +52,7 @@ public class JsonAdaptedAppointment {
         this.start = start;
         this.duration = duration;
         this.treatment = treatment;
+        this.cost = cost;
         this.id = id;
 
     }
@@ -67,6 +70,7 @@ public class JsonAdaptedAppointment {
         start = source.getAppointmentTime().startToString();
         duration = source.getAppointmentTime().durationToString();
         treatment = source.getTreatment();
+        cost = source.getCost();
         id = String.valueOf(source.getId());
     }
 
@@ -107,15 +111,21 @@ public class JsonAdaptedAppointment {
             throw new IllegalValueException(
                     String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
         }
+        if (cost == null) {
+            throw new IllegalValueException(
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
+        }
         if (id == null) {
             throw new IllegalValueException("id value does not exist!");
         }
         long lid = Long.parseLong(id);
 
         final AppointmentTime appointmentTime = new AppointmentTime(start, duration);
-        Appointment newAppointment = new Appointment(did, pid, appointmentTime, duration, treatment, lid);
+        Appointment newAppointment = new Appointment(did, pid, start, treatment, lid);
         newAppointment.setDentistName(dentistName);
         newAppointment.setPatientName(patientName);
+        newAppointment.setAppointmentTime(appointmentTime);
+        newAppointment.setCost(cost);
         return newAppointment;
     }
 }

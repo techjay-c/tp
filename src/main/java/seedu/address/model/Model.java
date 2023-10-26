@@ -11,6 +11,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.patients.Patient;
 import seedu.address.model.treatment.Treatment;
+import seedu.address.model.treatment.TreatmentName;
 
 /**
  * The API of the Model component.
@@ -85,6 +86,8 @@ public interface Model {
      */
     boolean hasTreatment(Treatment treatment);
 
+    boolean hasTreatmentName(TreatmentName treatmentName);
+
     /**
      * Returns true if a dentist with the same identity as {@code dentist} exists in ToothTracker
      * address book.
@@ -97,6 +100,17 @@ public interface Model {
 
     Dentist getDentistById(long dentistId);
 
+    Appointment getAppointmentById(long appointmentId);
+
+
+    /**
+     * returns the treatment by its name
+     *
+     * @param treatmentName name of the treatment to find
+     * @return null if the treatment is not found. Otherwise, the corresponding Treatment object is returned
+     */
+    Treatment getTreatmentByName(String treatmentName);
+
     /**
      * Deletes the given person. The person must exist in the address book.
      */
@@ -105,6 +119,11 @@ public interface Model {
     void deletePatient(Patient patient);
 
     void deleteDentist(Dentist dentist);
+
+    void deleteAppointment(Appointment appointment);
+
+    void deleteTreatment(Treatment treatment);
+
 
     /**
      * Adds the given person. {@code person} must not already exist in ToothTracker address book.
@@ -139,6 +158,14 @@ public interface Model {
      * as another existing dentist in the address book.
      */
     void setDentist(Dentist target, Dentist editedDentist);
+
+
+    /**
+     * Replaces the given patient {@code target} with {@code editedPatient}. {@code target} must
+     * exist in the address book. The patient identity of {@code editedPatient} must not be the same
+     * as another existing patient in the address book.
+     */
+    void setPatient(Patient target, Patient editedPatient);
 
     /**
      * Returns an unmodifiable view of the filtered person list
@@ -200,9 +227,11 @@ public interface Model {
     void updateFilteredTreatmentList(Predicate<Treatment> predicate);
 
     /**
-     * Updates the filter of the filtered Appointment list to filter by the given {@code predicate}.
+     * Updates the filter of the filtered Appointment list to filter by the given
+     * {@code predicate}.
      *
      * @param appointmentPredicate The predicate to filter the list by.
      */
     void updateFilteredAppointmentList(Predicate<Appointment> appointmentPredicate);
+
 }

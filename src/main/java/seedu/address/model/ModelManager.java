@@ -17,6 +17,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.patients.Patient;
 import seedu.address.model.treatment.Treatment;
+import seedu.address.model.treatment.TreatmentName;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -153,6 +154,35 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public Appointment getAppointmentById(long appointmentId) {
+        requireNonNull(appointmentId);
+        ObservableList<Appointment> filteredAppointment = getFilteredAppointmentList();
+
+        for (Appointment appointment : filteredAppointment) {
+            if (appointment.getId() == appointmentId) {
+                return appointment;
+            }
+        }
+        return null;
+    }
+
+
+    @Override
+    public Treatment getTreatmentByName(String treatmentName) {
+        requireNonNull(treatmentName);
+        ObservableList<Treatment> filteredTreatment = getFilteredTreatmentList();
+
+        for (Treatment treatment : filteredTreatment) {
+            String trimmedInner = treatment.getName().toString().trim();
+            String trimmedTreatmentName = treatmentName.trim();
+            if (trimmedTreatmentName.equals(trimmedInner)) {
+                return treatment;
+            }
+        }
+        return null;
+    }
+
+    @Override
     public void deletePerson(Person target) {
         addressBook.removePerson(target);
     }
@@ -165,6 +195,16 @@ public class ModelManager implements Model {
     @Override
     public void deleteDentist(Dentist dentist) {
         addressBook.removeDentist(dentist);
+    }
+
+    @Override
+    public void deleteAppointment(Appointment appointment) {
+        addressBook.removeAppointment(appointment);
+    }
+
+    @Override
+    public void deleteTreatment(Treatment treatment) {
+        addressBook.removeTreatment(treatment);
     }
 
     @Override
@@ -203,6 +243,13 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void setPatient(Patient target, Patient editedPatient) {
+        requireAllNonNull(target, editedPatient);
+
+        addressBook.setPatient(target, editedPatient);
+    }
+
+    @Override
     public void addTreatment(Treatment treatment) {
         addressBook.addTreatment(treatment);
     }
@@ -211,7 +258,6 @@ public class ModelManager implements Model {
     public ObservableList<Treatment> getFilteredTreatmentList() {
         return filteredTreatments;
     }
-
 
     //=========== Filtered Person List Accessors =============================================================
 
@@ -290,6 +336,12 @@ public class ModelManager implements Model {
     public boolean hasTreatment(Treatment treatment) {
         requireNonNull(treatment);
         return addressBook.hasTreatment(treatment);
+    }
+
+    @Override
+    public boolean hasTreatmentName(TreatmentName treatmentName) {
+        requireNonNull(treatmentName);
+        return addressBook.hasTreatmentName(treatmentName);
     }
 
     @Override

@@ -4,19 +4,19 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a treatment's name in the address book.
- * Guarantees: immutable; is valid as declared in {@link #isValidName(String)}
+ * Represents a treatment's name in the address book. Guarantees: immutable; is valid as declared in
+ * {@link #isValidName(String)}
  */
 public class TreatmentName {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Treatment Names should only contain alphanumeric characters and spaces, and it should not be blank";
+        "Treatment Names should only contain alphabets and spaces, and it should not be blank";
 
     /*
      * The first character of the address must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
+    public static final String VALIDATION_REGEX = "^(?=.*[A-Za-z])[A-Za-z ]+$";
 
     public final String value;
 
@@ -38,6 +38,18 @@ public class TreatmentName {
         return test.matches(VALIDATION_REGEX);
     }
 
+    public String getTreatmentName() {
+        return value;
+    }
+
+    /**
+     * Returns true if both treatments have the same name. This defines a weaker notion of equality
+     * between two treatments.
+     */
+    public boolean isSameTreatmentName(TreatmentName otherTreatment) {
+        return otherTreatment != null
+                && otherTreatment.getTreatmentName().equals(getTreatmentName());
+    }
 
     @Override
     public String toString() {
@@ -56,7 +68,7 @@ public class TreatmentName {
         }
 
         TreatmentName otherName = (TreatmentName) other;
-        return value.equals(otherName.value);
+        return value.equalsIgnoreCase(otherName.value);
     }
 
     @Override
