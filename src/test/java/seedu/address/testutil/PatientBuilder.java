@@ -10,9 +10,9 @@ import seedu.address.model.person.Gender;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Remark;
-import seedu.address.model.person.Service;
 import seedu.address.model.person.patients.Patient;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.treatment.TreatmentName;
 import seedu.address.model.util.SampleDataUtil;
 
 /**
@@ -27,7 +27,7 @@ public class PatientBuilder {
     public static final String DEFAULT_GENDER = "F";
     public static final String DEFAULT_BIRTHDATE = "03-02-1999";
     public static final String DEFAULT_REMARK = "Peanut Allergy";
-    public static final String DEFAULT_SERVICE = "Cleaning";
+    public static final String DEFAULT_TREATMENT_NAME = "Cleaning";
 
     private Name name;
     private Phone phone;
@@ -36,7 +36,7 @@ public class PatientBuilder {
     private Gender gender;
     private Birthdate birthdate;
     private Remark remark;
-    private Service service;
+    private TreatmentName treatmentName;
     private Set<Tag> tags;
 
     /**
@@ -50,7 +50,7 @@ public class PatientBuilder {
         gender = new Gender(DEFAULT_GENDER);
         birthdate = new Birthdate(DEFAULT_BIRTHDATE);
         remark = new Remark(DEFAULT_REMARK);
-        service = new Service(DEFAULT_SERVICE);
+        treatmentName = new TreatmentName(DEFAULT_TREATMENT_NAME);
         tags = new HashSet<>();
     }
 
@@ -65,7 +65,7 @@ public class PatientBuilder {
         gender = patientToCopy.getGender();
         birthdate = patientToCopy.getBirthdate();
         remark = patientToCopy.getRemark();
-        service = patientToCopy.getService();
+        treatmentName = patientToCopy.getTreatmentName();
         tags = new HashSet<>(patientToCopy.getTags());
     }
 
@@ -134,15 +134,15 @@ public class PatientBuilder {
     }
 
     /**
-     * Sets the {@code Service} of the {@code Patient} that we are building.
+     * Sets the {@code TreatmentNAme} of the {@code Patient} that we are building.
      */
-    public PatientBuilder withService(String service) {
-        this.service = new Service(service);
+    public PatientBuilder withTreatmentName(String treatmentName) {
+        this.treatmentName = new TreatmentName(treatmentName);
         return this;
     }
 
     public Patient build() {
-        return new Patient(name, phone, birthdate, gender, remark, service, address, email, tags);
+        return new Patient(name, phone, birthdate, gender, remark, treatmentName, address, email, tags);
     }
 
 }

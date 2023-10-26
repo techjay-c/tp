@@ -54,6 +54,7 @@ public class Treatment {
             && otherTreatment.getName().equals(getName());
     }
 
+
     /**
      * Returns true if both patients have the same identity and data fields. This defines a stronger
      * notion of equality between two patients.

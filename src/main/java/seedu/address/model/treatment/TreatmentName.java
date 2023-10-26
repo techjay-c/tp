@@ -38,6 +38,18 @@ public class TreatmentName {
         return test.matches(VALIDATION_REGEX);
     }
 
+    public String getTreatmentName() {
+        return value;
+    }
+
+    /**
+     * Returns true if both treatments have the same name. This defines a weaker notion of equality
+     * between two treatments.
+     */
+    public boolean isSameTreatmentName(TreatmentName otherTreatment) {
+        return otherTreatment != null
+                && otherTreatment.getTreatmentName().equals(getTreatmentName());
+    }
 
     @Override
     public String toString() {

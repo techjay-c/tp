@@ -14,7 +14,6 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Remark;
-import seedu.address.model.person.Service;
 import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.dentist.Specialization;
 import seedu.address.model.person.dentist.Yoe;
@@ -42,7 +41,7 @@ public class SampleDataUtil {
     public static Patient[] getSamplePatients() {
         return new Patient[]{
             new Patient(new Name("Alex Yeohh"), new Phone("87438807"), new Birthdate("03-02-1999"),
-                new Gender("F"), new Remark("Peanuts Allergy"), new Service("Cleaning"),
+                new Gender("F"), new Remark("Peanuts Allergy"), new TreatmentName("Cleaning"),
                 new Address("Blk 30 Geylang Street 29, #06-40"),
                 new Email("alexyeoh@example.com"),
                 getTagSet("friends"))

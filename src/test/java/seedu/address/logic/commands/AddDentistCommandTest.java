@@ -28,6 +28,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.patients.Patient;
 import seedu.address.model.treatment.Treatment;
+import seedu.address.model.treatment.TreatmentName;
 import seedu.address.testutil.DentistBuilder;
 
 public class AddDentistCommandTest {
@@ -289,6 +290,11 @@ public class AddDentistCommandTest {
 
         @Override
         public boolean hasTreatment(Treatment treatment) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasTreatmentName(TreatmentName treatmentName) {
             throw new AssertionError("This method should not be called.");
         }
 

@@ -44,28 +44,21 @@ public class AttributeContainsKeywordsPredicate implements Predicate<Patient> {
         case "gender":
             return keywords.equalsIgnoreCase(patient.getGender().toString());
         case "birthday":
-            String bday = patient.getBirthdate().toString();
-            return bday.contains(keywords.toLowerCase());
+            return keywords.equalsIgnoreCase(patient.getBirthdate().toString());
         case "email":
-            String email = patient.getEmail().toString();
-            return email.contains(keywords.toLowerCase());
+            return keywords.equalsIgnoreCase(patient.getEmail().toString());
         case "phone":
-            String phone = patient.getPhone().toString();
-            return phone.contains(keywords.toLowerCase());
+            return keywords.equalsIgnoreCase(patient.getPhone().toString());
         case "tags":
-            String tags = patient.getTags().toString();
-            return tags.contains(keywords.toLowerCase());
+            return keywords.equalsIgnoreCase(patient.getTags().toString());
         case "name":
             return keywords.equalsIgnoreCase(patient.getName().toString());
         case "remark":
-            String remark = patient.getRemark().toString();
-            return remark.toLowerCase().contains(keywords.toLowerCase());
-        case "service":
-            String service = patient.getService().toString();
-            return service.toLowerCase().contains(keywords.toLowerCase());
+            return keywords.equalsIgnoreCase(patient.getRemark().toString());
+        case "treatment":
+            return keywords.equalsIgnoreCase(patient.getTreatmentName().toString());
         case "address":
-            String add = patient.getAddress().toString();
-            return add.toLowerCase().contains(keywords.toLowerCase());
+            return keywords.equalsIgnoreCase(patient.getAddress().toString());
         default:
             return false;
         }

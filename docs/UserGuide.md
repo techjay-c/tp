@@ -3,12 +3,29 @@ layout: page
 title: User Guide
 ---
 
-ToothTracker is an **All-in-One solution for effortless Dental Clinic Record Management**.
-From adding new patient and dentist profiles to seamlessly create appointment schedules,
-ToothTracker is engineered to simplify every aspect of your dental clinic administrative responsibilities.
 
-* Table of Contents
-  {:toc}
+ToothTracker is an All-in-One solution for effortless Dental Clinic Record Management. From adding new patient and dentist profiles to seamlessly creating appointment schedules, ToothTracker is engineered to simplify every aspect of your dental clinic administrative responsibilities.
+
+
+Here is an overview of how ToothTracker can help you manage your dental clinic administration better:
+- You can add tags to every patient and dentist to highlight additional information about them.
+- You need not worry about storing physical copies of patient and dentist profiles and appointment schedules.
+- You can avoid creating clashing appointments to reduce operational delays.
+- You can have the flexibility to add custom treatments that your clinic provides.
+- You can view your clinic's appointment schedule in ToothTracker's calendar.
+
+We believe that time is the rarest commodity in a dental office. This means dental clinic administrative management must be efficient.  Therefore, ToothTracker is optimized for use via a Command Line Interface (CLI) while also having the advantages of a Graphical User Interface (GUI), particularly our calendar feature. If you type fast, ToothTracker offers your dental clinic a significantly more efficient workflow to get your job done.
+
+If you are new here, visit our quick start guide to start tracking your dental clinic records with ToothTracker!
+
+
+### About ToothTracker's User Guide
+This user guide provides a comprehensive documentation on the various commands supported by ToothTracker. 
+If you are familiar with ToothTracker already, this user guide serves to give you an overview on how to use specific commands in ToothTracker.
+If you are a new user, you may proceed to our quick start guide to assist you in installing ToothTracker and launching it for the first time.
+
+* Table of Contents 
+{:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -483,31 +500,31 @@ Afterwards, you may edit the particulars using `edit-dentist` or `edit-patient` 
 
 ## Command summary
 
-| Action                                  | Format, Examples                                                                                                                                                                                                                               |
-|-----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add Dentist**                         | `add-dentist n/NAME p/PHONE s/SPECIALIZATION y/YOE [e/EMAIL] [h/ADDRESS] [t/TAG]…​` <br> e.g., `add-dentist n/Bob p/12345678 e/bobjune@gmail.com y/6 s/braces`                                                                                 |
-| **Edit Dentist**                        | `edit-dentist DENTIST_ID [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SPECIALIZATION] [y/YOE] [t/TAG]…​` <br> e.g., `edit-dentist 1 p/98987676 e/bobjuly@gmail.com`                                                                             |
-| **Delete Dentist**                      | `delete-dentist DENTIST_ID`<br> e.g., `delete-dentist 3`                                                                                                                                                                                       |
-| **List Dentist**                        | `list-dentist`                                                                                                                                                                                                                                 |
-| **Search Dentist by Dentist ID**        | `search-dentist DENTIST_ID` <br> e.g., `search-dentist 2`                                                                                                                                                                                      |
-| **Search Dentist by Keyword**           | `search-dentist KEYWORD` <br> e.g., `search-dentist Tom`                                                                                                                                                                                       |
-| **Filter Dentist**                      | `filter-dentist a/ATTRIBUTE k/KEYWORDS` <br> e.g., `filter-dentist a/phone k/90182211`                                                                                                                                                         |
-| **Add Patient**                         | `add-patient n/NAME p/PHONE b/BIRTHDATE g/GENDER s/SERVICE [e/EMAIL] [h/ADDRESS] [r/REMARK] [t/TAG]…​` <br> e.g., `add-patient n/John Tan p/90676622 e/johntan@gmail.com b/06-06-1998 g/M r/corn allergy s/Cleaning h/60 Jalan Kempinski Road` |
-| **Delete Patient**                      | `delete-patient PATIENT_ID`<br> e.g., `delete-patient 3`                                                                                                                                                                                       |
-| **List Patients**                       | `list-patient`                                                                                                                                                                                                                                 |
-| **Search Patient by Patient ID**        | `search-patient PATIENT_ID`  <br> e.g., `search-patient 3`                                                                                                                                                                                     |
-| **Search Patient by Keyword**           | `search-patient KEYWORD` <br> e.g., `search-patient John`                                                                                                                                                                                      |
-| **Filter Patient**                      | `filter-patient a/ATTRIBUTE k/KEYWORDS` <br> e.g., `filter-patient a/phone k/98776211`                                                                                                                                                         |
-| **Add a Treatment**                     | `add-treatment tr/NAME cs/PRICE ti/DURATION` <br> e.g., `add-treatment tr/Tooth Extraction cs/150 ti/01:00`                                                                                                                                    |
-| **Delete a Treatment**                  | `delete-treatment NAME` <br> e.g., `delete-treatment Braces`                                                                                                                                                                                   |
-| **Add Appointment**                     | `add-appointment dentist/DENTIST_ID patient/PATIENT_ID start/START_TIME duration/DURATION s/TREATMENT` <br> e.g.,`add-appointment dentist/0 patient/0 start/2023-10-12 16:00 duration/PT1H30M s/Braces`                                        |
-| **Delete Appointment**                  | `delete-appointment APPOINTMENT_ID`<br> e.g., `delete-appointment 3`                                                                                                                                                                           |
-| **List Appointments**                   | `list-appointment`                                                                                                                                                                                                                             |
-| **Filter Appointments by Service Type** | `filter-appointment s/SERVICE_TYPE` <br> e.g., `filter-appointment s/Tooth Extraction`                                                                                                                                                         |
-| **Filter Appointments by Date**         | `filter-appointment t/DATE` <br> e.g., `filter-appointment t/20-11-2023`                                                                                                                                                                       |
-| **Filter Appointments by Dentist**      | `filter-appointment d/DENTIST_ID` <br> e.g., `filter-appointment d/Tom`                                                                                                                                                                        |
-| **Clear all Profiles**                  | `clear`                                                                                                                                                                                                                                        |
-| **Exit Programme**                      | `exit`                                                                                                                                                                                                                                         |
-| **Help**                                | `help`                                                                                                                                                                                                                                         |
---------------------------------------------------------------------------------------------------------------------
+| Action                                  | Format, Examples                                                                                                                                                                                                                                    |
+|-----------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add Dentist**                         | `add-dentist n/NAME p/PHONE s/SPECIALIZATION y/YOE [e/EMAIL] [h/ADDRESS] [t/TAG]…​` <br> e.g., `add-dentist n/Bob p/12345678 e/bobjune@gmail.com y/6 s/braces`                                                                                   |
+| **Edit Dentist**                        | `edit-dentist DENTIST_ID [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SPECIALIZATION] [y/YOE] [t/TAG]…​` <br> e.g., `edit-dentist 1 p/98987676 e/bobjuly@gmail.com`                                                                               |
+| **Delete Dentist**                      | `delete-dentist DENTIST_ID`<br> e.g., `delete-dentist 3`                                                                                                                                                                                            |
+| **List Dentist**                        | `list-dentist`                                                                                                                                                                                                                                      |
+| **Search Dentist by Dentist ID**        | `search-dentist DENTIST_ID` <br> e.g., `search-dentist 2`                                                                                                                                                                                           |
+| **Search Dentist by Keyword**           | `search-dentist KEYWORD` <br> e.g., `search-dentist Tom`                                                                                                                                                                                            |
+| **Filter Dentist**                      | `filter-dentist a/ATTRIBUTE k/KEYWORDS` <br> e.g., `filter-dentist a/phone k/90182211`                                                                                                                                                              |
+| **Add Patient**                         | `add-patient n/NAME p/PHONE b/BIRTHDATE g/GENDER s/SERVICE [e/EMAIL] [h/ADDRESS] [r/REMARK] [t/TAG]…​` <br> e.g., `add-patient n/John Tan p/90676622 e/johntan@gmail.com b/06-06-1998 g/M r/corn allergy s/Cleaning h/60 Jalan Kempinski Road`   |
+| **Delete Patient**                      | `delete-patient PATIENT_ID`<br> e.g., `delete-patient 3`                                                                                                                                                                                            |
+| **List Patients**                       | `list-patient`                                                                                                                                                                                                                                      |
+| **Search Patient by Patient ID**        | `search-patient PATIENT_ID`  <br> e.g., `search-patient 3`                                                                                                                                                                                          |
+| **Search Patient by Keyword**           | `search-patient KEYWORD` <br> e.g., `search-patient John`                                                                                                                                                                                           |
+| **Filter Patient**                      | `filter-patient a/ATTRIBUTE k/KEYWORDS` <br> e.g., `filter-patient a/phone k/98776211`                                                                                                                                                              |
+| **Add a Treatment**                     | `add-treatment tr/NAME cs/PRICE ti/DURATION` <br> e.g., `add-treatment tr/Tooth Extraction cs/150 ti/01:00`                                                                                                                                         |
+| **Delete a Treatment**                  | `delete-treatment NAME` <br> e.g., `delete-treatment Braces`                                                                                                                                                                                        |
+| **Add Appointment**                     | `add-appointment dentist/DENTIST_ID patient/PATIENT_ID start/START_TIME duration/DURATION s/TREATMENT` <br> e.g.,`add-appointment dentist/0 patient/0 start/2023-10-12 16:00 duration/PT1H30M s/Braces`                                             |
+| **Delete Appointment**                  | `delete-appointment APPOINTMENT_ID`<br> e.g., `delete-appointment 3`                                                                                                                                                                                |
+| **List Appointments**                   | `list-appointment`                                                                                                                                                                                                                                  |
+| **Filter Appointments by Service Type** | `filter-appointment s/SERVICE_TYPE` <br> e.g., `filter-appointment s/Tooth Extraction`                                                                                                                                                              |
+| **Filter Appointments by Date**         | `filter-appointment t/DATE` <br> e.g., `filter-appointment t/20-11-2023`                                                                                                                                                                            |
+| **Filter Appointments by Dentist**      | `filter-appointment d/DENTIST_ID` <br> e.g., `filter-appointment d/Tom`                                                                                                                                                                             |
+| **Clear all Profiles**                  | `clear`                                                                                                                                                                                                                                             |
+| **Exit Programme**                      | `exit`                                                                                                                                                                                                                                              |
+| **Help**                                | `help`                                                                                                                                                                                                                                              |
+
 
