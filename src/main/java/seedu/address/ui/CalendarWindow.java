@@ -9,10 +9,9 @@ import java.util.logging.Logger;
 
 import com.calendarfx.model.Calendar;
 import com.calendarfx.model.Entry;
-import com.calendarfx.view.*;
+import com.calendarfx.view.CalendarView;
 
 import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.appointments.Appointment;
@@ -26,7 +25,7 @@ public class CalendarWindow extends UiPart<Stage> {
 
     private static CalendarWindow instance = null;
     private final CalendarView calendarView;
-    private List<Entry<Appointment>> calendarEntries = new ArrayList<>();
+    private final List<Entry<Appointment>> calendarEntries = new ArrayList<>();
 
     /**
      * Creates a new CalendarWindow.
@@ -151,6 +150,19 @@ public class CalendarWindow extends UiPart<Stage> {
         entry.setUserObject(appointment);
 
         return entry;
+    }
+
+    /**
+     * Adds an appointment to the calendar.
+     *
+     * @param appointment Appointment to be added.
+     */
+    public void addAppointment(Appointment appointment) {
+        Entry<Appointment> entry = convertToEntry(appointment);
+        calendarEntries.add(entry);
+
+        Calendar appointmentCalendar = getCalendar();
+        appointmentCalendar.addEntry(entry);
     }
 
     /**

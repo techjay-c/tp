@@ -18,6 +18,7 @@ import seedu.address.model.appointments.AppointmentTime;
 import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.patients.Patient;
 import seedu.address.model.treatment.Treatment;
+import seedu.address.ui.CalendarWindow;
 
 
 /**
@@ -51,6 +52,9 @@ public class AddAppointmentCommand extends Command {
     private final long patientId;
     private final String treatmentName;
     private final String start;
+
+    private final CalendarWindow calendarWindow = CalendarWindow.getInstance();
+
 
     /**
      * Constructs an AddAppointmentCommand with the specified appointment.
@@ -102,6 +106,8 @@ public class AddAppointmentCommand extends Command {
         checkClash(model);
 
         model.addAppointment(toAdd);
+        calendarWindow.addAppointment(toAdd);
+
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
     }
 

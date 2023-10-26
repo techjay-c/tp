@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.Objects;
 
-import javafx.application.Platform;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -28,6 +27,8 @@ public class DeleteAppointmentCommand extends Command {
 
     private final long targetId;
 
+    private final CalendarWindow calendarWindow = CalendarWindow.getInstance();
+
     /**
      * Constructs a DeleteAppointmentCommand to delete an appointment from ToothTracker.
      *
@@ -49,7 +50,6 @@ public class DeleteAppointmentCommand extends Command {
             }
 
             model.deleteAppointment(appointmentToDelete);
-            CalendarWindow calendarWindow = CalendarWindow.getInstance();
             calendarWindow.deleteAppointment(appointmentToDelete);
 
             return new CommandResult(

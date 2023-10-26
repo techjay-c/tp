@@ -17,11 +17,7 @@ public class ViewCalendarCommand extends Command {
 
     public static final String SHOWING_CALENDAR_MESSAGE = "Calendar displayed.";
 
-    private final CalendarWindow calendarWindow;
-
-    public ViewCalendarCommand(CalendarWindow calendarWindow) {
-        this.calendarWindow = calendarWindow;
-    }
+    private final CalendarWindow calendarWindow = CalendarWindow.getInstance();
 
     @Override
     public CommandResult execute(Model model) {
