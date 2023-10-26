@@ -129,3 +129,4 @@ JsonSerializableAddressBook --> "*" JsonAdaptedTreatment
 JsonAdaptedPatient --> "*" JsonAdaptedTag
 JsonAdaptedDentist --> "*" JsonAdaptedTag
 @enduml
+
