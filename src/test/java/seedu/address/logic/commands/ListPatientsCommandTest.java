@@ -39,12 +39,12 @@ public class ListPatientsCommandTest {
 
     @Test
     public void execute_patientListIsNotFiltered_showsSameList() {
-        assertCommandSuccess(new ListPatientsCommand(), model, ListPatientsCommand.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(new ListPatientCommand(), model, ListPatientCommand.MESSAGE_SUCCESS, expectedModel);
     }
 
     @Test
     public void execute_patientListIsFiltered_showsEverything() {
         showPatientWithId(model, 1);
-        assertCommandSuccess(new ListPatientsCommand(), model, ListPatientsCommand.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(new ListPatientCommand(), model, ListPatientCommand.MESSAGE_SUCCESS, expectedModel);
     }
 }

@@ -2,6 +2,9 @@ package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import seedu.address.logic.commands.FilterPatientCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
@@ -25,15 +28,23 @@ public class FilterPatientCommandParser implements Parser<FilterPatientCommand> 
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterPatientCommand.MESSAGE_USAGE));
         }
 
-        String[] parts = trimmedArgs.split("\\s+", 2);
+        String regexPattern = "a/\\s*(\\S+)\\s+k/\\s*(.+)";
 
-        if (parts.length != 2) {
+        if (!trimmedArgs.matches(regexPattern)) {
             throw new ParseException("Invalid filter format.");
         }
 
-        String attribute = parts[0];
-        String keywords = parts[1].trim();
+        Pattern pattern = Pattern.compile(regexPattern);
+        Matcher matcher = pattern.matcher(trimmedArgs);
 
-        return new FilterPatientCommand(attribute, keywords);
+        if (matcher.find()) {
+            String attribute = matcher.group(1);
+            String keywords = matcher.group(2);
+
+            return new FilterPatientCommand(attribute, keywords);
+
+        } else {
+            throw new ParseException("Invalid filter format.");
+        }
     }
 }

@@ -47,7 +47,7 @@ public class PatientCard extends UiPart<Region> {
     @FXML
     private Label appointment;
     @FXML
-    private Label service;
+    private Label treatment;
     @FXML
     private FlowPane patientId;
     @FXML
@@ -69,7 +69,7 @@ public class PatientCard extends UiPart<Region> {
         gender.setText("Gender: " + patient.getGender().value);
         birthdate.setText("Birthday: " + patient.getBirthdate().value);
         appointment.setText("Remark: " + patient.getRemark().value);
-        service.setText("Service: " + patient.getService().value);
+        treatment.setText("Treatment: " + patient.getTreatmentName().value);
 
         patient.getTags().stream()
             .sorted(Comparator.comparing(tag -> tag.tagName))

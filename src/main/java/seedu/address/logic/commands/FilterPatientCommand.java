@@ -15,8 +15,8 @@ public class FilterPatientCommand extends Command {
     public static final String COMMAND_WORD = "filter-patient";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Filters the list of patients by a specific criteria.\n"
-        + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
-        + "Example: " + COMMAND_WORD + " Root Canal";
+        + "Parameters: a/ (attribute) k/ (keyword)\n"
+        + "Example: " + COMMAND_WORD + " a/ birthday k/ 06-05-2000";
 
     private final String attribute;
     private final String keywords;

@@ -11,8 +11,8 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_GENDER_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_REMARK_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_SERVICE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TREATMENT_BOB;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPatients.PATIENT_ALICE;
 import static seedu.address.testutil.TypicalPatients.PATIENT_BOB;
@@ -102,8 +102,8 @@ class PatientTest {
         editedAlice = new PatientBuilder(PATIENT_ALICE).withRemark(VALID_REMARK_BOB).build();
         assertFalse(PATIENT_ALICE.equals(editedAlice));
 
-        // different service -> returns false
-        editedAlice = new PatientBuilder(PATIENT_ALICE).withService(VALID_SERVICE_BOB).build();
+        // different treatment -> returns false
+        editedAlice = new PatientBuilder(PATIENT_ALICE).withTreatmentName(VALID_TREATMENT_BOB).build();
         assertFalse(PATIENT_ALICE.equals(editedAlice));
 
         // different tags -> returns false
@@ -131,7 +131,7 @@ class PatientTest {
                 + ", birthday=" + PATIENT_ALICE.getBirthdate()
                 + ", gender=" + PATIENT_ALICE.getGender()
                 + ", remark=" + PATIENT_ALICE.getRemark()
-                + ", service=" + PATIENT_ALICE.getService()
+                + ", treatment=" + PATIENT_ALICE.getTreatmentName()
                 + ", address=" + PATIENT_ALICE.getAddress()
                 + ", email=" + PATIENT_ALICE.getEmail()
                 + ", id=" + PATIENT_ALICE.getId()

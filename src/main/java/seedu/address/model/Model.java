@@ -11,6 +11,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.patients.Patient;
 import seedu.address.model.treatment.Treatment;
+import seedu.address.model.treatment.TreatmentName;
 
 /**
  * The API of the Model component.
@@ -85,6 +86,8 @@ public interface Model {
      */
     boolean hasTreatment(Treatment treatment);
 
+    boolean hasTreatmentName(TreatmentName treatmentName);
+
     /**
      * Returns true if a dentist with the same identity as {@code dentist} exists in ToothTracker
      * address book.
@@ -102,6 +105,7 @@ public interface Model {
 
     /**
      * returns the treatment by its name
+     *
      * @param treatmentName name of the treatment to find
      * @return null if the treatment is not found. Otherwise, the corresponding Treatment object is returned
      */
@@ -154,6 +158,14 @@ public interface Model {
      * as another existing dentist in the address book.
      */
     void setDentist(Dentist target, Dentist editedDentist);
+
+
+    /**
+     * Replaces the given patient {@code target} with {@code editedPatient}. {@code target} must
+     * exist in the address book. The patient identity of {@code editedPatient} must not be the same
+     * as another existing patient in the address book.
+     */
+    void setPatient(Patient target, Patient editedPatient);
 
     /**
      * Returns an unmodifiable view of the filtered person list
