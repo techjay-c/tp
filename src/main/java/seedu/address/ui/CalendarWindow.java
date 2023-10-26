@@ -56,29 +56,29 @@ public class CalendarWindow extends UiPart<Stage> {
      */
     public void show() {
         logger.fine("Showing Calendar of ToothTracker.");
-        getRoot().show();
-        getRoot().centerOnScreen();
+        getCalendarRoot().show();
+        getCalendarRoot().centerOnScreen();
     }
 
     /**
      * Returns true if the calendar window is currently being shown.
      */
     public boolean isShowing() {
-        return getRoot().isShowing();
+        return getCalendarRoot().isShowing();
     }
 
     /**
      * Hides the calendar window.
      */
     public void hide() {
-        getRoot().hide();
+        getCalendarRoot().hide();
     }
 
     /**
      * Focuses on the calendar window.
      */
     public void focus() {
-        getRoot().requestFocus();
+        getCalendarRoot().requestFocus();
     }
 
     private void initialiseCalendarSettings() {
@@ -89,6 +89,8 @@ public class CalendarWindow extends UiPart<Stage> {
         calendarView.setShowPrintButton(false);
         calendarView.setShowSourceTrayButton(false);
         calendarView.setShowSearchField(false);
+
+        calendarView.showMonthPage();
     }
 
 }

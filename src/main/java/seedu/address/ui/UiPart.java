@@ -64,6 +64,10 @@ public abstract class UiPart<T> {
         return fxmlLoader.getRoot();
     }
 
+    public T getCalendarRoot() {
+        return this.root;
+    }
+
     /**
      * Loads the object hierarchy from a FXML document.
      * @param location Location of the FXML document.
