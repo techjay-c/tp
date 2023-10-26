@@ -148,32 +148,26 @@ How the parsing works:
 **API
 ** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
 
-<img src="images/ModelClassDiagram.png" width="450" />
-
+<img src="images/ToothTrackerModelClassDiagram.png" width="700"/>
 
 The `Model` component,
 
-* stores the address book data i.e., all `Person` objects (which are contained in a `UniquePersonList` object).
-* stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which
-  is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to
-  this list so that the UI automatically updates when the data in the list change.
+* stores the ToothTracker address book data i.e., all `Patient`, `Dentist`, `Appointment`, and `Treatment` objects
+(which are contained in a `UniquePatientList`, `UniqueDentistList`, `UniqueAppointmentList`, and `UniqueTreatmentList` objects respectively).
+* stores the currently 'selected' `Patient`, `Dentist`, or `Appointment` objects (e.g., results of a `search-patient`, `search-dentist`, or `filter-appointment`) 
+  as corresponding separate _filtered_ lists which are exposed to outsiders as unmodifiable `ObservableList<Patient>`, `ObservableList<Dentist>` and `Observable<Appointment>`
+  that can be 'observed' e.g. the UI can be bound to these lists so that the UI automatically updates when the data in the lists change.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as
   a `ReadOnlyUserPref` objects.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they
   should make sense on their own without depending on other components)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
-
-<img src="images/BetterModelClassDiagram.png" width="450" />
-
-</div>
 
 ### Storage component
 
 **API
 ** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
 
-<img src="images/StorageClassDiagram.png" width="550" />
+<img src="images/ToothTrackerStorage.png" width="650" />
 
 The `Storage` component,
 
@@ -259,6 +253,51 @@ are recommended to use the `filter-dentist` command instead. This approach ensur
 between quick searches for immediate needs while also accommodating more complex and attribute-specific inquiries.
 
 
+Step 5. The user then decides to execute the command `list`. Commands that do not modify the address book, such
+as `list`, will usually not call `Model#commitAddressBook()`, `Model#undoAddressBook()` or `Model#redoAddressBook()`.
+Thus, the `addressBookStateList` remains unchanged.
+
+![UndoRedoState4](images/UndoRedoState4.png)
+
+Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Since the `currentStatePointer` is not
+pointing at the end of the `addressBookStateList`, all address book states after the `currentStatePointer` will be
+purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern
+desktop applications follow.
+
+![UndoRedoState5](images/UndoRedoState5.png)
+
+The following activity diagram summarizes what happens when a user executes a new command:
+
+<img src="images/CommitActivityDiagram.png" width="250" />
+
+The following activity diagram summarizes what happens when a user executes an `add-appointment` command:
+
+<img src="images/AddAppointmentActivityDiagram.png" width="750" />
+
+THe following activity diagram summarizes what happens when a user executes an `add-dentist` command.
+
+<img src="images/AddDentistActivityDiagram.png" width="350" />
+
+
+#### Design considerations:
+
+**Aspect: How undo & redo executes:**
+
+* **Alternative 1 (current choice):** Saves the entire address book.
+    * Pros: Easy to implement.
+    * Cons: May have performance issues in terms of memory usage.
+
+* **Alternative 2:** Individual command knows how to undo/redo by
+  itself.
+    * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
+    * Cons: We must ensure that the implementation of each individual command are correct.
+
+_{more aspects and alternatives to be added}_
+
+### \[Proposed\] Data archiving
+
+_{Explain here how the data archiving feature will be implemented}_
+>>>>>>> add7923622d294af67e9a28505cc035d7db17168
 
 
 --------------------------------------------------------------------------------------------------------------------
@@ -447,6 +486,42 @@ Use case ends.
 
       Use case continues from step 2.
 
+**Use case: Add Appointment**
+
+**MSS**
+
+1. User submits a request to add a new future appointment, providing information about the appointment.
+ Information includes dentist ID, patient ID, appointment start time and treatment provided during the appointment.
+3. ToothTracker acknowledges the request to add the new appointment.
+
+   Use case ends.
+
+**Extensions**
+
+- **1a. User inputs an invalid command.**
+    - ToothTracker identifies the command error.
+        - ToothTracker prompts the user to make the necessary adjustments and provide the command in the correct format.
+    - Steps within 1a repeat until a valid `add-appointment` is provided.
+
+      Use case continues from step 2.
+
+- **1b. User inputs a treatment that does not exist in the database**
+    - ToothTracker checks the database and finds that the treatment provided does not exist.
+    - ToothTracker alerts the user that the treatment is not provided in the clinic.
+    - Steps within 1b loop until an existing treatment is provided.
+ 
+- **1c. User inputs a dentist or patient ID that does not exist in the database**
+    - ToothTracker checks the database and finds that the dentist or patient ID provided does not exist.
+    - ToothTracker alerts the user that the patient or dentist with the provided patient or dentist ID does not exist in this clinic.
+    - Steps within 1c loop until valid dentist and patient IDs are provided.
+ 
+- **1d. User inputs an appointment time slot that clashes with an existing one in the database**
+    - ToothTracker checks the database and finds that the appointment to be added clashes with an existing one.
+    - ToothTracker alerts the user about the clashing appointments.
+    - Steps within 1d loop until an appointment time slot that does not clash with an existing appointment is provided.
+
+      Use case resumes at step 1.
+
 **Use case: Add Treatment**
 
 **MSS**
@@ -507,6 +582,33 @@ Use case ends.
     - ToothTracker displays a message indicating no treatments are available.
     - Repeat step 1 till the user enters a treatment which exists.
     - Use Case Ends.
+
+
+**Use case: List Treatment Data**
+
+**MSS**
+
+1. User submits a request to list all treatment data.
+2. ToothTracker retrieves the list of all treatments saved in the system.
+3. ToothTracker displays all available treatments in the command result box.
+
+   Use case ends.
+
+**Extensions**
+
+- **1a. User inputs an invalid command.**
+    - ToothTracker identifies the command error.
+        - ToothTracker prompts the user to make the necessary adjustments and provide the command in the correct format.
+    - Steps within 1a repeat until a valid `list-treatment` command is provided.
+
+      Use case continues from step 2.
+
+
+- **2a. No treatment data available.**
+    - ToothTracker checks and finds that there are no treatments in the system.
+    - ToothTracker informs the user that no treatments are available.
+
+      Use case continues from step 2.
 
 
 *{More to be added}*
