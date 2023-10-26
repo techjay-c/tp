@@ -13,6 +13,7 @@ import seedu.address.model.treatment.Treatment;
 public class ListTreatmentCommand extends Command {
 
     public static final String COMMAND_WORD = "list-treatment";
+    public static final String EMPTY_WARNING = "There are no treatments available!";
 
 
     @Override
@@ -20,6 +21,9 @@ public class ListTreatmentCommand extends Command {
         requireNonNull(model);
         model.updateFilteredTreatmentList(PREDICATE_SHOW_ALL_TREATMENTS);
         ObservableList<Treatment> treatments = model.getFilteredTreatmentList();
+        if (treatments.isEmpty()) {
+            return new CommandResult(EMPTY_WARNING);
+        }
         StringBuilder output = new StringBuilder();
         output.append("treatments: ");
         for (Treatment tr : treatments) {
