@@ -187,6 +187,7 @@ public class EditPatientCommand extends Command {
             setName(toCopy.name);
             setPhone(toCopy.phone);
             setEmail(toCopy.email);
+            setAddress(toCopy.address);
             setGender(toCopy.gender);
             setBirthdate(toCopy.birthdate);
             setRemark(toCopy.remark);
