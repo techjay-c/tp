@@ -26,6 +26,10 @@ public class CalendarWindow extends UiPart<Stage> {
         super(root);
         this.calendarView = new CalendarView();
         root.setScene(new Scene(calendarView));
+
+        root.setWidth(800);
+        root.setHeight(600);
+
         initialiseCalendarSettings();
     }
 
@@ -82,7 +86,6 @@ public class CalendarWindow extends UiPart<Stage> {
     }
 
     private void initialiseCalendarSettings() {
-        calendarView.setShowAddCalendarButton(true);
         calendarView.setShowPageToolBarControls(true);
         calendarView.setRequestedTime(LocalTime.now());
         calendarView.setShowAddCalendarButton(false);
@@ -90,7 +93,7 @@ public class CalendarWindow extends UiPart<Stage> {
         calendarView.setShowSourceTrayButton(false);
         calendarView.setShowSearchField(false);
 
-        calendarView.showMonthPage();
+        calendarView.showMonthPage(); // Default view is Month
     }
 
 }

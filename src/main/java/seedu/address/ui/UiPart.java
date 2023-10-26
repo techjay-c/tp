@@ -57,6 +57,7 @@ public abstract class UiPart<T> {
         // Safe to cast to assign Stage to type T.
         this.root = (T) root;
     }
+
     /**
      * Returns the root object of the scene graph of this UiPart.
      */
@@ -64,6 +65,9 @@ public abstract class UiPart<T> {
         return fxmlLoader.getRoot();
     }
 
+    /**
+     * Returns the root object of the calendar window.
+     */
     public T getCalendarRoot() {
         return this.root;
     }
