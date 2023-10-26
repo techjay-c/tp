@@ -544,6 +544,33 @@ Use case ends.
     - Use Case Ends.
 
 
+**Use case: List Treatment Data**
+
+**MSS**
+
+1. User submits a request to list all treatment data.
+2. ToothTracker retrieves the list of all treatments saved in the system.
+3. ToothTracker displays all available treatments in the command result box.
+
+   Use case ends.
+
+**Extensions**
+
+- **1a. User inputs an invalid command.**
+    - ToothTracker identifies the command error.
+        - ToothTracker prompts the user to make the necessary adjustments and provide the command in the correct format.
+    - Steps within 1a repeat until a valid `list-treatment` command is provided.
+
+      Use case continues from step 2.
+
+
+- **2a. No treatment data available.**
+    - ToothTracker checks and finds that there are no treatments in the system.
+    - ToothTracker informs the user that no treatments are available.
+
+      Use case continues from step 2.
+
+
 *{More to be added}*
 
 
