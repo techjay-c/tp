@@ -57,7 +57,7 @@ public class EditPatientCommand extends Command {
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
-            + PREFIX_EMAIL + "johndoe@example.com"
+            + PREFIX_EMAIL + "johndoe@example.com "
             + PREFIX_REMARK + "Allergic to Peanuts";
 
     public static final String MESSAGE_EDIT_PATIENT_SUCCESS = "Edited Patient: %1$s";
@@ -110,7 +110,7 @@ public class EditPatientCommand extends Command {
 
     /**
      * Creates and returns a {@code Patient} with the details of {@code patientToEdit} edited with
-     * {@code editPersonDescriptor}.
+     * {@code editPatientDescriptor}.
      */
     private static Patient createEditedPatient(Patient patientToEdit,
         EditPatientDescriptor editPatientDescriptor) {
@@ -125,13 +125,13 @@ public class EditPatientCommand extends Command {
         Birthdate updatedBirthdate = editPatientDescriptor.getBirthdate()
             .orElse(patientToEdit.getBirthdate());
         Remark updatedRemark = editPatientDescriptor.getRemark().orElse(patientToEdit.getRemark());
-        TreatmentName updatedtreatmentName = editPatientDescriptor.getTreatmentName()
+        TreatmentName updatedTreatmentName = editPatientDescriptor.getTreatmentName()
             .orElse(patientToEdit.getTreatmentName());
         long patientIdRemains = patientToEdit.getId(); //ID Must not change!
         Set<Tag> updatedTags = editPatientDescriptor.getTags().orElse(patientToEdit.getTags());
 
         return new Patient(updatedName, updatedPhone, updatedBirthdate, updatedGender,
-            updatedRemark, updatedtreatmentName, updatedAddress, updatedEmail, patientIdRemains,
+            updatedRemark, updatedTreatmentName, updatedAddress, updatedEmail, patientIdRemains,
             updatedTags);
     }
 
