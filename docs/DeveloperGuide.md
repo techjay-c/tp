@@ -482,6 +482,42 @@ Use case ends.
 
       Use case continues from step 2.
 
+**Use case: Add Appointment**
+
+**MSS**
+
+1. User submits a request to add a new future appointment, providing information about the appointment.
+ Information includes dentist ID, patient ID, appointment start time and treatment provided during the appointment.
+3. ToothTracker acknowledges the request to add the new appointment.
+
+   Use case ends.
+
+**Extensions**
+
+- **1a. User inputs an invalid command.**
+    - ToothTracker identifies the command error.
+        - ToothTracker prompts the user to make the necessary adjustments and provide the command in the correct format.
+    - Steps within 1a repeat until a valid `add-appointment` is provided.
+
+      Use case continues from step 2.
+
+- **1b. User inputs a treatment that does not exist in the database**
+    - ToothTracker checks the database and finds that the treatment provided does not exist.
+    - ToothTracker alerts the user that the treatment is not provided in the clinic.
+    - Steps within 1b loop until an existing treatment is provided.
+ 
+- **1c. User inputs a dentist or patient ID that does not exist in the database**
+    - ToothTracker checks the database and finds that the dentist or patient ID provided does not exist.
+    - ToothTracker alerts the user that the patient or dentist with the provided patient or dentist ID does not exist in this clinic.
+    - Steps within 1c loop until valid dentist and patient IDs are provided.
+ 
+- **1d. User inputs an appointment time slot that clashes with an existing one in the database**
+    - ToothTracker checks the database and finds that the appointment to be added clashes with an existing one.
+    - ToothTracker alerts the user about the clashing appointments.
+    - Steps within 1d loop until an appointment time slot that does not clash with an existing appointment is provided.
+
+      Use case resumes at step 1.
+
 **Use case: Add Treatment**
 
 **MSS**
