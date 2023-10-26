@@ -11,6 +11,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.patients.Patient;
 import seedu.address.model.treatment.Treatment;
+import seedu.address.model.treatment.TreatmentName;
 
 /**
  * The API of the Model component.
@@ -84,6 +85,8 @@ public interface Model {
      * book.
      */
     boolean hasTreatment(Treatment treatment);
+
+    boolean hasTreatmentName(TreatmentName treatmentName);
 
     /**
      * Returns true if a dentist with the same identity as {@code dentist} exists in ToothTracker

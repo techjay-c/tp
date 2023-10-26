@@ -28,6 +28,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.patients.Patient;
 import seedu.address.model.treatment.Treatment;
+import seedu.address.model.treatment.TreatmentName;
 import seedu.address.testutil.PatientBuilder;
 
 public class AddPatientCommandTest {
@@ -41,7 +42,6 @@ public class AddPatientCommandTest {
     public void execute_patientAcceptedByModel_addSuccessful() throws Exception {
         ModelStubAcceptingPatientAdded modelStub = new ModelStubAcceptingPatientAdded();
         Patient validPatient = new PatientBuilder().build();
-
         CommandResult commandResult = new AddPatientCommand(validPatient).execute(modelStub);
 
         assertEquals(
@@ -293,6 +293,11 @@ public class AddPatientCommandTest {
         }
 
         @Override
+        public boolean hasTreatmentName(TreatmentName treatmentName) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void deleteTreatment(Treatment treatment) {
             throw new AssertionError("This method should not be called.");
         }
@@ -321,10 +326,17 @@ public class AddPatientCommandTest {
             requireNonNull(patient);
             return this.patient.isSamePerson(patient);
         }
+
+        @Override
+        public boolean hasTreatmentName(TreatmentName treatmentName) {
+            requireNonNull(treatmentName);
+            return this.patient.getTreatmentName().isSameTreatmentName(treatmentName);
+        }
+
     }
 
     /**
-     * A Model stub that always accept the dentist being added.
+     * A Model stub that always accept the patient being added.
      */
     private class ModelStubAcceptingPatientAdded extends ModelStub {
 
@@ -337,10 +349,17 @@ public class AddPatientCommandTest {
         }
 
         @Override
+        public boolean hasTreatmentName(TreatmentName treatmentName) {
+            requireNonNull(treatmentName);
+            return true;
+        }
+
+        @Override
         public void addPatient(Patient patient) {
             requireNonNull(patient);
             patientAdded.add(patient);
         }
+
 
         @Override
         public ReadOnlyAddressBook getAddressBook() {

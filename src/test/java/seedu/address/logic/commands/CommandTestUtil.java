@@ -46,7 +46,7 @@ public class CommandTestUtil {
     public static final String VALID_GENDER_BOB = "M";
     public static final String VALID_BIRTHDATE_BOB = "01-01-1990";
     public static final String VALID_REMARK_BOB = "Allergy to anaesthesia";
-    public static final String VALID_SERVICE_BOB = "Braces";
+    public static final String VALID_TREATMENT_BOB = "Braces";
 
 
     // Valid Fields - Dentist Specific
