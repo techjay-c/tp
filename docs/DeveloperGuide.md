@@ -194,106 +194,71 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
-### \[Proposed\] Undo/redo feature
+The features implemented are categorized into 4 sections:
 
-#### Proposed Implementation
+1. [Dentist Features](#dentist-features)
+1. [Patient Features](#patient-features)
+1. [Appointment Features](#appointment-features)
+1. [Treatment Features](#treatment-features)
+1. [General Features](#general-features)
 
-The proposed undo/redo mechanism is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo
-history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the
-following operations:
+### Dentist Features
 
-* `VersionedAddressBook#commit()`— Saves the current address book state in its history.
-* `VersionedAddressBook#undo()`— Restores the previous address book state from its history.
-* `VersionedAddressBook#redo()`— Restores a previously undone address book state from its history.
+#### Adding a Dentist
 
-These operations are exposed in the `Model` interface as `Model#commitAddressBook()`, `Model#undoAddressBook()`
-and `Model#redoAddressBook()` respectively.
+The `add-dentist` command creates a new dentist record in ToothTracker. This command forms the fundamental business logic to represent dentists.
 
-Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
+The activity diagram for creating a new dentist is illustrated as follows:
 
-Step 1. The user launches the application for the first time. The `VersionedAddressBook` will be initialized with the
-initial address book state, and the `currentStatePointer` pointing to that single address book state.
+![AddPatientActivityDiagram](images/AddPatientActivityDiagram.png)
 
-![UndoRedoState0](images/UndoRedoState0.png)
+This sequence diagram shows the interactions between the various components during the execution of the `add-dentist` command:
 
-Step 2. The user executes `delete 5` command to delete the 5th person in the address book. The `delete` command
-calls `Model#commitAddressBook()`, causing the modified state of the address book after the `delete 5` command executes
-to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted address book
-state.
+![AddPatientSequenceDiagram](images/AddPatientSequenceDiagram.png)
 
-![UndoRedoState1](images/UndoRedoState1.png)
+##### Feature Details
 
-Step 3. The user executes `add n/David …​` to add a new person. The `add` command also
-calls `Model#commitAddressBook()`, causing another modified address book state to be saved into
-the `addressBookStateList`.
+1. Users provide essential dentist information, such as their name, phone number, specialization, years of experience and other optional details like email, address and tags.
+2. In case of missing or invalid command arguments, the system prompts users with an error message to enter the command correctly.
+3. The system cross-references the new dentist's name with existing records in the `Model` to prevent duplicate entries. If a duplicate is found, an error message informs the user.
+4. If step 3 is completed without any exceptions, the new patient record is created and stored in the system.
 
-![UndoRedoState2](images/UndoRedoState2.png)
+##### Feature Considerations
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitAddressBook()`, so the address book state will not be saved into the `addressBookStateList`.
+For dentist specialization, broader terms like "orthodontics" are used instead of specifying the exact type of treatment (e.g., root canal, braces, scaling). 
+This approach prevents the "add-dentist" command from becoming excessively long.
 
-</div>
+The working hours of a dentist is not an attribute in the `add-dentist` command as dentists might not immediately know their
+shifts when they first join, and it might change frequently.
 
-Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing
-the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer`
-once to the left, pointing it to the previous address book state, and restores the address book to that state.
+#### Searching for a dentist
 
-![UndoRedoState3](images/UndoRedoState3.png)
+The `search-dentist` command finds dentist records in ToothTracker by allowing users to enter a specific `DENTIST_ID` or
+name-related keywords.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial AddressBook state, then there are no previous AddressBook states to restore. The `undo` command uses `Model#canUndoAddressBook()` to check if this is the case. If so, it will return an error to the user rather
-than attempting to perform the undo.
+The activity diagram for searching for a dentist is illustrated as follows:
 
-</div>
+![SearchDentistActivityDiagram](images/SearchDentistActivityDiagram.png)
 
-The following sequence diagram shows how the undo operation works:
+This sequence diagram shows the interactions between the various components during the execution of the `search-dentist` command:
 
-![UndoSequenceDiagram](images/UndoSequenceDiagram.png)
+![SearchDentistSequenceDiagram](docs/diagrams/SearchDentistSequenceDiagram.puml)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `UndoCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+##### Feature Details
+1. Users initiate a search for a dentist using either a unique `DENTIST_ID` or by inputting specific keywords that might match a dentist's name. 
+2. If the user opts for an ID-based search, the system processes the request to return a single record that matches the provided dentist ID. 
+3. If keywords are used, the system performs a broader search by comparing the keywords as substrings with the names in the dentist records.
+4. In scenarios where the search criteria do not correspond with any existing records (either no matching ID or keywords), the system generates an error message informing the user of the unsuccessful search attempt.
+5. When matches are found, the system displays a list of dentists whose records meet the search criteria.
 
-</div>
+##### Feature Considerations
 
-The `redo` command does the opposite — it calls `Model#redoAddressBook()`, which shifts the `currentStatePointer` once
-to the right, pointing to the previously undone state, and restores the address book to that state.
+The `search-dentist` feature in ToothTracker focuses on searching using either a dentist's unique ID or keywords matching a dentist's name, 
+prioritizing speed and simplicity in accessing dentist records. For more complex searching which requires additional dentist attributes, users 
+are recommended to use the `filter-dentist` command instead. This approach ensures a balanced functionality within ToothTracker, offering a balance
+between quick searches for immediate needs while also accommodating more complex and attribute-specific inquiries.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index `addressBookStateList.size() - 1`, pointing to the latest address book state, then there are no undone AddressBook states to restore. The `redo` command uses `Model#canRedoAddressBook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
 
-</div>
-
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the address book, such
-as `list`, will usually not call `Model#commitAddressBook()`, `Model#undoAddressBook()` or `Model#redoAddressBook()`.
-Thus, the `addressBookStateList` remains unchanged.
-
-![UndoRedoState4](images/UndoRedoState4.png)
-
-Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Since the `currentStatePointer` is not
-pointing at the end of the `addressBookStateList`, all address book states after the `currentStatePointer` will be
-purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern
-desktop applications follow.
-
-![UndoRedoState5](images/UndoRedoState5.png)
-
-The following activity diagram summarizes what happens when a user executes a new command:
-
-<img src="images/CommitActivityDiagram.png" width="250" />
-
-#### Design considerations:
-
-**Aspect: How undo & redo executes:**
-
-* **Alternative 1 (current choice):** Saves the entire address book.
-    * Pros: Easy to implement.
-    * Cons: May have performance issues in terms of memory usage.
-
-* **Alternative 2:** Individual command knows how to undo/redo by
-  itself.
-    * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
-    * Cons: We must ensure that the implementation of each individual command are correct.
-
-_{more aspects and alternatives to be added}_
-
-### \[Proposed\] Data archiving
-
-_{Explain here how the data archiving feature will be implemented}_
 
 
 --------------------------------------------------------------------------------------------------------------------
