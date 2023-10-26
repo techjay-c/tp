@@ -120,15 +120,8 @@ public class CalendarWindow extends UiPart<Stage> {
      * Ensure there's an "Appointment" calendar and return it.
      * If it doesn't exist, create it and add to calendarView.
      */
-    private Calendar checkForCalendar() {
-        for (Calendar calendar : calendarView.getCalendars()) {
-            return calendar;
-        }
-
-        // If it doesn't exist, create a new one
-        // create the calendar and listen to all changes
-        Calendar calendar = new Calendar("Appointments");
-        return calendar;
+    private Calendar getCalendar() {
+        return calendarView.getCalendarSources().get(0).getCalendars().get(0);
     }
 
     /**
@@ -155,10 +148,11 @@ public class CalendarWindow extends UiPart<Stage> {
      * @param appointments List of appointments to be loaded.
      */
     public void loadAppointments(List<Appointment> appointments) {
+        System.out.println("Inside loadAppointments");
         // Clear old entries
         calendarEntries.clear();
 
-        Calendar appointmentCalendar = checkForCalendar();
+        Calendar appointmentCalendar = getCalendar();
 
         // Check if CalendarView has calendars before accessing it
         for (Appointment appt : appointments) {
