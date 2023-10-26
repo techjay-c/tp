@@ -94,6 +94,9 @@ public class CalendarWindow extends UiPart<Stage> {
         calendarView.setShowSearchField(false);
 
         calendarView.showMonthPage(); // Default view is Month
+
+        // Disable drag and drop of events
+        calendarView.setEntryEditPolicy(param -> false);
     }
 
 }
