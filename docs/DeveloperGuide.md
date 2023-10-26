@@ -148,7 +148,7 @@ How the parsing works:
 **API
 ** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
 
-<img src="images/ToothTrackerModelClassDiagram.png"/>
+<img src="images/ToothTrackerModelClassDiagram.png" width="700"/>
 
 The `Model` component,
 
