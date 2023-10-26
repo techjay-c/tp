@@ -20,6 +20,7 @@ import seedu.address.logic.commands.DeleteDentistCommand;
 import seedu.address.logic.commands.DeletePatientCommand;
 import seedu.address.logic.commands.DeleteTreatmentCommand;
 import seedu.address.logic.commands.EditDentistCommand;
+import seedu.address.logic.commands.EditPatientCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FilterAppointmentCommand;
 import seedu.address.logic.commands.FilterDentistCommand;
@@ -76,6 +77,9 @@ public class AddressBookParser {
 
         case EditDentistCommand.COMMAND_WORD:
             return new EditDentistCommandParser().parse(arguments);
+
+        case EditPatientCommand.COMMAND_WORD:
+            return new EditPatientCommandParser().parse(arguments);
 
         case DeletePatientCommand.COMMAND_WORD:
             return new DeletePatientCommandParser().parse(arguments);
