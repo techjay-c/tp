@@ -173,7 +173,7 @@ The `Model` component,
 **API
 ** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
 
-<img src="images/StorageClassDiagram.png" width="550" />
+<img src="images/ToothTrackerStorage.png" width="650" />
 
 The `Storage` component,
 
