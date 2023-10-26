@@ -80,7 +80,7 @@ public class MainWindow extends UiPart<Stage> {
         setAccelerators();
 
         helpWindow = new HelpWindow();
-        calendarWindow = new CalendarWindow();
+        calendarWindow = CalendarWindow.getInstance();
     }
 
     public Stage getPrimaryStage() {

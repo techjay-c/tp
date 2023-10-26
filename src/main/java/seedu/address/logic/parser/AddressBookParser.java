@@ -32,6 +32,7 @@ import seedu.address.logic.commands.SearchDentistCommand;
 import seedu.address.logic.commands.SearchPatientCommand;
 import seedu.address.logic.commands.ViewCalendarCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.ui.*;
 
 /**
  * Parses user input.
@@ -124,7 +125,7 @@ public class AddressBookParser {
             return new HelpCommand();
 
         case ViewCalendarCommand.COMMAND_WORD:
-            return new ViewCalendarCommand();
+            return new ViewCalendarCommand(CalendarWindow.getInstance());
 
         case AddPatientCommand.COMMAND_WORD:
             return new AddPatientCommandParser().parse(arguments);
