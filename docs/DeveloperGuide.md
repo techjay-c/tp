@@ -242,10 +242,10 @@ The activity diagram for searching for a dentist is illustrated as follows:
 
 This sequence diagram shows the interactions between the various components during the execution of the `search-dentist` command:
 
-![SearchDentistSequenceDiagram](docs/diagrams/SearchDentistSequenceDiagram.puml)
+![SearchDentistSequenceDiagram](images/SearchDentistSequenceDiagram.png)
 
 ##### Feature Details
-1. Users initiate a search for a dentist using either a unique `DENTIST_ID` or by inputting specific keywords that might match a dentist's name. 
+1. Users initiate a search for a dentist using either a unique `DENTIST_ID` or by inputting specific `KEYWORDS` that might match a dentist's name. 
 2. If the user opts for an ID-based search, the system processes the request to return a single record that matches the provided dentist ID. 
 3. If keywords are used, the system performs a broader search by comparing the keywords as substrings with the names in the dentist records.
 4. In scenarios where the search criteria do not correspond with any existing records (either no matching ID or keywords), the system generates an error message informing the user of the unsuccessful search attempt.

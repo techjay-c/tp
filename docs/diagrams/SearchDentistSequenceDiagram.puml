@@ -1,13 +1,21 @@
 @startuml
 !include style.puml
 'https://plantuml.com/sequence-diagram
+'adapted and inspired from https://github.com/AY2223S1-CS2103T-T14-2/tp/blob/master/docs/diagrams/FindTasksSequenceDiagram.puml
 
 box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
 participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
-participant ":SearchDentistCommandParser" as SearchDentistCmdParser LOGIC_COLOR
-participant ":DentistNameContainsKeywordsPredicate" as Predicate LOGIC_COLOR
+participant "SearchDentistCommandParser" as SearchDentistCommandParser LOGIC_COLOR
+participant "p:NameContainsKeywordsPredicate" as Predicate LOGIC_COLOR
+participant "s:SearchDentistCommand" as SearchDentistCommand LOGIC_COLOR
+participant ":CommandResult" as CommandResult LOGIC_COLOR
 end box
+
+box Model MODEL_COLOR_T1
+participant ":Model" as Model MODEL_COLOR
+end box
+
 
 [-> LogicManager : execute("search-dentist John")
 activate LogicManager
@@ -15,35 +23,55 @@ activate LogicManager
 LogicManager -> AddressBookParser : parseCommand("search-dentist John")
 activate AddressBookParser
 
-SearchDentistCmdParser -> Predicate : DentistNameContainsKeywordsPredicate("keyword")
-activate Predicate
+create SearchDentistCommandParser
+AddressBookParser -> SearchDentistCommandParser
+activate SearchDentistCommandParser
 
-Predicate -> Predicate : switchOnKeyword("keyword")
-activate Predicate
-Predicate --> Predicate
-deactivate Predicate
+SearchDentistCommandParser --> AddressBookParser
+deactivate SearchDentistCommandParser
 
-Predicate --> SearchDentistCmdParser
+AddressBookParser -> SearchDentistCommandParser : parse("John")
+activate SearchDentistCommandParser
+
+create Predicate
+SearchDentistCommandParser -> Predicate
+activate Predicate
+Predicate --> SearchDentistCommandParser : p
 deactivate Predicate
 
 create SearchDentistCommand
-SearchDentistCmdParser -> SearchDentistCommand : SearchDentistCommand(predicate)
+SearchDentistCommandParser -> SearchDentistCommand : SearchDentistCommand(p)
 activate SearchDentistCommand
-SearchDentistCommand --> SearchDentistCmdParser
+
+SearchDentistCommand --> SearchDentistCommandParser : s
 deactivate SearchDentistCommand
 
-SearchDentistCmdParser --> LogicManager
-deactivate SearchDentistCmdParser
+SearchDentistCommandParser --> AddressBookParser : s
+deactivate SearchDentistCommandParser
 
-LogicManager -> SearchDentistCommand : execute(model)
+SearchDentistCommandParser -[hidden]-> AddressBookParser
+destroy SearchDentistCommandParser
+
+AddressBookParser --> LogicManager : s
+deactivate AddressBookParser
+
+LogicManager -> SearchDentistCommand : execute()
 activate SearchDentistCommand
 
-SearchDentistCommand -> Model : searchDentist(predicate)
+SearchDentistCommand -> Model : updateFilteredDentistList(p)
 activate Model
+
 Model --> SearchDentistCommand
 deactivate Model
 
-SearchDentistCommand --> LogicManager
+create CommandResult
+SearchDentistCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> SearchDentistCommand
+deactivate CommandResult
+
+SearchDentistCommand --> LogicManager : result
 deactivate SearchDentistCommand
 
 [<--LogicManager
