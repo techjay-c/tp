@@ -4,6 +4,9 @@ title: User Guide
 ---
 
 
+ToothTracker is an All-in-One solution for effortless Dental Clinic Record Management. From adding new patient and dentist profiles to seamlessly creating appointment schedules, ToothTracker is engineered to simplify every aspect of your dental clinic administrative responsibilities.
+
+
 Here is an overview of how ToothTracker can help you manage your dental clinic administration better:
 - You can add tags to every patient and dentist to highlight additional information about them.
 - You need not worry about storing physical copies of patient and dentist profiles and appointment schedules.
