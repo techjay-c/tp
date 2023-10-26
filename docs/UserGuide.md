@@ -149,9 +149,9 @@ To check the Dentist ID of a dentist, you can simply enter the command `list-den
 Examples:
 * `delete-dentist 6` deletes the dentist with the `DENTIST_ID` 6.
 
-### Search for dentists by Dentist ID or keyword: `search-dentist`
+### Searching for dentists by Dentist ID or keyword: `search-dentist`
 
-Search for dentists by their Dentist ID or matching names with a keyword. This command helps you find dentists records that match your search criteria.
+Searches for dentists by their Dentist ID or matching names with a keyword. This command helps you find dentists records that match your search criteria.
 
 **Format:** `search-dentist KEYWORD` or `search-dentist DENTIST_ID`
 
@@ -173,7 +173,7 @@ You may use `list-dentist` to check out the dentist's ID first.
 * `search-dentist John` searches for dentists with names containing the keyword `John`.
 * `search-dentist 2` searches for the dentist with the `DENTIST_ID` 2.
 
-### Filter dentist: `filter-dentist`
+### Filtering dentists: `filter-dentist`
 
 Narrows down your search for dentists based on a specified attribute. When this command is used, there might be more than
 one result that matches your search criteria.** This is helpful when:
@@ -273,7 +273,7 @@ To check the Patient ID for a patient, you can simply enter the command `list-pa
 Examples:
 * `delete-patient 34` deletes the patient with the `PATIENT_ID` 34.
 
-### Search for a patient by Patient ID or keyword: `search-patient`
+### Searching for a patient by Patient ID or keyword: `search-patient`
 
 Search for the patient with the specified `PATIENT_ID` or patients whose names match the given keyword. 
 This command allows you to find patient records that match your search criteria.
@@ -300,7 +300,7 @@ Examples:
 * `search-patient 88` searches for a patient with the ID `88`. If one or more matching patients are found based on
   your search criteria, the system will list the matching patients along with their details.
 
-### Filter patient: `filter-patient`
+### Filtering patients: `filter-patient`
 
 Narrows down your search for patients based on a specified attribute. When this command is used, there might be more than
 one result that matches your search criteria.** This is helpful when:
