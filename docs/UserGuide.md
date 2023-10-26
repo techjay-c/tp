@@ -342,7 +342,7 @@ You can add a new dental appointment to the ToothTracker system using the `add-a
 This command allows you to specify the dentist, patient, start time and duration of the appointment.
 You can also specify the treatment provided in the appointment.
 
-Format: `add-appointment dentist/DENTIST_ID patient/PATIENT_ID start/START_TIME duration/DURATION s/TREATMENT`
+Format: `add-appointment dentist/DENTIST_ID patient/PATIENT_ID start/START_DATE_TIME duration/DURATION s/TREATMENT`
 
 Examples:
 
