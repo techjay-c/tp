@@ -272,13 +272,17 @@ desktop applications follow.
 
 ![UndoRedoState5](images/UndoRedoState5.png)
 
-The following activity diagram summarizes what happens when a user executes an add-appointment command:
+The following activity diagram summarizes what happens when a user executes a new command:
 
-<img src="images/AddAppointmentActivityDiagram.png" width="250" />
+<img src="images/CommitActivityDiagram.png" width="250" />
 
-THe following activity diagram summarizes what happens when a user executes an add-dentist command.
+The following activity diagram summarizes what happens when a user executes an `add-appointment` command:
 
-<img src="images/AddDentistActivityDiagram.png" width="250" />
+<img src="images/AddAppointmentActivityDiagram.png" width="750" />
+
+THe following activity diagram summarizes what happens when a user executes an `add-dentist` command.
+
+<img src="images/AddDentistActivityDiagram.png" width="350" />
 
 
 #### Design considerations:
