@@ -7,10 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-import com.calendarfx.model.*;
-import com.calendarfx.view.CalendarView;
+import com.calendarfx.model.Calendar;
+import com.calendarfx.model.Entry;
+import com.calendarfx.view.*;
 
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.appointments.Appointment;
@@ -22,8 +24,8 @@ public class CalendarWindow extends UiPart<Stage> {
 
     private static final Logger logger = LogsCenter.getLogger(CalendarWindow.class);
 
-    private final CalendarView calendarView;
     private static CalendarWindow instance = null;
+    private final CalendarView calendarView;
     private List<Entry<Appointment>> calendarEntries = new ArrayList<>();
 
     /**
@@ -114,6 +116,8 @@ public class CalendarWindow extends UiPart<Stage> {
 
         // Disable drag and drop of events
         calendarView.setEntryEditPolicy(param -> false);
+
+        calendarView.setEntryFactory(param -> null);
     }
 
     /**
@@ -131,14 +135,21 @@ public class CalendarWindow extends UiPart<Stage> {
      * @return Entry object representing the appointment.
      */
     private Entry<Appointment> convertToEntry(Appointment appointment) {
-        com.calendarfx.model.Entry<Appointment> entry = new com.calendarfx.model.Entry<>();
-        String entryTitle = appointment.getTreatment();
-        entry.setTitle(entryTitle);
+        Entry<Appointment> entry = new Entry<>();
 
+        // Combine dentist and patient names for title
+        String title = "Dentist: " + appointment.getDentistName() + " Patient: " + appointment.getPatientName();
+        entry.setTitle(title);
+
+        // Set start and end times
         LocalDateTime startTime = appointment.getAppointmentTime().getStart();
         Duration duration = appointment.getAppointmentTime().getDuration();
         LocalDateTime endTime = startTime.plus(duration);
         entry.setInterval(startTime, endTime);
+
+        entry.setLocation("Treatment: " + appointment.getTreatment() + " Cost: " + appointment.getCost());
+        entry.setUserObject(appointment);
+
         return entry;
     }
 
@@ -148,7 +159,6 @@ public class CalendarWindow extends UiPart<Stage> {
      * @param appointments List of appointments to be loaded.
      */
     public void loadAppointments(List<Appointment> appointments) {
-        System.out.println("Inside loadAppointments");
         // Clear old entries
         calendarEntries.clear();
 
@@ -166,45 +176,21 @@ public class CalendarWindow extends UiPart<Stage> {
     /**
      * Removes an appointment from the calendar.
      *
-     * @param appt Appointment to be removed.
+     * @param appointment Appointment to be removed.
      */
-    public void removeAppointment(Appointment appt) {
+    public void deleteAppointment(Appointment appointment) {
+        System.out.println("Inside delete appointment");
         // Find the entry
         Entry<Appointment> entryToRemove = calendarEntries.stream()
-                .filter(e -> e.getUserObject().equals(appt))
+                .filter(e -> e.getUserObject().equals(appointment))
                 .findFirst()
                 .orElse(null);
 
-        if (entryToRemove != null) {
-            calendarView.getCalendars().get(0).removeEntry(entryToRemove);
-            calendarEntries.remove(entryToRemove);
+        if (entryToRemove == null) {
+            logger.warning("No matching entry found for appointment: " + appointment);
+            return;
         }
+        entryToRemove.removeFromCalendar();
     }
-
-    /**
-     * Updates an appointment in the calendar.
-     *
-     * @param oldAppt Old appointment entry to be replaced.
-     * @param newAppt New appointment entry to replace the old one.
-     */
-    public void updateAppointment(Appointment oldAppt, Appointment newAppt) {
-        // Find the old entry
-        Entry<Appointment> oldEntry = calendarEntries.stream()
-                .filter(e -> e.getUserObject().equals(oldAppt))
-                .findFirst()
-                .orElse(null);
-
-        if (oldEntry != null) {
-            // Remove old entry
-            calendarView.getCalendars().get(0).removeEntry(oldEntry);
-            calendarEntries.remove(oldEntry);
-
-            // Add new entry
-            Entry<Appointment> newEntry = convertToEntry(newAppt);
-            calendarEntries.add(newEntry);
-            calendarView.getCalendars().get(0).addEntry(newEntry);
-        }
-    }
-
 
 }

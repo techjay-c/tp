@@ -32,7 +32,7 @@ import seedu.address.logic.commands.SearchDentistCommand;
 import seedu.address.logic.commands.SearchPatientCommand;
 import seedu.address.logic.commands.ViewCalendarCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.ui.*;
+import seedu.address.ui.CalendarWindow;
 
 /**
  * Parses user input.

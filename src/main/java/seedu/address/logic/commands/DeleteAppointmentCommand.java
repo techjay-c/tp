@@ -4,11 +4,13 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.Objects;
 
+import javafx.application.Platform;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.appointments.Appointment;
+import seedu.address.ui.CalendarWindow;
 
 /**
  * Deletes an appointment identified using it's displayed index from ToothTracker.
@@ -47,6 +49,9 @@ public class DeleteAppointmentCommand extends Command {
             }
 
             model.deleteAppointment(appointmentToDelete);
+            CalendarWindow calendarWindow = CalendarWindow.getInstance();
+            calendarWindow.deleteAppointment(appointmentToDelete);
+
             return new CommandResult(
                     String.format(Messages.MESSAGE_DELETE_APPOINTMENT_SUCCESS, Messages.format(appointmentToDelete)));
 

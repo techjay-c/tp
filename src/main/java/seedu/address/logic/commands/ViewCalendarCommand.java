@@ -2,10 +2,10 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
-import java.util.*;
+import java.util.List;
 
 import seedu.address.model.Model;
-import seedu.address.model.appointments.*;
+import seedu.address.model.appointments.Appointment;
 import seedu.address.ui.CalendarWindow;
 
 /**
