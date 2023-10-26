@@ -638,7 +638,7 @@ Use case ends.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Instructions for manual testing**
+# **Appendix: Instructions for manual testing**
 
 Given below are instructions to test the app manually.
 
@@ -647,41 +647,69 @@ testers are expected to do more *exploratory* testing.
 
 </div>
 
-### Launch and shutdown
+## Launch and shutdown
 
-1. Initial launch
+### Initial launch
 
-    1. Download the jar file and copy into an empty folder
+1. Download the jar file and copy into an empty folder
+2. Double-click the jar file.<br>
+   Expected: Shows the GUI with a set of sample patients and dentists. The window size may not be
+   optimum. It is recommended to use ToothTracker at full screen.
 
-    1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be
-       optimum.
+### Saving window preferences
 
-1. Saving window preferences
-
-    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
-
-    1. Re-launch the app by double-clicking the jar file.<br>
+1. Resize the window to an optimum size. Move the window to a different location. Close the window. 
+2. Re-launch ToothTracker by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
+4. _{ more test cases …​ }_
 
-### Deleting a person
+## Dentist
 
-1. Deleting a person while all persons are being shown
+### Adding a Dentist
 
-    1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+Adding a dentist into ToothTracker's Dentist List.
 
-    1. Test case: `delete 1`<br>
-       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message.
-       Timestamp in the status bar is updated.
+`add-dentist n/Xander Chua p/98986443 s/Endodontics y/8 `
 
-    1. Test case: `delete 0`<br>
-       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+Expected Output in the Dentist List: New dentist added into the Dentist List. The email and address will contain Default placeholders.
 
-    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-       Expected: Similar to previous.
+Expected Output in the Command Output Box: New dentist added message is displayed with the dentist credentials.
 
-1. _{ more test cases …​ }_
+`add-dentist n/Oliver Lim`
+
+Expected Output in the Command Output Box: Error message for invalid command format, prompting users with correct attributes to include.
+
+### Listing all Dentists
+
+Prerequisite: There is at least 1 Dentist stored in ToothTracker
+`list-dentist`
+
+Expected Output in the Dentist List. All Dentists stored in ToothTracker is displayed.
+
+Expected Output in the Command Output Box: Listed all Dentist!
+
+### Edit a Dentist (To be added soon)
+
+
+
+### Deleting a Dentist
+
+Deleting a dentist while all dentists are being shown
+
+1. Prerequisites: List all dentists using the `list-dentist` command. Multiple dentists may be shown in the dentist list.
+
+2. Test case: `delete-dentist 1`<br>
+   Expected: Dentist with DENTIST_ID 1 is deleted from the dentist list. Details of the deleted dentist shown in the status message.
+   Timestamp in the status bar is updated.
+
+3. Test case: `delete-dentist -1`<br>
+   Expected: No dentist is deleted. Error details shown in the status message for invalid ID provided. Status bar remains the same.
+
+4. Other incorrect delete commands to try: `delete-dentist`, `delete-dentist x`, `...` (where x is not a positive integer)<br>
+   Expected: Similar to previous.
+
+5. _{ more test cases …​ }_
 
 ### Saving data
 
