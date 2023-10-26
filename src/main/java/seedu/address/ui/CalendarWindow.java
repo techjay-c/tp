@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import com.calendarfx.model.Calendar;
 import com.calendarfx.model.Entry;
 import com.calendarfx.view.CalendarView;
+import com.calendarfx.view.DateControl;
 
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -104,19 +105,19 @@ public class CalendarWindow extends UiPart<Stage> {
     }
 
     private void initialiseCalendarSettings() {
-        calendarView.setShowPageToolBarControls(true);
+        calendarView.setShowPageToolBarControls(false);
         calendarView.setRequestedTime(LocalTime.now());
-        calendarView.setShowAddCalendarButton(true);
+        calendarView.setShowAddCalendarButton(false);
         calendarView.setShowPrintButton(false);
-        calendarView.setShowSourceTrayButton(true);
+        calendarView.setShowSourceTrayButton(false);
         calendarView.setShowSearchField(false);
 
         calendarView.showMonthPage(); // Default view is Month
 
-        // Disable drag and drop of events
-        calendarView.setEntryEditPolicy(param -> false);
+        calendarView.setEntryEditPolicy(param -> false); // Disable drag and drop of events
+        calendarView.setEntryFactory(param -> null); // Disable adding events by double-clicking on calendar
+        calendarView.setEntryDetailsCallback(param -> null); // Disable pop up of event details
 
-        calendarView.setEntryFactory(param -> null);
     }
 
     /**
@@ -148,7 +149,6 @@ public class CalendarWindow extends UiPart<Stage> {
 
         entry.setLocation("Treatment: " + appointment.getTreatment() + " Cost: " + appointment.getCost());
         entry.setUserObject(appointment);
-
         return entry;
     }
 
