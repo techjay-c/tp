@@ -105,6 +105,7 @@ public interface Model {
 
     /**
      * returns the treatment by its name
+     *
      * @param treatmentName name of the treatment to find
      * @return null if the treatment is not found. Otherwise, the corresponding Treatment object is returned
      */
@@ -164,7 +165,7 @@ public interface Model {
      * exist in the address book. The patient identity of {@code editedPatient} must not be the same
      * as another existing patient in the address book.
      */
-     void setPatient(Patient target, Patient editedPatient);
+    void setPatient(Patient target, Patient editedPatient);
 
     /**
      * Returns an unmodifiable view of the filtered person list
