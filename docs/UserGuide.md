@@ -338,17 +338,20 @@ Examples:
 
 ### Adding an appointment: `add-appointment`
 
-You can add a new dental appointment to the ToothTracker system using the `add-appointment` command.
-This command allows you to specify the dentist, patient, start time and duration of the appointment.
-You can also specify the treatment provided in the appointment.
+Adds a new dental appointment to ToothTracker. 
 
-Format: `add-appointment dentist/DENTIST_ID patient/PATIENT_ID start/START_DATE_TIME duration/DURATION s/TREATMENT`
+This is helpful when:
+- you want to schedule future dental appointments for patients with specific dentists at designated times.
+- you want to check for clashes with existing appointments 
+
+Format: `add-appointment dentist/DENTIST_ID patient/PATIENT_ID start/START_DATE_TIME s/TREATMENT`
 
 Examples:
 
-* `add-appointment dentist/0 patient/0 start/2023-10-12 16:00 duration/PT1H30M s/Braces`
-  adds an appointment with patient whose ID is 0, dentist whose ID is 0.
-  The appointment starts on 12 October 2023, lasting for 1.5 hours. Treatment provided during the appointment is braces.
+* `add-appointment dentist/0 patient/0 start/2023-10-12 16:00 s/Braces`
+
+  This command adds an appointment with the patient whose ID is 0 and, the dentist whose ID is 0.
+  The appointment starts on 12 October 2023 and lasts for 1.5 hours. Treatment provided during the appointment is braces.
 
 **Important Notes:**
 
@@ -378,23 +381,36 @@ Examples:
 * `delete-appointment 2` deletes appointment with APPOINTMENT_ID 2 from ToothTracker.
 
 
-### Listing all appointments : `list-appointment`
+### Listing all appointments: `list-appointment`
 Shows a list of all appointments in ToothTracker.
 
 **Format:** `list-appointment` (No extra parameters required)
 
-### Filter Appointments by service type, date or dentist: `filter-appointment KEYWORD`
+### Filter Appointments by dentist ID: `filter-appointment`
 
-You can filter appointments by their service type, date or dentists in the ToothTracker system
-using the `filter-appointment` command.
+Filters the appointment list to show the list of appointments under the dentist with the given dentist ID.
 
-**Format:** `filter-appointment s/SERVICE_TYPE`, `filter-appointment t/DATE` or `filter-appointment d/DENTIST`
+This is useful when:
+- you want to view the list of appointments under a specific doctor.
 
-Examples:
+**Format:** `filter-appointment dentist DENTIST_ID`
 
-* `filter-appointment s/Tooth Extraction` returns all Tooth Extraction appointments.
-* `filter-appointment t/20-11-2023` returns all appointments happening on 20 November 2023.
-* `filter-appointment d/Tom` returns all appointments with Tom as the dentist.
+Example:
+
+* `filter-appointment dentist 1` returns all appointments under the dentist with the dentist ID 1.
+
+### Filter Appointments by patient ID: `filter-appointment`
+
+Filters the appointment list to show the list of appointments under the patient with the given patient ID.
+
+This is useful when:
+- you want to view the list of appointments under a specific patient.
+
+**Format:** `filter-appointment patient PATIENT_ID`
+
+Example:
+
+* `filter-appointment patient 1` returns all appointments under the patient with the patient ID 1.
 
 
 ## Part 4 - Treatment Features
