@@ -4,7 +4,7 @@ title: Developer Guide
 ---
 
 * Table of Contents
-  {:toc}
+{:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -80,22 +80,23 @@ implementation of a component), as illustrated in the (partial) class diagram be
 The sections below give more details of each component.
 
 ### UI component
+The UI component handles the user-interface portion of the application.
 
 The **API** of this component is specified
-in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+in [`Ui.java`](https://github.com/AY2324S1-CS2103T-W10-3/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
 The UI consists of a `MainWindow` that is made up of parts
-e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`,
+e.g.`CommandBox`, `ResultDisplay`, `PatientListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`,
 inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the
 visible GUI.
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that
+The `UI` component uses the JavaFX UI framework. The layout of these UI parts is defined in matching `.fxml` files that
 are in the `src/main/resources/view` folder. For example, the layout of
-the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java)
+the [`MainWindow`](https://github.com/AY2324S1-CS2103T-W10-3/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java)
 is specified
-in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+in [`MainWindow.fxml`](https://github.com/AY2324S1-CS2103T-W10-3/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
 
@@ -105,30 +106,32 @@ The `UI` component,
 * depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
 
 ### Logic component
+The Logic component handles the execution of commands.
 
 **API
-** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+** : [`Logic.java`](https://github.com/AY2324S1-CS2103T-W10-3/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
 
 <img src="images/LogicClassDiagram.png" width="550"/>
 
-The sequence diagram below illustrates the interactions within the `Logic` component, taking `execute("delete 1")` API
-call as an example.
-
-![Interactions Inside the Logic Component for the `delete 1` Command](images/DeleteSequenceDiagram.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-</div>
-
 How the `Logic` component works:
 
 1. When `Logic` is called upon to execute a command, it is passed to an `AddressBookParser` object which in turn creates
-   a parser that matches the command (e.g., `DeleteCommandParser`) and uses it to parse the command.
-1. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `DeleteCommand`) which
+   a parser that matches the command (e.g., `DeletePatientCommandParser`) and uses it to parse the command.
+1. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `DeletePatientCommand`) which
    is executed by the `LogicManager`.
 1. The command can communicate with the `Model` when it is executed (e.g. to delete a person).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `Logic`.
+
+The sequence diagram below illustrates the interactions within the `Logic` component, taking `execute("delete-patient 1")` API
+call as an example.
+
+![Interactions Inside the Logic Component for the `delete-patient 1` Command](images/DeletePatientSequenceDiagram.png)
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeletePatientCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+</div>
+
 
 Here are the other classes in `Logic` (omitted from the class diagram above) that are used for parsing a user command:
 
@@ -137,10 +140,10 @@ Here are the other classes in `Logic` (omitted from the class diagram above) tha
 How the parsing works:
 
 * When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser` (`XYZ` is a
-  placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse
-  the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `AddressBookParser` returns back as
+  placeholder for the specific command name e.g., `AddPatientCommandParser`) which uses the other classes shown above to parse
+  the user command and create a `XYZCommand` object (e.g., `AddPatientCommand`) which the `AddressBookParser` returns back as
   a `Command` object.
-* All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser`
+* All `XYZCommandParser` classes (e.g., `AddPatientCommandParser`, `DeletePatientCommandParser`, ...) inherit from the `Parser`
   interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
@@ -154,7 +157,7 @@ The `Model` component,
 
 * stores the ToothTracker address book data i.e., all `Patient`, `Dentist`, `Appointment`, and `Treatment` objects
 (which are contained in a `UniquePatientList`, `UniqueDentistList`, `UniqueAppointmentList`, and `UniqueTreatmentList` objects respectively).
-* stores the currently 'selected' `Patient`, `Dentist`, or `Appointment` objects (e.g., results of a `search-patient`, `search-dentist`, or `filter-appointment`) 
+* stores the currently 'selected' `Patient`, `Dentist`, or `Appointment` objects (e.g., results of a `search-patient`, `search-dentist`, or `filter-appointment`)
   as corresponding separate _filtered_ lists which are exposed to outsiders as unmodifiable `ObservableList<Patient>`, `ObservableList<Dentist>` and `Observable<Appointment>`
   that can be 'observed' e.g. the UI can be bound to these lists so that the UI automatically updates when the data in the lists change.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as
@@ -219,11 +222,40 @@ This sequence diagram shows the interactions between the various components duri
 
 ##### Feature Considerations
 
-For dentist specialization, broader terms like "orthodontics" are used instead of specifying the exact type of treatment (e.g., root canal, braces, scaling). 
+For dentist specialization, broader terms like "orthodontics" are used instead of specifying the exact type of treatment (e.g., root canal, braces, scaling).
 This approach prevents the "add-dentist" command from becoming excessively long.
 
 The working hours of a dentist is not an attribute in the `add-dentist` command as dentists might not immediately know their
 shifts when they first join, and it might change frequently.
+
+#### Deleting a Dentist
+
+The `delete-dentist` command deletes a dentist record in ToothTracker. This command forms the fundamental business logic to represent dentists.
+
+The activity diagram for deleting a dentist is illustrated as follows:
+
+![DeleteDentistActivityDiagram](images/DeleteDentistActivityDiagram.png)
+
+This sequence diagram shows the interactions between the various components during the execution of the `delete-dentist` command:
+
+![DeleteDentistSequenceDiagram](images/DeleteDentistSequenceDiagram.png)
+
+##### Feature Details
+
+1. The user specifies a dentist id that represents a `Dentist` to be edited.
+2. If an invalid dentist id is provided, an error is thrown and the user is prompted to enter the command correctly via an error message.
+3. The Dentist is cross-referenced in the `Model` to check if it exists. If it does not, then an error is raised to inform the user.
+4. If step 3 completes without any exceptions, then the `Dentist` is successfully deleted.
+
+##### Feature Considerations
+
+In implementing the delete feature, we needed proper error handling and validation to ensure ToothTracker's robustness and provide clear guidance to the user.
+Our approach validates dentist ID and shows an error message if the dentist does not exist.
+This is in comparison to allowing commands to fail silently if dentist does not exist.
+
+- Pros: Prevents invalid operations and provides immediate feedback to the user, helping to correct mistakes.
+- Cons: Additional validation checks add complexity to the code.
+
 
 #### Searching for a dentist
 
@@ -239,16 +271,16 @@ This sequence diagram shows the interactions between the various components duri
 ![SearchDentistSequenceDiagram](images/SearchDentistSequenceDiagram.png)
 
 ##### Feature Details
-1. Users initiate a search for a dentist using either a unique `DENTIST_ID` or by inputting specific `KEYWORDS` that might match a dentist's name. 
-2. If the user opts for an ID-based search, the system processes the request to return a single record that matches the provided dentist ID. 
+1. Users initiate a search for a dentist using either a unique `DENTIST_ID` or by inputting specific `KEYWORDS` that might match a dentist's name.
+2. If the user opts for an ID-based search, the system processes the request to return a single record that matches the provided dentist ID.
 3. If keywords are used, the system performs a broader search by comparing the keywords as substrings with the names in the dentist records.
 4. In scenarios where the search criteria do not correspond with any existing records (either no matching ID or keywords), the system generates an error message informing the user of the unsuccessful search attempt.
 5. When matches are found, the system displays a list of dentists whose records meet the search criteria.
 
 ##### Feature Considerations
 
-The `search-dentist` feature in ToothTracker focuses on searching using either a dentist's unique ID or keywords matching a dentist's name, 
-prioritizing speed and simplicity in accessing dentist records. For more complex searching which requires additional dentist attributes, users 
+The `search-dentist` feature in ToothTracker focuses on searching using either a dentist's unique ID or keywords matching a dentist's name,
+prioritizing speed and simplicity in accessing dentist records. For more complex searching which requires additional dentist attributes, users
 are recommended to use the `filter-dentist` command instead. This approach ensures a balanced functionality within ToothTracker, offering a balance
 between quick searches for immediate needs while also accommodating more complex and attribute-specific inquiries.
 
@@ -509,12 +541,12 @@ Use case ends.
     - ToothTracker checks the database and finds that the treatment provided does not exist.
     - ToothTracker alerts the user that the treatment is not provided in the clinic.
     - Steps within 1b loop until an existing treatment is provided.
- 
+
 - **1c. User inputs a dentist or patient ID that does not exist in the database**
     - ToothTracker checks the database and finds that the dentist or patient ID provided does not exist.
     - ToothTracker alerts the user that the patient or dentist with the provided patient or dentist ID does not exist in this clinic.
     - Steps within 1c loop until valid dentist and patient IDs are provided.
- 
+
 - **1d. User inputs an appointment time slot that clashes with an existing one in the database**
     - ToothTracker checks the database and finds that the appointment to be added clashes with an existing one.
     - ToothTracker alerts the user about the clashing appointments.
