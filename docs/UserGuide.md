@@ -20,11 +20,11 @@ If you are new here, visit our quick start guide to start tracking your dental c
 
 
 ### About ToothTracker's User Guide
-This user guide provides a comprehensive documentation on the various commands supported by ToothTracker. 
+This user guide provides a comprehensive documentation on the various commands supported by ToothTracker.
 If you are familiar with ToothTracker already, this user guide serves to give you an overview on how to use specific commands in ToothTracker.
 If you are a new user, you may proceed to our quick start guide to assist you in installing ToothTracker and launching it for the first time.
 
-* Table of Contents 
+* Table of Contents
 {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
@@ -116,7 +116,7 @@ You may use `edit-dentist` command to update them in the future.
 <div markdown="block" class="alert alert-info">
 **:information_source: Notes about adding a dentist without email and address:**<br>
 ToothTracker will put the <code>EMAIL</code> as "NoEmailProvided@ToBeAdded.com"
-and put the <code>ADDRESS</code> as "No Address Provided." by default. 
+and put the <code>ADDRESS</code> as "No Address Provided." by default.
 
 If you wish to update them at a later time, you can use <code>edit-dentist</code> to edit them.
 </div>
@@ -129,12 +129,12 @@ address 'Yishun Street 72, Blk 742, #03-354, Singapore 512742',
 specialising in 'Whitening' with 1 year of experience, who is undergoing University Training program under Dentistry.
 
 
-* `add-dentist n/Bob p/12345678 e/bobjune@gmail.com y/6 s/braces`  
+* `add-dentist n/Bob p/12345678 e/bobjune@gmail.com y/6 s/braces`
 This adds a dentist named 'Bob' with phone number '12345678' and email ‘bobjune@gmail.com’,
 who has 6 years of experience and specializing in 'braces' into the list of dentists in ToothTracker.
 
 
-* `add-dentist n/Emmanuel Chua p/99887766 y/8 s/surgery t/extraction` 
+* `add-dentist n/Emmanuel Chua p/99887766 y/8 s/surgery t/extraction`
 This adds a dentist named 'Emmanuel Chua' with phone number '99887766' who has 8 years of experience
 specializing in 'surgery' with a tag of 'extraction' into the list of dentists in ToothTracker.
 
@@ -235,7 +235,7 @@ To check the Dentist ID for a dentist, you can simply enter the command `list-de
 
 <div markdown="block" class="alert alert-info">
 **:information_source: Notes about editing tags:**<br>
-When editing tags, you have to include any previous tags that was already included in the dentist, or else these tags will be removed. 
+When editing tags, you have to include any previous tags that was already included in the dentist, or else these tags will be removed.
 This also means that you can use `t/` to remove all tags from a dentist using the <code>edit-dentist</code> command.
 </div>
 
@@ -292,7 +292,7 @@ Examples:
 
 ### Searching for a patient by Patient ID or keyword: `search-patient`
 
-Search for the patient with the specified `PATIENT_ID` or patients whose names match the given keyword. 
+Search for the patient with the specified `PATIENT_ID` or patients whose names match the given keyword.
 This command allows you to find patient records that match your search criteria.
 
 **Format:** `search-patient KEYWORD` or `search-patient PATIENT_ID`
@@ -338,11 +338,11 @@ Examples:
 
 ### Adding an appointment: `add-appointment`
 
-Adds a new dental appointment to ToothTracker. 
+Adds a new dental appointment to ToothTracker.
 
 This is helpful when:
 - you want to schedule future dental appointments for patients with specific dentists at designated times.
-- you want to check for clashes with existing appointments 
+- you want to check for clashes with existing appointments.
 
 Format: `add-appointment dentist/DENTIST_ID patient/PATIENT_ID start/START_DATE_TIME s/TREATMENT`
 
@@ -417,7 +417,7 @@ Example:
 
 ### Adding a treatment: `add-treatment`
 
-You can add a new dental treatment to the ToothTracker system using the `add-treatment` command. 
+You can add a new dental treatment to the ToothTracker system using the `add-treatment` command.
 This command allows you to specify the treatment name, the cost of treatment, and how long the treatment would take.
 The treatment would be stored in ToothTracker's internal storage.
 
@@ -505,7 +505,7 @@ _Details coming soon ..._
 the data of your previous ToothTracker home folder.
 
 **Q**: Why do I get an error while trying to edit an existing dentist/patient?<br>
-**A**: The dentist/patient to be edited may not be shown in ToothTracker. 
+**A**: The dentist/patient to be edited may not be shown in ToothTracker.
 To display the to-be-edited dentist/patient, you may use these commands:
 1. `list-dentist` or `list-patient`
 2. `search-dentist` or `search-patient`

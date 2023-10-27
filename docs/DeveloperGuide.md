@@ -157,7 +157,7 @@ The `Model` component,
 
 * stores the ToothTracker address book data i.e., all `Patient`, `Dentist`, `Appointment`, and `Treatment` objects
 (which are contained in a `UniquePatientList`, `UniqueDentistList`, `UniqueAppointmentList`, and `UniqueTreatmentList` objects respectively).
-* stores the currently 'selected' `Patient`, `Dentist`, or `Appointment` objects (e.g., results of a `search-patient`, `search-dentist`, or `filter-appointment`) 
+* stores the currently 'selected' `Patient`, `Dentist`, or `Appointment` objects (e.g., results of a `search-patient`, `search-dentist`, or `filter-appointment`)
   as corresponding separate _filtered_ lists which are exposed to outsiders as unmodifiable `ObservableList<Patient>`, `ObservableList<Dentist>` and `Observable<Appointment>`
   that can be 'observed' e.g. the UI can be bound to these lists so that the UI automatically updates when the data in the lists change.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as
@@ -222,7 +222,7 @@ This sequence diagram shows the interactions between the various components duri
 
 ##### Feature Considerations
 
-For dentist specialization, broader terms like "orthodontics" are used instead of specifying the exact type of treatment (e.g., root canal, braces, scaling). 
+For dentist specialization, broader terms like "orthodontics" are used instead of specifying the exact type of treatment (e.g., root canal, braces, scaling).
 This approach prevents the "add-dentist" command from becoming excessively long.
 
 The working hours of a dentist is not an attribute in the `add-dentist` command as dentists might not immediately know their
@@ -244,13 +244,13 @@ This sequence diagram shows the interactions between the various components duri
 
 1. The user specifies a dentist id that represents a `Dentist` to be edited.
 2. If an invalid dentist id is provided, an error is thrown and the user is prompted to enter the command correctly via an error message.
-3. The Dentist is cross-referenced in the `Model` to check if it exists. If it does not, then an error is raised to inform the user. 
+3. The Dentist is cross-referenced in the `Model` to check if it exists. If it does not, then an error is raised to inform the user.
 4. If step 3 completes without any exceptions, then the `Dentist` is successfully deleted.
 
 ##### Feature Considerations
 
 In implementing the delete feature, we needed proper error handling and validation to ensure ToothTracker's robustness and provide clear guidance to the user.
-Our approach validates dentist ID and shows an error message if the dentist does not exist. 
+Our approach validates dentist ID and shows an error message if the dentist does not exist.
 This is in comparison to allowing commands to fail silently if dentist does not exist.
 
 - Pros: Prevents invalid operations and provides immediate feedback to the user, helping to correct mistakes.
@@ -271,16 +271,16 @@ This sequence diagram shows the interactions between the various components duri
 ![SearchDentistSequenceDiagram](images/SearchDentistSequenceDiagram.png)
 
 ##### Feature Details
-1. Users initiate a search for a dentist using either a unique `DENTIST_ID` or by inputting specific `KEYWORDS` that might match a dentist's name. 
-2. If the user opts for an ID-based search, the system processes the request to return a single record that matches the provided dentist ID. 
+1. Users initiate a search for a dentist using either a unique `DENTIST_ID` or by inputting specific `KEYWORDS` that might match a dentist's name.
+2. If the user opts for an ID-based search, the system processes the request to return a single record that matches the provided dentist ID.
 3. If keywords are used, the system performs a broader search by comparing the keywords as substrings with the names in the dentist records.
 4. In scenarios where the search criteria do not correspond with any existing records (either no matching ID or keywords), the system generates an error message informing the user of the unsuccessful search attempt.
 5. When matches are found, the system displays a list of dentists whose records meet the search criteria.
 
 ##### Feature Considerations
 
-The `search-dentist` feature in ToothTracker focuses on searching using either a dentist's unique ID or keywords matching a dentist's name, 
-prioritizing speed and simplicity in accessing dentist records. For more complex searching which requires additional dentist attributes, users 
+The `search-dentist` feature in ToothTracker focuses on searching using either a dentist's unique ID or keywords matching a dentist's name,
+prioritizing speed and simplicity in accessing dentist records. For more complex searching which requires additional dentist attributes, users
 are recommended to use the `filter-dentist` command instead. This approach ensures a balanced functionality within ToothTracker, offering a balance
 between quick searches for immediate needs while also accommodating more complex and attribute-specific inquiries.
 
@@ -541,12 +541,12 @@ Use case ends.
     - ToothTracker checks the database and finds that the treatment provided does not exist.
     - ToothTracker alerts the user that the treatment is not provided in the clinic.
     - Steps within 1b loop until an existing treatment is provided.
- 
+
 - **1c. User inputs a dentist or patient ID that does not exist in the database**
     - ToothTracker checks the database and finds that the dentist or patient ID provided does not exist.
     - ToothTracker alerts the user that the patient or dentist with the provided patient or dentist ID does not exist in this clinic.
     - Steps within 1c loop until valid dentist and patient IDs are provided.
- 
+
 - **1d. User inputs an appointment time slot that clashes with an existing one in the database**
     - ToothTracker checks the database and finds that the appointment to be added clashes with an existing one.
     - ToothTracker alerts the user about the clashing appointments.
