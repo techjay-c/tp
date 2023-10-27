@@ -242,18 +242,20 @@ This sequence diagram shows the interactions between the various components duri
 
 ##### Feature Details
 
-1. Users provide essential dentist information, such as their name, phone number, specialization, years of experience and other optional details like email, address and tags.
-2. In case of missing or invalid command arguments, the system prompts users with an error message to enter the command correctly.
-3. The system cross-references the new dentist's name with existing records in the `Model` to prevent duplicate entries. If a duplicate is found, an error message informs the user.
-4. If step 3 is completed without any exceptions, the new patient record is created and stored in the system.
+1. The user specifies a dentist id that represents a `Dentist` to be edited.
+2. If an invalid dentist id is provided, an error is thrown and the user is prompted to enter the command correctly via an error message.
+3. The Dentist is cross-referenced in the `Model` to check if it exists. If it does not, then an error is raised to inform the user. 
+4. If step 3 completes without any exceptions, then the `Dentist` is successfully deleted.
 
 ##### Feature Considerations
 
-For dentist specialization, broader terms like "orthodontics" are used instead of specifying the exact type of treatment (e.g., root canal, braces, scaling).
-This approach prevents the "add-dentist" command from becoming excessively long.
+In implementing the delete feature, we needed proper error handling and validation to ensure ToothTracker's robustness and provide clear guidance to the user.
+Our approach validates dentist ID and shows an error message if the dentist does not exist. 
+This is in comparison to allowing commands to fail silently if dentist does not exist.
 
-The working hours of a dentist is not an attribute in the `delete-dentist` command as dentists might not immediately know their
-shifts when they first join, and it might change frequently.
+- Pros: Prevents invalid operations and provides immediate feedback to the user, helping to correct mistakes.
+- Cons: Additional validation checks add complexity to the code.
+
 
 #### Searching for a dentist
 
