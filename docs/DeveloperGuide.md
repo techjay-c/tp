@@ -228,6 +228,33 @@ This approach prevents the "add-dentist" command from becoming excessively long.
 The working hours of a dentist is not an attribute in the `add-dentist` command as dentists might not immediately know their
 shifts when they first join, and it might change frequently.
 
+#### Deleting a Dentist
+
+The `delete-dentist` command deletes a dentist record in ToothTracker. This command forms the fundamental business logic to represent dentists.
+
+The activity diagram for deleting a dentist is illustrated as follows:
+
+![DeleteDentistActivityDiagram](images/DeleteDentistActivityDiagram.png)
+
+This sequence diagram shows the interactions between the various components during the execution of the `delete-dentist` command:
+
+![DeleteDentistSequenceDiagram](images/DeleteDentistSequenceDiagram.png)
+
+##### Feature Details
+
+1. Users provide essential dentist information, such as their name, phone number, specialization, years of experience and other optional details like email, address and tags.
+2. In case of missing or invalid command arguments, the system prompts users with an error message to enter the command correctly.
+3. The system cross-references the new dentist's name with existing records in the `Model` to prevent duplicate entries. If a duplicate is found, an error message informs the user.
+4. If step 3 is completed without any exceptions, the new patient record is created and stored in the system.
+
+##### Feature Considerations
+
+For dentist specialization, broader terms like "orthodontics" are used instead of specifying the exact type of treatment (e.g., root canal, braces, scaling).
+This approach prevents the "add-dentist" command from becoming excessively long.
+
+The working hours of a dentist is not an attribute in the `delete-dentist` command as dentists might not immediately know their
+shifts when they first join, and it might change frequently.
+
 #### Searching for a dentist
 
 The `search-dentist` command finds dentist records in ToothTracker by allowing users to enter a specific `DENTIST_ID` or
