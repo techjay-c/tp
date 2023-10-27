@@ -724,23 +724,60 @@ In this example, we assume there are two dentists with the following attributes:
 * Name: `Xavier Tan`
 * Phone: `90895772`
 * Email: `xaviertan@hotmail.com`
-* Address: `X Dental Clinic, Serangoon Road, S335291`
+* Address: `Blk 33 #11-132, Serangoon Road, S335291`
 * Specialization: `Endodontics`
 * Yoe (Years of Experience): `8`
+* Dentist ID: `1`
 * Tag: `Professional`
 
 **Dentist 2**
 * Name: `Bernard Tan`
 * Phone: `98983492`
 * Email: `bernardtan@hotmail.com`
-* Address: `B Dental Clinic, Serangoon Road, S335291`
+* Address: `No Address Provided.`
 * Specialization: `Orthodontics`
 * Yoe (Years of Experience): `2`
+* Dentist ID: `4`
 * Tag: `Trainee`
 
-Expected Output in the Dentist List. All Dentists stored in ToothTracker is displayed.
+In each of the test case below, we further assume that the state of Dentist objects are always starting from the above attributes.
 
-Expected Output in the Command Output Box: Listed all Dentist!
+`edit-dentist 1 n/Xaveric Tan Ming Yuan`
+
+Expected Output in the Dentist List: The name of dentist with ID 1 is changed to `Xaveric Tan Ming Yuan`.
+
+Expected Output in the Command Output Box: Dentist successfully edited message, along with the updated attributes.
+
+`edit-dentist 4 p/98984477 e/btan@yahoo.com`
+
+Expected Output in the Dentist List: The phone of the dentist with ID 4 is changed to `98984477`, and the email is changed to `btan@yahoo.com`.
+
+Expected Output in the Command Output Box: Similar to above.
+
+`edit-dentist 4 h/Blk 653 #03-44, Bishan Ave 4, S622653`
+
+Expected Output in the Dentist List: The address of the dentist with ID 4 is changed to `Blk 653 #03-44, Bishan Ave 4, S622653`.
+
+Expected Output in the Command Output Box: Similar to above.
+
+`edit-dentist 99`
+
+Expected Output in the Dentist List: No dentist is edited.
+
+Expected Output in the Command Output Box: Error details shown for invalid ID provided.
+
+`edit-dentist`
+
+Expected Output in the Dentist List: No dentist is edited.
+
+Expected Output in the Command Output Box: Error details shown for invalid command format.
+
+`edit-dentist 1 n/Bernard Tan`
+
+Expected Output in the Dentist List: No dentist is edited.
+
+Expected Output in the Command Output Box: Error details shown for attempting to edit a dentist into another existing dentist.
+
 
 ### Searching for a Dentist by Keyword
 Prerequisite: There are only two dentists named `Xavier Tan` and `Bernard Tan` stored in ToothTracker.
@@ -796,13 +833,13 @@ Prerequisites: List all dentists using the `list-dentist` command. Multiple dent
 
 Expected Output in the Dentist List: Dentist with DENTIST_ID 1 is deleted from the dentist list. 
 
-Expected Output in Command Output Box: Details of the deleted dentist shown in the Command Output Box.
+Expected Output in Command Output Box: Details of the deleted dentist shown.
 
 `delete-dentist -1`
 
 Expected Output in the Dentist List: No dentist is deleted. 
 
-Expected Output in Command Output Box: Error details shown in the status message for invalid ID provided.
+Expected Output in Command Output Box: Error details shown for invalid ID provided.
 
 Other incorrect delete commands to try:<br>
 `delete-dentist`, `delete-dentist x`, `...` <br>(where x is not a valid Dentist ID)
@@ -810,6 +847,9 @@ Other incorrect delete commands to try:<br>
 Expected Output in the Dentist List: No dentist is deleted.
 
 Expected Output in Command Output Box:  Error details shown in the Command Output Box to show if it is an Invalid Dentist ID, or if it is an invalid command format.
+
+
+(More to be added)
 
 ### Saving data
 
