@@ -689,27 +689,100 @@ Expected Output in the Dentist List. All Dentists stored in ToothTracker is disp
 
 Expected Output in the Command Output Box: Listed all Dentist!
 
-### Edit a Dentist (To be added soon)
+### Edit a Dentist
 
+Prerequisite: There is at least 1 Dentist stored in ToothTracker. 
+In this example, we assume there are two dentists with the following attributes:<br>
+**Dentist 1**
+* Name: `Xavier Tan`
+* Phone: `90895772`
+* Email: `xaviertan@hotmail.com`
+* Address: `X Dental Clinic, Serangoon Road, S335291`
+* Specialization: `Endodontics`
+* Yoe (Years of Experience): `8`
+* Tag: `Professional`
 
+**Dentist 2**
+* Name: `Bernard Tan`
+* Phone: `98983492`
+* Email: `bernardtan@hotmail.com`
+* Address: `B Dental Clinic, Serangoon Road, S335291`
+* Specialization: `Orthodontics`
+* Yoe (Years of Experience): `2`
+* Tag: `Trainee`
+
+Expected Output in the Dentist List. All Dentists stored in ToothTracker is displayed.
+
+Expected Output in the Command Output Box: Listed all Dentist!
+
+### Searching for a Dentist by Keyword
+Prerequisite: There are only two dentists named `Xavier Tan` and `Bernard Tan` stored in ToothTracker.
+
+`search-dentist Xavier`
+
+Expected Output in the Dentist List: `Xavier Tan` dentist is displayed.
+
+Expected Output in the Command Output Box: 1 dentists listed!
+
+`search-dentist Bernard`
+
+Expected Output in the Dentist List: `Bernard Tan` dentist is displayed.
+
+Expected Output in the Command Output Box: 1 dentists listed!
+
+`search-dentist Tan`
+
+Expected Output in the Dentist List: `Xavier Tan` and `Bernard Tan` dentists are displayed.
+
+Expected Output in the Command Output Box: 2 dentists listed!
+
+### Searching for a dentist by Dentist ID
+
+Prerequisite: There are only two dentists named `Xavier Tan` and `Bernard Tan` stored in ToothTracker.
+Xavier Tan's Dentist ID is `1` and Bernard Tan's Dentist ID is 4 (Dentists with ID 2 and 3 are assumed to be removed previously).
+
+`search-dentist 1`
+
+Expected Output in the Dentist List: `Xavier Tan` dentist is displayed.
+
+Expected Output in the Command Output Box: Dentist with dentist ID 1 found.
+
+`search-dentist 4`
+
+Expected Output in the Dentist List: `Bernard Tan` dentist is displayed.
+
+Expected Output in the Command Output Box: 1 dentists listed!
+
+`search-dentist 999`
+
+Expected Output in the Dentist List: No dentist displayed.
+
+Expected Output in the Command Output Box: No dentist found with dentist ID 666.
 
 ### Deleting a Dentist
 
 Deleting a dentist while all dentists are being shown
 
-1. Prerequisites: List all dentists using the `list-dentist` command. Multiple dentists may be shown in the dentist list.
+Prerequisites: List all dentists using the `list-dentist` command. Multiple dentists may be shown in the dentist list.
 
-2. Test case: `delete-dentist 1`<br>
-   Expected: Dentist with DENTIST_ID 1 is deleted from the dentist list. Details of the deleted dentist shown in the status message.
-   Timestamp in the status bar is updated.
+`delete-dentist 1`
 
-3. Test case: `delete-dentist -1`<br>
-   Expected: No dentist is deleted. Error details shown in the status message for invalid ID provided. Status bar remains the same.
+Expected Output in the Dentist List: Dentist with DENTIST_ID 1 is deleted from the dentist list. 
 
-4. Other incorrect delete commands to try: `delete-dentist`, `delete-dentist x`, `...` (where x is not a positive integer)<br>
-   Expected: Similar to previous.
+Expected Output in Command Output Box: Details of the deleted dentist shown in the Command Output Box.
 
-5. _{ more test cases …​ }_
+`delete-dentist -1`
+
+Expected Output in the Dentist List: No dentist is deleted. 
+
+Expected Output in Command Output Box: Error details shown in the status message for invalid ID provided.
+
+Other incorrect delete commands to try:<br>
+`delete-dentist`, `delete-dentist x`, `...` <br>(where x is not a valid Dentist ID)
+
+Expected Output in the Dentist List: No dentist is deleted.
+
+Expected Output in Command Output Box:  Error details shown in the Command Output Box to show if it is an Invalid Dentist ID, or if it is an invalid command format.
 
 ### Saving data
 
