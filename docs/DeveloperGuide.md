@@ -702,10 +702,14 @@ Adding a dentist into ToothTracker's Dentist List.
 Expected Output in the Dentist List: New dentist added into the Dentist List. The email and address will contain Default placeholders.
 
 Expected Output in the Command Output Box: New dentist added message is displayed with the dentist credentials.
+<br><br>
 
 `add-dentist n/Oliver Lim`
 
-Expected Output in the Command Output Box: Error message for invalid command format, prompting users with correct attributes to include.
+Expected Output in the Dentist List: No new dentist added.
+
+Expected Output in the Command Output Box: Error message for invalid command format.
+<br><br>
 
 ### Listing all Dentists
 
@@ -715,11 +719,13 @@ Prerequisite: There is at least 1 Dentist stored in ToothTracker
 Expected Output in the Dentist List. All Dentists stored in ToothTracker is displayed.
 
 Expected Output in the Command Output Box: Listed all Dentist!
+<br><br>
 
 ### Edit a Dentist
 
 Prerequisite: There is at least 1 Dentist stored in ToothTracker. 
-In this example, we assume there are two dentists with the following attributes:<br>
+In this example, we assume there are two dentists with the following attributes:
+<br><br>
 **Dentist 1**
 * Name: `Xavier Tan`
 * Phone: `90895772`
@@ -740,44 +746,51 @@ In this example, we assume there are two dentists with the following attributes:
 * Dentist ID: `4`
 * Tag: `Trainee`
 
+<br>
 In each of the test case below, we further assume that the state of Dentist objects are always starting from the above attributes.
+<br><br>
 
 `edit-dentist 1 n/Xaveric Tan Ming Yuan`
 
 Expected Output in the Dentist List: The name of dentist with ID 1 is changed to `Xaveric Tan Ming Yuan`.
 
 Expected Output in the Command Output Box: Dentist successfully edited message, along with the updated attributes.
+<br><br>
 
 `edit-dentist 4 p/98984477 e/btan@yahoo.com`
 
 Expected Output in the Dentist List: The phone of the dentist with ID 4 is changed to `98984477`, and the email is changed to `btan@yahoo.com`.
 
 Expected Output in the Command Output Box: Similar to above.
+<br><br>
 
 `edit-dentist 4 h/Blk 653 #03-44, Bishan Ave 4, S622653`
 
 Expected Output in the Dentist List: The address of the dentist with ID 4 is changed to `Blk 653 #03-44, Bishan Ave 4, S622653`.
 
 Expected Output in the Command Output Box: Similar to above.
+<br><br>
 
 `edit-dentist 99`
 
 Expected Output in the Dentist List: No dentist is edited.
 
 Expected Output in the Command Output Box: Error details shown for invalid ID provided.
+<br><br>
 
 `edit-dentist`
 
 Expected Output in the Dentist List: No dentist is edited.
 
 Expected Output in the Command Output Box: Error details shown for invalid command format.
+<br><br>
 
 `edit-dentist 1 n/Bernard Tan`
 
 Expected Output in the Dentist List: No dentist is edited.
 
 Expected Output in the Command Output Box: Error details shown for attempting to edit a dentist into another existing dentist.
-
+<br><br>
 
 ### Searching for a Dentist by Keyword
 Prerequisite: There are only two dentists named `Xavier Tan` and `Bernard Tan` stored in ToothTracker.
@@ -787,18 +800,21 @@ Prerequisite: There are only two dentists named `Xavier Tan` and `Bernard Tan` s
 Expected Output in the Dentist List: `Xavier Tan` dentist is displayed.
 
 Expected Output in the Command Output Box: 1 dentists listed!
+<br><br>
 
 `search-dentist Bernard`
 
 Expected Output in the Dentist List: `Bernard Tan` dentist is displayed.
 
 Expected Output in the Command Output Box: 1 dentists listed!
+<br><br>
 
 `search-dentist Tan`
 
 Expected Output in the Dentist List: `Xavier Tan` and `Bernard Tan` dentists are displayed.
 
 Expected Output in the Command Output Box: 2 dentists listed!
+<br><br>
 
 ### Searching for a dentist by Dentist ID
 
@@ -810,18 +826,21 @@ Xavier Tan's Dentist ID is `1` and Bernard Tan's Dentist ID is 4 (Dentists with 
 Expected Output in the Dentist List: `Xavier Tan` dentist is displayed.
 
 Expected Output in the Command Output Box: Dentist with dentist ID 1 found.
+<br><br>
 
 `search-dentist 4`
 
 Expected Output in the Dentist List: `Bernard Tan` dentist is displayed.
 
 Expected Output in the Command Output Box: 1 dentists listed!
+<br><br>
 
 `search-dentist 999`
 
 Expected Output in the Dentist List: No dentist displayed.
 
-Expected Output in the Command Output Box: No dentist found with dentist ID 666.
+Expected Output in the Command Output Box: No dentist found with dentist ID 999.
+<br><br>
 
 ### Deleting a Dentist
 
@@ -834,12 +853,14 @@ Prerequisites: List all dentists using the `list-dentist` command. Multiple dent
 Expected Output in the Dentist List: Dentist with DENTIST_ID 1 is deleted from the dentist list. 
 
 Expected Output in Command Output Box: Details of the deleted dentist shown.
+<br><br>
 
 `delete-dentist -1`
 
 Expected Output in the Dentist List: No dentist is deleted. 
 
 Expected Output in Command Output Box: Error details shown for invalid ID provided.
+<br><br>
 
 Other incorrect delete commands to try:<br>
 `delete-dentist`, `delete-dentist x`, `...` <br>(where x is not a valid Dentist ID)
