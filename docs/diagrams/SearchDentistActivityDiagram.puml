@@ -1,0 +1,33 @@
+@startuml
+!pragma useVerticalIf on
+
+start
+
+:User enters SearchDentist command;
+
+if (Command format valid?) then (yes)
+  if (Is it a dentist ID?) then (yes)
+    if (Dentist ID exists in model?) then (yes)
+      :Model retrieves Dentist with specified ID;
+      :SearchDentist Command successfully executes;
+      stop
+    else (no)
+      :Error: Dentist ID does not exist;
+      stop
+    endif
+  else (no)
+    if (Keyword matches any dentist name?) then (yes)
+      :Model filters Dentist List for dentists that match the keyword;
+      :SearchDentist Command successfully executes;
+      stop
+    else (no)
+      :Error: No dentist matches the keyword;
+      stop
+    endif
+  endif
+else (no)
+  :Error: Invalid command format;
+  stop
+endif
+
+@enduml
