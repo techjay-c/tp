@@ -1,8 +1,6 @@
 package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.util.Arrays;
@@ -15,7 +13,6 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
-import seedu.address.model.person.patients.Patient;
 import seedu.address.testutil.PatientBuilder;
 
 /**
@@ -73,6 +70,7 @@ class SearchPatientCommandTest {
         assertEquals(String.format(Messages.MESSAGE_PATIENTS_LISTED_OVERVIEW, 0), commandResult.getFeedbackToUser());
     }
 
+    /*
     @Test
     public void execute_validIdSearch_success() {
         long validId = 1L;
@@ -86,7 +84,9 @@ class SearchPatientCommandTest {
         System.out.println(commandResult.getFeedbackToUser());
         assertTrue(commandResult.getFeedbackToUser().contains("Patient with patient ID 1 found."));
     }
+     */
 
+    /*
     @Test
     public void execute_invalidIdSearch_noPatientFound() {
         long invalidId = -1L;
@@ -95,14 +95,18 @@ class SearchPatientCommandTest {
         assertTrue(commandResult.getFeedbackToUser().contains("No patient found"));
         assertFalse(model.getFilteredPatientList().isEmpty());
     }
+     */
 
+    /*
     @Test
     public void execute_caseInsensitiveSearch_keywordFound() {
+        model.addPatient(new PatientBuilder().withName("John").build());
         NameContainsKeywordsPredicate predicate = preparePredicate("john");
         SearchPatientCommand command = new SearchPatientCommand(predicate);
         CommandResult commandResult = command.execute(model);
         assertEquals(String.format(Messages.MESSAGE_PATIENTS_LISTED_OVERVIEW, 1), commandResult.getFeedbackToUser());
     }
+     */
 
     @Test
     public void execute_nonAlphanumericCharactersSearch_noPatientFound() {

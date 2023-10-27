@@ -70,10 +70,6 @@ public class AddPatientCommand extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_PATIENT);
         }
 
-        if (!model.hasTreatmentName(toAdd.getTreatmentName())) {
-            throw new CommandException(MESSAGE_INVALID_TREATMENT);
-        }
-
         model.addPatient(toAdd);
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
     }
