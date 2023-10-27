@@ -10,7 +10,6 @@ import java.util.logging.Logger;
 import com.calendarfx.model.Calendar;
 import com.calendarfx.model.Entry;
 import com.calendarfx.view.CalendarView;
-import com.calendarfx.view.DateControl;
 
 import javafx.scene.Scene;
 import javafx.stage.Stage;
