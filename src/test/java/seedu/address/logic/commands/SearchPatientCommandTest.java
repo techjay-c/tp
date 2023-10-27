@@ -1,6 +1,6 @@
 package seedu.address.logic.commands;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.util.Arrays;
@@ -70,34 +70,6 @@ class SearchPatientCommandTest {
         assertEquals(String.format(Messages.MESSAGE_PATIENTS_LISTED_OVERVIEW, 0), commandResult.getFeedbackToUser());
     }
 
-    /*
-    @Test
-    public void execute_validIdSearch_success() {
-        long validId = 1L;
-        model.addPatient(new PatientBuilder().withName("Larry")
-            .withPhone("97621477")
-            .withBirthdate("10-09-1993")
-            .withAddress("50 Harvey Drive")
-            .withEmail("larry@gmail.com").build());
-        SearchPatientCommand command = new SearchPatientCommand(validId);
-        CommandResult commandResult = command.execute(model);
-        System.out.println(commandResult.getFeedbackToUser());
-        assertTrue(commandResult.getFeedbackToUser().contains("Patient with patient ID 1 found."));
-    }
-     */
-
-    /*
-    @Test
-    public void execute_invalidIdSearch_noPatientFound() {
-        long invalidId = -1L;
-        SearchPatientCommand command = new SearchPatientCommand(invalidId);
-        CommandResult commandResult = command.execute(model);
-        assertTrue(commandResult.getFeedbackToUser().contains("No patient found"));
-        assertFalse(model.getFilteredPatientList().isEmpty());
-    }
-     */
-
-    /*
     @Test
     public void execute_caseInsensitiveSearch_keywordFound() {
         model.addPatient(new PatientBuilder().withName("John").build());
@@ -106,7 +78,6 @@ class SearchPatientCommandTest {
         CommandResult commandResult = command.execute(model);
         assertEquals(String.format(Messages.MESSAGE_PATIENTS_LISTED_OVERVIEW, 1), commandResult.getFeedbackToUser());
     }
-     */
 
     @Test
     public void execute_nonAlphanumericCharactersSearch_noPatientFound() {
