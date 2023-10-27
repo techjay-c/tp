@@ -49,7 +49,8 @@ public class AddPatientCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New Patient added: %1$s";
     public static final String MESSAGE_DUPLICATE_PATIENT = "This Patient already exists in ToothTracker";
-    public static final String MESSAGE_INVALID_TREATMENT = "This Treatment does not exist in ToothTracker.";
+    public static final String MESSAGE_INVALID_TREATMENT = "This Treatment does not exist in ToothTracker. "
+        + "For a list of valid treatments, please enter the command list-treatment";
 
     private final Patient toAdd;
 
