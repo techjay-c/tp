@@ -22,7 +22,7 @@ With ToothTracker, you can add new patient and dentist profiles, add treatments 
   * Highlights: This enhancement affects dentist commands to be added in the future. It required an in-depth analysis of design such as handling parameters. The implementation too was challenging as it required changes to existing commands.
 
 * **New Feature [Coming Soon]**: Added the ability to see the cost of different types of dental treatments.
-* **Code contributed**: [RepoSense link]()
+* **Code contributed**: [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=freddychenyouren2&breakdown=true)
 
 * **Project management**:
   * [To be added soon]
@@ -40,7 +40,9 @@ With ToothTracker, you can add new patient and dentist profiles, add treatments 
   * Developer Guide:
     * [Coming Soon] Added documentation for Dentist command feature
     * Add user stories and use cases related to adding a dentist
-    * [Coming Soon] Modified Model Class Diagram and descriptions to match ToothTracker design.
+    * Modify Model Class Diagram and descriptions to match ToothTracker design.
+    * Assist Ruth to Modify Ui Class Diagram to match ToothTracker design.
+    * Add documentation for manual testing on dentist features.
 
 * **Community**:
   * PRs reviewed (with non-trivial review comments): [To be added soon]
