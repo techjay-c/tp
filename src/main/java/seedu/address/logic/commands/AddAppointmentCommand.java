@@ -8,6 +8,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TREATMENT;
 
 import java.util.function.Predicate;
 
+import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.ParserUtil;
@@ -40,11 +41,8 @@ public class AddAppointmentCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New Appointment added: %1$s";
 
-    public static final String MESSAGE_CLASHING_DOCTORS = "This dentist already has a "
-            + "current appointment in the same time slot.";
-
-    public static final String MESSAGE_CLASHING_PATIENTS = "This patient already has a "
-            + "current appointment in the same time slot.";
+    public static final String MESSAGE_CLASHING_APPOINTMENT = "Dentist or patient already has"
+            + " existing appointment in this time slot.";
 
     private final Appointment toAdd;
     private final long dentistId;
@@ -99,7 +97,10 @@ public class AddAppointmentCommand extends Command {
 
         checkValidPersons(model);
 
-        checkClash(model);
+
+        if (model.hasAppointment(toAdd)) {
+            throw new CommandException(MESSAGE_CLASHING_APPOINTMENT);
+        }
 
         model.addAppointment(toAdd);
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
@@ -136,38 +137,29 @@ public class AddAppointmentCommand extends Command {
         }
     }
 
-    /**
-     * Checks for appointment clashes in the given model and throws a CommandException if a clash is detected.
-     * The method uses the provided 'toAdd' appointment and compares its time with existing appointments in the model.
-     *
-     * @param model The model containing the list of appointments to check for clashes.
-     * @throws CommandException If a clash with another appointment is detected:
-     *                         - If the dentist ID clashes with another appointment's dentist ID,
-     *                              throws MESSAGE_CLASHING_DOCTORS.
-     *                         - If the patient ID clashes with another appointment's patient ID,
-     *                              throws MESSAGE_CLASHING_PATIENTS.
-     */
-    public void checkClash(Model model) throws CommandException {
-        if (model.hasAppointment(toAdd)) {
-            Predicate<Appointment> appointmentPredicate = toAdd::isSameAppointmentTime;
-            model.updateFilteredAppointmentList(appointmentPredicate);
-
-            if (!model.getFilteredAppointmentList().isEmpty()) {
-                for (int i = 0; i < model.getFilteredAppointmentList().size(); i++) {
-                    if (model.getFilteredAppointmentList().get(i).getDentistId() == dentistId) {
-                        throw new CommandException(MESSAGE_CLASHING_DOCTORS);
-                    }
-                }
-            }
-
-            if (!model.getFilteredAppointmentList().isEmpty()) {
-                for (int i = 0; i < model.getFilteredAppointmentList().size(); i++) {
-                    if (model.getFilteredAppointmentList().get(i).getPatientId() == patientId) {
-                        throw new CommandException(MESSAGE_CLASHING_PATIENTS);
-                    }
-                }
-            }
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
         }
+
+        if (!(other instanceof AddAppointmentCommand)) {
+            return false;
+        }
+
+        AddAppointmentCommand otherCommand = (AddAppointmentCommand) other;
+
+        return toAdd.equals(otherCommand.toAdd)
+                && dentistId == otherCommand.dentistId
+                && patientId == otherCommand.patientId
+                && treatmentName.equals(otherCommand.treatmentName)
+                && start.equals(otherCommand.start);
     }
 
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .add("toAdd", toAdd)
+                .toString();
+    }
 }
