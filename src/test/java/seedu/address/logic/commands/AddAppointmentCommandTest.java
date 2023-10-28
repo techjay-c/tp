@@ -6,34 +6,30 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalAppointments.APPOINTMENT_ONE;
-import static seedu.address.testutil.TypicalDentists.DENTIST_ALICE;
 import static seedu.address.testutil.TypicalTreatments.BRACES;
-import static seedu.address.testutil.TypicalPatients.AMY;
 
-
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.function.Predicate;
 
-import javafx.collections.FXCollections;
-import javafx.collections.transformation.FilteredList;
 import org.junit.jupiter.api.Test;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.commons.core.GuiSettings;
+import javafx.collections.transformation.FilteredList;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
+import seedu.address.model.ModelStub;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.appointments.Appointment;
-import seedu.address.model.ModelStub;
 import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.patients.Patient;
 import seedu.address.model.treatment.Treatment;
 import seedu.address.testutil.AppointmentBuilder;
 import seedu.address.testutil.DentistBuilder;
 import seedu.address.testutil.PatientBuilder;
+
 
 public class AddAppointmentCommandTest {
 
@@ -55,7 +51,7 @@ public class AddAppointmentCommandTest {
 
         assertEquals(Arrays.asList(validAppointment), modelStub.appointmentAdded);
     }
-    
+
     @Test
     public void execute_duplicateAppointment_throwsCommandException() {
         Appointment validAppointment = new AppointmentBuilder().build();
@@ -63,8 +59,7 @@ public class AddAppointmentCommandTest {
         ModelStub modelStub = new ModelStubWithAppointment(validAppointment);
 
         assertThrows(CommandException.class,
-                AddAppointmentCommand.MESSAGE_CLASHING_APPOINTMENT,
-                () -> addAppointmentCommand.execute(modelStub));
+                AddAppointmentCommand.MESSAGE_CLASHING_APPOINTMENT, () -> addAppointmentCommand.execute(modelStub));
     }
 
     @Test
@@ -106,10 +101,23 @@ public class AddAppointmentCommandTest {
     private class ModelStubWithAppointment extends ModelStub {
 
         final ArrayList<Appointment> appointmentAdded = new ArrayList<>();
-        ObservableList<Treatment> treatmentObservableList = FXCollections.observableArrayList(BRACES);
+        final FilteredList<Dentist> dentists = new FilteredList<>(FXCollections.observableArrayList(
+                new DentistBuilder()
+                        .withName("Alice Pauline")
+                        .withAddress("123, Jurong West Ave 6, #08-111")
+                        .withEmail("alice@example.com")
+                        .withPhone("94351253")
+                        .withSpecialization("Orthodontics")
+                        .withYoe("5")
+                        .withTags("Professional")
+                        .withDentistId("1")
+                        .build()
+        ));
+        private ObservableList<Treatment> treatmentObservableList = FXCollections.observableArrayList(BRACES);
 
         final FilteredList<Treatment> treatments = new FilteredList<>(treatmentObservableList);
-        ObservableList<Patient> patientObservableList = FXCollections.observableArrayList(
+
+        private ObservableList<Patient> patientObservableList = FXCollections.observableArrayList(
                 new PatientBuilder()
                         .withName("Amy")
                         .withAddress("123, Jurong West Ave 6, #08-111")
@@ -122,20 +130,8 @@ public class AddAppointmentCommandTest {
                         .withTags("friends")
                         .withPatientId("1")
                         .build()
-        );        final FilteredList<Patient> patients = new FilteredList<>(patientObservableList);
-        ObservableList<Dentist> dentistObservableList = FXCollections.observableArrayList(
-                new DentistBuilder()
-                        .withName("Alice Pauline")
-                        .withAddress("123, Jurong West Ave 6, #08-111")
-                        .withEmail("alice@example.com")
-                        .withPhone("94351253")
-                        .withSpecialization("Orthodontics")
-                        .withYoe("5")
-                        .withTags("Professional")
-                        .withDentistId("1")
-                        .build()
         );
-        final FilteredList<Dentist> dentists = new FilteredList<>(dentistObservableList);
+        final FilteredList<Patient> patients = new FilteredList<>(patientObservableList);
 
         private final Appointment appointment;
 
@@ -219,10 +215,8 @@ public class AddAppointmentCommandTest {
     private class ModelStubAcceptingAppointmentAdded extends ModelStub {
 
         final ArrayList<Appointment> appointmentAdded = new ArrayList<>();
-        ObservableList<Treatment> treatmentObservableList = FXCollections.observableArrayList(BRACES);
-
-        final FilteredList<Treatment> treatments = new FilteredList<>(treatmentObservableList);
-        ObservableList<Patient> patientObservableList = FXCollections.observableArrayList(
+        final FilteredList<Treatment> treatments = new FilteredList<>(FXCollections.observableArrayList(BRACES));
+        final FilteredList<Patient> patients = new FilteredList<>(FXCollections.observableArrayList(
                 new PatientBuilder()
                         .withName("Amy")
                         .withAddress("123, Jurong West Ave 6, #08-111")
@@ -235,9 +229,9 @@ public class AddAppointmentCommandTest {
                         .withTags("friends")
                         .withPatientId("1")
                         .build()
-        );
-        final FilteredList<Patient> patients = new FilteredList<>(patientObservableList);
-        ObservableList<Dentist> dentistObservableList = FXCollections.observableArrayList(
+        ));
+
+        final FilteredList<Dentist> dentists = new FilteredList<>(FXCollections.observableArrayList(
                 new DentistBuilder()
                         .withName("Alice Pauline")
                         .withAddress("123, Jurong West Ave 6, #08-111")
@@ -248,9 +242,7 @@ public class AddAppointmentCommandTest {
                         .withTags("Professional")
                         .withDentistId("1")
                         .build()
-        );
-
-        final FilteredList<Dentist> dentists = new FilteredList<>(dentistObservableList);
+        ));
 
         @Override
         public boolean hasAppointment(Appointment appointment) {

@@ -112,6 +112,12 @@ public class AppointmentBuilder {
         return this;
     }
 
+    /**
+     * Builds and returns a new {@code Appointment} with the specified details.
+     * The details must be set using the various "with" methods before calling this method.
+     *
+     * @return A new {@code Appointment} instance with the specified details.
+     */
     public Appointment build() {
         Appointment newAppointment = new Appointment(dentistId, patientId, start, treatment);
         newAppointment.setDentistName(dentistName);

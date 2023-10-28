@@ -124,6 +124,12 @@ public class DentistBuilder {
         return this;
     }
 
+    /**
+     * Builds and returns a new {@code Dentist} with the specified details.
+     * The details must be set using the various "with" methods before calling this method.
+     *
+     * @return A new {@code Dentist} instance with the specified details.
+     */
     public Dentist build() {
         Dentist newDentist = new Dentist(name, phone, email, address, specialization, yoe, tags);
         if (dentistId != 0) {

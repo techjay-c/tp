@@ -150,6 +150,12 @@ public class PatientBuilder {
         return this;
     }
 
+    /**
+     * Builds and returns a new {@code Patient} with the specified details.
+     * The details must be set using the various "with" methods before calling this method.
+     *
+     * @return A new {@code Patient} instance with the specified details.
+     */
     public Patient build() {
         Patient newPatient = new Patient(name, phone, birthdate, gender, remark, treatmentName, address, email, tags);
         if (patientId != 0) {
