@@ -665,7 +665,7 @@ Use case ends.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Instructions for manual testing**
+# **Appendix: Instructions for manual testing**
 
 Given below are instructions to test the app manually.
 
@@ -674,41 +674,182 @@ testers are expected to do more *exploratory* testing.
 
 </div>
 
-### Launch and shutdown
+## Launch and shutdown
 
-1. Initial launch
+### Initial launch
 
-    1. Download the jar file and copy into an empty folder
+1. Download the jar file and copy into an empty folder
+2. Double-click the jar file.<br>
+   Expected: Shows the GUI with a set of sample patients and dentists. The window size may not be
+   optimum. It is recommended to use ToothTracker at full screen.
 
-    1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be
-       optimum.
+### Saving window preferences
 
-1. Saving window preferences
-
-    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
-
-    1. Re-launch the app by double-clicking the jar file.<br>
+1. Resize the window to an optimum size. Move the window to a different location. Close the window. 
+2. Re-launch ToothTracker by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
+4. _{ more test cases …​ }_
 
-### Deleting a person
+## Dentist
 
-1. Deleting a person while all persons are being shown
+### Adding a Dentist
 
-    1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+Adding a dentist into ToothTracker's Dentist List.
 
-    1. Test case: `delete 1`<br>
-       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message.
-       Timestamp in the status bar is updated.
+`add-dentist n/Xander Chua p/98986443 s/Endodontics y/8 `
 
-    1. Test case: `delete 0`<br>
-       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+Expected Output in the Dentist List: New dentist added into the Dentist List. The email and address will contain Default placeholders.
 
-    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-       Expected: Similar to previous.
+Expected Output in the Command Output Box: New dentist added message is displayed with the dentist credentials.
 
-1. _{ more test cases …​ }_
+`add-dentist n/Oliver Lim`
+
+Expected Output in the Command Output Box: Error message for invalid command format, prompting users with correct attributes to include.
+
+### Listing all Dentists
+
+Prerequisite: There is at least 1 Dentist stored in ToothTracker
+`list-dentist`
+
+Expected Output in the Dentist List. All Dentists stored in ToothTracker is displayed.
+
+Expected Output in the Command Output Box: Listed all Dentist!
+
+### Edit a Dentist
+
+Prerequisite: There is at least 1 Dentist stored in ToothTracker. 
+In this example, we assume there are two dentists with the following attributes:<br>
+**Dentist 1**
+* Name: `Xavier Tan`
+* Phone: `90895772`
+* Email: `xaviertan@hotmail.com`
+* Address: `Blk 33 #11-132, Serangoon Road, S335291`
+* Specialization: `Endodontics`
+* Yoe (Years of Experience): `8`
+* Dentist ID: `1`
+* Tag: `Professional`
+
+**Dentist 2**
+* Name: `Bernard Tan`
+* Phone: `98983492`
+* Email: `bernardtan@hotmail.com`
+* Address: `No Address Provided.`
+* Specialization: `Orthodontics`
+* Yoe (Years of Experience): `2`
+* Dentist ID: `4`
+* Tag: `Trainee`
+
+In each of the test case below, we further assume that the state of Dentist objects are always starting from the above attributes.
+
+`edit-dentist 1 n/Xaveric Tan Ming Yuan`
+
+Expected Output in the Dentist List: The name of dentist with ID 1 is changed to `Xaveric Tan Ming Yuan`.
+
+Expected Output in the Command Output Box: Dentist successfully edited message, along with the updated attributes.
+
+`edit-dentist 4 p/98984477 e/btan@yahoo.com`
+
+Expected Output in the Dentist List: The phone of the dentist with ID 4 is changed to `98984477`, and the email is changed to `btan@yahoo.com`.
+
+Expected Output in the Command Output Box: Similar to above.
+
+`edit-dentist 4 h/Blk 653 #03-44, Bishan Ave 4, S622653`
+
+Expected Output in the Dentist List: The address of the dentist with ID 4 is changed to `Blk 653 #03-44, Bishan Ave 4, S622653`.
+
+Expected Output in the Command Output Box: Similar to above.
+
+`edit-dentist 99`
+
+Expected Output in the Dentist List: No dentist is edited.
+
+Expected Output in the Command Output Box: Error details shown for invalid ID provided.
+
+`edit-dentist`
+
+Expected Output in the Dentist List: No dentist is edited.
+
+Expected Output in the Command Output Box: Error details shown for invalid command format.
+
+`edit-dentist 1 n/Bernard Tan`
+
+Expected Output in the Dentist List: No dentist is edited.
+
+Expected Output in the Command Output Box: Error details shown for attempting to edit a dentist into another existing dentist.
+
+
+### Searching for a Dentist by Keyword
+Prerequisite: There are only two dentists named `Xavier Tan` and `Bernard Tan` stored in ToothTracker.
+
+`search-dentist Xavier`
+
+Expected Output in the Dentist List: `Xavier Tan` dentist is displayed.
+
+Expected Output in the Command Output Box: 1 dentists listed!
+
+`search-dentist Bernard`
+
+Expected Output in the Dentist List: `Bernard Tan` dentist is displayed.
+
+Expected Output in the Command Output Box: 1 dentists listed!
+
+`search-dentist Tan`
+
+Expected Output in the Dentist List: `Xavier Tan` and `Bernard Tan` dentists are displayed.
+
+Expected Output in the Command Output Box: 2 dentists listed!
+
+### Searching for a dentist by Dentist ID
+
+Prerequisite: There are only two dentists named `Xavier Tan` and `Bernard Tan` stored in ToothTracker.
+Xavier Tan's Dentist ID is `1` and Bernard Tan's Dentist ID is 4 (Dentists with ID 2 and 3 are assumed to be removed previously).
+
+`search-dentist 1`
+
+Expected Output in the Dentist List: `Xavier Tan` dentist is displayed.
+
+Expected Output in the Command Output Box: Dentist with dentist ID 1 found.
+
+`search-dentist 4`
+
+Expected Output in the Dentist List: `Bernard Tan` dentist is displayed.
+
+Expected Output in the Command Output Box: 1 dentists listed!
+
+`search-dentist 999`
+
+Expected Output in the Dentist List: No dentist displayed.
+
+Expected Output in the Command Output Box: No dentist found with dentist ID 666.
+
+### Deleting a Dentist
+
+Deleting a dentist while all dentists are being shown
+
+Prerequisites: List all dentists using the `list-dentist` command. Multiple dentists may be shown in the dentist list.
+
+`delete-dentist 1`
+
+Expected Output in the Dentist List: Dentist with DENTIST_ID 1 is deleted from the dentist list. 
+
+Expected Output in Command Output Box: Details of the deleted dentist shown.
+
+`delete-dentist -1`
+
+Expected Output in the Dentist List: No dentist is deleted. 
+
+Expected Output in Command Output Box: Error details shown for invalid ID provided.
+
+Other incorrect delete commands to try:<br>
+`delete-dentist`, `delete-dentist x`, `...` <br>(where x is not a valid Dentist ID)
+
+Expected Output in the Dentist List: No dentist is deleted.
+
+Expected Output in Command Output Box:  Error details shown in the Command Output Box to show if it is an Invalid Dentist ID, or if it is an invalid command format.
+
+
+(More to be added)
 
 ### Saving data
 
