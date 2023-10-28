@@ -30,21 +30,27 @@ public class FilterDentistCommandParser implements Parser<FilterDentistCommand> 
 
         String regexPattern = "a/\\s*(\\S+)\\s+k/\\s*(.+)";
 
-        if (!trimmedArgs.matches(regexPattern)) {
-            throw new ParseException("Invalid filter format.");
-        }
-
         Pattern pattern = Pattern.compile(regexPattern);
         Matcher matcher = pattern.matcher(trimmedArgs);
 
-        if (matcher.find()) {
-            String attribute = matcher.group(1);
-            String keywords = matcher.group(2);
-
-            return new FilterDentistCommand(attribute, keywords);
-
-        } else {
-            throw new ParseException("Invalid filter format.");
+        if (!matcher.matches()) {
+            throw new ParseException("Invalid command format! "
+                + "Please follow the valid filter command format, filter-dentist a/(attribute) k/(keywords).");
         }
+
+        String attribute = matcher.group(1);
+        String keywords = matcher.group(2);
+
+        String attributeLowerCase = attribute.toLowerCase();
+        if (!FilterDentistCommand.getAllowedAttributes().contains(attributeLowerCase)) {
+            throw new ParseException(attribute + " is not a valid attribute. Allowed attributes are: "
+                + String.join(", ", FilterDentistCommand.getAllowedAttributes()));
+        }
+
+        if (keywords.trim().isEmpty()) {
+            throw new ParseException("No keywords provided! Please specify keywords for filtering.");
+        }
+
+        return new FilterDentistCommand(attributeLowerCase, keywords);
     }
 }
