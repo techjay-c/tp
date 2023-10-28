@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
@@ -21,20 +22,19 @@
                 <Insets top="5" right="5" bottom="5" left="5" />
             </padding>
             <HBox spacing="5" alignment="CENTER_LEFT">
-                <Label fx:id="id" text="Appointment: " styleClass="details-title">
+                <FlowPane fx:id="appointmentId" alignment="CENTER_LEFT" prefWrapLength="0.0" />
+                <Label fx:id="date" styleClass="details-title" text="\$date" >
                     <minWidth>
                         <!-- Ensures that the label text is never truncated -->
                         <Region fx:constant="USE_PREF_SIZE" />
                     </minWidth>
                 </Label>
-                <Label fx:id="date" styleClass="details-title" text="\$date" />
             </HBox>
-            <Label fx:id="appointmentTime" styleClass="details-text" text="\$appointmentTime" />
+             <Label fx:id="appointmentTime" styleClass="details-text" text="\$appointmentTime" />
             <Label fx:id="dentist" styleClass="details-text" text="\$dentist" />
             <Label fx:id="patient" styleClass="details-text" text="\$patient" />
             <Label fx:id="treatment" styleClass="details-text" text="\$treatment" />
             <Label fx:id="cost" styleClass="details-text" text="\$cost" />
-            <Label fx:id="appointmentId" styleClass="cell_small_label" text="\$appointmentId" />
         </VBox>
     </GridPane>
 </HBox>

@@ -31,7 +31,8 @@ public class TypicalPatients {
             .withBirthdate("01-01-1998")
             .withRemark("Peanut Allergy")
             .withTreatmentName("Cleaning")
-            .withTags("friends").build();
+            .withTags("friends")
+            .build();
     public static final Patient PATIENT_BOB = new PatientBuilder().withName("Benson Meier")
             .withAddress("311, Clementi Ave 2, #02-25")
             .withEmail("johnd@example.com")
