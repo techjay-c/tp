@@ -38,6 +38,7 @@ public class PatientBuilder {
     private Remark remark;
     private TreatmentName treatmentName;
     private Set<Tag> tags;
+    private long patientId;
 
     /**
      * Creates a {@code PatientBuilder} with the default details.
@@ -134,15 +135,27 @@ public class PatientBuilder {
     }
 
     /**
-     * Sets the {@code TreatmentNAme} of the {@code Patient} that we are building.
+     * Sets the {@code TreatmentName} of the {@code Patient} that we are building.
      */
     public PatientBuilder withTreatmentName(String treatmentName) {
         this.treatmentName = new TreatmentName(treatmentName);
         return this;
     }
 
+    /**
+     * Sets the {@code patientID} of the {@code Patient} that we are building.
+     */
+    public PatientBuilder withPatientId(String patientId) {
+        this.patientId = Long.parseLong(patientId);
+        return this;
+    }
+
     public Patient build() {
-        return new Patient(name, phone, birthdate, gender, remark, treatmentName, address, email, tags);
+        Patient newPatient = new Patient(name, phone, birthdate, gender, remark, treatmentName, address, email, tags);
+        if (patientId != 0) {
+            newPatient.setId(patientId);
+        }
+        return newPatient;
     }
 
 }

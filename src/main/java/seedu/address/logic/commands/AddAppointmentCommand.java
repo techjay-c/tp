@@ -6,8 +6,10 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PATIENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TREATMENT;
 
+import java.util.Objects;
 import java.util.function.Predicate;
 
+import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.ParserUtil;
@@ -136,4 +138,29 @@ public class AddAppointmentCommand extends Command {
         }
     }
 
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
+
+        if (!(other instanceof AddAppointmentCommand)) {
+            return false;
+        }
+
+        AddAppointmentCommand otherCommand = (AddAppointmentCommand) other;
+
+        return toAdd.equals(otherCommand.toAdd)
+                && dentistId == otherCommand.dentistId
+                && patientId == otherCommand.patientId
+                && treatmentName.equals(otherCommand.treatmentName)
+                && start.equals(otherCommand.start);
+    }
+
+    @Override
+    public String toString() {
+        return  new ToStringBuilder(this)
+                .add("toAdd", toAdd)
+                .toString();
+    }
 }

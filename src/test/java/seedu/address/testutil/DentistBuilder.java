@@ -32,6 +32,7 @@ public class DentistBuilder {
     private Specialization specialization;
     private Yoe yoe;
     private Set<Tag> tags;
+    private long dentistId;
 
     /**
      * Creates a {@code DentistBuilder} with the default details.
@@ -115,8 +116,20 @@ public class DentistBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code dentistId} of the {@code Dentist} that we are building.
+     */
+    public DentistBuilder withDentistId(String dentistId) {
+        this.dentistId = Long.parseLong(dentistId);
+        return this;
+    }
+
     public Dentist build() {
-        return new Dentist(name, phone, email, address, specialization, yoe, tags);
+        Dentist newDentist = new Dentist(name, phone, email, address, specialization, yoe, tags);
+        if (dentistId != 0) {
+            newDentist.setId(dentistId);
+        }
+        return newDentist;
     }
 
 }

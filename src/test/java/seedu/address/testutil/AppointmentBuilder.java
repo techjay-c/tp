@@ -9,9 +9,9 @@ import seedu.address.model.appointments.AppointmentTime;
 public class AppointmentBuilder {
 
     public static final String DEFAULT_DENTIST_ID = "1";
-    public static final String DEFAULT_PATIENT_ID = "2";
-    public static final String DEFAULT_DENTIST_NAME = "John";
-    public static final String DEFAULT_PATIENT_NAME = "Mary";
+    public static final String DEFAULT_PATIENT_ID = "1";
+    public static final String DEFAULT_DENTIST_NAME = "Alice";
+    public static final String DEFAULT_PATIENT_NAME = "Amy";
     public static final String DEFAULT_START = "2023-10-19T16:00";
     public static final String DEFAULT_DURATION = "PT10H30M";
     public static final String DEFAULT_TREATMENT = "Braces";
