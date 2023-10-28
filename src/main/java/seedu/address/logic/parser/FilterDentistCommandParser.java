@@ -1,12 +1,15 @@
 package seedu.address.logic.parser;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import seedu.address.logic.commands.FilterDentistCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_ATTRIBUTE;
+import static seedu.address.logic.Messages.MESSAGE_NO_KEYWORDS_PROVIDED;
+import static seedu.address.logic.Messages.MESSAGE_USAGE_FILTER_DENTIST;
 
 /**
  * Parses input arguments and creates a new FilterDentistCommand object
@@ -34,8 +37,7 @@ public class FilterDentistCommandParser implements Parser<FilterDentistCommand> 
         Matcher matcher = pattern.matcher(trimmedArgs);
 
         if (!matcher.matches()) {
-            throw new ParseException("Invalid command format! "
-                + "Please follow the valid filter command format, filter-dentist a/(attribute) k/(keywords).");
+            throw new ParseException(MESSAGE_USAGE_FILTER_DENTIST);
         }
 
         String attribute = matcher.group(1);
@@ -43,12 +45,12 @@ public class FilterDentistCommandParser implements Parser<FilterDentistCommand> 
 
         String attributeLowerCase = attribute.toLowerCase();
         if (!FilterDentistCommand.getAllowedAttributes().contains(attributeLowerCase)) {
-            throw new ParseException(attribute + " is not a valid attribute. Allowed attributes are: "
-                + String.join(", ", FilterDentistCommand.getAllowedAttributes()));
+            throw new ParseException(String.format(MESSAGE_INVALID_ATTRIBUTE, attribute,
+                String.join(", ", FilterDentistCommand.getAllowedAttributes())));
         }
 
         if (keywords.trim().isEmpty()) {
-            throw new ParseException("No keywords provided! Please specify keywords for filtering.");
+            throw new ParseException(MESSAGE_NO_KEYWORDS_PROVIDED);
         }
 
         return new FilterDentistCommand(attributeLowerCase, keywords);

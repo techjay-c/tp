@@ -8,6 +8,8 @@ import seedu.address.model.DentistAttributeContainsKeywordsPredicate;
 import seedu.address.model.Model;
 import seedu.address.model.person.dentist.Dentist;
 
+import static seedu.address.logic.Messages.*;
+
 /**
  * Filters the list of dentists based on specific criteria and updates the filtered list.
  */
@@ -49,9 +51,9 @@ public class FilterDentistCommand extends Command {
         String finalMessage;
 
         if (model.getFilteredDentistList().isEmpty()) {
-            finalMessage = String.format("No dentists found with the %s: %s!", attribute, keywords);
+            finalMessage = String.format(MESSAGE_USAGE_FILTER_DENTIST_FAIL, attribute, keywords);
         } else {
-            finalMessage = String.format("Filtered dentists by %s with keywords: %s.", attribute, keywords);
+            finalMessage = String.format(MESSAGE_USAGE_FILTER_DENTIST_SUCCESS, attribute, keywords);
         }
         return new CommandResult(finalMessage);
     }

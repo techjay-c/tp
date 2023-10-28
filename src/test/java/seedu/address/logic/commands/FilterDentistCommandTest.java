@@ -39,18 +39,16 @@ public class FilterDentistCommandTest {
 
         FilterDentistCommand command = new FilterDentistCommand(attribute, keywords);
         CommandResult commandResult = command.execute(model);
-        System.out.println(commandResult);
-
         assertTrue(commandResult.getFeedbackToUser().contains("Filtered dentists by phone with keywords: 98765432."));
     }
 
     @Test
     public void execute_noMatchingDentists_emptyResult() {
-        String attribute = "gender";
+        String attribute = "specialization";
         String keywords = "dummytest";
         FilterDentistCommand command = new FilterDentistCommand(attribute, keywords);
         CommandResult commandResult = command.execute(model);
-        assertTrue(commandResult.getFeedbackToUser().contains("No dentists found with the gender: dummytest!"));
+        assertTrue(commandResult.getFeedbackToUser().contains("No dentists found with the specialization: dummytest."));
     }
 
     @Test
@@ -62,7 +60,7 @@ public class FilterDentistCommandTest {
         CommandResult commandResult = command.execute(model);
         System.out.println(commandResult);
 
-        assertTrue(commandResult.getFeedbackToUser().contains("No dentists found with the : !"));
+        assertTrue(commandResult.getFeedbackToUser().contains("No dentists found with the : ."));
     }
 
     @Test
