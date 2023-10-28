@@ -1,5 +1,8 @@
 package seedu.address.logic.commands;
 
+import static seedu.address.logic.Messages.MESSAGE_USAGE_FILTER_PATIENT_FAIL;
+import static seedu.address.logic.Messages.MESSAGE_USAGE_FILTER_PATIENT_SUCCESS;
+
 import java.util.Set;
 import java.util.function.Predicate;
 
@@ -7,9 +10,6 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.AttributeContainsKeywordsPredicate;
 import seedu.address.model.Model;
 import seedu.address.model.person.patients.Patient;
-
-import static seedu.address.logic.Messages.MESSAGE_USAGE_FILTER_PATIENT_FAIL;
-import static seedu.address.logic.Messages.MESSAGE_USAGE_FILTER_PATIENT_SUCCESS;
 
 /**
  * Filters the list of patients based on specific criteria and updates the filtered list.

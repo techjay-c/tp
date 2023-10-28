@@ -1,5 +1,8 @@
 package seedu.address.logic.commands;
 
+import static seedu.address.logic.Messages.MESSAGE_USAGE_FILTER_DENTIST_FAIL;
+import static seedu.address.logic.Messages.MESSAGE_USAGE_FILTER_DENTIST_SUCCESS;
+
 import java.util.Set;
 import java.util.function.Predicate;
 
@@ -7,8 +10,6 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.DentistAttributeContainsKeywordsPredicate;
 import seedu.address.model.Model;
 import seedu.address.model.person.dentist.Dentist;
-
-import static seedu.address.logic.Messages.*;
 
 /**
  * Filters the list of dentists based on specific criteria and updates the filtered list.

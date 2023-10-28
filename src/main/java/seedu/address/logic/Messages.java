@@ -35,15 +35,17 @@ public class Messages {
     public static final String MESSAGE_NO_SUCH_DENTIST = "There is no dentist in ToothTracker with ID: %1$s";
     public static final String MESSAGE_NO_SUCH_APPOINTMENT = "There is no appointment in ToothTracker with ID: %1$s";
     public static final String MESSAGE_NO_SUCH_TREATMENT = "There is no treatment in ToothTracker with the name: %1$s";
-    public static final String MESSAGE_INVALID_ATTRIBUTE = "%1$s is not a valid attribute. Allowed attributes are: %2$s";
-    public static final String MESSAGE_NO_KEYWORDS_PROVIDED = "No keywords provided! Please specify keywords for filtering.";
-    public static final String MESSAGE_USAGE_FILTER_PATIENT = "Please follow the valid filter command format, " +
-        "filter-patient a/(attribute) k/(keywords).";
+    public static final String MESSAGE_INVALID_ATTRIBUTE = "%1$s is not a valid attribute. "
+        + "Allowed attributes are: %2$s";
+    public static final String MESSAGE_NO_KEYWORDS_PROVIDED = "No keywords provided! "
+        + "Please specify keywords for filtering.";
+    public static final String MESSAGE_USAGE_FILTER_PATIENT = "Please follow the valid filter command format, "
+        + "filter-patient a/(attribute) k/(keywords).";
     public static final String MESSAGE_USAGE_FILTER_PATIENT_FAIL = "No patients found with the %s: %s.";
     public static final String MESSAGE_USAGE_FILTER_PATIENT_SUCCESS = "Filtered patients by %s with keywords: %s.";
 
-    public static final String MESSAGE_USAGE_FILTER_DENTIST = "Please follow the valid filter command format, " +
-        "filter-dentist a/(attribute) k/(keywords).";
+    public static final String MESSAGE_USAGE_FILTER_DENTIST = "Please follow the valid filter command format, "
+        + "filter-dentist a/(attribute) k/(keywords).";
     public static final String MESSAGE_USAGE_FILTER_DENTIST_FAIL = "No dentists found with the %s: %s.";
     public static final String MESSAGE_USAGE_FILTER_DENTIST_SUCCESS = "Filtered dentists by %s with keywords: %s.";
 
