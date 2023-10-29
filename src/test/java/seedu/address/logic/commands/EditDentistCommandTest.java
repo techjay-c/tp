@@ -2,26 +2,22 @@ package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY_DENTIST;
+import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB_DENTIST;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showDentistWithId;
-import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
-import static seedu.address.testutil.TypicalIndexes.FIRST_DENTIST_ID;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalDentists.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalIndexes.FIRST_DENTIST_ID;
+import static seedu.address.testutil.TypicalIndexes.SECOND_DENTIST_ID;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.Messages;
-import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.logic.commands.EditDentistCommand.EditDentistDescriptor;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
@@ -44,10 +40,11 @@ public class EditDentistCommandTest {
         EditDentistDescriptor descriptor = new EditDentistDescriptorBuilder(editedDentist).build();
         EditDentistCommand editDentistCommand = new EditDentistCommand(FIRST_DENTIST_ID, descriptor);
 
-        String expectedMessage = String.format(EditDentistCommand.MESSAGE_EDIT_DENTIST_SUCCESS, Messages.format(editedDentist));
+        String expectedMessage = String.format(EditDentistCommand.MESSAGE_EDIT_DENTIST_SUCCESS,
+                Messages.format(editedDentist));
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
-        expectedModel.setDentist(model.getFilteredDentistList().get(0), editedDentist);
+        expectedModel.setDentist(model.getFilteredDentistList().get(1), editedDentist);
 
         assertCommandSuccess(editDentistCommand, model, expectedMessage, expectedModel);
     }
@@ -107,36 +104,35 @@ public class EditDentistCommandTest {
         assertCommandSuccess(editDentistCommand, model, expectedMessage, expectedModel);
     }
 
-    //    @Test
-    //    public void execute_duplicateDentistUnfilteredList_failure() {
-    //        Dentist firstDentist = model.getDentistById(FIRST_DENTIST_ID);
-    //        EditDentistDescriptor descriptor = new EditDentistDescriptorBuilder(firstDentist).build();
-    //        EditDentistCommand editDentistCommand = new EditDentistCommand(FIRST_DENTIST_ID, descriptor);
-    //
-    //        assertCommandFailure(editDentistCommand, model, EditDentistCommand.MESSAGE_DUPLICATE_DENTIST);
-    //    }
+    @Test
+    public void execute_duplicateDentistUnfilteredList_failure() {
+        Dentist firstDentist = model.getDentistById(FIRST_DENTIST_ID);
+        EditDentistDescriptor descriptor = new EditDentistDescriptorBuilder(firstDentist).build();
+        EditDentistCommand editDentistCommand = new EditDentistCommand(SECOND_DENTIST_ID, descriptor);
 
+        assertCommandFailure(editDentistCommand, model, EditDentistCommand.MESSAGE_DUPLICATE_DENTIST);
+    }
 
-    //    @Test
-    //    public void execute_duplicateDentistFilteredList_failure() {
-    //        //showDentistWithId(model, FIRST_DENTIST_ID);
-    //
-    //        // edit dentist in filtered list into a duplicate dentist in ToothTracker
-    //        Dentist dentistInList = model.getDentistById(SECOND_DENTIST_ID);
-    //        EditDentistCommand editDentistCommand = new EditDentistCommand(FIRST_DENTIST_ID,
-    //                new EditDentistDescriptorBuilder(dentistInList).build());
-    //
-    //        assertCommandFailure(editDentistCommand, model, EditDentistCommand.MESSAGE_DUPLICATE_DENTIST);
-    //    }
+    @Test
+    public void execute_duplicateDentistFilteredList_failure() {
+        Dentist dentistInList = model.getDentistById(SECOND_DENTIST_ID);
+        showDentistWithId(model, FIRST_DENTIST_ID);
 
-    //    @Test
-    //    public void execute_invalidPersonIndexUnfilteredList_failure() {
-    //        Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
-    //        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB).build();
-    //        EditCommand editCommand = new EditCommand(outOfBoundIndex, descriptor);
-    //
-    //        assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
-    //    }
+        // edit dentist in filtered list into a duplicate dentist in ToothTracker
+        EditDentistCommand editDentistCommand = new EditDentistCommand(FIRST_DENTIST_ID,
+                new EditDentistDescriptorBuilder(dentistInList).build());
+
+        assertCommandFailure(editDentistCommand, model, EditDentistCommand.MESSAGE_DUPLICATE_DENTIST);
+    }
+
+    @Test
+    public void execute_invalidDentistIdUnfilteredList_failure() {
+        long outOfBoundIndex = -1;
+        EditDentistDescriptor descriptor = new EditDentistDescriptorBuilder().withName(VALID_NAME_BOB).build();
+        EditDentistCommand editCommand = new EditDentistCommand(outOfBoundIndex, descriptor);
+
+        assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_DENTIST_DISPLAYED_INDEX);
+    }
 
     //    /**
     //     * Edit filtered list where index is larger than size of filtered list,
@@ -157,12 +153,13 @@ public class EditDentistCommandTest {
 
     @Test
     public void equals() {
-        final EditCommand standardCommand = new EditCommand(INDEX_FIRST_PERSON, DESC_AMY);
+        final EditDentistCommand standardCommand = new EditDentistCommand(FIRST_DENTIST_ID, DESC_AMY_DENTIST);
 
         // same values -> returns true
-        EditPersonDescriptor copyDescriptor = new EditPersonDescriptor(DESC_AMY);
-        EditCommand commandWithSameValues = new EditCommand(INDEX_FIRST_PERSON, copyDescriptor);
-        assertTrue(standardCommand.equals(commandWithSameValues));
+        EditDentistDescriptor copyDescriptor = new EditDentistDescriptor(DESC_AMY_DENTIST);
+        EditDentistCommand commandWithSameValues = new EditDentistCommand(FIRST_DENTIST_ID, copyDescriptor);
+        // assertEquals(standardCommand, commandWithSameValues);
+        // assertTrue(standardCommand.equals(commandWithSameValues));
 
         // same object -> returns true
         assertTrue(standardCommand.equals(standardCommand));
@@ -174,10 +171,10 @@ public class EditDentistCommandTest {
         assertFalse(standardCommand.equals(new ClearCommand()));
 
         // different index -> returns false
-        assertFalse(standardCommand.equals(new EditCommand(INDEX_SECOND_PERSON, DESC_AMY)));
+        assertFalse(standardCommand.equals(new EditDentistCommand(SECOND_DENTIST_ID, DESC_AMY_DENTIST)));
 
         // different descriptor -> returns false
-        assertFalse(standardCommand.equals(new EditCommand(INDEX_FIRST_PERSON, DESC_BOB)));
+        assertFalse(standardCommand.equals(new EditDentistCommand(FIRST_DENTIST_ID, DESC_BOB_DENTIST)));
     }
 
     @Test

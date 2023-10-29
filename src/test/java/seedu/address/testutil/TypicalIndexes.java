@@ -10,7 +10,7 @@ public class TypicalIndexes {
     public static final Index INDEX_SECOND_PERSON = Index.fromOneBased(2);
     public static final Index INDEX_THIRD_PERSON = Index.fromOneBased(3);
 
-    public static final long FIRST_DENTIST_ID = 0;
-    public static final long SECOND_DENTIST_ID = 1;
-    public static final long THIRD_DENTIST_ID = 2;
+    public static final long FIRST_DENTIST_ID = 1;
+    public static final long SECOND_DENTIST_ID = 2;
+    public static final long THIRD_DENTIST_ID = 3;
 }
