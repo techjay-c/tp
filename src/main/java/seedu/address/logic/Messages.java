@@ -30,9 +30,12 @@ public class Messages {
     public static final String MESSAGE_DELETE_PATIENT_SUCCESS = "Deleted Patient: %1$s";
     public static final String MESSAGE_DELETE_DENTIST_SUCCESS = "Deleted Dentist: %1$s";
     public static final String MESSAGE_DELETE_APPOINTMENT_SUCCESS = "Deleted Appointment: %1$s";
+    public static final String MESSAGE_DELETE_TREATMENT_SUCCESS = "Deleted Treatment: %1$s";
     public static final String MESSAGE_NO_SUCH_PATIENT = "There is no patient in ToothTracker with ID: %1$s";
     public static final String MESSAGE_NO_SUCH_DENTIST = "There is no dentist in ToothTracker with ID: %1$s";
     public static final String MESSAGE_NO_SUCH_APPOINTMENT = "There is no appointment in ToothTracker with ID: %1$s";
+
+    public static final String MESSAGE_NO_SUCH_TREATMENT = "There is no treatment in ToothTracker with the name: %1$s";
 
     /**
      * Returns an error message indicating the duplicate prefixes.
@@ -90,8 +93,8 @@ public class Messages {
             .append(person.getGender())
             .append("; Remark: ")
             .append(person.getRemark())
-            .append("; Service: ")
-            .append(person.getService())
+            .append("; Treatment: ")
+            .append(person.getTreatmentName())
             .append("; Address: ")
             .append(person.getAddress())
             .append("; Email: ")

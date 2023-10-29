@@ -8,8 +8,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_GENDER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_SERVICE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TREATMENT;
 
 import java.util.Set;
 import java.util.stream.Stream;
@@ -23,9 +23,9 @@ import seedu.address.model.person.Gender;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Remark;
-import seedu.address.model.person.Service;
 import seedu.address.model.person.patients.Patient;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.treatment.TreatmentName;
 
 /**
  * Parses input arguments and creates a new AddCommand object
@@ -46,7 +46,7 @@ public class AddPatientCommandParser implements Parser<AddPatientCommand> {
                 PREFIX_BIRTHDATE,
                 PREFIX_GENDER,
                 PREFIX_REMARK,
-                PREFIX_SERVICE,
+                PREFIX_TREATMENT,
                 PREFIX_ADDRESS,
                 PREFIX_EMAIL,
                 PREFIX_TAG);
@@ -57,7 +57,7 @@ public class AddPatientCommandParser implements Parser<AddPatientCommand> {
             PREFIX_BIRTHDATE,
             // PREFIX_GENDER,
             // PREFIX_REMARK,
-            PREFIX_SERVICE)
+            PREFIX_TREATMENT)
             // PREFIX_ADDRESS,
             // PREFIX_EMAIL)
             || !argMultimap.getPreamble().isEmpty()) {
@@ -71,7 +71,7 @@ public class AddPatientCommandParser implements Parser<AddPatientCommand> {
             PREFIX_BIRTHDATE,
             PREFIX_GENDER,
             PREFIX_REMARK,
-            PREFIX_SERVICE,
+            PREFIX_TREATMENT,
             PREFIX_ADDRESS,
             PREFIX_EMAIL,
             PREFIX_TAG);
@@ -83,14 +83,14 @@ public class AddPatientCommandParser implements Parser<AddPatientCommand> {
         Gender gender = ParserUtil.parseGender(argMultimap.getValue(PREFIX_GENDER).orElse("NA"));
         Remark remark = ParserUtil.parseRemark(
             argMultimap.getValue(PREFIX_REMARK).orElse("NIL"));
-        Service service = ParserUtil.parseService(argMultimap.getValue(PREFIX_SERVICE).get());
+        TreatmentName treatmentName = ParserUtil.parseTreatmentName(argMultimap.getValue(PREFIX_TREATMENT).get());
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL)
             .orElse("NoEmailProvided@ToBeAdded.com"));
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS)
             .orElse("No Address Provided."));
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        Patient patient = new Patient(name, phone, birthdate, gender, remark, service,
+        Patient patient = new Patient(name, phone, birthdate, gender, remark, treatmentName,
             address, email, tagList);
 
         return new AddPatientCommand(patient);

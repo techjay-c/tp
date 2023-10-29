@@ -55,8 +55,8 @@ public class AttributeContainsKeywordsPredicate implements Predicate<Patient> {
             return keywords.equalsIgnoreCase(patient.getName().toString());
         case "remark":
             return keywords.equalsIgnoreCase(patient.getRemark().toString());
-        case "service":
-            return keywords.equalsIgnoreCase(patient.getService().toString());
+        case "treatment":
+            return keywords.equalsIgnoreCase(patient.getTreatmentName().toString());
         case "address":
             return keywords.equalsIgnoreCase(patient.getAddress().toString());
         default:

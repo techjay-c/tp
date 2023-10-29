@@ -50,7 +50,7 @@ public class EditDentistCommand extends Command {
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
-            + PREFIX_EMAIL + "johndoe@example.com"
+            + PREFIX_EMAIL + "johndoe@example.com "
             + PREFIX_SPECIALIZATION + "Orthodontics";
 
     public static final String MESSAGE_EDIT_DENTIST_SUCCESS = "Edited Dentist: %1$s";

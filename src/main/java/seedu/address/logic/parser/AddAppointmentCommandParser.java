@@ -3,8 +3,8 @@ package seedu.address.logic.parser;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DENTIST;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PATIENT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_SERVICE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TREATMENT;
 
 import java.util.stream.Stream;
 
@@ -26,9 +26,9 @@ public class AddAppointmentCommandParser implements Parser<AddAppointmentCommand
      */
     public AddAppointmentCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_DENTIST, PREFIX_PATIENT, PREFIX_START, PREFIX_SERVICE);
+                ArgumentTokenizer.tokenize(args, PREFIX_DENTIST, PREFIX_PATIENT, PREFIX_START, PREFIX_TREATMENT);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_DENTIST, PREFIX_PATIENT, PREFIX_START, PREFIX_SERVICE)
+        if (!arePrefixesPresent(argMultimap, PREFIX_DENTIST, PREFIX_PATIENT, PREFIX_START, PREFIX_TREATMENT)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     AddAppointmentCommand.MESSAGE_USAGE));
@@ -44,8 +44,8 @@ public class AddAppointmentCommandParser implements Parser<AddAppointmentCommand
         } else {
             throw new ParseException("Please enter start time in correct format: yyyy-MM-dd HH:mm");
         }
-        //String duration = argMultimap.getValue(PREFIX_DURATION).get();
-        String treatment = argMultimap.getValue(PREFIX_SERVICE).get();
+
+        String treatment = argMultimap.getValue(PREFIX_TREATMENT).get();
         Appointment appointment = new Appointment(dentist, patient, startParsed, treatment);
         return new AddAppointmentCommand(appointment);
     }
