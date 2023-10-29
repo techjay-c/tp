@@ -243,7 +243,7 @@ This sequence diagram shows the interactions between the various components duri
 ##### Feature Details
 
 1. The user specifies a dentist id that represents a `Dentist` to be edited.
-2. If an invalid dentist id is provided, an error is thrown and the user is prompted to enter the command correctly via an error message.
+2. If an invalid `DENTIST_ID` is provided, an error is thrown and the user is prompted to enter the command correctly via an error message.
 3. The Dentist is cross-referenced in the `Model` to check if it exists. If it does not, then an error is raised to inform the user.
 4. If step 3 completes without any exceptions, then the `Dentist` is successfully deleted.
 
@@ -272,14 +272,14 @@ This sequence diagram shows the interactions between the various components duri
 
 ##### Feature Details
 1. Users initiate a search for a dentist using either a unique `DENTIST_ID` or by inputting specific `KEYWORDS` that might match a dentist's name.
-2. If the user opts for an ID-based search, the system processes the request to return a single record that matches the provided dentist ID.
+2. If the user opts for an ID-based search, the system processes the request to return a single record that matches the provided `DENTIST_ID`.
 3. If keywords are used, the system performs a broader search by comparing the keywords as substrings with the names in the dentist records.
 4. In scenarios where the search criteria do not correspond with any existing records (either no matching ID or keywords), the system generates an error message informing the user of the unsuccessful search attempt.
 5. When matches are found, the system displays a list of dentists whose records meet the search criteria.
 
 ##### Feature Considerations
 
-The `search-dentist` feature in ToothTracker focuses on searching using either a dentist's unique ID or keywords matching a dentist's name,
+The `search-dentist` feature in ToothTracker focuses on searching using either a unique `DENTIST_ID` or keywords matching a dentist's name,
 prioritizing speed and simplicity in accessing dentist records. For more complex searching which requires additional dentist attributes, users
 are recommended to use the `filter-dentist` command instead. This approach ensures a balanced functionality within ToothTracker, offering a balance
 between quick searches for immediate needs while also accommodating more complex and attribute-specific inquiries.
@@ -287,7 +287,7 @@ between quick searches for immediate needs while also accommodating more complex
 #### Filtering a dentist
 
 The `filter-dentist` command in ToothTracker provides users with a more refined search functionality, allowing them to filter dentist records based on 
-specific criteria beyond just DENTIST_ID or name-related keywords. This feature offers a versatile and detailed search capability for users who 
+specific criteria beyond just `DENTIST_ID` or name-related keywords. This feature offers a versatile and detailed search capability for users who 
 require precise results from the dentist records database.
 
 The activity diagram for filtering dentists is illustrated as follows:
@@ -308,14 +308,22 @@ These criteria allow users to search for dentists with specific attributes.
 ##### Feature Considerations
 
 The `filter-dentist` feature in ToothTracker is tailored for users who require precise control over their dentist searches. Unlike the `search-dentist` command, 
-which primarily relies on DENTIST_ID and name-related keywords, the `filter-dentist` command operates by filtering based on specific attributes within a dentist's record.
+which primarily relies on `DENTIST_ID` and name-related keywords, the `filter-dentist` command operates by filtering based on specific attributes within a dentist's record.
 
-To ensure the validity of the filter criteria, the  filter-dentist   command conducts validation checks to confirm that the selected attribute for filtering is a valid attribute 
+To ensure the validity of the filter criteria, the  filter-dentist command conducts validation checks to confirm that the selected attribute for filtering is a valid attribute 
 associated with a dentist's record. 
 
 It is important to note that the filter-dentist feature does not perform validation checks within each attribute to verify whether the entered 
 keyword is of a valid type for that particular attribute. Users are responsible for inputting keywords that are meaningful and applicable to the chosen attribute.
 
+
+### Patient Features
+
+### Appointment Features
+
+### Treatment Features
+
+### General Features
 
 --------------------------------------------------------------------------------------------------------------------
 
