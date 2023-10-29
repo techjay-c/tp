@@ -54,12 +54,12 @@ public class AddPatientCommandParser implements Parser<AddPatientCommand> {
         if (!arePrefixesPresent(argMultimap,
             PREFIX_NAME,
             PREFIX_PHONE,
-            PREFIX_BIRTHDATE,
-            // PREFIX_GENDER,
+            // PREFIX_BIRTHDATE,
             // PREFIX_REMARK,
-            PREFIX_TREATMENT)
+            // PREFIX_TREATMENT,
             // PREFIX_ADDRESS,
-            // PREFIX_EMAIL)
+            // PREFIX_EMAIL,
+            PREFIX_GENDER)
             || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddPatientCommand.MESSAGE_USAGE));
@@ -68,13 +68,13 @@ public class AddPatientCommandParser implements Parser<AddPatientCommand> {
         argMultimap.verifyNoDuplicatePrefixesFor(
             PREFIX_NAME,
             PREFIX_PHONE,
-            PREFIX_BIRTHDATE,
-            PREFIX_GENDER,
-            PREFIX_REMARK,
-            PREFIX_TREATMENT,
+            // PREFIX_BIRTHDATE,
+            // PREFIX_GENDER,
+            // PREFIX_REMARK,
+            // PREFIX_TREATMENT,
+            // PREFIX TAG,
             PREFIX_ADDRESS,
-            PREFIX_EMAIL,
-            PREFIX_TAG);
+            PREFIX_EMAIL);
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());

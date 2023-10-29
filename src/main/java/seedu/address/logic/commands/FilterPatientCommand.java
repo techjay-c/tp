@@ -1,5 +1,9 @@
 package seedu.address.logic.commands;
 
+import static seedu.address.logic.Messages.MESSAGE_USAGE_FILTER_PATIENT_FAIL;
+import static seedu.address.logic.Messages.MESSAGE_USAGE_FILTER_PATIENT_SUCCESS;
+
+import java.util.Set;
 import java.util.function.Predicate;
 
 import seedu.address.commons.util.ToStringBuilder;
@@ -15,8 +19,17 @@ public class FilterPatientCommand extends Command {
     public static final String COMMAND_WORD = "filter-patient";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Filters the list of patients by a specific criteria.\n"
-        + "Parameters: a/ (attribute) k/ (keyword)\n"
-        + "Example: " + COMMAND_WORD + " a/ birthday k/ 06-05-2000";
+        + "Parameters: a/(attribute) k/(keyword)\n"
+        + "Example: " + COMMAND_WORD + " a/birthday k/06-05-2000";
+
+    private static final Set<String> ALLOWED_ATTRIBUTES = Set.of(
+        "phone",
+        "address",
+        "email",
+        "gender",
+        "birthday",
+        "remark",
+        "treatment");
 
     private final String attribute;
     private final String keywords;
@@ -34,16 +47,18 @@ public class FilterPatientCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) {
+
         Predicate<Patient> predicate = new AttributeContainsKeywordsPredicate(attribute, keywords);
         model.updateFilteredPatientList(predicate);
 
-        if (model.getFilteredPatientList().isEmpty()) {
-            String errorMessage = String.format("No patients found with the %s: %s!", attribute, keywords);
-            return new CommandResult(String.format(errorMessage, keywords));
-        }
+        String finalMessage;
 
-        return new CommandResult("Filtered patients by " + attribute + " with: "
-            + keywords);
+        if (model.getFilteredDentistList().isEmpty()) {
+            finalMessage = String.format(MESSAGE_USAGE_FILTER_PATIENT_FAIL, attribute, keywords);
+        } else {
+            finalMessage = String.format(MESSAGE_USAGE_FILTER_PATIENT_SUCCESS, attribute, keywords);
+        }
+        return new CommandResult(finalMessage);
     }
 
     /**
@@ -79,5 +94,9 @@ public class FilterPatientCommand extends Command {
             .add("attribute", attribute)
             .add("keywords", keywords)
             .toString();
+    }
+
+    public static Set<String> getAllowedAttributes() {
+        return ALLOWED_ATTRIBUTES;
     }
 }

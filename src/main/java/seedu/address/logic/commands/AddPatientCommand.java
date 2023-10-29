@@ -44,12 +44,11 @@ public class AddPatientCommand extends Command {
             + PREFIX_REMARK + "Allergic to Peanuts "
             + PREFIX_TREATMENT + "Cleaning "
             + PREFIX_EMAIL + "johntan@gmail.com "
-            + PREFIX_ADDRESS + "60 Jalan Road "
-            + PREFIX_TAG + "hello ";
+            + PREFIX_ADDRESS + "60 Harvey Avenue "
+            + PREFIX_TAG + "Urgent";
 
     public static final String MESSAGE_SUCCESS = "New Patient added: %1$s";
     public static final String MESSAGE_DUPLICATE_PATIENT = "This Patient already exists in ToothTracker";
-    public static final String MESSAGE_INVALID_TREATMENT = "This Treatment does not exist in ToothTracker.";
 
     private final Patient toAdd;
 
@@ -67,10 +66,6 @@ public class AddPatientCommand extends Command {
 
         if (model.hasPatient(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_PATIENT);
-        }
-
-        if (!model.hasTreatmentName(toAdd.getTreatmentName())) {
-            throw new CommandException(MESSAGE_INVALID_TREATMENT);
         }
 
         model.addPatient(toAdd);
