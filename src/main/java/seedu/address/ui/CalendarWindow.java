@@ -137,7 +137,8 @@ public class CalendarWindow extends UiPart<Stage> {
         Entry<Appointment> entry = new Entry<>();
 
         // Combine dentist and patient names for title
-        String title = "Dentist: " + appointment.getDentistName() + " Patient: " + appointment.getPatientName();
+        String title = "[ID:" + appointment.getId() + "]"
+                + " P: " + appointment.getPatientName() + ", D: " + appointment.getDentistName();
         entry.setTitle(title);
 
         // Set start and end times
