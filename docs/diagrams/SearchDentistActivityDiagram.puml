@@ -4,7 +4,7 @@ start
 :User executes "search-dentist" command with either ID or keyword;
 
 ' Check the command's validity
-if (Valid command?) then (yes)
+if (Valid command?) then ([yes])
     :Parse command arguments;
 
     ' Decide the search type based on the parsed arguments
@@ -13,9 +13,9 @@ if (Valid command?) then (yes)
         :Finds dentist record by ID;
 
         ' Decision point after search attempt
-        if (Dentist record exists?) then (yes)
+        if (Dentist record exists?) then ([yes])
             :Display dentist record;
-        else (no)
+        else ([no])
             :Show message "No dentist found with dentist ID [ID]";
         endif
     else ([no])
@@ -23,13 +23,13 @@ if (Valid command?) then (yes)
         :Search dentist records by keywords;
 
         ' Decision point after search attempt
-        if (Matching records found?) then (yes)
+        if (Matching records found?) then ([yes])
             :Display all matching dentist records;
-        else (no)
+        else ([no])
             :Show message "0 dentists listed!";
         endif
     endif
-else (no)
+else ([no])
     :Display error message for invalid command;
 endif
 
