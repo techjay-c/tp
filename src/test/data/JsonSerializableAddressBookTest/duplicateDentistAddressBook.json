@@ -2,7 +2,7 @@
   "persons" : [],
   "dentists": [ {
     "name": "Duplicate Dentist",
-    "phone": "9482424",
+    "phone": "99999999",
     "email": "hans@example.com",
     "address": "The Great Clinic",
     "specialization": "Orthodontics",
@@ -11,7 +11,7 @@
   },
   {
     "name": "Duplicate Dentist",
-    "phone": "9482424",
+    "phone": "99999999",
     "email": "hans@example.com",
     "address": "The Great Clinic",
     "specialization": "Orthodontics",
