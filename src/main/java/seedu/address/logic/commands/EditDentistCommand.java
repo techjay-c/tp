@@ -84,7 +84,7 @@ public class EditDentistCommand extends Command {
             }
             Dentist editedDentist = createEditedDentist(dentistToEdit, editDentistDescriptor);
 
-            if (!dentistToEdit.isSamePerson(editedDentist) && model.hasPerson(editedDentist)) {
+            if (!dentistToEdit.isSameDentist(editedDentist) && model.hasDentist(editedDentist)) {
                 throw new CommandException(MESSAGE_DUPLICATE_DENTIST);
             }
 
@@ -93,8 +93,7 @@ public class EditDentistCommand extends Command {
             return new CommandResult(String.format(MESSAGE_EDIT_DENTIST_SUCCESS, Messages.format(editedDentist)));
 
         } catch (Exception e) {
-            throw new CommandException("An error occurred while editing the dentist: " + e.getMessage()
-                    + " Please use list-dentists or search-dentist to get the intended Dentist on the screen first.");
+            throw new CommandException(e.getMessage());
         }
 
     }
