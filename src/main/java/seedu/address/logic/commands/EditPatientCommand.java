@@ -91,7 +91,7 @@ public class EditPatientCommand extends Command {
             }
             Patient editedPatient = createEditedPatient(patientToEdit, editPatientDescriptor);
 
-            if (!patientToEdit.isSamePerson(editedPatient) && model.hasPerson(editedPatient)) {
+            if (!patientToEdit.isSamePatient(editedPatient) && model.hasPatient(editedPatient)) {
                 throw new CommandException(MESSAGE_DUPLICATE_PATIENT);
             }
 
@@ -101,9 +101,7 @@ public class EditPatientCommand extends Command {
                 String.format(MESSAGE_EDIT_PATIENT_SUCCESS, Messages.format(editedPatient)));
 
         } catch (Exception e) {
-            throw new CommandException(
-                "An error occurred while editing the patient: " + e.getMessage()
-                    + " Please use list-patients or search-patient to get the intended Patient on the screen first.");
+            throw new CommandException(e.getMessage());
         }
 
     }
