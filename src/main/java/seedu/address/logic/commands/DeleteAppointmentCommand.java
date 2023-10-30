@@ -9,6 +9,7 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.appointments.Appointment;
+import seedu.address.ui.CalendarWindow;
 
 /**
  * Deletes an appointment identified using it's displayed index from ToothTracker.
@@ -25,6 +26,8 @@ public class DeleteAppointmentCommand extends Command {
     public static final String MESSAGE_DELETE_APPOINTMENT_SUCCESS = "Deleted Appointment: %1$s";
 
     private final long targetId;
+
+    private final CalendarWindow calendarWindow = CalendarWindow.getInstance();
 
     /**
      * Constructs a DeleteAppointmentCommand to delete an appointment from ToothTracker.
@@ -47,6 +50,8 @@ public class DeleteAppointmentCommand extends Command {
             }
 
             model.deleteAppointment(appointmentToDelete);
+            calendarWindow.deleteAppointment(appointmentToDelete);
+
             return new CommandResult(
                     String.format(Messages.MESSAGE_DELETE_APPOINTMENT_SUCCESS, Messages.format(appointmentToDelete)));
 
