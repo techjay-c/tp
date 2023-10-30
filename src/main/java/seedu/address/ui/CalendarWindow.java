@@ -174,7 +174,7 @@ public class CalendarWindow extends UiPart<Stage> {
         Calendar appointmentCalendar = getCalendar();
         // Clear old entries
         appointmentCalendar.clear();
-        // Check if CalendarView has calendars before accessing it
+
         for (Appointment appt : appointments) {
             Entry<Appointment> entry = convertToEntry(appt);
             calendarEntries.add(entry);
@@ -189,7 +189,6 @@ public class CalendarWindow extends UiPart<Stage> {
      * @param appointment Appointment to be removed.
      */
     public void deleteAppointment(Appointment appointment) {
-        System.out.println("Inside delete appointment");
         // Find the entry
         Entry<Appointment> entryToRemove = calendarEntries.stream()
                 .filter(e -> e.getUserObject().equals(appointment))
