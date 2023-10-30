@@ -171,11 +171,9 @@ public class CalendarWindow extends UiPart<Stage> {
      * @param appointments List of appointments to be loaded.
      */
     public void loadAppointments(List<Appointment> appointments) {
-        // Clear old entries
-        calendarEntries.clear();
-
         Calendar appointmentCalendar = getCalendar();
-
+        // Clear old entries
+        appointmentCalendar.clear();
         // Check if CalendarView has calendars before accessing it
         for (Appointment appt : appointments) {
             Entry<Appointment> entry = convertToEntry(appt);
