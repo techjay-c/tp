@@ -51,7 +51,17 @@ public class SampleDataUtil {
     public static Treatment[] getSampleTreatments() {
         return new Treatment[]{
             new Treatment(new TreatmentName("Braces"), new TreatmentCost("1080"),
-                new TreatmentTime("03:00"))
+                new TreatmentTime("03:00")),
+            new Treatment(new TreatmentName("Whitening"), new TreatmentCost("999"),
+                new TreatmentTime("01:30")),
+            new Treatment(new TreatmentName("WisdomTooth"), new TreatmentCost("1050"),
+                new TreatmentTime("02:00")),
+            new Treatment(new TreatmentName("Scaling"), new TreatmentCost("9999"),
+                new TreatmentTime("03:00")),
+            new Treatment(new TreatmentName("Root Canal"), new TreatmentCost("1432"),
+                new TreatmentTime("05:00")),
+            new Treatment(new TreatmentName("Polishing"), new TreatmentCost("4000"),
+                new TreatmentTime("04:00"))
         };
     }
 
