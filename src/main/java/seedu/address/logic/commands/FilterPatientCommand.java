@@ -35,9 +35,9 @@ public class FilterPatientCommand extends Command {
     private final String keywords;
 
     /**
-     * Constructs a FilterPatientCommand to filter a patient based on the provided attribute and keywords.
+     * Constructs a FilterPatientCommand to filter patients based on the provided attribute and keywords.
      *
-     * @param attribute The predicate by which the patient should be filtered.
+     * @param attribute The attribute by which the patients should be filtered.
      * @param keywords  A list of keywords to match against the specified attribute.
      */
     public FilterPatientCommand(String attribute, String keywords) {
@@ -45,6 +45,12 @@ public class FilterPatientCommand extends Command {
         this.keywords = keywords;
     }
 
+    /**
+     * Executes the 'filter-patient' command, applying the filter and updating the patient list.
+     *
+     * @param model The model to execute the command on.
+     * @return The result of the command execution, including success or failure messages.
+     */
     @Override
     public CommandResult execute(Model model) {
 
@@ -53,7 +59,7 @@ public class FilterPatientCommand extends Command {
 
         String finalMessage;
 
-        if (model.getFilteredDentistList().isEmpty()) {
+        if (model.getFilteredPatientList().isEmpty()) {
             finalMessage = String.format(MESSAGE_USAGE_FILTER_PATIENT_FAIL, attribute, keywords);
         } else {
             finalMessage = String.format(MESSAGE_USAGE_FILTER_PATIENT_SUCCESS, attribute, keywords);
@@ -96,6 +102,12 @@ public class FilterPatientCommand extends Command {
             .toString();
     }
 
+
+    /**
+     * Gets the set of allowed attributes that can be used for filtering patients.
+     *
+     * @return A set of allowed attribute names.
+     */
     public static Set<String> getAllowedAttributes() {
         return ALLOWED_ATTRIBUTES;
     }

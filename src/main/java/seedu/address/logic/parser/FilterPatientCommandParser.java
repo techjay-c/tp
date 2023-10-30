@@ -44,7 +44,15 @@ public class FilterPatientCommandParser implements Parser<FilterPatientCommand> 
         String keywords = matcher.group(2);
 
         String attributeLowerCase = attribute.toLowerCase();
-        if (!FilterPatientCommand.getAllowedAttributes().contains(attributeLowerCase)) {
+
+        if (FilterPatientCommand.getAllowedAttributes().contains(attributeLowerCase)) {
+            if ("experience".equals(attributeLowerCase)) {
+                if (!areKeywordsNumeric(keywords)) {
+                    throw new ParseException(
+                        "Invalid keywords for attribute 'experience'. Keywords must be numeric.");
+                }
+            }
+        } else {
             throw new ParseException(String.format(MESSAGE_INVALID_ATTRIBUTE, attribute,
                 String.join(", ", FilterPatientCommand.getAllowedAttributes())));
         }
@@ -54,5 +62,14 @@ public class FilterPatientCommandParser implements Parser<FilterPatientCommand> 
         }
 
         return new FilterPatientCommand(attributeLowerCase, keywords);
+    }
+
+    private boolean areKeywordsNumeric(String keywords) {
+        try {
+            Integer.parseInt(keywords);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 }
