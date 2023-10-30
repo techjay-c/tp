@@ -42,23 +42,32 @@ public class AttributeContainsKeywordsPredicate implements Predicate<Patient> {
 
         switch (attribute.toLowerCase()) {
         case "gender":
-            return keywords.equalsIgnoreCase(patient.getGender().toString());
+            String gender = patient.getGender().toString().toLowerCase();
+            return gender.contains(keywords.toLowerCase());
         case "birthday":
-            return keywords.equalsIgnoreCase(patient.getBirthdate().toString());
+            String bday = patient.getBirthdate().toString().toLowerCase();
+            return bday.contains(keywords.toLowerCase());
         case "email":
-            return keywords.equalsIgnoreCase(patient.getEmail().toString());
+            String email = patient.getEmail().toString().toLowerCase();
+            return email.contains(keywords.toLowerCase());
         case "phone":
-            return keywords.equalsIgnoreCase(patient.getPhone().toString());
+            String phone = patient.getPhone().toString().toLowerCase();
+            return phone.contains(keywords.toLowerCase());
         case "tags":
-            return keywords.equalsIgnoreCase(patient.getTags().toString());
+            String tags = patient.getTags().toString().toLowerCase();
+            return tags.contains(keywords.toLowerCase());
         case "name":
-            return keywords.equalsIgnoreCase(patient.getName().toString());
+            String name = patient.getName().toString().toLowerCase();
+            return name.contains(keywords.toLowerCase());
         case "remark":
-            return keywords.equalsIgnoreCase(patient.getRemark().toString());
+            String remark = patient.getRemark().toString().toLowerCase();
+            return remark.contains(keywords.toLowerCase());
         case "treatment":
-            return keywords.equalsIgnoreCase(patient.getTreatmentName().toString());
+            String treatment = patient.getTreatmentName().toString().toLowerCase();
+            return treatment.contains(keywords.toLowerCase());
         case "address":
-            return keywords.equalsIgnoreCase(patient.getAddress().toString());
+            String add = patient.getAddress().toString().toLowerCase();
+            return add.contains(keywords.toLowerCase());
         default:
             return false;
         }

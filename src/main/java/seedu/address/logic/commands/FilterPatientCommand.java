@@ -29,6 +29,8 @@ public class FilterPatientCommand extends Command {
         "gender",
         "birthday",
         "remark",
+        "tags",
+        "name",
         "treatment");
 
     private final String attribute;
