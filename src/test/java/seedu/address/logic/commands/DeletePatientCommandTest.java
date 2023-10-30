@@ -3,6 +3,8 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
@@ -67,6 +69,42 @@ public class DeletePatientCommandTest {
     void execute_zeroId_throwsCommandException() {
         DeletePatientCommand deletePatientCommand = new DeletePatientCommand(0L);
         assertThrows(CommandException.class, () -> deletePatientCommand.execute(new ModelManager()));
+    }
+
+    @Test
+    void execute_multipleDeletions_success() throws CommandException {
+        Patient patientOne = new PatientBuilder()
+            .withName("John Doe")
+            .withPhone("91110000")
+            .withBirthdate("03-02-1999")
+            .withGender("M")
+            .withRemark("Peanut Allergy")
+            .withTreatmentName("Cleaning")
+            .withAddress("128A Rodeo Drive")
+            .withEmail("johndoe@gmail.com")
+            .withTags("new")
+            .build();
+
+        Patient patientTwo = new PatientBuilder()
+            .withName("Mike Lim")
+            .withPhone("90998766")
+            .withBirthdate("10-10-2000")
+            .withGender("M")
+            .withRemark("No Allergy")
+            .withTreatmentName("Cleaning")
+            .withAddress("2 Harvey Drive")
+            .withEmail("mike@gmail.com")
+            .withTags("new")
+            .build();
+
+        model.addPatient(patientOne);
+        model.addPatient(patientTwo);
+
+        DeletePatientCommand deleteFirstPatient = new DeletePatientCommand(patientOne.getId());
+        deleteFirstPatient.execute(model);
+
+        assertNull(model.getPatientById(patientOne.getId()));
+        assertNotNull(model.getPatientById(patientTwo.getId()));
     }
 
     @Test
