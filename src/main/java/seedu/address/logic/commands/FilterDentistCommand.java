@@ -19,7 +19,7 @@ public class FilterDentistCommand extends Command {
     public static final String COMMAND_WORD = "filter-dentist";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Filters the list of dentists by a specific criteria.\n"
-        + "Parameters: a/(attribute) k/(keyword)\n"
+        + "Parameters: a/ATTRIBUTE k/KEYWORD\n"
         + "Example: " + COMMAND_WORD + " a/phone k/98667722";
 
     private static final Set<String> ALLOWED_ATTRIBUTES = Set.of(

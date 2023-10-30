@@ -207,11 +207,11 @@ The `add-dentist` command creates a new dentist record in ToothTracker. This com
 
 The activity diagram for creating a new dentist is illustrated as follows:
 
-![AddPatientActivityDiagram](images/AddPatientActivityDiagram.png)
+![AddDentistActivityDiagram](images/AddDentistActivityDiagram.png)
 
 This sequence diagram shows the interactions between the various components during the execution of the `add-dentist` command:
 
-![AddPatientSequenceDiagram](images/AddPatientSequenceDiagram.png)
+![AddDentistSequenceDiagram](images/AddDentistSequenceDiagram.png)
 
 ##### Feature Details
 
@@ -243,7 +243,7 @@ This sequence diagram shows the interactions between the various components duri
 ##### Feature Details
 
 1. The user specifies a dentist id that represents a `Dentist` to be edited.
-2. If an invalid dentist id is provided, an error is thrown and the user is prompted to enter the command correctly via an error message.
+2. If an invalid `DENTIST_ID` is provided, an error is thrown and the user is prompted to enter the command correctly via an error message.
 3. The Dentist is cross-referenced in the `Model` to check if it exists. If it does not, then an error is raised to inform the user.
 4. If step 3 completes without any exceptions, then the `Dentist` is successfully deleted.
 
@@ -272,65 +272,58 @@ This sequence diagram shows the interactions between the various components duri
 
 ##### Feature Details
 1. Users initiate a search for a dentist using either a unique `DENTIST_ID` or by inputting specific `KEYWORDS` that might match a dentist's name.
-2. If the user opts for an ID-based search, the system processes the request to return a single record that matches the provided dentist ID.
+2. If the user opts for an ID-based search, the system processes the request to return a single record that matches the provided `DENTIST_ID`.
 3. If keywords are used, the system performs a broader search by comparing the keywords as substrings with the names in the dentist records.
 4. In scenarios where the search criteria do not correspond with any existing records (either no matching ID or keywords), the system generates an error message informing the user of the unsuccessful search attempt.
 5. When matches are found, the system displays a list of dentists whose records meet the search criteria.
 
 ##### Feature Considerations
 
-The `search-dentist` feature in ToothTracker focuses on searching using either a dentist's unique ID or keywords matching a dentist's name,
+The `search-dentist` feature in ToothTracker focuses on searching using either a unique `DENTIST_ID` or keywords matching a dentist's name,
 prioritizing speed and simplicity in accessing dentist records. For more complex searching which requires additional dentist attributes, users
 are recommended to use the `filter-dentist` command instead. This approach ensures a balanced functionality within ToothTracker, offering a balance
 between quick searches for immediate needs while also accommodating more complex and attribute-specific inquiries.
 
+#### Filtering a dentist
 
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the address book, such
-as `list`, will usually not call `Model#commitAddressBook()`, `Model#undoAddressBook()` or `Model#redoAddressBook()`.
-Thus, the `addressBookStateList` remains unchanged.
+The `filter-dentist` command in ToothTracker provides users with a more refined search functionality, allowing them to filter dentist records based on 
+specific criteria beyond just `DENTIST_ID` or name-related keywords. This feature offers a versatile and detailed search capability for users who 
+require precise results from the dentist records database.
 
-![UndoRedoState4](images/UndoRedoState4.png)
+The activity diagram for filtering dentists is illustrated as follows:
 
-Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Since the `currentStatePointer` is not
-pointing at the end of the `addressBookStateList`, all address book states after the `currentStatePointer` will be
-purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern
-desktop applications follow.
+![FilterDentistActivityDiagram](images/FilterDentistActivityDiagram.png)
 
-![UndoRedoState5](images/UndoRedoState5.png)
+This sequence diagram shows the interactions between the various components during the execution of the `filter-dentist` command:
 
-The following activity diagram summarizes what happens when a user executes a new command:
+![FilterDentistSequenceDiagram](images/FilterDentistSequenceDiagram.png)
 
-<img src="images/CommitActivityDiagram.png" width="250" />
+##### Feature Details
+1. Users initiate a filter for a dentist by providing various filter criteria such as SPECIALIZATION, EXPERIENCE, TAGS, and more. 
+These criteria allow users to search for dentists with specific attributes.
+2. ToothTracker processes the user's filter criteria and matches them against the dentist records in the database.
+3. Dentists that meet the filter criteria are displayed as search results, providing users with a list of dentists that fulfill their specific requirements.
+4. If no matches are found for the given filter criteria, the system informs the user that no results were found based on the specified filters.
 
-The following activity diagram summarizes what happens when a user executes an `add-appointment` command:
+##### Feature Considerations
 
-<img src="images/AddAppointmentActivityDiagram.png" width="750" />
+The `filter-dentist` feature in ToothTracker is tailored for users who require precise control over their dentist searches. Unlike the `search-dentist` command, 
+which primarily relies on `DENTIST_ID` and name-related keywords, the `filter-dentist` command operates by filtering based on specific attributes within a dentist's record.
 
-THe following activity diagram summarizes what happens when a user executes an `add-dentist` command.
+To ensure the validity of the filter criteria, the  filter-dentist command conducts validation checks to confirm that the selected attribute for filtering is a valid attribute 
+associated with a dentist's record. 
 
-<img src="images/AddDentistActivityDiagram.png" width="350" />
+It is important to note that the filter-dentist feature does not perform validation checks within each attribute to verify whether the entered 
+keyword is of a valid type for that particular attribute. Users are responsible for inputting keywords that are meaningful and applicable to the chosen attribute.
 
 
-#### Design considerations:
+### Patient Features
 
-**Aspect: How undo & redo executes:**
+### Appointment Features
 
-* **Alternative 1 (current choice):** Saves the entire address book.
-    * Pros: Easy to implement.
-    * Cons: May have performance issues in terms of memory usage.
+### Treatment Features
 
-* **Alternative 2:** Individual command knows how to undo/redo by
-  itself.
-    * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
-    * Cons: We must ensure that the implementation of each individual command are correct.
-
-_{more aspects and alternatives to be added}_
-
-### \[Proposed\] Data archiving
-
-_{Explain here how the data archiving feature will be implemented}_
->>>>>>> add7923622d294af67e9a28505cc035d7db17168
-
+### General Features
 
 --------------------------------------------------------------------------------------------------------------------
 
