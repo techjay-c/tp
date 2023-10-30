@@ -19,7 +19,7 @@ public class FilterPatientCommand extends Command {
     public static final String COMMAND_WORD = "filter-patient";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Filters the list of patients by a specific criteria.\n"
-        + "Parameters: a/(attribute) k/(keyword)\n"
+        + "Parameters: a/ATTRIBUTE k/KEYWORD\n"
         + "Example: " + COMMAND_WORD + " a/birthday k/06-05-2000";
 
     private static final Set<String> ALLOWED_ATTRIBUTES = Set.of(
