@@ -3,8 +3,6 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
@@ -70,7 +68,7 @@ public class DeletePatientCommandTest {
         DeletePatientCommand deletePatientCommand = new DeletePatientCommand(0L);
         assertThrows(CommandException.class, () -> deletePatientCommand.execute(new ModelManager()));
     }
-    
+
     @Test
     void equals() {
         long firstId = 1L;
