@@ -64,6 +64,9 @@ public class EditPatientCommand extends Command {
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_PATIENT = "This patient already exists in the address book.";
 
+    public static final String MESSAGE_INVALID_TREATMENT = "This treatment is invalid";
+
+
     private final long patientId;
     private final EditPatientDescriptor editPatientDescriptor;
 
@@ -95,6 +98,11 @@ public class EditPatientCommand extends Command {
                 throw new CommandException(MESSAGE_DUPLICATE_PATIENT);
             }
 
+            String treatmentName = editedPatient.getTreatmentName().toString();
+            if (!model.hasTreatmentName(editedPatient.getTreatmentName()) && !treatmentName.equals(
+                "NIL")) {
+                throw new CommandException(MESSAGE_INVALID_TREATMENT);
+            }
             model.setPatient(patientToEdit, editedPatient);
             model.updateFilteredPatientList(PREDICATE_SHOW_ALL_PATIENTS);
             return new CommandResult(
