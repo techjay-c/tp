@@ -51,8 +51,8 @@ public class CommandTestUtil {
 
 
     // Valid Fields - Dentist Specific
-    public static final String VALID_SPECIALIZATION_AMY = "Orthopaedics";
-    public static final String VALID_SPECIALIZATION_BOB = "Paediatrics";
+    public static final String VALID_SPECIALIZATION_AMY = "ORTHODONTICS";
+    public static final String VALID_SPECIALIZATION_BOB = "ENDODONTICS";
     public static final String VALID_YOE_AMY = "12";
     public static final String VALID_YOE_BOB = "4";
     public static final String VALID_DENTIST_ID_AMY = "1";

@@ -76,7 +76,7 @@ public class DeleteDentistCommandTest {
             .withPhone("98765432")
             .withEmail("johndoe@gmail.com")
             .withAddress("456, Orchard Road, #12-345")
-            .withSpecialization("Orthodontics")
+            .withSpecialization("ORTHODONTICS")
             .withYoe("5")
             .withTags("friendly", "experienced")
             .build();
@@ -86,7 +86,7 @@ public class DeleteDentistCommandTest {
             .withPhone("90776655")
             .withEmail("aloha@gmail.com")
             .withAddress("90 Sophia Road")
-            .withSpecialization("Testing")
+            .withSpecialization("ENDODONTICS")
             .withYoe("2")
             .withTags("patient", "gentle")
             .build();
