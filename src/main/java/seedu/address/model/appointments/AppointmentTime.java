@@ -93,12 +93,23 @@ public class AppointmentTime {
         return startTimeToString() + " - " + endTimeToString();
     }
 
+    /**
+     * Converts the appointment start time to a formatted string representation.
+     *
+     * @return A string representation of the appointment start time in the format "yyyy-MM-dd HH:mm".
+     */
     public String startString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         String formattedDateTime = start.format(formatter);
         return formattedDateTime;
     }
 
+    /**
+     * Converts the duration of the appointment to a formatted string representation.
+     *
+     * @return A string representation of the duration of the appointment in the format "X hours and Y minutes",
+     *         where X is the number of hours and Y is the number of minutes.
+     */
     public String durationString() {
         long hours = duration.toHours();
         long minutes = duration.toMinutesPart();

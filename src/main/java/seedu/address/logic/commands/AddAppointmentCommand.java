@@ -8,7 +8,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TREATMENT;
 
 import java.time.DateTimeException;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeParseException;
 import java.util.function.Predicate;
 
 import seedu.address.commons.util.ToStringBuilder;
@@ -45,11 +44,11 @@ public class AddAppointmentCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New Appointment added: %1$s";
 
-    public static final String MESSAGE_CLASHING_DENTIST = "Dentist already has an" +
-            " existing appointment in this time slot.";
+    public static final String MESSAGE_CLASHING_DENTIST = "Dentist already has an"
+            + " existing appointment in this time slot.";
 
-    public static final String MESSAGE_CLASHING_PATIENT = "Patient already has an" +
-            " existing appointment in this time slot.";
+    public static final String MESSAGE_CLASHING_PATIENT = "Patient already has an"
+            + " existing appointment in this time slot.";
 
     private final Appointment toAdd;
     private final long dentistId;
