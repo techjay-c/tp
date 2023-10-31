@@ -27,6 +27,8 @@ public class FilterDentistCommand extends Command {
         "address",
         "email",
         "specialization",
+        "name",
+        "tags",
         "experience");
 
     private final String attribute;
