@@ -94,8 +94,8 @@ public class Specialization {
         for (String specs : recognizedSpecs) {
             sb.append(specs).append("\n");
         }
-        sb.append("\nSource: "
-                + "https://www.healthprofessionals.gov.sg/dsab/specialist-training/list-of-recognised-specialties"
+        sb.append("\nSource:"
+                + " https://www.healthprofessionals.gov.sg/dsab/specialist-training/list-of-recognised-specialties"
                 + "\nPlease contact ToothTracker developers if you need to modify the recognized specializations!");
         return sb.toString();
     }
