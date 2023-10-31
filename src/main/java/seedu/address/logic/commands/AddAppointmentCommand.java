@@ -28,7 +28,7 @@ import seedu.address.ui.CalendarWindow;
 public class AddAppointmentCommand extends Command {
     public static final String COMMAND_WORD = "add-appointment";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an appointment to ToothTracker. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an appointment to ToothTracker. \n"
             + "Parameters: "
             + PREFIX_DENTIST + "DENTIST "
             + PREFIX_PATIENT + "PATIENT "
@@ -42,8 +42,13 @@ public class AddAppointmentCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New Appointment added: %1$s";
 
-    public static final String MESSAGE_CLASHING_APPOINTMENT = "Dentist or patient already has"
-            + " existing appointment in this time slot.";
+    public static final String MESSAGE_CLASHING_DENTIST = "Dentist already has an" +
+            " existing appointment in this time slot.";
+
+    public static final String MESSAGE_CLASHING_PATIENT = "Patient already has an" +
+            " existing appointment in this time slot.";
+
+    public static final String MESSAGE_NO_DENTIST = "No dentist with ";
 
     private final Appointment toAdd;
     private final long dentistId;
@@ -102,9 +107,7 @@ public class AddAppointmentCommand extends Command {
         checkValidPersons(model);
 
 
-        if (model.hasAppointment(toAdd)) {
-            throw new CommandException(MESSAGE_CLASHING_APPOINTMENT);
-        }
+        checkClash(model);
 
         model.addAppointment(toAdd);
         calendarWindow.addAppointment(toAdd);
@@ -122,10 +125,12 @@ public class AddAppointmentCommand extends Command {
     public void checkValidPersons(Model model) throws CommandException {
         if (dentistId >= 0) {
 
+            Predicate<Dentist> dentistPredicate = dentist -> true;
+            model.updateFilteredDentistList(dentistPredicate);
             Dentist dentist = model.getDentistById(dentistId);
 
             if (dentist == null) {
-                throw new CommandException("No dentist with ID " + dentistId);
+                throw new CommandException("No dentist with ID " + dentistId + ".");
             }
             toAdd.setDentistName(dentist.getName().fullName);
         } else {
@@ -133,6 +138,9 @@ public class AddAppointmentCommand extends Command {
         }
 
         if (patientId >= 0) {
+
+            Predicate<Patient> patientPredicate = patient -> true;
+            model.updateFilteredPatientList(patientPredicate);
             Patient patient = model.getPatientById(patientId);
             if (patient == null) {
                 throw new CommandException("No patient with ID " + patientId);
@@ -140,6 +148,40 @@ public class AddAppointmentCommand extends Command {
             toAdd.setPatientName(patient.getName().fullName);
         } else {
             throw new CommandException("Patient ID must be valid: ID must be positive.");
+        }
+    }
+
+    /**
+     * Checks for appointment clashes in the given model and throws a CommandException if a clash is detected.
+     * The method uses the provided 'toAdd' appointment and compares its time with existing appointments in the model.
+     *
+     * @param model The model containing the list of appointments to check for clashes.
+     * @throws CommandException If a clash with another appointment is detected:
+     *                         - If the dentist ID clashes with another appointment's dentist ID,
+     *                              throws MESSAGE_CLASHING_DOCTORS.
+     *                         - If the patient ID clashes with another appointment's patient ID,
+     *                              throws MESSAGE_CLASHING_PATIENTS.
+     */
+    public void checkClash(Model model) throws CommandException {
+        if (model.hasAppointment(toAdd)) {
+            Predicate<Appointment> appointmentPredicate = toAdd::isSameAppointment;
+            model.updateFilteredAppointmentList(appointmentPredicate);
+
+            if (!model.getFilteredAppointmentList().isEmpty()) {
+                for (int i = 0; i < model.getFilteredAppointmentList().size(); i++) {
+                    if (model.getFilteredAppointmentList().get(i).getDentistId() == dentistId) {
+                        throw new CommandException(MESSAGE_CLASHING_DENTIST);
+                    }
+                }
+            }
+
+            if (!model.getFilteredAppointmentList().isEmpty()) {
+                for (int i = 0; i < model.getFilteredAppointmentList().size(); i++) {
+                    if (model.getFilteredAppointmentList().get(i).getPatientId() == patientId) {
+                        throw new CommandException(MESSAGE_CLASHING_PATIENT);
+                    }
+                }
+            }
         }
     }
 

@@ -111,15 +111,13 @@ public class Appointment {
 
 
     /**
-     * Checks whether this appointment clashes with another.
+     * Checks whether this appointment timing clashes with another.
      *
      * @param appointment The other appointment.
-     * @return true if this appointment clashes with another
+     * @return true if this appointment timing clashes with another
      *         false if it does not clash with another appointment.
      */
     public boolean isSameAppointment(Appointment appointment) {
-        return this.appointmentTime.isClashingAppointment(appointment.getAppointmentTime())
-                && ((this.dentistId == appointment.getDentistId())
-                || (this.patientId == appointment.getPatientId()));
+        return this.appointmentTime.isClashingAppointment(appointment.getAppointmentTime());
     }
 }
