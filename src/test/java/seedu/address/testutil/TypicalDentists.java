@@ -26,21 +26,21 @@ public class TypicalDentists {
     public static final Dentist DENTIST_ALICE = new DentistBuilder().withName("Alice Pauline")
             .withAddress("123, Jurong West Ave 6, #08-111").withEmail("alice@example.com")
             .withPhone("99999999")
-            .withSpecialization("Orthodontics")
+            .withSpecialization("ORTHODONTICS")
             .withYoe("5")
             .withTags("Professional")
             .build();
     public static final Dentist DENTIST_BENSON = new DentistBuilder().withName("Benson Meier")
             .withAddress("311, Clementi Ave 2, #02-25")
             .withEmail("johnd@example.com").withPhone("88888888")
-            .withSpecialization("Endodontics")
+            .withSpecialization("ENDODONTICS")
             .withYoe("6")
             .withTags("Professional", "Europe")
             .build();
     public static final Dentist DENTIST_CARL = new DentistBuilder().withName("Carl Kurz")
             .withPhone("11111111")
             .withEmail("heinz@example.com")
-            .withSpecialization("Paediatric Dentistry")
+            .withSpecialization("PAEDIATRIC DENTISTRY")
             .withYoe("7")
             .withAddress("wall street")
             .build();
@@ -48,14 +48,14 @@ public class TypicalDentists {
             .withPhone("22222222")
             .withEmail("cornelia@example.com")
             .withAddress("10th street")
-            .withSpecialization("Periodontics")
+            .withSpecialization("PERIODONTICS")
             .withYoe("5").withTags("America")
             .build();
     public static final Dentist DENTIST_ELLE = new DentistBuilder().withName("Elle Meyer")
             .withPhone("33333333")
             .withEmail("werner@example.com")
             .withAddress("michegan ave")
-            .withSpecialization("Prosthodontics")
+            .withSpecialization("PROSTHODONTICS")
             .withYoe("5")
             .withTags("London", "France")
             .build();
@@ -63,14 +63,14 @@ public class TypicalDentists {
             .withPhone("44444444")
             .withEmail("lydia@example.com")
             .withAddress("little tokyo")
-            .withSpecialization("Oral and Maxillofacial Surgery")
+            .withSpecialization("ORAL AND MAXILLOFACIAL SURGERY")
             .withYoe("5")
             .build();
     public static final Dentist DENTIST_GEORGE = new DentistBuilder().withName("George Best")
             .withPhone("55555555")
             .withEmail("anna@example.com")
             .withAddress("4th street")
-            .withSpecialization("Dental Public Health")
+            .withSpecialization("DENTAL PUBLIC HEALTH")
             .withYoe("5")
             .withTags("America")
             .build();
@@ -80,7 +80,7 @@ public class TypicalDentists {
             .withPhone("66666666")
             .withEmail("stefan@example.com")
             .withAddress("little india")
-            .withSpecialization("Orthodontics")
+            .withSpecialization("ORTHODONTICS")
             .withYoe("2")
             .withTags("NUSDentistry")
             .build();
@@ -88,7 +88,7 @@ public class TypicalDentists {
             .withPhone("77777777")
             .withEmail("hans@example.com")
             .withAddress("chicago ave")
-            .withSpecialization("Periodontics")
+            .withSpecialization("PERIODONTICS")
             .withYoe("5")
             .build();
 

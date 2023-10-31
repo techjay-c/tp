@@ -22,7 +22,7 @@ public class DentistBuilder {
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
-    public static final String DEFAULT_SPECIALIZATION = "Orthodontics";
+    public static final String DEFAULT_SPECIALIZATION = "ORTHODONTICS";
     public static final String DEFAULT_YOE = "5";
 
     private Name name;
