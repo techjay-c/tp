@@ -256,6 +256,12 @@ Adds a new patient named ‘John’, with phone number ‘90676622’ and email 
 birthdate of 06 June 1998, Gender Male, remark that he is allergic to Peanuts, requesting for cleaning treatment
 and with an address at 60 Harvey Avenue.
 
+<div markdown="block" class="alert alert-info">
+**:information_source: Notes about adding Treatments:**<br>
+The new treatment must be one that can be found when 
+the "list-treatment" command is entered.
+</div>
+
 ### Listing all patients : `list-patient`
 
 Shows a list of all patients in ToothTracker. This is useful when:
@@ -355,6 +361,12 @@ To check the patient ID for a patient, you can simply enter the command `list-pa
 **:information_source: Notes about editing tags:**<br>
 When editing tags, you have to include any previous tags that was already included in the patient, or else these tags will be removed.
 This also means that you can use `t/` to remove all tags from a patient using the <code>edit-patient</code> command.
+</div>
+
+<div markdown="block" class="alert alert-info">
+**:information_source: Notes about adding Treatments:**<br>
+The edited treatment must be one that can be found when 
+the "list-treatment" command is entered.
 </div>
 
 ## Part 3 - Appointment Features
