@@ -41,7 +41,7 @@ public class SampleDataUtil {
     public static Patient[] getSamplePatients() {
         return new Patient[]{
             new Patient(new Name("Alex Yeohh"), new Phone("87438807"), new Birthdate("03-02-1999"),
-                new Gender("F"), new Remark("Peanuts Allergy"), new TreatmentName("Cleaning"),
+                new Gender("F"), new Remark("Peanuts Allergy"), new TreatmentName("Braces"),
                 new Address("Blk 30 Geylang Street 29, #06-40"),
                 new Email("alexyeoh@example.com"),
                 getTagSet("friends"))
