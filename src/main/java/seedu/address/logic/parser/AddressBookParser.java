@@ -26,7 +26,7 @@ import seedu.address.logic.commands.FilterAppointmentCommand;
 import seedu.address.logic.commands.FilterDentistCommand;
 import seedu.address.logic.commands.FilterPatientCommand;
 import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.ListAppointmentsCommand;
+import seedu.address.logic.commands.ListAppointmentCommand;
 import seedu.address.logic.commands.ListDentistCommand;
 import seedu.address.logic.commands.ListPatientCommand;
 import seedu.address.logic.commands.ListTreatmentCommand;
@@ -122,8 +122,8 @@ public class AddressBookParser {
         case ListTreatmentCommand.COMMAND_WORD:
             return new ListTreatmentCommand();
 
-        case ListAppointmentsCommand.COMMAND_WORD:
-            return new ListAppointmentsCommand();
+        case ListAppointmentCommand.COMMAND_WORD:
+            return new ListAppointmentCommand();
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
