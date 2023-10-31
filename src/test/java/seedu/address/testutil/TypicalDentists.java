@@ -8,8 +8,12 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_SPECIALIZATION_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_SPECIALIZATION_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_YOE_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_YOE_BOB;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -94,9 +98,15 @@ public class TypicalDentists {
 
     // Manually added - Person's details found in {@code CommandTestUtil}
     public static final Dentist AMY = new DentistBuilder().withName(VALID_NAME_AMY).withPhone(VALID_PHONE_AMY)
-            .withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY).withTags(VALID_TAG_FRIEND).build();
+            .withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
+            .withSpecialization(VALID_SPECIALIZATION_AMY)
+            .withYoe(VALID_YOE_AMY)
+            .withTags(VALID_TAG_FRIEND).build();
     public static final Dentist BOB = new DentistBuilder().withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
-            .withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
+            .withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
+            .withSpecialization(VALID_SPECIALIZATION_BOB)
+            .withYoe(VALID_YOE_BOB)
+            .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
             .build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
