@@ -351,7 +351,8 @@ Examples:
 * `add-appointment dentist/0 patient/0 start/2023-10-12 16:00 s/Braces`
 
   This command adds an appointment with the patient whose ID is 0 and, the dentist whose ID is 0.
-  The appointment starts on 12 October 2023 and lasts for 1.5 hours. Treatment provided during the appointment is braces.
+  The appointment starts on 12 October 2023, 4pm. Treatment provided during the appointment is braces.
+  The duration of the appointment is determined by the treatment.
 
 **Important Notes:**
 
@@ -384,22 +385,32 @@ Examples:
 ### Listing all appointments: `list-appointment`
 Shows a list of all appointments in ToothTracker.
 
+This is helpful when:
+- you want to retrieve the information of all appointments.
+- you want to verify that the appointment is added to ToothTracker.
+
 **Format:** `list-appointment` (No extra parameters required)
 
-### Filter Appointments by dentist ID: `filter-appointment`
+### Filter Appointments by dentist ID: `filter-appointment dentist`
 
 Filters the appointment list to show the list of appointments under the dentist with the given dentist ID.
 
 This is useful when:
-- you want to view the list of appointments under a specific doctor.
+- you want to view the list of appointments under a specific dentist.
 
 **Format:** `filter-appointment dentist DENTIST_ID`
+
+<div markdown="block" class="alert alert-info">
+The `DENTIST_ID` refers to the index number shown in the displayed list of dentists. <br>
+You may use `list-dentist` to check out the dentist's ID first.
+</div>
+
 
 Example:
 
 * `filter-appointment dentist 1` returns all appointments under the dentist with the dentist ID 1.
 
-### Filter Appointments by patient ID: `filter-appointment`
+### Filter Appointments by patient ID: `filter-appointment patient`
 
 Filters the appointment list to show the list of appointments under the patient with the given patient ID.
 
@@ -407,6 +418,12 @@ This is useful when:
 - you want to view the list of appointments under a specific patient.
 
 **Format:** `filter-appointment patient PATIENT_ID`
+
+<div markdown="block" class="alert alert-info">
+The `PATIENT_ID` refers to the index number shown in the displayed list of patients. <br>
+You may use `list-patient` to check out the patient's ID first.
+</div>
+
 
 Example:
 
