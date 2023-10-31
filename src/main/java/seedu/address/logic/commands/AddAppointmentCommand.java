@@ -6,6 +6,9 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PATIENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TREATMENT;
 
+import java.time.DateTimeException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
 import java.util.function.Predicate;
 
 import seedu.address.commons.util.ToStringBuilder;
@@ -48,8 +51,6 @@ public class AddAppointmentCommand extends Command {
     public static final String MESSAGE_CLASHING_PATIENT = "Patient already has an" +
             " existing appointment in this time slot.";
 
-    public static final String MESSAGE_NO_DENTIST = "No dentist with ";
-
     private final Appointment toAdd;
     private final long dentistId;
     private final long patientId;
@@ -83,6 +84,13 @@ public class AddAppointmentCommand extends Command {
      */
     @Override
     public CommandResult execute(Model model) throws CommandException {
+
+        if (toAdd.getDentistId() < 0) {
+            return new CommandResult("Invalid input. Please enter a valid integer value for dentist ID.");
+        } else if (toAdd.getPatientId() < 0) {
+            return new CommandResult("Invalid input. Please enter a valid integer value for patient ID.");
+        }
+
         requireNonNull(model);
         Predicate<Treatment> treatmentPredicate = treatment -> treatment.getName().toString()
                 .equalsIgnoreCase(treatmentName);
@@ -92,6 +100,17 @@ public class AddAppointmentCommand extends Command {
             throw new CommandException("Treatment is not provided in this clinic");
         }
         String duration = model.getFilteredTreatmentList().get(0).getTime().toString();
+        LocalDateTime startParsed;
+        try {
+            startParsed = LocalDateTime.parse(start);
+        } catch (DateTimeException e) {
+            return new CommandResult("Invalid inputs for appointment start time. \n"
+                    + "Format must be in yyyy-MM-dd HH:mm.\nE.g. 2023-01-01 09:05");
+        }
+
+        if (startParsed.getYear() < 2000) {
+            return new CommandResult("Invalid year. Year must be 2000 or later.");
+        }
         AppointmentTime appointmentTime;
         try {
             appointmentTime = ParserUtil.parseAppointmentTime(start, duration);

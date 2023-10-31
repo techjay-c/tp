@@ -2,6 +2,7 @@ package seedu.address.model.appointments;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Represents the date and time of an appointment in ToothTracker.
@@ -92,5 +93,17 @@ public class AppointmentTime {
         return startTimeToString() + " - " + endTimeToString();
     }
 
+    public String startString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        String formattedDateTime = start.format(formatter);
+        return formattedDateTime;
+    }
+
+    public String durationString() {
+        long hours = duration.toHours();
+        long minutes = duration.toMinutesPart();
+        String durationString = hours + " hours and " + minutes + " minutes";
+        return durationString;
+    }
 
 }
