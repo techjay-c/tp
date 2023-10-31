@@ -55,7 +55,7 @@ public class FilterPatientCommand extends Command {
 
         String finalMessage;
 
-        if (model.getFilteredDentistList().isEmpty()) {
+        if (model.getFilteredPatientList().isEmpty()) {
             finalMessage = String.format(MESSAGE_USAGE_FILTER_PATIENT_FAIL, attribute, keywords);
         } else {
             finalMessage = String.format(MESSAGE_USAGE_FILTER_PATIENT_SUCCESS, attribute, keywords);
