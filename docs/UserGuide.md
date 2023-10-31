@@ -328,6 +328,35 @@ Examples:
 
 * `filter-patient a/birthday k/06-06-1990` searches for patients with the birthday 06-06-1990.
 
+### Editing a patient: `edit-patient`
+
+Edits one or more details of the patient at the specified patient ID. This is helpful when:
+* The particulars of a patient need to be updated.
+* Optional patient details were not provided previously.
+* You accidentally entered incorrect information about a patient into the ToothTrack database.
+
+**Format:** `PATIENT_ID [n/NAME] [p/PHONE] [b/BIRTHDATE] [g/GENDER] [r/REMARK] [tr/TREATMENT] [e/EMAIL] [h/ADDRESS] [t/TAG]`
+
+Examples:
+* `edit-patient 1 p/91234567 e/johndoe@example.com r/Allergic to Peanuts` updates the 
+phone number, email address and remarks of patient with Patient ID of 1
+
+* `edit-patient 2  n/Alex` updates the name of patient with ID of 2 to Alex
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+You can edit the particulars in any order and you can edit more than one detail of the patient.
+</div>
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+To check the patient ID for a patient, you can simply enter the command `list-patient`.
+</div>
+
+<div markdown="block" class="alert alert-info">
+**:information_source: Notes about editing tags:**<br>
+When editing tags, you have to include any previous tags that was already included in the patient, or else these tags will be removed.
+This also means that you can use `t/` to remove all tags from a patient using the <code>edit-patient</code> command.
+</div>
+
 ## Part 3 - Appointment Features
 
 ### Adding an appointment: `add-appointment`
