@@ -38,6 +38,18 @@ installing ToothTracker and launching it for the first time.
 
 If you are familiar with ToothTracker already, this user guide serves to give you an overview on how to use specific commands in ToothTracker.
 
+### Icons used in this guide
+
+Here are some common icons that is used throughout this user guide
+
+| Icon                          | Meaning                                  |
+|-------------------------------|------------------------------------------|
+| :information_source:  **Note** | Information you should keep in mind.     |
+| :bulb: **Tip**                | Information you might find useful.       |
+| :exclamation: **Caution**     | Information you should be careful about. |
+
+{% include page-break.html %}
+
 ## Installation
 
 1. Ensure you have Java `11` or above installed in your Computer.
