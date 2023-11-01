@@ -56,7 +56,7 @@ public class AddAppointmentCommand extends Command {
     private final String treatmentName;
     private final String start;
 
-    private final CalendarWindow calendarWindow = CalendarWindow.getInstance();
+    private final CalendarWindow calendarWindow;
 
 
     /**
@@ -71,6 +71,7 @@ public class AddAppointmentCommand extends Command {
         patientId = appointment.getPatientId();
         treatmentName = appointment.getTreatment();
         start = appointment.getStart();
+        calendarWindow = CalendarWindow.getInstance();
     }
 
 
@@ -84,13 +85,13 @@ public class AddAppointmentCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
 
+        requireNonNull(model);
         if (toAdd.getDentistId() < 0) {
             return new CommandResult("Invalid input. Please enter a valid integer value for dentist ID.");
         } else if (toAdd.getPatientId() < 0) {
             return new CommandResult("Invalid input. Please enter a valid integer value for patient ID.");
         }
 
-        requireNonNull(model);
         Predicate<Treatment> treatmentPredicate = treatment -> treatment.getName().toString()
                 .equalsIgnoreCase(treatmentName);
         model.updateFilteredTreatmentList(treatmentPredicate);
