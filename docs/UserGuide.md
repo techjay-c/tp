@@ -22,6 +22,8 @@ If you type fast, ToothTracker offers your dental clinic a significantly more ef
 
 If you are new here, visit our quick start guide to start tracking your dental clinic records with ToothTracker!
 
+{% include page-break.html %}
+
 ## Table of Contents
 * Table of Contents
 {:toc}
