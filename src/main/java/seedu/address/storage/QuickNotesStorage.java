@@ -11,15 +11,23 @@ import java.nio.file.Paths;
  */
 public class QuickNotesStorage {
 
-    private static final String QUICK_NOTES_PATH = "./data/quicknotes.txt";
+    private String QUICK_NOTES_PATH = "./data/quicknotes.txt";
+
+    public QuickNotesStorage() {
+    }
+
+    public QuickNotesStorage(String filePath) {
+        QUICK_NOTES_PATH = filePath;
+    }
 
     /**
      * Saves the notes to the storage file.
      */
     public void saveNotes(String content) throws IOException {
-        File dir = new File("./data");
-        if (!dir.exists()) {
-            dir.mkdirs();
+        File file = new File(QUICK_NOTES_PATH);
+        File directory = new File(file.getParent());
+        if (!directory.exists()) {
+            directory.mkdirs();
         }
 
         try (FileWriter writer = new FileWriter(QUICK_NOTES_PATH)) {
@@ -28,7 +36,7 @@ public class QuickNotesStorage {
     }
 
     /**
-     * Clears all the notes from the storage file.
+     * Clears the notes from the storage file.
      */
     public void clearNotes() throws IOException {
         try (FileWriter writer = new FileWriter(QUICK_NOTES_PATH)) {
@@ -38,13 +46,15 @@ public class QuickNotesStorage {
 
     /**
      * Loads the notes from the storage file.
-     *
-     * @return null if the file does not exist.
      */
     public String loadNotes() throws IOException {
-        if (new File(QUICK_NOTES_PATH).exists()) {
-            return new String(Files.readAllBytes(Paths.get(QUICK_NOTES_PATH)));
+        if (!new File(QUICK_NOTES_PATH).exists()) {
+            throw new IOException("File not found");
         }
-        return null;
+        return new String(Files.readAllBytes(Paths.get(QUICK_NOTES_PATH)));
+    }
+
+    public String getQuickNotesPath() {
+        return QUICK_NOTES_PATH;
     }
 }
