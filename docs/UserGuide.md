@@ -36,7 +36,14 @@ This user guide provides a comprehensive documentation on the various commands s
 If you have not installed ToothTracker, head over to the [Installation](#installation) section for assistance in
 installing ToothTracker and launching it for the first time.
 
+Once ToothTracker is installed, you can head over to the [Quick Reference Guide](#quick-reference-guide) section which 
+covers the basics of using ToothTracker.
+
 If you are familiar with ToothTracker already, this user guide serves to give you an overview on how to use specific commands in ToothTracker.
+
+If you are an experienced user, you can refer to the [Command Summary](#command-summary) for a quick overview of all commands.
+
+If you are stuck or encountering issues, head over to the [FAQ](#faq) section.
 
 ### Icons used in this guide
 
@@ -119,6 +126,7 @@ To let you become more familiar with ToothTracker, let's practice executing some
 {% include page-break.html %}
 
 ## Features
+This section shares with you on how to use each feature in detail.
 
 <div markdown="block" class="alert alert-info">
 
