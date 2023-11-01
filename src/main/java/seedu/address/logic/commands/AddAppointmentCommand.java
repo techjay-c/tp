@@ -56,7 +56,7 @@ public class AddAppointmentCommand extends Command {
     private final String treatmentName;
     private final String start;
 
-    private final CalendarWindow calendarWindow;
+    private CalendarWindow calendarWindow;
 
 
     /**
@@ -71,7 +71,14 @@ public class AddAppointmentCommand extends Command {
         patientId = appointment.getPatientId();
         treatmentName = appointment.getTreatment();
         start = appointment.getStart();
-        calendarWindow = CalendarWindow.getInstance();
+    }
+
+    /**
+     * Setter for injecting a mock or stub CalendarWindow for testing purposes.
+     * @param calendarWindow The CalendarWindow to be injected.
+     */
+    public void setCalendarWindow(CalendarWindow calendarWindow) {
+        this.calendarWindow = calendarWindow;
     }
 
 
@@ -129,6 +136,9 @@ public class AddAppointmentCommand extends Command {
         checkClash(model);
 
         model.addAppointment(toAdd);
+        if (calendarWindow == null) {
+            calendarWindow = CalendarWindow.getInstance();
+        }
         calendarWindow.addAppointment(toAdd);
 
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
