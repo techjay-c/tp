@@ -211,7 +211,6 @@ public class CommandTestUtil {
 
         Predicate<Appointment> appointmentIdPredicate = appointment -> appointment.getId() == appointmentId;
         model.updateFilteredAppointmentList(appointmentIdPredicate);
-        System.out.print(model.getFilteredAppointmentList());
         assertEquals(1, model.getFilteredAppointmentList().size());
     }
 }

@@ -24,9 +24,11 @@ public class ListAppointmentCommandTest {
         expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
 
         Appointment appointment_one = new AppointmentBuilder()
-                .withAppointmentTime("2023-10-21T16:00", "PT1H30M").build();
+                .withAppointmentTime("2023-10-21T16:00", "PT1H30M")
+                .withId("1").build();
         Appointment appointment_two = new AppointmentBuilder()
-                .withAppointmentTime("2023-10-22T12:00", "PT2H00M").build();
+                .withAppointmentTime("2023-10-22T12:00", "PT2H00M")
+                .withId("2").build();
 
         model.addAppointment(appointment_one);
         model.addAppointment(appointment_two);
@@ -42,7 +44,6 @@ public class ListAppointmentCommandTest {
     @Test
     public void execute_appointmentListIsFiltered_showsEverything() {
         showAppointmentWithId(model, 1);
-        System.out.print(model.getFilteredAppointmentList());
         assertCommandSuccess(new ListAppointmentCommand(), model, ListAppointmentCommand.MESSAGE_SUCCESS, expectedModel);
     }
 }
