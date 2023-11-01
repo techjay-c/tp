@@ -3,6 +3,7 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+import java.util.Objects;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
@@ -92,10 +93,12 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void setAppointmentId(long id) {
         appointmentId = id;
     }
+
     @Override
     public long getAppointmentId() {
         return appointmentId;
     }
+
     public void incrementAppointmentId() {
         appointmentId = appointmentId + 1;
     }
@@ -184,8 +187,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Returns true if a treatmentName with the same fields as {@code treatmentName} exists in the address
-     * book.
+     * Returns true if a treatmentName with the same fields as {@code treatmentName} exists in the
+     * address book.
      */
     public boolean hasTreatmentName(TreatmentName treatmentName) {
         requireNonNull(treatmentName);
@@ -279,8 +282,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Adds an appointment to the list of appointments.
-     * If the appointment has an ID of -1, it assigns a new ID and increments the global appointment ID counter.
+     * Adds an appointment to the list of appointments. If the appointment has an ID of -1, it
+     * assigns a new ID and increments the global appointment ID counter.
      *
      * @param appointment The appointment to be added.
      */
@@ -414,6 +417,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     @Override
     public int hashCode() {
-        return persons.hashCode();
+        return Objects.hash(patients, dentists, appointments, treatments);
     }
+
 }

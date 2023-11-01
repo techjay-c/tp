@@ -55,10 +55,6 @@ public class AddPatientCommandParser implements Parser<AddPatientCommand> {
             PREFIX_NAME,
             PREFIX_PHONE,
             PREFIX_BIRTHDATE,
-            // PREFIX_REMARK,
-            // PREFIX_TREATMENT,
-            // PREFIX_ADDRESS,
-            // PREFIX_EMAIL,
             PREFIX_GENDER
         )
             || !argMultimap.getPreamble().isEmpty()) {
@@ -69,11 +65,6 @@ public class AddPatientCommandParser implements Parser<AddPatientCommand> {
         argMultimap.verifyNoDuplicatePrefixesFor(
             PREFIX_NAME,
             PREFIX_PHONE,
-            // PREFIX_BIRTHDATE,
-            // PREFIX_GENDER,
-            // PREFIX_REMARK,
-            // PREFIX_TREATMENT,
-            // PREFIX TAG,
             PREFIX_ADDRESS,
             PREFIX_EMAIL);
 
