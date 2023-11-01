@@ -11,7 +11,7 @@ ToothTracker is engineered to simplify every aspect of your dental clinic admini
 Here is an overview of how ToothTracker can help you manage your dental clinic administration better:
 - You can add tags to every patient and dentist to highlight additional information about them.
 - You need not worry about storing physical copies of patient and dentist profiles and appointment schedules.
-- You can access and retrieve patient and dentist records easily using the `search` and `filter commands.
+- You can access and retrieve patient and dentist records easily using the `search` and `filter` commands.
 - You can avoid creating clashing appointments to reduce operational delays.
 - You can have the flexibility to add custom treatments that your clinic provides.
 - You can view your clinic's appointment schedule in ToothTracker's calendar.
