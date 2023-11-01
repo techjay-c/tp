@@ -20,6 +20,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
+import seedu.address.model.appointments.Appointment;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.dentist.Dentist;
@@ -201,5 +202,16 @@ public class CommandTestUtil {
         model.updateFilteredPatientList(patientIdPredicate);
 
         assertEquals(1, model.getFilteredPatientList().size());
+    }
+
+    public static void showAppointmentWithId(Model model, long appointmentId) {
+        int zeroBasedIndex = (int) appointmentId - 1;
+
+        assertTrue(zeroBasedIndex < model.getFilteredAppointmentList().size() && zeroBasedIndex >= 0);
+
+        Predicate<Appointment> appointmentIdPredicate = appointment -> appointment.getId() == appointmentId;
+        model.updateFilteredAppointmentList(appointmentIdPredicate);
+        System.out.print(model.getFilteredAppointmentList());
+        assertEquals(1, model.getFilteredAppointmentList().size());
     }
 }
