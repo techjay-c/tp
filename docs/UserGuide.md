@@ -4,7 +4,7 @@ title: User Guide
 ---
 
 
-ToothTracker is an All-in-One solution for effortless Dental Clinic Record Management. From adding new patient and dentist profiles to seamlessly creating appointment schedules, 
+ToothTracker is an **All-in-One solution for effortless Dental Clinic Record Management**. From adding new patient and dentist profiles to seamlessly creating appointment schedules, 
 ToothTracker is engineered to simplify every aspect of your dental clinic administrative responsibilities.
 
 
@@ -22,24 +22,25 @@ If you type fast, ToothTracker offers your dental clinic a significantly more ef
 
 If you are new here, visit our quick start guide to start tracking your dental clinic records with ToothTracker!
 
-
-### About ToothTracker's User Guide
-This user guide provides a comprehensive documentation on the various commands supported by ToothTracker.
-
-If you are familiar with ToothTracker already, this user guide serves to give you an overview on how to use specific commands in ToothTracker.
-
-If you are a new user, you may proceed to our quick start guide to assist you in installing ToothTracker and launching it for the first time.
-
+## Table of Contents
 * Table of Contents
 {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
+## How to use ToothTracker's User Guide
+Thank you for choosing ToothTracker! We are delighted to have you as a user!
+This user guide provides a comprehensive documentation on the various commands supported by ToothTracker.
 
-## Quick start
+If you have not installed ToothTracker, head over to the [Installation](#installation) section for assistance in
+installing ToothTracker and launching it for the first time.
+
+If you are familiar with ToothTracker already, this user guide serves to give you an overview on how to use specific commands in ToothTracker.
+
+## Installation
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `ToothTracker.jar` from [here]().
+1. Download the latest `ToothTracker.jar` from [here](https://github.com/AY2324S1-CS2103T-W10-3/tp/releases).
 
 1. Copy the file to the folder you want to use as the _home folder_ for your ToothTracker.
 
@@ -48,7 +49,7 @@ If you are a new user, you may proceed to our quick start guide to assist you in
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will
+1. Type the command in the command box and press Enter to execute it. e.g. typing `help` and pressing Enter will
    open the help window.<br>
    Some example commands you can try:
 
@@ -59,7 +60,7 @@ If you are a new user, you may proceed to our quick start guide to assist you in
 
     * `delete-dentist 3` : Deletes the dentist with `Dentist_ID` 3.
    
-    * `search-patient 6` : Search for the patient with `Patient_ID` 6.
+    * `search-patient 6` : Searches for the patient with `Patient_ID` 6.
 
     * `clear` : Deletes all records from ToothTracker.
 
