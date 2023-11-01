@@ -113,6 +113,9 @@ public class AppointmentBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code id} of the {@code Appointment} that we are building.
+     */
     public AppointmentBuilder withId(String id) {
         this.id = Long.parseLong(id);
         return this;

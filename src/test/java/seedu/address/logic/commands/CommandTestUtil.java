@@ -204,6 +204,10 @@ public class CommandTestUtil {
         assertEquals(1, model.getFilteredPatientList().size());
     }
 
+    /**
+     * Updates {@code model}'s filtered list to show only the appointment at the given {@code appointmentId} in the
+     * {@code model}'s address book.
+     */
     public static void showAppointmentWithId(Model model, long appointmentId) {
         int zeroBasedIndex = (int) appointmentId - 1;
 

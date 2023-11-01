@@ -23,27 +23,29 @@ public class ListAppointmentCommandTest {
         model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
         expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
 
-        Appointment appointment_one = new AppointmentBuilder()
+        Appointment appointmentOne = new AppointmentBuilder()
                 .withAppointmentTime("2023-10-21T16:00", "PT1H30M")
                 .withId("1").build();
-        Appointment appointment_two = new AppointmentBuilder()
+        Appointment appointmentTwo = new AppointmentBuilder()
                 .withAppointmentTime("2023-10-22T12:00", "PT2H00M")
                 .withId("2").build();
 
-        model.addAppointment(appointment_one);
-        model.addAppointment(appointment_two);
-        expectedModel.addAppointment(appointment_one);
-        expectedModel.addAppointment(appointment_two);
+        model.addAppointment(appointmentOne);
+        model.addAppointment(appointmentTwo);
+        expectedModel.addAppointment(appointmentOne);
+        expectedModel.addAppointment(appointmentTwo);
     }
 
     @Test
     public void execute_appointmentListIsNotFiltered_showsSameList() {
-        assertCommandSuccess(new ListAppointmentCommand(), model, ListAppointmentCommand.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(new ListAppointmentCommand(), model,
+                ListAppointmentCommand.MESSAGE_SUCCESS, expectedModel);
     }
 
     @Test
     public void execute_appointmentListIsFiltered_showsEverything() {
         showAppointmentWithId(model, 1);
-        assertCommandSuccess(new ListAppointmentCommand(), model, ListAppointmentCommand.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(new ListAppointmentCommand(), model,
+                ListAppointmentCommand.MESSAGE_SUCCESS, expectedModel);
     }
 }
