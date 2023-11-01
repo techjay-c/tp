@@ -70,7 +70,41 @@ If you are familiar with ToothTracker already, this user guide serves to give yo
 
 1. Refer to the [Features](#features) below for details of each command.
 
+{% include page-break.html %}
+
+## Quick Reference Guide
+
+### Layout
+When you launch ToothTracker, ToothTracker appears on your screen as a GUI. Let’s take a look at the layout of the different components of ToothTracker.
+
+ToothTracker’s GUI consists of a Main Window, a Calendar Window as well as the Help Window. The main window consists of six components:
+
+1. Command Input Box
+1. Result Display Box
+1. Patient List Panel
+1. Dentist List Panel
+1. Appointment List Panel
+1. Quick Notes Box
+
+The following picture of the main window shows the six components numbered accordingly:
+
+![ToothTracker UI](images/UiAnnotated.png)
+
+Besides the main window, ToothTracker also has the Calendar Window. It is not part of the main GUI and is only shown after a [Calendar Command](#viewing-calendar--view-calendar) is run.
+
+![Calendar Window](images/CalendarWindow.png)
+
+ToothTracker also has the Help Window. This is only shown after a [Help Command](#viewing-help--help) is run.
+
+The Help Window looks like the following:
+
+![Help Window](images/HelpWindow.png)
+
+### Trying your first command
+To let you become more familiar with ToothTracker, let's practice executing some commands together.
+
 --------------------------------------------------------------------------------------------------------------------
+{% include page-break.html %}
 
 ## Features
 
@@ -98,14 +132,6 @@ If you are familiar with ToothTracker already, this user guide serves to give yo
   as space characters surrounding line-breaks may be omitted when copied over to the application.
 
 </div>
-
-### Viewing help : `help`
-
-Shows a message explaning how to access the help page.
-
-![help message](images/helpMessage.png)
-
-Format: `help`
 
 ## Part 1 - Dentist Features
 
@@ -592,6 +618,14 @@ Proceed with caution!
 * `delete-treatment Braces` deletes the treatment `Braces` from ToothTracker.
 
 ## Part 5 - General Features
+
+### Viewing help : `help`
+
+Shows a message explaining how to access the help page.
+
+![help message](images/HelpWindow.png)
+
+Format: `help`
 
 ### Clearing all entries : `clear`
 
