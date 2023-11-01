@@ -9,7 +9,7 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
-import seedu.address.model.person.exceptions.PersonNotFoundException;
+import seedu.address.model.person.exceptions.PatientNotFoundException;
 import seedu.address.model.person.patients.Patient;
 
 
@@ -50,7 +50,7 @@ public class UniquePatientList implements Iterable<Patient> {
         requireAllNonNull(target, editedPatient);
         int index = internalList.indexOf(target);
         if (index == -1) {
-            throw new PersonNotFoundException();
+            throw new PatientNotFoundException();
         }
 
         if (!target.isSamePerson(editedPatient) && contains(editedPatient)) {
@@ -67,7 +67,7 @@ public class UniquePatientList implements Iterable<Patient> {
     public void remove(Patient toRemove) {
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {
-            throw new PersonNotFoundException();
+            throw new PatientNotFoundException();
         }
     }
 
