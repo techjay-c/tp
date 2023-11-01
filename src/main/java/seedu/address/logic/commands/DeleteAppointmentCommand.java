@@ -27,7 +27,7 @@ public class DeleteAppointmentCommand extends Command {
 
     private final long targetId;
 
-    private final CalendarWindow calendarWindow = CalendarWindow.getInstance();
+    private CalendarWindow calendarWindow;
 
     /**
      * Constructs a DeleteAppointmentCommand to delete an appointment from ToothTracker.
@@ -37,6 +37,15 @@ public class DeleteAppointmentCommand extends Command {
     public DeleteAppointmentCommand(long targetId) {
         this.targetId = targetId;
     }
+
+    /**
+     * Setter for injecting a mock or stub CalendarWindow for testing purposes.
+     * @param calendarWindow The CalendarWindow to be injected.
+     */
+    public void setCalendarWindow(CalendarWindow calendarWindow) {
+        this.calendarWindow = calendarWindow;
+    }
+
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
@@ -50,6 +59,9 @@ public class DeleteAppointmentCommand extends Command {
             }
 
             model.deleteAppointment(appointmentToDelete);
+            if (calendarWindow == null) {
+                calendarWindow = CalendarWindow.getInstance();
+            }
             calendarWindow.deleteAppointment(appointmentToDelete);
 
             return new CommandResult(
