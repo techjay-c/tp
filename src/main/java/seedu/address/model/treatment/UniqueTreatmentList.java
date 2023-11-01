@@ -9,7 +9,7 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
-import seedu.address.model.person.exceptions.PersonNotFoundException;
+import seedu.address.model.person.exceptions.TreatmentNotFoundException;
 
 /**
  * A list of unique treatments
@@ -56,7 +56,7 @@ public class UniqueTreatmentList implements Iterable<Treatment> {
         requireAllNonNull(target, editedTreatment);
         int index = internalList.indexOf(target);
         if (index == -1) {
-            throw new PersonNotFoundException();
+            throw new TreatmentNotFoundException();
         }
 
         if (!target.isSameTreatment(editedTreatment) && contains(editedTreatment)) {
@@ -72,7 +72,7 @@ public class UniqueTreatmentList implements Iterable<Treatment> {
     public void remove(Treatment toRemove) {
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {
-            throw new PersonNotFoundException();
+            throw new TreatmentNotFoundException();
         }
     }
 
