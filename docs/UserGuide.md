@@ -279,14 +279,18 @@ Adds a patient to the list of patients in ToothTracker. This is helpful when:
 * You are using ToothTracker for the first time, and you have to add your patients' particulars.
 * A new patient has joined your clinic.
 
-**Format:** `add-patient n/NAME p/PHONE b/BIRTHDATE g/GENDER r/REMARK tr/TREATMENT [e/EMAIL] [h/ADDRESS] [t/TAG]…​`
+**Format:** `add-patient n/NAME p/PHONE b/BIRTHDATE g/GENDER [r/REMARK] [tr/TREATMENT] [e/EMAIL] [h/ADDRESS] [t/TAG]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A patient can have any number of <code>TAG</code>s (including zero tags).
 
-<code>EMAIL</code> and <code>ADDRESS</code> are optional to be put.
+<code>EMAIL</code>, <code>ADDRESS</code>, <code>REMARK</code> and <code>TREATMENT</code> are optional to be put.
 You may use the `edit-patient` command to update them in the future.
 </div>
+
+<div markdown="block" class="alert alert-info">
+**:information_source: Notes about adding a patient without remark and treatment:**<br>
+ToothTracker will put the <code>REMARK</code> and <code>TREATMENT</code> as `NIL` by default.
 
 <div markdown="block" class="alert alert-info">
 **:information_source: Notes about adding a patient without email and address:**<br>
