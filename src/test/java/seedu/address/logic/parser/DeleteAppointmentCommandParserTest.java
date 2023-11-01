@@ -8,7 +8,6 @@ import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSucces
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.DeleteAppointmentCommand;
-import seedu.address.logic.commands.DeleteDentistCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.ui.CalendarWindow;
 
