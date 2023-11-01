@@ -291,6 +291,7 @@ You may use the `edit-patient` command to update them in the future.
 <div markdown="block" class="alert alert-info">
 **:information_source: Notes about adding a patient without remark and treatment:**<br>
 ToothTracker will put the <code>REMARK</code> and <code>TREATMENT</code> as `NIL` by default.
+</div>
 
 <div markdown="block" class="alert alert-info">
 **:information_source: Notes about adding a patient without email and address:**<br>
