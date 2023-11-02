@@ -4,6 +4,7 @@
   //with minor modifications
 
   //Adapted from https://stackoverflow.com/a/51007932/9311854
+  counter-reset: item;
   ol {
     counter-reset: item;
   }
@@ -37,7 +38,7 @@ article.post {
   }
 
   h4:not(.no_toc) {
-      counter-increment: subsubsection;
+      counter-reset: subsubsection;
   }
 
   h2:not(.no_toc)::before {
