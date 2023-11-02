@@ -95,9 +95,9 @@ If you are familiar with ToothTracker already, this user guide serves to give yo
 
 </div>
 
-## 4.1. Dentist Features
+### 4.1. Dentist Features
 
-### 4.1.1. Adding a dentist: `add-dentist`
+#### 4.1.1. Adding a dentist: `add-dentist`
 Adds a dentist to the list of dentists in ToothTracker. This is useful when:
 * You are using ToothTracker for the first time, and you have to add your dentists' particulars.
 * You are adding a new dentist who has joined your dental clinic.
