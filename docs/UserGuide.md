@@ -452,15 +452,15 @@ This is helpful when:
 - you want to schedule future dental appointments for patients with specific dentists at designated times.
 - you want to check for clashes with existing appointments.
 
-Format: `add-appointment dentist/DENTIST_ID patient/PATIENT_ID start/START_DATE_TIME s/TREATMENT`
+Format: `add-appointment dentist/DENTIST_ID patient/PATIENT_ID start/START_DATE_TIME tr/TREATMENT`
 
 **Example:**
 
-* `add-appointment dentist/0 patient/0 start/2023-10-12 16:00 s/Braces`
+* `add-appointment dentist/1 patient/1 start/2023-10-12 16:00 tr/Braces`
 
-This command adds an appointment with the patient whose ID is 0 and, the dentist whose ID is 0.
-The appointment starts on 12 October 2023, 4pm. Treatment provided during the appointment is braces. 
-The duration of the appointment is determined by the treatment.
+This command adds an appointment with the `PATIENT_ID` 1 and the `DENTIST_ID` 1.
+The appointment starts on 12 October 2023, 4pm. The treatment provided during the appointment is Braces.
+The duration of the appointment is automatically set based on the selected treatment in ToothTracker.
 
 <div markdown="block" class="alert alert-info">
 **:information_source: Notes about adding Appointments:**<br>
@@ -516,7 +516,7 @@ You may use `list-dentist` to check out the `DENTIST_ID` first.
 
 **Example:**
 
-* `filter-appointment dentist 1` returns all appointments under the dentist with DENTIST_ID` 1.
+* `filter-appointment dentist 1` returns all appointments under the dentist with `DENTIST_ID` 1.
 
 ### Filtering Appointments by `PATIENT_ID` : `filter-appointment patient`
 
