@@ -195,6 +195,18 @@ who has 6 years of experience and specializing in 'braces' into the list of dent
 This adds a dentist named 'Emmanuel Chua' with phone number '99887766' who has 8 years of experience
 specializing in 'surgery' with a tag of 'extraction' into the list of dentists in ToothTracker.
 
+<div markdown="block" class="alert alert-info">
+**:information_source: Notes about Specializations:**<br>
+We have set the dentist specializations to be <code>ENDODONTICS</code>, <code>DENTAL_PUBLIC_HEALTH</code>, <code>ORAL_AND_MAXILLOFACIAL_SURGERY</code>,
+<code>ORTHODONTICS</code>, <code>PAEDIATRIC_DENTISTRY</code>, <code>PERIODONTICS</code>, <code>PROSTHODONTICS</code>.
+<br>A message will be shown in the result box if an invalid specialization is entered.
+</div>
+
+<div markdown="block" class="alert alert-info">
+**:information_source: Notes about adding dentists with the same name:**<br>
+Each dentist must have a unique name and ToothTracker does not allow multiple dentists with identical names.
+</div>
+
 ### Listing all dentists : `list-dentist`
 
 Shows a list of all dentists in ToothTracker. This is useful when:
