@@ -157,7 +157,7 @@ who has 6 years of experience and specializing in 'Paediatric Dentistry' into th
 This adds a dentist named 'Emmanuel Chua' with phone number '98987646' who has 8 years of experience
 specializing in 'Endodontics' with a tag of 'extraction' into the list of dentists in ToothTracker.
 
-### 4.1.2. Listing all dentists: `list-dentist`
+#### 4.1.2. Listing all dentists: `list-dentist`
 Shows a list of all dentists in ToothTracker. This is useful when:
 * You want to retrieve the information of all dentists.
 * You want to verify a dentist is added successfully in ToothTracker.
@@ -165,7 +165,7 @@ Shows a list of all dentists in ToothTracker. This is useful when:
 
 **Format:** `list-dentist` (No extra parameters required)
 
-### 4.1.3. Deleting a dentist: `delete-dentist`
+#### 4.1.3. Deleting a dentist: `delete-dentist`
 Deletes the dentist with the specified `DENTIST_ID` from ToothTracker.
 
 **Format:** `delete-dentist DENTIST_ID`
@@ -185,7 +185,7 @@ To check the <code>DENTIST_ID</code> of a dentist, you can simply enter the comm
 
 * `delete-dentist 20` <br> This deletes the dentist with the `DENTIST_ID` 20.
 
-### 4.1.4. Searching for dentists by `DENTIST_ID`: `search-dentist`
+#### 4.1.4. Searching for dentists by `DENTIST_ID`: `search-dentist`
 Search for a dentist by their `DENTIST_ID` in ToothTracker.
 This command helps you find a unique dentist based on the provided `DENTIST_ID`. This is useful when:
 * You want to confirm the identity of a specific dentist before using further commands.
@@ -205,7 +205,7 @@ To check the `DENTIST_ID` of a dentist, you can simply enter the command `list-d
 
 * `search-dentist 10` <br> This searches for the dentist with `DENTIST_ID` 10.
 
-### 4.1.5. Searching for dentists by keyword: `search-dentist`
+#### 4.1.5. Searching for dentists by keyword: `search-dentist`
 Search for dentists by matching names with a keyword.
 This command helps you find dentists that match your search criteria. This is useful when:
 * You need to find dentists whose names match your search criteria.
@@ -231,7 +231,7 @@ This command helps you find dentists that match your search criteria. This is us
 
 * `search-dentist Ronald Lim` <br> This searches for dentists with names containing the keyword `Ronald Lim`.
 
-### 4.1.6. Filtering dentists: `filter-dentist`
+#### 4.1.6. Filtering dentists: `filter-dentist`
 Narrows down your search for dentists based on a specified attributes. 
 When this command is used, there might be more than one result that matches your search criteria. This is useful when:
 * You want to find dentists with specific attributes.
@@ -252,7 +252,7 @@ We have set the attributes that can be filtered to be:
 
 * `filter-dentist a/specialization k/Orthodontics` <br> This filters for dentists with the specialization Orthodontics.
 
-### 4.1.7. Editing a dentist: `edit-dentist`
+#### 4.1.7. Editing a dentist: `edit-dentist`
 Edits one or more attributes of the dentist at the specified `Dentist ID`. This is useful when:
 * The particulars of a dentist need to be updated.
 * Optional dentist particulars were not provided previously.
@@ -284,9 +284,9 @@ This also means that you can use `t/` to remove all tags from a dentist using th
   This edits the name of the dentist with `DENTIST_ID` 2 into 
   ‘Emmanuel Alexandra’ and removes all tags of the dentist.
 
-## 4.2. Patient Features
+### 4.2. Patient Features
 
-### 4.2.1. Adding a patient: `add-patient`
+#### 4.2.1. Adding a patient: `add-patient`
 Adds a patient to the list of patients in ToothTracker. This is useful when:
 * You are using ToothTracker for the first time, and you have to add your patients' particulars.
 * A new patient has joined your clinic.
@@ -336,7 +336,7 @@ requesting for Braces treatment, email of ‘johntan@gmail.com’, with an addre
 * `add-patient n/Jean p/95339212 b/14-09-2001 g/F` <br>
 This adds a new patient named 'Jean', with phone number '95339212', birthdate of 14 September 2001, gender F (Female).
 
-### 4.2.2. Listing all patients: `list-patient`
+#### 4.2.2. Listing all patients: `list-patient`
 Shows a list of all patients in ToothTracker. This is useful when:
 * You want to retrieve the information of all patients.
 * You want to verify a patient is added successfully in ToothTracker.
@@ -344,7 +344,7 @@ Shows a list of all patients in ToothTracker. This is useful when:
 
 **Format:** `list-patient` (No extra parameters required)
 
-### 4.2.3. Deleting a patient: `delete-patient`
+#### 4.2.3. Deleting a patient: `delete-patient`
 Deletes the patient with the specified `PATIENT_ID` from ToothTracker.
 **Format:** `delete-patient PATIENT_ID`
 
@@ -363,7 +363,7 @@ Examples:
 
 * `delete-patient 48` <br> This deletes the patient with the `PATIENT_ID` 48.
 
-### 4.2.4. Searching for patients by `PATIENT_ID`: `search-patient`
+#### 4.2.4. Searching for patients by `PATIENT_ID`: `search-patient`
 Search for a patient by their `PATIENT_ID` in ToothTracker. 
 This command helps you find a unique patient based on the provided `PATIENT_ID`. This is useful when:
 * You want to confirm the identity of a specific patient before using further commands.
@@ -384,7 +384,7 @@ To check the `PATIENT_ID` of a patient, you can simply enter the command `list-p
 * `search-patient 8` <br> This searches for the patient with `PATIENT_ID` 8.
 
 
-### 4.2.5. Searching for patients by keywords : `search-patient`
+#### 4.2.5. Searching for patients by keywords : `search-patient`
 Search for patients by matching names with a keyword. 
 This command helps you find patients that match your search criteria. This is useful when:
 * You need to find patients whose names match your search criteria
@@ -410,7 +410,7 @@ This command helps you find patients that match your search criteria. This is us
 
 * `search-patient Ronald Lim` <br> This searches for patients with names containing the keyword `Ronald Lim`.
 
-### 4.2.6. Filtering patients: `filter-patient`
+#### 4.2.6. Filtering patients: `filter-patient`
 Narrows down your search for patients based on a specified attribute.
 When this command is used, there might be more than one result that matches your search criteria. This is useful when:
 * You want to find patients with specific attributes.
@@ -431,7 +431,7 @@ We have set the attributes that can be filtered to be:
 
 * `filter-patient a/treatment k/Cleaning` <br> This filters for patients with the treatment Cleaning.
 
-### 4.2.7. Editing a patient: `edit-patient`
+#### 4.2.7. Editing a patient: `edit-patient`
 Edits one or more attributes of the patient at the specified `Patient ID`. This is useful when:
 * The particulars of a patient need to be updated.
 * Optional patient particulars were not provided previously.
@@ -467,9 +467,9 @@ The edited treatment must be a valid treatment in ToothTracker. For a list of va
 * `edit-patient 2 n/Alex` <br>
   This edits the name of the patient with `PATIENT_ID` 2 to 'Alex'.
 
-## 4.3. Appointment Features
+### 4.3. Appointment Features
 
-### 4.3.1. Adding an appointment: `add-appointment`
+#### 4.3.1. Adding an appointment: `add-appointment`
 Adds a dental appointment to ToothTracker. This is useful when:
 * you want to schedule future dental appointments for patients with specific dentists at designated times.
 * you want to check for clashes with existing appointments.
@@ -489,7 +489,7 @@ The system will not allow the addition of appointments that clashes with existin
   The duration of the appointment is automatically set based on the selected treatment in ToothTracker.
 
 
-### 4.3.2. Deleting an appointment: `delete-appointment`
+#### 4.3.2. Deleting an appointment: `delete-appointment`
 Deletes the appointment with the specified `APPOINTMENT_ID` from ToothTracker.
 
 **Format:** `delete-appointment APPOINTMENT_ID`
@@ -510,14 +510,14 @@ To check the `APPOINTMENT_ID` of an appointment, you can simply enter the comman
   This deletes the appointment with `APPOINTMENT_ID` 2 from ToothTracker.
 
 
-### 4.3.3. Listing all appointments: `list-appointment`
+#### 4.3.3. Listing all appointments: `list-appointment`
 Shows a list of all appointments in ToothTracker. This is useful when:
 * you want to retrieve the information of all appointments.
 * you want to verify that the appointment is added to ToothTracker.
 
 **Format:** `list-appointment` (No extra parameters required)
 
-### 4.3.4. Filtering Appointments by `DENTIST_ID`: `filter-appointment dentist`
+#### 4.3.4. Filtering Appointments by `DENTIST_ID`: `filter-appointment dentist`
 Narrows down your search for appointments by filtering the appointment list to
 show the list of appointments under the dentist with the specified `DENTIST_ID`.
 This is useful when:
@@ -535,7 +535,7 @@ You may use `list-dentist` to check out the `DENTIST_ID` first.
 * `filter-appointment dentist 1` 
   This gives you all appointments under the dentist with `DENTIST_ID` 1.
 
-### 4.3.5. Filtering Appointments by `PATIENT_ID`: `filter-appointment patient`
+#### 4.3.5. Filtering Appointments by `PATIENT_ID`: `filter-appointment patient`
 Narrows down your search for appointments by filtering the appointment list to
 show the list of appointments under the patient with the specified `PATIENT_ID`. 
 This is useful when:
@@ -554,9 +554,9 @@ You may use `list-patient` to check out the `PATIENT_ID` first.
   This gives you all appointments under the patient with the `PATIENT_ID` 1.
 
 
-## 4.4. Treatment Features
+### 4.4. Treatment Features
 
-### 4.4.1. Adding a treatment: `add-treatment`
+#### 4.4.1. Adding a treatment: `add-treatment`
 Adds a dental treatment to the ToothTracker system.
 This command allows you to specify the treatment name, the cost of treatment, and how long the treatment would take.
 
@@ -572,13 +572,13 @@ Each treatment must have a unique name. ToothTracker does not allow multiple tre
 * `add-treatment tr/Tooth Extraction cs/1080 ti/03:30` adds a tooth extraction treatment to ToothTracker with a cost of $1080 SGD, and
   duration of 3 hours and 30 minutes.
 
-### 4.4.2. Listing all treatments: `list-treatment`
+#### 4.4.2. Listing all treatments: `list-treatment`
 Shows a list of all treatments in ToothTracker. This is useful when:
 * You want to view the currently available treatments stored in ToothTracker.
 
 Format: `list-treatment` (No extra parameters required)
 
-### 4.4.3. Deleting a treatment: `delete-treatment`
+#### 4.4.3. Deleting a treatment: `delete-treatment`
 Deletes the specified treatment from ToothTracker.
 
 **Format:** `delete-treatment TREATMENT_NAME`
@@ -597,30 +597,30 @@ Proceed with caution!
 
 * `delete-treatment Braces` deletes the treatment `Braces` from ToothTracker.
 
-## 4.5. General Features
+### 4.5. General Features
 
-### 4.5.1. Viewing help: `help`
+#### 4.5.1. Viewing help: `help`
 Shows a message explaining how to access the help page.
 
 ![help message](images/helpMessage.png)
 
 **Format:** `help`
 
-### 4.5.2. Clearing all data: `clear`
+#### 4.5.2. Clearing all data: `clear`
 Clears all data from ToothTracker. **PROCEED WITH CAUTION!**
 
 **Format:** `clear`
 
-### 4.5.3. Exiting the program: `exit`
+#### 4.5.3. Exiting the program: `exit`
 Exits ToothTracker app.
 
 **Format:** `exit`
 
-### 4.5.4. Saving the data
+#### 4.5.4. Saving the data
 ToothTracker data is saved in the hard disk automatically after any command that changes the data. There is no need to
 save manually.
 
-### 4.5.5. Editing the data file
+#### 4.5.5. Editing the data file
 ToothTracker data is saved automatically as a JSON file `[JAR file location]/data/toothtracker.json`. Advanced users are
 welcome to update data directly by editing that data file.
 
@@ -631,7 +631,7 @@ data file at the next run. Hence, it is recommended to take a backup of the file
 
 --------------------------------------------------------------------------------------------------------------------
 
-## FAQ
+## 5. FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains
@@ -648,7 +648,7 @@ respectively.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Known issues
+## 6. Known issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only
    the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the
