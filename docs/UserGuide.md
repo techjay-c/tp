@@ -215,14 +215,13 @@ This command helps you find dentists that match your search criteria. This is us
 
 <div markdown="block" class="alert alert-info">
 **:information_source: Notes for searching dentists by keyword**<br>
-  <ol>
-
-  * The search is performed only on the dentist's name.
-  * The search is case-insensitive, meaning that it will match both uppercase and lowercase characters. For example, searching for `James` will match both `James` and `james`.
-  * The order of the keywords in the name does not matter. For instance, searching for `Mike Lim` will match `Lim Mike` as well.
-  * Sub-strings will be matched. For example, if you search for `Fred`, it will match `Frederick`.
-  * More than one dentist result might be returned when searching by keywords, especially if multiple dentists match your search criteria.
-  </ol>
+  <ul>
+    <li>The search is performed only on the dentist's name.</li>
+    <li>The search is case-insensitive, meaning that it will match both uppercase and lowercase characters. For example, searching for `James` will match both `James` and `james`.</li>
+    <li>The order of the keywords in the name does not matter. For instance, searching for `Mike Lim` will match `Lim Mike` as well.</li>
+    <li>Sub-strings will be matched. For example, if you search for `Fred`, it will match `Frederick`.</li>
+    <li>More than one dentist result might be returned when searching by keywords, especially if multiple dentists match your search criteria.</li>
+  </ul>
 </div>
 
 **Examples:**
@@ -394,14 +393,13 @@ This command helps you find patients that match your search criteria. This is us
 
 <div markdown="block" class="alert alert-info">
 **:information_source: Notes for searching patients by keyword**<br>
-  <ol>
-
-  * The search is performed only on the patient's name.
-  * The search is case-insensitive, meaning that it will match both uppercase and lowercase characters. For example, searching for `James` will match both `James` and `james`.
-  * The order of the keywords in the name does not matter. For instance, searching for `Mike Lim` will match `Lim Mike` as well.
-  * Sub-strings will be matched. For example, if you search for `Fred`, it will match `Frederick`.
-  * More than one patient result might be returned when searching by keywords, especially if multiple patients match your search criteria.
-  </ol>
+  <ul>
+    <li>The search is performed only on the patient's name.</li>
+    <li>The search is case-insensitive, meaning that it will match both uppercase and lowercase characters. For example, searching for `James` will match both `James` and `james`.</li>
+    <li>The order of the keywords in the name does not matter. For instance, searching for `Mike Lim` will match `Lim Mike` as well.</li>
+    <li>Sub-strings will be matched. For example, if you search for `Fred`, it will match `Frederick`.</li>
+    <li>More than one patient result might be returned when searching by keywords, especially if multiple patients match your search criteria.</li>
+  </ul>
 </div>
 
 **Examples:**
