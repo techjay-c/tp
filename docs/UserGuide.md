@@ -670,6 +670,16 @@ Proceed with caution!
 
 {% include page-break.html %}
 
+### Calendar Features
+
+#### Viewing calendar : `view-calendar`
+
+Shows a calendar filled with all scheduled appointments in ToothTracker. This is useful when:
+* You want a visual summary of all appointments, allowing for a comprehensive overview.
+
+Format: `view-calendar` (No extra parameters required)
+
+
 ### General Features
 
 #### Viewing help : `help`
@@ -790,12 +800,19 @@ respectively.
 | **Delete Treatment**             | `delete-treatment NAME`                      | `delete-treatment Braces`                           |
 
 
+### Calendar Commands
+
+| Action            | Format          | Example         |
+|-------------------|-----------------|-----------------|
+| **View calendar** | `view-calendar` | `view-calendar` |
+
+
 ### General Commands
 
-| Action                 | Format           | Example            |
-|------------------------|------------------|--------------------|
-| **Help**               | `help`           | `help`             |
-| **Clear all Profiles** | `clear`          | `clear`            |
-| **Exit ToothTracker**  | `exit`           | `help`             |
+| Action                | Format           | Example |
+|-----------------------|------------------|---------|
+| **Help**              | `help`           | `help`  |
+| **Clear all data**    | `clear`          | `clear` |
+| **Exit ToothTracker** | `exit`           | `exit`  |
 
 
