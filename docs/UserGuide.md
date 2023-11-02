@@ -21,14 +21,14 @@ We believe that time is the rarest commodity in a dental office. This means dent
 Therefore, ToothTracker is optimized for use via a Command Line Interface (CLI) while also having the advantages of a Graphical User Interface (GUI), particularly our calendar feature.
 If you type fast, ToothTracker offers your dental clinic a significantly more efficient workflow to get your job done.
 
-If you are new here, visit our quick start guide to start tracking your dental clinic records with ToothTracker!
+If you are new here, head over to [How to use ToothTracker's User Guide](#how-to-use-toothtrackers-user-guide) to start tracking your dental clinic records!
 
 {% include page-break.html %}
 
 {% include toc.md header=true show-in-toc=true ordered=true %}
 
 ## How to use ToothTracker's User Guide
-Thank you for choosing ToothTracker! We are delighted to have you as a user!
+Thank you for choosing ToothTracker!
 This user guide provides a comprehensive documentation on the various commands supported by ToothTracker.
 
 If you have not installed ToothTracker, head over to the [Installation](#installation) section for assistance in
@@ -116,9 +116,6 @@ ToothTracker also has the Help Window. This is only shown after a [Help Command]
 The Help Window looks like the following:
 
 ![Help Window](images/HelpWindow.png)
-
-### Trying your first command
-To let you become more familiar with ToothTracker, let's practice executing some commands together.
 
 {% include page-break.html %}
 
