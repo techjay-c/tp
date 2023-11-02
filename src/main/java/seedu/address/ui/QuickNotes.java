@@ -1,10 +1,7 @@
 package seedu.address.ui;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.util.logging.Logger;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -13,15 +10,18 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.Region;
+import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.util.StringUtil;
+import seedu.address.storage.QuickNotesStorage;
 
 /**
  * A ui for the status bar that is displayed at the header of the application.
  */
 public class QuickNotes extends UiPart<Region> {
 
-    private static final String QUICK_NOTES_PATH = "./data/quicknotes.txt";
-
     private static final String FXML = "QuickNotes.fxml";
+    private final Logger logger = LogsCenter.getLogger(PersonListPanel.class);
+    private final QuickNotesStorage quickNotesStorage = new QuickNotesStorage();
 
     @FXML
     private TextArea quickNotes;
@@ -31,6 +31,7 @@ public class QuickNotes extends UiPart<Region> {
 
     @FXML
     private Button clearButton;
+
 
     /**
      * Creates a {@code QuickNotes}.
@@ -58,36 +59,37 @@ public class QuickNotes extends UiPart<Region> {
 
     @FXML
     private void handleSaveNotes(ActionEvent event) {
-        File dir = new File("./data");
-        if (!dir.exists()) {
-            dir.mkdirs(); // Create the directory if it doesn't exist
-        }
-
-        try (FileWriter writer = new FileWriter(QUICK_NOTES_PATH)) {
-            writer.write(quickNotes.getText());
+        try {
+            quickNotesStorage.saveNotes(quickNotes.getText());
+            // Change the style of the TextArea after saving
+            getRoot().getStyleClass().add("saved-notes");
+            logger.info("Successfully saved note file.");
         } catch (IOException e) {
-            e.printStackTrace();
-            // Insert error message
+            logger.warning("Failed to save note file : " + StringUtil.getDetails(e));
         }
 
-        // Change the style of the TextArea after saving
-        getRoot().getStyleClass().add("saved-notes");
     }
 
     @FXML
     private void handleClearNotes(ActionEvent event) {
         quickNotes.clear();
+        try {
+            quickNotesStorage.clearNotes();
+            logger.info("Successfully cleared note file.");
+        } catch (IOException e) {
+            logger.warning("Failed to clear note file : " + StringUtil.getDetails(e));
+        }
     }
 
     private void loadNotesOnStartup() {
-        if (new File(QUICK_NOTES_PATH).exists()) {
-            try {
-                String content = new String(Files.readAllBytes(Paths.get(QUICK_NOTES_PATH)));
+        try {
+            String content = quickNotesStorage.loadNotes();
+            if (content != null) {
                 quickNotes.setText(content);
-            } catch (IOException e) {
-                e.printStackTrace();
-                // Insert error message
             }
+            logger.info("Successfully loaded note file.");
+        } catch (IOException e) {
+            logger.warning("Failed to load note file : " + StringUtil.getDetails(e));
         }
     }
 
