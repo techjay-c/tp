@@ -69,12 +69,12 @@ public class SampleDataUtil {
         return new Dentist[]{
             new Dentist(new Name("Alex Yeoh"), new Phone("87438807"),
                 new Email("alexyeoh@example.com"),
-                new Address("Blk 30 Geylang Street 29, #06-40"), new Specialization("Orthodintics"),
+                new Address("Blk 30 Geylang Street 29, #06-40"), new Specialization("ORTHODONTICS"),
                 new Yoe("6"), getTagSet("friends")),
             new Dentist(new Name("Bernice Yu"), new Phone("99272758"),
                 new Email("berniceyu@example.com"),
                 new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"),
-                new Specialization("Whitening"),
+                new Specialization("DENTAL_PUBLIC_HEALTH"),
                 new Yoe("5"), getTagSet("colleagues", "friends"))
         };
     }

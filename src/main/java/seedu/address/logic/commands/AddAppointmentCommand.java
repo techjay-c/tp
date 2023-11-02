@@ -56,7 +56,7 @@ public class AddAppointmentCommand extends Command {
     private final String treatmentName;
     private final String start;
 
-    private final CalendarWindow calendarWindow = CalendarWindow.getInstance();
+    private CalendarWindow calendarWindow;
 
 
     /**
@@ -73,6 +73,14 @@ public class AddAppointmentCommand extends Command {
         start = appointment.getStart();
     }
 
+    /**
+     * Setter for injecting a mock or stub CalendarWindow for testing purposes.
+     * @param calendarWindow The CalendarWindow to be injected.
+     */
+    public void setCalendarWindow(CalendarWindow calendarWindow) {
+        this.calendarWindow = calendarWindow;
+    }
+
 
     /**
      * Executes the command to add the appointment to the model.
@@ -84,13 +92,13 @@ public class AddAppointmentCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
 
+        requireNonNull(model);
         if (toAdd.getDentistId() < 0) {
             return new CommandResult("Invalid input. Please enter a valid integer value for dentist ID.");
         } else if (toAdd.getPatientId() < 0) {
             return new CommandResult("Invalid input. Please enter a valid integer value for patient ID.");
         }
 
-        requireNonNull(model);
         Predicate<Treatment> treatmentPredicate = treatment -> treatment.getName().toString()
                 .equalsIgnoreCase(treatmentName);
         model.updateFilteredTreatmentList(treatmentPredicate);
@@ -128,6 +136,9 @@ public class AddAppointmentCommand extends Command {
         checkClash(model);
 
         model.addAppointment(toAdd);
+        if (calendarWindow == null) {
+            calendarWindow = CalendarWindow.getInstance();
+        }
         calendarWindow.addAppointment(toAdd);
 
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
