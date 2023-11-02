@@ -286,8 +286,8 @@ between quick searches for immediate needs while also accommodating more complex
 
 #### Filtering a dentist
 
-The `filter-dentist` command in ToothTracker provides users with a more refined search functionality, allowing them to filter dentist records based on 
-specific criteria beyond just `DENTIST_ID` or name-related keywords. This feature offers a versatile and detailed search capability for users who 
+The `filter-dentist` command in ToothTracker provides users with a more refined search functionality, allowing them to filter dentist records based on
+specific criteria beyond just `DENTIST_ID` or name-related keywords. This feature offers a versatile and detailed search capability for users who
 require precise results from the dentist records database.
 
 The activity diagram for filtering dentists is illustrated as follows:
@@ -299,7 +299,7 @@ This sequence diagram shows the interactions between the various components duri
 ![FilterDentistSequenceDiagram](images/FilterDentistSequenceDiagram.png)
 
 ##### Feature Details
-1. Users initiate a filter for a dentist by providing various filter criteria such as SPECIALIZATION, EXPERIENCE, TAGS, and more. 
+1. Users initiate a filter for a dentist by providing various filter criteria such as SPECIALIZATION, EXPERIENCE, TAGS, and more.
 These criteria allow users to search for dentists with specific attributes.
 2. ToothTracker processes the user's filter criteria and matches them against the dentist records in the database.
 3. Dentists that meet the filter criteria are displayed as search results, providing users with a list of dentists that fulfill their specific requirements.
@@ -307,13 +307,13 @@ These criteria allow users to search for dentists with specific attributes.
 
 ##### Feature Considerations
 
-The `filter-dentist` feature in ToothTracker is tailored for users who require precise control over their dentist searches. Unlike the `search-dentist` command, 
+The `filter-dentist` feature in ToothTracker is tailored for users who require precise control over their dentist searches. Unlike the `search-dentist` command,
 which primarily relies on `DENTIST_ID` and name-related keywords, the `filter-dentist` command operates by filtering based on specific attributes within a dentist's record.
 
-To ensure the validity of the filter criteria, the  filter-dentist command conducts validation checks to confirm that the selected attribute for filtering is a valid attribute 
-associated with a dentist's record. 
+To ensure the validity of the filter criteria, the  filter-dentist command conducts validation checks to confirm that the selected attribute for filtering is a valid attribute
+associated with a dentist's record.
 
-It is important to note that the filter-dentist feature does not perform validation checks within each attribute to verify whether the entered 
+It is important to note that the filter-dentist feature does not perform validation checks within each attribute to verify whether the entered
 keyword is of a valid type for that particular attribute. Users are responsible for inputting keywords that are meaningful and applicable to the chosen attribute.
 
 
@@ -678,7 +678,7 @@ testers are expected to do more *exploratory* testing.
 
 ### Saving window preferences
 
-1. Resize the window to an optimum size. Move the window to a different location. Close the window. 
+1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 2. Re-launch ToothTracker by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
@@ -711,7 +711,7 @@ Expected Output in the Command Output Box: Listed all Dentist!
 
 ### Edit a Dentist
 
-Prerequisite: There is at least 1 Dentist stored in ToothTracker. 
+Prerequisite: There is at least 1 Dentist stored in ToothTracker.
 In this example, we assume there are two dentists with the following attributes:<br>
 **Dentist 1**
 * Name: `Xavier Tan`
@@ -824,13 +824,13 @@ Prerequisites: List all dentists using the `list-dentist` command. Multiple dent
 
 `delete-dentist 1`
 
-Expected Output in the Dentist List: Dentist with DENTIST_ID 1 is deleted from the dentist list. 
+Expected Output in the Dentist List: Dentist with DENTIST_ID 1 is deleted from the dentist list.
 
 Expected Output in Command Output Box: Details of the deleted dentist shown.
 
 `delete-dentist -1`
 
-Expected Output in the Dentist List: No dentist is deleted. 
+Expected Output in the Dentist List: No dentist is deleted.
 
 Expected Output in Command Output Box: Error details shown for invalid ID provided.
 

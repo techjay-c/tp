@@ -4,7 +4,7 @@ title: User Guide
 ---
 
 
-ToothTracker is an **All-in-One solution for effortless Dental Clinic Record Management**. From adding new patient and dentist profiles to seamlessly creating appointment schedules, 
+ToothTracker is an **All-in-One solution for effortless Dental Clinic Record Management**. From adding new patient and dentist profiles to seamlessly creating appointment schedules,
 ToothTracker is engineered to simplify every aspect of your dental clinic administrative responsibilities.
 
 
@@ -16,8 +16,8 @@ Here is an overview of how ToothTracker can help you manage your dental clinic a
 - You can have the flexibility to add custom treatments that your clinic provides.
 - You can view your clinic's appointment schedule in ToothTracker's calendar.
 
-We believe that time is the rarest commodity in a dental office. This means dental clinic administrative management must be efficient.  
-Therefore, ToothTracker is optimized for use via a Command Line Interface (CLI) while also having the advantages of a Graphical User Interface (GUI), particularly our calendar feature. 
+We believe that time is the rarest commodity in a dental office. This means dental clinic administrative management must be efficient.
+Therefore, ToothTracker is optimized for use via a Command Line Interface (CLI) while also having the advantages of a Graphical User Interface (GUI), particularly our calendar feature.
 If you type fast, ToothTracker offers your dental clinic a significantly more efficient workflow to get your job done.
 
 If you are new here, visit our quick start guide to start tracking your dental clinic records with ToothTracker!
@@ -36,7 +36,7 @@ This user guide provides a comprehensive documentation on the various commands s
 If you have not installed ToothTracker, head over to the [Installation](#installation) section for assistance in
 installing ToothTracker and launching it for the first time.
 
-Once ToothTracker is installed, you can head over to the [Quick Reference Guide](#quick-reference-guide) section which 
+Once ToothTracker is installed, you can head over to the [Quick Reference Guide](#quick-reference-guide) section which
 covers the basics of using ToothTracker.
 
 If you are familiar with ToothTracker already, this user guide serves to give you an overview on how to use specific commands in ToothTracker.
@@ -80,7 +80,7 @@ Here are some common icons that is used throughout this user guide
       to the ToothTracker. See [add-dentist](#adding-a-dentist--add-dentist) for more details.
 
     * `delete-dentist 3` : Deletes the dentist with `Dentist_ID` 3.
-   
+
     * `search-patient 6` : Searches for the patient with `Patient_ID` 6.
 
     * `clear` : Deletes all records from ToothTracker.
@@ -277,7 +277,7 @@ one result that matches your search criteria. This is helpful when:
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 To check the attributes that you can filter by, you can simply enter the command `list-dentist`.
 Alternatively, a message will be shown in the text box regarding the attributes that you can filter by if you entered an invalid attribute.
-We have set the attributes that can be filtered to be: 
+We have set the attributes that can be filtered to be:
 `name`, `email`, `specialization`, `address`, `phone`, `experience`, `tags`
 </div>
 
@@ -353,7 +353,7 @@ If you wish to update them at a later time, you can use <code>edit-patient</code
 **Examples:**
 
 * `add-patient n/John p/90676622 b/06-06-1998 g/M r/Allergic to Peanuts tr/Braces e/johntan@gmail.com h/60 Harvey Avenue t/Urgent` <br>
-Adds a new patient named ‘John’, with phone number ‘90676622’, birthdate of 06 June 1998, gender Male, remark that he is allergic to Peanuts, 
+Adds a new patient named ‘John’, with phone number ‘90676622’, birthdate of 06 June 1998, gender Male, remark that he is allergic to Peanuts,
 requesting for Braces treatment, email of ‘johntan@gmail.com’, with an address at 60 Harvey Avenue, and a tag Urgent.
 
 <div markdown="block" class="alert alert-info">
@@ -363,7 +363,7 @@ The new treatment must be a valid treatment in ToothTracker. For a list of valid
 
 <div markdown="block" class="alert alert-info">
 **:information_source: Notes about adding patients with the same name:**<br>
-Each patient must have a unique name and ToothTracker does not allow multiple patients with identical names. 
+Each patient must have a unique name and ToothTracker does not allow multiple patients with identical names.
 </div>
 
 ### Listing all patients : `list-patient`
@@ -447,7 +447,7 @@ one result that matches your search criteria. This is helpful when:
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 To check the attributes that you can filter by, you can simply enter the command `list-patient`.
 Alternatively, a message will be shown in the text box regarding the attributes that you can filter by if you entered an invalid attribute.
-We have set the attributes that can be filtered to be: 
+We have set the attributes that can be filtered to be:
 `birthday`, `email`, `name`, `remark`, `gender`, `tags`, `address`, `phone`, `treatment`
 </div>
 
@@ -467,7 +467,7 @@ Edits one or more details of the patient at the specified patient ID. This is he
 **Format:** `PATIENT_ID [n/NAME] [p/PHONE] [b/BIRTHDATE] [g/GENDER] [r/REMARK] [tr/TREATMENT] [e/EMAIL] [h/ADDRESS] [t/TAG]`
 
 **Examples:**
-* `edit-patient 1 p/91234567 e/johndoe@example.com r/Allergic to Peanuts` updates the 
+* `edit-patient 1 p/91234567 e/johndoe@example.com r/Allergic to Peanuts` updates the
 phone number, email address and remarks of the patient with `PATIENT_ID` 1
 
 * `edit-patient 2  n/Alex` updates the name of the patient with `PATIENT_ID` 2 to Alex
@@ -719,7 +719,7 @@ respectively.
 
 | Action                           | Format                                                                                                                | Example                                                                                                                               |
 |----------------------------------|-----------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
-| **Add Patient**                  | `add-patient n/NAME p/PHONE b/BIRTHDATE g/GENDER [r/REMARK] [tr/TREATMENT] [e/EMAIL] [h/ADDRESS] [t/TAG]…​`           | `add-patient n/John p/90676622 b/06-06-1998 g/M r/Allergic to Peanuts tr/Braces e/johntan@gmail.com h/60 Harvey Avenue t/Urgent`   | 
+| **Add Patient**                  | `add-patient n/NAME p/PHONE b/BIRTHDATE g/GENDER [r/REMARK] [tr/TREATMENT] [e/EMAIL] [h/ADDRESS] [t/TAG]…​`           | `add-patient n/John p/90676622 b/06-06-1998 g/M r/Allergic to Peanuts tr/Braces e/johntan@gmail.com h/60 Harvey Avenue t/Urgent`   |
 | **List Patient**                 | `list-patient`                                                                                                        | `list-patient`                                                                                                                        |
 | **Delete Patient**               | `delete-patient PATIENT_ID`                                                                                           | `delete-patient 3`                                                                                                                    |
 | **Search Patient by Patient ID** | `search-patient PATIENT_ID`                                                                                           | `search-patient 3`                                                                                                                    |
