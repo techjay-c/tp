@@ -141,12 +141,6 @@ public class Dentist extends Person {
                 .append("; Tags: ");
         this.getTags().forEach(builder::append);
 
-        Set<Tag> tags = getTags();
-        if (!tags.isEmpty()) {
-            builder.append("; Tags: ");
-            tags.forEach(builder::append);
-        }
-
         return builder.toString();
     }
 }
