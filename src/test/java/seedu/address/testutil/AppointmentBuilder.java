@@ -25,6 +25,7 @@ public class AppointmentBuilder {
     private AppointmentTime appointmentTime;
     private String treatment;
     private String cost;
+    private long id;
 
     /**
      * Creates a {@code AppointmentBuilder} with the default details.
@@ -113,6 +114,14 @@ public class AppointmentBuilder {
     }
 
     /**
+     * Sets the {@code id} of the {@code Appointment} that we are building.
+     */
+    public AppointmentBuilder withId(String id) {
+        this.id = Long.parseLong(id);
+        return this;
+    }
+
+    /**
      * Builds and returns a new {@code Appointment} with the specified details.
      * The details must be set using the various "with" methods before calling this method.
      *
@@ -124,6 +133,8 @@ public class AppointmentBuilder {
         newAppointment.setPatientName(patientName);
         newAppointment.setAppointmentTime(appointmentTime);
         newAppointment.setCost(cost);
+        newAppointment.setId(id);
+
         return newAppointment;
     }
 
