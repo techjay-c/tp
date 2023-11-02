@@ -1,5 +1,10 @@
 package seedu.address.testutil;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import seedu.address.model.AddressBook;
 import seedu.address.model.appointments.Appointment;
 
 /**
@@ -24,4 +29,18 @@ public class TypicalAppointments {
             .withAppointmentTime("2023-10-20T12:00", "PT2H00M")
             .withTreatment("Tooth Extraction")
             .withCost("150").build();
+
+    private TypicalAppointments() {} // prevents instantiation
+
+    public static AddressBook getTypicalAddressBook() {
+        AddressBook ab = new AddressBook();
+        for (Appointment appointment : getTypicalAppointments()) {
+            ab.addAppointment(appointment);
+        }
+        return ab;
+    }
+
+    public static List<Appointment> getTypicalAppointments() {
+        return new ArrayList<>(Arrays.asList(APPOINTMENT_ONE, APPOINTMENT_TWO));
+    }
 }

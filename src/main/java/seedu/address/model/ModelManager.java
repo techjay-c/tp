@@ -156,6 +156,8 @@ public class ModelManager implements Model {
     @Override
     public Appointment getAppointmentById(long appointmentId) {
         requireNonNull(appointmentId);
+        Predicate<Appointment> appointmentPredicate = appointment -> true;
+        updateFilteredAppointmentList(appointmentPredicate);
         ObservableList<Appointment> filteredAppointment = getFilteredAppointmentList();
 
         for (Appointment appointment : filteredAppointment) {
