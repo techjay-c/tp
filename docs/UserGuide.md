@@ -252,7 +252,7 @@ We have set the attributes that can be filtered to be:
 * `filter-dentist a/specialization k/Orthodontics` <br> This filters for dentists with the specialization Orthodontics.
 
 #### 4.1.7. Editing a dentist: `edit-dentist`
-Edits one or more attributes of the dentist at the specified `Dentist ID`. This is useful when:
+Edits one or more attributes of the dentist at the specified `DENTIST_ID`. This is useful when:
 * The particulars of a dentist need to be updated.
 * Optional dentist particulars were not provided previously.
 * You accidentally entered incorrect information about a dentist into the ToothTrack database.
@@ -430,7 +430,7 @@ We have set the attributes that can be filtered to be:
 * `filter-patient a/treatment k/Cleaning` <br> This filters for patients with the treatment Cleaning.
 
 #### 4.2.7. Editing a patient: `edit-patient`
-Edits one or more attributes of the patient at the specified `Patient ID`. This is useful when:
+Edits one or more attributes of the patient at the specified `PATIENT_ID`. This is useful when:
 * The particulars of a patient need to be updated.
 * Optional patient particulars were not provided previously.
 * You accidentally entered incorrect information about a patient into the ToothTrack database.
@@ -476,7 +476,7 @@ Adds a dental appointment to ToothTracker. This is useful when:
 
 <div markdown="block" class="alert alert-info">
 **:information_source: Notes about adding Appointments:**<br>
-The system will not allow the addition of appointments that clashes with existing appointments with the same dentist or patient.
+ToothTracker will not allow the addition of appointments that clashes with existing appointments with the same dentist or patient.
 </div>
 
 **Example:**
