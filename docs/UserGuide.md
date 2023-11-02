@@ -175,7 +175,7 @@ To check the Dentist ID of a dentist, you can simply enter the command `list-den
 * `delete-dentist 6` deletes the dentist with the `DENTIST_ID` 6.
 * `delete-dentist 20` deletes the dentist with the `DENTIST_ID` 20.
 
-### Searching for dentists by `DENTIST_ID`: `search-dentist`
+### Searching for dentists by `DENTIST_ID` : `search-dentist`
 
 Search for a dentist by their `DENTIST_ID` in ToothTracker. This search returns a unique dentist based on the provided `DENTIST_ID`.
 This is useful when:
@@ -196,7 +196,7 @@ To check the `DENTIST_ID` of a dentist, you can simply enter the command `list-d
 * `search-dentist 10` searches for the dentist with `DENTIST_ID` 10.
 
 
-### Searching for dentists by keywords: `search-dentist`
+### Searching for dentists by keywords : `search-dentist`
 
 Search for dentists by matching names with a keyword. This command helps you find dentist records that match your search criteria.
 This is useful when:
@@ -217,7 +217,7 @@ This is useful when:
 * `search-dentist John` searches for dentists with names containing the keyword `John`.
 * `search-dentist Ronald Lim` searches for dentists with names containing the keyword `Ronald Lim`.
 
-### Filtering dentists: `filter-dentist`
+### Filtering dentists : `filter-dentist`
 
 Narrows down your search for dentists based on a specified attribute. When this command is used, there might be more than
 one result that matches your search criteria. This is helpful when:
@@ -238,7 +238,7 @@ We have set the attributes that can be filtered to be:
 * `filter-dentist a/phone k/98225677` searches for dentists with the phone number 98225677.
 * `filter-dentist a/specialization k/Orthodontics` searches for dentists with the specialization Orthodontics.
 
-### Editing a dentist: `edit-dentist`
+### Editing a dentist : `edit-dentist`
 
 Edits one or more details of the dentist at the specified Dentist ID. This is helpful when:
 
@@ -250,11 +250,11 @@ Edits one or more details of the dentist at the specified Dentist ID. This is he
 
 **Examples:**
 
-* `edit-dentist 1 p/98987676 e/bobjuly@gmail.com` edits the phone number and email of the dentist with `DENTIST_ID 1`
+* `edit-dentist 1 p/98987676 e/bobjuly@gmail.com` edits the phone number and email of the dentist with `DENTIST_ID` 1
   into 98987676 and bobjuly@gmail.com respectively.
 
 
-* `edit-dentist 2 n/Emmanuel Alexandra t/` edits the name of the dentist with `DENTIST_ID 2` into ‘Emmanual Alexandra’
+* `edit-dentist 2 n/Emmanuel Alexandra t/` edits the name of the dentist with `DENTIST_ID` 2 into ‘Emmanuel Alexandra’
   and removes all tags of the dentist.
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
@@ -284,7 +284,7 @@ Adds a patient to the list of patients in ToothTracker. This is helpful when:
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A patient can have any number of <code>TAG</code>s (including zero tags).
 
-<code>EMAIL</code>, <code>ADDRESS</code>, <code>REMARK</code> and <code>TREATMENT</code> are optional to be put.
+<code>EMAIL</code>, <code>ADDRESS</code>, <code>REMARK</code> and <code>TREATMENT</code> are optional and can be left empty.
 You may use the `edit-patient` command to update them in the future.
 </div>
 
@@ -304,9 +304,8 @@ If you wish to update them at a later time, you can use <code>edit-patient</code
 **Examples:**
 
 * `add-patient n/John p/90676622 b/06-06-1998 g/M r/Allergic to Peanuts tr/Braces e/johntan@gmail.com h/60 Harvey Avenue t/Urgent` <br>
-Adds a new patient named ‘John’, with phone number ‘90676622’ and email of ‘johntan@gmail.com’,
-birthdate of 06 June 1998, Gender Male, remark that he is allergic to Peanuts, requesting for cleaning treatment
-and with an address at 60 Harvey Avenue.
+Adds a new patient named ‘John’, with phone number ‘90676622’, birthdate of 06 June 1998, gender Male, remark that he is allergic to Peanuts, 
+requesting for Braces treatment, email of ‘johntan@gmail.com’, with an address at 60 Harvey Avenue, and a tag Urgent.
 
 <div markdown="block" class="alert alert-info">
 **:information_source: Notes about adding Treatments:**<br>
@@ -346,7 +345,7 @@ To check the `PATIENT_ID` of a patient, you can simply enter the command `list-p
 Examples:
 * `delete-patient 34` deletes the patient with the `PATIENT_ID` 34.
 
-### Searching for patients by `PATIENT_ID`: `search-patient`
+### Searching for patients by `PATIENT_ID` : `search-patient`
 
 Search for a patient by their `PATIENT_ID` in ToothTracker. This search returns a unique patient based on the provided `PATIENT_ID`.
 This is useful when:
@@ -367,7 +366,7 @@ To check the `PATIENT_ID` of a patient, you can simply enter the command `list-p
 * `search-patient 8` searches for the patient with `PATIENT_ID` 8.
 
 
-### Searching for patients by keywords: `search-patient`
+### Searching for patients by keywords : `search-patient`
 
 Search for patients by matching names with a keyword. This command helps you find patient records that match your search criteria.
 This is useful when:
@@ -388,7 +387,7 @@ This is useful when:
 * `search-dentist John` searches for dentists with names containing the keyword `John`.
 * `search-dentist Ronald Lim` searches for dentists with names containing the keyword `Ronald Lim`.
 
-### Filtering patients: `filter-patient`
+### Filtering patients : `filter-patient`
 
 Narrows down your search for patients based on a specified attribute. When this command is used, there might be more than
 one result that matches your search criteria. This is helpful when:
@@ -409,7 +408,7 @@ We have set the attributes that can be filtered to be:
 * `filter-patient a/phone k/81076655` searches for patients with the phone number 81076655.
 * `filter-patient a/treatment k/Cleaning` searches for patients with the treatment Cleaning.
 
-### Editing a patient: `edit-patient`
+### Editing a patient : `edit-patient`
 
 Edits one or more details of the patient at the specified patient ID. This is helpful when:
 * The particulars of a patient need to be updated.
@@ -420,9 +419,9 @@ Edits one or more details of the patient at the specified patient ID. This is he
 
 **Examples:**
 * `edit-patient 1 p/91234567 e/johndoe@example.com r/Allergic to Peanuts` updates the 
-phone number, email address and remarks of the patient with `PATIENT_ID 1`
+phone number, email address and remarks of the patient with `PATIENT_ID` 1
 
-* `edit-patient 2  n/Alex` updates the name of the patient with `PATIENT_ID 2` to Alex
+* `edit-patient 2  n/Alex` updates the name of the patient with `PATIENT_ID` 2 to Alex
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 You can edit the particulars in any order and edit more than one detail of the patient with a single `edit-patient` command.
@@ -445,7 +444,7 @@ The edited treatment must be a valid treatment in ToothTracker. For a list of va
 
 ## Part 3 - Appointment Features
 
-### Adding an appointment: `add-appointment`
+### Adding an appointment : `add-appointment`
 
 Adds a new dental appointment to ToothTracker.
 
@@ -469,7 +468,7 @@ The system will not allow the addition of appointments that clashes with existin
 </div>
 
 
-### Deleting an appointment: `delete-appointment`
+### Deleting an appointment : `delete-appointment`
 
 Deletes the specified appointment from ToothTracker.
 
@@ -488,10 +487,10 @@ You may use `list-appointment` to check out the `APPOINTMENT_ID` first.
 
 **Example:**
 
-* `delete-appointment 2` deletes the appointment with `APPOINTMENT_ID 2` from ToothTracker.
+* `delete-appointment 2` deletes the appointment with `APPOINTMENT_ID` 2 from ToothTracker.
 
 
-### Listing all appointments: `list-appointment`
+### Listing all appointments : `list-appointment`
 
 Shows a list of all appointments in ToothTracker.
 
@@ -501,7 +500,7 @@ This is helpful when:
 
 **Format:** `list-appointment` (No extra parameters required)
 
-### Filtering Appointments by `DENTIST_ID`: `filter-appointment dentist`
+### Filtering Appointments by `DENTIST_ID` : `filter-appointment dentist`
 
 Filters the appointment list to show the list of appointments under the dentist with the specified `DENTIST_ID`.
 
@@ -517,9 +516,9 @@ You may use `list-dentist` to check out the `DENTIST_ID` first.
 
 **Example:**
 
-* `filter-appointment dentist 1` returns all appointments under the dentist with `DENTIST_ID 1`.
+* `filter-appointment dentist 1` returns all appointments under the dentist with DENTIST_ID` 1.
 
-### Filtering Appointments by `PATIENT_ID`: `filter-appointment patient`
+### Filtering Appointments by `PATIENT_ID` : `filter-appointment patient`
 
 Filters the appointment list to show the list of appointments under the patient with the specified `PATIENT_ID`.
 
@@ -535,12 +534,12 @@ You may use `list-patient` to check out the `PATIENT_ID` first.
 
 **Example:**
 
-* `filter-appointment patient 1` returns all appointments under the patient with the `PATIENT_ID 1`.
+* `filter-appointment patient 1` returns all appointments under the patient with the `PATIENT_ID` 1.
 
 
 ## Part 4 - Treatment Features
 
-### Adding a treatment: `add-treatment`
+### Adding a treatment : `add-treatment`
 
 You can add a new dental treatment to the ToothTracker system using the `add-treatment` command.
 This command allows you to specify the treatment name, the cost of treatment, and how long the treatment would take.
@@ -568,7 +567,7 @@ Shows a list of all treatments in ToothTracker. This is useful when:
 Format: `list-treatment` (No extra parameters required)
 
 
-### Deleting a treatment: `delete-treatment`
+### Deleting a treatment : `delete-treatment`
 
 Deletes the specified treatment from ToothTracker.
 
