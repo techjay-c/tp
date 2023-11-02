@@ -112,8 +112,8 @@ You may use the `edit-dentist` command to update them in the future.
 </div>
 
 <div markdown="block" class="alert alert-info">
-**:information_source: Notes about dentist specializations:**<br>
-By default, ToothTracker only accepts set of predefined recognized dental specializations. They are:<br>
+**:information_source: Notes about Specializations:**<br>
+By default, ToothTracker only accepts a set of predefined recognized dental specializations. They are:<br>
   1. Endodontics<br>
   2. Dental Public Health<br>
   3. Oral and Maxillofacial Surgery<br>
@@ -123,7 +123,7 @@ By default, ToothTracker only accepts set of predefined recognized dental specia
   7. Prosthodontics<br>
 
 This is in accordance to the 
-[list of recognised specializations](https://www.healthprofessionals.gov.sg/dsab/specialist-training/list-of-recognised-specialties) 
+[List of Recognised Specializations](https://www.healthprofessionals.gov.sg/dsab/specialist-training/list-of-recognised-specialties) 
 from The Ministry of Health. Please consult the developers if you need to change the dental specializations!
 </div>
 
