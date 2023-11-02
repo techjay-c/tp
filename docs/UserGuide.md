@@ -1,7 +1,7 @@
 ---
 layout: page
 title: User Guide
-toc-show: true
+show-toc: true
 ---
 
 ## About ToothTracker

@@ -154,10 +154,8 @@
  * Page content
  */
 .page-content {
-  width: 100%;
-  float: right;
-  padding: 0;
-  box-sizing: border-box;
+  padding: $spacing-unit 0;
+  flex: 1 0 auto;
 }
 
 .page-heading {
@@ -376,6 +374,4 @@
   #site-nav, #page-nav {
     display: none;
   }
-
-
 }
