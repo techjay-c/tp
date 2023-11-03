@@ -1,6 +1,7 @@
 ---
 layout: page
 title: ToothTracker User Guide
+show-toc: true
 ---
 
 ToothTracker is an **All-in-One solution for effortless Dental Clinic Record Management**. From adding new patient and dentist profiles to seamlessly creating appointment schedules,
@@ -18,27 +19,47 @@ Here is an overview of how ToothTracker can help you manage your dental clinic a
 - You can have the flexibility to add custom treatments that your clinic provides.
 - You can view your clinic's appointment schedule in ToothTracker's calendar.
 
+If you are new here, head over to [How to use ToothTracker's User Guide](#how-to-use-toothtrackers-user-guide) to start tracking your dental clinic records!
 
-## 1. How to use ToothTracker's User Guide
+{% include page-break.html %}
+
+{% include toc.md header=true show-in-toc=true ordered=true %}
+
+{% include page-break.html %}
+
+## How to use ToothTracker's User Guide
 Thank you for choosing ToothTracker! We are delighted to have you as a user!
 This user guide provides a comprehensive documentation on the various commands supported by ToothTracker.
 
-If you have not installed ToothTracker, head over to the [Installation](#3-installation) section for assistance in
+If you have not installed ToothTracker, head over to the [Installation](#installation) section for assistance in
 installing ToothTracker and launching it for the first time.
+
+Once ToothTracker is installed, you can head over to the [Quick Reference Guide](#quick-reference-guide) section which
+covers the basics of using ToothTracker.
 
 If you are familiar with ToothTracker already, this user guide serves to give you an overview on how to use specific commands in ToothTracker.
 
-## 2. Table of Contents
-* Table of Contents
-{:toc}
+If you are an experienced user, you can refer to the [Command Summary](#command-summary) for a quick overview of all commands.
 
---------------------------------------------------------------------------------------------------------------------
+If you are stuck or encountering issues, head over to the [FAQ](#faq) section.
 
-## 3. Installation
+### Icons used in this guide
+
+Here are some common icons that is used throughout this user guide
+
+| Icon                          | Meaning                                  |
+|-------------------------------|------------------------------------------|
+| :information_source:  **Note** | Information you should keep in mind.     |
+| :bulb: **Tip**                | Information you might find useful.       |
+| :exclamation: **Caution**     | Information you should be careful about. |
+
+{% include page-break.html %}
+
+## Installation
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `ToothTracker.jar` from [here]().
+1. Download the latest `ToothTracker.jar` from [here](https://github.com/AY2324S1-CS2103T-W10-3/tp/releases).
 
 1. Copy the file to the folder you want to use as the _home folder_ for your ToothTracker.
 
@@ -47,28 +68,59 @@ If you are familiar with ToothTracker already, this user guide serves to give yo
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will
+1. Type the command in the command box and press Enter to execute it. e.g. typing `help` and pressing Enter will
    open the help window.<br>
    Some example commands you can try:
 
     * `list-dentist` : Lists all dentists.
 
     * `add-dentist n/Bob p/12345678 e/bobjune@gmail.com s/Orthodontics y/6 s/braces` : Adds a dentist named `Bob`
-      to the ToothTracker. See [add-dentist](#411-adding-a-dentist-add-dentist) for more details.
+      to the ToothTracker. See [add-dentist](#adding-a-dentist--add-dentist) for more details.
 
     * `delete-dentist 3` : Deletes the dentist with `DENTIST_ID` 3.
    
-    * `search-patient 6` : Search for the patient with `PATIENT_ID` 6.
+    * `search-patient 6` : Searches for the patient with `PATIENT_ID` 6.
 
     * `clear` : Deletes all records from ToothTracker.
 
     * `exit` : Exits ToothTracker.
 
-1. Refer to the [Features](#4-features) below for details of each command.
+1. Refer to the [Features](#features) section for details of each command.
 
---------------------------------------------------------------------------------------------------------------------
+{% include page-break.html %}
 
-## 4. Features
+## Quick Reference Guide
+
+### Layout
+When you launch ToothTracker, ToothTracker appears on your screen as a GUI. Let’s take a look at the layout of the different components of ToothTracker.
+
+ToothTracker’s GUI consists of a Main Window, a Calendar Window as well as the Help Window. The main window consists of six components:
+
+1. Command Input Box
+1. Result Display Box
+1. Patient List Panel
+1. Dentist List Panel
+1. Appointment List Panel
+1. Quick Notes Box
+
+The following picture of the main window shows the six components numbered accordingly:
+
+![ToothTracker UI](images/UiAnnotated.png)
+
+Besides the main window, ToothTracker also has the Calendar Window. It is not part of the main GUI and is only shown after a [Calendar Command](#viewing-calendar--view-calendar) is run.
+
+![Calendar Window](images/CalendarWindow.png)
+
+ToothTracker also has the Help Window. This is only shown after a [Help Command](#viewing-help--help) is run.
+
+The Help Window looks like the following:
+
+![Help Window](images/HelpWindow.png)
+
+{% include page-break.html %}
+
+## Features
+This section shares with you on how to use each feature in detail.
 
 <div markdown="block" class="alert alert-info">
 
@@ -95,9 +147,12 @@ If you are familiar with ToothTracker already, this user guide serves to give yo
 
 </div>
 
-### 4.1. Dentist Features
+{% include page-break.html %}
 
-#### 4.1.1. Adding a dentist: `add-dentist`
+### Dentist Features
+
+#### Adding a dentist : `add-dentist`
+
 Adds a dentist to the list of dentists in ToothTracker. This is useful when:
 * You are using ToothTracker for the first time, and you have to add your dentists' particulars.
 * You are adding a new dentist who has joined your dental clinic.
@@ -153,11 +208,13 @@ This adds a dentist named 'Barbara Noel' with phone number '93349795' and email 
 who has 6 years of experience and specializing in 'Paediatric Dentistry' into the list of dentists in ToothTracker.
 
 
-* `add-dentist n/Emmanuel Chua p/98987646 y/8 s/Endodontics t/extraction`<br>
-This adds a dentist named 'Emmanuel Chua' with phone number '98987646' who has 8 years of experience
-specializing in 'Endodontics' with a tag of 'extraction' into the list of dentists in ToothTracker.
+* `add-dentist n/Emmanuel Chua p/99887766 y/8 s/surgery t/extraction`
+This adds a dentist named 'Emmanuel Chua' with phone number '99887766' who has 8 years of experience
+specializing in 'surgery' with a tag of 'extraction' into the list of dentists in ToothTracker.
 
-#### 4.1.2. Listing all dentists: `list-dentist`
+
+#### Listing all dentists : `list-dentist`
+
 Shows a list of all dentists in ToothTracker. This is useful when:
 * You want to retrieve the information of all dentists.
 * You want to verify a dentist is added successfully in ToothTracker.
@@ -165,7 +222,9 @@ Shows a list of all dentists in ToothTracker. This is useful when:
 
 **Format:** `list-dentist` (No extra parameters required)
 
-#### 4.1.3. Deleting a dentist: `delete-dentist`
+
+#### Deleting a dentist : `delete-dentist`
+
 Deletes the dentist with the specified `DENTIST_ID` from ToothTracker.
 
 **Format:** `delete-dentist DENTIST_ID`
@@ -181,12 +240,12 @@ To check the <code>DENTIST_ID</code> of a dentist, you can simply enter the comm
 
 **Examples:**
 * `delete-dentist 6` <br> This deletes the dentist with the `DENTIST_ID` 6.
-
-
 * `delete-dentist 20` <br> This deletes the dentist with the `DENTIST_ID` 20.
 
-#### 4.1.4. Searching for dentists by `DENTIST_ID`: `search-dentist`
-Search for a dentist by their `DENTIST_ID` in ToothTracker.
+
+#### Searching for dentists by `DENTIST_ID` : `search-dentist`
+
+Searches for a dentist by their `DENTIST_ID` in ToothTracker.
 This command helps you find a unique dentist based on the provided `DENTIST_ID`. This is useful when:
 * You want to confirm the identity of a specific dentist before using further commands.
 * You need quick access to one specific dentist's particulars.
@@ -201,11 +260,11 @@ To check the `DENTIST_ID` of a dentist, you can simply enter the command `list-d
 
 **Examples:**
 * `search-dentist 5` <br> This searches for the dentist with `DENTIST_ID` 5.
-
-
 * `search-dentist 10` <br> This searches for the dentist with `DENTIST_ID` 10.
 
-#### 4.1.5. Searching for dentists by keyword: `search-dentist`
+
+#### Searching for dentists by keywords : `search-dentist`
+
 Search for dentists by matching names with a keyword.
 This command helps you find dentists that match your search criteria. This is useful when:
 * You need to find dentists whose names match your search criteria.
@@ -226,11 +285,11 @@ This command helps you find dentists that match your search criteria. This is us
 
 **Examples:**
 * `search-dentist John` <br> This searches for dentists with names containing the keyword `John`.
-
-
 * `search-dentist Ronald Lim` <br> This searches for dentists with names containing the keyword `Ronald Lim`.
 
-#### 4.1.6. Filtering dentists: `filter-dentist`
+
+#### Filtering dentists : `filter-dentist`
+
 Narrows down your search for dentists based on a specified attributes. 
 When this command is used, there might be more than one result that matches your search criteria. This is useful when:
 * You want to find dentists with specific attributes.
@@ -247,11 +306,11 @@ We have set the attributes that can be filtered to be:
 
 **Examples:**
 * `filter-dentist a/phone k/98225677` <br> This filters for dentists with the phone number 98225677.
-
-
 * `filter-dentist a/specialization k/Orthodontics` <br> This filters for dentists with the specialization Orthodontics.
 
-#### 4.1.7. Editing a dentist: `edit-dentist`
+
+#### Editing a dentist : `edit-dentist`
+
 Edits one or more attributes of the dentist at the specified `DENTIST_ID`. This is useful when:
 * The particulars of a dentist need to be updated.
 * Optional dentist particulars were not provided previously.
@@ -259,12 +318,20 @@ Edits one or more attributes of the dentist at the specified `DENTIST_ID`. This 
 
 **Format:** `edit-dentist DENTIST_ID [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SPECIALIZATION] [y/YOE] [t/TAG]…​`
 
+**Examples:**
+
+* `edit-dentist 1 p/98987676 e/bobjuly@gmail.com` <br> This edits the phone number and email of the dentist with
+  `DENTIST_ID` 1 into 98987676 and bobjuly@gmail.com respectively.
+
+* `edit-dentist 2 n/Emmanuel Alexandra t/` <br>
+  This edits the name of the dentist with `DENTIST_ID` 2 into ‘Emmanuel Alexandra’ and removes all tags of the dentist.
+
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 You can edit the particulars in any order and edit more than one particulars of the dentist with a single `edit-dentist` command.
 </div>
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-To check the `DENTIIST_ID` of a dentist, you can simply enter the command `list-dentist`.
+To check the `DENTIST_ID` of a dentist, you can simply enter the command `list-dentist`.
 </div>
 
 <div markdown="block" class="alert alert-info">
@@ -273,19 +340,12 @@ When editing tags, you have to include any previous tags that was already includ
 This also means that you can use `t/` to remove all tags from a dentist using the <code>edit-dentist</code> command.
 </div>
 
-**Examples:**
+{% include page-break.html %}
 
-* `edit-dentist 1 p/98987676 e/bobjuly@gmail.com` <br> This edits the phone number and email of the dentist with
-  `DENTIST_ID` 1 into 98987676 and bobjuly@gmail.com respectively.
+### Patient Features
 
+#### Adding a patient : `add-patient`
 
-* `edit-dentist 2 n/Emmanuel Alexandra t/` <br> 
-  This edits the name of the dentist with `DENTIST_ID` 2 into 
-  ‘Emmanuel Alexandra’ and removes all tags of the dentist.
-
-### 4.2. Patient Features
-
-#### 4.2.1. Adding a patient: `add-patient`
 Adds a patient to the list of patients in ToothTracker. This is useful when:
 * You are using ToothTracker for the first time, and you have to add your patients' particulars.
 * A new patient has joined your clinic.
@@ -322,7 +382,7 @@ To view the list of treatments, you can use the command `list-treatment`.
 
 <div markdown="block" class="alert alert-info">
 **:information_source: Notes about adding patients with the same name:**<br>
-Each patient must have a unique name. ToothTracker does not allow multiple patients with identical names. 
+Each patient must have a unique name and ToothTracker does not allow multiple patients with identical names.
 </div>
 
 **Examples:**
@@ -331,20 +391,23 @@ Each patient must have a unique name. ToothTracker does not allow multiple patie
 This adds a new patient named ‘John’, with phone number ‘90676622’, birthdate of 26 June 1998, gender M (Male), remark that he is allergic to peanuts, 
 requesting for Braces treatment, email of ‘johntan@gmail.com’, with an address at 60 Harvey Avenue, and a tag 'Urgent'.
 
-
 * `add-patient n/Jean p/95339212 b/14-09-2001 g/F` <br>
 This adds a new patient named 'Jean', with phone number '95339212', birthdate of 14 September 2001, gender F (Female).
 
-#### 4.2.2. Listing all patients: `list-patient`
+
+#### Listing all patients : `list-patient`
+
 Shows a list of all patients in ToothTracker. This is useful when:
 * You want to retrieve the information of all patients.
 * You want to verify a patient is added successfully in ToothTracker.
 * You want to verify a patient is updated successfully in ToothTracker.
 
-**Format:** `list-patient` (No extra parameters required)
+Format: `list-patient` (No extra parameters required)
 
-#### 4.2.3. Deleting a patient: `delete-patient`
+#### Deleting a patient : `delete-patient`
+
 Deletes the patient with the specified `PATIENT_ID` from ToothTracker.
+
 **Format:** `delete-patient PATIENT_ID`
 
 <div markdown="span" class="alert alert-warning">:exclamation: **CAUTION:**
@@ -358,12 +421,12 @@ To check the `PATIENT_ID` of a patient, you can simply enter the command `list-p
 
 Examples:
 * `delete-patient 34` <br> This deletes the patient with the `PATIENT_ID` 34.
-
-
 * `delete-patient 48` <br> This deletes the patient with the `PATIENT_ID` 48.
 
-#### 4.2.4. Searching for patients by `PATIENT_ID`: `search-patient`
-Search for a patient by their `PATIENT_ID` in ToothTracker. 
+
+#### Searching for patients by `PATIENT_ID` : `search-patient`
+
+Searches for a patient by their `PATIENT_ID` in ToothTracker. 
 This command helps you find a unique patient based on the provided `PATIENT_ID`. This is useful when:
 * You want to confirm the identity of a specific patient before using further commands.
 * You need quick access to one specific patient's particulars.
@@ -378,12 +441,11 @@ To check the `PATIENT_ID` of a patient, you can simply enter the command `list-p
 
 **Examples:**
 * `search-patient 2` <br> This searches for the patient with `PATIENT_ID` 2.
-
-
 * `search-patient 8` <br> This searches for the patient with `PATIENT_ID` 8.
 
 
-#### 4.2.5. Searching for patients by keywords : `search-patient`
+#### Searching for patients by keywords : `search-patient`
+
 Search for patients by matching names with a keyword. 
 This command helps you find patients that match your search criteria. This is useful when:
 * You need to find patients whose names match your search criteria
@@ -404,11 +466,11 @@ This command helps you find patients that match your search criteria. This is us
 
 **Examples:**
 * `search-patient John` <br> This searches for patients with names containing the keyword `John`.
-
-
 * `search-patient Ronald Lim` <br> This searches for patients with names containing the keyword `Ronald Lim`.
 
-#### 4.2.6. Filtering patients: `filter-patient`
+
+#### Filtering patients : `filter-patient`
+
 Narrows down your search for patients based on a specified attribute.
 When this command is used, there might be more than one result that matches your search criteria. This is useful when:
 * You want to find patients with specific attributes.
@@ -425,11 +487,11 @@ We have set the attributes that can be filtered to be:
 
 **Examples:**
 * `filter-patient a/phone k/81076655` <br> This filters for patients with the phone number 81076655.
-
-
 * `filter-patient a/treatment k/Cleaning` <br> This filters for patients with the treatment Cleaning.
 
-#### 4.2.7. Editing a patient: `edit-patient`
+
+#### Editing a patient : `edit-patient`
+
 Edits one or more attributes of the patient at the specified `PATIENT_ID`. This is useful when:
 * The particulars of a patient need to be updated.
 * Optional patient particulars were not provided previously.
@@ -448,7 +510,7 @@ To check the `PATIENT_ID` of a patient, you can simply enter the command `list-p
 <div markdown="block" class="alert alert-info">
 **:information_source: Notes about editing tags:**<br>
 When editing tags, you have to include any previous tags that was already included in the patient, or else these tags will be removed.
-This also means that you can use `t/` to remove all tags from a patient using the <code>edit-patient</code> command.
+This also means that you can use `t/` to remove all tags from a patient using the `edit-patient` command.
 </div>
 
 <div markdown="block" class="alert alert-info">
@@ -461,13 +523,15 @@ The edited treatment must be a valid treatment in ToothTracker. For a list of va
   This edits the phone number, email, and remarks of the patient with `PATIENT_ID` 1 into
   '91234567', 'johndoe@example.com', and 'Allergic to Peanuts' respectively.
 
-
 * `edit-patient 2 n/Alex` <br>
   This edits the name of the patient with `PATIENT_ID` 2 to 'Alex'.
 
-### 4.3. Appointment Features
+{% include page-break.html %}
 
-#### 4.3.1. Adding an appointment: `add-appointment`
+### Appointment Features
+
+#### Adding an appointment : `add-appointment`
+
 Adds a dental appointment to ToothTracker. This is useful when:
 * you want to schedule future dental appointments for patients with specific dentists at designated times.
 * you want to check for clashes with existing appointments.
@@ -480,14 +544,24 @@ ToothTracker will not allow the addition of appointments that clashes with exist
 </div>
 
 **Example:**
-
 * `add-appointment dentist/1 patient/1 start/2023-10-12 16:00 tr/Braces` <br>
   This command adds an appointment with the `PATIENT_ID` 1 and the `DENTIST_ID` 1.
   The appointment starts on 12 October 2023, 4pm. The treatment provided during the appointment is Braces.
   The duration of the appointment is automatically set based on the selected treatment in ToothTracker.
 
 
-#### 4.3.2. Deleting an appointment: `delete-appointment`
+#### Listing all appointments : `list-appointment`
+
+Shows a list of all appointments in ToothTracker. This is useful when:
+* you want to retrieve the information of all appointments.
+* you want to verify that the appointment is added to ToothTracker.
+
+**Format:** `list-appointment` (No extra parameters required)
+Shows a list of all appointments in ToothTracker.
+
+
+#### Deleting an appointment : `delete-appointment`
+
 Deletes the appointment with the specified `APPOINTMENT_ID` from ToothTracker.
 
 **Format:** `delete-appointment APPOINTMENT_ID`
@@ -508,14 +582,8 @@ To check the `APPOINTMENT_ID` of an appointment, you can simply enter the comman
   This deletes the appointment with `APPOINTMENT_ID` 2 from ToothTracker.
 
 
-#### 4.3.3. Listing all appointments: `list-appointment`
-Shows a list of all appointments in ToothTracker. This is useful when:
-* you want to retrieve the information of all appointments.
-* you want to verify that the appointment is added to ToothTracker.
+#### Filtering Appointments by `DENTIST_ID` : `filter-appointment dentist`
 
-**Format:** `list-appointment` (No extra parameters required)
-
-#### 4.3.4. Filtering Appointments by `DENTIST_ID`: `filter-appointment dentist`
 Narrows down your search for appointments by filtering the appointment list to
 show the list of appointments under the dentist with the specified `DENTIST_ID`.
 This is useful when:
@@ -529,11 +597,12 @@ You may use `list-dentist` to check out the `DENTIST_ID` first.
 </div>
 
 **Example:**
-
-* `filter-appointment dentist 1` 
+* `filter-appointment dentist 1` <br>
   This gives you all appointments under the dentist with `DENTIST_ID` 1.
 
-#### 4.3.5. Filtering Appointments by `PATIENT_ID`: `filter-appointment patient`
+
+#### Filtering Appointments by `PATIENT_ID` : `filter-appointment patient`
+
 Narrows down your search for appointments by filtering the appointment list to
 show the list of appointments under the patient with the specified `PATIENT_ID`. 
 This is useful when:
@@ -548,13 +617,15 @@ You may use `list-patient` to check out the `PATIENT_ID` first.
 
 **Example:**
 
-* `filter-appointment patient 1`
-  This gives you all appointments under the patient with the `PATIENT_ID` 1.
+* `filter-appointment patient 1` <br>
+This gives you all appointments under the patient with the `PATIENT_ID` 1.
 
+{% include page-break.html %}
 
-### 4.4. Treatment Features
+### Treatment Features
 
-#### 4.4.1. Adding a treatment: `add-treatment`
+#### Adding a treatment : `add-treatment`
+
 Adds a dental treatment to the ToothTracker system.
 This command allows you to specify the treatment name, the cost of treatment, and how long the treatment would take.
 
@@ -566,18 +637,21 @@ Each treatment must have a unique name. ToothTracker does not allow multiple tre
 </div>
 
 **Example:**
+* `add-treatment tr/Tooth Extraction cs/1080 ti/10:30` <br>
+This adds a Tooth Extraction treatment to ToothTracker with a cost of $1080 SGD, and duration of 10 hours and 30 minutes.
 
-* `add-treatment tr/Tooth Extraction cs/1080 ti/03:30` adds a tooth extraction treatment to ToothTracker with a cost of $1080 SGD, and
-  duration of 3 hours and 30 minutes.
 
-#### 4.4.2. Listing all treatments: `list-treatment`
+#### Listing all treatments : `list-treatment`
+
 Shows a list of all treatments in ToothTracker. This is useful when:
 * You want to view the currently available treatments stored in ToothTracker.
 
 Format: `list-treatment` (No extra parameters required)
 
-#### 4.4.3. Deleting a treatment: `delete-treatment`
-Deletes the specified treatment from ToothTracker.
+
+#### Deleting a treatment : `delete-treatment`
+
+Deletes the treatment with the specified `TREATMENT_NAME` from ToothTracker.
 
 **Format:** `delete-treatment TREATMENT_NAME`
 
@@ -592,33 +666,54 @@ Proceed with caution!
 </div>
 
 **Example:**
+* `delete-treatment Braces` <br> This deletes the treatment `Braces` from ToothTracker.
 
-* `delete-treatment Braces` deletes the treatment `Braces` from ToothTracker.
+{% include page-break.html %}
 
-### 4.5. General Features
+### Calendar Features
 
-#### 4.5.1. Viewing help: `help`
+#### Viewing calendar : `view-calendar`
+
+Shows a calendar filled with all scheduled appointments in ToothTracker. This is useful when:
+* You want a visual summary of all appointments, allowing for a comprehensive overview.
+
+Format: `view-calendar` (No extra parameters required)
+
+
+### General Features
+
+#### Viewing help : `help`
+
 Shows a message explaining how to access the help page.
 
-![help message](images/helpMessage.png)
+![help message](images/HelpWindow.png)
 
-**Format:** `help`
+Format: `help`
 
-#### 4.5.2. Clearing all data: `clear`
+
+#### Clearing all data : `clear`
+
 Clears all data from ToothTracker. **PROCEED WITH CAUTION!**
+
+<div markdown="span" class="alert alert-warning">:exclamation: **CAUTION:**
+Data cleared cannot be recovered.
+</div>
 
 **Format:** `clear`
 
-#### 4.5.3. Exiting the program: `exit`
+
+#### Exiting the program : `exit`
 Exits ToothTracker app.
 
 **Format:** `exit`
 
-#### 4.5.4. Saving the data
+
+#### Saving the data
 ToothTracker data is saved in the hard disk automatically after any command that changes the data. There is no need to
 save manually.
 
-#### 4.5.5. Editing the data file
+
+#### Editing the data file
 ToothTracker data is saved automatically as a JSON file `[JAR file location]/data/toothtracker.json`. Advanced users are
 welcome to update data directly by editing that data file.
 
@@ -627,9 +722,10 @@ If your changes to the data file makes its format invalid, ToothTracker will dis
 data file at the next run. Hence, it is recommended to take a backup of the file before editing it.
 </div>
 
---------------------------------------------------------------------------------------------------------------------
 
-## 5. FAQ
+{% include page-break.html %}
+
+## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains
@@ -644,43 +740,79 @@ To display the to-be-edited dentist/patient, you may use these commands:
 Thereafter, you may edit the particulars using `edit-dentist` or `edit-patient` with their `DENTIST_ID` or `PATIENT_ID`
 respectively.
 
---------------------------------------------------------------------------------------------------------------------
 
-## 6. Known issues
+{% include page-break.html %}
+
+## Known issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only
    the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the
    application before running the application again.
 
---------------------------------------------------------------------------------------------------------------------
+
+{% include page-break.html %}
 
 ## Command summary
 
-| Action                           | Format, Examples                                                                                                                                                                                                                                    |
-|----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add Dentist**                  | `add-dentist n/NAME p/PHONE s/SPECIALIZATION y/YOE [e/EMAIL] [h/ADDRESS] [t/TAG]…​` <br> e.g., `add-dentist n/Bob p/12345678 e/bobjune@gmail.com y/6 s/braces`                                                                                      |
-| **Edit Dentist**                 | `edit-dentist DENTIST_ID [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SPECIALIZATION] [y/YOE] [t/TAG]…​` <br> e.g., `edit-dentist 1 p/98987676 e/bobjuly@gmail.com`                                                                                  |
-| **Delete Dentist**               | `delete-dentist DENTIST_ID`<br> e.g., `delete-dentist 3`                                                                                                                                                                                            |
-| **List Dentist**                 | `list-dentist`                                                                                                                                                                                                                                      |
-| **Search Dentist by Dentist ID** | `search-dentist DENTIST_ID` <br> e.g., `search-dentist 2`                                                                                                                                                                                           |
-| **Search Dentist by Keyword**    | `search-dentist KEYWORD` <br> e.g., `search-dentist Tom`                                                                                                                                                                                            |
-| **Filter Dentist**               | `filter-dentist a/ATTRIBUTE k/KEYWORDS` <br> e.g., `filter-dentist a/phone k/90182211`                                                                                                                                                              |
-| **Add Patient**                  | `add-patient n/NAME p/PHONE b/BIRTHDATE g/GENDER s/SERVICE [e/EMAIL] [h/ADDRESS] [r/REMARK] [t/TAG]…​` <br> e.g., `add-patient n/John p/90676622 b/06-06-1998 g/M r/Allergic to Peanuts tr/Braces e/johntan@gmail.com h/60 Harvey Avenue t/Urgent`  | 
-| **Delete Patient**               | `delete-patient PATIENT_ID`<br> e.g., `delete-patient 3`                                                                                                                                                                                            |
-| **List Patient**                 | `list-patient`                                                                                                                                                                                                                                      |
-| **Search Patient by Patient ID** | `search-patient PATIENT_ID`  <br> e.g., `search-patient 3`                                                                                                                                                                                          |
-| **Search Patient by Keyword**    | `search-patient KEYWORD` <br> e.g., `search-patient John`                                                                                                                                                                                           |
-| **Filter Patient**               | `filter-patient a/ATTRIBUTE k/KEYWORDS` <br> e.g., `filter-patient a/phone k/98776211`                                                                                                                                                              |
-| **Add Treatment**                | `add-treatment tr/NAME cs/PRICE ti/DURATION` <br> e.g., `add-treatment tr/Tooth Extraction cs/150 ti/01:00`                                                                                                                                         |
-| **Delete Treatment**             | `delete-treatment NAME` <br> e.g., `delete-treatment Braces`                                                                                                                                                                                        |
-| **List Treatment**               | `list-treatment`                                                                                                                                                                                                                                    |
-| **Add Appointment**              | `add-appointment dentist/DENTIST_ID patient/PATIENT_ID start/START_TIME s/TREATMENT` <br> e.g.,`add-appointment dentist/0 patient/0 start/2023-10-12 16:00 s/Braces`                                                                                |
-| **Delete Appointment**           | `delete-appointment APPOINTMENT_ID`<br> e.g., `delete-appointment 3`                                                                                                                                                                                |
-| **List Appointment**             | `list-appointment`                                                                                                                                                                                                                                  |
-| **Filter Appointment by Dentist ID** | `filter-appointment dentist DENTIST_ID` <br> e.g., `filter-appointment dentist 1`                                                                                                                                                                   |
-| **Filter Appointment by Patient ID** | `filter-appointment patient PATIENT_ID` <br> e.g., `filter-appointment patient 1`                                                                                                                                                                   |
-| **Clear all Profiles**           | `clear`                                                                                                                                                                                                                                             |
-| **Exit Programme**               | `exit`                                                                                                                                                                                                                                              |
-| **Help**                         | `help`                                                                                                                                                                                                                                              |
+### Dentist Commands
+
+| Action                           | Format                                                                                                     | Example                                                                                                                               |
+|----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add Dentist**                  | `add-dentist n/NAME p/PHONE s/SPECIALIZATION y/YOE [e/EMAIL] [h/ADDRESS] [t/TAG]…​`                     | `add-dentist n/Bob p/12345678 e/bobjune@gmail.com y/6 s/braces`                                                                       |
+| **List Dentist**                 | `list-dentist`                                                                                             | `list-dentist`                                                                                                                        |
+| **Delete Dentist**               | `delete-dentist DENTIST_ID`                                                                                | `delete-dentist 3`                                                                                                                    |
+| **Search Dentist by Dentist ID** | `search-dentist DENTIST_ID`                                                                                | `search-dentist 2`                                                                                                                    |
+| **Search Dentist by Keyword**    | `search-dentist KEYWORD`                                                                                   | `search-dentist Tom`                                                                                                                  |
+| **Filter Dentist**               | `filter-dentist a/ATTRIBUTE k/KEYWORDS`                                                                    | `filter-dentist a/phone k/90182211`                                                                                                   |
+| **Edit Dentist**                 | `edit-dentist DENTIST_ID [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SPECIALIZATION] [y/YOE] [t/TAG]…​` | `edit-dentist 1 p/98987676 e/bobjuly@gmail.com`                                                                                       |
+
+
+### Patient Commands
+
+| Action                           | Format                                                                                                                | Example                                                                                                                               |
+|----------------------------------|-----------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
+| **Add Patient**                  | `add-patient n/NAME p/PHONE b/BIRTHDATE g/GENDER [r/REMARK] [tr/TREATMENT] [e/EMAIL] [h/ADDRESS] [t/TAG]…​`           | `add-patient n/John p/90676622 b/06-06-1998 g/M r/Allergic to Peanuts tr/Braces e/johntan@gmail.com h/60 Harvey Avenue t/Urgent`   |
+| **List Patient**                 | `list-patient`                                                                                                        | `list-patient`                                                                                                                        |
+| **Delete Patient**               | `delete-patient PATIENT_ID`                                                                                           | `delete-patient 3`                                                                                                                    |
+| **Search Patient by Patient ID** | `search-patient PATIENT_ID`                                                                                           | `search-patient 3`                                                                                                                    |
+| **Search Patient by Keyword**    | `search-patient KEYWORD`                                                                                              | `search-patient John`                                                                                                                 |
+| **Filter Patient**               | `filter-patient a/ATTRIBUTE k/KEYWORDS`                                                                               | `filter-patient a/phone k/98776211`                                                                                                   |
+| **Editing Patient**              | `edit-patient PATIENT_ID [n/NAME] [p/PHONE] [b/BIRTHDATE] [g/GENDER] [r/REMARK] [tr/TREATMENT] [e/EMAIL] [h/ADDRESS] [t/TAG]…​` | `edit-patient 1 p/91234567 e/johndoe@example.com r/Allergic to Peanuts`                                                  |
+
+
+### Appointment Commands
+
+| Action                           | Format                                                                                                     | Example                                                                                                                       |
+|----------------------------------|------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
+| **Add Appointment**              | `add-appointment dentist/DENTIST_ID patient/PATIENT_ID start/START_TIME tr/TREATMENT`  | `add-appointment dentist/1 patient/1 start/2023-10-12 16:00 tr/Braces`                                                        |
+| **List Appointment**             | `list-appointment`                                                                     | `list-appointment`                                                                                                            |
+| **Delete Appointment**           | `delete-appointment APPOINTMENT_ID`                                                    | `delete-appointment 3`                                                                                                        |
+| **Filter Appointment by Dentist ID** | `filter-appointment dentist DENTIST_ID`                                            | `filter-appointment dentist 1`                                                                                                |
+| **Filter Appointment by Patient ID** | `filter-appointment patient PATIENT_ID`                                            | `filter-appointment patient 1`                                                                                                |
+
+
+### Treatment Commands
+
+| Action                           | Format                                       | Example                                             |
+|----------------------------------|----------------------------------------------|-----------------------------------------------------|
+| **Add Treatment**                | `add-treatment tr/NAME cs/PRICE ti/DURATION` | `add-treatment tr/Tooth Extraction cs/150 ti/01:00` |
+| **List Treatment**               | `list-treatment`                             | `list-treatment`                                    |
+| **Delete Treatment**             | `delete-treatment NAME`                      | `delete-treatment Braces`                           |
+
+
+### Calendar Commands
+
+| Action            | Format          | Example         |
+|-------------------|-----------------|-----------------|
+| **View calendar** | `view-calendar` | `view-calendar` |
+
+
+### General Commands
+
+| Action                | Format           | Example |
+|-----------------------|------------------|---------|
+| **Help**              | `help`           | `help`  |
+| **Clear all data**    | `clear`          | `clear` |
+| **Exit ToothTracker** | `exit`           | `exit`  |
 
 
