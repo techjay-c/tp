@@ -7,7 +7,7 @@ show-toc: true
 ToothTracker is an **All-in-One solution for effortless Dental Clinic Record Management**. From adding new patient and dentist profiles to seamlessly creating appointment schedules,
 ToothTracker is engineered to simplify every aspect of your dental clinic administrative responsibilities.
 
-We believe that time is the rarest commodity in a dental office. This means dental clinic administrative management must be efficient.  
+We believe that time is the rarest commodity in a dental office. This means dental clinic administrative management must be efficient.
 Therefore, ToothTracker is optimized for use via a Command Line Interface (CLI) while also having the advantages of a Graphical User Interface (GUI), particularly our Calendar feature.
 If you type fast, ToothTracker offers your dental clinic a significantly more efficient workflow to get your job done.
 
@@ -78,7 +78,7 @@ Here are some common icons that is used throughout this user guide
       to the ToothTracker. See [add-dentist](#adding-a-dentist--add-dentist) for more details.
 
     * `delete-dentist 3` : Deletes the dentist with `DENTIST_ID` 3.
-   
+
     * `search-patient 6` : Searches for the patient with `PATIENT_ID` 6.
 
     * `clear` : Deletes all records from ToothTracker.
@@ -92,7 +92,7 @@ Here are some common icons that is used throughout this user guide
 ## Quick Reference Guide
 
 ### Layout
-When you launch ToothTracker, ToothTracker appears on your screen as a GUI. 
+When you launch ToothTracker, ToothTracker appears on your screen as a GUI.
 Let’s take a look at the layout of the different components of ToothTracker.
 
 ToothTracker’s GUI consists of a Main Window, a Calendar Window as well as the Help Window. The main window consists of six components:
@@ -178,8 +178,8 @@ By default, ToothTracker only accepts a set of predefined recognized dental spec
   6. Periodontics<br>
   7. Prosthodontics<br>
 
-This is in accordance to the 
-[List of Recognised Specializations](https://www.healthprofessionals.gov.sg/dsab/specialist-training/list-of-recognised-specialties) 
+This is in accordance to the
+[List of Recognised Specializations](https://www.healthprofessionals.gov.sg/dsab/specialist-training/list-of-recognised-specialties)
 from The Ministry of Health. Please consult the developers if you need to change the dental specializations!
 </div>
 
@@ -193,14 +193,14 @@ If you wish to update them at a later time, you can use <code>edit-dentist</code
 
 <div markdown="block" class="alert alert-info">
 **:information_source: Notes about adding dentists with the same name:**<br>
-Each dentist must have a unique name. ToothTracker does not allow multiple dentists with identical names. 
+Each dentist must have a unique name. ToothTracker does not allow multiple dentists with identical names.
 </div>
 
 **Examples:**
 * `add-dentist n/Xavier Roald p/99773311 s/Orthodontics y/1 e/roaldxavier@hotmail.com
 h/Yishun Street 72, Blk 742, #03-354, Singapore 512742 t/Trainee`<br>
 This adds a dentist named 'Xavier Roald' with phone number '99773311', specialising in 'Orthodontics' with '1 year of experience',
-email 'roaldxavier@hotmail.com', address 'Yishun Street 72, Blk 742, #03-354, Singapore 512742', who is a 'Trainee' into 
+email 'roaldxavier@hotmail.com', address 'Yishun Street 72, Blk 742, #03-354, Singapore 512742', who is a 'Trainee' into
 the list of dentists in ToothTracker.
 
 ![add-dentist-example-1](images/ug/dentist/AddDentistExample1.png){: .centered-image }
@@ -302,7 +302,7 @@ This command helps you find dentists that match your search criteria. This is us
 
 #### Filtering dentists : `filter-dentist`
 
-Narrows down your search for dentists based on a specified attributes. 
+Narrows down your search for dentists based on a specified attributes.
 When this command is used, there might be more than one result that matches your search criteria. This is useful when:
 * You want to find dentists with specific attributes.
 * You want to confirm the identity of a dentist before using further commands.
@@ -312,7 +312,7 @@ When this command is used, there might be more than one result that matches your
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 To check the attributes that you can filter by, you can simply enter the command `list-dentist`.
 Alternatively, a message will be shown in the text box regarding the attributes that you can filter by if you entered an invalid attribute.
-We have set the attributes that can be filtered to be: 
+We have set the attributes that can be filtered to be:
 `name`, `phone`, `specialization`, `experience`, `email`, `address`, `tags`.
 </div>
 
@@ -451,7 +451,7 @@ Examples:
 
 #### Searching for patients by `PATIENT_ID` : `search-patient`
 
-Searches for a patient by their `PATIENT_ID` in ToothTracker. 
+Searches for a patient by their `PATIENT_ID` in ToothTracker.
 This command helps you find a unique patient based on the provided `PATIENT_ID`. This is useful when:
 * You want to confirm the identity of a specific patient before using further commands.
 * You need quick access to one specific patient's particulars.
@@ -466,14 +466,14 @@ To check the `PATIENT_ID` of a patient, you can simply enter the command `list-p
 
 **Examples:**
 * `search-patient 2` <br> This searches for the patient with `PATIENT_ID` 2.
-![search-patient-id-example-1](images/ug/patient/SearchPatientIdExample1.png){: .centered-image } 
+![search-patient-id-example-1](images/ug/patient/SearchPatientIdExample1.png){: .centered-image }
 
 * `search-patient 8` <br> This searches for the patient with `PATIENT_ID` 8.
 
 
 #### Searching for patients by keywords : `search-patient`
 
-Search for patients by matching names with a keyword. 
+Search for patients by matching names with a keyword.
 This command helps you find patients that match your search criteria. This is useful when:
 * You need to find patients whose names match your search criteria
 * You forget the `Patient_ID` for a patient and want to search using the patient's name instead.
@@ -510,7 +510,7 @@ When this command is used, there might be more than one result that matches your
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 To check the attributes that you can filter by, you can simply enter the command `list-patient`.
 Alternatively, a message will be shown in the text box regarding the attributes that you can filter by if you entered an invalid attribute.
-We have set the attributes that can be filtered to be: 
+We have set the attributes that can be filtered to be:
 `name`, `phone`, `birthday`, `gender`, `remark`, `treatment`, `email`, `address`, `tags`.
 </div>
 
@@ -639,7 +639,7 @@ This gives you all appointments under the dentist with `DENTIST_ID` 1.
 #### Filtering Appointments by `PATIENT_ID` : `filter-appointment patient`
 
 Narrows down your search for appointments by filtering the appointment list to
-show the list of appointments under the patient with the specified `PATIENT_ID`. 
+show the list of appointments under the patient with the specified `PATIENT_ID`.
 This is useful when:
 * you want to view the list of appointments under a specific patient.
 
@@ -669,7 +669,7 @@ This command allows you to specify the treatment name, the cost of treatment, an
 
 <div markdown="block" class="alert alert-info">
 **:information_source: Notes about adding treatments with the same name:**<br>
-Each treatment must have a unique name. ToothTracker does not allow multiple treatments with identical names. 
+Each treatment must have a unique name. ToothTracker does not allow multiple treatments with identical names.
 </div>
 
 **Example:**
