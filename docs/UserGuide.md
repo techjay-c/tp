@@ -74,7 +74,7 @@ Here are some common icons that is used throughout this user guide
 
     * `list-dentist` : Lists all dentists.
 
-    * `add-dentist n/Bob p/12345678 e/bobjune@gmail.com s/Orthodontics y/6 s/braces` : Adds a dentist named `Bob`
+    * `add-dentist n/Bob p/12345678 e/bobjune@gmail.com s/Orthodontics y/6` : Adds a dentist named `Bob`
       to the ToothTracker. See [add-dentist](#adding-a-dentist--add-dentist) for more details.
 
     * `delete-dentist 3` : Deletes the dentist with `DENTIST_ID` 3.

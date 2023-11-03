@@ -97,6 +97,10 @@ html {
     text-decoration: none;
     color: white;
   }
+
+    @media print {
+      display: none !important;
+    }
 }
 
 .centered-image {
