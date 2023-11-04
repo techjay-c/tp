@@ -60,7 +60,6 @@ html {
 
       a {
         color: gray;
-        text-decoration: none;
 
         &:hover {
           color: black;
@@ -72,12 +71,12 @@ html {
 
 article.post {
 
-  h1, h2, h3, h4 {
-    color: #4A90E2;
+  h2, h3, h4 {
+    color: #e46c0a;
   }
 
   a {
-    color: #2C6690;
+    color: #0d6efd;
 
     &.header-backlink {
       color: inherit;
@@ -92,6 +91,10 @@ article.post {
 
 pre, code {
   border-color: #D3D3D3;
+}
+
+code {
+  font-size: small;
 }
 
 // Back to Top Button
