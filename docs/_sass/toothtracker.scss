@@ -61,7 +61,6 @@ html {
       a {
         color: gray;
         text-decoration: none;
-        transition: color 0.3s ease;
 
         &:hover {
           color: black;
@@ -69,6 +68,30 @@ html {
       }
     }
   }
+}
+
+article.post {
+
+  h1, h2, h3, h4 {
+    color: #4A90E2;
+  }
+
+  a {
+    color: #2C6690;
+
+    &.header-backlink {
+      color: inherit;
+
+      &:hover {
+        text-decoration: none;
+
+      }
+    }
+  }
+}
+
+pre, code {
+  border-color: #D3D3D3;
 }
 
 // Back to Top Button
