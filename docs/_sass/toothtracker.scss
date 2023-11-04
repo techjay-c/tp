@@ -93,10 +93,6 @@ pre, code {
   border-color: #D3D3D3;
 }
 
-code {
-  font-size: small;
-}
-
 .post-content {
   margin-bottom: 2rem;
 
@@ -178,4 +174,10 @@ code {
     margin-left: auto;
     margin-right: auto;
     width: 720px;
+}
+
+@media print {
+  .centered-image {
+    margin-top: 5px;
+  }
 }
