@@ -40,7 +40,8 @@ public class DeleteTreatmentCommandTest {
 
         model.addTreatment(treatment);
 
-        DeleteTreatmentCommand deleteTreatmentCommand = new DeleteTreatmentCommand(treatment.getName().getTreatmentName());
+        DeleteTreatmentCommand deleteTreatmentCommand =
+                new DeleteTreatmentCommand(treatment.getName().getTreatmentName());
 
         assertDoesNotThrow(() -> deleteTreatmentCommand.execute(model));
     }
@@ -83,7 +84,8 @@ public class DeleteTreatmentCommandTest {
         model.addTreatment(treatmentOne);
         model.addTreatment(treatmentTwo);
 
-        DeleteTreatmentCommand deleteFirstTreatmentCommand = new DeleteTreatmentCommand(treatmentOne.getName().getTreatmentName());
+        DeleteTreatmentCommand deleteFirstTreatmentCommand =
+                new DeleteTreatmentCommand(treatmentOne.getName().getTreatmentName());
         deleteFirstTreatmentCommand.execute(model);
 
         assertNull(model.getTreatmentByName(treatmentOne.getName().getTreatmentName()));

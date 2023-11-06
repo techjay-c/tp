@@ -1,6 +1,6 @@
 package seedu.address.logic.commands;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalPatients.getTypicalAddressBook;
 
@@ -53,7 +53,8 @@ class ListTreatmentCommandTest {
     @Test
     public void execute_showTreatmentList_showsEverything() {
         StringBuilder expectedResultBuilder = new StringBuilder("treatments: ");
-        model.getFilteredTreatmentList().forEach(treatment -> expectedResultBuilder.append(treatment.getName()).append(", "));
+        model.getFilteredTreatmentList()
+                .forEach(treatment -> expectedResultBuilder.append(treatment.getName()).append(", "));
         String expectedResult = expectedResultBuilder.toString();
 
         assertCommandSuccess(new ListTreatmentCommand(), model, expectedResult, expectedModel);
