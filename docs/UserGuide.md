@@ -1,6 +1,6 @@
 ---
 layout: page
-title: ToothTracker User Guide
+title: User Guide
 show-toc: true
 ---
 
