@@ -56,7 +56,7 @@ public class FilterAppointmentCommand extends Command {
             success = "Appointments with dentist whose dentist ID is " + id + " listed.";
             failure = "No appointments with dentist whose dentist ID is " + id + " found.";
         } else {
-            return new CommandResult(INVALID_INPUTS);
+            throw new CommandException(INVALID_INPUTS);
         }
 
         if (id >= 0) {
