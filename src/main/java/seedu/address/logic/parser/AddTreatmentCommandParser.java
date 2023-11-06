@@ -2,7 +2,11 @@ package seedu.address.logic.parser;
 
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COST;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TREATMENT;
 
@@ -37,6 +41,8 @@ public class AddTreatmentCommandParser implements Parser<AddTreatmentCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                 AddTreatmentCommand.MESSAGE_USAGE));
         }
+
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_COST,PREFIX_TREATMENT,PREFIX_TIME);
 
         TreatmentCost cost = ParserUtil.parseTreatmentCost(argMultimap.getValue(PREFIX_COST).get());
         TreatmentName name = ParserUtil.parseTreatmentName(argMultimap.getValue(PREFIX_TREATMENT).get());
