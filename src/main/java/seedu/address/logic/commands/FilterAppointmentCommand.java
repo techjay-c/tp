@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.function.Predicate;
 
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.appointments.Appointment;
 
@@ -40,7 +41,7 @@ public class FilterAppointmentCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(Model model) {
+    public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
         Predicate<Appointment> appointmentPredicate;
@@ -67,7 +68,7 @@ public class FilterAppointmentCommand extends Command {
                 return new CommandResult(success);
             }
         } else {
-            return new CommandResult("Invalid ID. ID must be a positive number.");
+            throw new CommandException("Invalid ID. ID must be a positive number.");
         }
 
     }
