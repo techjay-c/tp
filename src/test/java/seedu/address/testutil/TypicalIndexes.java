@@ -13,4 +13,9 @@ public class TypicalIndexes {
     public static final long FIRST_DENTIST_ID = 1;
     public static final long SECOND_DENTIST_ID = 2;
     public static final long THIRD_DENTIST_ID = 3;
+
+    public static final long FIRST_PATIENT_ID = 1;
+    public static final long SECOND_PATIENT_ID = 2;
+    public static final long FIRST_APPOINTMENT_ID = 1;
+    public static final String FIRST_TREATMENT_NAME = "Cleaning";
 }
