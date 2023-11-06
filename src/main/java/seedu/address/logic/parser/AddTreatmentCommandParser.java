@@ -38,10 +38,11 @@ public class AddTreatmentCommandParser implements Parser<AddTreatmentCommand> {
                 AddTreatmentCommand.MESSAGE_USAGE));
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_COST,PREFIX_TREATMENT,PREFIX_TIME);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_COST, PREFIX_TREATMENT, PREFIX_TIME);
 
         TreatmentCost cost = ParserUtil.parseTreatmentCost(argMultimap.getValue(PREFIX_COST).get());
-        TreatmentName name = ParserUtil.parseTreatmentName(argMultimap.getValue(PREFIX_TREATMENT).get());
+        TreatmentName name = ParserUtil.parseTreatmentName(
+            argMultimap.getValue(PREFIX_TREATMENT).get());
         TreatmentTime time = ParserUtil.parseTreatmentTime(argMultimap.getValue(PREFIX_TIME).get());
 
         Treatment treatment = new Treatment(name, cost, time);
