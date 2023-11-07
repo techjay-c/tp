@@ -108,7 +108,12 @@ public class SearchPatientCommand extends Command {
         }
 
         SearchPatientCommand otherSearchPatientCommand = (SearchPatientCommand) other;
-        return predicate.equals(otherSearchPatientCommand.predicate);
+
+        if (predicate == null) {
+            return otherSearchPatientCommand.predicate == null;
+        } else {
+            return predicate.equals(otherSearchPatientCommand.predicate);
+        }
     }
 
     /**
