@@ -12,7 +12,7 @@ import seedu.address.model.person.patients.Patient;
  * the specified attribute of a Patient matches the given keywords.
  *
  * The available attributes for filtering include: gender, birthday, email, phone,
- * tags, name, remark, service, and address.
+ * tags, name, remark, treatment, and address.
  *
  */
 public class AttributeContainsKeywordsPredicate implements Predicate<Patient> {

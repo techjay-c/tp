@@ -65,8 +65,13 @@ public class AddPatientCommandParser implements Parser<AddPatientCommand> {
         argMultimap.verifyNoDuplicatePrefixesFor(
             PREFIX_NAME,
             PREFIX_PHONE,
+            PREFIX_BIRTHDATE,
+            PREFIX_GENDER,
+            PREFIX_REMARK,
+            PREFIX_TREATMENT,
             PREFIX_ADDRESS,
-            PREFIX_EMAIL);
+            PREFIX_EMAIL
+        );
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
 
