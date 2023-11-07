@@ -2,6 +2,7 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Objects;
 import java.util.function.Predicate;
 
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -71,5 +72,27 @@ public class FilterAppointmentCommand extends Command {
             throw new CommandException("Invalid ID. ID must be a positive number.");
         }
 
+    }
+
+    /**
+     * Checks if this FilterAppointmentCommand is equal to another object.
+     *
+     * @param other The object to compare with.
+     * @return True if the objects are equal, false otherwise.
+     */
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof FilterAppointmentCommand)) {
+            return false;
+        }
+
+        FilterAppointmentCommand otherFilterAppointmentCommand = (FilterAppointmentCommand) other;
+        return Objects.equals(this.idType, otherFilterAppointmentCommand.idType)
+                && this.id == otherFilterAppointmentCommand.id;
     }
 }
