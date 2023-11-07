@@ -110,7 +110,12 @@ public class SearchDentistCommand extends Command {
         }
 
         SearchDentistCommand otherSearchDentistCommand = (SearchDentistCommand) other;
-        return predicate.equals(otherSearchDentistCommand.predicate);
+
+        if (predicate == null) {
+            return otherSearchDentistCommand.predicate == null;
+        } else {
+            return predicate.equals(otherSearchDentistCommand.predicate);
+        }
     }
 
     /**
