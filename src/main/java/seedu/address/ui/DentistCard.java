@@ -61,7 +61,10 @@ public class DentistCard extends UiPart<Region> {
         email.setText("Email: " + dentist.getEmail().value);
         specialization.setText("Specialization: " + dentist.getSpecialization().getValue());
         String experience = dentist.getYoe().getValue();
-        yoe.setText("Experience: " + experience + ((experience.equals("0") || experience.equals("1")) ? " Year" : " Years"));
+        yoe.setText("Experience: " + experience
+                + ((experience.equals("0") || experience.equals("1"))
+                ? " Year"
+                : " Years"));
 
         dentist.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
