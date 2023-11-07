@@ -312,15 +312,15 @@ public class EditPatientCommand extends Command {
             }
 
             EditPatientDescriptor otherEditPatientDescriptor = (EditPatientDescriptor) other;
-            return Objects.equals(name, otherEditPatientDescriptor.getName())
-                && Objects.equals(phone, otherEditPatientDescriptor.getPhone())
-                && Objects.equals(email, otherEditPatientDescriptor.getEmail())
-                && Objects.equals(address, otherEditPatientDescriptor.getAddress())
-                && Objects.equals(gender, otherEditPatientDescriptor.getGender())
-                && Objects.equals(birthdate, otherEditPatientDescriptor.getBirthdate())
-                && Objects.equals(remark, otherEditPatientDescriptor.getRemark())
-                && Objects.equals(treatmentName, otherEditPatientDescriptor.getTreatmentName())
-                && Objects.equals(patientId, otherEditPatientDescriptor.getPatientId())
+            return Objects.equals(name, otherEditPatientDescriptor.getName().get())
+                && Objects.equals(phone, otherEditPatientDescriptor.getPhone().get())
+                && Objects.equals(email, otherEditPatientDescriptor.getEmail().get())
+                && Objects.equals(address, otherEditPatientDescriptor.getAddress().get())
+                && Objects.equals(gender, otherEditPatientDescriptor.getGender().get())
+                && Objects.equals(birthdate, otherEditPatientDescriptor.getBirthdate().get())
+                && Objects.equals(remark, otherEditPatientDescriptor.getRemark().get())
+                && Objects.equals(treatmentName, otherEditPatientDescriptor.getTreatmentName().get())
+                && Objects.equals(patientId, otherEditPatientDescriptor.getPatientId().get())
                 && Objects.equals(tags, otherEditPatientDescriptor.tags);
         }
 
