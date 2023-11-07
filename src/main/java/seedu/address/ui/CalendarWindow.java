@@ -59,6 +59,17 @@ public class CalendarWindow extends UiPart<Stage> {
     }
 
     /**
+     * Sets the CalendarWindow instance.
+     * This method should only be used in testing environments to create a mock or stub.
+     * Caution in using this method as it can lead to unpredictable behavior if misused.
+     *
+     * @param newInstance The new instance of CalendarWindow to use as the singleton instance.
+     */
+    public static void setInstance(CalendarWindow newInstance) {
+        instance = newInstance;
+    }
+
+    /**
      * Shows the calendar window.
      * @throws IllegalStateException
      *     <ul>

@@ -122,6 +122,14 @@ public class AppointmentBuilder {
     }
 
     /**
+     * Sets the {@code start} of the {@code Appointment} that we are building.
+     */
+    public AppointmentBuilder withStart(String start) {
+        this.start = start;
+        return this;
+    }
+
+    /**
      * Builds and returns a new {@code Appointment} with the specified details.
      * The details must be set using the various "with" methods before calling this method.
      *

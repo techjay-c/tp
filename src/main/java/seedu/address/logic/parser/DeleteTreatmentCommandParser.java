@@ -1,5 +1,7 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import seedu.address.logic.commands.DeleteTreatmentCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
@@ -15,6 +17,12 @@ public class DeleteTreatmentCommandParser implements Parser<DeleteTreatmentComma
      * @throws ParseException if the user input does not conform to the expected format
      */
     public DeleteTreatmentCommand parse(String args) throws ParseException {
-        return new DeleteTreatmentCommand(args);
+        try {
+            String treatmentName = args.trim();
+            return new DeleteTreatmentCommand(treatmentName);
+        } catch (NullPointerException e) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteTreatmentCommand.MESSAGE_USAGE), e);
+        }
     }
 }
