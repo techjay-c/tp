@@ -55,41 +55,45 @@ Here are some common icons that is used throughout this user guide
 
 {% include page-break.html %}
 
-## Installation
+## Quick Start
+Let's get you started! In this section, you will get oriented with ToothTracker, from installation to a quick tutorial.
 
-1. Ensure you have Java `11` or above installed in your Computer.
+### Installation Instructions
 
-1. Download the latest `ToothTracker.jar` from [here](https://github.com/AY2324S1-CS2103T-W10-3/tp/releases).
+Don't have ToothTracker installed yet? Check out our step-by-step installation instructions to download ToothTracker.
+For the best possible experience, we recommend that you use ToothTracker on the following supported operating systems:
+* Windows
+* macOS
+* Linux
 
-1. Copy the file to the folder you want to use as the _home folder_ for your ToothTracker.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar ToothTracker.jar`
+1. ToothTracker is written in the programming language Java, so you'll need to have **Java 11 or above** 
+installed in your Computer to run ToothTracker. 
+   - Don’t have a compatible Java version installed? Don't worry, Java is completely free to install!
+   Detailed installation instructions can be found [here](https://docs.oracle.com/en/java/javase/11/install/overview-jdk-installation.html#GUID-8677A77F-231A-40F7-98B9-1FD0B48C346A).
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+Not sure if you have a compatible Java version installed? Refer to the [troubleshooting section]().
+</div>
+2. Download the latest version of ToothTracker by downloading the `toothtracker.jar` file from [here](https://github.com/AY2324S1-CS2103T-W10-3/tp/releases).
+
+3. Create an empty folder in your computer where you would like to use as the _home folder_ for ToothTracker.
+
+4. Copy the downloaded ToothTracker file (`toothtracker.jar`) into the folder.
+
+Congratulations! You now have ToothTracker installed on your computer!
+
+### Starting up ToothTracker
+Great! Now that you have downloaded ToothTracker (if not, refer to the [Installation Instructions](#installation-instructions)), let's get it up and running.
+
+<div markdown="span" class="alert alert-warning">:exclamation: **CAUTION:**
+
+</div>
+
+1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar toothtracker.jar`
    command to run the application.<br>
    A GUI similar to the one shown below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png){: .centered-image }
-
-1. Type the command in the command box and press Enter to execute it. e.g. typing `help` and pressing Enter will
-   open the help window.<br>
-   Some example commands you can try:
-
-    * `list-dentist` : Lists all dentists.
-
-    * `add-dentist n/Bob p/12345678 e/bobjune@gmail.com s/Orthodontics y/6` : Adds a dentist named `Bob`
-      to the ToothTracker. See [add-dentist](#adding-a-dentist--add-dentist) for more details.
-
-    * `delete-dentist 3` : Deletes the dentist with `DENTIST_ID` 3.
-
-    * `search-patient 6` : Searches for the patient with `PATIENT_ID` 6.
-
-    * `clear` : Deletes all records from ToothTracker.
-
-    * `exit` : Exits ToothTracker.
-
-1. Refer to the [Features](#features) section for details of each command.
-
-{% include page-break.html %}
-
-## Quick Reference Guide
 
 ### Getting familiar with ToothTracker's interface
 Now that you have ToothTracker installed, let's get you familiar with ToothTracker's user interface!
@@ -129,6 +133,28 @@ It allows you to easily understand your clinic's appointments and availability a
 | 2 | Navigation Buttons  | The navigation arrows let you move to the previous or next time periods, depending on the currently selected view (day, week, month, or year).              |
 | 3 | Appointment Entries | This section displays the specifics of each appointment, including the appointment ID, patient name, dentist name and appointment time.                     |
 
+
+### Trying out your first commands
+
+
+1. Type the command in the command box and press Enter to execute it. e.g. typing `help` and pressing Enter will
+   open the help window.<br>
+   Some example commands you can try:
+
+    * `list-dentist` : Lists all dentists.
+
+    * `add-dentist n/Bob p/12345678 e/bobjune@gmail.com s/Orthodontics y/6` : Adds a dentist named `Bob`
+      to the ToothTracker. See [add-dentist](#adding-a-dentist--add-dentist) for more details.
+
+    * `delete-dentist 3` : Deletes the dentist with `DENTIST_ID` 3.
+
+    * `search-patient 6` : Searches for the patient with `PATIENT_ID` 6.
+
+    * `clear` : Deletes all records from ToothTracker.
+
+    * `exit` : Exits ToothTracker.
+
+1. Refer to the [Features](#features) section for details of each command.
 
 
 {% include page-break.html %}
