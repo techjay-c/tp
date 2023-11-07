@@ -91,32 +91,45 @@ Here are some common icons that is used throughout this user guide
 
 ## Quick Reference Guide
 
-### Layout
-When you launch ToothTracker, ToothTracker appears on your screen as a GUI.
-Let’s take a look at the layout of the different components of ToothTracker.
+### Getting familiar with ToothTracker's interface
+Now that you have ToothTracker installed, let's get you familiar with ToothTracker's user interface!
 
-ToothTracker’s GUI consists of a Main Window, a Calendar Window as well as the Help Window. The main window consists of six components:
+Tooth Tracker has two windows: a [Main Window](#main-window) and a [Calendar Window](#calendar-window).
+Let's take a closer look at each window individually.
 
-1. Command Input Box
-1. Result Display Box
-1. Patient List Panel
-1. Dentist List Panel
-1. Appointment List Panel
-1. Quick Notes Box
+{: .no_toc}
+#### Main Window
+When you first open ToothTracker, the Main Window will open by default. 
+It's designed to give you a comprehensive overview of all your customer, dentist, and appointment-related information at a glance. 
+Let's learn what each of these components does!
 
-The following picture of the main window shows the six components numbered accordingly:
+![ToothTracker UI](images/UiAnnotated.png){: .centered-image-full-size }
 
-![ToothTracker UI](images/UiAnnotated.png){: .centered-image }
+|   | Component        | Description                                                                                                                                                                                                             |
+|---|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1 | Menu Bar         | The menu bar contains menu options to [exit](#exiting-the-program-exit) from ToothTracker and access [help](#viewing-help--help) resources.                                                                             |
+| 2 | Command Input    | The command input is where you can key in your commands to tell ToothTracker what you want to get done. To learn more about ToothTracker's CLI, refer to the [next section](#toothtrackers-command-line-interface-cli). |
+| 3 | Result Display   | The result display area shows you the outcomes or feedback from your entered commands.                                                                                                                                  |
+| 4 | Patient List     | This panel lists all patients currently registered in your clinic. It includes vital information such as names, contact details, and other fields.                                                                      |
+| 5 | Dentist List     | Here, you'll find a roster of dentists associated with your clinic, complete with their specializations and contact information.                                                                                        |
+| 6 | Appointment List | Check the appointment list for the schedule, status, and details of all clinic appointments.                                                                                                                            |
+| 7 | Quick Notes      | A dedicated space at the bottom of the Main Window for on-the-fly notes, reminders, or observations that you need to keep handy.                                                                                        |
+| 8 | Saved Data File  | For advanced users, the [file path](#glossary) displayed here is where ToothTracker stores your saved data (which you can [edit](#editing-the-data-file)).                                                              |
 
-Besides the main window, ToothTracker also has the Calendar Window. It is not part of the main GUI and is only shown after a [Calendar Command](#viewing-calendar--view-calendar) is run.
+{: .no_toc}
+#### Calendar Window
+ToothTracker's Calendar Window provides a visual representation of your clinic's schedule. This view becomes available after executing a [Calendar Command](#viewing-calendar--view-calendar).
+It allows you to easily understand your clinic's appointments and availability at a glance.
 
-![Calendar Window](images/ug/CalendarWindow.png){: .centered-image }
+![Calendar Window](images/ug/CalendarWindowAnnotated.png){: .centered-image-full-size }
 
-ToothTracker also has the Help Window. This is only shown after a [Help Command](#viewing-help--help) is run.
+|   | Component           | Description                                                                                                                                                 |
+|---|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1 | View Toggle         | The View Toggle allows you to switch between different calendar views: Day, Week, Month, or Year to get a more precise or broader overview of appointments. |
+| 2 | Navigation Buttons  | The navigation arrows let you move to the previous or next time periods, depending on the currently selected view (day, week, month, or year).              |
+| 3 | Appointment Entries | This section displays the specifics of each appointment, including the appointment ID, patient name, dentist name and appointment time.                     |
 
-The Help Window looks like the following:
 
-![Help Window](images/ug/HelpWindow.png){: .centered-image }
 
 {% include page-break.html %}
 
