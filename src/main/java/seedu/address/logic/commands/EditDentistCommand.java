@@ -283,6 +283,8 @@ public class EditDentistCommand extends Command {
                     .add("phone", phone)
                     .add("email", email)
                     .add("address", address)
+                    .add("specialization", specialization)
+                    .add("yoe", yoe)
                     .add("tags", tags)
                     .toString();
         }
