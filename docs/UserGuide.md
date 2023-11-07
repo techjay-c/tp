@@ -72,9 +72,10 @@ installed in your Computer to run ToothTracker.
    - Don’t have a compatible Java version installed? Don't worry, Java is completely free to install!
    Detailed installation instructions can be found [here](https://docs.oracle.com/en/java/javase/11/install/overview-jdk-installation.html#GUID-8677A77F-231A-40F7-98B9-1FD0B48C346A).
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-Not sure if you have a compatible Java version installed? Refer to the [troubleshooting section]().
+<div markdown="block" class="alert alert-primary">
+:bulb: **Tip:** Not sure if you have a compatible Java version installed? Refer to the [troubleshooting](#troubleshooting) section.
 </div>
+
 2. Download the latest version of ToothTracker by downloading the `toothtracker.jar` file from [here](https://github.com/AY2324S1-CS2103T-W10-3/tp/releases).
 
 3. Create an empty folder in your computer where you would like to use as the _home folder_ for ToothTracker.
@@ -808,11 +809,47 @@ data file at the next run. Hence, it is recommended to take a backup of the file
 
 {% include page-break.html %}
 
+## Troubleshooting
+
+{: .no_toc}
+#### Checking your system's Java version
+Check that your system has the correct Java version (**Java 11 and above**) installed to run ToothTracker. Follow the steps below:
+
+- Windows
+  1. Use Win + S to open search.
+  2. Type in `Terminal` to open the terminal.
+  3. In your terminal, type in `java --version` and press enter.
+
+- macOS
+  1. Use Cmd + Space to open Spotlight search. 
+  2. Type in `Terminal` to open the terminal. 
+  3. In your terminal, type in `java --version` and press return.
+
+- Linux
+  1. Use Ctrl + Alt + T to open the Terminal. 
+  2. In your terminal, type in `java --version` and press enter.
+
+
+The following image shows an example of what will show up on macOS, but you can expect a similar result in other operating systems.
+![System Java Version](images/ug/SystemJavaVersion.png){: .centered-image }
+
+The number in the red highlighted rectangle tells you the Java version installed in your computer.
+The Java version installed in the example system is Java 11.0.19, which is sufficient to run ToothTracker as it is greater than Java 11.
+
+If you hava an earlier version of Java installed, head over to
+[Oracle's Java download page](https://docs.oracle.com/en/java/javase/11/install/overview-jdk-installation.html#GUID-8677A77F-231A-40F7-98B9-1FD0B48C346A) to install the correct version of Java.
+
+{% include page-break.html %}
+
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains
 the data of your previous ToothTracker home folder.
+
+**Q**: I don't have Java 11, how do I install it on my computer?<br>
+**A**: You can find detailed installation instructions [here](https://docs.oracle.com/en/java/javase/11/install/overview-jdk-installation.html#GUID-8677A77F-231A-40F7-98B9-1FD0B48C346A)
+and install Java 11 according to your platform.
 
 **Q**: Why do I get an error while trying to edit an existing dentist/patient?<br>
 **A**: The dentist/patient to be edited may not be shown in ToothTracker.
