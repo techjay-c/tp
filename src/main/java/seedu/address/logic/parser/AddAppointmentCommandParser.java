@@ -34,6 +34,8 @@ public class AddAppointmentCommandParser implements Parser<AddAppointmentCommand
                     AddAppointmentCommand.MESSAGE_USAGE));
         }
 
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_DENTIST, PREFIX_PATIENT, PREFIX_START, PREFIX_TREATMENT);
+
         long dentist = -1;
         long patient = -1;
 
