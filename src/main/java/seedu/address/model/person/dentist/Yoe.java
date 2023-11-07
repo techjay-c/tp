@@ -11,7 +11,7 @@ public class Yoe {
     public static final String FULL_CLASS_NAME = "Years of Experience";
     public static final String MESSAGE_CONSTRAINTS =
             "Years of Experience (YOE) should only contain numbers, and it should be at most 2 digits long";
-    private static final String VALIDATION_REGEX = "^0*[0-9][0-9]{0,1}$";
+    private static final String VALIDATION_REGEX = "^0*[0-9]{0,2}$";
     private final String value;
 
     /**
@@ -22,8 +22,11 @@ public class Yoe {
     public Yoe(String yearsOfExperience) {
         requireNonNull(yearsOfExperience);
         checkArgument(isValidYoe(yearsOfExperience), MESSAGE_CONSTRAINTS);
-        yearsOfExperience = yearsOfExperience.replaceFirst("^0+(?!S)", "");
-        value = yearsOfExperience;
+        if (yearsOfExperience.equals("0") || yearsOfExperience.equals("00")) {
+            value = "0";
+        } else {
+            value = yearsOfExperience.replaceFirst("^0+(?!S)", "");
+        }
     }
 
     /**

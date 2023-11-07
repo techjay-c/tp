@@ -99,8 +99,8 @@ public class EditDentistCommand extends Command {
     }
 
     /**
-     * Creates and returns a {@code Person} with the details of {@code personToEdit}
-     * edited with {@code editPersonDescriptor}.
+     * Creates and returns a {@code Dentist} with the details of {@code dentistToEdit}
+     * edited with {@code editDentistDescriptor}.
      */
     private static Dentist createEditedDentist(Dentist dentistToEdit, EditDentistDescriptor editDentistDescriptor) {
         assert dentistToEdit != null;
@@ -178,7 +178,7 @@ public class EditDentistCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags);
+            return CollectionUtil.isAnyNonNull(name, phone, email, address, specialization, yoe, tags);
         }
 
         public void setName(Name name) {
@@ -283,6 +283,8 @@ public class EditDentistCommand extends Command {
                     .add("phone", phone)
                     .add("email", email)
                     .add("address", address)
+                    .add("specialization", specialization)
+                    .add("yoe", yoe)
                     .add("tags", tags)
                     .toString();
         }
