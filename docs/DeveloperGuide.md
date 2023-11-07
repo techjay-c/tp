@@ -319,6 +319,33 @@ keyword is of a valid type for that particular attribute. Users are responsible 
 
 ### Patient Features
 
+
+#### Adding a Patient
+
+The `add-patient` command creates a new patient record in ToothTracker.          
+
+The activity diagram for creating a new patient is illustrated as follows:
+
+[//]: # (![AddDentistActivityDiagram]&#40;images/AddDentistActivityDiagram.png&#41;)
+
+The sequence diagram of the `add-patient` command:
+
+[//]: # (![AddDentistSequenceDiagram]&#40;images/AddDentistSequenceDiagram.png&#41;)
+
+##### Feature Details
+
+1. Users provide essential patient information, such as their name, phone number, gender, birthday and optional details such as remark, treatment, email, address and tags.
+2. In case of missing or invalid command arguments, the system prompts users with an error message to enter the command correctly.
+3. The system cross-references the new patients name with existing records in the `Model` to prevent duplicate entries. If a duplicate is found, an error message informs the user.
+4. If step 3 is completed without any exceptions, the new patient record is created and stored in the system.
+
+##### Feature Considerations
+For the optional `Treatment` field, should the user opt to enter a treatment, it is mandatory that the specified treatment already exists within ToothTracker.
+If this condition is not met, the user will receive an error message.
+
+
+
+
 ### Appointment Features
 
 ### Treatment Features
