@@ -108,7 +108,7 @@ class SearchPatientCommandTest {
     public void equals_differentType_returnsFalse() {
         NameContainsKeywordsPredicate predicate = preparePredicate("John");
         SearchPatientCommand command = new SearchPatientCommand(predicate);
-        assertFalse(command.equals(1)); // Compare with a different type
+        assertFalse(command.equals(1));
     }
 
     @Test
