@@ -38,7 +38,7 @@ A GUI similar to the one shown below should appear in a few seconds. Note how th
 ![Ui](images/Ui.png){: .centered-image }
 
 ### Getting familiar with ToothTracker's interface
-Now that you have ToothTracker installed, let's get you familiar with ToothTracker's user interface!
+Now that you have ToothTracker up and running, let's get you familiar with ToothTracker's user interface!
 
 Tooth Tracker has two windows: a [Main Window](#main-window) and a [Calendar Window](#calendar-window).
 Let's take a closer look at each window individually.
@@ -91,8 +91,15 @@ You can do this by running `delete-dentist 1`.
    - After executing the command, Alex is now deleted from ToothTracker!
    ![trying-command-delete-dentist-example](images/ug/delete-dentist-example.png){: .centered-image-full-size }
 
-Now that you’ve been introduced to some dentist-related commands, let’s change things up by checking out some patient commands.
+Now that you’ve been introduced to some dentist-related commands, let’s change things up by trying out some patient commands.
 
+1. Suppose you have a new patient, named Jean, joining your clinic, and you would like to add her into ToothTracker.
+Try entering the command `add-patient n/Jean p/95339212 b/14-09-2001 g/F`.
+   - Notice that you've created a new patient, Jean!
+   ![trying-command-add-patient-example](images/ug/add-patient-example.png){: .centered-image-full-size }
 
+2.  Now, suppose that you want to update the phone number of your patient, Alex. Easy! Just type in `edit-patient 1 p/82019452`.
+   - Done! Alex's phone number has been updated!
+   ![trying-command-edit-patient-example](images/ug/edit-patient-example.png){: .centered-image-full-size }
 
 Awesome! Now that you've gotten familiar with ToothTracker's commands, check out our [Features](#features) section to fully explore the full capabilities of ToothTracker.
