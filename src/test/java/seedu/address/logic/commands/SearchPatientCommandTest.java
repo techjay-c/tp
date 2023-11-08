@@ -1,6 +1,8 @@
 package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.util.Arrays;
@@ -93,5 +95,57 @@ class SearchPatientCommandTest {
         SearchPatientCommand command = new SearchPatientCommand(predicate);
         CommandResult commandResult = command.execute(model);
         assertEquals(String.format(Messages.MESSAGE_PATIENTS_LISTED_OVERVIEW, 0), commandResult.getFeedbackToUser());
+    }
+
+    @Test
+    public void equals_sameObject_returnsTrue() {
+        NameContainsKeywordsPredicate predicate = preparePredicate("John");
+        SearchPatientCommand command = new SearchPatientCommand(predicate);
+        assertTrue(command.equals(command));
+    }
+
+    @Test
+    public void equals_differentType_returnsFalse() {
+        NameContainsKeywordsPredicate predicate = preparePredicate("John");
+        SearchPatientCommand command = new SearchPatientCommand(predicate);
+        assertFalse(command.equals(1));
+    }
+
+    @Test
+    public void equals_null_returnsFalse() {
+        NameContainsKeywordsPredicate predicate = preparePredicate("John");
+        SearchPatientCommand command = new SearchPatientCommand(predicate);
+        assertFalse(command.equals(null));
+    }
+
+    @Test
+    public void equals_searchByNameSameValues_returnsTrue() {
+        NameContainsKeywordsPredicate predicate = preparePredicate("John");
+        SearchPatientCommand command1 = new SearchPatientCommand(predicate);
+        SearchPatientCommand command2 = new SearchPatientCommand(predicate);
+        assertTrue(command1.equals(command2));
+    }
+
+    @Test
+    public void equals_searchByNameDifferentValues_returnsFalse() {
+        NameContainsKeywordsPredicate predicateFirst = preparePredicate("John");
+        NameContainsKeywordsPredicate predicateSecond = preparePredicate("Mary");
+        SearchPatientCommand command1 = new SearchPatientCommand(predicateFirst);
+        SearchPatientCommand command2 = new SearchPatientCommand(predicateSecond);
+        assertFalse(command1.equals(command2));
+    }
+
+    @Test
+    public void equals_searchByIdSameValues_returnsTrue() {
+        SearchPatientCommand command1 = new SearchPatientCommand(1);
+        SearchPatientCommand command2 = new SearchPatientCommand(1);
+        assertTrue(command1.equals(command2));
+    }
+
+    @Test
+    public void equals_searchByIdDifferentValues_returnsFalse() {
+        SearchPatientCommand command1 = new SearchPatientCommand(1);
+        SearchPatientCommand command2 = new SearchPatientCommand(2);
+        assertFalse(command1.equals(command2));
     }
 }
