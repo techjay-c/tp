@@ -149,8 +149,8 @@ public class EditDentistCommand extends Command {
     }
 
     /**
-     * Stores the details to edit the person with. Each non-empty field value will replace the
-     * corresponding field value of the person.
+     * Stores the details to edit the dentist with. Each non-empty field value will replace the
+     * corresponding field value of the dentist.
      */
     public static class EditDentistDescriptor {
 
