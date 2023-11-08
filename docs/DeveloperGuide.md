@@ -326,10 +326,12 @@ The `add-patient` command creates a new patient record in ToothTracker.
 
 The activity diagram for creating a new patient is illustrated as follows:
 
+[//]: # (TODO: add in AddPatientActivityDiagram here)
 [//]: # (![AddDentistActivityDiagram]&#40;images/AddDentistActivityDiagram.png&#41;)
 
 The sequence diagram of the `add-patient` command:
 
+[//]: # (TODO: add in AddPatientSequenceDiagram here)
 [//]: # (![AddDentistSequenceDiagram]&#40;images/AddDentistSequenceDiagram.png&#41;)
 
 ##### Feature Details
@@ -343,8 +345,35 @@ The sequence diagram of the `add-patient` command:
 For the optional `Treatment` field, should the user opt to enter a treatment, it is mandatory that the specified treatment already exists within ToothTracker.
 If this condition is not met, the user will receive an error message.
 
+#### Deleting a Patient
 
+The `delete-patient` command deletes a patient record in ToothTracker. 
 
+The activity diagram for deleting a patient is illustrated as follows:
+
+[//]: # (TODO: add in delete patient activity diagram)
+[//]: # (![DeleteDentistActivityDiagram]&#40;images/DeleteDentistActivityDiagram.png&#41;)
+
+This sequence diagram shows the interactions between the various components during the execution of the `delete-patient` command:
+
+![DeletePatientSequenceDiagram](images/DeletePatientSequenceDiagram.png)
+
+##### Feature Details
+
+1. The user specifies a patient id that represents a `Patient` to be deleted.
+2. If an invalid `PATIENT_ID` is provided, an error is thrown and the user is prompted to enter the command correctly via an error message.
+3. The Patient is cross-referenced in the `Model` to check if it exists. If it does not, then an error is raised to inform the user.
+4. If step 3 completes without any exceptions, then the `Patient` is successfully deleted.
+
+##### Feature Considerations
+
+In implementing the delete feature, we needed proper error handling and validation to ensure ToothTracker's robustness and provide clear guidance to the user.
+Our approach validates patient ID and shows an error message if the patient does not exist.
+This is in comparison to allowing commands to fail silently if patient does not exist.
+
+- Pros: Prevents invalid operations and provides immediate feedback to the user, helping to correct mistakes.
+- Cons: Additional validation checks add complexity to the code.
+- 
 
 ### Appointment Features
 
