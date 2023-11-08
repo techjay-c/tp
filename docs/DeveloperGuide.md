@@ -326,8 +326,7 @@ The `add-patient` command creates a new patient record in ToothTracker.
 
 The activity diagram for creating a new patient is illustrated as follows:
 
-[//]: # (TODO: add in AddPatientActivityDiagram here)
-[//]: # (![AddDentistActivityDiagram]&#40;images/AddDentistActivityDiagram.png&#41;)
+![AddPatientActivityDiagram](images/AddPatientActivityDiagram.png)
 
 The sequence diagram of the `add-patient` command:
 
@@ -437,6 +436,56 @@ keyword is of a valid type for that particular attribute. Users are responsible 
 ### Appointment Features
 
 ### Treatment Features
+
+#### Adding a Treatment
+
+The `add-treatment` command creates a new treatment record in ToothTracker.
+
+The activity diagram for creating a new treatment is illustrated as follows:
+
+![AddTreatmentActivityDiagram](images/AddTreatmentActivityDiagram.png)
+
+The sequence diagram of the `add-treatment` command:
+
+[//]: # (TODO: add in AddTreatmentSequenceDiagram here)
+[//]: # (![AddDentistSequenceDiagram]&#40;images/AddDentistSequenceDiagram.png&#41;)
+
+##### Feature Details
+1. Users would key in the available treatments in their clinic, specifying the treatment name, cost and its duration.
+2. In case of missing or invalid command arguments, the system prompts users with an error message to enter the command correctly.
+3. The system cross-references the new treatment name with existing records in the `Model` to prevent duplicate entries. If a duplicate is found, an error message informs the user.
+4. If step 3 is completed without any exceptions, the new treatment record is created and stored in the system.
+
+
+#### Listing a Treatment
+
+The `list-treatment` command would list all treatments recorded in ToothTracker.
+
+##### Feature Details
+1. Users would key in the `list-treatment`
+2. All available treatments would be listed in the command box.
+3. In the event that there are no treatments, ToothTracker would display a message in the command box.
+
+##### Feature Considerations
+- Due to the space constraints of ToothTracker, only treatment names would be displayed to the user. 
+Ideally, cost and duration of each treatment should be shown to the user. However, this would clutter
+up the command box pretty quickly.
+- Ideally, another window would be created, which would display all available treatments and  their 
+associated costs and durations.
+
+
+#### Deleting a Treatment
+
+The `delete-treatment` command deletes a treatment record in ToothTracker.
+
+The activity diagram for deleting a patient is illustrated as follows:
+
+[//]: # (TODO: add in delete treatment activity diagram)
+[//]: # (![DeleteDentistActivityDiagram]&#40;images/DeleteDentistActivityDiagram.png&#41;)
+
+This sequence diagram shows the interactions between the various components during the execution of the `delete-treatment` command:
+
+![DeleteTreatmentSequenceDiagram](images/DeleteTreatmentSequenceDiagram.png)
 
 ### General Features
 
