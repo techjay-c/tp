@@ -35,8 +35,9 @@ public class DentistTest {
         // null -> returns false
         assertFalse(DENTIST_ALICE.isSameDentist(null));
 
-        // same name AND phone, all other attributes different -> returns true
+        // same name, all other attributes different -> returns true
         Dentist editedAlice = new DentistBuilder(DENTIST_ALICE)
+            .withPhone(VALID_PHONE_BOB)
             .withEmail(VALID_EMAIL_BOB)
             .withAddress(VALID_ADDRESS_BOB)
             .withSpecialization(VALID_SPECIALIZATION_BOB)
@@ -53,7 +54,7 @@ public class DentistTest {
     public void equals() {
         // same values -> returns true
         Dentist aliceCopy = new DentistBuilder(DENTIST_ALICE).build();
-        // assertTrue(DENTIST_ALICE.equals(aliceCopy));
+        // nassertTrue(DENTIST_ALICE.equals(aliceCopy));
 
         // same object -> returns true
         assertTrue(DENTIST_ALICE.equals(DENTIST_ALICE));

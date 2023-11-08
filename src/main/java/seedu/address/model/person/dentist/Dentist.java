@@ -89,8 +89,7 @@ public class Dentist extends Person {
         }
 
         return otherDentist != null
-                && otherDentist.getName().equals(getName())
-                && otherDentist.getPhone().equals(getPhone());
+                && otherDentist.getName().equals(getName());
     }
 
     /**
