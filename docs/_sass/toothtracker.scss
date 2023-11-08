@@ -190,3 +190,17 @@ pre, code {
     margin-top: 5px;
   }
 }
+
+a.site-title {
+    display: flex;
+    align-items: center;
+}
+
+.site-title:hover {
+  text-decoration: none;
+}
+
+.site-logo {
+    height: 30px;
+    vertical-align: auto;
+}
