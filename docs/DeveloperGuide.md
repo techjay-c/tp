@@ -373,7 +373,66 @@ This is in comparison to allowing commands to fail silently if patient does not 
 
 - Pros: Prevents invalid operations and provides immediate feedback to the user, helping to correct mistakes.
 - Cons: Additional validation checks add complexity to the code.
-- 
+
+
+#### Searching for a patient
+
+The `search-patient` command finds patient records in ToothTracker by allowing users to enter a specific `PATIENT_ID` or
+name-related keywords.
+
+The activity diagram for searching for a patient is illustrated as follows:
+
+![SearchPatientActivityDiagram](images/SearchPatientActivityDiagram.png)
+
+This sequence diagram shows the interactions between the various components during the execution of the `search-patient` command:
+
+![SearchPatientSequenceDiagram](images/SearchPatientSequenceDiagram.png)
+
+##### Feature Details
+1. Users initiate a search for a patient using either a unique `PATIENT_ID` or by inputting specific `KEYWORDS` that might match a patient's name.
+2. If the user opts for an ID-based search, the system processes the request to return a single record that matches the provided `PATIENT_ID`.
+3. If keywords are used, the system performs a broader search by comparing the keywords as substrings with the names in the patient records.
+4. In scenarios where the search criteria do not correspond with any existing records (either no matching ID or keywords), the system generates an error message informing the user of the unsuccessful search attempt.
+5. When matches are found, the system displays a list of patients whose records meet the search criteria.
+
+##### Feature Considerations
+
+The `search-patient` feature in ToothTracker focuses on searching using either a unique `PATIENT_ID` or keywords matching a patient's name,
+prioritizing speed and simplicity in accessing patient records. For more complex searching which requires additional patient attributes, users
+are recommended to use the `filter-patient` command instead. This approach ensures a balanced functionality within ToothTracker, offering a balance
+between quick searches for immediate needs while also accommodating more complex and attribute-specific inquiries.
+
+#### Filtering a patient
+
+The `filter-patient` command in ToothTracker provides users with a more refined search functionality, allowing them to filter patient records based on
+specific criteria beyond just `PATIENT_ID` or name-related keywords. This feature offers a versatile and detailed search capability for users who
+require precise results from the patient records database.
+
+The activity diagram for filtering patient is illustrated as follows:
+
+![FilterPatientActivityDiagram](images/FilterPatientActivityDiagram.png)
+
+This sequence diagram shows the interactions between the various components during the execution of the `filter-patient` command:
+
+![FilterPatientSequenceDiagram](images/FilterPatientSequenceDiagram.png)
+
+##### Feature Details
+1. Users initiate a filter for a patient by providing various filter criteria such as Remarks, Treatment and more.
+   These criteria allow users to search for patients with specific attributes.
+2. ToothTracker processes the user's filter criteria and matches them against the patient records in the database.
+3. Patients that meet the filter criteria are displayed as search results, providing users with a list of patients that fulfill their specific requirements.
+4. If no matches are found for the given filter criteria, the system informs the user that no results were found based on the specified filters.
+
+##### Feature Considerations
+
+The `filter-patient` feature in ToothTracker is tailored for users who require precise control over their patient searches. Unlike the `search-patient` command,
+which primarily relies on `PATIENT_ID` and name-related keywords, the `filter-patient` command operates by filtering based on specific attributes within a patient's record.
+
+To ensure the validity of the filter criteria, the  filter-patient command conducts validation checks to confirm that the selected attribute for filtering is a valid attribute
+associated with a patient's record.
+
+It is important to note that the filter-patient feature does not perform validation checks within each attribute to verify whether the entered
+keyword is of a valid type for that particular attribute. Users are responsible for inputting keywords that are meaningful and applicable to the chosen attribute.
 
 ### Appointment Features
 
