@@ -57,6 +57,7 @@ public class TypicalPatients {
             .withGender("M")
             .withBirthdate("09-10-1972")
             .withRemark("Peanut allergy")
+            .withTreatmentName("Cleaning")
             .withTags("friends").build();
     public static final Patient PATIENT_ELLE = new PatientBuilder().withName("Elle Meyer")
             .withAddress("michegan ave")
@@ -64,21 +65,27 @@ public class TypicalPatients {
             .withPhone("33333333")
             .withGender("F")
             .withBirthdate("20-10-2000")
-            .withRemark("Drug allergy").build();
+            .withRemark("Drug allergy")
+            .withTreatmentName("Cleaning")
+            .build();
     public static final Patient PATIENT_FIONA = new PatientBuilder().withName("Fiona Kunz")
             .withAddress("little tokyo")
             .withEmail("lydia@example.com")
             .withPhone("44444444")
             .withGender("F")
             .withBirthdate("01-01-2002")
-            .withRemark("Drug allergy").build();
+            .withRemark("Drug allergy")
+            .withTreatmentName("Cleaning")
+            .build();
     public static final Patient PATIENT_GEORGE = new PatientBuilder().withName("George Best")
             .withAddress("4th street")
             .withEmail("anna@example.com")
             .withPhone("55555555")
             .withGender("M")
             .withBirthdate("10-04-2001")
-            .withRemark("No allergy").build();
+            .withRemark("No allergy")
+            .withTreatmentName("Cleaning")
+            .build();
 
     // Manually added
     public static final Patient PATIENT_HOON = new PatientBuilder().withName("Hoon Meier")
@@ -87,14 +94,18 @@ public class TypicalPatients {
             .withPhone("66666666")
             .withGender("F")
             .withBirthdate("07-07-1996")
-            .withRemark("Allergy to anaesthesia").build();
+            .withRemark("Allergy to anaesthesia")
+            .withTreatmentName("Cleaning")
+            .build();
     public static final Patient PATIENT_IDA = new PatientBuilder().withName("Ida Mueller")
             .withAddress("chicago ave")
             .withEmail("hans@example.com")
             .withPhone("77777777")
             .withGender("F")
             .withBirthdate("03-03-1999")
-            .withRemark("Drug allergy").build();
+            .withRemark("Drug allergy")
+            .withTreatmentName("Cleaning")
+            .build();
 
     // Manually added - Patient's details found in {@code CommandTestUtil}
     public static final Patient AMY = new PatientBuilder().withName(VALID_NAME_AMY).withPhone(VALID_PHONE_AMY)
@@ -113,7 +124,7 @@ public class TypicalPatients {
     public static AddressBook getTypicalAddressBook() {
         AddressBook ab = new AddressBook();
         for (Patient patient : getTypicalPatients()) {
-            ab.addPerson(patient);
+            ab.addPatient(patient);
         }
         return ab;
     }
