@@ -4,20 +4,26 @@ title: User Guide
 show-toc: true
 ---
 
-ToothTracker is an **All-in-One solution for effortless Dental Clinic Record Management**. From adding new patient and dentist profiles to seamlessly creating appointment schedules,
+## About ToothTracker
+
+ToothTracker is a **Dental Clinic Administrative Management System** designed for dental clinic administration assistants. From adding new patient and dentist profiles to seamlessly creating appointment schedules,
 ToothTracker is engineered to simplify every aspect of your dental clinic administrative responsibilities.
 
-We believe that time is the rarest commodity in a dental office. This means dental clinic administrative management must be efficient.
-Therefore, ToothTracker is optimized for use via a Command Line Interface (CLI) while also having the advantages of a Graphical User Interface (GUI), particularly our Calendar feature.
-If you type fast, ToothTracker offers your dental clinic a significantly more efficient workflow to get your job done.
+**Why ToothTracker? Because Your Time Matters.** <br>
+In your bustling dental clinic, time is the rarest commodity. That's why we designed ToothTracker to be swift like your service,
+allowing you to manage patient and dentist records effortlessly, schedule appointments without overlaps,
+and ensure your clinic operates like a well-oiled machine — all through a versatile Command Line Interface (CLI)
+that responds to your speedy typing, along with a Graphical User Interface (GUI) that includes a user-friendly calendar.
 
-Here is an overview of how ToothTracker can help you manage your dental clinic administration more effectively:
-- You can add tags to every patient and dentist to highlight additional information about them.
-- You need not worry about storing physical copies of patient and dentist profiles and appointment schedules.
-- You can access and retrieve patient and dentist records easily using the `search` and `filter` commands.
-- You can avoid creating clashing appointments to reduce operational delays.
-- You can have the flexibility to add custom treatments that your clinic provides.
-- You can view your clinic's appointment schedule in ToothTracker's calendar.
+**ToothTracker's Core Features Designed with You in Mind**
+
+- **Digital Record Keeping:** Say goodbye to cumbersome physical files — store and manage patients, dentists and schedules digitally.
+- **Effortless Retrieval:** Use intuitive `search` and `filter` commands to access and retrieve patient and dentist records.
+- **Tagging System:** Add tags to every patient and dentist to highlight additional information about them.
+- **Smart Scheduling:** Eliminate double-bookings and optimize your clinic's operations with appointment management.
+- **Custom Treatments:** Tailor ToothTracker to reflect the unique treatments your clinic provides.
+- **Visual View:** Get a clear overview of your day-to-day operations with our integrated calendar view.
+
 
 If you are new here, head over to [How to use ToothTracker's User Guide](#how-to-use-toothtrackers-user-guide) to start tracking your dental clinic records!
 
@@ -714,26 +720,26 @@ data file at the next run. Hence, it is recommended to take a backup of the file
 #### Checking your system's Java version
 Check that your system has the correct Java version (**Java 11 and above**) installed to run ToothTracker. Follow the steps below:
 
-- Windows
-  1. Use Win + S to open search.
-  2. Type in `Terminal` to open the terminal.
-  3. In your terminal, type in `java --version` and press enter.
+- For Windows Users:
+  1. Press `Win + S` to open search.
+  2. Type in `Terminal` and open the terminal.
+  3. Key in `java --version` and press `Enter` to check your Java version.
 
-- macOS
-  1. Use Cmd + Space to open Spotlight search. 
-  2. Type in `Terminal` to open the terminal. 
-  3. In your terminal, type in `java --version` and press return.
+- For macOS Users:
+  1. Press `Cmd + Space` to launch Spotlight. 
+  2. Type in `Terminal` and open the terminal. 
+  3. Key in `java --version` and press `Return` to check your Java version.
 
-- Linux
-  1. Use Ctrl + Alt + T to open the Terminal. 
-  2. In your terminal, type in `java --version` and press enter.
+- FOr Linux Users:
+  1. Press `Ctrl + Alt + T` to open the Terminal. 
+  2. Key in `java --version` and press `Enter` to check your Java version.
 
 
-The following image shows an example of what will show up on macOS, but you can expect a similar result in other operating systems.
+The following image shows an example of what will show up on macOS. You can expect a similar result if you’re using another operating system.
 ![System Java Version](images/ug/SystemJavaVersion.png){: .centered-image }
 
-The number in the red highlighted rectangle tells you the Java version installed in your computer.
-The Java version installed in the example system is Java 11.0.19, which is sufficient to run ToothTracker as it is greater than Java 11.
+The number in the red box highlights the Java version your system currently has.
+In the example, the system is running Java 11.0.19, which meets the requirement for ToothTracker.
 
 If you hava an earlier version of Java installed, head over to
 [Oracle's Java download page](https://docs.oracle.com/en/java/javase/11/install/overview-jdk-installation.html#GUID-8677A77F-231A-40F7-98B9-1FD0B48C346A) to install the correct version of Java.
@@ -834,4 +840,8 @@ respectively.
 | **Clear all data**    | `clear`          | `clear` |
 | **Exit ToothTracker** | `exit`           | `exit`  |
 
+
+## Acknowledgements
+- ToothTracker uses the following libraries: [JavaFX](https://openjfx.io/), [Jackson](https://github.com/FasterXML/jackson), [JUnit5](https://github.com/junit-team/junit5), [CalendarFX](https://github.com/dlsc-software-consulting-gmbh/CalendarFX)
+- User Guide references the following projects: [FoodRem](https://github.com/AY2223S1-CS2103T-W16-2/tp/blob/2a34fab143ace403adeb4b923258468140b66200/docs/UserGuide.md), [ArtBuddy](https://github.com/AY2223S1-CS2103T-W11-3/tp/blob/master/docs/UserGuide.md)
 

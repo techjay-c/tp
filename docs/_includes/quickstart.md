@@ -5,14 +5,10 @@ This quick start guide will walk you through the setup and basic operations of T
 ### Installing ToothTracker
 
 Haven't installed ToothTracker yet? Follow our easy step-by-step guide below to get ToothTracker up and running in no time.
-For the best possible experience, we recommend that you use ToothTracker on the following supported operating systems:
-* Windows
-* macOS
-* Linux
+Our software is compatible with Windows, macOS, and Linux for optimal performance.
 
 
-1. ToothTracker is written in the programming language Java, so you'll need to have **Java 11 or above**
-   installed in your Computer to run ToothTracker.
+1. ToothTracker requires **Java 11 or above** installed in your Computer to run.
     - If you're missing Java, no worries — it's free to install! Find detailed installation instructions [here](https://docs.oracle.com/en/java/javase/11/install/overview-jdk-installation.html#GUID-8677A77F-231A-40F7-98B9-1FD0B48C346A).
 
     <div markdown="span" class="alert alert-primary">
@@ -25,7 +21,7 @@ For the best possible experience, we recommend that you use ToothTracker on the 
 
 1. Place the downloaded ToothTracker file (`toothtracker.jar`) into the folder.
 
-You're all set! ToothTracker is now installed on your computer.
+Installation complete! You're now ready to launch ToothTracker.
 
 ### Launching ToothTracker
 Great! Now that you have downloaded ToothTracker (if not, refer to the [Installation Instructions](#installation-instructions)), let's get it up and running.
