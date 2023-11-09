@@ -1,7 +1,14 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.*;
+import static seedu.address.logic.commands.CommandTestUtil.INPUT_DENTIST_ID_APPOINTMENT;
+import static seedu.address.logic.commands.CommandTestUtil.INPUT_INVALID_DENTIST_ID_APPOINTMENT;
+import static seedu.address.logic.commands.CommandTestUtil.INPUT_INVALID_PATIENT_ID_APPOINTMENT;
+import static seedu.address.logic.commands.CommandTestUtil.INPUT_INVALID_START_APPOINTMENT;
+import static seedu.address.logic.commands.CommandTestUtil.INPUT_PATIENT_ID_APPOINTMENT;
+import static seedu.address.logic.commands.CommandTestUtil.INPUT_START_APPOINTMENT;
+import static seedu.address.logic.commands.CommandTestUtil.INPUT_TREATMENT_APPOINTMENT;
+import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 

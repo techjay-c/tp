@@ -146,6 +146,11 @@ public class AppointmentBuilder {
         return newAppointment;
     }
 
+    /**
+     * Builds and returns a new {@code Appointment} with the specified details for parsing test purposes.
+     *
+     * @return A new {@code Appointment} instance with the specified details.
+     */
     public Appointment parserBuild() {
         Appointment appointment = new Appointment(dentistId, patientId, start, treatment);
         return appointment;
