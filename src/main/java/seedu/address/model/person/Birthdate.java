@@ -14,7 +14,8 @@ import java.time.format.DateTimeParseException;
  */
 public class Birthdate {
 
-    public static final String MESSAGE_CONSTRAINTS = "Birthday should be in the following format: dd-mm-yyyy";
+    public static final String MESSAGE_CONSTRAINTS =
+            "Birthday should be in the following format: dd-mm-yyyy and should be a valid day in the past!";
 
     public static final String VALIDATION_REGEX = "\\d{2}-\\d{2}-\\d{4}";
     public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -40,9 +41,9 @@ public class Birthdate {
             return false;
         }
         try {
-            // Ensure that date is not in the future
+            // Ensure that birthdate is valid and not in the future
             LocalDate date = LocalDate.parse(test, DATE_TIME_FORMATTER);
-            return !date.isAfter(LocalDate.now());
+            return date.format(DATE_TIME_FORMATTER).equals(test) && date.isBefore(LocalDate.now());
         } catch (DateTimeParseException e) {
             return false;
         }
