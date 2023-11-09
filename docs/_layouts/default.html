@@ -8,50 +8,36 @@
 {%- include header.html -%}
 
 <main class="page-content" aria-label="Content">
-  <div id="flex-body">
-    <nav id="site-nav">
-      <div class="site-nav-title">
-        <div class="fw-bold mb-2" style="font-size: 1.25rem;">Site Nav</div>
-      </div>
-      <ul class="site-nav-list">
-        <li><a href="{{baseUrl}}/tp/index.html">Home</a></li>
-        <li>
-          <a href="{{baseUrl}}/tp/UserGuide.html">User Guide</a>
-          <ul>
-            <li><a href="{{baseUrl}}/tp/UserGuide.html#quick-start">Quick Start</a></li>
-            <li><a href="{{baseUrl}}/tp/UserGuide.html#features">Features</a></li>
-            <li><a href="{{baseUrl}}/tp/UserGuide.html#faq">FAQ</a></li>
-            <li><a href="{{baseUrl}}/tp/UserGuide.html#command-summary">Command Summary</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="{{baseUrl}}/tp/DeveloperGuide.html">Developer Guide</a>
-          <ul>
-            <li><a href="{{baseUrl}}/tp/DeveloperGuide.html#acknowledgements">Acknowledgements</a></li>
-            <li><a href="{{baseUrl}}/tp/DeveloperGuide.html#setting-up-getting-started">Setting Up & Getting Started</a></li>
-            <li><a href="{{baseUrl}}/tp/DeveloperGuide.html#design">Design</a></li>
-            <li><a href="{{baseUrl}}/tp/DeveloperGuide.html#implementation">Implementation</a></li>
-            <li><a href="{{baseUrl}}/tp/DeveloperGuide.html#documentation-logging-testing-configuration-dev-ops">Documentation, Logging, Testing, Configuration, Dev-Ops</a></li>
-            <li><a href="{{baseUrl}}/tp/DeveloperGuide.html#appendix-requirements">Appendix: Requirements</a></li>
-            <li><a href="{{baseUrl}}/tp/DeveloperGuide.html#appendix-instructions-for-manual-testing">Appendix: Instructions for Manual Testing</a></li>
-          </ul>
-        </li>
-        <li><a href="{{baseUrl}}/tp/AboutUs.html">About Us</a></li>
-      </ul>
-    </nav>
-
+  {% if page.show-toc %}
+    <aside class="sticky-toc">
+      {% include toc.html html=content %}
+    </aside>
+    <a class="back-to-top" href="#">↑</a>
+  {% endif %}
     <div id="content-wrapper">
       {{ content }}
     </div>
 
-    <nav id="page-nav">
-      <div class="nav-component slim-scroll">
-        <page-nav />
-      </div>
-    </nav>
-
-  </div>
 </main>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var backToTopButton = document.querySelector(".back-to-top");
+
+    window.onscroll = function() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            backToTopButton.style.display = "block";
+        } else {
+            backToTopButton.style.display = "none";
+        }
+    };
+
+    backToTopButton.onclick = function() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    };
+});
+</script>
 </body>
 </html>
+
