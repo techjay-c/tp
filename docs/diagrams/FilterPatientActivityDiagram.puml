@@ -6,7 +6,7 @@ start
 if () then ([Valid command])
     :Parse arguments;
 
-    if () then ([Valid attribute])
+    if () then ([Allowed attribute])
         :Parse arguments;
         :Extract attribute and keywords;
 

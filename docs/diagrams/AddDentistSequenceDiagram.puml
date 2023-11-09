@@ -49,24 +49,19 @@ deactivate AddressBookParser
 LogicManager -> AddDentistCommand : execute()
 activate AddDentistCommand
 
-AddDentistCommand -> Model : hasDentist(toAdd)
-activate Model
-Model --> AddDentistCommand : false
-deactivate Model
-
 AddDentistCommand -> Model : addDentist(toAdd)
 activate Model
 Model --> AddDentistCommand
 deactivate Model
 
 create CommandResult
-AddDentistCommand -> CommandResult : new("New Dentist added: %1$s", toAdd)
+AddDentistCommand -> CommandResult
 activate CommandResult
 
 CommandResult --> AddDentistCommand
 deactivate CommandResult
 
-Model --> LogicManager : result
+AddDentistCommand --> LogicManager : result
 deactivate Model
 
 [<--LogicManager
