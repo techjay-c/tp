@@ -36,8 +36,10 @@ public class TypicalAppointments {
             .withDentistName("Tom")
             .withPatientName("Bob")
             .withAppointmentTime("2023-10-21T12:00", "PT2H00M")
+            .withStart("2023-10-21T12:00")
             .withTreatment("Tooth Extraction")
-            .withCost("150").build();
+            .withCost("150")
+            .withId("1").build();
 
     private TypicalAppointments() {} // prevents instantiation
 

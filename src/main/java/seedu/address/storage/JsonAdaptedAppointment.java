@@ -83,37 +83,37 @@ public class JsonAdaptedAppointment {
     public Appointment toModelType() throws IllegalValueException {
         if (dentistId == null) {
             throw new IllegalValueException(
-                    String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, "dentist id"));
         }
         long did = Long.parseLong(dentistId);
         if (patientId == null) {
             throw new IllegalValueException(
-                    String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, "patient id"));
         }
         long pid = Long.parseLong(patientId);
         if (dentistName == null) {
             throw new IllegalValueException(
-                    String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, "dentist name"));
         }
         if (patientName == null) {
             throw new IllegalValueException(
-                    String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, "patient name"));
         }
         if (start == null) {
             throw new IllegalValueException(
-                    String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, "start time"));
         }
         if (duration == null) {
             throw new IllegalValueException(
-                    String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, "duration"));
         }
         if (treatment == null) {
             throw new IllegalValueException(
-                    String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, "treatment"));
         }
         if (cost == null) {
             throw new IllegalValueException(
-                    String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, "cost"));
         }
         if (id == null) {
             throw new IllegalValueException("id value does not exist!");
