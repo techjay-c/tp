@@ -119,4 +119,20 @@ public class AppointmentTime {
         return durationString;
     }
 
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof AppointmentTime)) {
+            return false;
+        }
+
+        AppointmentTime otherAppointmentTime = (AppointmentTime) other;
+
+        return appointmentTimeToString().equals(otherAppointmentTime.appointmentTimeToString());
+    }
+
 }

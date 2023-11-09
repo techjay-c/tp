@@ -60,7 +60,7 @@ public class FilterAppointmentCommand extends Command {
             throw new CommandException(INVALID_INPUTS);
         }
 
-        if (id >= 0) {
+        if (id > 0) {
             model.updateFilteredAppointmentList(appointmentPredicate);
 
             if (model.getFilteredAppointmentList().isEmpty()) {

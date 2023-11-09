@@ -3,11 +3,15 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DENTIST;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PATIENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SPECIALIZATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TREATMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_YOE;
 import static seedu.address.testutil.Assert.assertThrows;
 
@@ -43,6 +47,16 @@ public class CommandTestUtil {
     public static final String VALID_ADDRESS_BOB = "Block 123, Bobby Street 3";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
+
+    // Input Fields - Appointment Specific
+    public static final String INPUT_DENTIST_ID_APPOINTMENT = " " + PREFIX_DENTIST + "1";
+    public static final String INPUT_INVALID_DENTIST_ID_APPOINTMENT = " " + PREFIX_DENTIST + "0L";
+    public static final String INPUT_PATIENT_ID_APPOINTMENT = " " + PREFIX_PATIENT + "1";
+    public static final String INPUT_INVALID_PATIENT_ID_APPOINTMENT = " " + PREFIX_PATIENT + "0L";
+    public static final String INPUT_START_APPOINTMENT = " " + PREFIX_START + "2023-10-19 16:00";
+    public static final String INPUT_INVALID_START_APPOINTMENT = " " + PREFIX_START + "2023-10-1916:00";
+
+    public static final String INPUT_TREATMENT_APPOINTMENT = " " + PREFIX_TREATMENT + "Braces";
 
     // Valid Fields - Patient Specific
     public static final String VALID_GENDER_BOB = "M";
