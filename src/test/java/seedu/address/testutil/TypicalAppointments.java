@@ -30,6 +30,15 @@ public class TypicalAppointments {
             .withTreatment("Tooth Extraction")
             .withCost("150").build();
 
+    public static final Appointment APPOINTMENT_THREE = new AppointmentBuilder()
+            .withDentistId("1")
+            .withPatientId("1")
+            .withDentistName("Tom")
+            .withPatientName("Bob")
+            .withAppointmentTime("2023-10-21T12:00", "PT2H00M")
+            .withTreatment("Tooth Extraction")
+            .withCost("150").build();
+
     private TypicalAppointments() {} // prevents instantiation
 
     public static AddressBook getTypicalAddressBook() {

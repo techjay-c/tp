@@ -111,7 +111,7 @@ public class AddAppointmentCommand extends Command {
         try {
             startParsed = LocalDateTime.parse(start);
         } catch (DateTimeException e) {
-            throw new CommandException("Invalid inputs for appointment start time. \n"
+            throw new CommandException("Invalid inputs for appointment start time.\nDate must be valid. \n"
                     + "Format must be in yyyy-MM-dd HH:mm.\nE.g. 2023-01-01 09:05");
         }
 
