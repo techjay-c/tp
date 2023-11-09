@@ -43,6 +43,7 @@ AddAppointmentCommand --> Model : geDentistById(dentistId)
 Model --> AddAppointmentCommand
 AddAppointmentCommand --> Model : getPatientById(patientId)
 Model --> AddAppointmentCommand
+deactivate Model
 
 AddAppointmentCommand --> AddAppointmentCommandParser : a
 deactivate AddAppointmentCommand
