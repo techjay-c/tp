@@ -14,15 +14,15 @@ if () then ([valid command])
                 :Add new appointment to model;
                 :Return message to show new appointment added;
             else ([else])
-                :Throw CommandException;
+                :Throw CommandException for clashing appointments;
             endif
 
       else ([else])
-        :Throw CommandException;
+        :Throw CommandException for invalid dentist or patient;
      endif
 
     else ([else])
-      :Throw CommandException;
+      :Throw CommandException for invalid treatment;
     endif
 
 else ([else])
