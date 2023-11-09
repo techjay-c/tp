@@ -226,8 +226,7 @@ public class AddAppointmentCommand extends Command {
 
         AddAppointmentCommand otherCommand = (AddAppointmentCommand) other;
 
-        return toAdd.equals(otherCommand.toAdd)
-                && dentistId == otherCommand.dentistId
+        return dentistId == otherCommand.dentistId
                 && patientId == otherCommand.patientId
                 && treatmentName.equals(otherCommand.treatmentName)
                 && start.equals(otherCommand.start);

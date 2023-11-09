@@ -146,4 +146,9 @@ public class AppointmentBuilder {
         return newAppointment;
     }
 
+    public Appointment parserBuild() {
+        Appointment appointment = new Appointment(dentistId, patientId, start, treatment);
+        return appointment;
+    }
+
 }

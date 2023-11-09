@@ -106,4 +106,10 @@ public class FilterAppointmentCommandTest {
         assertThrows(CommandException.class, () -> command.execute(new ModelManager()));
     }
 
+    @Test
+    public void execute_invalidInputs() {
+        FilterAppointmentCommand command = new FilterAppointmentCommand("doctor", 1);
+        assertThrows(CommandException.class, () -> command.execute(new ModelManager()));
+    }
+
 }
