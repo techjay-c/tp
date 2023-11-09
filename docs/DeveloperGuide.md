@@ -3,20 +3,18 @@ layout: page
 title: Developer Guide
 show-toc: true
 ---
-
+{% include toc.md header=false show-in-toc=true ordered=true %}
 
 ## **Acknowledgements**
 
 * {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the
   original source as well}
 
---------------------------------------------------------------------------------------------------------------------
 
 ## **Setting up, getting started**
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
---------------------------------------------------------------------------------------------------------------------
 
 ## **Design**
 
@@ -837,6 +835,74 @@ Other incorrect delete commands to try:<br>
 Expected Output in the Dentist List: No dentist is deleted.
 
 Expected Output in Command Output Box:  Error details shown in the Command Output Box to show if it is an Invalid Dentist ID, or if it is an invalid command format.
+
+## Appointment
+
+### Adding an Appointment
+
+Prerequisite: There is at least 1 Patient `XXX`, at least 1 Dentist `Bernard Tan` and at least 1 Treatment `Braces` stored in ToothTracker.
+XXX's Patient ID is 2 and Bernard Tan's Dentist ID is 4.
+
+`add-appointment dentist/4 patient/2 start/2023-11-29 16:00 tr/Braces`
+
+Expected Output in the Appointment List: New appointment added into the Appointment List. 
+
+
+`add-appointment patient/2 start/2023-11-29 16:00 tr/Braces`
+
+Expected Output in the Command Output Box: Error message for invalid command format, prompting users with correct attributes to include.
+
+
+### Listing all Appointments
+
+Prerequisite: THere is at least 1 Appointment stored in ToothTracker.
+
+`list-appointment`
+
+Expected Output in the Appointment List: All Appointments stored in ToothTracker is displayed.
+
+Expected Output in the Command Output Box: Listed all appointments!
+
+
+### Filtering Appointments by Dentist ID
+
+Prerequisite: There is at least one Appointment stored in ToothTracker with Dentist `Bernard Tan`. Bernard Tan's Dentist ID is 4.
+
+`filter-appointment dentist 4`
+
+Expected Output in the Appointment List: Appointments with Dentist `Bernard Tan` is displayed.
+Expected Output in the Command Output Box: Appointments with dentist whose dentist ID is 4 listed.
+
+`filter-appointment dentist -1`
+Expected Output in the Command Output Box: Error message for invalid ID provided.
+
+
+### Filtering Appointments by Patient ID
+
+Prerequisite: There is at least one Appointment stored in ToothTracker with Patient `XXX`. XXX's Patient ID is 2.
+
+`filter-appointment patient 2`
+
+Expected Output in the Appointment List: Appointments with Patient `XXX` is displayed.
+Expected Output in the Command Output Box: Appointments with patient whose patient ID is 2 listed.
+
+`filter-appointment patient -1`
+Expected Output in the Command Output Box: Error message for invalid ID provided.
+
+
+### Deleting an Appointment
+
+Prerequisite: There is at least 1 Appointment stored in ToothTracker.
+
+`delete-appointment 1`
+
+Expected Output in the Appointment List: Appointment with APPOINTMENT_ID 1 is deleted from the appointment list.
+
+Expected Output in the Command Output Box: Details of the deleted appointment shown.
+
+`delete-appointment -1`
+
+Expected Output in the Command Output Box: Error details shown for invalid APPOINTMENT_ID provided.
 
 
 (More to be added)
