@@ -971,6 +971,56 @@ Expected Output in the Command Output Box: Error details shown for attempting to
 <div markdown="span" class="alert alert-info">:information_source: **Special Note for editing treatments:** Please ensure the treatments exists in ToothTracker before editing patients. Otherwise, a message about Invalid Treatment will be given.
 </div>
 
+### Searching for a Patient by Keyword
+Prerequisite: There are only two patients named `Tommy Tan Chuk Yong` and `Bernard Tan` stored in ToothTracker.
+
+`search-patient Tommy`
+
+Expected Output in the Patient List: `Tommy Tan Chuk Yong` patient is displayed.
+
+Expected Output in the Command Output Box: 1 patients listed!
+<br><br>
+
+`search-patient Bernard`
+
+Expected Output in the Patient List: `Bernard Tan` patient is displayed.
+
+Expected Output in the Command Output Box: 1 patients listed!
+<br><br>
+
+`search-patient Tan`
+
+Expected Output in the Patient List: `Tommy Tan Chuk Yong` and `Bernard Tan` patients are displayed.
+
+Expected Output in the Command Output Box: 2 patients listed!
+<br><br>
+
+### Searching for a patient by Patient ID
+
+Prerequisite: There are only two patients named `Tommy Tan Chuk Yong` and `Bernard Tan` stored in ToothTracker.
+Tommy Tan Chuk Yong's Patient ID is `1` and Bernard Tan's Patient ID is 4 (Patients with ID 2 and 3 are assumed to be removed previously).
+
+`search-patient 1`
+
+Expected Output in the Patient List: `Tommy Tan Chuk Yong` patient is displayed.
+
+Expected Output in the Command Output Box: Patient with patient ID 1 found.
+<br><br>
+
+`search-patient 4`
+
+Expected Output in the Patient List: `Bernard Tan` patient is displayed.
+
+Expected Output in the Command Output Box: 1 patients listed!
+<br><br>
+
+`search-patient 999`
+
+Expected Output in the Patient List: No patient displayed.
+
+Expected Output in the Command Output Box: No patient found with patient ID 999.
+<br><br>
+
 
 
 
