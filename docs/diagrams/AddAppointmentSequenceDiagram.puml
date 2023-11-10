@@ -50,12 +50,12 @@ deactivate AddressBookParser
 LogicManager -> AddAppointmentCommand : execute()
 activate AddAppointmentCommand
 
-AddAppointmentCommand --> Model : getTreatmentDuration(treatmentName)
+AddAppointmentCommand --> Model : updateFilteredTreatmentList(predicate)
 activate Model
 Model --> AddAppointmentCommand
 deactivate Model
 
-AddAppointmentCommand --> Model : getTreatmentCost(treatmentName)
+AddAppointmentCommand --> Model : getFilteredTreatmentList()
 activate Model
 Model --> AddAppointmentCommand
 deactivate Model

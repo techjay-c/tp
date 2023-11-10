@@ -390,7 +390,7 @@ The activity diagram for filtering an appointment is illustrated as follows:
 
 The sequence diagram shows the interactions between the various components during the execution of the `filter-appointment` command:
 
-![DeleteAppointmentSequenceDiagram]()
+![DeleteAppointmentSequenceDiagram](images/FilterAppointmentSequenceDiagram.png)
 
 ##### Feature Details
 
