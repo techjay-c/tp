@@ -863,7 +863,26 @@ Expected Output in the Dentist List: No dentist is deleted.
 Expected Output in Command Output Box:  Error details shown in the Command Output Box to show if it is an Invalid Dentist ID, or if it is an invalid command format.
 
 
-(More to be added)
+## Patients
+
+### Adding a Patient
+
+Adding a patient into ToothTracker's Patient List.
+
+`add-patient n/Tommy Chua Chi Yang p/97793115 b/25-10-1998 g/M`
+
+Expected Output in the Patient List: New patient added into the Dentist List. The email, address, remark and treatment of the patient will contain Default placeholders.
+
+Expected Output in the Command Output Box: New patient added message is displayed with the patient credentials.
+<br><br>
+
+`add-patient n/Oliver Lim`
+
+Expected Output in the Patient List: No new patient added.
+
+Expected Output in the Command Output Box: Error message for invalid command format.
+<br><br>
+
 
 ### Saving data
 
