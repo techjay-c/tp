@@ -4,36 +4,34 @@ start
 :User executes "search-patient" command with either ID or keyword;
 
 ' Check the command's validity
-if (Valid command?) then ([yes])
+if () then ([valid command])
     :Parse command arguments;
 
     ' Decide the search type based on the parsed arguments
-    if (Search by ID?) then ([yes])
+    if () then ([Search by ID])
         :Extract ID from arguments;
-        :Finds patient record by ID;
+        :Finds patient record by PATIENT_ID;
 
         ' Decision point after search attempt
-        if (patient record exists?) then ([yes])
+        if () then ([Patient record exists])
             :Display patient record;
-        else ([no])
+        else ([else])
             :Show message "No patient found with patient ID [ID]";
         endif
-    else ([no])
+    else ([Search by keywords])
         :Extract keywords from arguments;
         :Search patient records by keywords;
 
         ' Decision point after search attempt
-        if (Matching records found?) then ([yes])
+        if () then ([Matching records found])
             :Display all matching patient records;
-        else ([no])
+        else ([else])
             :Show message "0 patients listed!";
         endif
     endif
-else ([no])
+else ([else])
     :Display error message for invalid command;
 endif
 
 stop
 @enduml
-
-

@@ -17,10 +17,10 @@ participant ":Model" as Model MODEL_COLOR
 end box
 
 
-[-> LogicManager : execute("search-patient John")
+[-> LogicManager : execute("search-patient Bernice")
 activate LogicManager
 
-LogicManager -> AddressBookParser : parseCommand("search-patient John")
+LogicManager -> AddressBookParser : parseCommand("search-patient Bernice")
 activate AddressBookParser
 
 create SearchPatientCommandParser
@@ -30,7 +30,7 @@ activate SearchPatientCommandParser
 SearchPatientCommandParser --> AddressBookParser
 deactivate SearchPatientCommandParser
 
-AddressBookParser -> SearchPatientCommandParser : parse("John")
+AddressBookParser -> SearchPatientCommandParser : parse("Bernice")
 activate SearchPatientCommandParser
 
 create Predicate

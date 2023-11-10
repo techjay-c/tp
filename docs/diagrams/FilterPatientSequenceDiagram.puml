@@ -5,7 +5,7 @@ box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
 participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
 participant "FilterPatientCommandParser" as FilterPatientCommandParser LOGIC_COLOR
-participant "PatientAttributeContainsKeywordsPredicate" as Predicate LOGIC_COLOR
+participant "AttributeContainsKeywordsPredicate" as Predicate LOGIC_COLOR
 participant "s:FilterPatientCommand" as FilterPatientCommand LOGIC_COLOR
 participant ":CommandResult" as CommandResult LOGIC_COLOR
 end box
@@ -14,10 +14,10 @@ box Model MODEL_COLOR_T1
 participant ":Model" as Model MODEL_COLOR
 end box
 
-[-> LogicManager : execute("filter-patient a/phone k/98667722")
+[-> LogicManager : execute("filter-patient a/phone k/91067788")
 activate LogicManager
 
-LogicManager -> AddressBookParser : parseCommand("filter-patient a/phone k/98667722")
+LogicManager -> AddressBookParser : parseCommand("filter-patient a/phone k/91067788")
 activate AddressBookParser
 
 create FilterPatientCommandParser
@@ -27,7 +27,7 @@ activate FilterPatientCommandParser
 FilterPatientCommandParser --> AddressBookParser
 deactivate FilterPatientCommandParser
 
-AddressBookParser -> FilterPatientCommandParser : parse("a/phone k/98667722")
+AddressBookParser -> FilterPatientCommandParser : parse("a/phone k/91067788")
 activate FilterPatientCommandParser
 
 create Predicate

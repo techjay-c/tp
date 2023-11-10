@@ -3,25 +3,25 @@ start
 
 :User executes "filter-patient" command;
 
-if (Valid command?) then ([yes])
+if () then ([Valid command])
     :Parse arguments;
 
-    if (Valid attribute?) then ([yes])
+    if () then ([Allowed attribute])
         :Parse arguments;
         :Extract attribute and keywords;
 
-        if (Matching records found?) then (yes)
+        if () then ([Matching records found])
             :Display matching patient records;
 
-            else (no)
+            else ([else])
                 :Display message that shows no patients found;
             endif
 
-    else ([no])
+    else ([else])
         :Display error message for invalid attribute;
     endif
 
-else ([no])
+else ([else])
      :Display error message for invalid command;
 endif
 
