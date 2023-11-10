@@ -73,9 +73,11 @@ It allows you to easily understand your clinic's appointments and availability a
 
 
 ### Using ToothTracker's CLI
-ToothTracker is optimized for use via a Command Line Interface which means you can do what you want to get done just by using text input (known as commands). Cool right?
+ToothTracker is optimized for use via a Command Line Interface which means you can do what you want to get done just
+by using text input (known as commands).
 
-Right now, ToothTracker only understands certain commands (the complete list of commands can be found in Features) and these commands must be formatted in a specific way.
+Right now, ToothTracker only understands certain commands (the complete list of commands can be found in [Features](#features))
+and these commands must be formatted in a specific way.
 It’s just the way ToothTracker is wired to think and listen. So let’s learn how to talk to ToothTracker!
 
 
@@ -113,23 +115,27 @@ Let's start by going through some simple dentist-related commands!
 1. Suppose you have a dentist, named Jonathan Goh, who joined your clinic. <br>
 Try running the command `add-dentist n/Jonathan Goh p/92095568 e/jonathan.goh@gmail.com y/3 s/Paediatric Dentistry`.
    - Notice that you've created a new dentist, Jonathan Goh!
-   ![trying-command-add-dentist-example](images/ug/add-dentist-example.png){: .centered-image-full-size }
+
+![trying-command-add-dentist-example](images/ug/add-dentist-example.png){: .centered-image-full-size }
 
 2. Now, suppose that a dentist, Alex Yeoh, is leaving your clinic, and you want to delete his records from ToothTracker.
 You can do this by running `delete-dentist 1`.
    - After executing the command, Alex Yeoh is now deleted from ToothTracker!
-   ![trying-command-delete-dentist-example](images/ug/delete-dentist-example.png){: .centered-image-full-size }
+
+![trying-command-delete-dentist-example](images/ug/delete-dentist-example.png){: .centered-image-full-size }
 
 Now that you’ve been introduced to some dentist-related commands, let’s change things up by trying out some patient commands.
 
 1. Suppose you have a new patient, named Jean, onboarding your clinic. <br>
 Try entering the command `add-patient n/Jean p/95339212 b/14-09-2001 g/F`.
    - Notice that you've created a new patient, Jean!
-   ![trying-command-add-patient-example](images/ug/add-patient-example.png){: .centered-image-full-size }
+
+![trying-command-add-patient-example](images/ug/add-patient-example.png){: .centered-image-full-size }
 
 2.  Now, suppose that you want to change the phone number of your patient, Alex. Easy! Just type in `edit-patient 1 p/82019452`.
    - Done! Alex's phone number has been updated!
-   ![trying-command-edit-patient-example](images/ug/edit-patient-example.png){: .centered-image-full-size }
+
+![trying-command-edit-patient-example](images/ug/edit-patient-example.png){: .centered-image-full-size }
 
 Awesome! Now that you've gotten familiar with ToothTracker's commands, feel free to explore more features in the
 [Features](#features) section to fully leverage ToothTracker's capabilities.
