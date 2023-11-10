@@ -20,7 +20,7 @@
   }
 
   ol > li:before {
-    content: counters(item, ".") ". ";
+    content: counters(item, ".") " ";
     margin-left: -1em;
   }
 }
@@ -48,12 +48,12 @@ article.post {
 
   h3:not(.no_toc)::before {
     counter-increment: subsection;
-    content: counter(section) "." counter(subsection) ". ";
+    content: counter(section) "." counter(subsection) " ";
   }
 
   h4:not(.no_toc)::before {
     counter-increment: subsubsection;
-    content: counter(section) "." counter(subsection) "." counter(subsubsection) ". ";
+    content: counter(section) "." counter(subsection) "." counter(subsubsection) " ";
   }
 }
 
