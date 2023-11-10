@@ -709,9 +709,9 @@ Expected Output in the Command Output Box: Error message for invalid command for
 Prerequisite: There is at least 1 Dentist stored in ToothTracker
 `list-dentist`
 
-Expected Output in the Dentist List. All Dentists stored in ToothTracker is displayed.
+Expected Output in the Dentist List. All Dentists stored in ToothTracker are displayed.
 
-Expected Output in the Command Output Box: Listed all Dentist!
+Expected Output in the Command Output Box: Listed all dentists!
 <br><br>
 
 ### Edit a Dentist
@@ -881,6 +881,16 @@ Expected Output in the Command Output Box: New patient added message is displaye
 Expected Output in the Patient List: No new patient added.
 
 Expected Output in the Command Output Box: Error message for invalid command format.
+<br><br>
+
+### Listing all Patients
+
+Prerequisite: There is at least 1 Patient stored in ToothTracker
+`list-patient`
+
+Expected Output in the Patient List. All Patients stored in ToothTracker are displayed.
+
+Expected Output in the Command Output Box: Listed all patients!
 <br><br>
 
 
