@@ -323,6 +323,126 @@ keyword is of a valid type for that particular attribute. Users are responsible 
 
 ### Patient Features
 
+#### Adding a Patient
+
+The `add-patient` command creates a new patient record in ToothTracker. This command forms the fundamental business logic to represent patients.
+
+The activity diagram for creating a new patient is illustrated as follows:
+
+![AddPatientActivityDiagram](images/AddPatientActivityDiagram.png)
+
+This sequence diagram shows the interactions between the various components during the execution of the `add-dentist` command:
+
+![AddPatientSequenceDiagram](images/AddPatientSequenceDiagram.png)
+
+##### Feature Details
+
+1. Users provide essential patient information, such as their name, phone number, specialization, years of experience and other optional details like email, address and tags.
+2. In case of missing or invalid command arguments, the system prompts users with an error message to enter the command correctly.
+3. The system cross-references the new dentist's name with existing records in the `Model` to prevent duplicate entries. If a duplicate is found, an error message informs the user.
+4. If step 3 is completed without any exceptions, the new patient record is created and stored in the system.
+
+##### Feature Considerations
+
+For dentist specialization, broader terms like "orthodontics" are used instead of specifying the exact type of treatment (e.g., root canal, braces, scaling).
+This approach prevents the "add-dentist" command from becoming excessively long.
+
+The working hours of a dentist is not an attribute in the `add-dentist` command as dentists might not immediately know their
+shifts when they first join, and it might change frequently.
+
+We handle duplicates by not allowing multiple dentists of the same name to be created (eg. only 1 John Tan can exist in ToothTracker). We will allow multiple dentists of
+the same name to be created in future implementations. For now, if there are multiple dentists with the same name, add in additional information such as their last 3 digits of NRIC
+as part of their name attribute.
+
+#### Deleting a Dentist
+
+The `delete-dentist` command deletes a dentist record in ToothTracker. This command forms the fundamental business logic to represent dentists.
+
+The activity diagram for deleting a dentist is illustrated as follows:
+
+![DeleteDentistActivityDiagram](images/DeleteDentistActivityDiagram.png)
+
+This sequence diagram shows the interactions between the various components during the execution of the `delete-dentist` command:
+
+![DeleteDentistSequenceDiagram](images/DeleteDentistSequenceDiagram.png)
+
+##### Feature Details
+
+1. The user specifies a dentist id that represents a `Dentist` to be edited.
+2. If an invalid `DENTIST_ID` is provided, an error is thrown and the user is prompted to enter the command correctly via an error message.
+3. The Dentist is cross-referenced in the `Model` to check if it exists. If it does not, then an error is raised to inform the user.
+4. If step 3 completes without any exceptions, then the `Dentist` is successfully deleted.
+
+##### Feature Considerations
+
+In implementing the delete feature, we needed proper error handling and validation to ensure ToothTracker's robustness and provide clear guidance to the user.
+Our approach validates dentist ID and shows an error message if the dentist does not exist.
+This is in comparison to allowing commands to fail silently if the dentist specified does not exist.
+
+- Pros: Prevents invalid operations and provides immediate feedback to the user, helping to correct mistakes.
+- Cons: Additional validation checks add complexity to the code.
+
+
+#### Searching for a dentist
+
+The `search-dentist` command finds dentist records in ToothTracker by allowing users to enter a specific `DENTIST_ID` or
+name-related keywords.
+
+The activity diagram for searching for a dentist is illustrated as follows:
+
+![SearchDentistActivityDiagram](images/SearchDentistActivityDiagram.png)
+
+This sequence diagram shows the interactions between the various components during the execution of the `search-dentist` command:
+
+![SearchDentistSequenceDiagram](images/SearchDentistSequenceDiagram.png)
+
+##### Feature Details
+1. Users initiate a search for a dentist using either a unique `DENTIST_ID` or by inputting specific `KEYWORDS` that might match a dentist's name.
+2. If the user opts for an ID-based search, the system processes the request to return a single record that matches the provided `DENTIST_ID`.
+3. If keywords are used, the system performs a broader search by comparing the keywords as substrings with the names in the dentist records.
+4. In scenarios where the search criteria do not correspond with any existing records (either no matching ID or keywords), the system generates an error message informing the user of the unsuccessful search attempt.
+5. When matches are found, the system displays a list of dentists whose records meet the search criteria.
+
+##### Feature Considerations
+
+The `search-dentist` feature in ToothTracker focuses on searching using either a unique `DENTIST_ID` or keywords matching a dentist's name,
+prioritizing speed and simplicity in accessing dentist records. For more complex searching which requires additional dentist attributes, users
+are recommended to use the `filter-dentist` command instead. This approach ensures a balanced functionality within ToothTracker, offering a balance
+between quick searches for immediate needs while also accommodating more complex and attribute-specific inquiries.
+
+#### Filtering a dentist
+
+The `filter-dentist` command in ToothTracker provides users with a more refined search functionality, allowing them to filter dentist records based on
+specific criteria beyond just `DENTIST_ID` or name-related keywords. This feature offers a versatile and detailed search capability for users who
+require precise results from the dentist records database.
+
+The activity diagram for filtering dentists is illustrated as follows:
+
+![FilterDentistActivityDiagram](images/FilterDentistActivityDiagram.png)
+
+This sequence diagram shows the interactions between the various components during the execution of the `filter-dentist` command:
+
+![FilterDentistSequenceDiagram](images/FilterDentistSequenceDiagram.png)
+
+##### Feature Details
+1. Users initiate a filter for a dentist by providing various filter criteria such as SPECIALIZATION, EXPERIENCE, TAGS, and more.
+   These criteria allow users to search for dentists with specific attributes.
+2. ToothTracker processes the user's filter criteria and matches them against the dentist records in the database.
+3. Dentists that meet the filter criteria are displayed as search results, providing users with a list of dentists that fulfill their specific requirements.
+4. If no matches are found for the given filter criteria, the system informs the user that no results were found based on the specified filters.
+
+##### Feature Considerations
+
+The `filter-dentist` feature in ToothTracker is tailored for users who require precise control over their dentist searches. Unlike the `search-dentist` command,
+which primarily relies on `DENTIST_ID` and name-related keywords, the `filter-dentist` command operates by filtering based on specific attributes within a dentist's record.
+
+To ensure the validity of the filter criteria, the  filter-dentist command conducts validation checks to confirm that the selected attribute for filtering is a valid attribute
+associated with a dentist's record.
+
+It is important to note that the filter-dentist feature does not perform validation checks within each attribute to verify whether the entered
+keyword is of a valid type for that particular attribute. Users are responsible for inputting keywords that are meaningful and applicable to the chosen attribute.
+
+
 ### Appointment Features
 
 ### Treatment Features
