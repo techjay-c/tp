@@ -529,13 +529,13 @@ Adds a dental appointment to ToothTracker. This is useful when:
 
 <div markdown="block" class="alert alert-info">
 **:information_source: Notes about adding Appointments:**<br>
-    <ul>
-        <li>ToothTracker will not allow the addition of appointments that clashes with existing appointments
-                with the same dentist or patient.</li>
-        <li>ToothTracker only allows for the addition of appointments from the year 2000 and onwards.</li>
-        <li>When adding an appointment, the list of appointments shown may get filtered, resulting in the new appointment not showing up in the appointment list.
-                Please use `list-appointment` if you want the new appointment to show up.</li>
-    </ul>
+  <ul>
+    <li>ToothTracker will not allow the addition of appointments that clashes with existing appointments
+        with the same dentist or patient.</li>
+    <li>ToothTracker only allows for the addition of appointments from the year 2000 and onwards.</li>
+    <li>When adding an appointment, the list of appointments shown may get filtered, resulting in the new appointment not showing up in the appointment list.
+        Please use <code>list-appointment</code> if you want the new appointment to show up.</li>
+  </ul>
 </div>
 
 **Example:**
