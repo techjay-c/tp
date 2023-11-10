@@ -571,10 +571,10 @@ Use case ends.
 **MSS**
 
 1. User submits a request to search for a dentist:
-    - User specifies search criteria, which can be either a dentist ID [PATIENT ID] or a dentist name [dentist name].
+    - User specifies search criteria, which can be either a dentist ID [DENTIST ID] or a dentist name [dentist name].
 
 2. ToothTracker searches for the dentist based on the criteria:
-    - If the request specifies [PATIENT ID]:
+    - If the request specifies [DENTIST ID]:
         - ToothTracker looks for a dentist with the matching ID.
     - If the request specifies [dentist name]:
         - ToothTracker searches for a dentist with the matching name.
@@ -609,10 +609,10 @@ Use case ends.
 **MSS**
 
 1. User submits a request to delete a dentist:
-    - User specifies the dentist ID [PATIENT ID] or dentist name [dentist name] to delete.
+    - User specifies the dentist ID [DENTIST ID] or dentist name [dentist name] to delete.
 
 2. ToothTracker searches for the dentist entry:
-    - If the request specifies [PATIENT ID]:
+    - If the request specifies [DENTIST ID]:
         - ToothTracker looks for a dentist with the matching ID.
     - If the request specifies [dentist name]:
         - ToothTracker searches for a dentist with the matching name.
