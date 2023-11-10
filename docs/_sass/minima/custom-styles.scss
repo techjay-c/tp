@@ -14,6 +14,10 @@ h2, h3, h4, h5, h6 {
   border-radius : $alert-border-radius;
 }
 
+.alert #text {
+  line-height: 1.75rem;
+}
+
 // Headings for larger alerts
 .alert-heading {
   // Specified to prevent conflicts of changing $headings-color

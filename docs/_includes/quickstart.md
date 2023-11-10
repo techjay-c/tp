@@ -9,7 +9,7 @@ Our software is compatible with Windows, macOS, and Linux for optimal performanc
 
 
 1. ToothTracker requires **Java 11 or above** installed in your Computer to run.
-    - If you're missing Java, no worries — it's free to install! Find detailed installation instructions [here](https://docs.oracle.com/en/java/javase/11/install/overview-jdk-installation.html#GUID-8677A77F-231A-40F7-98B9-1FD0B48C346A).
+    - If you don't have Java installed, no worries — it's completely free! Find detailed installation instructions [here](https://docs.oracle.com/en/java/javase/11/install/overview-jdk-installation.html#GUID-8677A77F-231A-40F7-98B9-1FD0B48C346A).
 
     <div markdown="span" class="alert alert-primary">
       :bulb: **Tip:** Unsure about your Java version? Our [troubleshooting](#troubleshooting) section has you covered with a quick guide.
@@ -33,7 +33,7 @@ Great! Now that you have downloaded ToothTracker (if not, refer to the [Installa
 A user-friendly GUI will pop up shortly, preloaded with some sample data to get you started.<br>
 ![Ui](images/Ui.png){: .centered-image }
 
-### Familiarising with ToothTracker's interface
+### Familiarising with ToothTracker's Interface
 Now that you have ToothTracker up and running, let's get you familiar with ToothTracker's user interface!
 
 ToothTracker has two windows: a [Main Window](#main-window) and a [Calendar Window](#calendar-window).
@@ -105,8 +105,10 @@ Every command you input follows a simple structure to help ToothTracker understa
 Can't wait to get started with ToothTracker? Let's go through some simple commands together to get you warmed up before you dive into ToothTracker's full feature list!
 
 <div markdown="span" class="alert alert-info">
-**:information_source:** Images in this section are only meant to be used as references.
-Data shown in this sample reference may differ from the data stored in your ToothTracker.
+   <span id="text">
+      **:information_source:** Images in this section are only meant to be used as **references**.
+      Data shown in this sample reference may differ from the data stored in your ToothTracker.
+   </span>
 </div>
 
 

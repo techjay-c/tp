@@ -38,6 +38,14 @@ Head over to [How to use ToothTracker's User Guide](#how-to-use-toothtrackers-us
 Thank you for choosing ToothTracker! We are delighted to have you as a user!
 This user guide provides a comprehensive documentation on the various commands supported by ToothTracker.
 
+<div markdown="span" class="alert alert-primary">
+  <span id="text">
+    :bulb: **Tip:** Our user guide is designed for **ease of navigation**. Simply click on any item in the Table of Contents
+    to jump directly to that section. Clicking on the **headings** within each section will return you to the Table of Contents,
+    so it's easy to navigate between sections!
+  </span>
+</div>
+
 {: .no_toc}
 #### First-Time Setup
 If you are new to ToothTracker, let's begin by setting up the application. Visit the [Installation](#installing-toothtracker)
