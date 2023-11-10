@@ -108,13 +108,14 @@ public class SearchPatientCommand extends Command {
         }
 
         SearchPatientCommand otherSearchPatientCommand = (SearchPatientCommand) other;
+
         switch (this.searchType) {
         case BY_NAME:
             return otherSearchPatientCommand.searchType == this.searchType
-                    && this.predicate.equals(otherSearchPatientCommand.predicate);
+                && this.predicate.equals(otherSearchPatientCommand.predicate);
         case BY_ID:
             return otherSearchPatientCommand.searchType == this.searchType
-                    && this.patientID == otherSearchPatientCommand.patientID;
+                && this.patientID == otherSearchPatientCommand.patientID;
         default:
             return false;
         }

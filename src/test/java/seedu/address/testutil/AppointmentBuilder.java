@@ -22,6 +22,7 @@ public class AppointmentBuilder {
     private String dentistName;
     private String patientName;
     private String start;
+    private String duration;
     private AppointmentTime appointmentTime;
     private String treatment;
     private String cost;
@@ -36,6 +37,7 @@ public class AppointmentBuilder {
         dentistName = DEFAULT_DENTIST_NAME;
         patientName = DEFAULT_PATIENT_NAME;
         start = DEFAULT_START;
+        duration = DEFAULT_DURATION;
         appointmentTime = new AppointmentTime(DEFAULT_START, DEFAULT_DURATION);
         treatment = DEFAULT_TREATMENT;
         cost = DEFAULT_COST;
@@ -52,6 +54,7 @@ public class AppointmentBuilder {
         dentistName = appointmentToCopy.getDentistName();
         patientName = appointmentToCopy.getPatientName();
         start = appointmentToCopy.getStart();
+        duration = appointmentToCopy.getDuration();
         appointmentTime = appointmentToCopy.getAppointmentTime();
         treatment = appointmentToCopy.getTreatment();
         cost = appointmentToCopy.getCost();
@@ -130,6 +133,14 @@ public class AppointmentBuilder {
     }
 
     /**
+     * Sets the {@code duration} of the {@code Appointment} that we are building.
+     */
+    public AppointmentBuilder withDuration(String duration) {
+        this.duration = duration;
+        return this;
+    }
+
+    /**
      * Builds and returns a new {@code Appointment} with the specified details.
      * The details must be set using the various "with" methods before calling this method.
      *
@@ -144,6 +155,16 @@ public class AppointmentBuilder {
         newAppointment.setId(id);
 
         return newAppointment;
+    }
+
+    /**
+     * Builds and returns a new {@code Appointment} with the specified details for parsing test purposes.
+     *
+     * @return A new {@code Appointment} instance with the specified details.
+     */
+    public Appointment parserBuild() {
+        Appointment appointment = new Appointment(dentistId, patientId, start, treatment);
+        return appointment;
     }
 
 }

@@ -94,9 +94,9 @@ public class AddAppointmentCommand extends Command {
 
         requireNonNull(model);
         if (toAdd.getDentistId() < 0) {
-            return new CommandResult("Invalid input. Please enter a valid integer value for dentist ID.");
+            throw new CommandException("Invalid input. Please enter a valid integer value for dentist ID.");
         } else if (toAdd.getPatientId() < 0) {
-            return new CommandResult("Invalid input. Please enter a valid integer value for patient ID.");
+            throw new CommandException("Invalid input. Please enter a valid integer value for patient ID.");
         }
 
         Predicate<Treatment> treatmentPredicate = treatment -> treatment.getName().toString()
@@ -111,12 +111,12 @@ public class AddAppointmentCommand extends Command {
         try {
             startParsed = LocalDateTime.parse(start);
         } catch (DateTimeException e) {
-            return new CommandResult("Invalid inputs for appointment start time. \n"
+            throw new CommandException("Invalid inputs for appointment start time.\nDate must be valid. \n"
                     + "Format must be in yyyy-MM-dd HH:mm.\nE.g. 2023-01-01 09:05");
         }
 
         if (startParsed.getYear() < 2000) {
-            return new CommandResult("Invalid year. Year must be 2000 or later.");
+            throw new CommandException("Invalid year. Year must be 2000 or later.");
         }
         AppointmentTime appointmentTime;
         try {
@@ -226,8 +226,7 @@ public class AddAppointmentCommand extends Command {
 
         AddAppointmentCommand otherCommand = (AddAppointmentCommand) other;
 
-        return toAdd.equals(otherCommand.toAdd)
-                && dentistId == otherCommand.dentistId
+        return dentistId == otherCommand.dentistId
                 && patientId == otherCommand.patientId
                 && treatmentName.equals(otherCommand.treatmentName)
                 && start.equals(otherCommand.start);
