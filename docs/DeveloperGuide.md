@@ -1021,7 +1021,31 @@ Expected Output in the Patient List: No patient displayed.
 Expected Output in the Command Output Box: No patient found with patient ID 999.
 <br><br>
 
+### Filtering for patients with a given attribute
 
+Filter patients with a given attribute and a corresponding keyword. 
+The attributes are preceded with `a/` while the keywords are preceded with `k/`.
+
+`filter-patient a/name k/Tan`
+
+Expected Success Output in Patient List: patients who have `Tan` in their full name will be shown. <br> For instance, `Tan Ming Yuan` and `Bernard Tan` will be shown if they exist in ToothTracker Patient List.
+
+Expected Success Output in the Command Output Box: Filtered patients by `ATTRIBUTE` with keyword: `KEYWORD`. <br> For the given example here, it will be "Filtered patients by name with keyword: Tan."
+
+Expected Failure Output in Patient List: No patients will be shown in the list, since the filtered list contains nothing.
+
+Expected Failure Output in Command Out Box: No patients found with `ATTRIBUTE`: `KEYWORD`. <br> For the given example above, it will be "No patients found with name: Tan."
+<br><br>
+
+`filter-patient a/invalidAttribute k/randomValues`
+
+Expected Output in Patient List: No changes.
+
+Expected Output in the Command Output Box: A message saying that an invalid attribute has been given, and lists out the valid attributes for `filter-patient`.
+
+<div markdown="span" class="alert alert-info">:information_source: **Valid attributes for `filter-patient`:** 
+<code>name</code> , <code>phone</code>, <code>birthday</code>, <code>gender</code>, <code>remark</code>, <code>treatment</code>, <code>email</code>, <code>address</code>, <code>tags</code>.
+</div>
 
 
 ### Saving data
