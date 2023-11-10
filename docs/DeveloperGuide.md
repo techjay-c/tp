@@ -449,8 +449,7 @@ The activity diagram for creating a new treatment is illustrated as follows:
 
 The sequence diagram of the `add-treatment` command:
 
-[//]: # (TODO: add in AddTreatmentSequenceDiagram here)
-[//]: # (![AddDentistSequenceDiagram]&#40;images/AddDentistSequenceDiagram.png&#41;)
+![AddTreatmentSequenceDiagram](images/AddTreatmentSequenceDiagram.png)
 
 ##### Feature Details
 1. Users would key in the available treatments in their clinic, specifying the treatment name, cost and its duration.
