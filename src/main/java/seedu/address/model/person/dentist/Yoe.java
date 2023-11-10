@@ -11,7 +11,7 @@ public class Yoe {
     public static final String FULL_CLASS_NAME = "Years of Experience";
     public static final String MESSAGE_CONSTRAINTS =
             "Years of Experience (YOE) should only contain numbers, and it should be at most 2 digits long";
-    private static final String VALIDATION_REGEX = "^0*[0-9][0-9]{0,1}$";
+    private static final String VALIDATION_REGEX = "^0*[0-9]{0,2}$";
     private final String value;
 
     /**
@@ -22,8 +22,12 @@ public class Yoe {
     public Yoe(String yearsOfExperience) {
         requireNonNull(yearsOfExperience);
         checkArgument(isValidYoe(yearsOfExperience), MESSAGE_CONSTRAINTS);
-        yearsOfExperience = yearsOfExperience.replaceFirst("^0+(?!S)", "");
-        value = yearsOfExperience;
+        if (yearsOfExperience.equals("0") || yearsOfExperience.equals("00")) {
+            value = "0";
+        } else {
+            //Check for cases like "0000000000", Trim then check if it is empty string, if yes -> ERROR
+            value = yearsOfExperience.replaceFirst("^0+(?!S)", "");
+        }
     }
 
     /**
@@ -31,7 +35,16 @@ public class Yoe {
      * @param test The input of years of experience to be tested.
      */
     public static boolean isValidYoe(String test) {
-        return test.matches(VALIDATION_REGEX);
+        if (!test.matches(VALIDATION_REGEX)) {
+            return false;
+        }
+
+        if (test.equals("0") || test.equals("00")) {
+            return true;
+        } else {
+            String trimmedTest = test.replaceFirst("^0+(?!S)", "");
+            return !trimmedTest.equals("");
+        }
     }
 
     @Override

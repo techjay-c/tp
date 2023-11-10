@@ -56,8 +56,8 @@ public class Treatment {
 
 
     /**
-     * Returns true if both patients have the same identity and data fields. This defines a stronger
-     * notion of equality between two patients.
+     * Returns true if both treatments have the same identity and data fields. This defines a stronger
+     * notion of equality between two treatments.
      */
     @Override
     public boolean equals(Object other) {

@@ -22,7 +22,7 @@ public class DentistBuilder {
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
-    public static final String DEFAULT_SPECIALIZATION = "Orthodontics";
+    public static final String DEFAULT_SPECIALIZATION = "ORTHODONTICS";
     public static final String DEFAULT_YOE = "5";
 
     private Name name;
@@ -32,6 +32,7 @@ public class DentistBuilder {
     private Specialization specialization;
     private Yoe yoe;
     private Set<Tag> tags;
+    private long dentistId;
 
     /**
      * Creates a {@code DentistBuilder} with the default details.
@@ -115,8 +116,37 @@ public class DentistBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code dentistId} of the {@code Dentist} that we are building.
+     */
+    public DentistBuilder withDentistId(String dentistId) {
+        this.dentistId = Long.parseLong(dentistId);
+        return this;
+    }
+
+    /**
+     * Builds and returns a new {@code Dentist} with the specified details.
+     * The details must be set using the various "with" methods before calling this method.
+     *
+     * @return A new {@code Dentist} instance with the specified details.
+     */
     public Dentist build() {
-        return new Dentist(name, phone, email, address, specialization, yoe, tags);
+        Dentist newDentist = new Dentist(name, phone, email, address, specialization, yoe, tags);
+        if (dentistId != 0) {
+            newDentist.setId(dentistId);
+        }
+        return newDentist;
+    }
+
+    /**
+     * Builds and returns a new {@code Dentist} with the specified details (Including Id).
+     * The details must be set using the various "with" methods before calling this method.
+     *
+     * @return A new {@code Dentist} instance with the specified details.
+     */
+    public Dentist buildWithId(long id) {
+        // For testing purposes
+        return new Dentist(name, phone, email, address, specialization, yoe, id, tags);
     }
 
 }

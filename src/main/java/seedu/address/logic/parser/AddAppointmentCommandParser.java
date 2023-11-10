@@ -34,8 +34,22 @@ public class AddAppointmentCommandParser implements Parser<AddAppointmentCommand
                     AddAppointmentCommand.MESSAGE_USAGE));
         }
 
-        long dentist = Long.parseLong(argMultimap.getValue(PREFIX_DENTIST).get());
-        long patient = Long.parseLong(argMultimap.getValue(PREFIX_PATIENT).get());
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_DENTIST, PREFIX_PATIENT, PREFIX_START, PREFIX_TREATMENT);
+
+        long dentist = -1;
+        long patient = -1;
+
+        try {
+            dentist = Long.parseLong(argMultimap.getValue(PREFIX_DENTIST).get());
+        } catch (NumberFormatException e) {
+            throw new ParseException("Invalid input. Please enter a valid integer value for dentist ID.");
+        }
+
+        try {
+            patient = Long.parseLong(argMultimap.getValue(PREFIX_PATIENT).get());
+        } catch (NumberFormatException e) {
+            throw new ParseException("Invalid input. Please enter a valid integer value for patient ID.");
+        }
         String start = argMultimap.getValue(PREFIX_START).get();
         String[] parts = start.split("\\s+");
         String startParsed = null;
@@ -44,7 +58,7 @@ public class AddAppointmentCommandParser implements Parser<AddAppointmentCommand
         } else {
             throw new ParseException("Please enter start time in correct format: yyyy-MM-dd HH:mm");
         }
-        //String duration = argMultimap.getValue(PREFIX_DURATION).get();
+
         String treatment = argMultimap.getValue(PREFIX_TREATMENT).get();
         Appointment appointment = new Appointment(dentist, patient, startParsed, treatment);
         return new AddAppointmentCommand(appointment);

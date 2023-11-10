@@ -18,7 +18,6 @@ import seedu.address.model.person.Gender;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Remark;
-import seedu.address.model.person.Service;
 import seedu.address.model.person.dentist.Specialization;
 import seedu.address.model.person.dentist.Yoe;
 import seedu.address.model.tag.Tag;
@@ -157,22 +156,6 @@ public class ParserUtil {
         }
         return new AppointmentTime(trimmedStartTime, trimmedDuration);
     }
-
-    /**
-     * Parses a {@code String service} into an {@code Service}. Leading and trailing whitespaces
-     * will be trimmed.
-     *
-     * @throws ParseException if the given {@code Service} is invalid.
-     */
-    public static Service parseService(String service) throws ParseException {
-        requireNonNull(service);
-        String trimmedService = service.trim();
-        if (!Service.isValidService(trimmedService)) {
-            throw new ParseException(AppointmentDate.MESSAGE_CONSTRAINTS);
-        }
-        return new Service(trimmedService);
-    }
-
 
     /**
      * Parses a {@code String email} into an {@code Email}. Leading and trailing whitespaces will be

@@ -18,7 +18,7 @@ import seedu.address.model.Model;
 import seedu.address.model.person.patients.Patient;
 
 /**
- * Adds a person to the address book.
+ * Adds a patient to the address book.
  */
 public class AddPatientCommand extends Command {
 
@@ -31,10 +31,10 @@ public class AddPatientCommand extends Command {
             + PREFIX_PHONE + "PHONE "
             + PREFIX_BIRTHDATE + "BIRTHDATE "
             + PREFIX_GENDER + "GENDER "
-            + PREFIX_REMARK + "REMARK "
-            + PREFIX_TREATMENT + "TREATMENT "
-            + PREFIX_EMAIL + "EMAIL "
-            + PREFIX_ADDRESS + "ADDRESS "
+            + "[" + PREFIX_REMARK + "REMARK] "
+            + "[" + PREFIX_TREATMENT + "TREATMENT] "
+            + "[" + PREFIX_EMAIL + "EMAIL] "
+            + "[" + PREFIX_ADDRESS + "ADDRESS] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John "
@@ -42,14 +42,14 @@ public class AddPatientCommand extends Command {
             + PREFIX_BIRTHDATE + "06-06-1998 "
             + PREFIX_GENDER + "M "
             + PREFIX_REMARK + "Allergic to Peanuts "
-            + PREFIX_TREATMENT + "Cleaning "
+            + PREFIX_TREATMENT + "Braces "
             + PREFIX_EMAIL + "johntan@gmail.com "
-            + PREFIX_ADDRESS + "60 Jalan Road "
-            + PREFIX_TAG + "hello ";
+            + PREFIX_ADDRESS + "60 Harvey Avenue "
+            + PREFIX_TAG + "Urgent";
 
     public static final String MESSAGE_SUCCESS = "New Patient added: %1$s";
     public static final String MESSAGE_DUPLICATE_PATIENT = "This Patient already exists in ToothTracker";
-    public static final String MESSAGE_INVALID_TREATMENT = "This Treatment does not exist in ToothTracker.";
+    public static final String MESSAGE_INVALID_TREATMENT = "This treatment is invalid";
 
     private final Patient toAdd;
 
@@ -69,7 +69,8 @@ public class AddPatientCommand extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_PATIENT);
         }
 
-        if (!model.hasTreatmentName(toAdd.getTreatmentName())) {
+        String treatmentName = toAdd.getTreatmentName().toString();
+        if (!model.hasTreatmentName(toAdd.getTreatmentName()) && !treatmentName.equals("NIL")) {
             throw new CommandException(MESSAGE_INVALID_TREATMENT);
         }
 

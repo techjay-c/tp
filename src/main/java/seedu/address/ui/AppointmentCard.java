@@ -2,6 +2,7 @@ package seedu.address.ui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.appointments.Appointment;
@@ -29,7 +30,7 @@ public class AppointmentCard extends UiPart<Region> {
     @FXML
     private Label cost;
     @FXML
-    private Label appointmentId;
+    private FlowPane appointmentId;
 
     /**
      * Constructs an {@code AppointmentCard} with the given {@code Appointment}.
@@ -39,12 +40,13 @@ public class AppointmentCard extends UiPart<Region> {
     public AppointmentCard(Appointment appointment) {
         super(FXML);
         this.appointment = appointment;
+        Label idLabel = new Label("ID: " + String.valueOf(appointment.getId()));
+        appointmentId.getChildren().add(idLabel);
         dentist.setText("Dentist: " + appointment.getDentistName());
         patient.setText("Patient: " + appointment.getPatientName());
         appointmentTime.setText(appointment.getAppointmentTime().appointmentTimeToString());
         date.setText(appointment.getAppointmentTime().dateToString());
         treatment.setText("Treatment: " + appointment.getTreatment());
         cost.setText("Cost: " + appointment.getCost());
-        appointmentId.setText("Appointment ID: " + String.valueOf(appointment.getId()));
     }
 }
