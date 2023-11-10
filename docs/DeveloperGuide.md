@@ -893,6 +893,86 @@ Expected Output in the Patient List. All Patients stored in ToothTracker are dis
 Expected Output in the Command Output Box: Listed all patients!
 <br><br>
 
+### Edit a Patient
+
+Prerequisite: There is at least 1 Patient stored in ToothTracker.
+In this example, we assume there are two patients with the following attributes:
+<br><br>
+**Patient 1**
+* Name: `Tommy Tan Chuk Yong`
+* Phone: `90895772`
+* Email: `tommytancy@hotmail.com`
+* Address: `Blk 51, Ang Mo Kio Ave 3, S712151`
+* Gender: `M`
+* Birthday: `18-05-1989`
+* Remark: `Cannot see blood.`
+* Treatment: `NIL`
+* Patient ID: `1`
+* Tag: `New`
+
+**Patient 2**
+* Name: `Bernard Tan`
+* Phone: `93375448`
+* Email: `bernardtan@hotmail.com`
+* Address: `No Address Provided.`
+* Gender: `M`
+* Birthday: `19-07-2001`
+* Remark: `NIL`
+* Treatment: `Braces`
+* Patient ID: `4`
+* Tag: `Ending soon`
+
+<br>
+In each of the test case below, we further assume that the state of Patient objects are always starting from the above attributes.
+<br><br>
+
+`edit-patient 1 n/Xaveric Tan Ming Yuan`
+
+Expected Output in the Patient List: The name of patient with ID 1 is changed to `Xaveric Tan Ming Yuan`.
+
+Expected Output in the Command Output Box: Patient successfully edited message, along with the updated attributes.
+<br><br>
+
+`edit-patient 4 p/98984477 e/btan@yahoo.com`
+
+Expected Output in the Patient List: The phone of the patient with ID 4 is changed to `98984477`, and the email is changed to `btan@yahoo.com`.
+
+Expected Output in the Command Output Box: Similar to above.
+<br><br>
+
+`edit-patient 4 h/Blk 653 #03-44, Bishan Ave 4, S622653`
+
+Expected Output in the Patient List: The address of the patient with ID 4 is changed to `Blk 653 #03-44, Bishan Ave 4, S622653`.
+
+Expected Output in the Command Output Box: Similar to above.
+<br><br>
+
+`edit-patient 99`
+
+Expected Output in the Patient List: No patient is edited.
+
+Expected Output in the Command Output Box: Error details shown for invalid ID provided.
+<br><br>
+
+`edit-patient`
+
+Expected Output in the Patient List: No patient is edited.
+
+Expected Output in the Command Output Box: Error details shown for invalid command format.
+<br><br>
+
+`edit-dentist 1 n/Bernard Tan`
+
+Expected Output in the Dentist List: No patient is edited.
+
+Expected Output in the Command Output Box: Error details shown for attempting to edit a patient into another existing patient.
+<br><br>
+
+<div markdown="span" class="alert alert-info">:information_source: **Special Note for editing treatments:** Please ensure the treatments exists in ToothTracker before editing patients. Otherwise, a message about Invalid Treatment will be given.
+</div>
+
+
+
 
 ### Saving data
 
