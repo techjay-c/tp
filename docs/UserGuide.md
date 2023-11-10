@@ -6,26 +6,27 @@ show-toc: true
 
 ## About ToothTracker
 
-ToothTracker is a **Dental Clinic Administrative Management System** designed for dental clinic administration assistants. From adding new patient and dentist profiles to seamlessly creating appointment schedules,
-ToothTracker is engineered to simplify every aspect of your dental clinic administrative responsibilities.
+ToothTracker is a **Dental Clinic Administrative Management System** designed for **dental clinic administration assistants**.
+From adding new patient and dentist profiles to seamlessly creating appointment schedules, ToothTracker is
+engineered to simplify every aspect of your dental clinic administrative responsibilities.
 
 **Why ToothTracker? Because Your Time Matters.** <br>
 In your bustling dental clinic, time is the rarest commodity. That's why we designed ToothTracker to be swift like your service,
-allowing you to manage patient and dentist records effortlessly, schedule appointments without overlaps,
+allowing you to manage patient and dentist records efficiently, schedule appointments without overlaps,
 and ensure your clinic operates like a well-oiled machine — all through a versatile Command Line Interface (CLI)
 that responds to your speedy typing, along with a Graphical User Interface (GUI) that includes a user-friendly calendar.
 
 **ToothTracker's Core Features Designed with You in Mind**
 
-- **Digital Record Keeping:** Say goodbye to cumbersome physical files — store and manage patients, dentists and schedules digitally.
+- **Digital Record Keeping:** Say goodbye to cumbersome physical files — store and manage patients, dentists and appointments digitally.
 - **Effortless Retrieval:** Use intuitive `search` and `filter` commands to access and retrieve patient and dentist records.
-- **Tagging System:** Add tags to every patient and dentist to highlight additional information about them.
+- **Tagging System:** Add tags to every patient and dentist to highlight key information about them.
 - **Smart Scheduling:** Eliminate double-bookings and optimize your clinic's operations with appointment management.
 - **Custom Treatments:** Tailor ToothTracker to reflect the unique treatments your clinic provides.
-- **Visual View:** Get a clear overview of your day-to-day operations with our integrated calendar view.
+- **Visual Calendar:** Get a clear overview of your day-to-day operations with our comprehensive calendar view.
 
 
-If you are new here, head over to [How to use ToothTracker's User Guide](#how-to-use-toothtrackers-user-guide) to start tracking your dental clinic records!
+Head over to [How to use ToothTracker's User Guide](#how-to-use-toothtrackers-user-guide) to start tracking your dental clinic records!
 
 {% include page-break.html %}
 
@@ -37,21 +38,29 @@ If you are new here, head over to [How to use ToothTracker's User Guide](#how-to
 Thank you for choosing ToothTracker! We are delighted to have you as a user!
 This user guide provides a comprehensive documentation on the various commands supported by ToothTracker.
 
-If you have not installed ToothTracker, head over to the [Installation](#installation) section for assistance in
-installing ToothTracker and launching it for the first time.
+{: .no_toc}
+#### First-Time Setup
+If you are new to ToothTracker, let's begin by setting up the application. Visit the [Installation](#installing-toothtracker)
+section for a straightforward guide to get ToothTracker up and running smoothly on your system.
 
-Once ToothTracker is installed, you can head over to the [Quick Reference Guide](#quick-reference-guide) section which
-covers the basics of using ToothTracker.
+{: .no_toc}
+#### Basic Operations
+Already installed ToothTracker? Great! You can head over to the [Familiarising with ToothTracker's Interface](#familiarising-with-toothtrackers-interface)
+section which covers the basics of using ToothTracker.
 
-If you are familiar with ToothTracker already, this user guide serves to give you an overview on how to use specific commands in ToothTracker.
+{: .no_toc}
+#### Quick Reference
+Seasoned users can refer to the [Command Summary](#command-summary), a concise cheat sheet that encapsulates all ToothTracker
+commands for quick reference.
 
-If you are an experienced user, you can refer to the [Command Summary](#command-summary) for a quick overview of all commands.
-
-If you are stuck or encountering issues, head over to the [FAQ](#faq) section.
+{: .no_toc}
+#### Support and Troubleshooting
+Encountered an issue or have a question? Our [Troubleshooting](#troubleshooting) and [FAQ](#faq) sections are here to
+help troubleshoot common issues and provide answers swiftly.
 
 ### Icons used in this guide
 
-Here are some common icons that is used throughout this user guide
+Throughout this guide, you'll find helpful tips and cautionary advice to ensure a smooth ToothTracker experience.
 
 | Icon                          | Meaning                                  |
 |-------------------------------|------------------------------------------|
