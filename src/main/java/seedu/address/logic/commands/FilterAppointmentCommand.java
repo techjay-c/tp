@@ -2,8 +2,10 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Objects;
 import java.util.function.Predicate;
 
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.appointments.Appointment;
 
@@ -40,7 +42,7 @@ public class FilterAppointmentCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(Model model) {
+    public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
         Predicate<Appointment> appointmentPredicate;
@@ -55,10 +57,10 @@ public class FilterAppointmentCommand extends Command {
             success = "Appointments with dentist whose dentist ID is " + id + " listed.";
             failure = "No appointments with dentist whose dentist ID is " + id + " found.";
         } else {
-            return new CommandResult(INVALID_INPUTS);
+            throw new CommandException(INVALID_INPUTS);
         }
 
-        if (id >= 0) {
+        if (id > 0) {
             model.updateFilteredAppointmentList(appointmentPredicate);
 
             if (model.getFilteredAppointmentList().isEmpty()) {
@@ -67,8 +69,30 @@ public class FilterAppointmentCommand extends Command {
                 return new CommandResult(success);
             }
         } else {
-            return new CommandResult("Invalid ID. ID must be a positive number.");
+            throw new CommandException("Invalid ID. ID must be a positive number.");
         }
 
+    }
+
+    /**
+     * Checks if this FilterAppointmentCommand is equal to another object.
+     *
+     * @param other The object to compare with.
+     * @return True if the objects are equal, false otherwise.
+     */
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof FilterAppointmentCommand)) {
+            return false;
+        }
+
+        FilterAppointmentCommand otherFilterAppointmentCommand = (FilterAppointmentCommand) other;
+        return Objects.equals(this.idType, otherFilterAppointmentCommand.idType)
+                && this.id == otherFilterAppointmentCommand.id;
     }
 }

@@ -110,7 +110,17 @@ public class SearchDentistCommand extends Command {
         }
 
         SearchDentistCommand otherSearchDentistCommand = (SearchDentistCommand) other;
-        return predicate.equals(otherSearchDentistCommand.predicate);
+
+        switch (this.searchType) {
+        case BY_NAME:
+            return otherSearchDentistCommand.searchType == this.searchType
+                && this.predicate.equals(otherSearchDentistCommand.predicate);
+        case BY_ID:
+            return otherSearchDentistCommand.searchType == this.searchType
+                && this.dentistID == otherSearchDentistCommand.dentistID;
+        default:
+            return false;
+        }
     }
 
     /**
