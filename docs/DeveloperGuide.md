@@ -334,8 +334,7 @@ The activity diagram for creating a new patient is illustrated as follows:
 
 The sequence diagram of the `add-patient` command:
 
-[//]: # (TODO: add in AddPatientSequenceDiagram here)
-[//]: # (![AddDentistSequenceDiagram]&#40;images/AddDentistSequenceDiagram.png&#41;)
+![AddPatientSequenceDiagram](images/AddPatientSequenceDiagram.png)
 
 ##### Feature Details
 
@@ -354,8 +353,7 @@ The `delete-patient` command deletes a patient record in ToothTracker.
 
 The activity diagram for deleting a patient is illustrated as follows:
 
-[//]: # (TODO: add in delete patient activity diagram)
-[//]: # (![DeleteDentistActivityDiagram]&#40;images/DeleteDentistActivityDiagram.png&#41;)
+![DeletePatientActivityDiagram](images/DeletePatientActivityDiagram.png)
 
 This sequence diagram shows the interactions between the various components during the execution of the `delete-patient` command:
 
