@@ -479,10 +479,9 @@ associated costs and durations.
 
 The `delete-treatment` command deletes a treatment record in ToothTracker.
 
-The activity diagram for deleting a patient is illustrated as follows:
+The activity diagram for deleting a treatment is illustrated as follows:
 
-[//]: # (TODO: add in delete treatment activity diagram)
-[//]: # (![DeleteDentistActivityDiagram]&#40;images/DeleteDentistActivityDiagram.png&#41;)
+![DeleteTreatmentActivityDiagram](images/DeleteTreatmentActivityDiagram.png)
 
 This sequence diagram shows the interactions between the various components during the execution of the `delete-treatment` command:
 
