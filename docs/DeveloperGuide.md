@@ -904,8 +904,75 @@ Expected Output in the Command Output Box: Details of the deleted appointment sh
 
 Expected Output in the Command Output Box: Error details shown for invalid APPOINTMENT_ID provided.
 
+## Treatment
 
-(More to be added)
+### Adding a Treatment
+
+Prerequisite: There is no Treatment, named `Braces`, stored in ToothTracker.
+
+`add-treatment tr/Braces cs/1000 ti/03:00`
+
+Expected Output in the Command Output Box: New treatment added with the details displayed.
+
+`add-treatment tr/Tooth Extraction`
+
+Expected Output in the Command Output Box: Error message for invalid command format, prompting users with correct attributes to include.
+
+
+### Listing all Treatments
+
+Prerequisite: There is at least one Treatment stored in ToothTracker.
+
+`list-treatment`
+
+Expected Output in the Command Output Box: Names of all Treatments stored in ToothTracker listed.
+
+
+### Deleting a Treatment
+
+Prerequisite: There is at least one Treatment, named `Braces`, stored in ToothTracker.
+
+`delete-treatment Braces`
+
+Expected Output in the Command Output Box: Details of the deleted Treatment shown.
+
+`delete-treatment nasojadsak`
+
+Expected Output in the Command Output Box: Error message for deleting treatment. No Treatment found with name "nasojadsak".
+
+
+## Calendar 
+
+### Viewing all appointments
+
+`view-calendar`
+
+Expected Output: The Calendar Window pops out and shows all appointments (if any).
+
+Expected Output in the Command Output Box: Calendar displayed success message.
+
+## Help
+
+`help`
+
+Expected Output: The Help Window pops out and shows a general help message.
+
+Expected Output in the Command Output Box: Opened help window.
+
+
+## Clear
+
+`clear`
+
+Expected Output in the Patient, Dentist and Appointment List: All Patients, Dentists and Appointments are cleared.
+
+Expected Output in the Command: ToothTracker cleared success message.
+
+## Exit
+
+`exit`
+
+Expected Output: ToothTracker application closes.
 
 ### Saving data
 
