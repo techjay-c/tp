@@ -27,23 +27,13 @@ activate AddAppointmentCommandParser
 AddAppointmentCommandParser --> AddressBookParser
 deactivate AddAppointmentCommandParser
 
-AddressBookParser -> AddAppointmentCommandParser : parse("add-appointment dentist/1 patient/1 start/2023-10-12 16:00 tr/Braces")
+AddressBookParser -> AddAppointmentCommandParser : parse("dentist/1 patient/1 start/2023-10-12 16:00 tr/Braces")
 activate AddAppointmentCommandParser
 
 create AddAppointmentCommand
 AddAppointmentCommandParser -> AddAppointmentCommand : createCommand(appointmentDetails)
 activate AddAppointmentCommand
 
-AddAppointmentCommand --> Model : getTreatmentDuration(treatmentName)
-activate Model
-Model --> AddAppointmentCommand
-AddAppointmentCommand --> Model : getTreatmentCost(treatmentName)
-Model --> AddAppointmentCommand
-AddAppointmentCommand --> Model : geDentistById(dentistId)
-Model --> AddAppointmentCommand
-AddAppointmentCommand --> Model : getPatientById(patientId)
-Model --> AddAppointmentCommand
-deactivate Model
 
 AddAppointmentCommand --> AddAppointmentCommandParser : a
 deactivate AddAppointmentCommand
@@ -59,6 +49,26 @@ deactivate AddressBookParser
 
 LogicManager -> AddAppointmentCommand : execute()
 activate AddAppointmentCommand
+
+AddAppointmentCommand --> Model : getTreatmentDuration(treatmentName)
+activate Model
+Model --> AddAppointmentCommand
+deactivate Model
+
+AddAppointmentCommand --> Model : getTreatmentCost(treatmentName)
+activate Model
+Model --> AddAppointmentCommand
+deactivate Model
+
+AddAppointmentCommand --> Model : geDentistById(dentistId)
+activate Model
+Model --> AddAppointmentCommand
+deactivate Model
+
+AddAppointmentCommand --> Model : getPatientById(patientId)
+activate Model
+Model --> AddAppointmentCommand
+deactivate Model
 
 AddAppointmentCommand -> Model : addAppointment(toAdd)
 activate Model

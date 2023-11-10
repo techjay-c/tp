@@ -325,6 +325,90 @@ keyword is of a valid type for that particular attribute. Users are responsible 
 
 ### Appointment Features
 
+#### Adding an Appointment
+
+The `add-appointment` command creates a new appointment record in ToothTracker.
+
+The activity diagram for creating a new appointment is illustrated as follows:
+
+![AddAppointmentActivityDiagram](images/AddAppointmentActivityDiagram.png)
+
+The sequence diagram shows the interactions between the various components during the execution of the `add-appointment` command:
+
+![AddAppointmentSequenceDiagram](images/AddAppointmentSequenceDiagram.png)
+
+##### Feature Details
+
+1. Users provide essential appointment information, such as the dentist ID, patient ID, appointment start time and treatment name.
+2. In case of missing or invalid command arguments, the system prompts users with an error message to enter the command correctly.
+3. The system retrieves information about the treatment cost, duration, dentist name and patient name from the `Model` using the information provided by the user.
+4. The system checks the new appointment's time slot with existing appointments in the `Model` to prevent clashing appointments.
+If a timing clash is found, an error message informs the user.
+5. If step 4 is completed without any exceptions, the new appointment record is created and stored in the system.
+
+##### Feature Considerations
+
+For the dentist ID, patient ID and treatment field, it is mandatory that the specified dentist, patient and treatment exists in ToothTracker.
+If these conditions are not met, the user will receive an error message.
+
+#### Deleting an Appointment
+
+The `delete-appointment` command deletes an appointment record from ToothTracker.
+
+The activity diagram for deleting an appointment is illustrated as follows:
+
+![DeleteAppointmentActivityDiagram](images/DeleteAppointmentActivityDiagram.png)
+
+The sequence diagram shows the interactions between the various components during the execution of the `delete-appointment` command:
+
+![DeleteAppointmentSequenceDiagram](images/DeleteAppointmentSequenceDiagram.png)
+
+##### Feature Details
+
+1. The user specifies an appointment id that represents an `Appointment` to be deleted.
+2. If an invalid `APPOINTMENT_ID` is provided, an error is thrown and the user is prompted to enter the command correctly via an error message.
+3. The Appointment is cross-referenced in the `Model` to check if it exists. If it does not, then an error is raised to inform the user.
+4. If step 3 completes without any exceptions, then the `Appointment` is successfully deleted.
+
+##### Feature Considerations
+
+In implementing the delete feature, we needed proper error handling and validation to ensure ToothTracker's robustness and provide clear guidance to the user.
+Our approach validates appointment ID and shows an error message if the appointment does not exist.
+This is in comparison to allowing commands to fail silently if appointment does not exist.
+
+- Pros: Prevents invalid operations and provides immediate feedback to the user, helping to correct mistakes.
+- Cons: Additional validation checks add complexity to the code.
+
+
+#### Filtering an Appointment
+
+The `filter-appointment` command filters appointments by DENTIST_ID or PATIENT_ID.
+
+The activity diagram for filtering an appointment is illustrated as follows:
+
+![FilterAppointmentActivityDiagram](images/FilterAppointmentActivityDiagram.png)
+
+The sequence diagram shows the interactions between the various components during the execution of the `filter-appointment` command:
+
+![DeleteAppointmentSequenceDiagram]()
+
+##### Feature Details
+
+1. Users initiate a filter for appointments using either a unique `DENTIST_ID` or a unique `PATIENT_ID`.
+2. If an invalid `DENTIST_ID` or `PATIENT_ID` is provided, an error is thrown and the user is prompted to enter the command correctly via an error message. 
+3. If the user opts to filter by `DENTIST_ID`, the system processes the request to return a list of appointments with the specific dentist. 
+4. If the user opts to filter by `PATIENT_ID`, the system processes the request to return a list of appointments with the specific patient. 
+5. If there are no appointments with the specific dentist or patient, the system informs the user that no appointments were found with the specific dentist or patient.
+
+##### Feature Considerations
+
+Validity checks are performed to ensure that the `DENTIST_ID` or `PATIENT_ID` are valid and that they type of ID to filter by is clearly stated.
+Otherwise, user would receive an error message that guides them to input the right command and details.
+
+If no appointments with the specific dentist or patient are found in ToothTracker, it should be clearly
+communicated to the user instead of just displaying an empty list. A message stating that no appointments with the
+specified `DENTIST_ID` or `PATIENT_ID` are found would be displayed to the user.
+
 ### Treatment Features
 
 ### General Features
