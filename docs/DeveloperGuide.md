@@ -228,6 +228,10 @@ This approach prevents the "add-dentist" command from becoming excessively long.
 The working hours of a dentist is not an attribute in the `add-dentist` command as dentists might not immediately know their
 shifts when they first join, and it might change frequently.
 
+We handle duplicates by not allowing multiple dentists of the same name to be created (eg. only 1 John Tan can exist in ToothTracker). We will allow multiple dentists of 
+the same name to be created in future implementations. For now, if there are multiple dentists with the same name, add in additional information such as their last 3 digits of NRIC
+as part of their name attribute.
+
 #### Deleting a Dentist
 
 The `delete-dentist` command deletes a dentist record in ToothTracker. This command forms the fundamental business logic to represent dentists.
@@ -251,7 +255,7 @@ This sequence diagram shows the interactions between the various components duri
 
 In implementing the delete feature, we needed proper error handling and validation to ensure ToothTracker's robustness and provide clear guidance to the user.
 Our approach validates dentist ID and shows an error message if the dentist does not exist.
-This is in comparison to allowing commands to fail silently if dentist does not exist.
+This is in comparison to allowing commands to fail silently if the dentist specified does not exist.
 
 - Pros: Prevents invalid operations and provides immediate feedback to the user, helping to correct mistakes.
 - Cons: Additional validation checks add complexity to the code.

@@ -1,7 +1,7 @@
 @startuml
 start
 
-:User executes "filter-dentist" command;
+:User executes "filter-patient" command;
 
 if () then ([Valid command])
     :Parse arguments;
@@ -11,10 +11,10 @@ if () then ([Valid command])
         :Extract attribute and keywords;
 
         if () then ([Matching records found])
-            :Display matching dentist records;
+            :Display matching patient records;
 
             else ([else])
-                :Display message that shows no dentists found;
+                :Display message that shows no patients found;
             endif
 
     else ([else])

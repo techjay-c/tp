@@ -1,5 +1,6 @@
 package seedu.address.model.appointments;
 
+
 /**
  * Represents an Appointment in ToothTracker.
  */
@@ -119,5 +120,30 @@ public class Appointment {
      */
     public boolean isSameAppointment(Appointment appointment) {
         return this.appointmentTime.isClashingAppointment(appointment.getAppointmentTime());
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof Appointment)) {
+            return false;
+        }
+
+        Appointment otherAppointment = (Appointment) other;
+        return getDentistId() == (otherAppointment.getDentistId())
+                && getPatientId() == (otherAppointment.getPatientId())
+                && getDentistName() == (otherAppointment.getDentistName())
+                && getPatientName() == (otherAppointment.getPatientName())
+                && getStart().equals(otherAppointment.getStart())
+                && getDuration() == (otherAppointment.getDuration())
+                && getAppointmentTime().equals(otherAppointment.getAppointmentTime())
+                && getTreatment() == (otherAppointment.getTreatment())
+                && getCost() == (otherAppointment.getCost())
+                && id == otherAppointment.getId();
+
     }
 }
