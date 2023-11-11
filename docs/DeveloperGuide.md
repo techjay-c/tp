@@ -1384,6 +1384,7 @@ Expected Output in the Command Output Box: An error message for invalid command 
 Expected Output in Dentist List: No changes.
 
 Expected Output in the Command Output Box: A message saying that an invalid attribute has been given, and lists out the valid attributes for `filter-dentist`.
+<br><br>
 
 <div markdown="span" class="alert alert-info">:information_source: **Valid attributes for <code>filter-dentist</code>:** 
 <code>name</code> , <code>phone</code>, <code>email</code>, <code>address</code>, <code>specialization</code>, <code>experience</code>, <code>tags</code>.
@@ -1515,15 +1516,16 @@ Expected Output in the Patient List: No patient is edited.
 Expected Output in the Command Output Box: Error details shown for invalid command format.
 <br><br>
 
-`edit-dentist 1 n/Bernard Tan`
+`edit-patient 1 n/Bernard Tan`
 
-Expected Output in the Dentist List: No patient is edited.
+Expected Output in the Patient List: No patient is edited.
 
 Expected Output in the Command Output Box: Error details shown for attempting to edit a patient into another existing patient.
 <br><br>
 
 <div markdown="span" class="alert alert-info">:information_source: **Special Note for editing treatments:** Please ensure the treatments exists in ToothTracker before editing patients. Otherwise, a message about Invalid Treatment will be given.
 </div>
+<br><br>
 
 #### Searching for a Patient by Keyword
 Prerequisite: There are only two patients named `Tommy Tan Chuk Yong` and `Bernard Tan` stored in ToothTracker.
@@ -1614,6 +1616,7 @@ Expected Output in the Command Output Box: An error message for invalid command 
 Expected Output in Patient List: No changes.
 
 Expected Output in the Command Output Box: A message saying that an invalid attribute has been given, and lists out the valid attributes for `filter-patient`.
+<br><br>
 
 <div markdown="span" class="alert alert-info">:information_source: **Valid attributes for `filter-patient`:** 
 <code>name</code> , <code>phone</code>, <code>birthday</code>, <code>gender</code>, <code>remark</code>, <code>treatment</code>, <code>email</code>, <code>address</code>, <code>tags</code>.
