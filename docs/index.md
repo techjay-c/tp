@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Tooth Tracker
+title: ToothTracker
 ---
 
 [![CI Status](https://github.com/AY2324S1-CS2103T-W10-3/tp/workflows/Java%20CI/badge.svg)](https://github.com/AY2324S1-CS2103T-W10-3/tp/actions)
@@ -11,7 +11,7 @@ title: Tooth Tracker
 ToothTracker is an **All-in-One solution for Effortless Dental Clinic Record Management.**
 While it has a GUI, most of the user interactions happen using a CLI (Command Line Interface).
 
-* If you are interested in using ToothTracker, head over to the [_Quick Start_ section of the **User Guide**](UserGuide.html#quick-start).
+* If you are interested in using ToothTracker, head over to the [**Installation Guide**](UserGuide.html#installation).
 * If you are interested about developing ToothTracker, the [**Developer Guide**](DeveloperGuide.html) is a good place to start.
 
 

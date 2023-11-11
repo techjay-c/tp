@@ -127,7 +127,6 @@ public class CalendarWindow extends UiPart<Stage> {
         calendarView.setEntryEditPolicy(param -> false); // Disable drag and drop of events
         calendarView.setEntryFactory(param -> null); // Disable adding events by double-clicking on calendar
         calendarView.setEntryDetailsCallback(param -> null); // Disable pop up of event details
-
     }
 
     /**
