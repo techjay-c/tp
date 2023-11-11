@@ -39,9 +39,10 @@ public class SpecializationTest {
         assertTrue(Specialization.isValidSpecialization(
             "DENTAL_PUBLIC_HEALTH")); // alphabets and underscore
         assertTrue(
-            Specialization.isValidSpecialization("Dental Public Health"));// alphabets and space
+            Specialization.isValidSpecialization("Dental Public Health")); // alphabets and space
         assertTrue(Specialization.isValidSpecialization("PROSTHODONTICS")); // alphabets and space
         assertTrue(Specialization.isValidSpecialization("prosthodontics"));
+
     }
 
     @Test

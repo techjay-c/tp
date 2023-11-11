@@ -55,11 +55,6 @@ class ListTreatmentCommandTest {
         StringBuilder expectedResultBuilder = new StringBuilder("treatments: ");
         model.getFilteredTreatmentList()
                 .forEach(treatment -> expectedResultBuilder.append(treatment.getName()).append(", "));
-        int lastCommaIndex = expectedResultBuilder.lastIndexOf(", ");
-        if (lastCommaIndex != -1) {
-            expectedResultBuilder.delete(lastCommaIndex, expectedResultBuilder.length());
-            expectedResultBuilder.append(".");
-        }
         String expectedResult = expectedResultBuilder.toString();
         assertCommandSuccess(new ListTreatmentCommand(), model, expectedResult, expectedModel);
     }
