@@ -1,8 +1,9 @@
 ---
 layout: page
-title: Freddy Chen You Ren - Project Portfolio
+title: Freddy Chen You Ren's Project Portfolio Page
 ---
 
+{: .no_toc}
 ### Project: ToothTracker
 
 ### Overview
@@ -17,18 +18,19 @@ With ToothTracker, you can add new patient and dentist profiles, add treatments 
 
 ### Summary of my contributions
 * **New Feature**: Added the ability for receptionists to add, edit, and list dentists.
-  * What it does: The receptionist will be able to add details of a dentist practising in the dental clinic.
+  * What it does: The user will be able to add details of a dentist practising in the dental clinic.
   * Justification: This feature is a critical backbone of ToothTracker as it is the starting point for more functionalities relating to dentists. The dental clinic must be able to track the dentist profiles to assign suitable dentists to patients.
   * Highlights: This enhancement affects dentist commands to be added in the future. It required an in-depth analysis of design such as handling parameters. The implementation too was challenging as it required changes to existing commands.
 
-* **New Feature [Coming Soon]**: Added the ability to see the cost of different types of dental treatments.
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=freddychenyouren2&breakdown=true)
 
 * **Project management**:
   * [To be added soon]
 
 * **Enhancements to existing features**:
-  * [To be added soon]
+  * Added stronger checks for Specialization field of Dentists: Only Specializations recognized by Ministry of Health will be accepted in the default ToothTracker application. Users need to request developers to change the list of recognized specializations for different contexts.
+  * Added stronger checks for the validity of birthday date field for Patients: Birthday dates are defined to be any valid dates in the past. Invalid dates such as 30 February, and future dates are not allowed to be put as birthday of a patient.
+
 
 * **Documentation**:
   * User Guide:
@@ -38,16 +40,22 @@ With ToothTracker, you can add new patient and dentist profiles, add treatments 
       * List all dentists in ToothTracker
     * Standardized command format and User Guide formats during v1.3 iteration (For CS2101 User Guide Draft)
   * Developer Guide:
-    * [Coming Soon] Added documentation for Dentist command feature
+    * Added documentation for Dentist command features
     * Add user stories and use cases related to adding a dentist
-    * Modify Model Class Diagram and descriptions to match ToothTracker design.
-    * Assist Ruth to Modify Ui Class Diagram to match ToothTracker design.
-    * Add documentation for manual testing on dentist features.
+    * Modify `Model` Class Diagram and descriptions to match ToothTracker design.
+    * Assist teammate @ruth-lim to Modify `Ui` Class Diagram to match ToothTracker design.
+    * Modify `Storage` Class Diagram for better readability.
+    * Add instructions for Manual Testing on all dentist features
+    * Add instructions for Manual Testing on all patient features.
 
 * **Community**:
   * PRs reviewed (with non-trivial review comments): [To be added soon]
   * Contributed to forum discussions: [To be added soon]
   * Reported bugs and suggestions for other teams in the class: [To be added soon]
+  * Perform rigorous manual testing to discover more bugs/ambiguity and alert teammates to fix in ToothTracker:
+    * `filter-*` commands on multiple `k/` inputs.
+    * `delete-treatment` followed by `edit-patient` on a patient who had the deleted treatment.
+    * Inconsistencies in Command Output Box of various error input handling before V1.3 release.
 
 * **Tools**:
   * [To be added soon]
