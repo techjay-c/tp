@@ -655,6 +655,9 @@ Use case ends.
 * **GUI**: graphical user interface, a visual way of interacting with a computer program
 * **PlantUML**: A tool which is used to create diagrams
 * **API**: Application Programming Interface
+* **Dentist List**: The list of dentists displayed in ToothTracker
+* **Patient List**: The list of patients displayed in ToothTracker
+* **Appointment List**: The list of appointments displayred in ToothTracker
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -714,7 +717,7 @@ Expected Output in the Dentist List. All Dentists stored in ToothTracker are dis
 Expected Output in the Command Output Box: Listed all dentists!
 <br><br>
 
-### Edit a Dentist
+### Editing a Dentist
 
 Prerequisite: There is at least 1 Dentist stored in ToothTracker. 
 In this example, we assume there are two dentists with the following attributes:
@@ -835,6 +838,51 @@ Expected Output in the Dentist List: No dentist displayed.
 Expected Output in the Command Output Box: No dentist found with dentist ID 999.
 <br><br>
 
+### Filtering for dentists with a given attribute
+
+Filter dentists with a given attribute and a corresponding keyword.
+The attributes are preceded with `a/` while the keywords are preceded with `k/`.
+
+`filter-dentist a/name k/Tan`
+
+Expected Success Output in Dentist List: dentists who have `Tan` in their full name will be shown. <br> For instance, `Xavier Tan` and `Xaveric Tan` will be shown if they exist in ToothTracker Dentist List.
+
+Expected Success Output in the Command Output Box: Filtered dentists by `ATTRIBUTE` with keyword: `KEYWORD`. <br> For the given example here, it will be "Filtered dentists by name with keyword: Tan."
+
+Expected Failure Output in Dentist List: No dentists will be shown in the list, since the filtered list contains nothing.
+
+Expected Failure Output in Command Out Box: No dentists found with `ATTRIBUTE`: `KEYWORD`. <br> For the given example above, it will be "No dentists found with name: Tan."
+<br><br>
+
+`filter-dentist a/specialization k/Orthodontics`
+
+Expected Success Output in Dentist List: dentists who have `Orthodontics` as their Specialization will be shown. <br>
+
+Expected Success Output in the Command Output Box: Filtered dentists by `ATTRIBUTE` with keyword: `KEYWORD`. <br> For the given example here, it will be "Filtered dentists by specialization with keyword: Orthodontics."
+
+Expected Failure Output in Dentist List: No dentists will be shown in the list, since the filtered list contains nothing.
+
+Expected Failure Output in Command Out Box: No dentists found with `ATTRIBUTE`: `KEYWORD`. <br> For the given example above, it will be "No dentists found with email: Orthodontics."
+<br><br>
+
+`filter-dentist a/email a/name k/gmail`
+
+Expected Output in Dentist List: No changes. <br>
+
+Expected Output in the Command Output Box: An error message for invalid command format.
+<br><br>
+
+`filter-dentist a/invalidAttribute k/randomValues`
+
+Expected Output in Dentist List: No changes.
+
+Expected Output in the Command Output Box: A message saying that an invalid attribute has been given, and lists out the valid attributes for `filter-dentist`.
+
+<div markdown="span" class="alert alert-info">:information_source: **Valid attributes for <code>filter-dentist</code>:** 
+<code>name</code> , <code>phone</code>, <code>email</code>, <code>address</code>, <code>specialization</code>, <code>experience</code>, <code>tags</code>.
+</div>
+<br><br>
+
 ### Deleting a Dentist
 
 Deleting a dentist while all dentists are being shown
@@ -893,7 +941,7 @@ Expected Output in the Patient List. All Patients stored in ToothTracker are dis
 Expected Output in the Command Output Box: Listed all patients!
 <br><br>
 
-### Edit a Patient
+### Editing a Patient
 
 Prerequisite: There is at least 1 Patient stored in ToothTracker.
 In this example, we assume there are two patients with the following attributes:
@@ -1037,6 +1085,24 @@ Expected Failure Output in Patient List: No patients will be shown in the list, 
 Expected Failure Output in Command Out Box: No patients found with `ATTRIBUTE`: `KEYWORD`. <br> For the given example above, it will be "No patients found with name: Tan."
 <br><br>
 
+`filter-patient a/email k/gmail`
+
+Expected Success Output in Patient List: patients who have `gmail` in their emails will be shown. <br>
+
+Expected Success Output in the Command Output Box: Filtered patients by `ATTRIBUTE` with keyword: `KEYWORD`. <br> For the given example here, it will be "Filtered patients by email with keyword: gmail."
+
+Expected Failure Output in Patient List: No patients will be shown in the list, since the filtered list contains nothing.
+
+Expected Failure Output in Command Out Box: No patients found with `ATTRIBUTE`: `KEYWORD`. <br> For the given example above, it will be "No patients found with email: gmail."
+<br><br>
+
+`filter-patient a/email a/name k/gmail`
+
+Expected Output in Patient List: No changes. <br>
+
+Expected Output in the Command Output Box: An error message for invalid command format.
+<br><br>
+
 `filter-patient a/invalidAttribute k/randomValues`
 
 Expected Output in Patient List: No changes.
@@ -1046,6 +1112,35 @@ Expected Output in the Command Output Box: A message saying that an invalid attr
 <div markdown="span" class="alert alert-info">:information_source: **Valid attributes for `filter-patient`:** 
 <code>name</code> , <code>phone</code>, <code>birthday</code>, <code>gender</code>, <code>remark</code>, <code>treatment</code>, <code>email</code>, <code>address</code>, <code>tags</code>.
 </div>
+<br><br>
+
+### Deleting a Patient
+
+Deleting a patient while all patients are being shown.
+
+Prerequisites: List all patients using the `list-patient` command. Multiple patients may be shown in the Patient List.
+
+`delete-patient 1`
+
+Expected Output in the Patient List: Patient with PATIENT_ID 1 is deleted from the Patient List.
+
+Expected Output in Command Output Box: Details of the deleted patient shown.
+<br><br>
+
+`delete-patient -1`
+
+Expected Output in the Patient List: No patient is deleted.
+
+Expected Output in Command Output Box: Error details shown for invalid ID provided.
+<br><br>
+
+Other incorrect delete commands to try:<br>
+`delete-patient`, `delete-patient x`, `...` <br>(where x is not a valid Patient ID)
+
+Expected Output in the Patient List: No dentist is deleted.
+
+Expected Output in Command Output Box:  Error details shown in the Command Output Box to show if it is an Invalid Patient ID, or if it is an invalid command format.
+
 
 
 ### Saving data
