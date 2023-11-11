@@ -40,7 +40,6 @@ public class GenderTest {
 
     @Test
     public void equals() {
-        Name name = new Name("Valid Name");
 
         Gender gender = new Gender("M");
 

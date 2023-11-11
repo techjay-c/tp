@@ -16,9 +16,9 @@ public class SpecializationTest {
     }
 
     @Test
-    public void constructor_invalidName_throwsIllegalArgumentException() {
+    public void constructor_invalidSpecialization_throwsIllegalArgumentException() {
         String invalidSpec = "";
-        assertThrows(IllegalArgumentException.class, () -> new Name(invalidSpec));
+        assertThrows(IllegalArgumentException.class, () -> new Specialization(invalidSpec));
     }
 
     @Test

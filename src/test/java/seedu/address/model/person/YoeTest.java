@@ -16,7 +16,7 @@ public class YoeTest {
     }
 
     @Test
-    public void constructor_invalidName_throwsIllegalArgumentException() {
+    public void constructor_invalidYoe_throwsIllegalArgumentException() {
         String invalidYoe = "";
         assertThrows(IllegalArgumentException.class, () -> new Yoe(invalidYoe));
     }
@@ -43,7 +43,6 @@ public class YoeTest {
 
     @Test
     public void equals() {
-        Name name = new Name("Valid Name");
         Yoe yoe = new Yoe("1");
 
         // same values -> returns true
