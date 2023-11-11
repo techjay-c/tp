@@ -1169,7 +1169,7 @@ Use case ends.
 
 --------------------------------------------------------------------------------------------------------------------
 
-# **Appendix: Instructions for manual testing**
+## **Appendix: Instructions for manual testing**
 
 Given below are instructions to test the app manually.
 
@@ -1178,25 +1178,25 @@ testers are expected to do more *exploratory* testing.
 
 </div>
 
-## Launch and shutdown
+### Launch and shutdown
 
-### Initial launch
+#### Initial launch
 
 1. Download the jar file and copy into an empty folder
 2. Double-click the jar file.<br>
    Expected: Shows the GUI with a set of sample patients and dentists. The window size may not be
    optimum. It is recommended to use ToothTracker at full screen.
 
-### Saving window preferences
+#### Saving window preferences
 
 1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 2. Re-launch ToothTracker by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 3. _{ more test cases …​ }_
 
-## Dentist
+### Dentist
 
-### Adding a Dentist
+#### Adding a Dentist
 
 Adding a dentist into ToothTracker's Dentist List.
 
@@ -1214,7 +1214,7 @@ Expected Output in the Dentist List: No new dentist added.
 Expected Output in the Command Output Box: Error message for invalid command format.
 <br><br>
 
-### Listing all Dentists
+#### Listing all Dentists
 
 Prerequisite: There is at least 1 Dentist stored in ToothTracker
 `list-dentist`
@@ -1224,7 +1224,7 @@ Expected Output in the Dentist List. All Dentists stored in ToothTracker are dis
 Expected Output in the Command Output Box: Listed all dentists!
 <br><br>
 
-### Editing a Dentist
+#### Editing a Dentist
 
 Prerequisite: There is at least 1 Dentist stored in ToothTracker. 
 In this example, we assume there are two dentists with the following attributes:
@@ -1295,7 +1295,7 @@ Expected Output in the Dentist List: No dentist is edited.
 Expected Output in the Command Output Box: Error details shown for attempting to edit a dentist into another existing dentist.
 <br><br>
 
-### Searching for a Dentist by Keyword
+#### Searching for a Dentist by Keyword
 Prerequisite: There are only two dentists named `Xavier Tan` and `Bernard Tan` stored in ToothTracker.
 
 `search-dentist Xavier`
@@ -1319,7 +1319,7 @@ Expected Output in the Dentist List: `Xavier Tan` and `Bernard Tan` dentists are
 Expected Output in the Command Output Box: 2 dentists listed!
 <br><br>
 
-### Searching for a dentist by Dentist ID
+#### Searching for a dentist by Dentist ID
 
 Prerequisite: There are only two dentists named `Xavier Tan` and `Bernard Tan` stored in ToothTracker.
 Xavier Tan's Dentist ID is `1` and Bernard Tan's Dentist ID is 4 (Dentists with ID 2 and 3 are assumed to be removed previously).
@@ -1345,7 +1345,7 @@ Expected Output in the Dentist List: No dentist displayed.
 Expected Output in the Command Output Box: No dentist found with dentist ID 999.
 <br><br>
 
-### Filtering for dentists with a given attribute
+#### Filtering for dentists with a given attribute
 
 Filter dentists with a given attribute and a corresponding keyword.
 The attributes are preceded with `a/` while the keywords are preceded with `k/`.
@@ -1390,7 +1390,7 @@ Expected Output in the Command Output Box: A message saying that an invalid attr
 </div>
 <br><br>
 
-### Deleting a Dentist
+#### Deleting a Dentist
 
 Deleting a dentist while all dentists are being shown
 
@@ -1417,9 +1417,9 @@ Expected Output in the Dentist List: No dentist is deleted.
 
 Expected Output in Command Output Box:  Error details shown in the Command Output Box to show if it is an Invalid Dentist ID, or if it is an invalid command format.
 
-## Patients
+### Patient
 
-### Adding a Patient
+#### Adding a Patient
 
 Adding a patient into ToothTracker's Patient List.
 
@@ -1437,7 +1437,7 @@ Expected Output in the Patient List: No new patient added.
 Expected Output in the Command Output Box: Error message for invalid command format.
 <br><br>
 
-### Listing all Patients
+#### Listing all Patients
 
 Prerequisite: There is at least 1 Patient stored in ToothTracker
 `list-patient`
@@ -1447,7 +1447,7 @@ Expected Output in the Patient List. All Patients stored in ToothTracker are dis
 Expected Output in the Command Output Box: Listed all patients!
 <br><br>
 
-### Editing a Patient
+#### Editing a Patient
 
 Prerequisite: There is at least 1 Patient stored in ToothTracker.
 In this example, we assume there are two patients with the following attributes:
@@ -1525,7 +1525,7 @@ Expected Output in the Command Output Box: Error details shown for attempting to
 <div markdown="span" class="alert alert-info">:information_source: **Special Note for editing treatments:** Please ensure the treatments exists in ToothTracker before editing patients. Otherwise, a message about Invalid Treatment will be given.
 </div>
 
-### Searching for a Patient by Keyword
+#### Searching for a Patient by Keyword
 Prerequisite: There are only two patients named `Tommy Tan Chuk Yong` and `Bernard Tan` stored in ToothTracker.
 
 `search-patient Tommy`
@@ -1549,7 +1549,7 @@ Expected Output in the Patient List: `Tommy Tan Chuk Yong` and `Bernard Tan` pat
 Expected Output in the Command Output Box: 2 patients listed!
 <br><br>
 
-### Searching for a patient by Patient ID
+#### Searching for a patient by Patient ID
 
 Prerequisite: There are only two patients named `Tommy Tan Chuk Yong` and `Bernard Tan` stored in ToothTracker.
 Tommy Tan Chuk Yong's Patient ID is `1` and Bernard Tan's Patient ID is 4 (Patients with ID 2 and 3 are assumed to be removed previously).
@@ -1575,7 +1575,7 @@ Expected Output in the Patient List: No patient displayed.
 Expected Output in the Command Output Box: No patient found with patient ID 999.
 <br><br>
 
-### Filtering for patients with a given attribute
+#### Filtering for patients with a given attribute
 
 Filter patients with a given attribute and a corresponding keyword. 
 The attributes are preceded with `a/` while the keywords are preceded with `k/`.
@@ -1620,7 +1620,7 @@ Expected Output in the Command Output Box: A message saying that an invalid attr
 </div>
 <br><br>
 
-### Deleting a Patient
+#### Deleting a Patient
 
 Deleting a patient while all patients are being shown.
 
@@ -1648,9 +1648,9 @@ Expected Output in the Patient List: No dentist is deleted.
 Expected Output in Command Output Box:  Error details shown in the Command Output Box to show if it is an Invalid Patient ID, or if it is an invalid command format.
 
 
-## Appointment
+### Appointment
 
-### Adding an Appointment
+#### Adding an Appointment
 
 Prerequisite: There is at least 1 Patient `XXX`, at least 1 Dentist `Bernard Tan` and at least 1 Treatment `Braces` stored in ToothTracker.
 XXX's Patient ID is 2 and Bernard Tan's Dentist ID is 4.
@@ -1665,7 +1665,7 @@ Expected Output in the Appointment List: New appointment added into the Appointm
 Expected Output in the Command Output Box: Error message for invalid command format, prompting users with correct attributes to include.
 
 
-### Listing all Appointments
+#### Listing all Appointments
 
 Prerequisite: There is at least 1 Appointment stored in ToothTracker.
 
@@ -1676,7 +1676,7 @@ Expected Output in the Appointment List: All Appointments stored in ToothTracker
 Expected Output in the Command Output Box: Listed all appointments!
 
 
-### Filtering Appointments by Dentist ID
+#### Filtering Appointments by Dentist ID
 
 Prerequisite: There is at least one Appointment stored in ToothTracker with Dentist `Bernard Tan`. Bernard Tan's Dentist ID is 4.
 
@@ -1689,7 +1689,7 @@ Expected Output in the Command Output Box: Appointments with dentist whose denti
 Expected Output in the Command Output Box: Error message for invalid ID provided.
 
 
-### Filtering Appointments by Patient ID
+#### Filtering Appointments by Patient ID
 
 Prerequisite: There is at least one Appointment stored in ToothTracker with Patient `XXX`. XXX's Patient ID is 2.
 
@@ -1702,7 +1702,7 @@ Expected Output in the Command Output Box: Appointments with patient whose patie
 Expected Output in the Command Output Box: Error message for invalid ID provided.
 
 
-### Deleting an Appointment
+#### Deleting an Appointment
 
 Prerequisite: There is at least 1 Appointment stored in ToothTracker.
 
@@ -1716,9 +1716,9 @@ Expected Output in the Command Output Box: Details of the deleted appointment sh
 
 Expected Output in the Command Output Box: Error details shown for invalid APPOINTMENT_ID provided.
 
-## Treatment
+### Treatment
 
-### Adding a Treatment
+#### Adding a Treatment
 
 Prerequisite: There is no Treatment, named `Braces`, stored in ToothTracker.
 
@@ -1731,7 +1731,7 @@ Expected Output in the Command Output Box: New treatment added with the details 
 Expected Output in the Command Output Box: Error message for invalid command format, prompting users with correct attributes to include.
 
 
-### Listing all Treatments
+#### Listing all Treatments
 
 Prerequisite: There is at least one Treatment stored in ToothTracker.
 
@@ -1740,7 +1740,7 @@ Prerequisite: There is at least one Treatment stored in ToothTracker.
 Expected Output in the Command Output Box: Names of all Treatments stored in ToothTracker listed.
 
 
-### Deleting a Treatment
+#### Deleting a Treatment
 
 Prerequisite: There is at least one Treatment, named `Braces`, stored in ToothTracker.
 
@@ -1753,9 +1753,9 @@ Expected Output in the Command Output Box: Details of the deleted Treatment show
 Expected Output in the Command Output Box: Error message for deleting treatment. No Treatment found with name "nasojadsak".
 
 
-## Calendar 
+### Calendar 
 
-### Viewing all appointments
+#### Viewing all appointments
 
 `view-calendar`
 
@@ -1763,7 +1763,7 @@ Expected Output: The Calendar Window pops out and shows all appointments (if any
 
 Expected Output in the Command Output Box: Calendar displayed success message.
 
-## Help
+### Help
 
 `help`
 
@@ -1772,7 +1772,7 @@ Expected Output: The Help Window pops out and shows a general help message.
 Expected Output in the Command Output Box: Opened help window.
 
 
-## Clear
+### Clear
 
 `clear`
 
@@ -1780,7 +1780,7 @@ Expected Output in the Patient, Dentist and Appointment List: All Patients, Dent
 
 Expected Output in the Command: ToothTracker cleared success message.
 
-## Exit
+### Exit
 
 `exit`
 
