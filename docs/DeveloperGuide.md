@@ -577,7 +577,75 @@ The `clear` command is used to refresh the display within ToothTracker. It remov
 The `help` command is used to access a guide or information on available commands and their usage within ToothTracker. This command serves as a quick reference to assist users in navigating the application.
 
 --------------------------------------------------------------------------------------------------------------------
+## **Future Implementation**
 
+### Filter Feature Enhancement
+#### Overview
+As a future improvement to the filter feature, we are considering implementing validation for keyword arguments to ensure that they are valid
+for the specified attribute. This enhancement aims to provide a more robust and user-friendly filtering mechanism, preventing the use of irrelevant or incorrect keywords.
+
+#### **Validation of Keywords**
+
+Currently, the filter feature checks the validity of the attribute to filter by but does not validate the keywords provided. For instance, if filtering by the attribute "birthday," users can enter nonsensical or invalid keywords, 
+potentially leading to undesired results.
+
+To address this, the following steps can be taken:
+
+1. **Define Valid Keywords:**
+    - Establish a set of valid keywords for each attribute that can be used in the filter command.
+
+2. **Keyword Validation Check:**
+    - Modify the filter feature to validate the provided keywords against the predefined set of valid keywords for the specified attribute.
+
+3. **Informative Error Messages:**
+    - Provide informative error messages if users attempt to filter using invalid keywords, guiding them on the correct usage.
+
+4. **User Guide Update:**
+    - Update the User Guide to include information about valid keywords for each attribute, ensuring users are aware of the allowed values.
+
+This enhancement contributes to the overall reliability and user experience of the filter feature, making it more robust and user-friendly.
+
+### Command History
+
+#### Overview
+Introduce a command history feature to enhance the user experience by allowing users to retrieve and reuse their last entered commands. 
+This functionality is similar to the up arrow functionality in most IDEs or terminals, providing users with a convenient way to recall and execute previous commands.
+
+#### Key Features
+
+1. **Command History Navigation:**
+    - Allow users to navigate through their command history using arrow keys (up and down) within the CLI interface.
+
+2. **Display Previous Commands:**
+    - Implement a mechanism to display a list of previous commands as the user navigates through the history. This can be shown either in-place or in a separate section of the CLI.
+
+3. **Immediate Execution:**
+    - Enable users to immediately execute a command from the history by selecting it. This streamlined process saves time and enhances user efficiency.
+
+4. **Persistent History Across Sessions:**
+    - Ensure that the command history is persistent across different sessions of the application, allowing users to access their command history even after closing and reopening the CLI.
+
+5. **Configurable History Size:**
+    - Provide users with the ability to configure the size of their command history. This allows customization based on individual preferences and workflow.
+
+#### Usage Example
+```plaintext
+$ user@cli-app:~$ [User enters a command]
+$ user@cli-app:~$ [User presses the up arrow]
+$ user@cli-app:~$ [Previous command from history is displayed]
+$ user@cli-app:~$ [User presses Enter to execute the displayed command]
+```
+
+#### Benefits
+
+1. **Improved Efficiency:**
+Users can quickly access and reuse previously entered commands, reducing the need to type repetitive commands manually.
+
+
+2. **User-Friendly Interaction:**
+Enhances the overall user experience by providing a familiar and intuitive command history navigation, similar to other CLI interfaces.
+
+--------------------------------------------------------------------------------------------------------------------
 ## **Documentation, logging, testing, configuration, dev-ops**
 
 * [Documentation guide](Documentation.md)
