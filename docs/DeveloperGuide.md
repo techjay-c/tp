@@ -332,65 +332,27 @@ This sequence diagram shows the interactions between the various components duri
 
 ##### Feature Details
 
-1. Users provide essential patient information, such as their name, phone number, specialization, years of experience and other optional details like email, address and tags.
+1. Users provide essential patient information, such as their name, phone number, birth date, gender and other optional details like remark, treatment, email and address.
 2. In case of missing or invalid command arguments, the system prompts users with an error message to enter the command correctly.
 3. The system cross-references the new dentist's name with existing records in the `Model` to prevent duplicate entries. If a duplicate is found, an error message informs the user.
 4. If step 3 is completed without any exceptions, the new patient record is created and stored in the system.
 
 ##### Feature Considerations
 
-For dentist specialization, broader terms like "orthodontics" are used instead of specifying the exact type of treatment (e.g., root canal, braces, scaling).
-This approach prevents the "add-dentist" command from becoming excessively long.
+For the optional Treatment field, should the user opt to enter a treatment, it is mandatory that the specified treatment already exists within ToothTracker. 
+If this condition is not met (the treatment specified does not exist in ToothTracker), the user will receive an error message.
 
-The working hours of a dentist is not an attribute in the `add-dentist` command as dentists might not immediately know their
-shifts when they first join, and it might change frequently.
+#### Deleting a Patient
 
-We handle duplicates by not allowing multiple dentists of the same name to be created (eg. only 1 John Tan can exist in ToothTracker). We will allow multiple dentists of
-the same name to be created in future implementations. For now, if there are multiple dentists with the same name, add in additional information such as their last 3 digits of NRIC
-as part of their name attribute.
+The `delete-patient` command deletes a patient record in ToothTracker. This command forms the fundamental business logic to represent patients.
 
-The `add-patient` command creates a new patient record in ToothTracker.
+The activity diagram for deleting a patient is illustrated as follows:
 
-The activity diagram for creating a new patient is illustrated as follows:
-
-![AddPatientActivityDiagram](images/AddPatientActivityDiagram.png)
-
-This sequence diagram shows the interactions between the various components during the execution of the `add-dentist` command:
-
-The sequence diagram of the `add-patient` command:
-
-![AddPatientSequenceDiagram](images/AddPatientSequenceDiagram.png)
-
-##### Feature Details
-
-1. Users provide essential patient information, such as their name, phone number, specialization, years of experience and other optional details like email, address and tags.
-2. In case of missing or invalid command arguments, the system prompts users with an error message to enter the command correctly.
-3. The system cross-references the new dentist's name with existing records in the `Model` to prevent duplicate entries. If a duplicate is found, an error message informs the user.
-4. If step 3 is completed without any exceptions, the new patient record is created and stored in the system.
-
-##### Feature Considerations
-
-For dentist specialization, broader terms like "orthodontics" are used instead of specifying the exact type of treatment (e.g., root canal, braces, scaling).
-This approach prevents the "add-dentist" command from becoming excessively long.
-
-The working hours of a dentist is not an attribute in the `add-dentist` command as dentists might not immediately know their
-shifts when they first join, and it might change frequently.
-
-We handle duplicates by not allowing multiple dentists of the same name to be created (eg. only 1 John Tan can exist in ToothTracker). We will allow multiple dentists of
-the same name to be created in future implementations. For now, if there are multiple dentists with the same name, add in additional information such as their last 3 digits of NRIC
-as part of their name attribute.
-
-#### Deleting a Dentist
-
-The `delete-dentist` command deletes a dentist record in ToothTracker. This command forms the fundamental business logic to represent dentists.
-
-The activity diagram for deleting a dentist is illustrated as follows:
-
-![DeleteDentistActivityDiagram](images/DeleteDentistActivityDiagram.png)
+![DeletePatientActivityDiagram](images/DeletePatientActivityDiagram.png)
 
 This sequence diagram shows the interactions between the various components during the execution of the `delete-dentist` command:
 
-![DeleteDentistSequenceDiagram](images/DeleteDentistSequenceDiagram.png)
+![DeletePatientSequenceDiagram](images/DeletePatientSequenceDiagram.png)
 
 ##### Feature Details
 
