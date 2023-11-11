@@ -6,8 +6,11 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PATIENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TREATMENT;
 
+import java.time.DateTimeException;
+import java.time.LocalDateTime;
 import java.util.function.Predicate;
 
+import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.ParserUtil;
@@ -18,6 +21,7 @@ import seedu.address.model.appointments.AppointmentTime;
 import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.patients.Patient;
 import seedu.address.model.treatment.Treatment;
+import seedu.address.ui.CalendarWindow;
 
 
 /**
@@ -26,7 +30,7 @@ import seedu.address.model.treatment.Treatment;
 public class AddAppointmentCommand extends Command {
     public static final String COMMAND_WORD = "add-appointment";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an appointment to ToothTracker. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an appointment to ToothTracker. \n"
             + "Parameters: "
             + PREFIX_DENTIST + "DENTIST "
             + PREFIX_PATIENT + "PATIENT "
@@ -40,17 +44,20 @@ public class AddAppointmentCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New Appointment added: %1$s";
 
-    public static final String MESSAGE_CLASHING_DOCTORS = "This dentist already has a "
-            + "current appointment in the same time slot.";
+    public static final String MESSAGE_CLASHING_DENTIST = "Dentist already has an"
+            + " existing appointment in this time slot.";
 
-    public static final String MESSAGE_CLASHING_PATIENTS = "This patient already has a "
-            + "current appointment in the same time slot.";
+    public static final String MESSAGE_CLASHING_PATIENT = "Patient already has an"
+            + " existing appointment in this time slot.";
 
     private final Appointment toAdd;
     private final long dentistId;
     private final long patientId;
     private final String treatmentName;
     private final String start;
+
+    private CalendarWindow calendarWindow;
+
 
     /**
      * Constructs an AddAppointmentCommand with the specified appointment.
@@ -66,6 +73,14 @@ public class AddAppointmentCommand extends Command {
         start = appointment.getStart();
     }
 
+    /**
+     * Setter for injecting a mock or stub CalendarWindow for testing purposes.
+     * @param calendarWindow The CalendarWindow to be injected.
+     */
+    public void setCalendarWindow(CalendarWindow calendarWindow) {
+        this.calendarWindow = calendarWindow;
+    }
+
 
     /**
      * Executes the command to add the appointment to the model.
@@ -76,7 +91,14 @@ public class AddAppointmentCommand extends Command {
      */
     @Override
     public CommandResult execute(Model model) throws CommandException {
+
         requireNonNull(model);
+        if (toAdd.getDentistId() < 0) {
+            throw new CommandException("Invalid input. Please enter a valid integer value for dentist ID.");
+        } else if (toAdd.getPatientId() < 0) {
+            throw new CommandException("Invalid input. Please enter a valid integer value for patient ID.");
+        }
+
         Predicate<Treatment> treatmentPredicate = treatment -> treatment.getName().toString()
                 .equalsIgnoreCase(treatmentName);
         model.updateFilteredTreatmentList(treatmentPredicate);
@@ -85,6 +107,17 @@ public class AddAppointmentCommand extends Command {
             throw new CommandException("Treatment is not provided in this clinic");
         }
         String duration = model.getFilteredTreatmentList().get(0).getTime().toString();
+        LocalDateTime startParsed;
+        try {
+            startParsed = LocalDateTime.parse(start);
+        } catch (DateTimeException e) {
+            throw new CommandException("Invalid inputs for appointment start time.\nDate must be valid. \n"
+                    + "Format must be in yyyy-MM-dd HH:mm.\nE.g. 2023-01-01 09:05");
+        }
+
+        if (startParsed.getYear() < 2000) {
+            throw new CommandException("Invalid year. Year must be 2000 or later.");
+        }
         AppointmentTime appointmentTime;
         try {
             appointmentTime = ParserUtil.parseAppointmentTime(start, duration);
@@ -99,9 +132,15 @@ public class AddAppointmentCommand extends Command {
 
         checkValidPersons(model);
 
+
         checkClash(model);
 
         model.addAppointment(toAdd);
+        if (calendarWindow == null) {
+            calendarWindow = CalendarWindow.getInstance();
+        }
+        calendarWindow.addAppointment(toAdd);
+
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
     }
 
@@ -115,10 +154,12 @@ public class AddAppointmentCommand extends Command {
     public void checkValidPersons(Model model) throws CommandException {
         if (dentistId >= 0) {
 
+            Predicate<Dentist> dentistPredicate = dentist -> true;
+            model.updateFilteredDentistList(dentistPredicate);
             Dentist dentist = model.getDentistById(dentistId);
 
             if (dentist == null) {
-                throw new CommandException("No dentist with ID " + dentistId);
+                throw new CommandException("No dentist with ID " + dentistId + ".");
             }
             toAdd.setDentistName(dentist.getName().fullName);
         } else {
@@ -126,6 +167,9 @@ public class AddAppointmentCommand extends Command {
         }
 
         if (patientId >= 0) {
+
+            Predicate<Patient> patientPredicate = patient -> true;
+            model.updateFilteredPatientList(patientPredicate);
             Patient patient = model.getPatientById(patientId);
             if (patient == null) {
                 throw new CommandException("No patient with ID " + patientId);
@@ -149,13 +193,13 @@ public class AddAppointmentCommand extends Command {
      */
     public void checkClash(Model model) throws CommandException {
         if (model.hasAppointment(toAdd)) {
-            Predicate<Appointment> appointmentPredicate = toAdd::isSameAppointmentTime;
+            Predicate<Appointment> appointmentPredicate = toAdd::isSameAppointment;
             model.updateFilteredAppointmentList(appointmentPredicate);
 
             if (!model.getFilteredAppointmentList().isEmpty()) {
                 for (int i = 0; i < model.getFilteredAppointmentList().size(); i++) {
                     if (model.getFilteredAppointmentList().get(i).getDentistId() == dentistId) {
-                        throw new CommandException(MESSAGE_CLASHING_DOCTORS);
+                        throw new CommandException(MESSAGE_CLASHING_DENTIST);
                     }
                 }
             }
@@ -163,11 +207,35 @@ public class AddAppointmentCommand extends Command {
             if (!model.getFilteredAppointmentList().isEmpty()) {
                 for (int i = 0; i < model.getFilteredAppointmentList().size(); i++) {
                     if (model.getFilteredAppointmentList().get(i).getPatientId() == patientId) {
-                        throw new CommandException(MESSAGE_CLASHING_PATIENTS);
+                        throw new CommandException(MESSAGE_CLASHING_PATIENT);
                     }
                 }
             }
         }
     }
 
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
+
+        if (!(other instanceof AddAppointmentCommand)) {
+            return false;
+        }
+
+        AddAppointmentCommand otherCommand = (AddAppointmentCommand) other;
+
+        return dentistId == otherCommand.dentistId
+                && patientId == otherCommand.patientId
+                && treatmentName.equals(otherCommand.treatmentName)
+                && start.equals(otherCommand.start);
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .add("toAdd", toAdd)
+                .toString();
+    }
 }

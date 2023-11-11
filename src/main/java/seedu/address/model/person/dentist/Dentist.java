@@ -110,6 +110,7 @@ public class Dentist extends Person {
         return otherDentist.getName().equals(getName())
                 && otherDentist.getPhone().equals(getPhone())
                 && otherDentist.getEmail().equals(getEmail())
+                && otherDentist.getAddress().equals(getAddress())
                 && otherDentist.getSpecialization().equals(getSpecialization())
                 && otherDentist.getYoe().equals(getYoe())
                 && otherDentist.getTags().equals(getTags())
@@ -119,7 +120,8 @@ public class Dentist extends Person {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(getName(), getPhone(), getEmail(), getSpecialization(), getYoe(), getTags(), getId());
+        return Objects.hash(getName(), getPhone(), getEmail(), getAddress(),
+                getSpecialization(), getYoe(), getTags(), getId());
     }
 
     @Override
@@ -140,12 +142,6 @@ public class Dentist extends Person {
                 .append(getId())
                 .append("; Tags: ");
         this.getTags().forEach(builder::append);
-
-        Set<Tag> tags = getTags();
-        if (!tags.isEmpty()) {
-            builder.append("; Tags: ");
-            tags.forEach(builder::append);
-        }
 
         return builder.toString();
     }

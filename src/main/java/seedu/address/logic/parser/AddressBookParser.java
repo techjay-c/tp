@@ -9,7 +9,6 @@ import java.util.regex.Pattern;
 
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.AddAppointmentCommand;
-import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.AddDentistCommand;
 import seedu.address.logic.commands.AddPatientCommand;
 import seedu.address.logic.commands.AddTreatmentCommand;
@@ -26,12 +25,13 @@ import seedu.address.logic.commands.FilterAppointmentCommand;
 import seedu.address.logic.commands.FilterDentistCommand;
 import seedu.address.logic.commands.FilterPatientCommand;
 import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.ListAppointmentsCommand;
+import seedu.address.logic.commands.ListAppointmentCommand;
 import seedu.address.logic.commands.ListDentistCommand;
 import seedu.address.logic.commands.ListPatientCommand;
 import seedu.address.logic.commands.ListTreatmentCommand;
 import seedu.address.logic.commands.SearchDentistCommand;
 import seedu.address.logic.commands.SearchPatientCommand;
+import seedu.address.logic.commands.ViewCalendarCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -69,9 +69,6 @@ public class AddressBookParser {
         logger.fine("Command word: " + commandWord + "; Arguments: " + arguments);
 
         switch (commandWord) {
-
-        case AddCommand.COMMAND_WORD:
-            return new AddCommandParser().parse(arguments);
 
         case AddDentistCommand.COMMAND_WORD:
             return new AddDentistCommandParser().parse(arguments);
@@ -121,14 +118,17 @@ public class AddressBookParser {
         case ListTreatmentCommand.COMMAND_WORD:
             return new ListTreatmentCommand();
 
-        case ListAppointmentsCommand.COMMAND_WORD:
-            return new ListAppointmentsCommand();
+        case ListAppointmentCommand.COMMAND_WORD:
+            return new ListAppointmentCommand();
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
 
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
+
+        case ViewCalendarCommand.COMMAND_WORD:
+            return new ViewCalendarCommand();
 
         case AddPatientCommand.COMMAND_WORD:
             return new AddPatientCommandParser().parse(arguments);

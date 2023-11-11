@@ -54,8 +54,7 @@ public class EditDentistCommandParser implements Parser<EditDentistCommand> {
                     PREFIX_EMAIL,
                     PREFIX_ADDRESS,
                     PREFIX_SPECIALIZATION,
-                    PREFIX_YOE,
-                    PREFIX_TAG);
+                    PREFIX_YOE);
 
             EditDentistCommand.EditDentistDescriptor editDentistDescriptor = new EditDentistDescriptor();
 

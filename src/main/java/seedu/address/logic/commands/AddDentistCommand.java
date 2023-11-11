@@ -22,7 +22,7 @@ public class AddDentistCommand extends Command {
     public static final String MESSAGE_DUPLICATE_DENTIST = "This dentist already exists in ToothTracker address book!";
     public static final String MESSAGE_SUCCESS = "New Dentist added: %1$s";
 
-    private static final String MESSAGE_USAGE = COMMAND_WORD
+    public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Adds a dentist to the address book. "
             + "Parameters: "
             + PREFIX_NAME + "NAME "
@@ -66,14 +66,6 @@ public class AddDentistCommand extends Command {
 
     public static String getCommandUsage() {
         return MESSAGE_USAGE;
-    }
-
-    public static String getMessageSuccess() {
-        return MESSAGE_SUCCESS;
-    }
-
-    public static String getMessageDuplicateDoctor() {
-        return MESSAGE_DUPLICATE_DENTIST;
     }
 
     @Override

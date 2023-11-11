@@ -64,6 +64,9 @@ public class EditPatientCommand extends Command {
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_PATIENT = "This patient already exists in the address book.";
 
+    public static final String MESSAGE_INVALID_TREATMENT = "This treatment is invalid";
+
+
     private final long patientId;
     private final EditPatientDescriptor editPatientDescriptor;
 
@@ -91,19 +94,22 @@ public class EditPatientCommand extends Command {
             }
             Patient editedPatient = createEditedPatient(patientToEdit, editPatientDescriptor);
 
-            if (!patientToEdit.isSamePerson(editedPatient) && model.hasPerson(editedPatient)) {
+            if (!patientToEdit.isSamePatient(editedPatient) && model.hasPatient(editedPatient)) {
                 throw new CommandException(MESSAGE_DUPLICATE_PATIENT);
             }
 
+            String treatmentName = editedPatient.getTreatmentName().toString();
+            if (!model.hasTreatmentName(editedPatient.getTreatmentName()) && !treatmentName.equals(
+                "NIL")) {
+                throw new CommandException(MESSAGE_INVALID_TREATMENT);
+            }
             model.setPatient(patientToEdit, editedPatient);
             model.updateFilteredPatientList(PREDICATE_SHOW_ALL_PATIENTS);
             return new CommandResult(
                 String.format(MESSAGE_EDIT_PATIENT_SUCCESS, Messages.format(editedPatient)));
 
         } catch (Exception e) {
-            throw new CommandException(
-                "An error occurred while editing the patient: " + e.getMessage()
-                    + " Please use list-patients or search-patient to get the intended Patient on the screen first.");
+            throw new CommandException(e.getMessage());
         }
 
     }
@@ -306,15 +312,15 @@ public class EditPatientCommand extends Command {
             }
 
             EditPatientDescriptor otherEditPatientDescriptor = (EditPatientDescriptor) other;
-            return Objects.equals(name, otherEditPatientDescriptor.getName())
-                && Objects.equals(phone, otherEditPatientDescriptor.getPhone())
-                && Objects.equals(email, otherEditPatientDescriptor.getEmail())
-                && Objects.equals(address, otherEditPatientDescriptor.getAddress())
-                && Objects.equals(gender, otherEditPatientDescriptor.getGender())
-                && Objects.equals(birthdate, otherEditPatientDescriptor.getBirthdate())
-                && Objects.equals(remark, otherEditPatientDescriptor.getRemark())
-                && Objects.equals(treatmentName, otherEditPatientDescriptor.getTreatmentName())
-                && Objects.equals(patientId, otherEditPatientDescriptor.getPatientId())
+            return Objects.equals(name, otherEditPatientDescriptor.getName().get())
+                && Objects.equals(phone, otherEditPatientDescriptor.getPhone().get())
+                && Objects.equals(email, otherEditPatientDescriptor.getEmail().get())
+                && Objects.equals(address, otherEditPatientDescriptor.getAddress().get())
+                && Objects.equals(gender, otherEditPatientDescriptor.getGender().get())
+                && Objects.equals(birthdate, otherEditPatientDescriptor.getBirthdate().get())
+                && Objects.equals(remark, otherEditPatientDescriptor.getRemark().get())
+                && Objects.equals(treatmentName, otherEditPatientDescriptor.getTreatmentName().get())
+                && Objects.equals(patientId, otherEditPatientDescriptor.getPatientId().get())
                 && Objects.equals(tags, otherEditPatientDescriptor.tags);
         }
 

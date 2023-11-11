@@ -11,12 +11,12 @@
 
   <HBox alignment="BOTTOM_RIGHT" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity"
         minHeight="-Infinity" minWidth="-Infinity" spacing="10" StackPane.alignment="BOTTOM_RIGHT">
-    <Button fx:id="saveButton" onAction="#handleSaveNotes" text="Save">
+    <Button fx:id="saveButton" styleClass="button-save" onAction="#handleSaveNotes" text="Save">
          <HBox.margin>
             <Insets bottom="3.0" />
          </HBox.margin>
     </Button>
-    <Button fx:id="clearButton" onAction="#handleClearNotes" text="Clear">
+    <Button fx:id="clearButton" styleClass="button-clear" onAction="#handleClearNotes" text="Clear">
          <HBox.margin>
             <Insets bottom="3.0" right="5.0" />
          </HBox.margin>

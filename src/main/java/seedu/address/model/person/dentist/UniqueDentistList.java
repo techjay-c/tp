@@ -9,8 +9,8 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.model.person.exceptions.DentistNotFoundException;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
-import seedu.address.model.person.exceptions.PersonNotFoundException;
 
 /**
  * A list of dentists that enforces uniqueness between its elements and does not allow nulls.
@@ -60,7 +60,7 @@ public class UniqueDentistList implements Iterable<Dentist> {
 
         int index = internalList.indexOf(target);
         if (index == -1) {
-            throw new PersonNotFoundException();
+            throw new DentistNotFoundException();
         }
 
         if (!target.isSameDentist(editedDentist) && contains(editedDentist)) {
@@ -78,7 +78,7 @@ public class UniqueDentistList implements Iterable<Dentist> {
         Dentist dentist = internalList.get(target);
 
         if (isNull(dentist)) {
-            throw new PersonNotFoundException();
+            throw new DentistNotFoundException();
         }
 
         return dentist;
@@ -91,7 +91,7 @@ public class UniqueDentistList implements Iterable<Dentist> {
     public void remove(Dentist toRemove) {
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {
-            throw new PersonNotFoundException();
+            throw new DentistNotFoundException();
         }
     }
 
