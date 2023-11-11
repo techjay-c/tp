@@ -58,6 +58,29 @@ Let's learn what each of these components does!
 | 7 | Quick Notes      | A dedicated space at the bottom of the Main Window for on-the-fly notes, reminders, or observations that you need to keep handy.                                                                                        |
 | 8 | Saved Data File  | For advanced users, the [file path](#glossary) displayed here is where ToothTracker stores your saved data (which you can [edit](#editing-the-data-file)).                                                              |
 
+##### Quick Notes
+Quick Notes in ToothTracker is designed to enhance your efficiency by providing a space for immediate note-taking within the application.
+Use the quick notes to help you quickly capture important reminders or information without navigating away from the main window.
+
+**How to use the Quick Notes:**<br>
+
+**1. Adding Notes**:
+Click into the Quick Notes Box and type your notes.
+Remember to hit the `Save` button to keep your notes for future reference.
+Unsaved notes will be lost when the session ends or if you navigate away.
+<div markdown="block" class="alert alert-info">
+**:information_source:** The Quick Notes box will turn green upon saving latest changes.
+![Quick Notes](images/ug/QuickNotesSaved.png){: .centered-image }
+</div>
+
+**2. Editing Notes**:
+Click into the Quick Notes Box and make your changes. You can select text to copy, cut, or delete as needed.
+
+**3. Clearing Notes**:
+To clear the contents of your Quick Notes and start with a clean slate, simply click the `Clear` button.
+This will remove all text until you decide to save new notes.
+
+
 {: .no_toc}
 #### Calendar Window
 ToothTracker's Calendar Window provides a visual representation of your clinic's schedule. This view becomes available after executing a [Calendar Command](#viewing-calendar--view-calendar).
