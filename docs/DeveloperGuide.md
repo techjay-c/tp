@@ -1,25 +1,20 @@
 ---
 layout: page
 title: Developer Guide
+show-toc: true
 ---
-
-* Table of Contents
-{:toc}
-
---------------------------------------------------------------------------------------------------------------------
+{% include toc.md header=false show-in-toc=true ordered=true %}
 
 ## **Acknowledgements**
 
 * {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the
   original source as well}
 
---------------------------------------------------------------------------------------------------------------------
 
 ## **Setting up, getting started**
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
---------------------------------------------------------------------------------------------------------------------
 
 ## **Design**
 
@@ -68,7 +63,7 @@ Each of the four main components (also shown in the diagram above),
 
 * defines its *API* in an `interface` with the same name as the Component.
 * implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding
-  API `interface` mentioned in the previous point.
+  API `interface` mentioned in the previous point).
 
 For example, the `Logic` component defines its API in the `Logic.java` interface and implements its functionality using
 the `LogicManager.java` class which follows the `Logic` interface. Other components interact with a given component
@@ -118,11 +113,11 @@ Here's a (partial) class diagram of the `Logic` component:
 How the `Logic` component works:
 
 1. When `Logic` is called upon to execute a command, it is passed to an `AddressBookParser` object which in turn creates
-   a parser that matches the command (e.g., `DeletePatientCommandParser`) and uses it to parse the command.
-1. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `DeletePatientCommand`) which
-   is executed by the `LogicManager`.
-1. The command can communicate with the `Model` when it is executed (e.g. to delete a person).
-1. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `Logic`.
+   a parser that matches the command (e.g., `DeletePatientCommandParser`) and uses it to parse the command. 
+2. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `DeletePatientCommand`) which
+   is executed by the `LogicManager`. 
+3. The command can communicate with the `Model` when it is executed (e.g. to delete a person). 
+4. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `Logic`.
 
 The sequence diagram below illustrates the interactions within the `Logic` component, taking `execute("delete-patient 1")` API
 call as an example.
@@ -194,10 +189,10 @@ This section describes some noteworthy details on how certain features are imple
 The features implemented are categorized into 4 sections:
 
 1. [Dentist Features](#dentist-features)
-1. [Patient Features](#patient-features)
-1. [Appointment Features](#appointment-features)
-1. [Treatment Features](#treatment-features)
-1. [General Features](#general-features)
+2. [Patient Features](#patient-features)
+3. [Appointment Features](#appointment-features)
+4. [Treatment Features](#treatment-features)
+5. [General Features](#general-features)
 
 ### Dentist Features
 
@@ -331,7 +326,38 @@ The activity diagram for creating a new patient is illustrated as follows:
 
 ![AddPatientActivityDiagram](images/AddPatientActivityDiagram.png)
 
+This sequence diagram shows the interactions between the various components during the execution of the `add-patient` command:
+
+![AddPatientSequenceDiagram](images/AddPatientSequenceDiagram.png)
+
+##### Feature Details
+
+1. Users provide essential patient information, such as their name, phone number, specialization, years of experience and other optional details like email, address and tags.
+2. In case of missing or invalid command arguments, the system prompts users with an error message to enter the command correctly.
+3. The system cross-references the new dentist's name with existing records in the `Model` to prevent duplicate entries. If a duplicate is found, an error message informs the user.
+4. If step 3 is completed without any exceptions, the new patient record is created and stored in the system.
+
+##### Feature Considerations
+
+For dentist specialization, broader terms like "orthodontics" are used instead of specifying the exact type of treatment (e.g., root canal, braces, scaling).
+This approach prevents the "add-dentist" command from becoming excessively long.
+
+The working hours of a dentist is not an attribute in the `add-dentist` command as dentists might not immediately know their
+shifts when they first join, and it might change frequently.
+
+We handle duplicates by not allowing multiple dentists of the same name to be created (eg. only 1 John Tan can exist in ToothTracker). We will allow multiple dentists of
+the same name to be created in future implementations. For now, if there are multiple dentists with the same name, add in additional information such as their last 3 digits of NRIC
+as part of their name attribute.
+
+The `add-patient` command creates a new patient record in ToothTracker.
+
+The activity diagram for creating a new patient is illustrated as follows:
+
+![AddPatientActivityDiagram](images/AddPatientActivityDiagram.png)
+
 This sequence diagram shows the interactions between the various components during the execution of the `add-dentist` command:
+
+The sequence diagram of the `add-patient` command:
 
 ![AddPatientSequenceDiagram](images/AddPatientSequenceDiagram.png)
 
@@ -373,11 +399,43 @@ This sequence diagram shows the interactions between the various components duri
 3. The Dentist is cross-referenced in the `Model` to check if it exists. If it does not, then an error is raised to inform the user.
 4. If step 3 completes without any exceptions, then the `Dentist` is successfully deleted.
 
+1. Users provide essential patient information, such as their name, phone number, gender, birthday and optional details such as remark, treatment, email, address and tags.
+2. In case of missing or invalid command arguments, the system prompts users with an error message to enter the command correctly.
+3. The system cross-references the new patients name with existing records in the `Model` to prevent duplicate entries. If a duplicate is found, an error message informs the user.
+4. If step 3 is completed without any exceptions, the new patient record is created and stored in the system.
+
+##### Feature Considerations
+For the optional `Treatment` field, should the user opt to enter a treatment, it is mandatory that the specified treatment already exists within ToothTracker.
+If this condition is not met, the user will receive an error message.
+
+#### Deleting a Patient
+
+The `delete-patient` command deletes a patient record in ToothTracker. 
+
+The activity diagram for deleting a patient is illustrated as follows:
+
+![DeletePatientActivityDiagram](images/DeletePatientActivityDiagram.png)
+
+This sequence diagram shows the interactions between the various components during the execution of the `delete-patient` command:
+
+![DeletePatientSequenceDiagram](images/DeletePatientSequenceDiagram.png)
+
+##### Feature Details
+
+1. The user specifies a patient id that represents a `Patient` to be deleted.
+2. If an invalid `PATIENT_ID` is provided, an error is thrown and the user is prompted to enter the command correctly via an error message.
+3. The Patient is cross-referenced in the `Model` to check if it exists. If it does not, then an error is raised to inform the user.
+4. If step 3 completes without any exceptions, then the `Patient` is successfully deleted.
+
 ##### Feature Considerations
 
 In implementing the delete feature, we needed proper error handling and validation to ensure ToothTracker's robustness and provide clear guidance to the user.
+<<<<<<< HEAD
 Our approach validates dentist ID and shows an error message if the dentist does not exist.
 This is in comparison to allowing commands to fail silently if the dentist specified does not exist.
+=======
+Our approach validates patient ID and shows an error message if the patient does not exist.
+This is in comparison to allowing commands to fail silently if patient does not exist.
 
 - Pros: Prevents invalid operations and provides immediate feedback to the user, helping to correct mistakes.
 - Cons: Additional validation checks add complexity to the code.
@@ -429,23 +487,201 @@ This sequence diagram shows the interactions between the various components duri
    These criteria allow users to search for dentists with specific attributes.
 2. ToothTracker processes the user's filter criteria and matches them against the dentist records in the database.
 3. Dentists that meet the filter criteria are displayed as search results, providing users with a list of dentists that fulfill their specific requirements.
+
+#### Searching for a patient
+
+The `search-patient` command finds patient records in ToothTracker by allowing users to enter a specific `PATIENT_ID` or
+name-related keywords.
+
+The activity diagram for searching for a patient is illustrated as follows:
+
+![SearchPatientActivityDiagram](images/SearchPatientActivityDiagram.png)
+
+This sequence diagram shows the interactions between the various components during the execution of the `search-patient` command:
+
+![SearchPatientSequenceDiagram](images/SearchPatientSequenceDiagram.png)
+
+##### Feature Details
+1. Users initiate a search for a patient using either a unique `PATIENT_ID` or by inputting specific `KEYWORDS` that might match a patient's name.
+2. If the user opts for an ID-based search, the system processes the request to return a single record that matches the provided `PATIENT_ID`.
+3. If keywords are used, the system performs a broader search by comparing the keywords as substrings with the names in the patient records.
+4. In scenarios where the search criteria do not correspond with any existing records (either no matching ID or keywords), the system generates an error message informing the user of the unsuccessful search attempt.
+5. When matches are found, the system displays a list of patients whose records meet the search criteria.
+
+##### Feature Considerations
+
+The `search-patient` feature in ToothTracker focuses on searching using either a unique `PATIENT_ID` or keywords matching a patient's name,
+prioritizing speed and simplicity in accessing patient records. For more complex searching which requires additional patient attributes, users
+are recommended to use the `filter-patient` command instead. This approach ensures a balanced functionality within ToothTracker, offering a balance
+between quick searches for immediate needs while also accommodating more complex and attribute-specific inquiries.
+
+#### Filtering a patient
+
+The `filter-patient` command in ToothTracker provides users with a more refined search functionality, allowing them to filter patient records based on
+specific criteria beyond just `PATIENT_ID` or name-related keywords. This feature offers a versatile and detailed search capability for users who
+require precise results from the patient records database.
+
+The activity diagram for filtering patient is illustrated as follows:
+
+![FilterPatientActivityDiagram](images/FilterPatientActivityDiagram.png)
+
+This sequence diagram shows the interactions between the various components during the execution of the `filter-patient` command:
+
+![FilterPatientSequenceDiagram](images/FilterPatientSequenceDiagram.png)
+
+##### Feature Details
+1. Users initiate a filter for a patient by providing various filter criteria such as Remarks, Treatment and more.
+   These criteria allow users to search for patients with specific attributes.
+2. ToothTracker processes the user's filter criteria and matches them against the patient records in the database.
+3. Patients that meet the filter criteria are displayed as search results, providing users with a list of patients that fulfill their specific requirements.
 4. If no matches are found for the given filter criteria, the system informs the user that no results were found based on the specified filters.
 
 ##### Feature Considerations
 
-The `filter-dentist` feature in ToothTracker is tailored for users who require precise control over their dentist searches. Unlike the `search-dentist` command,
-which primarily relies on `DENTIST_ID` and name-related keywords, the `filter-dentist` command operates by filtering based on specific attributes within a dentist's record.
+The `filter-patient` feature in ToothTracker is tailored for users who require precise control over their patient searches. Unlike the `search-patient` command,
+which primarily relies on `PATIENT_ID` and name-related keywords, the `filter-patient` command operates by filtering based on specific attributes within a patient's record.
 
-To ensure the validity of the filter criteria, the  filter-dentist command conducts validation checks to confirm that the selected attribute for filtering is a valid attribute
-associated with a dentist's record.
+To ensure the validity of the filter criteria, the  filter-patient command conducts validation checks to confirm that the selected attribute for filtering is a valid attribute
+associated with a patient's record.
 
-It is important to note that the filter-dentist feature does not perform validation checks within each attribute to verify whether the entered
+It is important to note that the filter-patient feature does not perform validation checks within each attribute to verify whether the entered
 keyword is of a valid type for that particular attribute. Users are responsible for inputting keywords that are meaningful and applicable to the chosen attribute.
-
 
 ### Appointment Features
 
+#### Adding an Appointment
+
+The `add-appointment` command creates a new appointment record in ToothTracker.
+
+The activity diagram for creating a new appointment is illustrated as follows:
+
+![AddAppointmentActivityDiagram](images/AddAppointmentActivityDiagram.png)
+
+The sequence diagram shows the interactions between the various components during the execution of the `add-appointment` command:
+
+![AddAppointmentSequenceDiagram](images/AddAppointmentSequenceDiagram.png)
+
+##### Feature Details
+
+1. Users provide essential appointment information, such as the dentist ID, patient ID, appointment start time and treatment name.
+2. In case of missing or invalid command arguments, the system prompts users with an error message to enter the command correctly.
+3. The system retrieves information about the treatment cost, duration, dentist and patient from the `Model` using the information provided by the user.
+4. The system checks the new appointment's time slot with existing appointments in the `Model` to prevent clashing appointments.
+If a timing clash is found, an error message informs the user.
+5. If step 4 is completed without any exceptions, the new appointment record is created and stored in the system.
+
+##### Feature Considerations
+
+For the dentist ID, patient ID and treatment field, it is mandatory that the specified dentist, patient and treatment exists in ToothTracker.
+If these conditions are not met, the user will receive an error message.
+
+#### Deleting an Appointment
+
+The `delete-appointment` command deletes an appointment record from ToothTracker.
+
+The activity diagram for deleting an appointment is illustrated as follows:
+
+![DeleteAppointmentActivityDiagram](images/DeleteAppointmentActivityDiagram.png)
+
+The sequence diagram shows the interactions between the various components during the execution of the `delete-appointment` command:
+
+![DeleteAppointmentSequenceDiagram](images/DeleteAppointmentSequenceDiagram.png)
+
+##### Feature Details
+
+1. The user specifies an appointment id that represents an `Appointment` to be deleted.
+2. If an invalid `APPOINTMENT_ID` is provided, an error is thrown and the user is prompted to enter the command correctly via an error message.
+3. The Appointment is cross-referenced in the `Model` to check if it exists. If it does not, then an error is raised to inform the user.
+4. If step 3 completes without any exceptions, then the `Appointment` is successfully deleted.
+
+##### Feature Considerations
+
+In implementing the delete feature, we needed proper error handling and validation to ensure ToothTracker's robustness and provide clear guidance to the user.
+Our approach validates appointment ID and shows an error message if the appointment does not exist.
+This is in comparison to allowing commands to fail silently if appointment does not exist.
+
+- Pros: Prevents invalid operations and provides immediate feedback to the user, helping to correct mistakes.
+- Cons: Additional validation checks add complexity to the code.
+
+
+#### Filtering an Appointment
+
+The `filter-appointment` command filters appointments by DENTIST_ID or PATIENT_ID.
+
+The activity diagram for filtering an appointment is illustrated as follows:
+
+![FilterAppointmentActivityDiagram](images/FilterAppointmentActivityDiagram.png)
+
+The sequence diagram shows the interactions between the various components during the execution of the `filter-appointment` command:
+
+![DeleteAppointmentSequenceDiagram](images/FilterAppointmentSequenceDiagram.png)
+
+##### Feature Details
+
+1. Users initiate a filter for appointments using either a unique `DENTIST_ID` or a unique `PATIENT_ID`.
+2. If an invalid `DENTIST_ID` or `PATIENT_ID` is provided, an error is thrown and the user is prompted to enter the command correctly via an error message. 
+3. If the user opts to filter by `DENTIST_ID`, the system processes the request to return a list of appointments with the specific dentist. 
+4. If the user opts to filter by `PATIENT_ID`, the system processes the request to return a list of appointments with the specific patient. 
+5. If there are no appointments with the specific dentist or patient, the system informs the user that no appointments were found with the specific dentist or patient.
+
+##### Feature Considerations
+
+Validity checks are performed to ensure that the `DENTIST_ID` or `PATIENT_ID` are valid and that they type of ID to filter by is clearly stated.
+Otherwise, user would receive an error message that guides them to input the right command and details.
+
+If no appointments with the specific dentist or patient are found in ToothTracker, it should be clearly
+communicated to the user instead of just displaying an empty list. A message stating that no appointments with the
+specified `DENTIST_ID` or `PATIENT_ID` are found would be displayed to the user.
+
 ### Treatment Features
+
+#### Adding a Treatment
+
+The `add-treatment` command creates a new treatment record in ToothTracker.
+
+The activity diagram for creating a new treatment is illustrated as follows:
+
+![AddTreatmentActivityDiagram](images/AddTreatmentActivityDiagram.png)
+
+The sequence diagram of the `add-treatment` command:
+
+![AddTreatmentSequenceDiagram](images/AddTreatmentSequenceDiagram.png)
+
+##### Feature Details
+1. Users would key in the available treatments in their clinic, specifying the treatment name, cost and its duration.
+2. In case of missing or invalid command arguments, the system prompts users with an error message to enter the command correctly.
+3. The system cross-references the new treatment name with existing records in the `Model` to prevent duplicate entries. If a duplicate is found, an error message informs the user.
+4. If step 3 is completed without any exceptions, the new treatment record is created and stored in the system.
+
+
+#### Listing a Treatment
+
+The `list-treatment` command would list all treatments recorded in ToothTracker.
+
+##### Feature Details
+1. Users would key in the `list-treatment`
+2. All available treatments would be listed in the command box.
+3. In the event that there are no treatments, ToothTracker would display a message in the command box.
+
+##### Feature Considerations
+- Due to the space constraints of ToothTracker, only treatment names would be displayed to the user. 
+Ideally, cost and duration of each treatment should be shown to the user. However, this would clutter
+up the command box pretty quickly.
+- Ideally, another window would be created, which would display all available treatments and  their 
+associated costs and durations.
+
+
+#### Deleting a Treatment
+
+The `delete-treatment` command deletes a treatment record in ToothTracker.
+
+The activity diagram for deleting a treatment is illustrated as follows:
+
+![DeleteTreatmentActivityDiagram](images/DeleteTreatmentActivityDiagram.png)
+
+This sequence diagram shows the interactions between the various components during the execution of the `delete-treatment` command:
+
+![DeleteTreatmentSequenceDiagram](images/DeleteTreatmentSequenceDiagram.png)
 
 ### General Features
 
@@ -531,10 +767,10 @@ Use case ends.
 **MSS**
 
 1. User submits a request to search for a dentist:
-    - User specifies search criteria, which can be either a dentist ID [PATIENT ID] or a dentist name [dentist name].
+    - User specifies search criteria, which can be either a dentist ID [DENTIST ID] or a dentist name [dentist name].
 
 2. ToothTracker searches for the dentist based on the criteria:
-    - If the request specifies [PATIENT ID]:
+    - If the request specifies [DENTIST ID]:
         - ToothTracker looks for a dentist with the matching ID.
     - If the request specifies [dentist name]:
         - ToothTracker searches for a dentist with the matching name.
@@ -569,10 +805,10 @@ Use case ends.
 **MSS**
 
 1. User submits a request to delete a dentist:
-    - User specifies the dentist ID [PATIENT ID] or dentist name [dentist name] to delete.
+    - User specifies the dentist ID [DENTIST ID] or dentist name [dentist name] to delete.
 
 2. ToothTracker searches for the dentist entry:
-    - If the request specifies [PATIENT ID]:
+    - If the request specifies [DENTIST ID]:
         - ToothTracker looks for a dentist with the matching ID.
     - If the request specifies [dentist name]:
         - ToothTracker searches for a dentist with the matching name.
@@ -635,13 +871,166 @@ Use case ends.
 
       Use case continues from step 2.
 
-**Use case: Add Appointment**
+
+**Use case: Add a Patient**
+
+**MSS**
+
+1. User submits a request to create a new patient, and provides information about the patient.
+2. ToothTracker acknowledges the request to add a new patient.
+
+Use case ends.
+
+**Extensions**
+
+- **1a. User inputs an invalid command.**
+    - ToothTracker identifies the command error.
+        - ToothTracker prompts the user to make the necessary adjustments and provide the command in the correct format.
+    - Steps within 1a repeat until a valid `add-patient` command is provided.
+
+      Use case continues from step 2.
+
+
+- **1b. ToothTracker finds a pre-existing patient entry.**
+    - ToothTracker alerts the user about the duplicate entry.
+    - Steps within 1b loop until a new, unique entry is provided.
+      Use case continues from step 2.
+     
+- **1c. User inputs a treatment that does not exist in ToothTracker**
+    - ToothTracker checks ToothTracker and finds that the treatment provided does not exist.
+    - ToothTracker alerts the user that the treatment is not provided in the clinic.
+    - Steps within 1c loop until an existing treatment is provided.
+
+      Use case resumes from step 2.
+
+
+* 3a. No matching patient found:
+    - ToothTracker displays a message indicating no matching patients were found.
+
+      Use Case Ends.
+
+
+* 3b. Invalid patient ID or name format:
+    - ToothTracker displays an error message.
+
+      Use Case Ends.
+
+**Use Case: Delete a Patient**
+
+**MSS**
+
+1. User submits a request to delete a patient:
+    - User specifies the patient ID [PATIENT ID] or patient name [PATIENT NAME] to delete.
+
+2. ToothTracker searches for the patient entry:
+    - If the request specifies [PATIENT ID]:
+        - ToothTracker looks for a patient with the matching ID.
+    - If the request specifies [PATIENT NAME]:
+        - ToothTracker searches for a patient with the matching name.
+
+3. ToothTracker shows the patient entry that matches the request:
+    - If a match is found:
+        - User confirms the deletion of the specified patient.
+
+4. ToothTracker deletes the patient:
+    - Patient entry is removed from the database.
+
+      Use Case Ends.
+
+**Extensions**
+
+* 2a. The list is empty:
+    - ToothTracker displays a message indicating no patients are available.
+
+      Use Case Ends.
+
+
+* 3a. No matching patient found:
+    - ToothTracker displays an error message.
+
+      Use Case resumes at step 2.
+
+
+* 3b. Invalid patient ID or name format:
+    - ToothTracker displays an error message.
+
+      Use Case ends.
+
+* 4a. Deletion is cancelled by the user:
+    - ToothTracker cancels the deletion process.
+    - Use Case ends.
+
+**Use case: List Patient Data**
+
+**MSS**
+
+1. User submits a request to list all patient data.
+2. ToothTracker retrieves the list of all patient data saved in the system.
+3. ToothTracker displays the list of patients to the user.
+
+   Use case ends.
+
+**Extensions**
+
+- **1a. User inputs an invalid command.**
+    - ToothTracker identifies the command error.
+        - ToothTracker prompts the user to make the necessary adjustments and provide the command in the correct format.
+    - Steps within 1a repeat until a valid `list-patient` command is provided.
+
+      Use case continues from step 2.
+
+
+- **2a. No patient data available.**
+    - ToothTracker checks and finds that there are no patient records in the system.
+    - ToothTracker informs the user that no patient data is available.
+
+      Use case continues from step 2.
+
+**Use Case: Search Patient**
+
+**MSS**
+
+1. User submits a request to search for a patient:
+    - User specifies search criteria, which can be either a patient ID [PATIENT ID] or a patient name [PATIENT NAME].
+
+2. ToothTracker searches for the patient based on the criteria:
+    - If the request specifies [PATIENT ID]:
+        - ToothTracker looks for a patient with the matching ID.
+    - If the request specifies [PATIENT NAME]:
+        - ToothTracker searches for a patient with the matching name.
+
+3. ToothTracker displays the search results:
+    - If one or more matching patients are found:
+        - ToothTracker lists the matching patients and their details.
+
+   Use Case Ends.
+
+**Extensions**
+
+* 2a. The list of patients is empty:
+    - ToothTracker displays a message indicating that no patients are available.
+
+      Use Case Ends.
+
+
+* 3a. No matching patients found:
+    - ToothTracker displays a message indicating no matching patients were found.
+
+      Use Case Ends.
+
+
+* 3b. Invalid patient ID or name format:
+    - ToothTracker displays an error message.
+
+      Use Case Ends.
+
+**Use case: Add an Appointment**
 
 **MSS**
 
 1. User submits a request to add a new future appointment, providing information about the appointment.
- Information includes dentist ID, patient ID, appointment start time and treatment provided during the appointment.
-3. ToothTracker acknowledges the request to add the new appointment.
+ Information includes dentist ID, patient ID, appointment start time and treatment provided during the appointment. 
+2. ToothTracker acknowledges the request to add the new appointment.
 
    Use case ends.
 
@@ -654,15 +1043,18 @@ Use case ends.
 
       Use case continues from step 2.
 
+
 - **1b. User inputs a treatment that does not exist in the database**
     - ToothTracker checks the database and finds that the treatment provided does not exist.
     - ToothTracker alerts the user that the treatment is not provided in the clinic.
     - Steps within 1b loop until an existing treatment is provided.
 
+
 - **1c. User inputs a dentist or patient ID that does not exist in the database**
     - ToothTracker checks the database and finds that the dentist or patient ID provided does not exist.
     - ToothTracker alerts the user that the patient or dentist with the provided patient or dentist ID does not exist in this clinic.
     - Steps within 1c loop until valid dentist and patient IDs are provided.
+
 
 - **1d. User inputs an appointment time slot that clashes with an existing one in the database**
     - ToothTracker checks the database and finds that the appointment to be added clashes with an existing one.
@@ -670,6 +1062,115 @@ Use case ends.
     - Steps within 1d loop until an appointment time slot that does not clash with an existing appointment is provided.
 
       Use case resumes at step 1.
+
+
+**Use Case: Delete an Appointment**
+
+**MSS**
+
+1. User submits a request to delete an appointment:
+    - User specifies the appointment ID [APPOINTMENT ID] to delete.
+
+2. ToothTracker searches for the appointment entry:
+   - ToothTracker looks for an appointment with the matching ID.
+
+3. ToothTracker shows the appointment entry that matches the request:
+    - If a match is found:
+        - User confirms the deletion of the specified appointment.
+
+4. ToothTracker deletes the appointment:
+    - Appointment entry is removed from the database.
+
+      Use Case Ends.
+
+**Extensions**
+
+* 2a. The list is empty:
+    - ToothTracker displays a message indicating no appointments are saved in its system.
+
+      Use Case Ends.
+
+
+* 3a. No matching appointment found:
+    - ToothTracker displays an error message.
+
+      Use Case resumes at step 2.
+
+
+* 3b. Invalid appointment ID:
+    - ToothTracker displays an error message.
+
+      Use Case ends.
+
+
+* 4a. Deletion is cancelled by the user:
+    - ToothTracker cancels the deletion process.
+    - Use Case ends.
+
+**Use case: List Appointment Data**
+
+**MSS**
+
+1. User submits a request to list all appointment data.
+2. ToothTracker retrieves the list of all appointment data saved in the system.
+3. ToothTracker displays the list of appointments to the user.
+
+   Use case ends.
+
+**Extensions**
+
+- **1a. User inputs an invalid command.**
+    - ToothTracker identifies the command error.
+        - ToothTracker prompts the user to make the necessary adjustments and provide the command in the correct format.
+    - Steps within 1a repeat until a valid `list-appointment` command is provided.
+
+      Use case continues from step 2.
+
+
+- **2a. No appointment data available.**
+    - ToothTracker checks and finds that there are no appointment records in the system.
+    - ToothTracker informs the user that no appointment data is available.
+
+      Use case continues from step 2.
+
+
+**Use Case: Filter Appointments**
+
+**MSS**
+
+1. User submits a request to filter appointments:
+    - User specifies filter criteria, which can be either a dentist ID [DENTIST ID] or a patient ID [PATIENT ID].
+
+2. ToothTracker filters appointment list based on the criteria:
+    - If the request specifies [DENTIST ID]:
+        - ToothTracker filters the appointment list by the specified dentist ID.
+    - If the request specifies [PATIENT ID]:
+        - ToothTracker filters the appointment list by the specified patient ID.
+
+3. ToothTracker displays the filter results:
+   - ToothTracker lists the matching appointments and their details.
+
+   Use Case Ends.
+
+**Extensions**
+
+* 2a. The list of appointment is empty:
+    - ToothTracker displays a message indicating that no appointments are saved in its system.
+
+      Use Case Ends.
+
+
+* 3a. No matching appointments found:
+    - ToothTracker displays a message indicating no matching appointments were found.
+
+      Use Case Ends.
+
+
+* 3b. Invalid appointment ID:
+    - ToothTracker displays an error message.
+
+      Use Case Ends.
+
 
 **Use case: Add Treatment**
 
@@ -805,8 +1306,7 @@ testers are expected to do more *exploratory* testing.
 1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 2. Re-launch ToothTracker by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
-
-4. _{ more test cases …​ }_
+3. _{ more test cases …​ }_
 
 ## Dentist
 
@@ -965,8 +1465,143 @@ Expected Output in the Dentist List: No dentist is deleted.
 
 Expected Output in Command Output Box:  Error details shown in the Command Output Box to show if it is an Invalid Dentist ID, or if it is an invalid command format.
 
+## Appointment
 
-(More to be added)
+### Adding an Appointment
+
+Prerequisite: There is at least 1 Patient `XXX`, at least 1 Dentist `Bernard Tan` and at least 1 Treatment `Braces` stored in ToothTracker.
+XXX's Patient ID is 2 and Bernard Tan's Dentist ID is 4.
+
+`add-appointment dentist/4 patient/2 start/2023-11-29 16:00 tr/Braces`
+
+Expected Output in the Appointment List: New appointment added into the Appointment List. 
+
+
+`add-appointment patient/2 start/2023-11-29 16:00 tr/Braces`
+
+Expected Output in the Command Output Box: Error message for invalid command format, prompting users with correct attributes to include.
+
+
+### Listing all Appointments
+
+Prerequisite: There is at least 1 Appointment stored in ToothTracker.
+
+`list-appointment`
+
+Expected Output in the Appointment List: All Appointments stored in ToothTracker is displayed.
+
+Expected Output in the Command Output Box: Listed all appointments!
+
+
+### Filtering Appointments by Dentist ID
+
+Prerequisite: There is at least one Appointment stored in ToothTracker with Dentist `Bernard Tan`. Bernard Tan's Dentist ID is 4.
+
+`filter-appointment dentist 4`
+
+Expected Output in the Appointment List: Appointments with Dentist `Bernard Tan` is displayed.
+Expected Output in the Command Output Box: Appointments with dentist whose dentist ID is 4 listed.
+
+`filter-appointment dentist -1`
+Expected Output in the Command Output Box: Error message for invalid ID provided.
+
+
+### Filtering Appointments by Patient ID
+
+Prerequisite: There is at least one Appointment stored in ToothTracker with Patient `XXX`. XXX's Patient ID is 2.
+
+`filter-appointment patient 2`
+
+Expected Output in the Appointment List: Appointments with Patient `XXX` is displayed.
+Expected Output in the Command Output Box: Appointments with patient whose patient ID is 2 listed.
+
+`filter-appointment patient -1`
+Expected Output in the Command Output Box: Error message for invalid ID provided.
+
+
+### Deleting an Appointment
+
+Prerequisite: There is at least 1 Appointment stored in ToothTracker.
+
+`delete-appointment 1`
+
+Expected Output in the Appointment List: Appointment with APPOINTMENT_ID 1 is deleted from the appointment list.
+
+Expected Output in the Command Output Box: Details of the deleted appointment shown.
+
+`delete-appointment -1`
+
+Expected Output in the Command Output Box: Error details shown for invalid APPOINTMENT_ID provided.
+
+## Treatment
+
+### Adding a Treatment
+
+Prerequisite: There is no Treatment, named `Braces`, stored in ToothTracker.
+
+`add-treatment tr/Braces cs/1000 ti/03:00`
+
+Expected Output in the Command Output Box: New treatment added with the details displayed.
+
+`add-treatment tr/Tooth Extraction`
+
+Expected Output in the Command Output Box: Error message for invalid command format, prompting users with correct attributes to include.
+
+
+### Listing all Treatments
+
+Prerequisite: There is at least one Treatment stored in ToothTracker.
+
+`list-treatment`
+
+Expected Output in the Command Output Box: Names of all Treatments stored in ToothTracker listed.
+
+
+### Deleting a Treatment
+
+Prerequisite: There is at least one Treatment, named `Braces`, stored in ToothTracker.
+
+`delete-treatment Braces`
+
+Expected Output in the Command Output Box: Details of the deleted Treatment shown.
+
+`delete-treatment nasojadsak`
+
+Expected Output in the Command Output Box: Error message for deleting treatment. No Treatment found with name "nasojadsak".
+
+
+## Calendar 
+
+### Viewing all appointments
+
+`view-calendar`
+
+Expected Output: The Calendar Window pops out and shows all appointments (if any).
+
+Expected Output in the Command Output Box: Calendar displayed success message.
+
+## Help
+
+`help`
+
+Expected Output: The Help Window pops out and shows a general help message.
+
+Expected Output in the Command Output Box: Opened help window.
+
+
+## Clear
+
+`clear`
+
+Expected Output in the Patient, Dentist and Appointment List: All Patients, Dentists and Appointments are cleared.
+
+Expected Output in the Command: ToothTracker cleared success message.
+
+## Exit
+
+`exit`
+
+Expected Output: ToothTracker application closes.
 
 ### Saving data
 
@@ -974,4 +1609,4 @@ Expected Output in Command Output Box:  Error details shown in the Command Outpu
 
     1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
-1. _{ more test cases …​ }_
+   2. _{ more test cases …​ }_
