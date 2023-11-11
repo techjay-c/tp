@@ -1,0 +1,17 @@
+@startuml
+skinparam ActivityFontSize 15
+skinparam ArrowFontSize 12
+start
+:User Input;
+if (valid input) then (yes)
+  :Check duplicate treatment;
+  if (no duplicate treatment) then (yes)
+    :Add treatment into ToothTracker;
+  else (no)
+    :Throw error message;
+  endif
+else (no)
+  :Throw error message;
+endif
+stop
+@enduml

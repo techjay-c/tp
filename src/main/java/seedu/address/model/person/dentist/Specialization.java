@@ -9,14 +9,30 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Specialization {
 
-    public static final String MESSAGE_CONSTRAINTS =
-            "Specialization should only contain alphanumeric characters and spaces, and it should not be blank!";
+    /**
+     * Represents the specializations recognized in ToothTracker.
+     * Source: <a href="https://www.healthprofessionals.gov.sg/dsab/specialist-training/list-of-recognised-specialties">
+     *     Dental Specialties in Singapore from MOH</a>
+     */
+    public enum RecognizedSpecialization {
+        ENDODONTICS,
+        DENTAL_PUBLIC_HEALTH,
+        ORAL_AND_MAXILLOFACIAL_SURGERY,
+        ORTHODONTICS,
+        PAEDIATRIC_DENTISTRY,
+        PERIODONTICS,
+        PROSTHODONTICS,
+    }
+
+    public static final String MESSAGE_CONSTRAINTS = getMessageConstraints();
 
     /*
      * The first character of the specialty must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    private static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
+    private static final String VALIDATION_REGEX =
+            "ENDODONTICS|DENTAL_PUBLIC_HEALTH|ORAL_AND_MAXILLOFACIAL_SURGERY|ORTHODONTICS"
+            + "|PAEDIATRIC_DENTISTRY|PERIODONTICS|PROSTHODONTICS";
 
     private final String specialization;
 
@@ -28,14 +44,21 @@ public class Specialization {
     public Specialization(String specialization) {
         requireNonNull(specialization);
         checkArgument(isValidSpecialization(specialization), MESSAGE_CONSTRAINTS);
-        this.specialization = specialization;
+        this.specialization = specialization.toUpperCase();
     }
 
     /**
      * Returns true if a given string is a valid specialization.
      */
     public static boolean isValidSpecialization(String test) {
-        return test.matches(VALIDATION_REGEX);
+        String formattedTest = test.toUpperCase().replace(" ", "_"); // Convert test to uppercase for comparison
+
+        for (RecognizedSpecialization specs : RecognizedSpecialization.values()) {
+            if (specs.name().equals(formattedTest)) {
+                return formattedTest.matches(VALIDATION_REGEX);
+            }
+        }
+        return false;
     }
 
     @Override
@@ -57,5 +80,16 @@ public class Specialization {
 
     public String getValue() {
         return specialization;
+    }
+
+    public static String getMessageConstraints() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Unrecognized Specialization entered! "
+                + "Currently the following are recognized dental specialization in Singapore:\n");
+        for (RecognizedSpecialization specs : RecognizedSpecialization.values()) {
+            sb.append(specs).append("\n");
+        }
+        sb.append("\nPlease contact ToothTracker developers if you need to modify the recognized specializations!");
+        return sb.toString();
     }
 }

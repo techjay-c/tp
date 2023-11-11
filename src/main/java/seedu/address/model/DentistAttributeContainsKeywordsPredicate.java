@@ -40,24 +40,25 @@ public class DentistAttributeContainsKeywordsPredicate implements Predicate<Dent
 
         switch (attribute.toLowerCase()) {
         case "email":
-            String email = dentist.getEmail().toString();
+            String email = dentist.getEmail().toString().toLowerCase();
             return email.contains(keywords.toLowerCase());
         case "tags":
-            String tags = dentist.getTags().toString();
+            String tags = dentist.getTags().toString().toLowerCase();
             return tags.contains(keywords.toLowerCase());
         case "phone":
-            String phone = dentist.getPhone().toString();
+            String phone = dentist.getPhone().toString().toLowerCase();
             return phone.contains(keywords.toLowerCase());
         case "name":
-            return keywords.equalsIgnoreCase(dentist.getName().toString());
+            String name = dentist.getName().toString().toLowerCase();
+            return name.contains(keywords.toLowerCase());
         case "experience":
-            String exp = dentist.getYoe().toString();
-            return exp.toLowerCase().contains(keywords.toLowerCase());
+            String exp = dentist.getYoe().toString().toLowerCase();
+            return exp.contains(keywords.toLowerCase());
         case "address":
-            String add = dentist.getAddress().toString();
+            String add = dentist.getAddress().toString().toLowerCase();
             return add.toLowerCase().contains(keywords.toLowerCase());
         case "specialization":
-            String spec = dentist.getSpecialization().toString();
+            String spec = dentist.getSpecialization().toString().toLowerCase();
             return spec.toLowerCase().contains(keywords.toLowerCase());
         default:
             return false;

@@ -10,7 +10,7 @@ markdown: kramdown
 
 repository: "AY2324S1-CS2103T-W10-3/tp"
 github_icon: "images/github-icon.png"
+faviconPath: "images/ToothTracker.png"
 
 plugins:
   - jemoji
-  - jekyll-sitemap

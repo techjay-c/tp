@@ -37,6 +37,7 @@ public class MainWindow extends UiPart<Stage> {
     private AppointmentListPanel appointmentListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private CalendarWindow calendarWindow;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -79,6 +80,7 @@ public class MainWindow extends UiPart<Stage> {
         setAccelerators();
 
         helpWindow = new HelpWindow();
+        calendarWindow = CalendarWindow.getInstance();
     }
 
     public Stage getPrimaryStage() {
@@ -171,6 +173,17 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
+    /**
+     * Opens the calendar window or focuses on it if it's already opened.
+     */
+    public void handleCalendar() {
+        if (!calendarWindow.isShowing()) {
+            calendarWindow.show();
+        } else {
+            calendarWindow.focus();
+        }
+    }
+
     void show() {
         primaryStage.show();
     }
@@ -184,6 +197,7 @@ public class MainWindow extends UiPart<Stage> {
             (int) primaryStage.getX(), (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);
         helpWindow.hide();
+        calendarWindow.hide();
         primaryStage.hide();
     }
 
@@ -205,6 +219,10 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isShowHelp()) {
                 handleHelp();
+            }
+
+            if (commandResult.isShowCalendar()) {
+                handleCalendar();
             }
 
             if (commandResult.isExit()) {

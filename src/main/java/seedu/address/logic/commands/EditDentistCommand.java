@@ -37,7 +37,8 @@ public class EditDentistCommand extends Command {
 
     public static final String COMMAND_WORD = "edit-dentist";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the dentist identified "
+    public static final String MESSAGE_USAGE =
+        COMMAND_WORD + ": Edits the details of the dentist identified "
             + "by the index number used in the displayed dentist list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: DENTIST_ID (must be a positive integer) "
@@ -50,7 +51,7 @@ public class EditDentistCommand extends Command {
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
-            + PREFIX_EMAIL + "johndoe@example.com"
+            + PREFIX_EMAIL + "johndoe@example.com "
             + PREFIX_SPECIALIZATION + "Orthodontics";
 
     public static final String MESSAGE_EDIT_DENTIST_SUCCESS = "Edited Dentist: %1$s";
@@ -61,7 +62,7 @@ public class EditDentistCommand extends Command {
     private final EditDentistDescriptor editDentistDescriptor;
 
     /**
-     * @param dentistId of the dentist in the filtered dentist list to edit
+     * @param dentistId             of the dentist in the filtered dentist list to edit
      * @param editDentistDescriptor details to edit the dentist with
      */
     public EditDentistCommand(long dentistId, EditDentistDescriptor editDentistDescriptor) {
@@ -84,40 +85,43 @@ public class EditDentistCommand extends Command {
             }
             Dentist editedDentist = createEditedDentist(dentistToEdit, editDentistDescriptor);
 
-            if (!dentistToEdit.isSamePerson(editedDentist) && model.hasPerson(editedDentist)) {
+            if (!dentistToEdit.isSameDentist(editedDentist) && model.hasDentist(editedDentist)) {
                 throw new CommandException(MESSAGE_DUPLICATE_DENTIST);
             }
 
             model.setDentist(dentistToEdit, editedDentist);
             model.updateFilteredDentistList(PREDICATE_SHOW_ALL_DENTISTS);
-            return new CommandResult(String.format(MESSAGE_EDIT_DENTIST_SUCCESS, Messages.format(editedDentist)));
+            return new CommandResult(
+                String.format(MESSAGE_EDIT_DENTIST_SUCCESS, Messages.format(editedDentist)));
 
         } catch (Exception e) {
-            throw new CommandException("An error occurred while editing the dentist: " + e.getMessage()
-                    + " Please use list-dentists or search-dentist to get the intended Dentist on the screen first.");
+            throw new CommandException(e.getMessage());
         }
 
     }
 
     /**
-     * Creates and returns a {@code Person} with the details of {@code personToEdit}
-     * edited with {@code editPersonDescriptor}.
+     * Creates and returns a {@code Dentist} with the details of {@code dentistToEdit}
+     * edited with {@code editDentistDescriptor}.
      */
-    private static Dentist createEditedDentist(Dentist dentistToEdit, EditDentistDescriptor editDentistDescriptor) {
+    private static Dentist createEditedDentist(Dentist dentistToEdit,
+        EditDentistDescriptor editDentistDescriptor) {
         assert dentistToEdit != null;
 
         Name updatedName = editDentistDescriptor.getName().orElse(dentistToEdit.getName());
         Phone updatedPhone = editDentistDescriptor.getPhone().orElse(dentistToEdit.getPhone());
         Email updatedEmail = editDentistDescriptor.getEmail().orElse(dentistToEdit.getEmail());
-        Address updatedAddress = editDentistDescriptor.getAddress().orElse(dentistToEdit.getAddress());
+        Address updatedAddress = editDentistDescriptor.getAddress()
+            .orElse(dentistToEdit.getAddress());
         Specialization updatedSpecialization = editDentistDescriptor.getSpecialization()
-                .orElse(dentistToEdit.getSpecialization());
+            .orElse(dentistToEdit.getSpecialization());
         Yoe updatedYoe = editDentistDescriptor.getYoe().orElse(dentistToEdit.getYoe());
         long dentistIdRemains = dentistToEdit.getId(); //ID Must not change!
         Set<Tag> updatedTags = editDentistDescriptor.getTags().orElse(dentistToEdit.getTags());
 
-        return new Dentist(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedSpecialization,
-                updatedYoe, dentistIdRemains, updatedTags);
+        return new Dentist(updatedName, updatedPhone, updatedEmail, updatedAddress,
+            updatedSpecialization,
+            updatedYoe, dentistIdRemains, updatedTags);
     }
 
     @Override
@@ -133,22 +137,23 @@ public class EditDentistCommand extends Command {
 
         EditDentistCommand otherEditCommand = (EditDentistCommand) other;
         return dentistId == (otherEditCommand.dentistId)
-                && editDentistDescriptor.equals(otherEditCommand.editDentistDescriptor);
+            && editDentistDescriptor.equals(otherEditCommand.editDentistDescriptor);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("dentistId", dentistId)
-                .add("editDentistDescriptor", editDentistDescriptor)
-                .toString();
+            .add("dentistId", dentistId)
+            .add("editDentistDescriptor", editDentistDescriptor)
+            .toString();
     }
 
     /**
-     * Stores the details to edit the person with. Each non-empty field value will replace the
-     * corresponding field value of the person.
+     * Stores the details to edit the dentist with. Each non-empty field value will replace the
+     * corresponding field value of the dentist.
      */
     public static class EditDentistDescriptor {
+
         private Name name;
         private Phone phone;
         private Email email;
@@ -158,11 +163,11 @@ public class EditDentistCommand extends Command {
         private long dentistId;
         private Set<Tag> tags;
 
-        public EditDentistDescriptor() {}
+        public EditDentistDescriptor() {
+        }
 
         /**
-         * Copy constructor.
-         * A defensive copy of {@code tags} is used internally.
+         * Copy constructor. A defensive copy of {@code tags} is used internally.
          */
         public EditDentistDescriptor(EditDentistDescriptor toCopy) {
             setName(toCopy.name);
@@ -179,7 +184,7 @@ public class EditDentistCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags);
+            return CollectionUtil.isAnyNonNull(name, phone, email, address, specialization, yoe, tags);
         }
 
         public void setName(Name name) {
@@ -239,20 +244,20 @@ public class EditDentistCommand extends Command {
         }
 
         /**
-         * Sets {@code tags} to this object's {@code tags}.
-         * A defensive copy of {@code tags} is used internally.
+         * Sets {@code tags} to this object's {@code tags}. A defensive copy of {@code tags} is used
+         * internally.
          */
         public void setTags(Set<Tag> tags) {
             this.tags = (tags != null) ? new HashSet<>(tags) : null;
         }
 
         /**
-         * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
-         * if modification is attempted.
-         * Returns {@code Optional#empty()} if {@code tags} is null.
+         * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException} if
+         * modification is attempted. Returns {@code Optional#empty()} if {@code tags} is null.
          */
         public Optional<Set<Tag>> getTags() {
-            return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
+            return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags))
+                : Optional.empty();
         }
 
         @Override
@@ -267,25 +272,28 @@ public class EditDentistCommand extends Command {
             }
 
             EditDentistDescriptor otherEditDentistDescriptor = (EditDentistDescriptor) other;
-            return Objects.equals(name, otherEditDentistDescriptor.getName())
-                    && Objects.equals(phone, otherEditDentistDescriptor.getPhone())
-                    && Objects.equals(email, otherEditDentistDescriptor.getEmail())
-                    && Objects.equals(address, otherEditDentistDescriptor.getAddress())
-                    && Objects.equals(specialization, otherEditDentistDescriptor.getSpecialization())
-                    && Objects.equals(yoe, otherEditDentistDescriptor.getYoe())
-                    && Objects.equals(dentistId, otherEditDentistDescriptor.getDentistId())
-                    && Objects.equals(tags, otherEditDentistDescriptor.tags);
+            return Objects.equals(name, otherEditDentistDescriptor.getName().get())
+                && Objects.equals(phone, otherEditDentistDescriptor.getPhone().get())
+                && Objects.equals(email, otherEditDentistDescriptor.getEmail().get())
+                && Objects.equals(address, otherEditDentistDescriptor.getAddress().get())
+                && Objects.equals(specialization,
+                otherEditDentistDescriptor.getSpecialization().get())
+                && Objects.equals(yoe, otherEditDentistDescriptor.getYoe().get())
+                && Objects.equals(dentistId, otherEditDentistDescriptor.getDentistId().get())
+                && Objects.equals(tags, otherEditDentistDescriptor.tags);
         }
 
         @Override
         public String toString() {
             return new ToStringBuilder(this)
-                    .add("name", name)
-                    .add("phone", phone)
-                    .add("email", email)
-                    .add("address", address)
-                    .add("tags", tags)
-                    .toString();
+                .add("name", name)
+                .add("phone", phone)
+                .add("email", email)
+                .add("address", address)
+                .add("specialization", specialization)
+                .add("yoe", yoe)
+                .add("tags", tags)
+                .toString();
         }
     }
 }

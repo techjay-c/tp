@@ -14,8 +14,8 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Remark;
-import seedu.address.model.person.Service;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.treatment.TreatmentName;
 
 /**
  * Represents a Patient in the address book. Guarantees: details are present and not null, field
@@ -28,7 +28,7 @@ public class Patient extends Person {
     private final Birthdate birthdate;
     private final Remark remark;
 
-    private final Service service;
+    private final TreatmentName treatmentName;
 
     private long id;
 
@@ -40,22 +40,22 @@ public class Patient extends Person {
      * @param birthdate   patients birthday
      * @param gender      patients gender
      * @param remark      general remark for the patient
-     * @param service     dental service that the patients needs
+     * @param treatmentName    dental treatment that the patients needs
      * @param address     address of patient
      * @param email       email of patient
      * @param tags        tags
      */
     public Patient(Name name, Phone phone, Birthdate birthdate, Gender gender,
-        Remark remark, Service service, Address address, Email email, Set<Tag> tags
+        Remark remark, TreatmentName treatmentName, Address address, Email email, Set<Tag> tags
     ) {
         super(name, phone, email, address, tags);
-        requireAllNonNull(name, phone, birthdate, gender, remark, service, address, email,
+        requireAllNonNull(name, phone, birthdate, gender, remark, treatmentName, address, email,
             tags);
 
         this.gender = gender;
         this.birthdate = birthdate;
         this.remark = remark;
-        this.service = service;
+        this.treatmentName = treatmentName;
         this.id = -1;
 
     }
@@ -68,24 +68,24 @@ public class Patient extends Person {
      * @param birthdate   patients birthday
      * @param gender      patients gender
      * @param remark      general remark for the patient
-     * @param service     dental service that the patients needs
+     * @param treatmentName     dental treatment that the patients needs
      * @param address     address of patient
      * @param email       email of patient
      * @param id          id of patient
      * @param tags        tags
      */
     public Patient(Name name, Phone phone, Birthdate birthdate, Gender gender,
-        Remark remark, Service service, Address address, Email email, long id,
+        Remark remark, TreatmentName treatmentName, Address address, Email email, long id,
         Set<Tag> tags
     ) {
         super(name, phone, email, address, tags);
-        requireAllNonNull(name, phone, birthdate, gender, remark, service, address, email,
+        requireAllNonNull(name, phone, birthdate, gender, remark, treatmentName, address, email,
             tags, id);
 
         this.gender = gender;
         this.birthdate = birthdate;
         this.remark = remark;
-        this.service = service;
+        this.treatmentName = treatmentName;
         this.id = id;
 
     }
@@ -110,8 +110,8 @@ public class Patient extends Person {
         return remark;
     }
 
-    public Service getService() {
-        return service;
+    public TreatmentName getTreatmentName() {
+        return treatmentName;
     }
 
 
@@ -152,7 +152,7 @@ public class Patient extends Person {
             && getGender().equals(otherPerson.getGender())
             && getBirthdate().equals(otherPerson.getBirthdate())
             && getRemark().equals(otherPerson.getRemark())
-            && getService().equals(otherPerson.getService())
+            && getTreatmentName().equals(otherPerson.getTreatmentName())
             && id == otherPerson.getId();
     }
 
@@ -160,7 +160,7 @@ public class Patient extends Person {
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
         return Objects.hash(super.getName(), super.getPhone(), super.getEmail(), super.getAddress(),
-            super.getTags(), getGender(), getBirthdate(), getRemark(), getService(), id);
+            super.getTags(), getGender(), getBirthdate(), getRemark(), getTreatmentName(), id);
     }
 
     @Override
@@ -171,7 +171,7 @@ public class Patient extends Person {
             .add("birthday", getBirthdate())
             .add("gender", getGender())
             .add("remark", getRemark())
-            .add("service", getService())
+            .add("treatment", getTreatmentName())
             .add("address", super.getAddress())
             .add("email", super.getEmail())
             .add("id", id)

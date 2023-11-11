@@ -17,6 +17,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.patients.Patient;
 import seedu.address.model.treatment.Treatment;
+import seedu.address.model.treatment.TreatmentName;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -155,6 +156,8 @@ public class ModelManager implements Model {
     @Override
     public Appointment getAppointmentById(long appointmentId) {
         requireNonNull(appointmentId);
+        Predicate<Appointment> appointmentPredicate = appointment -> true;
+        updateFilteredAppointmentList(appointmentPredicate);
         ObservableList<Appointment> filteredAppointment = getFilteredAppointmentList();
 
         for (Appointment appointment : filteredAppointment) {
@@ -239,6 +242,13 @@ public class ModelManager implements Model {
         requireAllNonNull(target, editedDentist);
 
         addressBook.setDentist(target, editedDentist);
+    }
+
+    @Override
+    public void setPatient(Patient target, Patient editedPatient) {
+        requireAllNonNull(target, editedPatient);
+
+        addressBook.setPatient(target, editedPatient);
     }
 
     @Override
@@ -328,6 +338,12 @@ public class ModelManager implements Model {
     public boolean hasTreatment(Treatment treatment) {
         requireNonNull(treatment);
         return addressBook.hasTreatment(treatment);
+    }
+
+    @Override
+    public boolean hasTreatmentName(TreatmentName treatmentName) {
+        requireNonNull(treatmentName);
+        return addressBook.hasTreatmentName(treatmentName);
     }
 
     @Override

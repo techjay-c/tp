@@ -2,6 +2,7 @@ package seedu.address.model.appointments;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Represents the date and time of an appointment in ToothTracker.
@@ -62,7 +63,9 @@ public class AppointmentTime {
                 && (this.getStart().isAfter(otherStartTime)))
                 || (otherStartTime.isEqual(this.getStart()))
                 || ((this.getEnd().isBefore(otherEndTime))
-                        && (this.getEnd().isAfter(otherStartTime)));
+                        && (this.getEnd().isAfter(otherStartTime)))
+                || ((this.getStart().isAfter(otherStartTime)) && (this.getEnd().isBefore(otherEndTime)))
+                || ((otherStartTime.isAfter(this.getStart())) && (otherEndTime.isBefore(this.getEnd())));
     }
 
     public static boolean isValidDate(String test) {
@@ -92,5 +95,44 @@ public class AppointmentTime {
         return startTimeToString() + " - " + endTimeToString();
     }
 
+    /**
+     * Converts the appointment start time to a formatted string representation.
+     *
+     * @return A string representation of the appointment start time in the format "yyyy-MM-dd HH:mm".
+     */
+    public String startString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        String formattedDateTime = start.format(formatter);
+        return formattedDateTime;
+    }
+
+    /**
+     * Converts the duration of the appointment to a formatted string representation.
+     *
+     * @return A string representation of the duration of the appointment in the format "X hours and Y minutes",
+     *         where X is the number of hours and Y is the number of minutes.
+     */
+    public String durationString() {
+        long hours = duration.toHours();
+        long minutes = duration.toMinutesPart();
+        String durationString = hours + " hours and " + minutes + " minutes";
+        return durationString;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof AppointmentTime)) {
+            return false;
+        }
+
+        AppointmentTime otherAppointmentTime = (AppointmentTime) other;
+
+        return appointmentTimeToString().equals(otherAppointmentTime.appointmentTimeToString());
+    }
 
 }

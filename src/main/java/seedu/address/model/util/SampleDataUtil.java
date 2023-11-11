@@ -14,7 +14,6 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Remark;
-import seedu.address.model.person.Service;
 import seedu.address.model.person.dentist.Dentist;
 import seedu.address.model.person.dentist.Specialization;
 import seedu.address.model.person.dentist.Yoe;
@@ -42,7 +41,7 @@ public class SampleDataUtil {
     public static Patient[] getSamplePatients() {
         return new Patient[]{
             new Patient(new Name("Alex Yeohh"), new Phone("87438807"), new Birthdate("03-02-1999"),
-                new Gender("F"), new Remark("Peanuts Allergy"), new Service("Cleaning"),
+                new Gender("F"), new Remark("Peanuts Allergy"), new TreatmentName("Braces"),
                 new Address("Blk 30 Geylang Street 29, #06-40"),
                 new Email("alexyeoh@example.com"),
                 getTagSet("friends"))
@@ -52,7 +51,17 @@ public class SampleDataUtil {
     public static Treatment[] getSampleTreatments() {
         return new Treatment[]{
             new Treatment(new TreatmentName("Braces"), new TreatmentCost("1080"),
-                new TreatmentTime("03:00"))
+                new TreatmentTime("03:00")),
+            new Treatment(new TreatmentName("Whitening"), new TreatmentCost("999"),
+                new TreatmentTime("01:30")),
+            new Treatment(new TreatmentName("WisdomTooth"), new TreatmentCost("1050"),
+                new TreatmentTime("02:00")),
+            new Treatment(new TreatmentName("Scaling"), new TreatmentCost("9999"),
+                new TreatmentTime("03:00")),
+            new Treatment(new TreatmentName("Root Canal"), new TreatmentCost("1432"),
+                new TreatmentTime("05:00")),
+            new Treatment(new TreatmentName("Polishing"), new TreatmentCost("4000"),
+                new TreatmentTime("04:00"))
         };
     }
 
@@ -60,12 +69,12 @@ public class SampleDataUtil {
         return new Dentist[]{
             new Dentist(new Name("Alex Yeoh"), new Phone("87438807"),
                 new Email("alexyeoh@example.com"),
-                new Address("Blk 30 Geylang Street 29, #06-40"), new Specialization("Orthodintics"),
+                new Address("Blk 30 Geylang Street 29, #06-40"), new Specialization("ORTHODONTICS"),
                 new Yoe("6"), getTagSet("friends")),
             new Dentist(new Name("Bernice Yu"), new Phone("99272758"),
                 new Email("berniceyu@example.com"),
                 new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"),
-                new Specialization("Whitening"),
+                new Specialization("DENTAL_PUBLIC_HEALTH"),
                 new Yoe("5"), getTagSet("colleagues", "friends"))
         };
     }

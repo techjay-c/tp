@@ -18,16 +18,16 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Remark;
-import seedu.address.model.person.Service;
 import seedu.address.model.person.patients.Patient;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.treatment.TreatmentName;
 
 /**
  * Jackson-friendly version of {@link Person}.
  */
 class JsonAdaptedPatient {
 
-    public static final String MISSING_FIELD_MESSAGE_FORMAT = "Person's %s field is missing!";
+    public static final String MISSING_FIELD_MESSAGE_FORMAT = "Patient's %s field is missing!";
 
     private final String name;
     private final String phone;
@@ -38,7 +38,7 @@ class JsonAdaptedPatient {
     private final String birthdate;
     private final String remark;
 
-    private final String service;
+    private final String treatment;
 
     private final String id;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
@@ -53,7 +53,7 @@ class JsonAdaptedPatient {
         @JsonProperty("birthdate") String birthdate,
         @JsonProperty("gender") String gender,
         @JsonProperty("remark") String remark,
-        @JsonProperty("service") String service,
+        @JsonProperty("treatment") String treatment,
         @JsonProperty("address") String address,
         @JsonProperty("email") String email,
         @JsonProperty("id") String id,
@@ -66,7 +66,7 @@ class JsonAdaptedPatient {
         this.birthdate = birthdate;
         this.gender = gender;
         this.remark = remark;
-        this.service = service;
+        this.treatment = treatment;
         this.id = id;
         if (tags != null) {
             this.tags.addAll(tags);
@@ -84,7 +84,7 @@ class JsonAdaptedPatient {
         gender = source.getGender().value;
         birthdate = source.getBirthdate().value;
         remark = source.getRemark().value;
-        service = source.getService().value;
+        treatment = source.getTreatmentName().value;
         id = String.valueOf(source.getId());
         tags.addAll(source.getTags().stream()
             .map(JsonAdaptedTag::new)
@@ -166,14 +166,14 @@ class JsonAdaptedPatient {
         }
         final Remark modelRemark = new Remark(remark);
 
-        if (service == null) {
+        if (treatment == null) {
             throw new IllegalValueException(
-                String.format(MISSING_FIELD_MESSAGE_FORMAT, Service.class.getSimpleName()));
+                String.format(MISSING_FIELD_MESSAGE_FORMAT, TreatmentName.class.getSimpleName()));
         }
-        if (!Service.isValidService(service)) {
-            throw new IllegalValueException(Service.MESSAGE_CONSTRAINTS);
+        if (!TreatmentName.isValidName(treatment)) {
+            throw new IllegalValueException(TreatmentName.MESSAGE_CONSTRAINTS);
         }
-        final Service modelService = new Service(service);
+        final TreatmentName modelTreatment = new TreatmentName(treatment);
 
         final Set<Tag> modelTags = new HashSet<>(patientags);
 
@@ -184,8 +184,7 @@ class JsonAdaptedPatient {
         long lid = Long.parseLong(id);
 
         return new Patient(modelName, modelPhone, modelBirthdate, modelGender, modelRemark,
-            modelService,
-            modelAddress, modelEmail, lid, modelTags);
+            modelTreatment, modelAddress, modelEmail, lid, modelTags);
     }
 
 }

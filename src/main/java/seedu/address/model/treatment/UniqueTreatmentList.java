@@ -9,10 +9,10 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
-import seedu.address.model.person.exceptions.PersonNotFoundException;
+import seedu.address.model.person.exceptions.TreatmentNotFoundException;
 
 /**
- * A list of unique  treatments
+ * A list of unique treatments
  */
 public class UniqueTreatmentList implements Iterable<Treatment> {
 
@@ -21,7 +21,7 @@ public class UniqueTreatmentList implements Iterable<Treatment> {
         FXCollections.unmodifiableObservableList(internalList);
 
     /**
-     * Returns true if the list contains an equivalent person as the given argument.
+     * Returns true if the list contains an equivalent Treatment as the given argument.
      */
     public boolean contains(Treatment toCheck) {
         requireNonNull(toCheck);
@@ -29,7 +29,15 @@ public class UniqueTreatmentList implements Iterable<Treatment> {
     }
 
     /**
-     * Adds a person to the list. The person must not already exist in the list.
+     * Returns true if the list contains an equivalent TreatmentName as the given argument.
+     */
+    public boolean contains(TreatmentName toCheck) {
+        requireNonNull(toCheck);
+        return internalList.stream().map(Treatment::getName).anyMatch(toCheck::isSameTreatmentName);
+    }
+
+    /**
+     * Adds a Treatment to the list. The Treatment must not already exist in the list.
      */
     public void add(Treatment toAdd) {
         requireNonNull(toAdd);
@@ -40,15 +48,15 @@ public class UniqueTreatmentList implements Iterable<Treatment> {
     }
 
     /**
-     * Replaces the person {@code target} in the list with {@code editedPerson}. {@code target} must
-     * exist in the list. The person identity of {@code editedPerson} must not be the same as
-     * another existing person in the list.
+     * Replaces the treatment {@code target} in the list with {@code editedTreatment}. {@code target} must
+     * exist in the list. The treatment identity of {@code editedTreatment} must not be the same as
+     * another existing treatment in the list.
      */
     public void setTreatment(Treatment target, Treatment editedTreatment) {
         requireAllNonNull(target, editedTreatment);
         int index = internalList.indexOf(target);
         if (index == -1) {
-            throw new PersonNotFoundException();
+            throw new TreatmentNotFoundException();
         }
 
         if (!target.isSameTreatment(editedTreatment) && contains(editedTreatment)) {
@@ -59,12 +67,12 @@ public class UniqueTreatmentList implements Iterable<Treatment> {
     }
 
     /**
-     * Removes the equivalent person from the list. The person must exist in the list.
+     * Removes the equivalent treatment from the list. The treatment must exist in the list.
      */
     public void remove(Treatment toRemove) {
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {
-            throw new PersonNotFoundException();
+            throw new TreatmentNotFoundException();
         }
     }
 
@@ -74,16 +82,16 @@ public class UniqueTreatmentList implements Iterable<Treatment> {
     }
 
     /**
-     * Replaces the contents of this list with {@code persons}. {@code persons} must not contain
-     * duplicate persons.
+     * Replaces the contents of this list with {@code treatments}. {@code treatments} must not contain
+     * duplicate treatments.
      */
-    public void setTreatments(List<Treatment> patients) {
-        requireAllNonNull(patients);
-        if (!treatmentsAreUnique(patients)) {
+    public void setTreatments(List<Treatment> treatments) {
+        requireAllNonNull(treatments);
+        if (!treatmentsAreUnique(treatments)) {
             throw new DuplicatePersonException();
         }
 
-        internalList.setAll(patients);
+        internalList.setAll(treatments);
     }
 
     /**
@@ -124,7 +132,7 @@ public class UniqueTreatmentList implements Iterable<Treatment> {
     }
 
     /**
-     * Returns true if {@code persons} contains only unique persons.
+     * Returns true if {@code treatments} contains only unique treatments.
      */
     private boolean treatmentsAreUnique(List<Treatment> treatments) {
         for (int i = 0; i < treatments.size() - 1; i++) {

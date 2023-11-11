@@ -11,11 +11,11 @@ import javafx.collections.ObservableList;
 
 /**
  * A list of appointments that enforces uniqueness between its elements and does not allow nulls.
- * A unique appointment is determined by {@link Appointment#isSameAppointmentTime(Appointment)}.
+ * A unique appointment is determined by {@link Appointment#isSameAppointment(Appointment)}.
  *
  * Supports a minimal set of list operations.
  *
- * @see Appointment#isSameAppointmentTime(Appointment)
+ * @see Appointment#isSameAppointment(Appointment)
  */
 public class UniqueAppointmentList implements Iterable<Appointment> {
     private final ObservableList<Appointment> internalList = FXCollections.observableArrayList();
@@ -74,7 +74,7 @@ public class UniqueAppointmentList implements Iterable<Appointment> {
      */
     public boolean contains(Appointment toCheck) {
         requireNonNull(toCheck);
-        return internalList.stream().anyMatch(toCheck::isSameAppointmentTime);
+        return internalList.stream().anyMatch(toCheck::isSameAppointment);
     }
 
     /**
