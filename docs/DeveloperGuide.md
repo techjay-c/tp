@@ -1163,10 +1163,13 @@ Use case ends.
 * **GUI**: graphical user interface, a visual way of interacting with a computer program
 * **PlantUML**: A tool which is used to create diagrams
 * **API**: Application Programming Interface
+* **Dentist List**: The list of dentists displayed in ToothTracker
+* **Patient List**: The list of patients displayed in ToothTracker
+* **Appointment List**: The list of appointments displayed in ToothTracker
 
 --------------------------------------------------------------------------------------------------------------------
 
-# **Appendix: Instructions for manual testing**
+## **Appendix: Instructions for manual testing**
 
 Given below are instructions to test the app manually.
 
@@ -1175,25 +1178,25 @@ testers are expected to do more *exploratory* testing.
 
 </div>
 
-## Launch and shutdown
+### Launch and shutdown
 
-### Initial launch
+#### Initial launch
 
 1. Download the jar file and copy into an empty folder
 2. Double-click the jar file.<br>
    Expected: Shows the GUI with a set of sample patients and dentists. The window size may not be
    optimum. It is recommended to use ToothTracker at full screen.
 
-### Saving window preferences
+#### Saving window preferences
 
 1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 2. Re-launch ToothTracker by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 3. _{ more test cases …​ }_
 
-## Dentist
+### Dentist
 
-### Adding a Dentist
+#### Adding a Dentist
 
 Adding a dentist into ToothTracker's Dentist List.
 
@@ -1202,24 +1205,30 @@ Adding a dentist into ToothTracker's Dentist List.
 Expected Output in the Dentist List: New dentist added into the Dentist List. The email and address will contain Default placeholders.
 
 Expected Output in the Command Output Box: New dentist added message is displayed with the dentist credentials.
+<br><br>
 
 `add-dentist n/Oliver Lim`
 
-Expected Output in the Command Output Box: Error message for invalid command format, prompting users with correct attributes to include.
+Expected Output in the Dentist List: No new dentist added.
 
-### Listing all Dentists
+Expected Output in the Command Output Box: Error message for invalid command format.
+<br><br>
+
+#### Listing all Dentists
 
 Prerequisite: There is at least 1 Dentist stored in ToothTracker
 `list-dentist`
 
-Expected Output in the Dentist List. All Dentists stored in ToothTracker is displayed.
+Expected Output in the Dentist List. All Dentists stored in ToothTracker are displayed.
 
-Expected Output in the Command Output Box: Listed all Dentist!
+Expected Output in the Command Output Box: Listed all dentists!
+<br><br>
 
-### Edit a Dentist
+#### Editing a Dentist
 
-Prerequisite: There is at least 1 Dentist stored in ToothTracker.
-In this example, we assume there are two dentists with the following attributes:<br>
+Prerequisite: There is at least 1 Dentist stored in ToothTracker. 
+In this example, we assume there are two dentists with the following attributes:
+<br><br>
 **Dentist 1**
 * Name: `Xavier Tan`
 * Phone: `90895772`
@@ -1240,46 +1249,53 @@ In this example, we assume there are two dentists with the following attributes:
 * Dentist ID: `4`
 * Tag: `Trainee`
 
+<br>
 In each of the test case below, we further assume that the state of Dentist objects are always starting from the above attributes.
+<br><br>
 
 `edit-dentist 1 n/Xaveric Tan Ming Yuan`
 
 Expected Output in the Dentist List: The name of dentist with ID 1 is changed to `Xaveric Tan Ming Yuan`.
 
 Expected Output in the Command Output Box: Dentist successfully edited message, along with the updated attributes.
+<br><br>
 
 `edit-dentist 4 p/98984477 e/btan@yahoo.com`
 
 Expected Output in the Dentist List: The phone of the dentist with ID 4 is changed to `98984477`, and the email is changed to `btan@yahoo.com`.
 
 Expected Output in the Command Output Box: Similar to above.
+<br><br>
 
 `edit-dentist 4 h/Blk 653 #03-44, Bishan Ave 4, S622653`
 
 Expected Output in the Dentist List: The address of the dentist with ID 4 is changed to `Blk 653 #03-44, Bishan Ave 4, S622653`.
 
 Expected Output in the Command Output Box: Similar to above.
+<br><br>
 
 `edit-dentist 99`
 
 Expected Output in the Dentist List: No dentist is edited.
 
 Expected Output in the Command Output Box: Error details shown for invalid ID provided.
+<br><br>
 
 `edit-dentist`
 
 Expected Output in the Dentist List: No dentist is edited.
 
 Expected Output in the Command Output Box: Error details shown for invalid command format.
+<br><br>
 
 `edit-dentist 1 n/Bernard Tan`
 
 Expected Output in the Dentist List: No dentist is edited.
 
 Expected Output in the Command Output Box: Error details shown for attempting to edit a dentist into another existing dentist.
+<br><br>
 
-
-### Searching for a Dentist by Keyword
+#### Searching for a Dentist by Keyword
 Prerequisite: There are only two dentists named `Xavier Tan` and `Bernard Tan` stored in ToothTracker.
 
 `search-dentist Xavier`
@@ -1287,20 +1303,23 @@ Prerequisite: There are only two dentists named `Xavier Tan` and `Bernard Tan` s
 Expected Output in the Dentist List: `Xavier Tan` dentist is displayed.
 
 Expected Output in the Command Output Box: 1 dentists listed!
+<br><br>
 
 `search-dentist Bernard`
 
 Expected Output in the Dentist List: `Bernard Tan` dentist is displayed.
 
 Expected Output in the Command Output Box: 1 dentists listed!
+<br><br>
 
 `search-dentist Tan`
 
 Expected Output in the Dentist List: `Xavier Tan` and `Bernard Tan` dentists are displayed.
 
 Expected Output in the Command Output Box: 2 dentists listed!
+<br><br>
 
-### Searching for a dentist by Dentist ID
+#### Searching for a dentist by Dentist ID
 
 Prerequisite: There are only two dentists named `Xavier Tan` and `Bernard Tan` stored in ToothTracker.
 Xavier Tan's Dentist ID is `1` and Bernard Tan's Dentist ID is 4 (Dentists with ID 2 and 3 are assumed to be removed previously).
@@ -1310,20 +1329,69 @@ Xavier Tan's Dentist ID is `1` and Bernard Tan's Dentist ID is 4 (Dentists with 
 Expected Output in the Dentist List: `Xavier Tan` dentist is displayed.
 
 Expected Output in the Command Output Box: Dentist with dentist ID 1 found.
+<br><br>
 
 `search-dentist 4`
 
 Expected Output in the Dentist List: `Bernard Tan` dentist is displayed.
 
 Expected Output in the Command Output Box: 1 dentists listed!
+<br><br>
 
 `search-dentist 999`
 
 Expected Output in the Dentist List: No dentist displayed.
 
-Expected Output in the Command Output Box: No dentist found with dentist ID 666.
+Expected Output in the Command Output Box: No dentist found with dentist ID 999.
+<br><br>
 
-### Deleting a Dentist
+#### Filtering for dentists with a given attribute
+
+Filter dentists with a given attribute and a corresponding keyword.
+The attributes are preceded with `a/` while the keywords are preceded with `k/`.
+
+`filter-dentist a/name k/Tan`
+
+Expected Success Output in Dentist List: dentists who have `Tan` in their full name will be shown. <br> For instance, `Xavier Tan` and `Xaveric Tan` will be shown if they exist in ToothTracker Dentist List.
+
+Expected Success Output in the Command Output Box: Filtered dentists by `ATTRIBUTE` with keyword: `KEYWORD`. <br> For the given example here, it will be "Filtered dentists by name with keyword: Tan."
+
+Expected Failure Output in Dentist List: No dentists will be shown in the list, since the filtered list contains nothing.
+
+Expected Failure Output in Command Out Box: No dentists found with `ATTRIBUTE`: `KEYWORD`. <br> For the given example above, it will be "No dentists found with name: Tan."
+<br><br>
+
+`filter-dentist a/specialization k/Orthodontics`
+
+Expected Success Output in Dentist List: dentists who have `Orthodontics` as their Specialization will be shown. <br>
+
+Expected Success Output in the Command Output Box: Filtered dentists by `ATTRIBUTE` with keyword: `KEYWORD`. <br> For the given example here, it will be "Filtered dentists by specialization with keyword: Orthodontics."
+
+Expected Failure Output in Dentist List: No dentists will be shown in the list, since the filtered list contains nothing.
+
+Expected Failure Output in Command Out Box: No dentists found with `ATTRIBUTE`: `KEYWORD`. <br> For the given example above, it will be "No dentists found with email: Orthodontics."
+<br><br>
+
+`filter-dentist a/email a/name k/gmail`
+
+Expected Output in Dentist List: No changes. <br>
+
+Expected Output in the Command Output Box: An error message for invalid command format.
+<br><br>
+
+`filter-dentist a/invalidAttribute k/randomValues`
+
+Expected Output in Dentist List: No changes.
+
+Expected Output in the Command Output Box: A message saying that an invalid attribute has been given, and lists out the valid attributes for `filter-dentist`.
+<br><br>
+
+<div markdown="span" class="alert alert-info">:information_source: **Valid attributes for <code>filter-dentist</code>:** 
+<code>name</code> , <code>phone</code>, <code>email</code>, <code>address</code>, <code>specialization</code>, <code>experience</code>, <code>tags</code>.
+</div>
+<br><br>
+
+#### Deleting a Dentist
 
 Deleting a dentist while all dentists are being shown
 
@@ -1334,12 +1402,14 @@ Prerequisites: List all dentists using the `list-dentist` command. Multiple dent
 Expected Output in the Dentist List: Dentist with DENTIST_ID 1 is deleted from the dentist list.
 
 Expected Output in Command Output Box: Details of the deleted dentist shown.
+<br><br>
 
 `delete-dentist -1`
 
 Expected Output in the Dentist List: No dentist is deleted.
 
 Expected Output in Command Output Box: Error details shown for invalid ID provided.
+<br><br>
 
 Other incorrect delete commands to try:<br>
 `delete-dentist`, `delete-dentist x`, `...` <br>(where x is not a valid Dentist ID)
@@ -1348,9 +1418,242 @@ Expected Output in the Dentist List: No dentist is deleted.
 
 Expected Output in Command Output Box:  Error details shown in the Command Output Box to show if it is an Invalid Dentist ID, or if it is an invalid command format.
 
-## Appointment
+### Patient
 
-### Adding an Appointment
+#### Adding a Patient
+
+Adding a patient into ToothTracker's Patient List.
+
+`add-patient n/Tommy Chua Chi Yang p/97793115 b/25-10-1998 g/M`
+
+Expected Output in the Patient List: New patient added into the Dentist List. The email, address, remark and treatment of the patient will contain Default placeholders.
+
+Expected Output in the Command Output Box: New patient added message is displayed with the patient credentials.
+<br><br>
+
+`add-patient n/Oliver Lim`
+
+Expected Output in the Patient List: No new patient added.
+
+Expected Output in the Command Output Box: Error message for invalid command format.
+<br><br>
+
+#### Listing all Patients
+
+Prerequisite: There is at least 1 Patient stored in ToothTracker
+`list-patient`
+
+Expected Output in the Patient List. All Patients stored in ToothTracker are displayed.
+
+Expected Output in the Command Output Box: Listed all patients!
+<br><br>
+
+#### Editing a Patient
+
+Prerequisite: There is at least 1 Patient stored in ToothTracker.
+In this example, we assume there are two patients with the following attributes:
+<br><br>
+**Patient 1**
+* Name: `Tommy Tan Chuk Yong`
+* Phone: `90895772`
+* Email: `tommytancy@hotmail.com`
+* Address: `Blk 51, Ang Mo Kio Ave 3, S712151`
+* Gender: `M`
+* Birthday: `18-05-1989`
+* Remark: `Cannot see blood.`
+* Treatment: `NIL`
+* Patient ID: `1`
+* Tag: `New`
+
+**Patient 2**
+* Name: `Bernard Tan`
+* Phone: `93375448`
+* Email: `bernardtan@hotmail.com`
+* Address: `No Address Provided.`
+* Gender: `M`
+* Birthday: `19-07-2001`
+* Remark: `NIL`
+* Treatment: `Braces`
+* Patient ID: `4`
+* Tag: `Ending soon`
+
+<br>
+In each of the test case below, we further assume that the state of Patient objects are always starting from the above attributes.
+<br><br>
+
+`edit-patient 1 n/Xaveric Tan Ming Yuan`
+
+Expected Output in the Patient List: The name of patient with ID 1 is changed to `Xaveric Tan Ming Yuan`.
+
+Expected Output in the Command Output Box: Patient successfully edited message, along with the updated attributes.
+<br><br>
+
+`edit-patient 4 p/98984477 e/btan@yahoo.com`
+
+Expected Output in the Patient List: The phone of the patient with ID 4 is changed to `98984477`, and the email is changed to `btan@yahoo.com`.
+
+Expected Output in the Command Output Box: Similar to above.
+<br><br>
+
+`edit-patient 4 h/Blk 653 #03-44, Bishan Ave 4, S622653`
+
+Expected Output in the Patient List: The address of the patient with ID 4 is changed to `Blk 653 #03-44, Bishan Ave 4, S622653`.
+
+Expected Output in the Command Output Box: Similar to above.
+<br><br>
+
+`edit-patient 99`
+
+Expected Output in the Patient List: No patient is edited.
+
+Expected Output in the Command Output Box: Error details shown for invalid ID provided.
+<br><br>
+
+`edit-patient`
+
+Expected Output in the Patient List: No patient is edited.
+
+Expected Output in the Command Output Box: Error details shown for invalid command format.
+<br><br>
+
+`edit-patient 1 n/Bernard Tan`
+
+Expected Output in the Patient List: No patient is edited.
+
+Expected Output in the Command Output Box: Error details shown for attempting to edit a patient into another existing patient.
+<br><br>
+
+<div markdown="span" class="alert alert-info">:information_source: **Special Note for editing treatments:** Please ensure the treatments exists in ToothTracker before editing patients. Otherwise, a message about Invalid Treatment will be given.
+</div>
+<br><br>
+
+#### Searching for a Patient by Keyword
+Prerequisite: There are only two patients named `Tommy Tan Chuk Yong` and `Bernard Tan` stored in ToothTracker.
+
+`search-patient Tommy`
+
+Expected Output in the Patient List: `Tommy Tan Chuk Yong` patient is displayed.
+
+Expected Output in the Command Output Box: 1 patients listed!
+<br><br>
+
+`search-patient Bernard`
+
+Expected Output in the Patient List: `Bernard Tan` patient is displayed.
+
+Expected Output in the Command Output Box: 1 patients listed!
+<br><br>
+
+`search-patient Tan`
+
+Expected Output in the Patient List: `Tommy Tan Chuk Yong` and `Bernard Tan` patients are displayed.
+
+Expected Output in the Command Output Box: 2 patients listed!
+<br><br>
+
+#### Searching for a patient by Patient ID
+
+Prerequisite: There are only two patients named `Tommy Tan Chuk Yong` and `Bernard Tan` stored in ToothTracker.
+Tommy Tan Chuk Yong's Patient ID is `1` and Bernard Tan's Patient ID is 4 (Patients with ID 2 and 3 are assumed to be removed previously).
+
+`search-patient 1`
+
+Expected Output in the Patient List: `Tommy Tan Chuk Yong` patient is displayed.
+
+Expected Output in the Command Output Box: Patient with patient ID 1 found.
+<br><br>
+
+`search-patient 4`
+
+Expected Output in the Patient List: `Bernard Tan` patient is displayed.
+
+Expected Output in the Command Output Box: 1 patients listed!
+<br><br>
+
+`search-patient 999`
+
+Expected Output in the Patient List: No patient displayed.
+
+Expected Output in the Command Output Box: No patient found with patient ID 999.
+<br><br>
+
+#### Filtering for patients with a given attribute
+
+Filter patients with a given attribute and a corresponding keyword. 
+The attributes are preceded with `a/` while the keywords are preceded with `k/`.
+
+`filter-patient a/name k/Tan`
+
+Expected Success Output in Patient List: patients who have `Tan` in their full name will be shown. <br> For instance, `Tan Ming Yuan` and `Bernard Tan` will be shown if they exist in ToothTracker Patient List.
+
+Expected Success Output in the Command Output Box: Filtered patients by `ATTRIBUTE` with keyword: `KEYWORD`. <br> For the given example here, it will be "Filtered patients by name with keyword: Tan."
+
+Expected Failure Output in Patient List: No patients will be shown in the list, since the filtered list contains nothing.
+
+Expected Failure Output in Command Out Box: No patients found with `ATTRIBUTE`: `KEYWORD`. <br> For the given example above, it will be "No patients found with name: Tan."
+<br><br>
+
+`filter-patient a/email k/gmail`
+
+Expected Success Output in Patient List: patients who have `gmail` in their emails will be shown. <br>
+
+Expected Success Output in the Command Output Box: Filtered patients by `ATTRIBUTE` with keyword: `KEYWORD`. <br> For the given example here, it will be "Filtered patients by email with keyword: gmail."
+
+Expected Failure Output in Patient List: No patients will be shown in the list, since the filtered list contains nothing.
+
+Expected Failure Output in Command Out Box: No patients found with `ATTRIBUTE`: `KEYWORD`. <br> For the given example above, it will be "No patients found with email: gmail."
+<br><br>
+
+`filter-patient a/email a/name k/gmail`
+
+Expected Output in Patient List: No changes. <br>
+
+Expected Output in the Command Output Box: An error message for invalid command format.
+<br><br>
+
+`filter-patient a/invalidAttribute k/randomValues`
+
+Expected Output in Patient List: No changes.
+
+Expected Output in the Command Output Box: A message saying that an invalid attribute has been given, and lists out the valid attributes for `filter-patient`.
+<br><br>
+
+<div markdown="span" class="alert alert-info">:information_source: **Valid attributes for `filter-patient`:** 
+<code>name</code> , <code>phone</code>, <code>birthday</code>, <code>gender</code>, <code>remark</code>, <code>treatment</code>, <code>email</code>, <code>address</code>, <code>tags</code>.
+</div>
+<br><br>
+
+#### Deleting a Patient
+
+Deleting a patient while all patients are being shown.
+
+Prerequisites: List all patients using the `list-patient` command. Multiple patients may be shown in the Patient List.
+
+`delete-patient 1`
+
+Expected Output in the Patient List: Patient with PATIENT_ID 1 is deleted from the Patient List.
+
+Expected Output in Command Output Box: Details of the deleted patient shown.
+<br><br>
+
+`delete-patient -1`
+
+Expected Output in the Patient List: No patient is deleted.
+
+Expected Output in Command Output Box: Error details shown for invalid ID provided.
+<br><br>
+
+Other incorrect delete commands to try:<br>
+`delete-patient`, `delete-patient x`, `...` <br>(where x is not a valid Patient ID)
+
+Expected Output in the Patient List: No dentist is deleted.
+
+Expected Output in Command Output Box:  Error details shown in the Command Output Box to show if it is an Invalid Patient ID, or if it is an invalid command format.
+
+
+### Appointment
+
+#### Adding an Appointment
 
 Prerequisite: There is at least 1 Patient `XXX`, at least 1 Dentist `Bernard Tan` and at least 1 Treatment `Braces` stored in ToothTracker.
 XXX's Patient ID is 2 and Bernard Tan's Dentist ID is 4.
@@ -1365,7 +1668,7 @@ Expected Output in the Appointment List: New appointment added into the Appointm
 Expected Output in the Command Output Box: Error message for invalid command format, prompting users with correct attributes to include.
 
 
-### Listing all Appointments
+#### Listing all Appointments
 
 Prerequisite: There is at least 1 Appointment stored in ToothTracker.
 
@@ -1376,7 +1679,7 @@ Expected Output in the Appointment List: All Appointments stored in ToothTracker
 Expected Output in the Command Output Box: Listed all appointments!
 
 
-### Filtering Appointments by Dentist ID
+#### Filtering Appointments by Dentist ID
 
 Prerequisite: There is at least one Appointment stored in ToothTracker with Dentist `Bernard Tan`. Bernard Tan's Dentist ID is 4.
 
@@ -1389,7 +1692,7 @@ Expected Output in the Command Output Box: Appointments with dentist whose denti
 Expected Output in the Command Output Box: Error message for invalid ID provided.
 
 
-### Filtering Appointments by Patient ID
+#### Filtering Appointments by Patient ID
 
 Prerequisite: There is at least one Appointment stored in ToothTracker with Patient `XXX`. XXX's Patient ID is 2.
 
@@ -1402,7 +1705,7 @@ Expected Output in the Command Output Box: Appointments with patient whose patie
 Expected Output in the Command Output Box: Error message for invalid ID provided.
 
 
-### Deleting an Appointment
+#### Deleting an Appointment
 
 Prerequisite: There is at least 1 Appointment stored in ToothTracker.
 
@@ -1416,9 +1719,9 @@ Expected Output in the Command Output Box: Details of the deleted appointment sh
 
 Expected Output in the Command Output Box: Error details shown for invalid APPOINTMENT_ID provided.
 
-## Treatment
+### Treatment
 
-### Adding a Treatment
+#### Adding a Treatment
 
 Prerequisite: There is no Treatment, named `Braces`, stored in ToothTracker.
 
@@ -1431,7 +1734,7 @@ Expected Output in the Command Output Box: New treatment added with the details 
 Expected Output in the Command Output Box: Error message for invalid command format, prompting users with correct attributes to include.
 
 
-### Listing all Treatments
+#### Listing all Treatments
 
 Prerequisite: There is at least one Treatment stored in ToothTracker.
 
@@ -1440,7 +1743,7 @@ Prerequisite: There is at least one Treatment stored in ToothTracker.
 Expected Output in the Command Output Box: Names of all Treatments stored in ToothTracker listed.
 
 
-### Deleting a Treatment
+#### Deleting a Treatment
 
 Prerequisite: There is at least one Treatment, named `Braces`, stored in ToothTracker.
 
@@ -1453,9 +1756,9 @@ Expected Output in the Command Output Box: Details of the deleted Treatment show
 Expected Output in the Command Output Box: Error message for deleting treatment. No Treatment found with name "nasojadsak".
 
 
-## Calendar 
+### Calendar 
 
-### Viewing all appointments
+#### Viewing all appointments
 
 `view-calendar`
 
@@ -1463,7 +1766,7 @@ Expected Output: The Calendar Window pops out and shows all appointments (if any
 
 Expected Output in the Command Output Box: Calendar displayed success message.
 
-## Help
+### Help
 
 `help`
 
@@ -1472,7 +1775,7 @@ Expected Output: The Help Window pops out and shows a general help message.
 Expected Output in the Command Output Box: Opened help window.
 
 
-## Clear
+### Clear
 
 `clear`
 
@@ -1480,7 +1783,7 @@ Expected Output in the Patient, Dentist and Appointment List: All Patients, Dent
 
 Expected Output in the Command: ToothTracker cleared success message.
 
-## Exit
+### Exit
 
 `exit`
 
