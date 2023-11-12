@@ -4,6 +4,7 @@ import static seedu.address.logic.Messages.MESSAGE_INVALID_ATTRIBUTE;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.Messages.MESSAGE_NO_KEYWORDS_PROVIDED;
 import static seedu.address.logic.Messages.MESSAGE_USAGE_FILTER_DENTIST;
+import static seedu.address.logic.Messages.MESSAGE_USAGE_FILTER_MULTIPLE_ATTRIBUTES;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -44,9 +45,15 @@ public class FilterDentistCommandParser implements Parser<FilterDentistCommand> 
         String keywords = matcher.group(2);
 
         String attributeLowerCase = attribute.toLowerCase();
+
         if (!FilterDentistCommand.getAllowedAttributes().contains(attributeLowerCase)) {
             throw new ParseException(String.format(MESSAGE_INVALID_ATTRIBUTE, attribute,
                 String.join(", ", FilterDentistCommand.getAllowedAttributes())));
+        }
+
+        // Check for multiple keywords
+        if (keywords.contains(" ")) {
+            throw new ParseException(MESSAGE_USAGE_FILTER_MULTIPLE_ATTRIBUTES);
         }
 
         if (keywords.trim().isEmpty()) {

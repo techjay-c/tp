@@ -49,6 +49,8 @@ public class Messages {
     public static final String MESSAGE_USAGE_FILTER_DENTIST_FAIL = "No dentists found with the %s: %s.";
     public static final String MESSAGE_USAGE_FILTER_DENTIST_SUCCESS = "Filtered dentists by %s with keywords: %s.";
 
+    public static final String MESSAGE_USAGE_FILTER_MULTIPLE_ATTRIBUTES = "You can only filter by 1 attribute";
+
     /**
      * Returns an error message indicating the duplicate prefixes.
      */
