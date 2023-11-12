@@ -47,22 +47,24 @@ Let's learn what each of these components does!
 
 ![ToothTracker UI](images/UiAnnotated.png){: .centered-image-full-size }
 
-|   | Component        | Description                                                                                                                                                                                                             |
-|---|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1 | Menu Bar         | The menu bar contains menu options to [exit](#exiting-the-program-exit) from ToothTracker and access [help](#viewing-help--help) resources.                                                                             |
-| 2 | Command Input    | The command input is where you can key in your commands to tell ToothTracker what you want to get done. To learn more about ToothTracker's CLI, refer to the [next section](#toothtrackers-command-line-interface-cli). |
-| 3 | Result Display   | The result display area shows you the outcomes or feedback from your entered commands.                                                                                                                                  |
-| 4 | Patient List     | This panel lists all patients currently registered in your clinic. It includes vital information such as names, contact details, and other fields.                                                                      |
-| 5 | Dentist List     | Here, you'll find a roster of dentists associated with your clinic, complete with their specializations and contact information.                                                                                        |
-| 6 | Appointment List | Check the appointment list for the schedule, status, and details of all clinic appointments.                                                                                                                            |
-| 7 | Quick Notes      | A dedicated space at the bottom of the Main Window for on-the-fly notes, reminders, or observations that you need to keep handy.                                                                                        |
-| 8 | Saved Data File  | For advanced users, the [file path](#glossary) displayed here is where ToothTracker stores your saved data (which you can [edit](#editing-the-data-file)).                                                              |
+|   | Component                   | Description                                                                                                                                                                                            |
+|---|-----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1 | Menu Bar                    | The menu bar contains menu options to [exit](#exiting-the-program-exit) from ToothTracker and access [help](#viewing-help--help) resources.                                                            |
+| 2 | Command Input               | The command input is where you can key in your commands to tell ToothTracker what you want to get done. To learn more about ToothTracker's CLI, refer to the [next section](#using-toothtrackers-cli). |
+| 3 | Result Display              | The result display area shows you the outcomes or feedback from your entered commands.                                                                                                                 |
+| 4 | Patient List                | This panel lists all patients currently registered in your clinic. It includes vital information such as names, contact details, and other fields.                                                     |
+| 5 | Dentist List                | Here, you'll find a roster of dentists associated with your clinic, complete with their specializations and contact information.                                                                       |
+| 6 | Appointment List            | Check the appointment list for the schedule, status, and details of all clinic appointments.                                                                                                           |
+| 7 | [Quick Notes](#quick-notes) | A dedicated space at the bottom of the Main Window for on-the-fly notes, reminders, or observations that you need to keep handy.                                                                       |
+| 8 | Saved Data File             | For advanced users, the [file path](#glossary) displayed here is where ToothTracker stores your saved data (which you can [edit](#editing-the-data-file)).                                             |
 
-##### Quick Notes
+{: .no_toc}
+#### Quick Notes
 Quick Notes is designed to enhance your efficiency by providing a space for immediate note-taking within the application.
 Use the quick notes to help you capture important reminders or information swiftly without navigating away from the main window.
 
-**How to use the Quick Notes:**<br>
+{: .no_toc}
+##### How to use the Quick Notes<br>
 
 **1. Adding Notes**:
 Click into the Quick Notes Box and type your notes.
@@ -97,71 +99,78 @@ It allows you to easily understand your clinic's appointments and availability a
 
 
 ### Using ToothTracker's CLI
-ToothTracker is optimized for use via a Command Line Interface which means you can do what you want to get done just
+ToothTracker is optimized for use via a CLI which means you can do what you want to get done just
 by using text input (known as commands).
 
 Right now, ToothTracker only understands certain commands (the complete list of commands can be found in [Features](#features))
-and these commands must be formatted in a specific way.
-It’s just the way ToothTracker is wired to think and listen. So let’s learn how to talk to ToothTracker!
+and these commands must be formatted in a specific way. So let’s learn how to communicate your needs to ToothTracker!
 
 
 {: .no_toc}
 #### How to Input Commands
-Think of the Command Input as ToothTracker’s ‘ears’. This is the rectangular text input box outlined in red below.
+Think of the [Command Input](#main-window) as ToothTracker’s ‘ears’ — always ready to listen to your instructions.
 
 1. Click on the Command Input box.
 2. Type in your command.
 3. Press ‘Enter’ on your keyboard (or ‘return’ if you're on a Mac).
 
-That's it! ToothTracker has just executed your command. It’s that easy!
+That's it! ToothTracker has just executed your command. Yes, it's as simple as that!
 
 {: .no_toc}
 #### Understanding Command Format
 Every command you input follows a simple structure to help ToothTracker understand your needs:
 
-* **Command Word:** This is the first word of your command. It acts like a direct order to ToothTracker, telling it precisely what action you want to take.
-* **Index:** When your command relates to a specific patient, dentist or appointment, you'll use an index. It's a unique number assigned to each entry in the respective lists.
+* **Command Word:** This is the first word of your command. It acts as a unique keyword that tells ToothTracker precisely what command you want to execute.
+* **Index:** The index is simply a number to uniquely identify each patient, dentist or appointment. When your command relates to a specific patient, dentist or appointment, you'll need to use an index. 
 * **Flags:** These are markers to distinguish between inputs. A flag is usually followed by a placeholder.
-* **Placeholders:** These are temporary labels that you'll replace with actual data. For instance, replace 'TREATMENT' in tr/TREATMENT with the real name of a treatment, like tr/Braces.
+* **Placeholders:** These are temporary labels that you'll replace with actual data. For instance, replace 'TREATMENT' in `tr/TREATMENT` with the real name of a treatment, like `tr/Braces`.
 
 
 ### Trying out your first commands
-Can't wait to get started with ToothTracker? Let's go through some simple commands together to get you warmed up before you dive into ToothTracker's full feature list!
+Can't wait to get started with ToothTracker?
+Let's go through some straightforward commands to get a feel for how easy managing your clinic's data can be.
 
 <div markdown="span" class="alert alert-info">
    <span id="text">
-      **:information_source:** Images in this section are only meant to be used as **references**.
-      Data shown in this sample reference may differ from the data stored in your ToothTracker.
+      **:information_source:** Remember, the images in this section are just **examples** to guide you.
+         Your ToothTracker will show information specific to your own clinic.
    </span>
 </div>
 
 
-Let's start by going through some simple dentist-related commands! 
+Let's start with adding and managing your clinic's dental team:
 
-1. Suppose you have a dentist, named Jonathan Goh, who joined your clinic. <br>
-Try running the command `add-dentist n/Jonathan Goh p/92095568 e/jonathan.goh@gmail.com y/3 s/Paediatric Dentistry`.
-   - Notice that you've created a new dentist, Jonathan Goh!
+1. **Welcoming a new dentist**:
+Suppose Dr. Jonathan Goh is the latest addition to your dental team. Let's get him into the ToothTracker system. <br>
+Type `add-dentist n/Jonathan Goh p/92095568 e/jonathan.goh@gmail.com y/3 s/Paediatric Dentistry` and press Enter.
+   - Just like that, Dr. Jonathan Goh is part of your digital roster!
 
-![trying-command-add-dentist-example](images/ug/add-dentist-example.png){: .centered-image-full-size }
+   ![trying-command-add-dentist-example](images/ug/add-dentist-example.png){: .centered-image-full-size }
 
-2. Now, suppose that a dentist, Alex Yeoh, is leaving your clinic, and you want to delete his records from ToothTracker.
-You can do this by running `delete-dentist 1`.
-   - After executing the command, Alex Yeoh is now deleted from ToothTracker!
+2. **Saying farewell**: If Dr. Alex Yeoh is leaving your clinic, you can keep your records up-to-date by removing his details.
+   Simply run `delete-dentist 1`.
+   - After executing the command, Dr. Alex Yeoh's information is now deleted from ToothTracker.
 
-![trying-command-delete-dentist-example](images/ug/delete-dentist-example.png){: .centered-image-full-size }
+<div markdown="span" class="alert alert-primary">
+   <span id="text">
+      **:bulb:** Always ensure the `DENTIST_ID` matches the identifier on the dentist's card within ToothTracker.
+   </span>
+</div>
 
-Now that you’ve been introduced to some dentist-related commands, let’s change things up by trying out some patient commands.
+   ![trying-command-delete-dentist-example](images/ug/delete-dentist-example.png){: .centered-image-full-size }
 
-1. Suppose you have a new patient, named Jean, onboarding your clinic. <br>
-Try entering the command `add-patient n/Jean p/95339212 b/14-09-2001 g/F`.
+Now let's see how easy it is to manage patient information.
+
+1. **Registering a new patient**: Suppose you have a new patient, named Jean, onboarding your clinic. <br>
+Enter `add-patient n/Jean p/95339212 b/14-09-2001 g/F` and press enter.
    - Notice that you've created a new patient, Jean!
 
-![trying-command-add-patient-example](images/ug/add-patient-example.png){: .centered-image-full-size }
+   ![trying-command-add-patient-example](images/ug/add-patient-example.png){: .centered-image-full-size }
 
-2.  Now, suppose that you want to change the phone number of your patient, Alex. Easy! Just type in `edit-patient 1 p/82019452`.
+2. **Updating patient info**: Now, suppose that Alex wants to update his phone number. Easy! Just type in `edit-patient 1 p/82019452`.
    - Done! Alex's phone number has been updated!
 
-![trying-command-edit-patient-example](images/ug/edit-patient-example.png){: .centered-image-full-size }
+   ![trying-command-edit-patient-example](images/ug/edit-patient-example.png){: .centered-image-full-size }
 
 Awesome! Now that you've gotten familiar with ToothTracker's commands, feel free to explore more features in the
 [Features](#features) section to fully leverage ToothTracker's capabilities.
