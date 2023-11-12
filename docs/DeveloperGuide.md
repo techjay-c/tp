@@ -671,6 +671,28 @@ rendering it invisible. A proposed enhancement is to change the selection color 
 2. **User Accessibility** 
    - The change would be a significant improvement for users with visual impairments or those working in brightly lit environments where screen glare can make it hard to distinguish between colors with low contrast.
 
+
+### Appointment Name Updater
+#### Overview
+The current implementation of the appointments class stores all data as strings, leading to inconsistencies when a patient or dentist's name is changed, as this change is not automatically reflected in existing appointments. To address this, we could implement an update script for the 'edit-patient' and 'edit-dentist' commands that would:
+
+1. Search through the list of appointments.
+2. Identify appointments that contain the ID of the patient or dentist whose name has been edited.
+3. Update the relevant name field to reflect the new name.
+
+This enhancement would ensure that name changes are consistently carried out across all records, thereby maintaining data integrity and coherence.
+
+### Future Appointment Updater
+#### Overview
+In the current implementation of ToothTracker, the deletion of a patient or dentist does not automatically remove their association with future appointments, which leads to obsolete records. To rectify this, we could integrate a script into the 'delete patient/dentist' command with the following steps:
+
+1. Conduct a search through the appointments list.
+2. Locate any future appointments linked to the ID of the patient or dentist who has been deleted.
+3. Proceed to remove these identified future appointments from the system.
+
+This would ensure the automatic removal of any future appointments related to patients or dentists who have been deleted, thereby maintaining an accurate and up-to-date schedule within ToothTracker.
+
+
 --------------------------------------------------------------------------------------------------------------------
 ## **Documentation, logging, testing, configuration, dev-ops**
 
