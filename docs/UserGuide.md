@@ -816,7 +816,7 @@ respectively.
 | **y**       | Represents the years of experience of the dentist when adding a `dentist` | `y/5` `y/10`                                      |
 | **s**       | Represents the specialization of the dentist when adding a `dentist`      | `s/Orthodontics` `s/DENTAL_PUBLIC_HEALTH`         |
 | **r**       | Represents a optional `remark` when adding a `patient`                    | `r/Peanut Allergy` `r/Soya Allergy`               |
-| **g**       | Represents  gender of a                                                   | `g/M` `g/F`                                       |
+| **g**       | Represents  gender.                                                       | `g/M` `g/F`                                       |
 | **b**       | Represents the birthday of a  `patient` in `dd-mm-yyyy`                   | `b/06-06-1998` `b/12-11-2002`                     | 
 | **t**       | Represents  an optional tag for a `patient` or `dentist`                  | `t/urgent` `t/Not Urgent`                         | 
 | **e**       | Represents  an optional email address for a `patient` or `dentist`        | `e/freddy@gmail.com` `e/john@youmail.com`         | 
