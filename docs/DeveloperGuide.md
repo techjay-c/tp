@@ -690,7 +690,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | receptionist | create a new treatment                                | record the treatment performed in an appointment                |
 | `* * *`  | receptionist | list all treatments available                         | check what available treatments in the clinic                   |
 | `* * *`  | receptionist | delete a treatment                                    | remove treatments that are no longer provided in the clinic     |
-| `* * *`  | receptionist | create an appointment                                 | assign a patient and a dentist for an appointment               |
+| `* * *`  | receptionist | create a new appointment                              | assign a patient and a dentist for an appointment               |
 | `* * *`  | receptionist | list all appointments                                 | view all appointments available in the clinic                   |
 | `* * *`  | receptionist | delete an appointment                                 | remove appointments cancelled or postponed in the clinic        |
 | `* * *`  | receptionist | filter for appointments using Patient ID              | view all appointments that patient has in the clinic            |
