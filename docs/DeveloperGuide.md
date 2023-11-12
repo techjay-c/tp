@@ -749,16 +749,27 @@ Front Desk Dental Clinic Administrative Staff who
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​      | I want to …​                                                      | So that I can…​                                 |
-|----------|--------------|-------------------------------------------------------------------|-------------------------------------------------|
-| `* * *`  | receptionist | create new patient profiles by entering their name, address, etc. | i can maintain patient records                  |
-| `* * *`  | receptionist | create a new dentist profile                                      | maintain dentist records                        |
-| `* * *`  | receptionist | delete a patient/dentist                                          | remove people who are no longer with the clinic |
-| `* * *`  | receptionist | list all patients/dentists                                        | find out the total number of patients/dentists  |
-| `* * *`  | receptionist | edit a dentist/patient profile                                    | keep my records up to date                      |
-| `* * *`  | receptionist | search for patients by name or ID                                 | i have quick access to patient profiles         |
-| `* * *`  | receptionist | search for dentists by name or ID                                 | i have quick access to dentist profiles         |
-| `* *`    | receptionist | view costs of various dental treatments                           | tell customers the price of a dental treatment  |
+| Priority | As a …​      | I want to …​                                          | So that I can…​                                                           |
+|----------|--------------|-------------------------------------------------------|---------------------------------------------------------------------------|
+| `* * *`  | receptionist | create a new patient profile                          | keep track and maintain patient records                                   |
+| `* * *`  | receptionist | create a new dentist profile                          | keep track and maintain dentist records                                   |
+| `* * *`  | receptionist | delete a patient/dentist                              | remove individuals who are no longer associated with the clinic           |
+| `* * *`  | receptionist | list all patients/dentists                            | view all patients/dentists in the clinic                                  |
+| `* * *`  | receptionist | edit a dentist/patient profile                        | keep my records up to date                                                |
+| `* * *`  | receptionist | search for patients by name or ID                     | access patient profiles quickly                                           |
+| `* * *`  | receptionist | search for dentists by name or ID                     | access dentist profiles quickly                                           |
+| `* * *`  | receptionist | filter for patients using any attributes of a patient | view all patients that match filter criteria based on specific attributes |
+| `* * *`  | receptionist | filter for dentists using any attributes of a dentist | view all dentists that match filter criteria based on specific attributes |
+| `* * *`  | receptionist | create a new treatment                                | record the treatment performed in an appointment                          |
+| `* * *`  | receptionist | list all treatments available                         | check what available treatments in the clinic                             |
+| `* * *`  | receptionist | delete a treatment                                    | remove treatments that are no longer provided in the clinic               |
+| `* * *`  | receptionist | create a new appointment                              | assign a patient and a dentist for an appointment                         |
+| `* * *`  | receptionist | list all appointments                                 | view all appointments available in the clinic                             |
+| `* * *`  | receptionist | delete an appointment                                 | remove appointments cancelled or postponed in the clinic                  |
+| `* * *`  | receptionist | filter for appointments using Patient ID              | view all appointments that patient has in the clinic                      |
+| `* * *`  | receptionist | filter for appointments using Dentist ID              | view all appointments that dentist has in the clinic                      |
+| `* * *`  | receptionist | view clinic schedule in a calendar                    | have an overview of the clinic's schedules for admin management           |
+
 
 
 ### Use cases
