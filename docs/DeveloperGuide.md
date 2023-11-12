@@ -645,6 +645,32 @@ Users can quickly access and reuse previously entered commands, reducing the nee
 2. **User-Friendly Interaction:**
 Enhances the overall user experience by providing a familiar and intuitive command history navigation, similar to other CLI interfaces.
 
+
+### List-Treatment Feature Enhancement
+#### Overview
+The current 'list-treatment' command outputs all available treatment names in a text box due to time and UI constraints. Including additional details such as duration and cost would overcrowd the command box.
+To address these limitations, a future enhancement for the 'list-treatment' command could be the introduction of a new popup window. This window would present a table with columns for treatment name, cost, and duration when the command is entered.
+
+#### Benefits
+
+1. **Improved Readability** 
+   - A table format allows users to quickly scan and compare options, making it easier to digest information at a glance. Clear separation of data into columns would significantly enhance the readability of the information.
+
+2. **Enhanced User Experience**
+   -  A popup window would declutter the main command box, leading to a cleaner and more focused user interface. This would allow users to stay in the context of the command while accessing detailed information without being overwhelmed.
+
+
+### Quick Notes Feature Enhancement
+#### Overview
+The current quick notes box features white as the text selection color, which causes selected text to blend into the white background, 
+rendering it invisible. A proposed enhancement is to change the selection color to grey to maintain the visibility of the selected text.
+
+#### Benefits
+1. **Enhanced Visibility** 
+   - Grey text selection would stand out against a white background, making it easier for users to see what text they have selected. This would prevent the problem of text 'disappearing' upon selection.
+2. **User Accessibility** 
+   - The change would be a significant improvement for users with visual impairments or those working in brightly lit environments where screen glare can make it hard to distinguish between colors with low contrast.
+
 --------------------------------------------------------------------------------------------------------------------
 ## **Documentation, logging, testing, configuration, dev-ops**
 
