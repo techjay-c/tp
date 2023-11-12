@@ -3,6 +3,7 @@ layout: page
 title: Qin Yan Er's Project Portfolio Page
 ---
 
+{: .no_toc}
 ### Project: ToothTracker
 
 **Overview**
