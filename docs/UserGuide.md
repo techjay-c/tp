@@ -1,25 +1,36 @@
 ---
 layout: page
-title: ToothTracker User Guide
+title: User Guide
 show-toc: true
 ---
 
-ToothTracker is an **All-in-One solution for effortless Dental Clinic Record Management**. From adding new patient and dentist profiles to seamlessly creating appointment schedules,
-ToothTracker is engineered to simplify every aspect of your dental clinic administrative responsibilities.
+## About ToothTracker
 
-We believe that time is the rarest commodity in a dental office. This means dental clinic administrative management must be efficient.
-Therefore, ToothTracker is optimized for use via a Command Line Interface (CLI) while also having the advantages of a Graphical User Interface (GUI), particularly our Calendar feature.
-If you type fast, ToothTracker offers your dental clinic a significantly more efficient workflow to get your job done.
+ToothTracker is a **Dental Clinic Administrative Management System** designed for **dental clinic administration assistants**.
+From adding new patient and dentist profiles to seamlessly creating appointment schedules, ToothTracker is
+engineered to simplify every aspect of your dental clinic administrative responsibilities.
 
-Here is an overview of how ToothTracker can help you manage your dental clinic administration more effectively:
-- You can add tags to every patient and dentist to highlight additional information about them.
-- You need not worry about storing physical copies of patient and dentist profiles and appointment schedules.
-- You can access and retrieve patient and dentist records easily using the `search` and `filter` commands.
-- You can avoid creating clashing appointments to reduce operational delays.
-- You can have the flexibility to add custom treatments that your clinic provides.
-- You can view your clinic's appointment schedule in ToothTracker's calendar.
+<br>
 
-If you are new here, head over to [How to use ToothTracker's User Guide](#how-to-use-toothtrackers-user-guide) to start tracking your dental clinic records!
+**Why ToothTracker? Because Your Time Matters.** <br>
+In your bustling dental clinic, time is the rarest commodity. That's why we designed ToothTracker to be swift like your service,
+allowing you to **manage patient and dentist records efficiently**, **schedule appointments without overlaps**,
+and ensure your clinic operates like a well-oiled machine — all through a versatile Command Line Interface (CLI)
+that responds to your speedy typing, along with a Graphical User Interface (GUI) that includes a user-friendly calendar.
+
+<br>
+
+**ToothTracker's Core Features Designed with You in Mind**
+
+- **Digital Record Keeping:** Say goodbye to cumbersome physical files — store and manage patients, dentists and appointments digitally.
+- **Effortless Retrieval:** Use intuitive `search` and `filter` commands to access and retrieve patient and dentist records.
+- **Tagging System:** Add tags to every patient and dentist to highlight key information about them.
+- **Smart Scheduling:** Eliminate double-bookings and optimize your clinic's operations with appointment management.
+- **Custom Treatments:** Tailor ToothTracker to reflect the unique treatments your clinic provides.
+- **Visual Calendar:** Get a clear overview of your day-to-day operations with our comprehensive calendar view.
+
+
+Head over to [How to use ToothTracker's User Guide](#how-to-use-toothtrackers-user-guide) to start tracking your dental clinic records!
 
 {% include page-break.html %}
 
@@ -31,21 +42,37 @@ If you are new here, head over to [How to use ToothTracker's User Guide](#how-to
 Thank you for choosing ToothTracker! We are delighted to have you as a user!
 This user guide provides a comprehensive documentation on the various commands supported by ToothTracker.
 
-If you have not installed ToothTracker, head over to the [Installation](#installation) section for assistance in
-installing ToothTracker and launching it for the first time.
+<div markdown="span" class="alert alert-primary">
+  <span id="text">
+    :bulb: **Tip:** Our user guide is designed for **ease of navigation**. Simply click on any item in the Table of Contents
+    to jump directly to that section. Clicking on the **headings** within each section will return you to the Table of Contents,
+    so it's easy to navigate between sections!
+  </span>
+</div>
 
-Once ToothTracker is installed, you can head over to the [Quick Reference Guide](#quick-reference-guide) section which
-covers the basics of using ToothTracker.
+{: .no_toc}
+#### First-Time Setup
+If you are new to ToothTracker, let's begin by setting up the application. Visit the [Installation](#installing-toothtracker)
+section for a straightforward guide to get ToothTracker up and running smoothly on your system.
 
-If you are familiar with ToothTracker already, this user guide serves to give you an overview on how to use specific commands in ToothTracker.
+{: .no_toc}
+#### Basic Operations
+Already installed ToothTracker? Great! You can head over to the [Familiarising with ToothTracker's Interface](#familiarising-with-toothtrackers-interface)
+section which covers the basics of using ToothTracker.
 
-If you are an experienced user, you can refer to the [Command Summary](#command-summary) for a quick overview of all commands.
+{: .no_toc}
+#### Quick Reference
+Seasoned users can refer to the [Command Summary](#command-summary), a concise cheat sheet that encapsulates all ToothTracker
+commands for quick reference.
 
-If you are stuck or encountering issues, head over to the [FAQ](#faq) section.
+{: .no_toc}
+#### Support and Troubleshooting
+Encountered an issue or have a question? Our [Troubleshooting](#troubleshooting) and [FAQ](#faq) sections are here to
+help troubleshoot common issues and provide answers swiftly.
 
 ### Icons used in this guide
 
-Here are some common icons that is used throughout this user guide
+Throughout this guide, you'll find helpful tips and cautionary advice to ensure a smooth ToothTracker experience.
 
 | Icon                          | Meaning                                  |
 |-------------------------------|------------------------------------------|
@@ -55,68 +82,7 @@ Here are some common icons that is used throughout this user guide
 
 {% include page-break.html %}
 
-## Installation
-
-1. Ensure you have Java `11` or above installed in your Computer.
-
-1. Download the latest `ToothTracker.jar` from [here](https://github.com/AY2324S1-CS2103T-W10-3/tp/releases).
-
-1. Copy the file to the folder you want to use as the _home folder_ for your ToothTracker.
-
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar ToothTracker.jar`
-   command to run the application.<br>
-   A GUI similar to the one shown below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png){: .centered-image }
-
-1. Type the command in the command box and press Enter to execute it. e.g. typing `help` and pressing Enter will
-   open the help window.<br>
-   Some example commands you can try:
-
-    * `list-dentist` : Lists all dentists.
-
-    * `add-dentist n/Bob p/12345678 e/bobjune@gmail.com s/Orthodontics y/6 s/braces` : Adds a dentist named `Bob`
-      to the ToothTracker. See [add-dentist](#adding-a-dentist--add-dentist) for more details.
-
-    * `delete-dentist 3` : Deletes the dentist with `DENTIST_ID` 3.
-
-    * `search-patient 6` : Searches for the patient with `PATIENT_ID` 6.
-
-    * `clear` : Deletes all records from ToothTracker.
-
-    * `exit` : Exits ToothTracker.
-
-1. Refer to the [Features](#features) section for details of each command.
-
-{% include page-break.html %}
-
-## Quick Reference Guide
-
-### Layout
-When you launch ToothTracker, ToothTracker appears on your screen as a GUI.
-Let’s take a look at the layout of the different components of ToothTracker.
-
-ToothTracker’s GUI consists of a Main Window, a Calendar Window as well as the Help Window. The main window consists of six components:
-
-1. Command Input Box
-1. Result Display Box
-1. Patient List Panel
-1. Dentist List Panel
-1. Appointment List Panel
-1. Quick Notes Box
-
-The following picture of the main window shows the six components numbered accordingly:
-
-![ToothTracker UI](images/UiAnnotated.png){: .centered-image }
-
-Besides the main window, ToothTracker also has the Calendar Window. It is not part of the main GUI and is only shown after a [Calendar Command](#viewing-calendar--view-calendar) is run.
-
-![Calendar Window](images/ug/CalendarWindow.png){: .centered-image }
-
-ToothTracker also has the Help Window. This is only shown after a [Help Command](#viewing-help--help) is run.
-
-The Help Window looks like the following:
-
-![Help Window](images/ug/HelpWindow.png){: .centered-image }
+{% include quickstart.md %}
 
 {% include page-break.html %}
 
@@ -575,13 +541,13 @@ Adds a dental appointment to ToothTracker. This is useful when:
 
 <div markdown="block" class="alert alert-info">
 **:information_source: Notes about adding Appointments:**<br>
-    <ul>
-        <li>ToothTracker will not allow the addition of appointments that clashes with existing appointments
-                with the same dentist or patient.</li>
-        <li>ToothTracker only allows for the addition of appointments from the year 2000 and onwards.</li>
-        <li>When adding an appointment, the list of appointments shown may get filtered, resulting in the new appointment not showing up in the appointment list.
-                Please use `list-appointment` if you want the new appointment to show up.</li>
-    </ul>
+  <ul>
+    <li>ToothTracker will not allow the addition of appointments that clashes with existing appointments
+        with the same dentist or patient.</li>
+    <li>ToothTracker only allows for the addition of appointments from the year 2000 and onwards.</li>
+    <li>When adding an appointment, the list of appointments shown may get filtered, resulting in the new appointment not showing up in the appointment list.
+        Please use <code>list-appointment</code> if you want the new appointment to show up.</li>
+  </ul>
 </div>
 
 **Example:**
@@ -776,11 +742,47 @@ data file at the next run. Hence, it is recommended to take a backup of the file
 
 {% include page-break.html %}
 
+## Troubleshooting
+ 
+{: .no_toc}
+#### Checking your system's Java version
+Check that your system has the correct Java version (**Java 11 and above**) installed to run ToothTracker. Follow the steps below:
+
+- For Windows Users:
+  1. Press `Win + S` to open search.
+  2. Type in `Terminal` and open the terminal.
+  3. Key in `java --version` and press `Enter` to check your Java version.
+
+- For macOS Users:
+  1. Press `Cmd + Space` to launch Spotlight. 
+  2. Type in `Terminal` and open the terminal. 
+  3. Key in `java --version` and press `Return` to check your Java version.
+
+- For Linux Users:
+  1. Press `Ctrl + Alt + T` to open the Terminal. 
+  2. Key in `java --version` and press `Enter` to check your Java version.
+
+
+The following image shows an example of what will show up on macOS. You can expect a similar result if you’re using another operating system.
+![System Java Version](images/ug/SystemJavaVersion.png){: .centered-image }
+
+The number in the red box highlights the Java version your system currently has.
+In the example, the system is running Java 11.0.19, which meets the requirement for ToothTracker.
+
+If you hava an earlier version of Java installed, head over to
+[Oracle's Java download page](https://docs.oracle.com/en/java/javase/11/install/overview-jdk-installation.html#GUID-8677A77F-231A-40F7-98B9-1FD0B48C346A) to install the correct version of Java.
+
+{% include page-break.html %}
+
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains
 the data of your previous ToothTracker home folder.
+
+**Q**: I don't have Java 11, how do I install it on my computer?<br>
+**A**: You can find detailed installation instructions [here](https://docs.oracle.com/en/java/javase/11/install/overview-jdk-installation.html#GUID-8677A77F-231A-40F7-98B9-1FD0B48C346A)
+and install Java 11 according to your platform.
 
 **Q**: Why do I get an error while trying to edit an existing dentist/patient?<br>
 **A**: The dentist/patient to be edited may not be shown in ToothTracker.
@@ -866,4 +868,8 @@ respectively.
 | **Clear all data**    | `clear`          | `clear` |
 | **Exit ToothTracker** | `exit`           | `exit`  |
 
+
+## Acknowledgements
+- ToothTracker uses the following libraries: [JavaFX](https://openjfx.io/), [Jackson](https://github.com/FasterXML/jackson), [JUnit5](https://github.com/junit-team/junit5), [CalendarFX](https://github.com/dlsc-software-consulting-gmbh/CalendarFX)
+- User Guide references the following projects: [FoodRem](https://github.com/AY2223S1-CS2103T-W16-2/tp/blob/2a34fab143ace403adeb4b923258468140b66200/docs/UserGuide.md), [ArtBuddy](https://github.com/AY2223S1-CS2103T-W11-3/tp/blob/master/docs/UserGuide.md)
 
