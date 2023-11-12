@@ -687,11 +687,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | receptionist | search for dentists by name or ID                                 | i have quick access to dentist profiles         |
 | `* *`    | receptionist | view costs of various dental treatments                           | tell customers the price of a dental treatment  |
 
-*{More to be added}*
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified
+(For all use cases below, the **System** is  `ToothTracker` and the **Actor** is the `user`, unless specified
 otherwise)
 
 ---
@@ -1220,7 +1219,6 @@ Use case ends.
       Use case continues from step 2.
 
 
-*{More to be added}*
 
 
 ### Non-Functional Requirements
