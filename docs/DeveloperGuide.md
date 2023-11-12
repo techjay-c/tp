@@ -334,7 +334,7 @@ This sequence diagram shows the interactions between the various components duri
 
 1. Users provide essential patient information, such as their name, phone number, birth date, gender and other optional details like remark, treatment, email and address.
 2. In case of missing or invalid command arguments, the system prompts users with an error message to enter the command correctly.
-3. The system cross-references the new dentist's name with existing records in the `Model` to prevent duplicate entries. If a duplicate is found, an error message informs the user.
+3. The system cross-references the new patient's name with existing records in the `Model` to prevent duplicate entries. If a duplicate is found, an error message informs the user.
 4. If step 3 is completed without any exceptions, the new patient record is created and stored in the system.
 
 ##### Feature Considerations
@@ -350,7 +350,7 @@ The activity diagram for deleting a patient is illustrated as follows:
 
 ![DeletePatientActivityDiagram](images/DeletePatientActivityDiagram.png)
 
-This sequence diagram shows the interactions between the various components during the execution of the `delete-dentist` command:
+This sequence diagram shows the interactions between the various components during the execution of the `delete-patient` command:
 
 ![DeletePatientSequenceDiagram](images/DeletePatientSequenceDiagram.png)
 
@@ -358,7 +358,7 @@ This sequence diagram shows the interactions between the various components duri
 
 1. The user specifies a `PATIENT_ID` that represents a `Patient` to be edited.
 2. If an invalid `PATIENT_ID` is provided, an error is thrown and the user is prompted to enter the command correctly via an error message.
-3. The Dentist is cross-referenced in the `Model` to check if it exists. If it does not, then an error is raised to inform the user.
+3. The Patient is cross-referenced in the `Model` to check if it exists. If it does not, then an error is raised to inform the user.
 4. If step 3 completes without any exceptions, then the `Patient` is successfully deleted.
 
 ##### Feature Considerations
@@ -380,7 +380,7 @@ The activity diagram for searching for a patient is illustrated as follows:
 
 ![SearchPatientActivityDiagram](images/SearchPatientActivityDiagram.png)
 
-This sequence diagram shows the interactions between the various components during the execution of the `search-dentist` command:
+This sequence diagram shows the interactions between the various components during the execution of the `search-patient` command:
 
 ![SearchPatientSequenceDiagram](images/SearchPatientSequenceDiagram.png)
 
@@ -402,13 +402,13 @@ between quick searches for immediate needs while also accommodating more complex
 
 The `filter-patient` command in ToothTracker provides users with a more refined search functionality, allowing them to filter patient records based on
 specific criteria beyond just `PATIENT_ID` or name-related keywords. This feature offers a versatile and detailed search capability for users who
-require precise results from the dentist records database.
+require precise results from the patient records database.
 
-The activity diagram for filtering dentists is illustrated as follows:
+The activity diagram for filtering patients is illustrated as follows:
 
 ![FilterPatientActivityDiagram](images/FilterPatientActivityDiagram.png)
 
-This sequence diagram shows the interactions between the various components during the execution of the `filter-dentist` command:
+This sequence diagram shows the interactions between the various components during the execution of the `filter-patient` command:
 
 ![FilterPatientSequenceDiagram](images/FilterPatientSequenceDiagram.png)
 
@@ -416,7 +416,7 @@ This sequence diagram shows the interactions between the various components duri
 1. Users initiate a filter for a patient by providing various filter criteria such as PHONE, ADDRESS, GENDER, TREATMENT and more.
    These criteria allow users to search for patients with specific attributes.
 2. ToothTracker processes the user's filter criteria and matches them against the patient records in the database.
-3. Dentists that meet the filter criteria are displayed as search results, providing users with a list of patients that fulfill their specific requirements.
+3. Patients that meet the filter criteria are displayed as search results, providing users with a list of patients that fulfill their specific requirements.
 4. If no matches are found for the given filter criteria, the system informs the user that no results were found based on the specified filters.
 
 ##### Feature Considerations
@@ -645,6 +645,54 @@ Users can quickly access and reuse previously entered commands, reducing the nee
 2. **User-Friendly Interaction:**
 Enhances the overall user experience by providing a familiar and intuitive command history navigation, similar to other CLI interfaces.
 
+
+### List-Treatment Feature Enhancement
+#### Overview
+The current 'list-treatment' command outputs all available treatment names in a text box due to time and UI constraints. Including additional details such as duration and cost would overcrowd the command box.
+To address these limitations, a future enhancement for the 'list-treatment' command could be the introduction of a new popup window. This window would present a table with columns for treatment name, cost, and duration when the command is entered.
+
+#### Benefits
+
+1. **Improved Readability** 
+   - A table format allows users to quickly scan and compare options, making it easier to digest information at a glance. Clear separation of data into columns would significantly enhance the readability of the information.
+
+2. **Enhanced User Experience**
+   -  A popup window would declutter the main command box, leading to a cleaner and more focused user interface. This would allow users to stay in the context of the command while accessing detailed information without being overwhelmed.
+
+
+### Quick Notes Feature Enhancement
+#### Overview
+The current quick notes box features white as the text selection color, which causes selected text to blend into the white background, 
+rendering it invisible. A proposed enhancement is to change the selection color to grey to maintain the visibility of the selected text.
+
+#### Benefits
+1. **Enhanced Visibility** 
+   - Grey text selection would stand out against a white background, making it easier for users to see what text they have selected. This would prevent the problem of text 'disappearing' upon selection.
+2. **User Accessibility** 
+   - The change would be a significant improvement for users with visual impairments or those working in brightly lit environments where screen glare can make it hard to distinguish between colors with low contrast.
+
+
+### Appointment Name Updater
+#### Overview
+The current implementation of the appointments class stores all data as strings, leading to inconsistencies when a patient or dentist's name is changed, as this change is not automatically reflected in existing appointments. To address this, we could implement an update script for the 'edit-patient' and 'edit-dentist' commands that would:
+
+1. Search through the list of appointments.
+2. Identify appointments that contain the ID of the patient or dentist whose name has been edited.
+3. Update the relevant name field to reflect the new name.
+
+This enhancement would ensure that name changes are consistently carried out across all records, thereby maintaining data integrity and coherence.
+
+### Future Appointment Updater
+#### Overview
+In the current implementation of ToothTracker, the deletion of a patient or dentist does not automatically remove their association with future appointments, which leads to obsolete records. To rectify this, we could integrate a script into the 'delete patient/dentist' command with the following steps:
+
+1. Conduct a search through the appointments list.
+2. Locate any future appointments linked to the ID of the patient or dentist who has been deleted.
+3. Proceed to remove these identified future appointments from the system.
+
+This would ensure the automatic removal of any future appointments related to patients or dentists who have been deleted, thereby maintaining an accurate and up-to-date schedule within ToothTracker.
+
+
 --------------------------------------------------------------------------------------------------------------------
 ## **Documentation, logging, testing, configuration, dev-ops**
 
@@ -687,11 +735,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | receptionist | search for dentists by name or ID                                 | i have quick access to dentist profiles         |
 | `* *`    | receptionist | view costs of various dental treatments                           | tell customers the price of a dental treatment  |
 
-*{More to be added}*
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified
+(For all use cases below, the **System** is  `ToothTracker` and the **Actor** is the `user`, unless specified
 otherwise)
 
 ---
@@ -1220,7 +1267,6 @@ Use case ends.
       Use case continues from step 2.
 
 
-*{More to be added}*
 
 
 ### Non-Functional Requirements
