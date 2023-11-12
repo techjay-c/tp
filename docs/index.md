@@ -11,10 +11,10 @@ title: ToothTracker
 ToothTracker is an **All-in-One solution for Effortless Dental Clinic Record Management.**
 While it has a GUI, most of the user interactions happen using a CLI (Command Line Interface).
 
-* If you are interested in using ToothTracker, head over to the [**Installation Guide**](UserGuide.html#installation).
+* If you are interested in using ToothTracker, head over to the [**Get Started with ToothTracker**](UserGuide.html#get-started-with-toothtracker).
 * If you are interested about developing ToothTracker, the [**Developer Guide**](DeveloperGuide.html) is a good place to start.
 
 
 **Acknowledgements**
 
-* Libraries used: [JavaFX](https://openjfx.io/), [Jackson](https://github.com/FasterXML/jackson), [JUnit5](https://github.com/junit-team/junit5)
+* Libraries used: [JavaFX](https://openjfx.io/), [Jackson](https://github.com/FasterXML/jackson), [JUnit5](https://github.com/junit-team/junit5), [CalendarFX](https://github.com/dlsc-software-consulting-gmbh/CalendarFX)

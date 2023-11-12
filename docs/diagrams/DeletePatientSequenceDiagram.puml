@@ -49,7 +49,12 @@ deactivate AddressBookParser
 LogicManager -> DeletePatientCommand : execute()
 activate DeletePatientCommand
 
-DeletePatientCommand -> Model : deletePatient(1)
+DeletePatientCommand -> Model : getPatientById(1)
+activate Model
+Model --> DeletePatientCommand
+deactivate Model
+
+DeletePatientCommand -> Model : DeletePatient(1)
 activate Model
 
 Model --> DeletePatientCommand

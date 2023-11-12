@@ -6,11 +6,11 @@ if () then ([valid command])
   :Parse PATIENT_ID from command arguments;
 
 if () then ([Patient record exists])
-  :Retrieve patient by ID;
-  :Delete patient record;
+  :Retrieve Patient by ID;
+  :Delete Patient record;
   :Return success message;
 else ([else])
-  :Throw CommandException for no patient found;
+  :Throw CommandException for no Patient found;
 endif
 
 else ([else])

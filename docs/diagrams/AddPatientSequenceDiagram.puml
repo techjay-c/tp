@@ -14,10 +14,10 @@ box Model MODEL_COLOR_T1
 participant ":Model" as Model MODEL_COLOR
 end box
 
-[-> LogicManager : execute("add-patient n/John Doe ...")
+[-> LogicManager : execute("add-patient n/Jean p/95339212 b/14-09-2001 g/F")
 activate LogicManager
 
-LogicManager -> AddressBookParser : parseCommand("add-patient n/John Doe ...")
+LogicManager -> AddressBookParser : parseCommand("add-patient n/Jean p/95339212 b/14-09-2001 g/F")
 activate AddressBookParser
 
 create AddPatientCommandParser
@@ -27,7 +27,7 @@ activate AddPatientCommandParser
 AddPatientCommandParser --> AddressBookParser
 deactivate AddPatientCommandParser
 
-AddressBookParser -> AddPatientCommandParser : parse("n/John Doe ...")
+AddressBookParser -> AddPatientCommandParser : parse("n/Jean p/95339212 b/14-09-2001 g/F")
 activate AddPatientCommandParser
 
 create AddPatientCommand
