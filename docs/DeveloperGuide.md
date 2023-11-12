@@ -334,7 +334,7 @@ This sequence diagram shows the interactions between the various components duri
 
 1. Users provide essential patient information, such as their name, phone number, birth date, gender and other optional details like remark, treatment, email and address.
 2. In case of missing or invalid command arguments, the system prompts users with an error message to enter the command correctly.
-3. The system cross-references the new dentist's name with existing records in the `Model` to prevent duplicate entries. If a duplicate is found, an error message informs the user.
+3. The system cross-references the new patient's name with existing records in the `Model` to prevent duplicate entries. If a duplicate is found, an error message informs the user.
 4. If step 3 is completed without any exceptions, the new patient record is created and stored in the system.
 
 ##### Feature Considerations
@@ -350,7 +350,7 @@ The activity diagram for deleting a patient is illustrated as follows:
 
 ![DeletePatientActivityDiagram](images/DeletePatientActivityDiagram.png)
 
-This sequence diagram shows the interactions between the various components during the execution of the `delete-dentist` command:
+This sequence diagram shows the interactions between the various components during the execution of the `delete-patient` command:
 
 ![DeletePatientSequenceDiagram](images/DeletePatientSequenceDiagram.png)
 
@@ -358,7 +358,7 @@ This sequence diagram shows the interactions between the various components duri
 
 1. The user specifies a `PATIENT_ID` that represents a `Patient` to be edited.
 2. If an invalid `PATIENT_ID` is provided, an error is thrown and the user is prompted to enter the command correctly via an error message.
-3. The Dentist is cross-referenced in the `Model` to check if it exists. If it does not, then an error is raised to inform the user.
+3. The Patient is cross-referenced in the `Model` to check if it exists. If it does not, then an error is raised to inform the user.
 4. If step 3 completes without any exceptions, then the `Patient` is successfully deleted.
 
 ##### Feature Considerations
@@ -380,7 +380,7 @@ The activity diagram for searching for a patient is illustrated as follows:
 
 ![SearchPatientActivityDiagram](images/SearchPatientActivityDiagram.png)
 
-This sequence diagram shows the interactions between the various components during the execution of the `search-dentist` command:
+This sequence diagram shows the interactions between the various components during the execution of the `search-patient` command:
 
 ![SearchPatientSequenceDiagram](images/SearchPatientSequenceDiagram.png)
 
@@ -402,13 +402,13 @@ between quick searches for immediate needs while also accommodating more complex
 
 The `filter-patient` command in ToothTracker provides users with a more refined search functionality, allowing them to filter patient records based on
 specific criteria beyond just `PATIENT_ID` or name-related keywords. This feature offers a versatile and detailed search capability for users who
-require precise results from the dentist records database.
+require precise results from the patient records database.
 
-The activity diagram for filtering dentists is illustrated as follows:
+The activity diagram for filtering patients is illustrated as follows:
 
 ![FilterPatientActivityDiagram](images/FilterPatientActivityDiagram.png)
 
-This sequence diagram shows the interactions between the various components during the execution of the `filter-dentist` command:
+This sequence diagram shows the interactions between the various components during the execution of the `filter-patient` command:
 
 ![FilterPatientSequenceDiagram](images/FilterPatientSequenceDiagram.png)
 
@@ -416,7 +416,7 @@ This sequence diagram shows the interactions between the various components duri
 1. Users initiate a filter for a patient by providing various filter criteria such as PHONE, ADDRESS, GENDER, TREATMENT and more.
    These criteria allow users to search for patients with specific attributes.
 2. ToothTracker processes the user's filter criteria and matches them against the patient records in the database.
-3. Dentists that meet the filter criteria are displayed as search results, providing users with a list of patients that fulfill their specific requirements.
+3. Patients that meet the filter criteria are displayed as search results, providing users with a list of patients that fulfill their specific requirements.
 4. If no matches are found for the given filter criteria, the system informs the user that no results were found based on the specified filters.
 
 ##### Feature Considerations
