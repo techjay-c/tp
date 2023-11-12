@@ -300,7 +300,7 @@ Edits one or more attributes of the dentist at the specified `DENTIST_ID`. This 
 **Format:** `edit-dentist DENTIST_ID [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SPECIALIZATION] [y/YOE] [t/TAG]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-You can edit the particulars in any order and edit more than one particulars of the dentist with a single `edit-dentist` command.
+You can edit the particulars in any order and edit more than one particular of the dentist with a single `edit-dentist` command.
 </div>
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
@@ -533,9 +533,9 @@ This edits the name of the patient with `PATIENT_ID` 2 to 'Alex'.
 #### Adding an appointment : `add-appointment`
 
 Adds a dental appointment to ToothTracker. This is useful when:
-* you want to schedule future dental appointments for patients with specific dentists at designated times.
-* you want to check for clashes with existing appointments.
-* you want to add in past appointments for record keeping.
+* Scheduling future dental appointments for patients with specific dentists at designated times.
+* Checking for clashes with existing appointments.
+* You want to add in past appointments for record keeping.
 
 **Format:** `add-appointment dentist/DENTIST_ID patient/PATIENT_ID start/START_DATE_TIME tr/TREATMENT`
 
@@ -547,6 +547,8 @@ Adds a dental appointment to ToothTracker. This is useful when:
     <li>ToothTracker only allows for the addition of appointments from the year 2000 and onwards.</li>
     <li>When adding an appointment, the list of appointments shown may get filtered, resulting in the new appointment not showing up in the appointment list.
         Please use <code>list-appointment</code> if you want the new appointment to show up.</li>
+    <li>After adding an appointment, the details of the appointment cannot be changed regardless of changes to related attributes (E.g. treatment duration, dentist's name).
+        Please delete the appointment and add a new one if you wish to update the changes.</li>
   </ul>
 </div>
 
@@ -560,8 +562,8 @@ The duration of the appointment is automatically set based on the selected treat
 #### Listing all appointments : `list-appointment`
 
 Shows a list of all appointments in ToothTracker. This is useful when:
-* you want to retrieve the information of all appointments.
-* you want to verify that the appointment is added to ToothTracker.
+* You want to retrieve the information of all appointments.
+* Verifying that the appointment is added to ToothTracker.
 
 **Format:** `list-appointment` (No extra parameters required)
 ![list-appointment-example](images/ug/appointment/ListAppointmentExample.png){: .centered-image }
@@ -594,7 +596,7 @@ This deletes the appointment with `APPOINTMENT_ID` 2 from ToothTracker.
 Narrows down your search for appointments by filtering the appointment list to
 show the list of appointments under the dentist with the specified `DENTIST_ID`.
 This is useful when:
-* you want to view the list of appointments under a specific dentist.
+* You want to view the list of appointments under a specific dentist.
 
 **Format:** `filter-appointment dentist DENTIST_ID`
 
@@ -614,7 +616,7 @@ This gives you all appointments under the dentist with `DENTIST_ID` 1.
 Narrows down your search for appointments by filtering the appointment list to
 show the list of appointments under the patient with the specified `PATIENT_ID`.
 This is useful when:
-* you want to view the list of appointments under a specific patient.
+* You want to view the list of appointments under a specific patient.
 
 **Format:** `filter-appointment patient PATIENT_ID`
 
@@ -668,7 +670,7 @@ Deletes the treatment with the specified `TREATMENT_NAME` from ToothTracker.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **CAUTION:**
 This command is DESTRUCTIVE!
-Treaments deleted will need to be added back and their previous records may be removed.
+Treatments deleted will need to be added back and their previous records may be removed.
 Proceed with caution!
 </div>
 
@@ -692,6 +694,14 @@ Shows a calendar filled with all scheduled appointments in ToothTracker. This is
 * You want a visual summary of all appointments, allowing for a comprehensive overview.
 
 Format: `view-calendar` (No extra parameters required)
+
+<div markdown="block" class="alert alert-info">
+**:information_source: Notes about viewing calendar:**<br>
+The appointments displayed in the calendar depends on the appointments listed in the main list.
+If the main appointment list is filtered, the appointments displayed in the calendar would be filtered too.
+Please use <code>list-appointment</code> before <code>view-calendar</code> if you want to view all appointments.
+</div>
+
 ![view-calendar-example](images/ug/ViewCalendarExample.png){: .centered-image }
 
 
@@ -792,6 +802,10 @@ To display the to-be-edited dentist/patient, you may use these commands:
 
 Thereafter, you may edit the particulars using `edit-dentist` or `edit-patient` with their `DENTIST_ID` or `PATIENT_ID`
 respectively.
+
+**Q**: Why are some appointments missing from the calendar view?<br>
+**A**: You might have used `view-calendar` after filtering the appointment list. To display all appointments,
+you may use `list-appointment` before using `view-calendar`.
 
 
 {% include page-break.html %}
