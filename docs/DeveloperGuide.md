@@ -334,7 +334,7 @@ This sequence diagram shows the interactions between the various components duri
 
 1. Users provide essential patient information, such as their name, phone number, birth date, gender and other optional details like remark, treatment, email and address.
 2. In case of missing or invalid command arguments, the system prompts users with an error message to enter the command correctly.
-3. The system cross-references the new dentist's name with existing records in the `Model` to prevent duplicate entries. If a duplicate is found, an error message informs the user.
+3. The system cross-references the new patient's name with existing records in the `Model` to prevent duplicate entries. If a duplicate is found, an error message informs the user.
 4. If step 3 is completed without any exceptions, the new patient record is created and stored in the system.
 
 ##### Feature Considerations
@@ -350,7 +350,7 @@ The activity diagram for deleting a patient is illustrated as follows:
 
 ![DeletePatientActivityDiagram](images/DeletePatientActivityDiagram.png)
 
-This sequence diagram shows the interactions between the various components during the execution of the `delete-dentist` command:
+This sequence diagram shows the interactions between the various components during the execution of the `delete-patient` command:
 
 ![DeletePatientSequenceDiagram](images/DeletePatientSequenceDiagram.png)
 
@@ -358,7 +358,7 @@ This sequence diagram shows the interactions between the various components duri
 
 1. The user specifies a `PATIENT_ID` that represents a `Patient` to be edited.
 2. If an invalid `PATIENT_ID` is provided, an error is thrown and the user is prompted to enter the command correctly via an error message.
-3. The Dentist is cross-referenced in the `Model` to check if it exists. If it does not, then an error is raised to inform the user.
+3. The Patient is cross-referenced in the `Model` to check if it exists. If it does not, then an error is raised to inform the user.
 4. If step 3 completes without any exceptions, then the `Patient` is successfully deleted.
 
 ##### Feature Considerations
@@ -380,7 +380,7 @@ The activity diagram for searching for a patient is illustrated as follows:
 
 ![SearchPatientActivityDiagram](images/SearchPatientActivityDiagram.png)
 
-This sequence diagram shows the interactions between the various components during the execution of the `search-dentist` command:
+This sequence diagram shows the interactions between the various components during the execution of the `search-patient` command:
 
 ![SearchPatientSequenceDiagram](images/SearchPatientSequenceDiagram.png)
 
@@ -402,13 +402,13 @@ between quick searches for immediate needs while also accommodating more complex
 
 The `filter-patient` command in ToothTracker provides users with a more refined search functionality, allowing them to filter patient records based on
 specific criteria beyond just `PATIENT_ID` or name-related keywords. This feature offers a versatile and detailed search capability for users who
-require precise results from the dentist records database.
+require precise results from the patient records database.
 
-The activity diagram for filtering dentists is illustrated as follows:
+The activity diagram for filtering patients is illustrated as follows:
 
 ![FilterPatientActivityDiagram](images/FilterPatientActivityDiagram.png)
 
-This sequence diagram shows the interactions between the various components during the execution of the `filter-dentist` command:
+This sequence diagram shows the interactions between the various components during the execution of the `filter-patient` command:
 
 ![FilterPatientSequenceDiagram](images/FilterPatientSequenceDiagram.png)
 
@@ -416,7 +416,7 @@ This sequence diagram shows the interactions between the various components duri
 1. Users initiate a filter for a patient by providing various filter criteria such as PHONE, ADDRESS, GENDER, TREATMENT and more.
    These criteria allow users to search for patients with specific attributes.
 2. ToothTracker processes the user's filter criteria and matches them against the patient records in the database.
-3. Dentists that meet the filter criteria are displayed as search results, providing users with a list of patients that fulfill their specific requirements.
+3. Patients that meet the filter criteria are displayed as search results, providing users with a list of patients that fulfill their specific requirements.
 4. If no matches are found for the given filter criteria, the system informs the user that no results were found based on the specified filters.
 
 ##### Feature Considerations
@@ -457,6 +457,16 @@ If a timing clash is found, an error message informs the user.
 
 For the `DENTIST_ID`, `PATIENT_ID` and treatment field, it is mandatory that the specified dentist, patient and treatment exists in ToothTracker.
 If these conditions are not met, the user will receive an error message.
+
+Users should call `list-appointment` first before adding an appointment due to the way `add-appointment` is implemented.
+When adding an appointment, the list of appointments might get filtered if the new appointment clashes with existing
+ones due to the check for clashes. The filtered list will remain until `list-appointment` is called.
+Thus, if a new appointment is immediately added after this, the new appointment may not show up on the list of
+appointments in the UI. Users would have to call `list-appointment` to view the newly added appointment on the list.
+
+After adding an appointment, the details of the appointment can no longer be changed even if the details of the dentist,
+patient or treatment are changed as we did not implement cascading. Users would have to delete the appointment and add
+a new one if they wish to change the details of the appointment.
 
 #### Deleting an Appointment
 
@@ -514,6 +524,21 @@ Otherwise, the user would receive an error message that prompts them to input th
 If no appointments with the specified dentist or patient are found in ToothTracker, it should be clearly
 communicated to the user instead of just displaying an empty list. A message stating that no appointments are found with the
 specified `DENTIST_ID` or `PATIENT_ID` should be displayed to the user.
+
+#### Listing all Appointments
+
+The `list-appointment` command lists all appointment records saved in ToothTracker.
+
+##### Feature Details
+
+1. Users would key in `list-appointment`.
+2. All appointment records saved in ToothTracker would be displayed in the appointment list area.
+
+##### Feature Considerations
+
+Since `filter-appointment` and `add-appointment` may alter the appointment list displayed, we implemented
+`list-appointment` so that users can view all the appointments saved in ToothTracker.
+
 
 ### Treatment Features
 
@@ -645,6 +670,54 @@ Users can quickly access and reuse previously entered commands, reducing the nee
 2. **User-Friendly Interaction:**
 Enhances the overall user experience by providing a familiar and intuitive command history navigation, similar to other CLI interfaces.
 
+
+### List-Treatment Feature Enhancement
+#### Overview
+The current 'list-treatment' command outputs all available treatment names in a text box due to time and UI constraints. Including additional details such as duration and cost would overcrowd the command box.
+To address these limitations, a future enhancement for the 'list-treatment' command could be the introduction of a new popup window. This window would present a table with columns for treatment name, cost, and duration when the command is entered.
+
+#### Benefits
+
+1. **Improved Readability** 
+   - A table format allows users to quickly scan and compare options, making it easier to digest information at a glance. Clear separation of data into columns would significantly enhance the readability of the information.
+
+2. **Enhanced User Experience**
+   -  A popup window would declutter the main command box, leading to a cleaner and more focused user interface. This would allow users to stay in the context of the command while accessing detailed information without being overwhelmed.
+
+
+### Quick Notes Feature Enhancement
+#### Overview
+The current quick notes box features white as the text selection color, which causes selected text to blend into the white background, 
+rendering it invisible. A proposed enhancement is to change the selection color to grey to maintain the visibility of the selected text.
+
+#### Benefits
+1. **Enhanced Visibility** 
+   - Grey text selection would stand out against a white background, making it easier for users to see what text they have selected. This would prevent the problem of text 'disappearing' upon selection.
+2. **User Accessibility** 
+   - The change would be a significant improvement for users with visual impairments or those working in brightly lit environments where screen glare can make it hard to distinguish between colors with low contrast.
+
+
+### Appointment Name Updater
+#### Overview
+The current implementation of the appointments class stores all data as strings, leading to inconsistencies when a patient or dentist's name is changed, as this change is not automatically reflected in existing appointments. To address this, we could implement an update script for the 'edit-patient' and 'edit-dentist' commands that would:
+
+1. Search through the list of appointments.
+2. Identify appointments that contain the ID of the patient or dentist whose name has been edited.
+3. Update the relevant name field to reflect the new name.
+
+This enhancement would ensure that name changes are consistently carried out across all records, thereby maintaining data integrity and coherence.
+
+### Future Appointment Updater
+#### Overview
+In the current implementation of ToothTracker, the deletion of a patient or dentist does not automatically remove their association with future appointments, which leads to obsolete records. To rectify this, we could integrate a script into the 'delete patient/dentist' command with the following steps:
+
+1. Conduct a search through the appointments list.
+2. Locate any future appointments linked to the ID of the patient or dentist who has been deleted.
+3. Proceed to remove these identified future appointments from the system.
+
+This would ensure the automatic removal of any future appointments related to patients or dentists who have been deleted, thereby maintaining an accurate and up-to-date schedule within ToothTracker.
+
+
 --------------------------------------------------------------------------------------------------------------------
 ## **Documentation, logging, testing, configuration, dev-ops**
 
@@ -676,22 +749,32 @@ Front Desk Dental Clinic Administrative Staff who
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​      | I want to …​                                                      | So that I can…​                                 |
-|----------|--------------|-------------------------------------------------------------------|-------------------------------------------------|
-| `* * *`  | receptionist | create new patient profiles by entering their name, address, etc. | i can maintain patient records                  |
-| `* * *`  | receptionist | create a new dentist profile                                      | maintain dentist records                        |
-| `* * *`  | receptionist | delete a patient/dentist                                          | remove people who are no longer with the clinic |
-| `* * *`  | receptionist | list all patients/dentists                                        | find out the total number of patients/dentists  |
-| `* * *`  | receptionist | edit a dentist/patient profile                                    | keep my records up to date                      |
-| `* * *`  | receptionist | search for patients by name or ID                                 | i have quick access to patient profiles         |
-| `* * *`  | receptionist | search for dentists by name or ID                                 | i have quick access to dentist profiles         |
-| `* *`    | receptionist | view costs of various dental treatments                           | tell customers the price of a dental treatment  |
+| Priority | As a …​      | I want to …​                                          | So that I can…​                                                           |
+|----------|--------------|-------------------------------------------------------|---------------------------------------------------------------------------|
+| `* * *`  | receptionist | create a new patient profile                          | keep track and maintain patient records                                   |
+| `* * *`  | receptionist | create a new dentist profile                          | keep track and maintain dentist records                                   |
+| `* * *`  | receptionist | delete a patient/dentist                              | remove individuals who are no longer associated with the clinic           |
+| `* * *`  | receptionist | list all patients/dentists                            | view all patients/dentists in the clinic                                  |
+| `* * *`  | receptionist | edit a dentist/patient profile                        | keep my records up to date                                                |
+| `* * *`  | receptionist | search for patients by name or ID                     | access patient profiles quickly                                           |
+| `* * *`  | receptionist | search for dentists by name or ID                     | access dentist profiles quickly                                           |
+| `* * *`  | receptionist | filter for patients using any attributes of a patient | view all patients that match filter criteria based on specific attributes |
+| `* * *`  | receptionist | filter for dentists using any attributes of a dentist | view all dentists that match filter criteria based on specific attributes |
+| `* * *`  | receptionist | create a new treatment                                | record the treatment performed in an appointment                          |
+| `* * *`  | receptionist | list all treatments available                         | check what available treatments in the clinic                             |
+| `* * *`  | receptionist | delete a treatment                                    | remove treatments that are no longer provided in the clinic               |
+| `* * *`  | receptionist | create a new appointment                              | assign a patient and a dentist for an appointment                         |
+| `* * *`  | receptionist | list all appointments                                 | view all appointments available in the clinic                             |
+| `* * *`  | receptionist | delete an appointment                                 | remove appointments cancelled or postponed in the clinic                  |
+| `* * *`  | receptionist | filter for appointments using Patient ID              | view all appointments that patient has in the clinic                      |
+| `* * *`  | receptionist | filter for appointments using Dentist ID              | view all appointments that dentist has in the clinic                      |
+| `* * *`  | receptionist | view clinic schedule in a calendar                    | have an overview of the clinic's schedules for admin management           |
 
-*{More to be added}*
+
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified
+(For all use cases below, the **System** is  `ToothTracker` and the **Actor** is the `user`, unless specified
 otherwise)
 
 ---
@@ -1220,7 +1303,6 @@ Use case ends.
       Use case continues from step 2.
 
 
-*{More to be added}*
 
 
 ### Non-Functional Requirements
