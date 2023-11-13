@@ -120,11 +120,11 @@ Storage -left-|> UserPrefsStorage
 Storage -right-|> AddressBookStorage
 
 JsonUserPrefsStorage .up.|> UserPrefsStorage
-JsonAddressBookStorage .up.|> AddressBookStorage
+JsonAddressBookStorage .right.|> AddressBookStorage
 JsonAddressBookStorage ..> JsonSerializableAddressBook
 JsonSerializableAddressBook --> "*" JsonAdaptedPatient
-JsonSerializableAddressBook --> "*" JsonAdaptedDentist
-JsonSerializableAddressBook --> "*" JsonAdaptedAppointment
+JsonSerializableAddressBook ---> "*" JsonAdaptedDentist
+JsonSerializableAddressBook ---> "*" JsonAdaptedAppointment
 JsonSerializableAddressBook --> "*" JsonAdaptedTreatment
 JsonAdaptedPatient --> "*" JsonAdaptedTag
 JsonAdaptedDentist --> "*" JsonAdaptedTag
