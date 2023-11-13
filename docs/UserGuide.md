@@ -41,7 +41,7 @@ Head over to [How to use ToothTracker's User Guide](#how-to-use-toothtrackers-us
 Thank you for choosing ToothTracker! We are delighted to have you as a user!
 This user guide provides a comprehensive documentation on the various commands supported by ToothTracker.
 
-<div markdown="span" class="alert alert-primary">
+<div markdown="span" class="alert alert-success">
   <span id="text">
     :bulb: **Tip:** Our user guide is designed for **ease of navigation**. Simply click on any item in the Table of Contents
     to jump directly to that section. Within each section, clicking on the **headings** will return you to the Table of Contents,
@@ -127,7 +127,7 @@ Adds a dentist to the list of dentists in ToothTracker. This is useful when:
 
 **Format:** `add-dentist n/NAME p/PHONE s/SPECIALIZATION y/YOE [e/EMAIL] [h/ADDRESS] [t/TAG]…​`
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+<div markdown="span" class="alert alert-success">:bulb: **Tip:**
 A dentist can have any number of <code>TAG</code>s (including zero tags).
 
 <code>EMAIL</code> and <code>ADDRESS</code> are optional to include.
@@ -209,7 +209,7 @@ This command is DESTRUCTIVE! The records of all deleted dentists will be removed
 **Proceed with caution!**
 </div>
 
-<div markdown="span" class="alert alert-primary">:bulb: Tip:
+<div markdown="span" class="alert alert-success">:bulb: **Tip:**
 To check the <code>DENTIST_ID</code> of a dentist, you can simply enter the command `list-dentist`.
 </div>
 
@@ -227,7 +227,7 @@ This command helps you find a unique dentist based on the provided `DENTIST_ID`.
 
 **Format:** `search-dentist DENTIST_ID`
 
-<div markdown="block" class="alert alert-primary">
+<div markdown="block" class="alert alert-success">
 :bulb: **Tip:**
 The `DENTIST_ID` refers to the ID shown in the displayed list of dentists. <br>
 To check the `DENTIST_ID` of a dentist, you can simply enter the command `list-dentist`.
@@ -277,7 +277,7 @@ When this command is used, there might be more than one result that matches your
 The <code>`filter-dentist`</code> command only accepts filtering using 1 attribute and 1 set of keywords. For example, `filter-dentist` a/Address k/Serangoon k/Bishan will not work.
 </div>
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+<div markdown="span" class="alert alert-success">:bulb: **Tip:**
 To check the attributes that you can filter by, you can simply enter the command `list-dentist` to view the attributes which will be displayed in the Dentist card.
 Alternatively, a message will be shown in the text box regarding the attributes that you can filter by if you entered an invalid attribute.
 We have set the attributes that can be filtered to be:
@@ -301,11 +301,11 @@ Edits one or more attributes of the dentist with the specified `DENTIST_ID`. Thi
 
 **Format:** `edit-dentist DENTIST_ID [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SPECIALIZATION] [y/YOE] [t/TAG]…​`
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+<div markdown="span" class="alert alert-success">:bulb: **Tip:**
 You can edit the particulars in any order and edit more than one particular of the dentist with a single `edit-dentist` command.
 </div>
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+<div markdown="span" class="alert alert-success">:bulb: **Tip:**
 To check the `DENTIST_ID` of a dentist, you can simply enter the command `list-dentist`.
 </div>
 
@@ -338,7 +338,7 @@ Adds a patient to the list of patients in ToothTracker. This is useful when:
 
 **Format:** `add-patient n/NAME p/PHONE b/BIRTHDATE g/GENDER [r/REMARK] [tr/TREATMENT] [e/EMAIL] [h/ADDRESS] [t/TAG]…​`
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+<div markdown="span" class="alert alert-success">:bulb: **Tip:**
 A patient can have any number of <code>TAG</code>s (including zero tags).
 
 <code>EMAIL</code>, <code>ADDRESS</code>, <code>REMARK</code> and <code>TREATMENT</code> are optional to be put.
@@ -411,7 +411,7 @@ This command is DESTRUCTIVE! The records of all deleted dentists will be removed
 **Proceed with caution!**
 </div>
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+<div markdown="span" class="alert alert-success">:bulb: **Tip:**
 To check the `PATIENT_ID` of a patient, you can simply enter the command `list-patient`.
 </div>
 
@@ -429,7 +429,7 @@ This command helps you find a unique patient based on the provided `PATIENT_ID`.
 
 **Format:** `search-patient PATIENT_ID`
 
-<div markdown="block" class="alert alert-primary">
+<div markdown="block" class="alert alert-success">
 :bulb: **Tip:**
 The `PATIENT_ID` refers to the ID shown in the displayed list of patients. <br>
 To check the `PATIENT_ID` of a patient, you can simply enter the command `list-patient`.
@@ -479,7 +479,7 @@ When this command is used, there might be more than one result that matches your
 The <code>filter-patient</code> command only accepts filtering using 1 attribute and 1 set of keywords. For example, `filter-patient` a/Treatment k/Cleaning k/Braces will not work.
 </div>
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+<div markdown="span" class="alert alert-success">:bulb: **Tip:**
 To check the attributes that you can filter by, you can simply enter the command `list-patient` to view the attributes which will be displayed in the Patient card.
 Alternatively, a message will be shown in the text box regarding the attributes that you can filter by if you entered an invalid attribute.
 We have set the attributes that can be filtered to be:
@@ -503,11 +503,11 @@ Edits one or more attributes of the patient with the specified `PATIENT_ID`. Thi
 
 **Format:** `edit-patient PATIENT_ID [n/NAME] [p/PHONE] [b/BIRTHDATE] [g/GENDER] [r/REMARK] [tr/TREATMENT] [e/EMAIL] [h/ADDRESS] [t/TAG]`
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+<div markdown="span" class="alert alert-success">:bulb: **Tip:**
 You can edit the particulars in any order and edit more than one particular of the patient with a single `edit-patient` command.
 </div>
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+<div markdown="span" class="alert alert-success">:bulb: **Tip:**
 To check the `PATIENT_ID` of a patient, you can simply enter the command `list-patient`.
 </div>
 
@@ -586,7 +586,7 @@ This command is DESTRUCTIVE! The records of all deleted appointments will be rem
 Proceed with caution!
 </div>
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+<div markdown="span" class="alert alert-success">:bulb: **Tip:**
 To check the `APPOINTMENT_ID` of an appointment, you can simply enter the command `list-appointment`.
 </div>
 
@@ -605,7 +605,7 @@ This is useful when:
 
 **Format:** `filter-appointment dentist DENTIST_ID`
 
-<div markdown="block" class="alert alert-primary">:bulb: **Tip:**
+<div markdown="block" class="alert alert-success">:bulb: **Tip:**
 `DENTIST_ID` refers to the ID shown in the displayed list of dentists. <br>
 You may use `list-dentist` to check out the `DENTIST_ID` first.
 </div>
@@ -625,7 +625,7 @@ This is useful when:
 
 **Format:** `filter-appointment patient PATIENT_ID`
 
-<div markdown="block" class="alert alert-primary">:bulb: **Tip:**
+<div markdown="block" class="alert alert-success">:bulb: **Tip:**
 `PATIENT_ID` refers to the index number shown in the displayed list of patients. <br>
 You may use `list-patient` to check the `PATIENT_ID` first.
 </div>
@@ -678,7 +678,7 @@ This command is DESTRUCTIVE! The records of all deleted treatments will be remov
 Proceed with caution!
 </div>
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+<div markdown="span" class="alert alert-success">:bulb: **Tip:**
 `TREATMENT_NAME` must be an **exact** match (case-sensitive) with the name of the treatment to be deleted.
 </div>
 
