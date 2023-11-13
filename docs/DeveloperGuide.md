@@ -3,9 +3,19 @@ layout: page
 title: Developer Guide
 show-toc: true
 ---
-{% include toc.md header=false show-in-toc=true ordered=true %}
+## About ToothTracker
 
-## **Acknowledgements**
+ToothTracker is a **Dental Clinic Administrative Management System** designed for **dental clinic administration assistants**.
+From adding new patient and dentist profiles to seamlessly creating appointment schedules, ToothTracker is
+engineered to simplify every aspect of your dental clinic administrative responsibilities.
+
+This Developer Guide provides an in-depth documentation on how ToothTracker is designed and implemented.
+
+{% include toc.md header=true show-in-toc=true ordered=true %}
+
+## Preface
+
+### Acknowledgements
 
 * Java dependencies:
   * [JavaFX](https://openjfx.io/) for GUI
@@ -21,12 +31,12 @@ show-toc: true
   * [Pure liquid HTML table-of-contents](https://github.com/AY2324S1-CS2103T-W10-3/tp/blob/master/docs/_includes/toc.html) from [@allejo on GitHub](https://github.com/allejo/jekyll-toc)
   * [Pure CSS auto-incrementing heading counters](https://github.com/AY2324S1-CS2103T-W10-3/tp/blob/master/docs/_sass/toc.scss) adapted from [@gvgramazio on StackOverflow](https://stackoverflow.com/a/51007932/9311854)
 
-## **Setting up, getting started**
+### Setting Up, Getting Started
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 
-## **Design**
+## Design
 
 <div markdown="span" class="alert alert-primary">
 
@@ -84,6 +94,8 @@ implementation of a component), as illustrated in the (partial) class diagram be
 
 The sections below give more details of each component.
 
+{% include page-break.html %}
+
 ### UI component
 The UI component handles the user-interface portion of the application.
 
@@ -113,8 +125,7 @@ The `UI` component,
 ### Logic component
 The Logic component handles the execution of commands.
 
-**API
-** : [`Logic.java`](https://github.com/AY2324S1-CS2103T-W10-3/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : [`Logic.java`](https://github.com/AY2324S1-CS2103T-W10-3/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
 
@@ -151,10 +162,11 @@ How the parsing works:
 * All `XYZCommandParser` classes (e.g., `AddPatientCommandParser`, `DeletePatientCommandParser`, ...) inherit from the `Parser`
   interface so that they can be treated similarly where possible e.g, during testing.
 
+{% include page-break.html %}
+
 ### Model component
 
-**API
-** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
+**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
 
 <img src="images/ToothTrackerModelClassDiagram.png" width="700"/>
 
@@ -172,8 +184,7 @@ The `Model` component,
 
 ### Storage component
 
-**API
-** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
 
 <img src="images/ToothTrackerStorage.png" width="650" />
 
@@ -189,14 +200,15 @@ The `Storage` component,
 ### Common classes
 
 Classes used by multiple components are in the `seedu.addressbook.commons` package.
+**API** : [`Commons`](https://github.com/AY2324S1-CS2103T-W10-3/tp/tree/master/src/main/java/seedu/address/commons)
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Implementation**
+## Implementation
 
 This section describes some noteworthy details on how certain features are implemented.
 
-The features implemented are categorized into 4 sections:
+The features implemented are categorized into 5 sections:
 
 1. [Dentist Features](#dentist-features)
 2. [Patient Features](#patient-features)
@@ -612,14 +624,14 @@ The `clear` command is used to refresh the display within ToothTracker. It remov
 The `help` command is used to access a guide or information on available commands and their usage within ToothTracker. This command serves as a quick reference to assist users in navigating the application.
 
 --------------------------------------------------------------------------------------------------------------------
-## **Future Implementation**
+## Future Implementation
 
 ### Filter Feature Enhancement
 #### Overview
 As a future improvement to the filter feature, we are considering implementing validation for keyword arguments to ensure that they are valid
 for the specified attribute. This enhancement aims to provide a more robust and user-friendly filtering mechanism, preventing the use of irrelevant or incorrect keywords.
 
-#### **Validation of Keywords**
+#### Validation of Keywords
 
 Currently, the filter feature checks the validity of the attribute to filter by but does not validate the keywords provided. For instance, if filtering by the attribute "birthday," users can enter nonsensical or invalid keywords, 
 potentially leading to undesired results.
@@ -729,7 +741,7 @@ This would ensure the automatic removal of any future appointments related to pa
 
 
 --------------------------------------------------------------------------------------------------------------------
-## **Documentation, logging, testing, configuration, dev-ops**
+## Documentation, logging, testing, configuration, dev-ops
 
 * [Documentation guide](Documentation.md)
 * [Testing guide](Testing.md)
@@ -739,7 +751,7 @@ This would ensure the automatic removal of any future appointments related to pa
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Requirements**
+## Appendix: Requirements
 
 ### Product scope
 
@@ -1337,7 +1349,7 @@ Use case ends.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Instructions for manual testing**
+## Appendix: Instructions for manual testing
 
 Given below are instructions to test the app manually.
 
