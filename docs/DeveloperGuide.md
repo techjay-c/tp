@@ -7,9 +7,19 @@ show-toc: true
 
 ## **Acknowledgements**
 
-* {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the
-  original source as well}
-
+* Java dependencies:
+  * [JavaFX](https://openjfx.io/) for GUI
+  * [Jackson](https://github.com/FasterXML/jackson) for JSON-related operations
+  * [JUnit5](https://github.com/junit-team/junit5) for testing
+  * [CalendarFX](https://github.com/dlsc-software-consulting-gmbh/CalendarFX) for CalendarView
+* User Guide drew inspiration from:
+  * [FoodRem](https://github.com/AY2223S1-CS2103T-W16-2/tp/blob/2a34fab143ace403adeb4b923258468140b66200/docs/UserGuide.md)
+  * [ArtBuddy](https://github.com/AY2223S1-CS2103T-W11-3/tp/blob/master/docs/UserGuide.md)
+* Developer Guide drew inspiration from:
+  * [FoodRem](https://github.com/AY2223S1-CS2103T-W16-2/tp/blob/2a34fab143ace403adeb4b923258468140b66200/docs/UserGuide.md)
+* Code Acknowledgements:
+  * [Pure liquid HTML table-of-contents](https://github.com/AY2324S1-CS2103T-W10-3/tp/blob/master/docs/_includes/toc.html) from [@allejo on GitHub](https://github.com/allejo/jekyll-toc)
+  * [Pure CSS auto-incrementing heading counters](https://github.com/AY2324S1-CS2103T-W10-3/tp/blob/master/docs/_sass/toc.scss) adapted from [@gvgramazio on StackOverflow](https://stackoverflow.com/a/51007932/9311854)
 
 ## **Setting up, getting started**
 
@@ -1813,15 +1823,15 @@ Expected Output in Command Output Box:  Error details shown in the Command Outpu
 
 #### Adding an Appointment
 
-Prerequisite: There is at least 1 Patient `XXX`, at least 1 Dentist `Bernard Tan` and at least 1 Treatment `Braces` stored in ToothTracker.
-XXX's Patient ID is 2 and Bernard Tan's Dentist ID is 4.
+Prerequisite: There is at least 1 Patient `Tommy Tan Chuk Yong`, at least 1 Dentist `Bernard Tan` and at least 1 Treatment `Braces` stored in ToothTracker.
+Tommy Tan Chuk Yong's Patient ID is 1 and Bernard Tan's Dentist ID is 4.
 
-`add-appointment dentist/4 patient/2 start/2023-11-29 16:00 tr/Braces`
+`add-appointment dentist/4 patient/1 start/2023-11-29 16:00 tr/Braces`
 
 Expected Output in the Appointment List: New appointment added into the Appointment List. 
 
 
-`add-appointment patient/2 start/2023-11-29 16:00 tr/Braces`
+`add-appointment patient/1 start/2023-11-29 16:00 tr/Braces`
 
 Expected Output in the Command Output Box: Error message for invalid command format, prompting users with correct attributes to include.
 
@@ -1852,11 +1862,11 @@ Expected Output in the Command Output Box: Error message for invalid ID provided
 
 #### Filtering Appointments by Patient ID
 
-Prerequisite: There is at least one Appointment stored in ToothTracker with Patient `XXX`. XXX's Patient ID is 2.
+Prerequisite: There is at least one Appointment stored in ToothTracker with Patient `Tommy Tan Chuk Yong`. Tommy Tan Chuk Yong's Patient ID is 2.
 
 `filter-appointment patient 2`
 
-Expected Output in the Appointment List: Appointments with Patient `XXX` is displayed.
+Expected Output in the Appointment List: Appointments with Patient `Tommy Tan Chuk Yong` is displayed.
 Expected Output in the Command Output Box: Appointments with patient whose patient ID is 2 listed.
 
 `filter-appointment patient -1`
