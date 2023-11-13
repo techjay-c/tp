@@ -34,12 +34,14 @@ record management when the user needs to make a quick note of follow-ups or impo
   * Set up GitHub team organization and project repo
   * Set up CodeCov for continuous integration
 
+{% include page-break.html %}
+
 * **Enhancements to existing features**:
   * Change the theme of the GUI: Created mockups of UI in Figma and updated the styling from AB3 to the mockup designed.
 ([#67](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/67) and [#76](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/76))
+  * Added unit testing for JsonAdaptedPatient, AddPatientCommand, ListPatientCommand and Patient, increasing code coverage by 8.26%: ([#102](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/102))
   * Refactored `Service` to `TreatmentName`: ([#113](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/113))
   * Assisted teammate @techjay-c to update `VALIDATION_REGEX` of Phone to be strictly 8 digits: ([#135](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/135)) 
-  * Added unit testing for JsonAdaptedPatient, AddPatientCommand, ListPatientCommand and Patient, increasing code coverage by 8.26%: ([#102](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/102))
   * Added unit testing for ViewCalendarCommand, ListTreatmentCommand, DeleteTreatmentCommand and AddressBookParser, increasing code coverage by 5.27%: ([#203](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/203))
   * Added unit testing for JsonSerializableAddressBook and UniquePatientList, increasing code coverage by 1.18%: ([#217](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/217))
 
