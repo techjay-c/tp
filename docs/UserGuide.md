@@ -295,7 +295,7 @@ This command helps you find dentists that match your search criteria. This is us
 **Format:** `search-dentist KEYWORD`
 
 <div markdown="block" class="alert alert-info">
-**:information_source: Notes for searching dentists by keyword:**<br>
+**:information_source: Notes about searching dentist by keywords:**<br>
   <ul>
     <li>The search is performed only on the dentist's name.</li>
     <li>The search is case-insensitive, meaning that it will match both uppercase and lowercase characters. For example, searching for `James` will match both `James` and `james`.</li>
@@ -534,7 +534,7 @@ This command helps you find patients that match your search criteria. This is us
 **Format:** `search-patient KEYWORD`
 
 <div markdown="block" class="alert alert-info">
-**:information_source: Notes for searching patients by keyword**<br>
+**:information_source: Notes about searching patient by keywords:**<br>
   <ul>
     <li>The search is performed only on the patient's name.</li>
     <li>The search is case-insensitive, meaning that it will match both uppercase and lowercase characters. For example, searching for `James` will match both `James` and `james`.</li>
@@ -836,7 +836,7 @@ Format: `view-calendar` (No extra parameters required)
 
 <div markdown="span" class="alert alert-info">
   <span id="text">
-**:information_source: Notes about viewing calendar:**<br>
+**:information_source: Notes about viewing the calendar:**<br>
 The appointments displayed in the calendar depends on the appointments listed in the main list.
 If the main appointment list is filtered, the appointments displayed in the calendar would be filtered too. <br>
 Please use <code>list-appointment</code> before <code>view-calendar</code> if you want to view all appointments.
