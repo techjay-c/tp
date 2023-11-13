@@ -12,7 +12,7 @@ Our software is compatible with Windows, macOS, and Linux to ensure optimal perf
 1. ToothTracker requires **Java 11 or above** installed in your Computer to run.
     - If you don't have Java installed, no worries — it's completely free! Find detailed installation instructions [here](https://docs.oracle.com/en/java/javase/11/install/overview-jdk-installation.html#GUID-8677A77F-231A-40F7-98B9-1FD0B48C346A).
 
-    <div markdown="span" class="alert alert-primary">
+    <div markdown="span" class="alert alert-success">
       :bulb: **Tip:** Unsure about your Java version? Our [troubleshooting](#troubleshooting) section has you covered with a quick guide.
     </div>
    
@@ -153,7 +153,7 @@ Type `add-dentist n/Jonathan Goh p/92095568 e/jonathan.goh@gmail.com y/3 s/Paedi
    Simply run `delete-dentist 1`.
    - After executing the command, Dr. Alex Yeoh's information is now deleted from ToothTracker.
 
-<div markdown="span" class="alert alert-primary">
+<div markdown="span" class="alert alert-success">
    <span id="text">
       :bulb: **Tip:** Always ensure the `DENTIST_ID` matches the identifier on the dentist's card within ToothTracker.
    </span>
@@ -171,6 +171,12 @@ Enter `add-patient n/Jean p/95339212 b/14-09-2001 g/F` and press enter.
 
 2. **Updating patient info**: Now, suppose that Alex wants to update his phone number. Easy! Just type in `edit-patient 1 p/82019452`.
    - Done! Alex's phone number has been updated!
+
+<div markdown="span" class="alert alert-success">
+   <span id="text">
+      :bulb: **Tip:** Always ensure the `PATIENT_ID` matches the identifier on the patient's card within ToothTracker.
+   </span>
+</div>
 
    ![trying-command-edit-patient-example](images/ug/edit-patient-example.png){: .centered-image-full-size }
 

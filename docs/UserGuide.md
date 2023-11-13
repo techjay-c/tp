@@ -71,15 +71,44 @@ assist you in troubleshooting common problems and providing answers.
 
 {% include page-break.html %}
 
-### Icons used in this guide
+### Conventions used in this guide
 
-Throughout this guide, you'll find helpful tips and cautionary advice to ensure a smooth experience using ToothTracker.
+{: .no_toc}
+#### Formatting conventions
 
-| Icon                          | Meaning                                  |
-|-------------------------------|------------------------------------------|
-| :information_source:  **Note** | Information you should keep in mind.     |
-| :bulb: **Tip**                | Information you might find useful.       |
-| :exclamation: **Caution**     | Information you should be careful about. |
+| Formatting         | Description                                                                                                    |
+|--------------------|----------------------------------------------------------------------------------------------------------------|
+| `code snippets`    | Code snippets are used to show ToothTracker commands or inputs.                                                |
+| **bold**           | Text in bold are important details you should look out for or headers to distinguish from the rest of the text. |
+| [blue hyperlink]() | Text in blue are hyperlinks that will direct you to the relevant section of the page or to other websites.     |
+
+{: .no_toc}
+#### Call-out text box conventions
+
+Throughout this guide, you'll encounter various call-out text boxes.
+These contain helpful tips and cautionary advice that you should keep in mind to ensure a smooth experience using ToothTracker.
+
+**Note Box**
+<div markdown="span" class="alert alert-info">
+   <span id="text">
+      :information_source: **Note:** Call-outs like this contains information you should keep in mind.
+   </span>
+</div>
+
+**Tip Box**
+<div markdown="span" class="alert alert-success">
+   <span id="text">
+      :bulb: **Tip:** Call-outs like this contains tips that you might find useful.
+   </span>
+</div>
+
+**Caution Box**
+<div markdown="span" class="alert alert-warning">
+   <span id="text">
+      :exclamation: **Caution:** Call-outs like this contains warnings that you should be careful about.
+   </span>
+</div>
+
 
 {% include page-break.html %}
 
@@ -90,8 +119,15 @@ Throughout this guide, you'll find helpful tips and cautionary advice to ensure 
 ## Features
 This section shares with you more about how to use each feature in detail.
 
-<div markdown="block" class="alert alert-info">
+Similar features are grouped into the individual subsections:
+* [Dentist-related commands](#dentist-features)
+* [Patient-related commands](#patient-features)
+* [Appointment-related commands](#appointment-features)
+* [Treatment-related commands](#treatment-features)
+* [Calendar-related command](#calendar-feature)
+* [General commands](#general-features)
 
+<div markdown="block" class="alert alert-info">
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are input parameters that you need to provide.<br>
@@ -112,7 +148,6 @@ This section shares with you more about how to use each feature in detail.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines
   as space characters surrounding line-breaks may be omitted when copied over to the application.
-
 </div>
 
 {% include page-break.html %}
@@ -127,12 +162,13 @@ Adds a dentist to the list of dentists in ToothTracker. This is useful when:
 
 **Format:** `add-dentist n/NAME p/PHONE s/SPECIALIZATION y/YOE [e/EMAIL] [h/ADDRESS] [t/TAG]…​`
 
-<div markdown="span" class="alert alert-success">:bulb: **Tip:**
-A dentist can have any number of <code>TAG</code>s (including zero tags).
-
-<code>EMAIL</code> and <code>ADDRESS</code> are optional to include.
-You may use the `edit-dentist` command to update them in future.
+<div markdown="span" class="alert alert-success">
+   <span id="text">
+      :bulb: **Tip:** A dentist can have any number of `TAG`s (including zero tags). 
+      `EMAIL` and `ADDRESS` are optional to include. You may use the `edit-dentist` command to update them in future.
+   </span>
 </div>
+
 
 <div markdown="block" class="alert alert-info">
 **:information_source: Notes about Specializations:**<br>
@@ -204,14 +240,19 @@ Deletes the dentist with the specified `DENTIST_ID` from ToothTracker.
 
 **Format:** `delete-dentist DENTIST_ID`
 
-<div markdown="span" class="alert alert-warning">:exclamation: **CAUTION:**
-This command is DESTRUCTIVE! The records of all deleted dentists will be removed.
-**Proceed with caution!**
+<div markdown="span" class="alert alert-warning">
+   <span id="text">
+      :exclamation: **CAUTION:** This command is DESTRUCTIVE! The records of all deleted dentists will be removed.
+      **Proceed with caution!**
+   </span>
 </div>
 
-<div markdown="span" class="alert alert-success">:bulb: **Tip:**
-To check the <code>DENTIST_ID</code> of a dentist, you can simply enter the command `list-dentist`.
+<div markdown="span" class="alert alert-success">
+   <span id="text">
+      :bulb: **Tip:** To check the `DENTIST_ID` of a dentist, you can simply enter the command `list-dentist`.
+   </span>
 </div>
+
 
 **Example:**
 * `delete-dentist 2` <br> This deletes the dentist with the `DENTIST_ID` 2.
@@ -227,11 +268,13 @@ This command helps you find a unique dentist based on the provided `DENTIST_ID`.
 
 **Format:** `search-dentist DENTIST_ID`
 
-<div markdown="block" class="alert alert-success">
-:bulb: **Tip:**
-The `DENTIST_ID` refers to the ID shown in the displayed list of dentists. <br>
-To check the `DENTIST_ID` of a dentist, you can simply enter the command `list-dentist`.
+<div markdown="span" class="alert alert-success">
+   <span id="text">
+      :bulb: **Tip:** The `DENTIST_ID` refers to the ID shown in the displayed list of dentists. <br>
+      To check the `DENTIST_ID` of a dentist, you can simply enter the command `list-dentist`.
+   </span>
 </div>
+
 
 **Example:**
 * `search-dentist 5` <br> This searches for the dentist with `DENTIST_ID` 5.
@@ -272,16 +315,21 @@ When this command is used, there might be more than one result that matches your
 
 **Format:** `filter-dentist a/ATTRIBUTE k/KEYWORDS`
 
-<div markdown="block" class="alert alert-info">
-**:information_source: Notes about filtering dentists using keywords:**<br>
-The <code>`filter-dentist`</code> command only accepts filtering using 1 attribute and 1 set of keywords. For example, `filter-dentist` a/Address k/Serangoon k/Bishan will not work.
+<div markdown="span" class="alert alert-info">
+   <span id="text">
+      **:information_source: Notes about filtering dentists using keywords:**<br>
+      The `filter-dentist` command only accepts filtering using 1 attribute and 1 set of keywords. <br>
+      For example, `filter-dentist` a/Address k/Serangoon k/Bishan will not work.
+   </span>
 </div>
 
-<div markdown="span" class="alert alert-success">:bulb: **Tip:**
-To check the attributes that you can filter by, you can simply enter the command `list-dentist` to view the attributes which will be displayed in the Dentist card.
-Alternatively, a message will be shown in the text box regarding the attributes that you can filter by if you entered an invalid attribute.
-We have set the attributes that can be filtered to be:
-`name`, `phone`, `specialization`, `experience`, `email`, `address`, `tags`.
+<div markdown="span" class="alert alert-success">
+   <span id="text">
+      :bulb: **Tip:** To check the attributes that you can filter by, you can simply enter the command `list-dentist` to
+      view the attributes which will be displayed in the Dentist card.
+      Alternatively, a message will be shown in the text box regarding the attributes that you can filter by if you entered an invalid attribute. <br>
+      We have set the attributes that can be filtered to be: `name`, `phone`, `specialization`, `experience`, `email`, `address`, `tags`.
+   </span>
 </div>
 
 **Examples:**
@@ -301,12 +349,16 @@ Edits one or more attributes of the dentist with the specified `DENTIST_ID`. Thi
 
 **Format:** `edit-dentist DENTIST_ID [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SPECIALIZATION] [y/YOE] [t/TAG]…​`
 
-<div markdown="span" class="alert alert-success">:bulb: **Tip:**
-You can edit the particulars in any order and edit more than one particular of the dentist with a single `edit-dentist` command.
+<div markdown="span" class="alert alert-success">
+   <span id="text">
+      :bulb: **Tip:** You can edit the particulars in any order and edit more than one particular of the dentist with a single `edit-dentist` command.
+   </span>
 </div>
 
-<div markdown="span" class="alert alert-success">:bulb: **Tip:**
-To check the `DENTIST_ID` of a dentist, you can simply enter the command `list-dentist`.
+<div markdown="span" class="alert alert-success">
+   <span id="text">
+      :bulb: **Tip:** To check the `DENTIST_ID` of a dentist, you can simply enter the command `list-dentist`.
+   </span>
 </div>
 
 <div markdown="block" class="alert alert-info">
@@ -338,43 +390,53 @@ Adds a patient to the list of patients in ToothTracker. This is useful when:
 
 **Format:** `add-patient n/NAME p/PHONE b/BIRTHDATE g/GENDER [r/REMARK] [tr/TREATMENT] [e/EMAIL] [h/ADDRESS] [t/TAG]…​`
 
-<div markdown="span" class="alert alert-success">:bulb: **Tip:**
-A patient can have any number of <code>TAG</code>s (including zero tags).
-
-<code>EMAIL</code>, <code>ADDRESS</code>, <code>REMARK</code> and <code>TREATMENT</code> are optional to be put.
-You may use the `edit-patient` command to update them in the future.
+<div markdown="span" class="alert alert-success">
+   <span id="text">
+      :bulb: **Tip:** A patient can have any number of `TAG`s (including zero tags).
+      `EMAIL`, `ADDRESS`, `REMARK` and `TREATMENT` are optional to be put. You may use the `edit-patient` command to update them in the future.
+   </span>
 </div>
 
-<div markdown="block" class="alert alert-info">
+<div markdown="span" class="alert alert-info">
+  <span id="text">
 **:information_source: Notes about adding a patient without a remark and treatment:**<br>
-ToothTracker will set the <code>REMARK</code> and <code>TREATMENT</code> as `NIL` by default.
+ToothTracker will set the <code>REMARK</code> and <code>TREATMENT</code> as `NIL` by default. <br>
 
 If you wish to update them at a later time, you can use <code>edit-patient</code> to edit them.
+  </span>
 </div>
 
-<div markdown="block" class="alert alert-info">
+<div markdown="span" class="alert alert-info">
+  <span id="text">
 **:information_source: Notes about adding a patient without an email and address:**<br>
 ToothTracker will set the <code>EMAIL</code> as "NoEmailProvided@ToBeAdded.com"
-and <code>ADDRESS</code> as "No Address Provided." by default.
+and <code>ADDRESS</code> as "No Address Provided." by default. <br>
 
 If you wish to update them at a later time, you can use <code>edit-patient</code> to edit them.
+  </span>
 </div>
 
-<div markdown="block" class="alert alert-info">
+<div markdown="span" class="alert alert-info">
+  <span id="text">
 **:information_source: Notes about adding Treatments:**<br>
 The treatment associated with a patient must be a valid treatment in ToothTracker. To add a new treatment for your clinic, use the command `add-treatment`.
 To view the list of treatments, you can use the command `list-treatment`.
+  </span>
 </div>
 
-<div markdown="block" class="alert alert-info">
+<div markdown="span" class="alert alert-info">
+  <span id="text">
 **:information_source: Notes about adding patients with the same name:**<br>
 Each patient must have a unique name. ToothTracker does not allow multiple patients with identical names.
 We recommend that if multiple patients have the same name, add a unique suffix to their name to differentiate them (e.g., last 3 digits of their NRIC) — Mike Lim 976B.
+  </span>
 </div>
 
-<div markdown="block" class="alert alert-info">
+<div markdown="span" class="alert alert-info">
+  <span id="text">
 **:information_source: Notes about patient ID value:**<br>
 The patient ID value is auto-generated by ToothTracker and would always increase by 1 for each new patient added.
+  </span>
 </div>
 
 **Examples:**
@@ -406,13 +468,18 @@ Deletes the patient with the specified `PATIENT_ID` from ToothTracker.
 
 **Format:** `delete-patient PATIENT_ID`
 
-<div markdown="span" class="alert alert-warning">:exclamation: **CAUTION:**
-This command is DESTRUCTIVE! The records of all deleted dentists will be removed.
-**Proceed with caution!**
+<div markdown="span" class="alert alert-warning">
+  <span id="text">
+    :exclamation: **CAUTION:** This command is DESTRUCTIVE! The records of all deleted dentists will be removed.
+    **Proceed with caution!**
+  </span>
 </div>
 
-<div markdown="span" class="alert alert-success">:bulb: **Tip:**
-To check the `PATIENT_ID` of a patient, you can simply enter the command `list-patient`.
+<div markdown="span" class="alert alert-success">
+  <span id="text">
+    :bulb: **Tip:**
+    To check the `PATIENT_ID` of a patient, you can simply enter the command `list-patient`.
+  </span>
 </div>
 
 Example:
@@ -429,10 +496,12 @@ This command helps you find a unique patient based on the provided `PATIENT_ID`.
 
 **Format:** `search-patient PATIENT_ID`
 
-<div markdown="block" class="alert alert-success">
+<div markdown="span" class="alert alert-success">
+  <span id="text">
 :bulb: **Tip:**
 The `PATIENT_ID` refers to the ID shown in the displayed list of patients. <br>
 To check the `PATIENT_ID` of a patient, you can simply enter the command `list-patient`.
+  </span>
 </div>
 
 **Example:**
@@ -474,16 +543,20 @@ When this command is used, there might be more than one result that matches your
 
 **Format:** `filter-patient a/ATTRIBUTE k/KEYWORDS`
 
-<div markdown="block" class="alert alert-info">
+<div markdown="span" class="alert alert-info">
+  <span id="text">
 **:information_source: Notes about filtering dentists using keywords:**<br>
-The <code>filter-patient</code> command only accepts filtering using 1 attribute and 1 set of keywords. For example, `filter-patient` a/Treatment k/Cleaning k/Braces will not work.
+The `filter-patient` command only accepts filtering using 1 attribute and 1 set of keywords. For example, `filter-patient` a/Treatment k/Cleaning k/Braces will not work.
+  </span>
 </div>
 
-<div markdown="span" class="alert alert-success">:bulb: **Tip:**
-To check the attributes that you can filter by, you can simply enter the command `list-patient` to view the attributes which will be displayed in the Patient card.
-Alternatively, a message will be shown in the text box regarding the attributes that you can filter by if you entered an invalid attribute.
-We have set the attributes that can be filtered to be:
-`name`, `phone`, `address`, `email`, `gender`, `birthday`, `remark`, `tags` and `treatment`.
+<div markdown="span" class="alert alert-success">
+  <span id="text">
+:bulb: **Tip:** To check the attributes that you can filter by, you can simply enter the command `list-patient` to view
+the attributes which will be displayed in the Patient card.
+Alternatively, a message will be shown in the text box regarding the attributes that you can filter by if you entered an invalid attribute. <br>
+We have set the attributes that can be filtered to be: `name`, `phone`, `address`, `email`, `gender`, `birthday`, `remark`, `tags` and `treatment`.
+  </span>
 </div>
 
 **Examples:**
@@ -503,23 +576,33 @@ Edits one or more attributes of the patient with the specified `PATIENT_ID`. Thi
 
 **Format:** `edit-patient PATIENT_ID [n/NAME] [p/PHONE] [b/BIRTHDATE] [g/GENDER] [r/REMARK] [tr/TREATMENT] [e/EMAIL] [h/ADDRESS] [t/TAG]`
 
-<div markdown="span" class="alert alert-success">:bulb: **Tip:**
+<div markdown="span" class="alert alert-success">
+  <span id="text">
+:bulb: **Tip:**
 You can edit the particulars in any order and edit more than one particular of the patient with a single `edit-patient` command.
+  </span>
 </div>
 
-<div markdown="span" class="alert alert-success">:bulb: **Tip:**
+<div markdown="span" class="alert alert-success">
+  <span id="text">
+:bulb: **Tip:**
 To check the `PATIENT_ID` of a patient, you can simply enter the command `list-patient`.
+  </span>
 </div>
 
-<div markdown="block" class="alert alert-info">
+<div markdown="span" class="alert alert-info">
+  <span id="text">
 **:information_source: Notes about editing tags:**<br>
 When editing tags, you must include any previous tags that were already associated with the patient, or else these tags will be removed.
 This also implies that you can use `t/` to remove all tags from a patient using the <code>edit-patient</code> command.
+  </span>
 </div>
 
-<div markdown="block" class="alert alert-info">
+<div markdown="span" class="alert alert-info">
+  <span id="text">
 **:information_source: Notes about editing Treatments:**<br>
 The edited treatment must be a valid treatment in ToothTracker. For a list of valid treatments, you can use the command `list-treatment`.
+  </span>
 </div>
 
 **Examples:**
@@ -581,13 +664,18 @@ Deletes the appointment with the specified `APPOINTMENT_ID` from ToothTracker.
 
 **Format:** `delete-appointment APPOINTMENT_ID`
 
-<div markdown="span" class="alert alert-warning">:exclamation: **CAUTION:**
-This command is DESTRUCTIVE! The records of all deleted appointments will be removed.
-Proceed with caution!
+<div markdown="span" class="alert alert-warning">
+  <span id="text">
+:exclamation: **CAUTION:** This command is DESTRUCTIVE! The records of all deleted appointments will be removed.
+**Proceed with caution!**
+  </span>
 </div>
 
-<div markdown="span" class="alert alert-success">:bulb: **Tip:**
+<div markdown="span" class="alert alert-success">
+  <span id="text">
+:bulb: **Tip:**
 To check the `APPOINTMENT_ID` of an appointment, you can simply enter the command `list-appointment`.
+  </span>
 </div>
 
 **Example:**
@@ -605,9 +693,12 @@ This is useful when:
 
 **Format:** `filter-appointment dentist DENTIST_ID`
 
-<div markdown="block" class="alert alert-success">:bulb: **Tip:**
+<div markdown="span" class="alert alert-success">
+  <span id="text">
+:bulb: **Tip:**
 `DENTIST_ID` refers to the ID shown in the displayed list of dentists. <br>
 You may use `list-dentist` to check out the `DENTIST_ID` first.
+  <span id="text">
 </div>
 
 **Example:**
@@ -625,9 +716,12 @@ This is useful when:
 
 **Format:** `filter-appointment patient PATIENT_ID`
 
-<div markdown="block" class="alert alert-success">:bulb: **Tip:**
+<div markdown="span" class="alert alert-success">
+  <span id="text">
+:bulb: **Tip:**
 `PATIENT_ID` refers to the index number shown in the displayed list of patients. <br>
 You may use `list-patient` to check the `PATIENT_ID` first.
+  </span>
 </div>
 
 **Example:**
@@ -647,9 +741,11 @@ This command allows you to specify the treatment name, the cost of treatment, an
 
 **Format:** `add-treatment tr/NAME cs/PRICE ti/DURATION`
 
-<div markdown="block" class="alert alert-info">
+<div markdown="span" class="alert alert-info">
+  <span id="text">
 **:information_source: Notes about adding treatments with the same name:**<br>
 Each treatment must have a unique name. ToothTracker does not allow multiple treatments with identical names.
+  </span>
 </div>
 
 **Example:**
@@ -673,13 +769,19 @@ Deletes the treatment with the specified `TREATMENT_NAME` from ToothTracker.
 
 **Format:** `delete-treatment TREATMENT_NAME`
 
-<div markdown="span" class="alert alert-warning">:exclamation: **CAUTION:**
+<div markdown="span" class="alert alert-warning">
+  <span id="text">
+:exclamation: **CAUTION:**
 This command is DESTRUCTIVE! The records of all deleted treatments will be removed.
-Proceed with caution!
+**Proceed with caution!**
+  </span>
 </div>
 
-<div markdown="span" class="alert alert-success">:bulb: **Tip:**
+<div markdown="span" class="alert alert-success">
+  <span id="text">
+:bulb: **Tip:**
 `TREATMENT_NAME` must be an **exact** match (case-sensitive) with the name of the treatment to be deleted.
+  </span>
 </div>
 
 **Example:**
@@ -690,7 +792,7 @@ Proceed with caution!
 
 {% include page-break.html %}
 
-### Calendar Features
+### Calendar Feature
 
 #### Viewing calendar : `view-calendar`
 
@@ -699,11 +801,13 @@ Shows a calendar filled with all scheduled appointments in ToothTracker. This is
 
 Format: `view-calendar` (No extra parameters required)
 
-<div markdown="block" class="alert alert-info">
+<div markdown="span" class="alert alert-info">
+  <span id="text">
 **:information_source: Notes about viewing calendar:**<br>
 The appointments displayed in the calendar depends on the appointments listed in the main list.
-If the main appointment list is filtered, the appointments displayed in the calendar would be filtered too.
+If the main appointment list is filtered, the appointments displayed in the calendar would be filtered too. <br>
 Please use <code>list-appointment</code> before <code>view-calendar</code> if you want to view all appointments.
+  </span>
 </div>
 
 ![view-calendar-example](images/ug/ViewCalendarExample.png){: .centered-image-size-75 }
@@ -725,8 +829,10 @@ Shows a message explaining how to access the help page.
 
 Clears all data from ToothTracker. **PROCEED WITH CAUTION!**
 
-<div markdown="span" class="alert alert-warning">:exclamation: **CAUTION:**
-Data cleared cannot be recovered.
+<div markdown="span" class="alert alert-warning">
+  <span id="text">
+:exclamation: **CAUTION:** Data cleared cannot be recovered.
+  </span>
 </div>
 
 **Format:** `clear`
@@ -748,9 +854,12 @@ save manually.
 ToothTracker data is saved automatically as a JSON file `[JAR file location]/data/toothtracker.json`. Advanced users are
 welcome to update data directly by editing that data file.
 
-<div markdown="span" class="alert alert-warning">:exclamation: **CAUTION:**
+<div markdown="span" class="alert alert-warning">
+  <span id="text">
+:exclamation: **CAUTION:**
 If your changes to the data file makes its format invalid, ToothTracker will discard all data and start with an empty
 data file at the next run. Hence, it is recommended to take a backup of the file before editing it.
+  </span>
 </div>
 
 
@@ -836,6 +945,7 @@ number starts with an 8 or 9.
 (e.g filter-dentist a/phone k/myphone will still execute the command.)
 
 {% include page-break.html %}
+
 ## Fields summary
 
 | Field       | Description                                                               | Examples                                          |
