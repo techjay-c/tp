@@ -89,8 +89,8 @@ Given below are my contributions to the project.
       * Add Activity and Sequence Diagrams for Filter Dentist commands [\#134](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/134)
       * Add Activity and Sequence Diagrams for Add Dentist, Filter Patient, Filter Dentist commands [\#214](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/214)
       * Add and Update Activity and Sequence Diagrams for Search Dentist, Filter Dentist, Delete Dentist commands [\#214](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/214)
-      * Add and Update Use Cases for Search and Filter Commands for Dentist and Patient [\#236](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/236)
-      * Conduct proof-reading of the Developer Guide for consistency and grammatical accuracy [\#236](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/236)
+      * Add and Update Use Cases for Search and Filter Commands for Dentist and Patient [\#238](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/238)
+      * Conduct proof-reading of the Developer Guide for consistency and grammatical accuracy [\#238](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/238)
 
 
 * **Community**:
