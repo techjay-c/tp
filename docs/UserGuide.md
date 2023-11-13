@@ -696,6 +696,10 @@ This command is DESTRUCTIVE! The records of all deleted treatments will be remov
 Proceed with caution!
 </div>
 
+<div markdown="span" class="alert alert-warning">:exclamation: **CAUTION:**
+Before deleting a treatment in ToothTracker, confirm that it's no longer linked to any patients to maintain functionality.
+</div>
+
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 `TREATMENT_NAME` must be an **exact** match (case-sensitive) with the name of the treatment to be deleted.
 </div>
