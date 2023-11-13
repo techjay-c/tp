@@ -76,11 +76,11 @@ assist you in troubleshooting common problems and providing answers.
 {: .no_toc}
 #### Formatting conventions
 
-| Formatting         | Description                                                                                                    |
-|--------------------|----------------------------------------------------------------------------------------------------------------|
-| `code snippets`    | Code snippets are used to show ToothTracker commands or inputs.                                                |
-| **bold**           | Text in bold are important details you should look out for or headers to distinguish from the rest of the text. |
-| [blue hyperlink]() | Text in blue are hyperlinks that will direct you to the relevant section of the page or to other websites.     |
+| Formatting          | Description                                                                                                    |
+|---------------------|----------------------------------------------------------------------------------------------------------------|
+| `code_snippets`     | Code snippets are used to show ToothTracker commands or inputs.                                                |
+| **bold**            | Text in bold are important details you should look out for or headers to distinguish from the rest of the text. |
+| [blue hyperlink](#) | Text in blue are hyperlinks that will direct you to the relevant section of the page or to other websites.     |
 
 {: .no_toc}
 #### Call-out text box conventions
@@ -221,7 +221,7 @@ who has '6 years of experience' and specializing in 'Paediatric Dentistry' into 
 
 ![add-dentist-example-2](images/ug/dentist/AddDentistExample2.png){: .centered-image-full-size }
 
-
+{% include page-break.html %}
 
 #### Listing all dentists : `list-dentist`
 
@@ -233,6 +233,8 @@ Shows a list of all dentists in ToothTracker. This is useful when:
 **Format:** `list-dentist` (No extra parameters required)
 
 ![list-dentist](images/ug/dentist/ListDentistExample.png){: .centered-image }
+
+{% include page-break.html %}
 
 #### Deleting a dentist : `delete-dentist`
 
@@ -258,6 +260,7 @@ Deletes the dentist with the specified `DENTIST_ID` from ToothTracker.
 * `delete-dentist 2` <br> This deletes the dentist with the `DENTIST_ID` 2.
 ![delete-dentist-example-1](images/ug/dentist/DeleteDentistExample1.png){: .centered-image-full-size }
 
+{% include page-break.html %}
 
 #### Searching for dentists by `DENTIST_ID` : `search-dentist`
 
@@ -280,6 +283,7 @@ This command helps you find a unique dentist based on the provided `DENTIST_ID`.
 * `search-dentist 5` <br> This searches for the dentist with `DENTIST_ID` 5.
 ![search-dentist-id-example-1](images/ug/dentist/SearchDentistIdExample.png){: .centered-image-full-size }
 
+{% include page-break.html %}
 
 #### Searching for dentists by keywords : `search-dentist`
 
@@ -301,10 +305,13 @@ This command helps you find dentists that match your search criteria. This is us
   </ul>
 </div>
 
+{% include page-break.html %}
+
 **Example:**
 * `search-dentist John` <br> This searches for dentists with names containing the keyword `John`.
 ![search-dentist-keyword-example-1](images/ug/dentist/SearchDentistKeywordExample.png){: .centered-image-full-size }
 
+{% include page-break.html %}
 
 #### Filtering dentists : `filter-dentist`
 
@@ -332,6 +339,8 @@ When this command is used, there might be more than one result that matches your
    </span>
 </div>
 
+{% include page-break.html %}
+
 **Examples:**
 * `filter-dentist a/phone k/93526527` <br> This filters dentists with the phone number 93526527.
 ![filter-dentist-example-1](images/ug/dentist/FilterDentistExample1.png){: .centered-image-full-size }
@@ -339,6 +348,7 @@ When this command is used, there might be more than one result that matches your
 * `filter-dentist a/specialization k/Orthodontics` <br> This filters dentists with the specialization Orthodontics.
 ![filter-dentist-example-2](images/ug/dentist/FilterDentistExample2.png){: .centered-image-full-size }
 
+{% include page-break.html %}
 
 #### Editing a dentist : `edit-dentist`
 
@@ -367,10 +377,12 @@ When editing tags, you must include any previous tags that were already associat
 This also implies that you can use `t/` to remove all tags from a dentist using the <code>edit-dentist</code> command.
 </div>
 
+{% include page-break.html %}
+
 **Examples:**
 
 * `edit-dentist 1 p/98987676 e/bobjuly@gmail.com` <br> This modifies the phone number and email of the dentist with
-`DENTIST_ID` 1 to 98987676 and bobjuly@gmail.com respectively.
+`DENTIST_ID` 1 to '98987676' and 'bobjuly@gmail.com' respectively.
 ![edit-dentist-example-1](images/ug/dentist/EditDentistExample1.png){: .centered-image-full-size }
 
 * `edit-dentist 5 n/Emmanuel Alexandra t/` <br>
@@ -446,9 +458,10 @@ This adds a new patient named ‘John’, with the phone number ‘90676622’, 
 requesting for 'Braces' treatment, email of ‘johntan@gmail.com’, with an address at '60 Harvey Avenue', and a tag 'Urgent'.
 ![add-patient-example-1](images/ug/patient/AddPatientExample1.png){: .centered-image-full-size }
 
+{% include page-break.html %}
 
 * `add-patient n/Jean p/95339212 b/14-09-2001 g/F` <br>
-This adds a new patient named 'Jean', with the phone number '95339212', birthdate of 14 September 2001, gender F (Female).
+This adds a new patient named 'Jean', with the phone number '95339212', birthdate of '14 September 2001', gender 'F' (Female).
 ![add-patient-example-2](images/ug/patient/AddPatientExample2.png){: .centered-image-full-size }
 
 
@@ -486,6 +499,7 @@ Example:
 * `delete-patient 5` <br> This deletes the patient with the `PATIENT_ID` 5.
 ![delete-patient-example-1](images/ug/patient/DeletePatientExample1.png){: .centered-image-full-size }
 
+{% include page-break.html %}
 
 #### Searching for patients by `PATIENT_ID` : `search-patient`
 
@@ -508,6 +522,7 @@ To check the `PATIENT_ID` of a patient, you can simply enter the command `list-p
 * `search-patient 6` <br> This searches for the patient with `PATIENT_ID` 6.
 ![search-patient-id-example](images/ug/patient/SearchPatientIdExample1.png){: .centered-image-full-size }
 
+{% include page-break.html %}
 
 #### Searching for patients by keywords : `search-patient`
 
@@ -529,10 +544,13 @@ This command helps you find patients that match your search criteria. This is us
   </ul>
 </div>
 
+{% include page-break.html %}
+
 **Example:**
 * `search-patient John` <br> This searches for patients with names containing the keyword `John`.
 ![search-patient-keyword-example-1](images/ug/patient/SearchPatientKeywordExample1.png){: .centered-image-full-size }
 
+{% include page-break.html %}
 
 #### Filtering patients : `filter-patient`
 
@@ -559,6 +577,8 @@ We have set the attributes that can be filtered to be: `name`, `phone`, `address
   </span>
 </div>
 
+{% include page-break.html %}
+
 **Examples:**
 * `filter-patient a/phone k/82713092` <br> This filters for patients with the phone number '82713092'.
 ![filter-patient-example-1](images/ug/patient/FilterPatientExample1.png){: .centered-image-full-size }
@@ -566,6 +586,7 @@ We have set the attributes that can be filtered to be: `name`, `phone`, `address
 * `filter-patient a/treatment k/Braces` <br> This filters for patients with the treatment 'Braces'.
 ![filter-patient-example-2](images/ug/patient/FilterPatientExample2.png){: .centered-image-full-size }
 
+{% include page-break.html %}
 
 #### Editing a patient : `edit-patient`
 
@@ -605,6 +626,8 @@ The edited treatment must be a valid treatment in ToothTracker. For a list of va
   </span>
 </div>
 
+{% include page-break.html %}
+
 **Examples:**
 * `edit-patient 1 p/91234567 e/johndoe@example.com r/Allergic to Peanuts`<br>
 This edits the phone number, email, and remarks of the patient with `PATIENT_ID` 1 to
@@ -641,12 +664,16 @@ Adds a dental appointment to ToothTracker. This is useful when:
   </ul>
 </div>
 
+{% include page-break.html %}
+
 **Example:**
 * `add-appointment dentist/1 patient/1 start/2023-10-12 16:00 tr/Braces` <br>
 This command adds an appointment with the `PATIENT_ID` 1 and the `DENTIST_ID` 1.
 The appointment starts on '12 October 2023, 4pm'. The treatment provided during the appointment is 'Braces'.
 The duration of the appointment is automatically set based on the selected treatment in ToothTracker.
 ![add-appointment-example](images/ug/appointment/AddAppointmentExample.png){: .centered-image-full-size }
+
+{% include page-break.html %}
 
 #### Listing all appointments : `list-appointment`
 
@@ -657,6 +684,7 @@ Shows a list of all appointments in ToothTracker. This is useful when:
 **Format:** `list-appointment` (No extra parameters required)
 ![list-appointment-example](images/ug/appointment/ListAppointmentExample.png){: .centered-image }
 
+{% include page-break.html %}
 
 #### Deleting an appointment : `delete-appointment`
 
@@ -683,8 +711,9 @@ To check the `APPOINTMENT_ID` of an appointment, you can simply enter the comman
 This deletes the appointment with `APPOINTMENT_ID` 2 from ToothTracker.
 ![delete-appointment-example](images/ug/appointment/DeleteAppointmentExample.png){: .centered-image-full-size }
 
+{% include page-break.html %}
 
-#### Filtering Appointments by `DENTIST_ID` : `filter-appointment dentist`
+#### Filtering appointments by `DENTIST_ID` : `filter-appointment dentist`
 
 Narrows down your search for appointments by filtering the appointment list to
 show the list of appointments under the dentist with the specified `DENTIST_ID`.
@@ -698,7 +727,7 @@ This is useful when:
 :bulb: **Tip:**
 `DENTIST_ID` refers to the ID shown in the displayed list of dentists. <br>
 You may use `list-dentist` to check out the `DENTIST_ID` first.
-  <span id="text">
+  </span>>
 </div>
 
 **Example:**
@@ -706,8 +735,9 @@ You may use `list-dentist` to check out the `DENTIST_ID` first.
 This shows you all the appointments under the dentist with `DENTIST_ID` 1.
 ![filter-appointment-dentist-example](images/ug/appointment/FilterAppointmentDentistExample.png){: .centered-image-full-size }
 
+{% include page-break.html %}
 
-#### Filtering Appointments by `PATIENT_ID` : `filter-appointment patient`
+#### Filtering appointments by `PATIENT_ID` : `filter-appointment patient`
 
 Narrows down your search for appointments by filtering the appointment list to
 show the list of appointments under the patient with the specified `PATIENT_ID`.
@@ -753,6 +783,7 @@ Each treatment must have a unique name. ToothTracker does not allow multiple tre
 This adds a 'Tooth Extraction' treatment to ToothTracker with a cost of '$1080 SGD', and duration of '1 hour and 30 minutes'.
 ![add-treatment-example](images/ug/treatment/AddTreatmentExample.png){: .centered-image-full-size }
 
+{% include page-break.html %}
 
 #### Listing all treatments : `list-treatment`
 
@@ -762,6 +793,7 @@ Shows a list of all treatments in ToothTracker. This is useful when:
 Format: `list-treatment` (No extra parameters required)
 ![list-treatment-example](images/ug/treatment/ListTreatmentExample.png){: .centered-image }
 
+{% include page-break.html %}
 
 #### Deleting a treatment : `delete-treatment`
 
@@ -797,7 +829,8 @@ This command is DESTRUCTIVE! The records of all deleted treatments will be remov
 #### Viewing calendar : `view-calendar`
 
 Shows a calendar filled with all scheduled appointments in ToothTracker. This is useful when:
-* You want a visual summary of all appointments, allowing for a comprehensive overview.
+* You want a visual summary of all appointments in your clinic.
+* You need to plan ahead for upcoming weeks or months.
 
 Format: `view-calendar` (No extra parameters required)
 
@@ -810,8 +843,9 @@ Please use <code>list-appointment</code> before <code>view-calendar</code> if yo
   </span>
 </div>
 
-![view-calendar-example](images/ug/ViewCalendarExample.png){: .centered-image-size-75 }
+![view-calendar-example](images/ug/ViewCalendarExample.png){: .centered-image-full-size }
 
+{% include page-break.html %}
 
 ### General Features
 
@@ -821,7 +855,7 @@ Shows a message explaining how to access the help page.
 
 **Format**: `help`
 
-![help message](images/ug/HelpWindow.png){: .centered-image }
+![help message](images/ug/HelpWindow.png){: .centered-image-size-75 }
 
 
 
@@ -844,6 +878,7 @@ Exits ToothTracker app.
 
 **Format:** `exit`
 
+{% include page-break.html %}
 
 #### Saving the data
 ToothTracker data is saved in the hard disk automatically after any command that changes the data. There is no need to

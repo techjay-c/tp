@@ -27,20 +27,22 @@ Installation complete! You're now ready to launch ToothTracker.
 {% include page-break.html %}
 
 ### Launching ToothTracker
-Great! Now that you have downloaded ToothTracker (if not, refer to the [Installation Instructions](#installation-instructions)), let's get it up and running.
+Great! Now that you have downloaded ToothTracker (if not, refer to the [Installation Instructions](#installing-toothtracker)), let's get it up and running.
 
 1. Open a command terminal.
 2. Enter `cd` and change your working directory into the folder you put the `toothtracker.jar` file in.
 3. Enter the `java -jar toothtracker.jar` command to run the application.
 
 A user-friendly GUI will pop up shortly, preloaded with some sample data to get you started.<br>
-![Ui](images/Ui.png){: .centered-image }
+![Ui](images/Ui.png){: .centered-image-full-size }
 
 ### Familiarising with ToothTracker's Interface
 Now that you have ToothTracker up and running, let's get you familiarized with ToothTracker's user interface!
 
 ToothTracker has two windows: a [Main Window](#main-window) and a [Calendar Window](#calendar-window).
 Let's take a closer look at each window individually.
+
+{% include page-break.html %}
 
 {: .no_toc}
 #### Main Window
@@ -60,7 +62,7 @@ Let's learn what each of these components does!
 | 5 | Dentist List                | Here, you'll find a roster of dentists associated with your clinic, complete with their specializations and contact information.                                                                                       |
 | 6 | Appointment List            | Displays the schedule, status, and details of all clinic appointments.                                                                                                                                                 |
 | 7 | [Quick Notes](#quick-notes) | A dedicated section at the bottom right corner of the Main Window for on-the-fly notes, reminders, or observations that you need to keep handy.                                                                        |
-| 8 | Saved Data File             | For advanced users, the [file path](#glossary) displayed here is where ToothTracker stores your saved data (which you can [edit](#editing-the-data-file)).                                                             |
+| 8 | Saved Data File             | For advanced users, the file path displayed here is where ToothTracker stores your saved data (which you can [edit](#editing-the-data-file)).                                                                          |
 
 {: .no_toc}
 #### Quick Notes
@@ -74,10 +76,12 @@ Use this notes section that we created to help you capture important reminders o
 Click into the Quick Notes Box and type your notes.
 Remember to hit the `Save` button to keep your notes for future reference.
 Unsaved notes will be lost when the main window is closed.
-<div markdown="block" class="alert alert-info">
+<div markdown="span" class="alert alert-info">
+   <span id="text">
 **:information_source: Notes about Saving:** <br>
 The Quick Notes box will turn green upon saving latest changes.
-![Quick Notes](images/ug/QuickNotesSaved.png){: .centered-image }
+![Quick Notes](images/ug/QuickNotesSaved.png){: .centered-image-minimal-margin }
+   </span>
 </div>
 
 **2. Editing Notes**:
@@ -101,6 +105,7 @@ It allows you to easily understand your clinic's appointments and availability a
 | 2 | Navigation Buttons  | The navigation arrows enable you to move to the previous or next time periods, depending on the currently selected view (day, week, month, or year).        |
 | 3 | Appointment Entries | This section displays the specifics of each appointment, including the Appointment ID, patient name, dentist name and appointment time.                     |
 
+{% include page-break.html %}
 
 ### Using ToothTracker's CLI
 ToothTracker is optimized for use via a CLI, allowing you to accomplish tasks using text inputs, otherwise known as commands.
@@ -127,6 +132,7 @@ Every command you input follows a simple structure to help ToothTracker understa
 * **Flags:** These serve as markers to differentiate between inputs. Typically, a flag is followed by a placeholder.
 * **Placeholders:** These are temporary labels that you'll replace with actual data. For instance, replace 'TREATMENT' in `tr/TREATMENT` with the actual name of a treatment, like `tr/Braces`.
 
+{% include page-break.html %}
 
 ### Trying out your first commands
 Can't wait to get started with ToothTracker?
@@ -142,14 +148,16 @@ Let's go through some straightforward commands for you to get a feel on how easy
 
 Let's start with adding and managing your clinic's dental team:
 
-1. **Welcoming a new dentist**:
+**Welcoming a new dentist**:
 Suppose Dr. Jonathan Goh is the latest addition to your dental team. Let's add him into ToothTracker. <br>
 Type `add-dentist n/Jonathan Goh p/92095568 e/jonathan.goh@gmail.com y/3 s/Paediatric Dentistry` and press Enter.
    - Just like that, Dr. Jonathan Goh is part of your digital roster!
 
    ![trying-command-add-dentist-example](images/ug/add-dentist-example.png){: .centered-image-full-size }
 
-2. **Saying farewell**: If Dr. Alex Yeoh is leaving your clinic, you can keep your records up-to-date by removing his details.
+{% include page-break.html %}
+
+**Saying farewell**: If Dr. Alex Yeoh is leaving your clinic, you can keep your records up-to-date by removing his details. <br>
    Simply run `delete-dentist 1`.
    - After executing the command, Dr. Alex Yeoh's information is now deleted from ToothTracker.
 
@@ -161,15 +169,19 @@ Type `add-dentist n/Jonathan Goh p/92095568 e/jonathan.goh@gmail.com y/3 s/Paedi
 
    ![trying-command-delete-dentist-example](images/ug/delete-dentist-example.png){: .centered-image-full-size }
 
+{% include page-break.html %}
+
 Now let's see how easy it is to manage patient information.
 
-1. **Registering a new patient**: Suppose you have a new patient, named Jean, onboarding your clinic. <br>
+**Registering a new patient**: Suppose you have a new patient, named Jean, onboarding your clinic. <br>
 Enter `add-patient n/Jean p/95339212 b/14-09-2001 g/F` and press enter.
    - Notice that you've created a new patient, Jean!
 
    ![trying-command-add-patient-example](images/ug/add-patient-example.png){: .centered-image-full-size }
 
-2. **Updating patient info**: Now, suppose that Alex wants to update his phone number. Easy! Just type in `edit-patient 1 p/82019452`.
+{% include page-break.html %}
+
+**Updating patient info**: Now, suppose that Alex wants to update his phone number. Easy! Just type in `edit-patient 1 p/82019452`.
    - Done! Alex's phone number has been updated!
 
 <div markdown="span" class="alert alert-success">

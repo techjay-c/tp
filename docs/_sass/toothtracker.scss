@@ -196,14 +196,13 @@ pre, code {
     width: 75%;
 }
 
-@media print {
-  .centered-image {
-    page-break-before: avoid;
-  }
-
-  .centered-image-full-size {
-    page-break-before: avoid;
-  }
+.centered-image-minimal-margin {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
 }
 
 a.site-title {

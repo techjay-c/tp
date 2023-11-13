@@ -30,8 +30,7 @@
     }
   }
 
-  pre,
-  hr {
+  pre {
     page-break-before: avoid;
     page-break-after: avoid;
   }
@@ -43,6 +42,13 @@
 
   post-title {
     margin-top: 0;
+  }
+
+  tr,
+  code,
+  div,
+  span {
+    page-break-inside: avoid;
   }
 
   #toc-heading::after {
