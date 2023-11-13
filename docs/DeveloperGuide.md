@@ -241,7 +241,7 @@ This sequence diagram shows the interactions between the various components duri
 
 ##### Feature Details
 
-1. The user specifies a dentist id that represents a `Dentist` to be edited.
+1. The user specifies a `DENTIST_ID` that represents a `Dentist` to be edited.
 2. If an invalid `DENTIST_ID` is provided, an error is thrown and the user is prompted to enter the command correctly via an error message.
 3. The Dentist is cross-referenced in the `Model` to check if it exists. If it does not, then an error is raised to inform the user.
 4. If step 3 completes without any exceptions, then the `Dentist` is successfully deleted.
@@ -249,7 +249,7 @@ This sequence diagram shows the interactions between the various components duri
 ##### Feature Considerations
 
 In implementing the delete feature, we needed proper error handling and validation to ensure ToothTracker's robustness and provide clear guidance to the user.
-Our approach validates dentist ID and shows an error message if the dentist does not exist.
+Our approach validates the `DENTIST_ID` and shows an error message if the dentist does not exist.
 This is in comparison to allowing commands to fail silently if the dentist specified does not exist.
 
 - Pros: Prevents invalid operations and provides immediate feedback to the user, helping to correct mistakes.
@@ -318,33 +318,33 @@ keyword is of a valid type for that particular attribute. Users are responsible 
 
 ### Patient Features
 
-
 #### Adding a Patient
 
-The `add-patient` command creates a new patient record in ToothTracker.          
+The `add-patient` command creates a new patient record in ToothTracker. This command forms the fundamental business logic to represent patients.
 
 The activity diagram for creating a new patient is illustrated as follows:
 
 ![AddPatientActivityDiagram](images/AddPatientActivityDiagram.png)
 
-The sequence diagram of the `add-patient` command:
+This sequence diagram shows the interactions between the various components during the execution of the `add-patient` command:
 
 ![AddPatientSequenceDiagram](images/AddPatientSequenceDiagram.png)
 
 ##### Feature Details
 
-1. Users provide essential patient information, such as their name, phone number, gender, birthday and optional details such as remark, treatment, email, address and tags.
+1. Users provide essential patient information, such as their name, phone number, birth date, gender and other optional details like remark, treatment, email and address.
 2. In case of missing or invalid command arguments, the system prompts users with an error message to enter the command correctly.
-3. The system cross-references the new patients name with existing records in the `Model` to prevent duplicate entries. If a duplicate is found, an error message informs the user.
+3. The system cross-references the new patient's name with existing records in the `Model` to prevent duplicate entries. If a duplicate is found, an error message informs the user.
 4. If step 3 is completed without any exceptions, the new patient record is created and stored in the system.
 
 ##### Feature Considerations
-For the optional `Treatment` field, should the user opt to enter a treatment, it is mandatory that the specified treatment already exists within ToothTracker.
-If this condition is not met, the user will receive an error message.
+
+For the optional Treatment field, should the user opt to enter a treatment, it is mandatory that the specified treatment already exists within ToothTracker. 
+If this condition is not met (the treatment specified does not exist in ToothTracker), the user will receive an error message.
 
 #### Deleting a Patient
 
-The `delete-patient` command deletes a patient record in ToothTracker. 
+The `delete-patient` command deletes a patient record in ToothTracker. This command forms the fundamental business logic to represent patients.
 
 The activity diagram for deleting a patient is illustrated as follows:
 
@@ -356,7 +356,7 @@ This sequence diagram shows the interactions between the various components duri
 
 ##### Feature Details
 
-1. The user specifies a patient id that represents a `Patient` to be deleted.
+1. The user specifies a `PATIENT_ID` that represents a `Patient` to be edited.
 2. If an invalid `PATIENT_ID` is provided, an error is thrown and the user is prompted to enter the command correctly via an error message.
 3. The Patient is cross-referenced in the `Model` to check if it exists. If it does not, then an error is raised to inform the user.
 4. If step 3 completes without any exceptions, then the `Patient` is successfully deleted.
@@ -364,8 +364,8 @@ This sequence diagram shows the interactions between the various components duri
 ##### Feature Considerations
 
 In implementing the delete feature, we needed proper error handling and validation to ensure ToothTracker's robustness and provide clear guidance to the user.
-Our approach validates patient ID and shows an error message if the patient does not exist.
-This is in comparison to allowing commands to fail silently if patient does not exist.
+Our approach validates the `PATIENT_ID` and shows an error message if the patient does not exist.
+This is in comparison to allowing commands to fail silently if the patient specified does not exist.
 
 - Pros: Prevents invalid operations and provides immediate feedback to the user, helping to correct mistakes.
 - Cons: Additional validation checks add complexity to the code.
@@ -404,7 +404,7 @@ The `filter-patient` command in ToothTracker provides users with a more refined 
 specific criteria beyond just `PATIENT_ID` or name-related keywords. This feature offers a versatile and detailed search capability for users who
 require precise results from the patient records database.
 
-The activity diagram for filtering patient is illustrated as follows:
+The activity diagram for filtering patients is illustrated as follows:
 
 ![FilterPatientActivityDiagram](images/FilterPatientActivityDiagram.png)
 
@@ -413,7 +413,7 @@ This sequence diagram shows the interactions between the various components duri
 ![FilterPatientSequenceDiagram](images/FilterPatientSequenceDiagram.png)
 
 ##### Feature Details
-1. Users initiate a filter for a patient by providing various filter criteria such as Remarks, Treatment and more.
+1. Users initiate a filter for a patient by providing various filter criteria such as PHONE, ADDRESS, GENDER, TREATMENT and more.
    These criteria allow users to search for patients with specific attributes.
 2. ToothTracker processes the user's filter criteria and matches them against the patient records in the database.
 3. Patients that meet the filter criteria are displayed as search results, providing users with a list of patients that fulfill their specific requirements.
@@ -446,7 +446,7 @@ The sequence diagram shows the interactions between the various components durin
 
 ##### Feature Details
 
-1. Users provide essential appointment information, such as the dentist ID, patient ID, appointment start time and treatment name.
+1. Users provide essential appointment information, such as the `DENTIST_ID`, `PATIENT_ID`, appointment start time and treatment name.
 2. In case of missing or invalid command arguments, the system prompts users with an error message to enter the command correctly.
 3. The system retrieves information about the treatment cost, duration, dentist and patient from the `Model` using the information provided by the user.
 4. The system checks the new appointment's time slot with existing appointments in the `Model` to prevent clashing appointments.
@@ -455,8 +455,18 @@ If a timing clash is found, an error message informs the user.
 
 ##### Feature Considerations
 
-For the dentist ID, patient ID and treatment field, it is mandatory that the specified dentist, patient and treatment exists in ToothTracker.
+For the `DENTIST_ID`, `PATIENT_ID` and treatment field, it is mandatory that the specified dentist, patient and treatment exists in ToothTracker.
 If these conditions are not met, the user will receive an error message.
+
+Users should call `list-appointment` first before adding an appointment due to the way `add-appointment` is implemented.
+When adding an appointment, the list of appointments might get filtered if the new appointment clashes with existing
+ones due to the check for clashes. The filtered list will remain until `list-appointment` is called.
+Thus, if a new appointment is immediately added after this, the new appointment may not show up on the list of
+appointments in the UI. Users would have to call `list-appointment` to view the newly added appointment on the list.
+
+After adding an appointment, the details of the appointment can no longer be changed even if the details of the dentist,
+patient or treatment are changed as we did not implement cascading. Users would have to delete the appointment and add
+a new one if they wish to change the details of the appointment.
 
 #### Deleting an Appointment
 
@@ -472,24 +482,23 @@ The sequence diagram shows the interactions between the various components durin
 
 ##### Feature Details
 
-1. The user specifies an appointment id that represents an `Appointment` to be deleted.
+1. The user specifies an `APPOINTMENT_ID` that represents an `Appointment` to be deleted.
 2. If an invalid `APPOINTMENT_ID` is provided, an error is thrown and the user is prompted to enter the command correctly via an error message.
 3. The Appointment is cross-referenced in the `Model` to check if it exists. If it does not, then an error is raised to inform the user.
 4. If step 3 completes without any exceptions, then the `Appointment` is successfully deleted.
 
 ##### Feature Considerations
 
-In implementing the delete feature, we needed proper error handling and validation to ensure ToothTracker's robustness and provide clear guidance to the user.
-Our approach validates appointment ID and shows an error message if the appointment does not exist.
-This is in comparison to allowing commands to fail silently if appointment does not exist.
+In implementing the `delete-appointment` feature, we needed proper error handling and validation to ensure ToothTracker's robustness and provide clear guidance to the user.
+Our approach validates `APPOINTMENT_ID` and shows an error message if the appointment does not exist.
+This is in comparison to allowing commands to fail silently if an appointment does not exist.
 
 - Pros: Prevents invalid operations and provides immediate feedback to the user, helping to correct mistakes.
 - Cons: Additional validation checks add complexity to the code.
 
-
 #### Filtering an Appointment
 
-The `filter-appointment` command filters appointments by DENTIST_ID or PATIENT_ID.
+The `filter-appointment` command filters appointments by `DENTIST_ID` or `PATIENT_ID`.
 
 The activity diagram for filtering an appointment is illustrated as follows:
 
@@ -509,12 +518,27 @@ The sequence diagram shows the interactions between the various components durin
 
 ##### Feature Considerations
 
-Validity checks are performed to ensure that the `DENTIST_ID` or `PATIENT_ID` are valid and that they type of ID to filter by is clearly stated.
-Otherwise, user would receive an error message that guides them to input the right command and details.
+Validation checks are performed to ensure that the `DENTIST_ID` or `PATIENT_ID` is valid and is clearly stated.
+Otherwise, the user would receive an error message that prompts them to input the correct command and details.
 
-If no appointments with the specific dentist or patient are found in ToothTracker, it should be clearly
-communicated to the user instead of just displaying an empty list. A message stating that no appointments with the
-specified `DENTIST_ID` or `PATIENT_ID` are found would be displayed to the user.
+If no appointments with the specified dentist or patient are found in ToothTracker, it should be clearly
+communicated to the user instead of just displaying an empty list. A message stating that no appointments are found with the
+specified `DENTIST_ID` or `PATIENT_ID` should be displayed to the user.
+
+#### Listing all Appointments
+
+The `list-appointment` command lists all appointment records saved in ToothTracker.
+
+##### Feature Details
+
+1. Users would key in `list-appointment`.
+2. All appointment records saved in ToothTracker would be displayed in the appointment list area.
+
+##### Feature Considerations
+
+Since `filter-appointment` and `add-appointment` may alter the appointment list displayed, we implemented
+`list-appointment` so that users can view all the appointments saved in ToothTracker.
+
 
 ### Treatment Features
 
@@ -532,7 +556,7 @@ The sequence diagram of the `add-treatment` command:
 
 ##### Feature Details
 1. Users would key in the available treatments in their clinic, specifying the treatment name, cost and its duration.
-2. In case of missing or invalid command arguments, the system prompts users with an error message to enter the command correctly.
+2. In the event of missing or invalid command arguments, the system prompts users with an error message to enter the command correctly.
 3. The system cross-references the new treatment name with existing records in the `Model` to prevent duplicate entries. If a duplicate is found, an error message informs the user.
 4. If step 3 is completed without any exceptions, the new treatment record is created and stored in the system.
 
@@ -542,17 +566,17 @@ The sequence diagram of the `add-treatment` command:
 The `list-treatment` command would list all treatments recorded in ToothTracker.
 
 ##### Feature Details
-1. Users would key in the `list-treatment`
+1. Users would key in `list-treatment`.
 2. All available treatments would be listed in the command box.
 3. In the event that there are no treatments, ToothTracker would display a message in the command box.
 
 ##### Feature Considerations
-- Due to the space constraints of ToothTracker, only treatment names would be displayed to the user. 
-Ideally, cost and duration of each treatment should be shown to the user. However, this would clutter
-up the command box pretty quickly.
-- Ideally, another window would be created, which would display all available treatments and  their 
-associated costs and durations.
+To optimize the user interface within the limited space constraints of ToothTracker, we have chosen to only display the treatment names to the user.
+While it would be ideal to present the cost and duration of each treatment directly, this can easily lead to clutter within ToothTracker.
 
+To address this problem, we will consider implementing a separate window in future implementations that provides a comprehensive overview of all available treatments, 
+along with their respective costs and durations. This additional window will ensure that users can still access detailed information without overwhelming the main interface. 
+By doing so, we maintain a clean and user-friendly design while offering detailed information regarding treatment types.
 
 #### Deleting a Treatment
 
@@ -568,8 +592,133 @@ This sequence diagram shows the interactions between the various components duri
 
 ### General Features
 
---------------------------------------------------------------------------------------------------------------------
+##### Exit ToothTracker
+The `exit` command is used to close or exit the ToothTracker application. This command provides a way to leave the application.
 
+##### Clear
+The `clear` command is used to refresh the display within ToothTracker. It removes any unnecessary information from the command box, providing a clean slate for a better user experience.
+
+##### Help
+The `help` command is used to access a guide or information on available commands and their usage within ToothTracker. This command serves as a quick reference to assist users in navigating the application.
+
+--------------------------------------------------------------------------------------------------------------------
+## **Future Implementation**
+
+### Filter Feature Enhancement
+#### Overview
+As a future improvement to the filter feature, we are considering implementing validation for keyword arguments to ensure that they are valid
+for the specified attribute. This enhancement aims to provide a more robust and user-friendly filtering mechanism, preventing the use of irrelevant or incorrect keywords.
+
+#### **Validation of Keywords**
+
+Currently, the filter feature checks the validity of the attribute to filter by but does not validate the keywords provided. For instance, if filtering by the attribute "birthday," users can enter nonsensical or invalid keywords, 
+potentially leading to undesired results.
+
+To address this, the following steps can be taken:
+
+1. **Define Valid Keywords:**
+    - Establish a set of valid keywords for each attribute that can be used in the filter command.
+
+2. **Keyword Validation Check:**
+    - Modify the filter feature to validate the provided keywords against the predefined set of valid keywords for the specified attribute.
+
+3. **Informative Error Messages:**
+    - Provide informative error messages if users attempt to filter using invalid keywords, guiding them on the correct usage.
+
+4. **User Guide Update:**
+    - Update the User Guide to include information about valid keywords for each attribute, ensuring users are aware of the allowed values.
+
+This enhancement contributes to the overall reliability and user experience of the filter feature, making it more robust and user-friendly.
+
+### Command History
+
+#### Overview
+Introduce a command history feature to enhance the user experience by allowing users to retrieve and reuse their last entered commands. 
+This functionality is similar to the up arrow functionality in most IDEs or terminals, providing users with a convenient way to recall and execute previous commands.
+
+#### Key Features
+
+1. **Command History Navigation:**
+    - Allow users to navigate through their command history using arrow keys (up and down) within the CLI interface.
+
+2. **Display Previous Commands:**
+    - Implement a mechanism to display a list of previous commands as the user navigates through the history. This can be shown either in-place or in a separate section of the CLI.
+
+3. **Immediate Execution:**
+    - Enable users to immediately execute a command from the history by selecting it. This streamlined process saves time and enhances user efficiency.
+
+4. **Persistent History Across Sessions:**
+    - Ensure that the command history is persistent across different sessions of the application, allowing users to access their command history even after closing and reopening the CLI.
+
+5. **Configurable History Size:**
+    - Provide users with the ability to configure the size of their command history. This allows customization based on individual preferences and workflow.
+
+#### Usage Example
+```plaintext
+$ user@cli-app:~$ [User enters a command]
+$ user@cli-app:~$ [User presses the up arrow]
+$ user@cli-app:~$ [Previous command from history is displayed]
+$ user@cli-app:~$ [User presses Enter to execute the displayed command]
+```
+
+#### Benefits
+
+1. **Improved Efficiency:**
+Users can quickly access and reuse previously entered commands, reducing the need to type repetitive commands manually.
+
+
+2. **User-Friendly Interaction:**
+Enhances the overall user experience by providing a familiar and intuitive command history navigation, similar to other CLI interfaces.
+
+
+### List-Treatment Feature Enhancement
+#### Overview
+The current 'list-treatment' command outputs all available treatment names in a text box due to time and UI constraints. Including additional details such as duration and cost would overcrowd the command box.
+To address these limitations, a future enhancement for the 'list-treatment' command could be the introduction of a new popup window. This window would present a table with columns for treatment name, cost, and duration when the command is entered.
+
+#### Benefits
+
+1. **Improved Readability** 
+   - A table format allows users to quickly scan and compare options, making it easier to digest information at a glance. Clear separation of data into columns would significantly enhance the readability of the information.
+
+2. **Enhanced User Experience**
+   -  A popup window would declutter the main command box, leading to a cleaner and more focused user interface. This would allow users to stay in the context of the command while accessing detailed information without being overwhelmed.
+
+
+### Quick Notes Feature Enhancement
+#### Overview
+The current quick notes box features white as the text selection color, which causes selected text to blend into the white background, 
+rendering it invisible. A proposed enhancement is to change the selection color to grey to maintain the visibility of the selected text.
+
+#### Benefits
+1. **Enhanced Visibility** 
+   - Grey text selection would stand out against a white background, making it easier for users to see what text they have selected. This would prevent the problem of text 'disappearing' upon selection.
+2. **User Accessibility** 
+   - The change would be a significant improvement for users with visual impairments or those working in brightly lit environments where screen glare can make it hard to distinguish between colors with low contrast.
+
+
+### Appointment Name Updater
+#### Overview
+The current implementation of the appointments class stores all data as strings, leading to inconsistencies when a patient or dentist's name is changed, as this change is not automatically reflected in existing appointments. To address this, we could implement an update script for the 'edit-patient' and 'edit-dentist' commands that would:
+
+1. Search through the list of appointments.
+2. Identify appointments that contain the ID of the patient or dentist whose name has been edited.
+3. Update the relevant name field to reflect the new name.
+
+This enhancement would ensure that name changes are consistently carried out across all records, thereby maintaining data integrity and coherence.
+
+### Future Appointment Updater
+#### Overview
+In the current implementation of ToothTracker, the deletion of a patient or dentist does not automatically remove their association with future appointments, which leads to obsolete records. To rectify this, we could integrate a script into the 'delete patient/dentist' command with the following steps:
+
+1. Conduct a search through the appointments list.
+2. Locate any future appointments linked to the ID of the patient or dentist who has been deleted.
+3. Proceed to remove these identified future appointments from the system.
+
+This would ensure the automatic removal of any future appointments related to patients or dentists who have been deleted, thereby maintaining an accurate and up-to-date schedule within ToothTracker.
+
+
+--------------------------------------------------------------------------------------------------------------------
 ## **Documentation, logging, testing, configuration, dev-ops**
 
 * [Documentation guide](Documentation.md)
@@ -600,22 +749,32 @@ Front Desk Dental Clinic Administrative Staff who
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​      | I want to …​                                                      | So that I can…​                                 |
-|----------|--------------|-------------------------------------------------------------------|-------------------------------------------------|
-| `* * *`  | receptionist | create new patient profiles by entering their name, address, etc. | i can maintain patient records                  |
-| `* * *`  | receptionist | create a new dentist profile                                      | maintain dentist records                        |
-| `* * *`  | receptionist | delete a patient/dentist                                          | remove people who are no longer with the clinic |
-| `* * *`  | receptionist | list all patients/dentists                                        | find out the total number of patients/dentists  |
-| `* * *`  | receptionist | edit a dentist/patient profile                                    | keep my records up to date                      |
-| `* * *`  | receptionist | search for patients by name or ID                                 | i have quick access to patient profiles         |
-| `* * *`  | receptionist | search for dentists by name or ID                                 | i have quick access to dentist profiles         |
-| `* *`    | receptionist | view costs of various dental treatments                           | tell customers the price of a dental treatment  |
+| Priority | As a …​      | I want to …​                                          | So that I can…​                                                           |
+|----------|--------------|-------------------------------------------------------|---------------------------------------------------------------------------|
+| `* * *`  | receptionist | create a new patient profile                          | keep track and maintain patient records                                   |
+| `* * *`  | receptionist | create a new dentist profile                          | keep track and maintain dentist records                                   |
+| `* * *`  | receptionist | delete a patient/dentist                              | remove individuals who are no longer associated with the clinic           |
+| `* * *`  | receptionist | list all patients/dentists                            | view all patients/dentists in the clinic                                  |
+| `* * *`  | receptionist | edit a dentist/patient profile                        | keep my records up to date                                                |
+| `* * *`  | receptionist | search for patients by name or ID                     | access patient profiles quickly                                           |
+| `* * *`  | receptionist | search for dentists by name or ID                     | access dentist profiles quickly                                           |
+| `* * *`  | receptionist | filter for patients using any attributes of a patient | view all patients that match filter criteria based on specific attributes |
+| `* * *`  | receptionist | filter for dentists using any attributes of a dentist | view all dentists that match filter criteria based on specific attributes |
+| `* * *`  | receptionist | create a new treatment                                | record the treatment performed in an appointment                          |
+| `* * *`  | receptionist | list all treatments available                         | check what available treatments in the clinic                             |
+| `* * *`  | receptionist | delete a treatment                                    | remove treatments that are no longer provided in the clinic               |
+| `* * *`  | receptionist | create a new appointment                              | assign a patient and a dentist for an appointment                         |
+| `* * *`  | receptionist | list all appointments                                 | view all appointments available in the clinic                             |
+| `* * *`  | receptionist | delete an appointment                                 | remove appointments cancelled or postponed in the clinic                  |
+| `* * *`  | receptionist | filter for appointments using Patient ID              | view all appointments that patient has in the clinic                      |
+| `* * *`  | receptionist | filter for appointments using Dentist ID              | view all appointments that dentist has in the clinic                      |
+| `* * *`  | receptionist | view clinic schedule in a calendar                    | have an overview of the clinic's schedules for admin management           |
 
-*{More to be added}*
+
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified
+(For all use cases below, the **System** is  `ToothTracker` and the **Actor** is the `user`, unless specified
 otherwise)
 
 ---
@@ -1144,7 +1303,6 @@ Use case ends.
       Use case continues from step 2.
 
 
-*{More to be added}*
 
 
 ### Non-Functional Requirements
@@ -1163,10 +1321,13 @@ Use case ends.
 * **GUI**: graphical user interface, a visual way of interacting with a computer program
 * **PlantUML**: A tool which is used to create diagrams
 * **API**: Application Programming Interface
+* **Dentist List**: The list of dentists displayed in ToothTracker
+* **Patient List**: The list of patients displayed in ToothTracker
+* **Appointment List**: The list of appointments displayed in ToothTracker
 
 --------------------------------------------------------------------------------------------------------------------
 
-# **Appendix: Instructions for manual testing**
+## **Appendix: Instructions for manual testing**
 
 Given below are instructions to test the app manually.
 
@@ -1175,25 +1336,25 @@ testers are expected to do more *exploratory* testing.
 
 </div>
 
-## Launch and shutdown
+### Launch and shutdown
 
-### Initial launch
+#### Initial launch
 
 1. Download the jar file and copy into an empty folder
 2. Double-click the jar file.<br>
    Expected: Shows the GUI with a set of sample patients and dentists. The window size may not be
    optimum. It is recommended to use ToothTracker at full screen.
 
-### Saving window preferences
+#### Saving window preferences
 
 1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 2. Re-launch ToothTracker by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 3. _{ more test cases …​ }_
 
-## Dentist
+### Dentist
 
-### Adding a Dentist
+#### Adding a Dentist
 
 Adding a dentist into ToothTracker's Dentist List.
 
@@ -1202,24 +1363,30 @@ Adding a dentist into ToothTracker's Dentist List.
 Expected Output in the Dentist List: New dentist added into the Dentist List. The email and address will contain Default placeholders.
 
 Expected Output in the Command Output Box: New dentist added message is displayed with the dentist credentials.
+<br><br>
 
 `add-dentist n/Oliver Lim`
 
-Expected Output in the Command Output Box: Error message for invalid command format, prompting users with correct attributes to include.
+Expected Output in the Dentist List: No new dentist added.
 
-### Listing all Dentists
+Expected Output in the Command Output Box: Error message for invalid command format.
+<br><br>
+
+#### Listing all Dentists
 
 Prerequisite: There is at least 1 Dentist stored in ToothTracker
 `list-dentist`
 
-Expected Output in the Dentist List. All Dentists stored in ToothTracker is displayed.
+Expected Output in the Dentist List. All Dentists stored in ToothTracker are displayed.
 
-Expected Output in the Command Output Box: Listed all Dentist!
+Expected Output in the Command Output Box: Listed all dentists!
+<br><br>
 
-### Edit a Dentist
+#### Editing a Dentist
 
-Prerequisite: There is at least 1 Dentist stored in ToothTracker.
-In this example, we assume there are two dentists with the following attributes:<br>
+Prerequisite: There is at least 1 Dentist stored in ToothTracker. 
+In this example, we assume there are two dentists with the following attributes:
+<br><br>
 **Dentist 1**
 * Name: `Xavier Tan`
 * Phone: `90895772`
@@ -1240,46 +1407,53 @@ In this example, we assume there are two dentists with the following attributes:
 * Dentist ID: `4`
 * Tag: `Trainee`
 
+<br>
 In each of the test case below, we further assume that the state of Dentist objects are always starting from the above attributes.
+<br><br>
 
 `edit-dentist 1 n/Xaveric Tan Ming Yuan`
 
 Expected Output in the Dentist List: The name of dentist with ID 1 is changed to `Xaveric Tan Ming Yuan`.
 
 Expected Output in the Command Output Box: Dentist successfully edited message, along with the updated attributes.
+<br><br>
 
 `edit-dentist 4 p/98984477 e/btan@yahoo.com`
 
 Expected Output in the Dentist List: The phone of the dentist with ID 4 is changed to `98984477`, and the email is changed to `btan@yahoo.com`.
 
 Expected Output in the Command Output Box: Similar to above.
+<br><br>
 
 `edit-dentist 4 h/Blk 653 #03-44, Bishan Ave 4, S622653`
 
 Expected Output in the Dentist List: The address of the dentist with ID 4 is changed to `Blk 653 #03-44, Bishan Ave 4, S622653`.
 
 Expected Output in the Command Output Box: Similar to above.
+<br><br>
 
 `edit-dentist 99`
 
 Expected Output in the Dentist List: No dentist is edited.
 
 Expected Output in the Command Output Box: Error details shown for invalid ID provided.
+<br><br>
 
 `edit-dentist`
 
 Expected Output in the Dentist List: No dentist is edited.
 
 Expected Output in the Command Output Box: Error details shown for invalid command format.
+<br><br>
 
 `edit-dentist 1 n/Bernard Tan`
 
 Expected Output in the Dentist List: No dentist is edited.
 
 Expected Output in the Command Output Box: Error details shown for attempting to edit a dentist into another existing dentist.
+<br><br>
 
-
-### Searching for a Dentist by Keyword
+#### Searching for a Dentist by Keyword
 Prerequisite: There are only two dentists named `Xavier Tan` and `Bernard Tan` stored in ToothTracker.
 
 `search-dentist Xavier`
@@ -1287,20 +1461,23 @@ Prerequisite: There are only two dentists named `Xavier Tan` and `Bernard Tan` s
 Expected Output in the Dentist List: `Xavier Tan` dentist is displayed.
 
 Expected Output in the Command Output Box: 1 dentists listed!
+<br><br>
 
 `search-dentist Bernard`
 
 Expected Output in the Dentist List: `Bernard Tan` dentist is displayed.
 
 Expected Output in the Command Output Box: 1 dentists listed!
+<br><br>
 
 `search-dentist Tan`
 
 Expected Output in the Dentist List: `Xavier Tan` and `Bernard Tan` dentists are displayed.
 
 Expected Output in the Command Output Box: 2 dentists listed!
+<br><br>
 
-### Searching for a dentist by Dentist ID
+#### Searching for a dentist by Dentist ID
 
 Prerequisite: There are only two dentists named `Xavier Tan` and `Bernard Tan` stored in ToothTracker.
 Xavier Tan's Dentist ID is `1` and Bernard Tan's Dentist ID is 4 (Dentists with ID 2 and 3 are assumed to be removed previously).
@@ -1310,20 +1487,69 @@ Xavier Tan's Dentist ID is `1` and Bernard Tan's Dentist ID is 4 (Dentists with 
 Expected Output in the Dentist List: `Xavier Tan` dentist is displayed.
 
 Expected Output in the Command Output Box: Dentist with dentist ID 1 found.
+<br><br>
 
 `search-dentist 4`
 
 Expected Output in the Dentist List: `Bernard Tan` dentist is displayed.
 
 Expected Output in the Command Output Box: 1 dentists listed!
+<br><br>
 
 `search-dentist 999`
 
 Expected Output in the Dentist List: No dentist displayed.
 
-Expected Output in the Command Output Box: No dentist found with dentist ID 666.
+Expected Output in the Command Output Box: No dentist found with dentist ID 999.
+<br><br>
 
-### Deleting a Dentist
+#### Filtering for dentists with a given attribute
+
+Filter dentists with a given attribute and a corresponding keyword.
+The attributes are preceded with `a/` while the keywords are preceded with `k/`.
+
+`filter-dentist a/name k/Tan`
+
+Expected Success Output in Dentist List: dentists who have `Tan` in their full name will be shown. <br> For instance, `Xavier Tan` and `Xaveric Tan` will be shown if they exist in ToothTracker Dentist List.
+
+Expected Success Output in the Command Output Box: Filtered dentists by `ATTRIBUTE` with keyword: `KEYWORD`. <br> For the given example here, it will be "Filtered dentists by name with keyword: Tan."
+
+Expected Failure Output in Dentist List: No dentists will be shown in the list, since the filtered list contains nothing.
+
+Expected Failure Output in Command Out Box: No dentists found with `ATTRIBUTE`: `KEYWORD`. <br> For the given example above, it will be "No dentists found with name: Tan."
+<br><br>
+
+`filter-dentist a/specialization k/Orthodontics`
+
+Expected Success Output in Dentist List: dentists who have `Orthodontics` as their Specialization will be shown. <br>
+
+Expected Success Output in the Command Output Box: Filtered dentists by `ATTRIBUTE` with keyword: `KEYWORD`. <br> For the given example here, it will be "Filtered dentists by specialization with keyword: Orthodontics."
+
+Expected Failure Output in Dentist List: No dentists will be shown in the list, since the filtered list contains nothing.
+
+Expected Failure Output in Command Out Box: No dentists found with `ATTRIBUTE`: `KEYWORD`. <br> For the given example above, it will be "No dentists found with email: Orthodontics."
+<br><br>
+
+`filter-dentist a/email a/name k/gmail`
+
+Expected Output in Dentist List: No changes. <br>
+
+Expected Output in the Command Output Box: An error message for invalid command format.
+<br><br>
+
+`filter-dentist a/invalidAttribute k/randomValues`
+
+Expected Output in Dentist List: No changes.
+
+Expected Output in the Command Output Box: A message saying that an invalid attribute has been given, and lists out the valid attributes for `filter-dentist`.
+<br><br>
+
+<div markdown="span" class="alert alert-info">:information_source: **Valid attributes for <code>filter-dentist</code>:** 
+<code>name</code> , <code>phone</code>, <code>email</code>, <code>address</code>, <code>specialization</code>, <code>experience</code>, <code>tags</code>.
+</div>
+<br><br>
+
+#### Deleting a Dentist
 
 Deleting a dentist while all dentists are being shown
 
@@ -1334,12 +1560,14 @@ Prerequisites: List all dentists using the `list-dentist` command. Multiple dent
 Expected Output in the Dentist List: Dentist with DENTIST_ID 1 is deleted from the dentist list.
 
 Expected Output in Command Output Box: Details of the deleted dentist shown.
+<br><br>
 
 `delete-dentist -1`
 
 Expected Output in the Dentist List: No dentist is deleted.
 
 Expected Output in Command Output Box: Error details shown for invalid ID provided.
+<br><br>
 
 Other incorrect delete commands to try:<br>
 `delete-dentist`, `delete-dentist x`, `...` <br>(where x is not a valid Dentist ID)
@@ -1348,9 +1576,242 @@ Expected Output in the Dentist List: No dentist is deleted.
 
 Expected Output in Command Output Box:  Error details shown in the Command Output Box to show if it is an Invalid Dentist ID, or if it is an invalid command format.
 
-## Appointment
+### Patient
 
-### Adding an Appointment
+#### Adding a Patient
+
+Adding a patient into ToothTracker's Patient List.
+
+`add-patient n/Tommy Chua Chi Yang p/97793115 b/25-10-1998 g/M`
+
+Expected Output in the Patient List: New patient added into the Dentist List. The email, address, remark and treatment of the patient will contain Default placeholders.
+
+Expected Output in the Command Output Box: New patient added message is displayed with the patient credentials.
+<br><br>
+
+`add-patient n/Oliver Lim`
+
+Expected Output in the Patient List: No new patient added.
+
+Expected Output in the Command Output Box: Error message for invalid command format.
+<br><br>
+
+#### Listing all Patients
+
+Prerequisite: There is at least 1 Patient stored in ToothTracker
+`list-patient`
+
+Expected Output in the Patient List. All Patients stored in ToothTracker are displayed.
+
+Expected Output in the Command Output Box: Listed all patients!
+<br><br>
+
+#### Editing a Patient
+
+Prerequisite: There is at least 1 Patient stored in ToothTracker.
+In this example, we assume there are two patients with the following attributes:
+<br><br>
+**Patient 1**
+* Name: `Tommy Tan Chuk Yong`
+* Phone: `90895772`
+* Email: `tommytancy@hotmail.com`
+* Address: `Blk 51, Ang Mo Kio Ave 3, S712151`
+* Gender: `M`
+* Birthday: `18-05-1989`
+* Remark: `Cannot see blood.`
+* Treatment: `NIL`
+* Patient ID: `1`
+* Tag: `New`
+
+**Patient 2**
+* Name: `Bernard Tan`
+* Phone: `93375448`
+* Email: `bernardtan@hotmail.com`
+* Address: `No Address Provided.`
+* Gender: `M`
+* Birthday: `19-07-2001`
+* Remark: `NIL`
+* Treatment: `Braces`
+* Patient ID: `4`
+* Tag: `Ending soon`
+
+<br>
+In each of the test case below, we further assume that the state of Patient objects are always starting from the above attributes.
+<br><br>
+
+`edit-patient 1 n/Xaveric Tan Ming Yuan`
+
+Expected Output in the Patient List: The name of patient with ID 1 is changed to `Xaveric Tan Ming Yuan`.
+
+Expected Output in the Command Output Box: Patient successfully edited message, along with the updated attributes.
+<br><br>
+
+`edit-patient 4 p/98984477 e/btan@yahoo.com`
+
+Expected Output in the Patient List: The phone of the patient with ID 4 is changed to `98984477`, and the email is changed to `btan@yahoo.com`.
+
+Expected Output in the Command Output Box: Similar to above.
+<br><br>
+
+`edit-patient 4 h/Blk 653 #03-44, Bishan Ave 4, S622653`
+
+Expected Output in the Patient List: The address of the patient with ID 4 is changed to `Blk 653 #03-44, Bishan Ave 4, S622653`.
+
+Expected Output in the Command Output Box: Similar to above.
+<br><br>
+
+`edit-patient 99`
+
+Expected Output in the Patient List: No patient is edited.
+
+Expected Output in the Command Output Box: Error details shown for invalid ID provided.
+<br><br>
+
+`edit-patient`
+
+Expected Output in the Patient List: No patient is edited.
+
+Expected Output in the Command Output Box: Error details shown for invalid command format.
+<br><br>
+
+`edit-patient 1 n/Bernard Tan`
+
+Expected Output in the Patient List: No patient is edited.
+
+Expected Output in the Command Output Box: Error details shown for attempting to edit a patient into another existing patient.
+<br><br>
+
+<div markdown="span" class="alert alert-info">:information_source: **Special Note for editing treatments:** Please ensure the treatments exists in ToothTracker before editing patients. Otherwise, a message about Invalid Treatment will be given.
+</div>
+<br><br>
+
+#### Searching for a Patient by Keyword
+Prerequisite: There are only two patients named `Tommy Tan Chuk Yong` and `Bernard Tan` stored in ToothTracker.
+
+`search-patient Tommy`
+
+Expected Output in the Patient List: `Tommy Tan Chuk Yong` patient is displayed.
+
+Expected Output in the Command Output Box: 1 patients listed!
+<br><br>
+
+`search-patient Bernard`
+
+Expected Output in the Patient List: `Bernard Tan` patient is displayed.
+
+Expected Output in the Command Output Box: 1 patients listed!
+<br><br>
+
+`search-patient Tan`
+
+Expected Output in the Patient List: `Tommy Tan Chuk Yong` and `Bernard Tan` patients are displayed.
+
+Expected Output in the Command Output Box: 2 patients listed!
+<br><br>
+
+#### Searching for a patient by Patient ID
+
+Prerequisite: There are only two patients named `Tommy Tan Chuk Yong` and `Bernard Tan` stored in ToothTracker.
+Tommy Tan Chuk Yong's Patient ID is `1` and Bernard Tan's Patient ID is 4 (Patients with ID 2 and 3 are assumed to be removed previously).
+
+`search-patient 1`
+
+Expected Output in the Patient List: `Tommy Tan Chuk Yong` patient is displayed.
+
+Expected Output in the Command Output Box: Patient with patient ID 1 found.
+<br><br>
+
+`search-patient 4`
+
+Expected Output in the Patient List: `Bernard Tan` patient is displayed.
+
+Expected Output in the Command Output Box: 1 patients listed!
+<br><br>
+
+`search-patient 999`
+
+Expected Output in the Patient List: No patient displayed.
+
+Expected Output in the Command Output Box: No patient found with patient ID 999.
+<br><br>
+
+#### Filtering for patients with a given attribute
+
+Filter patients with a given attribute and a corresponding keyword. 
+The attributes are preceded with `a/` while the keywords are preceded with `k/`.
+
+`filter-patient a/name k/Tan`
+
+Expected Success Output in Patient List: patients who have `Tan` in their full name will be shown. <br> For instance, `Tan Ming Yuan` and `Bernard Tan` will be shown if they exist in ToothTracker Patient List.
+
+Expected Success Output in the Command Output Box: Filtered patients by `ATTRIBUTE` with keyword: `KEYWORD`. <br> For the given example here, it will be "Filtered patients by name with keyword: Tan."
+
+Expected Failure Output in Patient List: No patients will be shown in the list, since the filtered list contains nothing.
+
+Expected Failure Output in Command Out Box: No patients found with `ATTRIBUTE`: `KEYWORD`. <br> For the given example above, it will be "No patients found with name: Tan."
+<br><br>
+
+`filter-patient a/email k/gmail`
+
+Expected Success Output in Patient List: patients who have `gmail` in their emails will be shown. <br>
+
+Expected Success Output in the Command Output Box: Filtered patients by `ATTRIBUTE` with keyword: `KEYWORD`. <br> For the given example here, it will be "Filtered patients by email with keyword: gmail."
+
+Expected Failure Output in Patient List: No patients will be shown in the list, since the filtered list contains nothing.
+
+Expected Failure Output in Command Out Box: No patients found with `ATTRIBUTE`: `KEYWORD`. <br> For the given example above, it will be "No patients found with email: gmail."
+<br><br>
+
+`filter-patient a/email a/name k/gmail`
+
+Expected Output in Patient List: No changes. <br>
+
+Expected Output in the Command Output Box: An error message for invalid command format.
+<br><br>
+
+`filter-patient a/invalidAttribute k/randomValues`
+
+Expected Output in Patient List: No changes.
+
+Expected Output in the Command Output Box: A message saying that an invalid attribute has been given, and lists out the valid attributes for `filter-patient`.
+<br><br>
+
+<div markdown="span" class="alert alert-info">:information_source: **Valid attributes for `filter-patient`:** 
+<code>name</code> , <code>phone</code>, <code>birthday</code>, <code>gender</code>, <code>remark</code>, <code>treatment</code>, <code>email</code>, <code>address</code>, <code>tags</code>.
+</div>
+<br><br>
+
+#### Deleting a Patient
+
+Deleting a patient while all patients are being shown.
+
+Prerequisites: List all patients using the `list-patient` command. Multiple patients may be shown in the Patient List.
+
+`delete-patient 1`
+
+Expected Output in the Patient List: Patient with PATIENT_ID 1 is deleted from the Patient List.
+
+Expected Output in Command Output Box: Details of the deleted patient shown.
+<br><br>
+
+`delete-patient -1`
+
+Expected Output in the Patient List: No patient is deleted.
+
+Expected Output in Command Output Box: Error details shown for invalid ID provided.
+<br><br>
+
+Other incorrect delete commands to try:<br>
+`delete-patient`, `delete-patient x`, `...` <br>(where x is not a valid Patient ID)
+
+Expected Output in the Patient List: No dentist is deleted.
+
+Expected Output in Command Output Box:  Error details shown in the Command Output Box to show if it is an Invalid Patient ID, or if it is an invalid command format.
+
+
+### Appointment
+
+#### Adding an Appointment
 
 Prerequisite: There is at least 1 Patient `XXX`, at least 1 Dentist `Bernard Tan` and at least 1 Treatment `Braces` stored in ToothTracker.
 XXX's Patient ID is 2 and Bernard Tan's Dentist ID is 4.
@@ -1365,7 +1826,7 @@ Expected Output in the Appointment List: New appointment added into the Appointm
 Expected Output in the Command Output Box: Error message for invalid command format, prompting users with correct attributes to include.
 
 
-### Listing all Appointments
+#### Listing all Appointments
 
 Prerequisite: There is at least 1 Appointment stored in ToothTracker.
 
@@ -1376,7 +1837,7 @@ Expected Output in the Appointment List: All Appointments stored in ToothTracker
 Expected Output in the Command Output Box: Listed all appointments!
 
 
-### Filtering Appointments by Dentist ID
+#### Filtering Appointments by Dentist ID
 
 Prerequisite: There is at least one Appointment stored in ToothTracker with Dentist `Bernard Tan`. Bernard Tan's Dentist ID is 4.
 
@@ -1389,7 +1850,7 @@ Expected Output in the Command Output Box: Appointments with dentist whose denti
 Expected Output in the Command Output Box: Error message for invalid ID provided.
 
 
-### Filtering Appointments by Patient ID
+#### Filtering Appointments by Patient ID
 
 Prerequisite: There is at least one Appointment stored in ToothTracker with Patient `XXX`. XXX's Patient ID is 2.
 
@@ -1402,7 +1863,7 @@ Expected Output in the Command Output Box: Appointments with patient whose patie
 Expected Output in the Command Output Box: Error message for invalid ID provided.
 
 
-### Deleting an Appointment
+#### Deleting an Appointment
 
 Prerequisite: There is at least 1 Appointment stored in ToothTracker.
 
@@ -1416,9 +1877,9 @@ Expected Output in the Command Output Box: Details of the deleted appointment sh
 
 Expected Output in the Command Output Box: Error details shown for invalid APPOINTMENT_ID provided.
 
-## Treatment
+### Treatment
 
-### Adding a Treatment
+#### Adding a Treatment
 
 Prerequisite: There is no Treatment, named `Braces`, stored in ToothTracker.
 
@@ -1431,7 +1892,7 @@ Expected Output in the Command Output Box: New treatment added with the details 
 Expected Output in the Command Output Box: Error message for invalid command format, prompting users with correct attributes to include.
 
 
-### Listing all Treatments
+#### Listing all Treatments
 
 Prerequisite: There is at least one Treatment stored in ToothTracker.
 
@@ -1440,7 +1901,7 @@ Prerequisite: There is at least one Treatment stored in ToothTracker.
 Expected Output in the Command Output Box: Names of all Treatments stored in ToothTracker listed.
 
 
-### Deleting a Treatment
+#### Deleting a Treatment
 
 Prerequisite: There is at least one Treatment, named `Braces`, stored in ToothTracker.
 
@@ -1453,9 +1914,9 @@ Expected Output in the Command Output Box: Details of the deleted Treatment show
 Expected Output in the Command Output Box: Error message for deleting treatment. No Treatment found with name "nasojadsak".
 
 
-## Calendar 
+### Calendar 
 
-### Viewing all appointments
+#### Viewing all appointments
 
 `view-calendar`
 
@@ -1463,7 +1924,7 @@ Expected Output: The Calendar Window pops out and shows all appointments (if any
 
 Expected Output in the Command Output Box: Calendar displayed success message.
 
-## Help
+### Help
 
 `help`
 
@@ -1472,7 +1933,7 @@ Expected Output: The Help Window pops out and shows a general help message.
 Expected Output in the Command Output Box: Opened help window.
 
 
-## Clear
+### Clear
 
 `clear`
 
@@ -1480,7 +1941,7 @@ Expected Output in the Patient, Dentist and Appointment List: All Patients, Dent
 
 Expected Output in the Command: ToothTracker cleared success message.
 
-## Exit
+### Exit
 
 `exit`
 

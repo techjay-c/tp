@@ -293,23 +293,3 @@
     width: calc(50% - (#{$spacing-unit} / 2));
   }
 }
-
-/**
- * Flex container
- */
-#flex-body {
-  display: flex;
-  flex: 1;
-  align-items: start;
-}
-
-#content-wrapper {
-  flex: 1;
-  margin: 0 auto;
-  min-width: 0;
-  max-width: 1000px;
-  overflow-x: auto;
-  padding: 0.8rem 0.8rem 0 0.8rem;
-  transition: 0.4s;
-  -webkit-transition: 0.4s;
-}
