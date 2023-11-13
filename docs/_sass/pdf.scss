@@ -1,27 +1,11 @@
 @page {
   size: A4;
   margin: 0.5in;
-
-  @top-left {
-    content: string(section_title);
-    font-family: $base-font-family;
-    font-size: small;
-    font-style: italic;
-  }
-
-  @bottom-right {
-    content: "Page " counter(page) " of " content(pages);
-    font-family: $base-font-family;
-    font-size: small;
-  }
-
-  @footnote {
-    border-top: 1px solid black;
-    border-clip: 5rem;
-    padding-top: 0.5rem;
-  }
 }
 
+// @@author ruth-lim-reused
+// Reused from https://github.com/AY2223S1-CS2103T-W16-2/tp/blob/master/docs/_includes/toc.md
+// with minor modifications
 @media print {
   article.post {
     h2:not(:first-of-type) {
