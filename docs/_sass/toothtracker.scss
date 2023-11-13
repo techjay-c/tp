@@ -188,7 +188,11 @@ pre, code {
 
 @media print {
   .centered-image {
-    margin-top: 5px;
+    page-break-before: avoid;
+  }
+
+  .centered-image-full-size {
+    page-break-before: avoid;
   }
 }
 

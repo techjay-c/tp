@@ -10,17 +10,16 @@ ToothTracker is a **Dental Clinic Administrative Management System** designed fo
 From adding new patient and dentist profiles to seamlessly creating appointment schedules, ToothTracker is
 engineered to simplify every aspect of your dental clinic administrative responsibilities.
 
-<br>
+{: .no_toc}
+#### Why ToothTracker? Because Your Time Matters.
 
-**Why ToothTracker? Because Your Time Matters.** <br>
 In your bustling dental clinic, time is the rarest commodity. That is why we designed ToothTracker to match the speed of the services
 that you provide, enabling you to **manage patient and dentist records efficiently**, **schedule appointments without any overlaps**
 and ensure that your clinic operates like a well-oiled machine — all through a versatile Command Line Interface (CLI)
 that responds to your speedy typing, along with a Graphical User Interface (GUI) that includes a user-friendly calendar.
 
-<br>
-
-**ToothTracker's Core Features Designed with You in Mind**
+{: .no_toc}
+#### ToothTracker's Core Features Designed with You in Mind
 
 - **Digital Record Keeping:** Say goodbye to cumbersome physical files — store and manage patients, dentists and appointments digitally.
 - **Effortless Retrieval:** Use intuitive `search` and `filter` commands to access and retrieve patient and dentist records.
@@ -70,6 +69,7 @@ commands for quick reference.
 If you come across an issue or have a question, our [Troubleshooting](#troubleshooting) and [FAQ](#faq) sections are here to swiftly 
 assist you in troubleshooting common problems and providing answers.
 
+{% include page-break.html %}
 
 ### Icons used in this guide
 

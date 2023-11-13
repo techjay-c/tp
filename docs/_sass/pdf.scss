@@ -1,0 +1,57 @@
+@page {
+  size: A4;
+  margin: 0.5in;
+
+  @top-left {
+    content: string(section_title);
+    font-family: $base-font-family;
+    font-size: small;
+    font-style: italic;
+  }
+
+  @bottom-right {
+    content: "Page " counter(page) " of " content(pages);
+    font-family: $base-font-family;
+    font-size: small;
+  }
+
+  @footnote {
+    border-top: 1px solid black;
+    border-clip: 5rem;
+    padding-top: 0.5rem;
+  }
+}
+
+@media print {
+  article.post {
+    h2:not(:first-of-type) {
+      margin-top: 0;
+      page-break-before: always;
+    }
+  }
+
+  pre,
+  hr {
+    page-break-before: avoid;
+    page-break-after: avoid;
+  }
+
+  ul,
+  ol {
+    page-break-before: avoid;
+  }
+
+  post-title {
+    margin-top: 0;
+  }
+
+  #toc-heading::after {
+    content: "Click on any item to go to the corresponding section. Click on the heading to go back to the table of contents.";
+    display: block;
+    font-family: $base-font-family;
+    font-size: small;
+    font-style: italic;
+    color: black;
+  }
+
+}

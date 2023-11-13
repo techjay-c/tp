@@ -24,6 +24,8 @@ Our software is compatible with Windows, macOS, and Linux to ensure optimal perf
 
 Installation complete! You're now ready to launch ToothTracker.
 
+{% include page-break.html %}
+
 ### Launching ToothTracker
 Great! Now that you have downloaded ToothTracker (if not, refer to the [Installation Instructions](#installation-instructions)), let's get it up and running.
 
@@ -45,6 +47,7 @@ Let's take a closer look at each window individually.
 Upon launching ToothTracker for the first time, the Main Window will open by default.
 It's designed to give you a comprehensive overview of all your patient, dentist, and appointment-related information at a glance.
 Let's learn what each of these components does!
+
 
 ![ToothTracker UI](images/UiAnnotated.png){: .centered-image-full-size }
 
