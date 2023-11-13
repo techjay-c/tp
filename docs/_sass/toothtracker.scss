@@ -175,7 +175,7 @@ pre, code {
     margin-bottom: 50px;
     margin-left: auto;
     margin-right: auto;
-    width: 720px;
+    width: 50%;
 }
 
 .centered-image-full-size {
@@ -184,6 +184,16 @@ pre, code {
     margin-bottom: 50px;
     margin-left: auto;
     margin-right: auto;
+    width: 100%;
+}
+
+.centered-image-size-75 {
+    display: block;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
 }
 
 @media print {

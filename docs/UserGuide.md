@@ -177,19 +177,14 @@ This adds a dentist named 'Xavier Roald' with the phone number '99773311', speci
 email 'roaldxavier@hotmail.com', address 'Yishun Street 72, Blk 742, #03-354, Singapore 512742', who is a 'Trainee' into
 the list of dentists in ToothTracker.
 
-![add-dentist-example-1](images/ug/dentist/AddDentistExample1.png){: .centered-image }
+![add-dentist-example-1](images/ug/dentist/AddDentistExample1.png){: .centered-image-full-size }
 
 * `add-dentist n/Barbara Noel p/93349795 e/barbaranoel@gmail.com y/6 s/Paediatric Dentistry`<br>
 This adds a dentist named 'Barbara Noel' with the phone number '93349795' and email 'barbaranoel@gmail.com',
 who has '6 years of experience' and specializing in 'Paediatric Dentistry' into the list of dentists in ToothTracker.
 
-![add-dentist-example-2](images/ug/dentist/AddDentistExample2.png){: .centered-image }
+![add-dentist-example-2](images/ug/dentist/AddDentistExample2.png){: .centered-image-full-size }
 
-* `add-dentist n/Emmanuel Chua p/99887766 y/8 s/prosthodontics t/extraction` <br>
-This adds a dentist named 'Emmanuel Chua' with the phone number '99887766' who has '8 years of experience'
-specializing in 'prosthodontics' with a tag of 'extraction' into the list of dentists in ToothTracker.
-
-![add-dentist-example-3](images/ug/dentist/AddDentistExample3.png){: .centered-image }
 
 
 #### Listing all dentists : `list-dentist`
@@ -218,11 +213,9 @@ This command is DESTRUCTIVE! The records of all deleted dentists will be removed
 To check the <code>DENTIST_ID</code> of a dentist, you can simply enter the command `list-dentist`.
 </div>
 
-**Examples:**
+**Example:**
 * `delete-dentist 2` <br> This deletes the dentist with the `DENTIST_ID` 2.
-![delete-dentist-example-1](images/ug/dentist/DeleteDentistExample1.png){: .centered-image }
-
-* `delete-dentist 20` <br> This deletes the dentist with the `DENTIST_ID` 20.
+![delete-dentist-example-1](images/ug/dentist/DeleteDentistExample1.png){: .centered-image-full-size }
 
 
 #### Searching for dentists by `DENTIST_ID` : `search-dentist`
@@ -240,11 +233,9 @@ The `DENTIST_ID` refers to the ID shown in the displayed list of dentists. <br>
 To check the `DENTIST_ID` of a dentist, you can simply enter the command `list-dentist`.
 </div>
 
-**Examples:**
+**Example:**
 * `search-dentist 5` <br> This searches for the dentist with `DENTIST_ID` 5.
-![search-dentist-id-example-1](images/ug/dentist/SearchDentistIdExample1.png){: .centered-image }
-
-* `search-dentist 10` <br> This searches for the dentist with `DENTIST_ID` 10.
+![search-dentist-id-example-1](images/ug/dentist/SearchDentistIdExample.png){: .centered-image-full-size }
 
 
 #### Searching for dentists by keywords : `search-dentist`
@@ -267,11 +258,9 @@ This command helps you find dentists that match your search criteria. This is us
   </ul>
 </div>
 
-**Examples:**
+**Example:**
 * `search-dentist John` <br> This searches for dentists with names containing the keyword `John`.
-![search-dentist-keyword-example-1](images/ug/dentist/SearchDentistKeywordExample1.png){: .centered-image }
-
-* `search-dentist Ronald Lim` <br> This searches for dentists with names containing the keyword `Ronald Lim`.
+![search-dentist-keyword-example-1](images/ug/dentist/SearchDentistKeywordExample.png){: .centered-image-full-size }
 
 
 #### Filtering dentists : `filter-dentist`
@@ -296,11 +285,11 @@ We have set the attributes that can be filtered to be:
 </div>
 
 **Examples:**
-* `filter-dentist a/phone k/98225677` <br> This filters dentists with the phone number 98225677.
-![filter-dentist-example-1](images/ug/dentist/FilterDentistExample1.png){: .centered-image }
+* `filter-dentist a/phone k/93526527` <br> This filters dentists with the phone number 93526527.
+![filter-dentist-example-1](images/ug/dentist/FilterDentistExample1.png){: .centered-image-full-size }
 
 * `filter-dentist a/specialization k/Orthodontics` <br> This filters dentists with the specialization Orthodontics.
-![filter-dentist-example-2](images/ug/dentist/FilterDentistExample2.png){: .centered-image }
+![filter-dentist-example-2](images/ug/dentist/FilterDentistExample2.png){: .centered-image-full-size }
 
 
 #### Editing a dentist : `edit-dentist`
@@ -330,11 +319,11 @@ This also implies that you can use `t/` to remove all tags from a dentist using 
 
 * `edit-dentist 1 p/98987676 e/bobjuly@gmail.com` <br> This modifies the phone number and email of the dentist with
 `DENTIST_ID` 1 to 98987676 and bobjuly@gmail.com respectively.
-![edit-dentist-example-1](images/ug/dentist/EditDentistExample1.png){: .centered-image }
+![edit-dentist-example-1](images/ug/dentist/EditDentistExample1.png){: .centered-image-full-size }
 
 * `edit-dentist 5 n/Emmanuel Alexandra t/` <br>
 This modifies the name of the dentist with `DENTIST_ID` 5 to ‘Emmanuel Alexandra’ and removes all tags associated with the dentist.
-![edit-dentist-example-2](images/ug/dentist/EditDentistExample2.png){: .centered-image }
+![edit-dentist-example-2](images/ug/dentist/EditDentistExample2.png){: .centered-image-full-size }
 
 
 {% include page-break.html %}
@@ -393,12 +382,12 @@ The patient ID value is auto-generated by ToothTracker and would always increase
 * `add-patient n/John p/90676622 b/26-06-1998 g/M r/Allergic to Peanuts tr/Braces e/johntan@gmail.com h/60 Harvey Avenue t/Urgent` <br>
 This adds a new patient named ‘John’, with the phone number ‘90676622’, birthdate of '26 June 1998', gender 'M' (Male), remark that he is 'allergic to peanuts',
 requesting for 'Braces' treatment, email of ‘johntan@gmail.com’, with an address at '60 Harvey Avenue', and a tag 'Urgent'.
-![add-patient-example-1](images/ug/patient/AddPatientExample1.png){: .centered-image }
+![add-patient-example-1](images/ug/patient/AddPatientExample1.png){: .centered-image-full-size }
 
 
 * `add-patient n/Jean p/95339212 b/14-09-2001 g/F` <br>
 This adds a new patient named 'Jean', with the phone number '95339212', birthdate of 14 September 2001, gender F (Female).
-![add-patient-example-2](images/ug/patient/AddPatientExample2.png){: .centered-image }
+![add-patient-example-2](images/ug/patient/AddPatientExample2.png){: .centered-image-full-size }
 
 
 #### Listing all patients : `list-patient`
@@ -426,12 +415,9 @@ This command is DESTRUCTIVE! The records of all deleted dentists will be removed
 To check the `PATIENT_ID` of a patient, you can simply enter the command `list-patient`.
 </div>
 
-Examples:
+Example:
 * `delete-patient 5` <br> This deletes the patient with the `PATIENT_ID` 5.
-![delete-patient-example-1](images/ug/patient/DeletePatientExample1.png){: .centered-image }
-
-* `delete-patient 34` <br> This deletes the patient with the `PATIENT_ID` 34.
-![delete-patient-example-2](images/ug/patient/DeletePatientExample2.png){: .centered-image }
+![delete-patient-example-1](images/ug/patient/DeletePatientExample1.png){: .centered-image-full-size }
 
 
 #### Searching for patients by `PATIENT_ID` : `search-patient`
@@ -449,11 +435,9 @@ The `PATIENT_ID` refers to the ID shown in the displayed list of patients. <br>
 To check the `PATIENT_ID` of a patient, you can simply enter the command `list-patient`.
 </div>
 
-**Examples:**
-* `search-patient 2` <br> This searches for the patient with `PATIENT_ID` 2.
-![search-patient-id-example-1](images/ug/patient/SearchPatientIdExample1.png){: .centered-image }
-
-* `search-patient 8` <br> This searches for the patient with `PATIENT_ID` 8.
+**Example:**
+* `search-patient 6` <br> This searches for the patient with `PATIENT_ID` 6.
+![search-patient-id-example](images/ug/patient/SearchPatientIdExample1.png){: .centered-image-full-size }
 
 
 #### Searching for patients by keywords : `search-patient`
@@ -476,11 +460,9 @@ This command helps you find patients that match your search criteria. This is us
   </ul>
 </div>
 
-**Examples:**
+**Example:**
 * `search-patient John` <br> This searches for patients with names containing the keyword `John`.
-![search-patient-keyword-example-1](images/ug/patient/SearchPatientKeywordExample1.png){: .centered-image }
-
-* `search-patient Ronald Lim` <br> This searches for patients with names containing the keyword `Ronald Lim`.
+![search-patient-keyword-example-1](images/ug/patient/SearchPatientKeywordExample1.png){: .centered-image-full-size }
 
 
 #### Filtering patients : `filter-patient`
@@ -505,11 +487,11 @@ We have set the attributes that can be filtered to be:
 </div>
 
 **Examples:**
-* `filter-patient a/phone k/81076655` <br> This filters for patients with the phone number '81076655'.
-![filter-patient-example-1](images/ug/patient/FilterPatientExample1.png){: .centered-image }
+* `filter-patient a/phone k/82713092` <br> This filters for patients with the phone number '82713092'.
+![filter-patient-example-1](images/ug/patient/FilterPatientExample1.png){: .centered-image-full-size }
 
 * `filter-patient a/treatment k/Braces` <br> This filters for patients with the treatment 'Braces'.
-![filter-patient-example-2](images/ug/patient/FilterPatientExample2.png){: .centered-image }
+![filter-patient-example-2](images/ug/patient/FilterPatientExample2.png){: .centered-image-full-size }
 
 
 #### Editing a patient : `edit-patient`
@@ -544,11 +526,11 @@ The edited treatment must be a valid treatment in ToothTracker. For a list of va
 * `edit-patient 1 p/91234567 e/johndoe@example.com r/Allergic to Peanuts`<br>
 This edits the phone number, email, and remarks of the patient with `PATIENT_ID` 1 to
 '91234567', 'johndoe@example.com', and 'Allergic to Peanuts' respectively.
-![edit-patient-example-1](images/ug/patient/EditPatientExample1.png){: .centered-image }
+![edit-patient-example-1](images/ug/patient/EditPatientExample1.png){: .centered-image-full-size }
 
-* `edit-patient 2 n/Alex` <br>
-This edits the name of the patient with `PATIENT_ID` 2 to 'Alex'.
-![edit-patient-example-2](images/ug/patient/EditPatientExample2.png){: .centered-image }
+* `edit-patient 2 n/John Tan t/` <br>
+This edits the name of the patient with `PATIENT_ID` 2 to 'John Tan' and removes all tags associated with the patient.
+![edit-patient-example-2](images/ug/patient/EditPatientExample2.png){: .centered-image-full-size }
 
 {% include page-break.html %}
 
@@ -581,7 +563,7 @@ Adds a dental appointment to ToothTracker. This is useful when:
 This command adds an appointment with the `PATIENT_ID` 1 and the `DENTIST_ID` 1.
 The appointment starts on '12 October 2023, 4pm'. The treatment provided during the appointment is 'Braces'.
 The duration of the appointment is automatically set based on the selected treatment in ToothTracker.
-![add-appointment-example](images/ug/appointment/AddAppointmentExample.png){: .centered-image }
+![add-appointment-example](images/ug/appointment/AddAppointmentExample.png){: .centered-image-full-size }
 
 #### Listing all appointments : `list-appointment`
 
@@ -611,7 +593,7 @@ To check the `APPOINTMENT_ID` of an appointment, you can simply enter the comman
 **Example:**
 * `delete-appointment 2` <br>
 This deletes the appointment with `APPOINTMENT_ID` 2 from ToothTracker.
-![delete-appointment-example](images/ug/appointment/DeleteAppointmentExample.png){: .centered-image }
+![delete-appointment-example](images/ug/appointment/DeleteAppointmentExample.png){: .centered-image-full-size }
 
 
 #### Filtering Appointments by `DENTIST_ID` : `filter-appointment dentist`
@@ -631,7 +613,7 @@ You may use `list-dentist` to check out the `DENTIST_ID` first.
 **Example:**
 * `filter-appointment dentist 1` <br>
 This shows you all the appointments under the dentist with `DENTIST_ID` 1.
-![filter-appointment-dentist-example](images/ug/appointment/FilterAppointmentDentistExample.png){: .centered-image }
+![filter-appointment-dentist-example](images/ug/appointment/FilterAppointmentDentistExample.png){: .centered-image-full-size }
 
 
 #### Filtering Appointments by `PATIENT_ID` : `filter-appointment patient`
@@ -651,7 +633,7 @@ You may use `list-patient` to check the `PATIENT_ID` first.
 **Example:**
 * `filter-appointment patient 1` <br>
 This shows you all the appointments under the patient with the `PATIENT_ID` 1.
-![filter-appointment-patient-example](images/ug/appointment/FilterAppointmentPatientExample.png){: .centered-image }
+![filter-appointment-patient-example](images/ug/appointment/FilterAppointmentPatientExample.png){: .centered-image-full-size }
 
 
 {% include page-break.html %}
@@ -671,9 +653,9 @@ Each treatment must have a unique name. ToothTracker does not allow multiple tre
 </div>
 
 **Example:**
-* `add-treatment tr/Tooth Extraction cs/1080 ti/10:30` <br>
-This adds a 'Tooth Extraction' treatment to ToothTracker with a cost of '$1080 SGD', and duration of '10 hours and 30 minutes'.
-![add-treatment-example](images/ug/treatment/AddTreatmentExample.png){: .centered-image }
+* `add-treatment tr/Tooth Extraction cs/1080 ti/01:30` <br>
+This adds a 'Tooth Extraction' treatment to ToothTracker with a cost of '$1080 SGD', and duration of '1 hour and 30 minutes'.
+![add-treatment-example](images/ug/treatment/AddTreatmentExample.png){: .centered-image-full-size }
 
 
 #### Listing all treatments : `list-treatment`
@@ -702,7 +684,7 @@ Proceed with caution!
 
 **Example:**
 * `delete-treatment Braces` <br> This deletes the treatment `Braces` from ToothTracker.
-![delete-treatment-example](images/ug/treatment/DeleteTreatmentExample.png){: .centered-image }
+![delete-treatment-example](images/ug/treatment/DeleteTreatmentExample.png){: .centered-image-full-size }
 
 
 
@@ -724,7 +706,7 @@ If the main appointment list is filtered, the appointments displayed in the cale
 Please use <code>list-appointment</code> before <code>view-calendar</code> if you want to view all appointments.
 </div>
 
-![view-calendar-example](images/ug/ViewCalendarExample.png){: .centered-image }
+![view-calendar-example](images/ug/ViewCalendarExample.png){: .centered-image-size-75 }
 
 
 ### General Features

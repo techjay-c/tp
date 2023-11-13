@@ -155,7 +155,7 @@ Type `add-dentist n/Jonathan Goh p/92095568 e/jonathan.goh@gmail.com y/3 s/Paedi
 
 <div markdown="span" class="alert alert-primary">
    <span id="text">
-      **:bulb:** Always ensure the `DENTIST_ID` matches the identifier on the dentist's card within ToothTracker.
+      :bulb: **Tip:** Always ensure the `DENTIST_ID` matches the identifier on the dentist's card within ToothTracker.
    </span>
 </div>
 
