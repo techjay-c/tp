@@ -31,7 +31,7 @@ public class FilterPatientCommandParser implements Parser<FilterPatientCommand> 
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterPatientCommand.MESSAGE_USAGE));
         }
 
-        String regexPattern = "a/\\s*(\\S+)\\s+k/\\s*(.+)";
+        String regexPattern = "a/\\s*(\\S+)\\s+k/\\s*([^k]+)";
 
         Pattern pattern = Pattern.compile(regexPattern);
         Matcher matcher = pattern.matcher(trimmedArgs);
@@ -44,6 +44,7 @@ public class FilterPatientCommandParser implements Parser<FilterPatientCommand> 
         String keywords = matcher.group(2);
 
         String attributeLowerCase = attribute.toLowerCase();
+
         if (!FilterPatientCommand.getAllowedAttributes().contains(attributeLowerCase)) {
             throw new ParseException(String.format(MESSAGE_INVALID_ATTRIBUTE, attribute,
                 String.join(", ", FilterPatientCommand.getAllowedAttributes())));

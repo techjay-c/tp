@@ -1,17 +1,22 @@
 @startuml
-skinparam ActivityFontSize 15
-skinparam ArrowFontSize 12
 start
-:User Input;
-if (valid input) then (yes)
-  :Check duplicate patient;
-  if (no duplicate patient) then (yes)
-    :Add patient into ToothTracker;
-  else (no)
-    :Throw error message;
-  endif
-else (no)
-  :Throw error message;
+:User executes "add-patient" command with required details;
+
+if () then ([valid command])
+  :Create Patient object from command arguments;
+
+:Check if Patient already exists in model;
+
+if () then ([Patient already exists])
+  :Throw CommandException "Patient already exists";
+else ([else])
+  :Add new Patient to model;
+  :Return message to show new Patient added;
 endif
+
+else ([else])
+    :Display error message for invalid command;
+endif
+
 stop
 @enduml

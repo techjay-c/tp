@@ -29,10 +29,6 @@ public class ListTreatmentCommand extends Command {
         for (Treatment tr : treatments) {
             output.append(tr.getName() + ", ");
         }
-        if (output.length() > 0) {
-            output.setLength(output.length() - 2);
-            output.append(".");
-        }
         return new CommandResult(output.toString());
     }
 }
