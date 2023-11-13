@@ -809,6 +809,13 @@ This command is DESTRUCTIVE! The records of all deleted treatments will be remov
   </span>
 </div>
 
+<div markdown="span" class="alert alert-warning">
+  <span id="text">
+:exclamation: **CAUTION:**
+Before deleting a treatment in ToothTracker, confirm that it's no longer linked to any patients to maintain functionality.
+  </span>
+</div>
+
 <div markdown="span" class="alert alert-success">
   <span id="text">
 :bulb: **Tip:**
