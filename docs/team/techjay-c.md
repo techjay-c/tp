@@ -89,11 +89,13 @@ Given below are my contributions to the project.
       * Add Activity and Sequence Diagrams for Filter Dentist commands [\#134](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/134)
       * Add Activity and Sequence Diagrams for Add Dentist, Filter Patient, Filter Dentist commands [\#214](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/214)
       * Add and Update Activity and Sequence Diagrams for Search Dentist, Filter Dentist, Delete Dentist commands [\#214](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/214)
+      * Add and Update Use Cases for Search and Filter Commands for Dentist and Patient [\#236](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/236)
+      * Conduct proof-reading of the Developer Guide for consistency and grammatical accuracy [\#236](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/236)
 
 
 * **Community**:
     * PRs reviewed (with non-trivial review comments): [\#84](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/84)
     * Reported bugs and suggestions for other teams in the class: ([Link to bug report repo](https://github.com/techjay-c/ped))
     * Conducted intensive testing on application to discover more bugs 
-      * Name attribute for `add-patient` and `add-dentist` command allows numbers to be added
-      * Mandatory fields for `add-patient` and `add-dentist` command were not enforced
+      * Name attribute for `add-patient` and `add-dentist` commands allows numbers to be added
+      * Mandatory fields for `add-patient` and `add-dentist` commands were not enforced
