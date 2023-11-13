@@ -11,7 +11,7 @@ including patient and dentist management.
 
 Given below are my contributions to the project.
 
-* **New Feature: Search Dentist**
+* **New Feature**: Search Dentist [\#59](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/59), [\#75](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/75)
     * **What it does:** Adds the ability to search for dentists in ToothTracker based on either their `DENTIST_ID` or keywords in their names.
     * **Justification:** This feature enhances the user experience by providing quick access to specific dentists and facilitating efficient information retrieval.
     * **Credits:**
@@ -20,14 +20,14 @@ Given below are my contributions to the project.
         - Third-party libraries: N/A
 
 
-* **New Feature: Search Patient**
+* **New Feature**: Search Patient [\#60](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/60), [\#78](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/78)
     * **What it does:** Adds the ability to search for patients in ToothTracker based on either their `PATIENT_ID` or keywords in their names.
     * **Justification:** This feature enhances the user experience by providing quick access to specific patients and facilitating efficient information retrieval.
     * **Credits:**
         - Third-party libraries: N/A
 
 
-* **New Feature: Delete Patient**
+* **New Feature**: Delete Patient [\#68](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/68)
     * **What it does:** Introduces the ability to delete a patient from ToothTracker using their `PATIENT_ID`.
     * **Justification:** Enables users to manage their patient database effectively by allowing patient records to be removed easily.
     * **Credits:**
@@ -35,7 +35,7 @@ Given below are my contributions to the project.
         - Third-party libraries: N/A
 
 
-* **New Feature: Filter Dentist**
+* **New Feature**: Filter Dentist [\#110](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/110)
     * **What it does:** Adds the functionality to filter dentists based on specified attributes such as their name, phone, specialization, experience, email, address, and tags.
     * **Justification:** Enhances the search capabilities, allowing users to narrow down dentist results based on a set of specified criteria.
     * **Credits:**
@@ -43,7 +43,7 @@ Given below are my contributions to the project.
         - Third-party libraries: N/A
 
 
-* **New Feature: Filter Patient**
+* **New Feature**: Filter Patient [\#104](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/104)
     * **What it does:** Adds the functionality to filter patients based on specified attributes such as their name, phone, birthday, gender, remark, treatment, email, address and tags.
     * **Justification:** Enhances the search capabilities, allowing users to narrow down patient results based on a set of specified criteria.
     * **Credits:**
@@ -55,7 +55,11 @@ Given below are my contributions to the project.
 
 
 * **Project management**:
-    * Managed releases `v1.1` - `v1.4` ( releases) on GitHub
+    * Oversaw the successful management of releases `v1.1` through `v1.4` on GitHub, ensuring seamless and well-documented deployment processes.
+    * Led the team in delivering on-time, meeting project milestones, and consistently achieving deliverables.
+    * Formulated and implemented effective workflows to maintain a high standard of work quality across the entire team, fostering a culture of excellence and collaboration.
+    * Actively engaged in strategic planning and decision-making, adapting project management strategies as needed to address evolving priorities and challenges.
+    * Implemented measures to enhance team productivity and efficiency, contributing to the overall success of the project.
 
 
 * **Contributions to team-based tasks**:
@@ -63,34 +67,35 @@ Given below are my contributions to the project.
 
 
 * **Enhancements to existing features**:
-    * Add Search Dentist Feature [\#59](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/59)
-    * Add Search Patient Feature [\#60](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/60)
-    * Update Search Dentist Feature [\#75](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/75)
-    * Update Search Dentist Feature [\#78](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/78)
-    * Add Filter Patient Feature [\#104](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/104)
-    * Add Filter Dentist Feature [\#110](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/110)
-    * Update Filter Dentist and Filter Patient Feature [\#117](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/117)
-    * Add Unit Tests for Search Dentist and Search Patient [\#132](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/132)
-    * Add Unit Tests for Filter Dentist and Filter Patient [\#132](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/132)
-    * Add Unit Tests for Delete Dentist and Delete Patient [\#136](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/136)
-    * Update Filter Dentist and Filter Patient Feature [\#139](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/139)
-    * Add Unit Tests for attributes in Filter Dentist and Filter Patient Feature [\#209](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/209)
+    * Add Unit Tests for Search Dentist and Search Patient commands [\#132](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/132)
+    * Update Filter Dentist and Filter Patient commands to include improved validation for the attributes being filtered [\#132](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/132)
+    * Add Unit Tests for Filter Dentist and Filter Patient commands [\#132](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/132)
+    * Add Unit Tests for Delete Dentist and Delete Patient commands [\#136](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/136)
+    * Update Filter Dentist and Filter Patient commands to support case-insensitive filtering [\#139](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/139)
+    * Add Unit Tests for attributes in Filter Dentist and Filter Patient commands [\#209](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/209)
 
 
 * **Documentation**:
     * User Guide:
-        * Update Use Cases for Search Dentist, Delete Dentist [\#38](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/38)
+        * Update Use Cases for Search Dentist, Delete Dentist commands [\#38](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/38)
         * Update User Guide and Command Descriptions [\#114](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/114) 
         * Added documentation for the features `search-dentist`, `search-patient`, `delete-dentist`, `delete-patient`, `filter-dentist`, `filter-patient` [\#145](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/145)
-        * Add user guide updates #152 [\#152](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/152)
+        * Update the User Guide to ensure that the documented command formats are accurate and that the descriptions precisely reflect the corresponding functionalities, enforcing consistency throughout the guide [\#152](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/152)
+        * Conduct proof-reading of the User Guide for consistency and grammatical accuracy [\#233](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/233)
+
 
   * Developer Guide:
-
-      * Add Activity and Sequence Diagram for Search Dentist [\#124](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/124)
-      * Add Activity and Sequence Diagram for Filter Dentist [\#134](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/134)
-      * Add Activity and Sequence Diagram for Add Dentist, Filter Patient, Filter Dentist [\#214](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/214)
-      * Update diagrams in DG(Search Dentist, Filter Dentist, Delete Dentist) [\#214](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/214)
+      * Add Activity and Sequence Diagrams for Search Dentist commands [\#124](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/124)
+      * Add Activity and Sequence Diagrams for Filter Dentist commands [\#134](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/134)
+      * Add Activity and Sequence Diagrams for Add Dentist, Filter Patient, Filter Dentist commands [\#214](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/214)
+      * Add and Update Activity and Sequence Diagrams for Search Dentist, Filter Dentist, Delete Dentist commands [\#214](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/214)
+      * Add and Update Use Cases for Search and Filter Commands for Dentist and Patient [\#238](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/238)
+      * Conduct proof-reading of the Developer Guide for consistency and grammatical accuracy [\#238](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/238)
 
 
 * **Community**:
-    * PRs reviewed (with non-trivial review comments): [\#84](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/84), [\#143](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/143), [\#154](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/154), [\#]()
+    * PRs reviewed (with non-trivial review comments): [\#84](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/84)
+    * Reported bugs and suggestions for other teams in the class: ([Link to bug report repo](https://github.com/techjay-c/ped))
+    * Conducted intensive testing on application to discover more bugs 
+      * Name attribute for `add-patient` and `add-dentist` commands allows numbers to be added
+      * Mandatory fields for `add-patient` and `add-dentist` commands were not enforced

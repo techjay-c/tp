@@ -17,18 +17,18 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](http://github.com/techjay-c)]
 [[portfolio](team/techjay-c.md)]
 
-* Role: Project Advisor
+* Role: Developer
+* Responsibilities: Search, Filter, Delete Commands and Testing
 
 ### Freddy Chen You Ren
 
 <img src="images/freddychenyouren2.png" width="200px">
 
 [[github](https://github.com/freddychenyouren2)]
-
 [[portfolio](team/freddychenyouren2.md)]
 
-* Role: Team Lead
-* Responsibilities: Team Lead
+* Role: Developer
+* Responsibilities: Dentist Commands and Testing
 
 ### Qin Yan Er
 
@@ -38,7 +38,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/qyaner.md)]
 
 * Role: Developer
-* Responsibilities: Data
+* Responsibilities: Appointment Commands and Testing
 
 ### Ruth Lim Sze Ern
 
@@ -48,7 +48,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/ruth-lim.md)]
 
 * Role: Developer
-* Responsibilities: Dev Ops + Threading
+* Responsibilities: UI Enhancements, Calendar Commands and Testing
 
 ### Roald Ong
 
@@ -58,4 +58,4 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/synapseprogramming.md)]
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities: Patient, Treatment Commands and Testing
