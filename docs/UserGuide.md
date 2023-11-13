@@ -66,7 +66,7 @@ commands for quick reference.
 
 {: .no_toc}
 #### Support and Troubleshooting
-If you come across an issue or have a question, our [Troubleshooting](#troubleshooting) and [FAQ](#faq) sections are here to swiftly 
+If you come across an issue or have a question, our [Troubleshooting](#troubleshooting) and [FAQ](#faq) sections are here to swiftly
 assist you in troubleshooting common problems and providing answers.
 
 {% include page-break.html %}
@@ -164,7 +164,7 @@ Adds a dentist to the list of dentists in ToothTracker. This is useful when:
 
 <div markdown="span" class="alert alert-success">
    <span id="text">
-      :bulb: **Tip:** A dentist can have any number of `TAG`s (including zero tags). 
+      :bulb: **Tip:** A dentist can have any number of `TAG`s (including zero tags).
       `EMAIL` and `ADDRESS` are optional to include. You may use the `edit-dentist` command to update them in future.
    </span>
 </div>
@@ -908,7 +908,7 @@ data file at the next run. Hence, it is recommended to take a backup of the file
 {% include page-break.html %}
 
 ## Troubleshooting
- 
+
 {: .no_toc}
 #### Checking your system's Java version
 Check that your system has the correct Java version (**Java 11 and above**) installed to run ToothTracker. Follow the steps below:
@@ -919,12 +919,12 @@ Check that your system has the correct Java version (**Java 11 and above**) inst
   3. Key in `java --version` and press `Enter` to check your Java version.
 
 - For macOS Users:
-  1. Press `Cmd + Space` to launch Spotlight. 
-  2. Type in `Terminal` and open the terminal. 
+  1. Press `Cmd + Space` to launch Spotlight.
+  2. Type in `Terminal` and open the terminal.
   3. Key in `java --version` and press `Return` to check your Java version.
 
 - For Linux Users:
-  1. Press `Ctrl + Alt + T` to open the Terminal. 
+  1. Press `Ctrl + Alt + T` to open the Terminal.
   2. Key in `java --version` and press `Enter` to check your Java version.
 
 
@@ -975,41 +975,39 @@ you may use `list-appointment` before using `view-calendar`.
 2. When using the `list-treatment` command, a list of treatments (e.g., Braces, Cleaning,) is displayed with an extra comma at the end.
 
 
-3. The `list-treatment` command only displays the names of treatments without additional information such as the cost of treatment and duration, 
+3. The `list-treatment` command only displays the names of treatments without additional information such as the cost of treatment and duration,
 which were fields requested during the initial addition of treatments into ToothTracker.
 
 
-4. The validation checks of phone number for `add-patient` and `add-dentist` commands is currently based on 8 digits and does not verify if the phone 
-number starts with an 8 or 9. 
+4. The validation checks of phone number for `add-patient` and `add-dentist` commands is currently based on 8 digits and does not verify if the phone
+number starts with an 8 or 9.
 
 
-5. The `filter-patient` and `filter-dentist` commands only performs validation checks on the attribute to filter by and not the keywords. 
+5. The `filter-patient` and `filter-dentist` commands only performs validation checks on the attribute to filter by and not the keywords.
 (e.g filter-dentist a/phone k/myphone will still execute the command.)
 
 {% include page-break.html %}
 
 ## Fields summary
 
-| Field       | Description                                                               | Examples                                          |
-|-------------|---------------------------------------------------------------------------|---------------------------------------------------|
-| **ti**      | Represents the total duration of the `treatment` in hours and minutes.    | `ti/10:30` `tr/09:59`                             |
-| **cs**      | Represents the total cost of the `treatment` in dollars.                  | `cs/3000` `cs/500`                                |
-| **tr**      | Represents the name of the `treatment`                                    | `tr/Whitening` `tr/Braces`                        |
-| **start**   | Represents the start date time of a `appointment` in `yyyy-mm-dd hh:mm`   | `start/2023-01-01 09:05` `start/2021-10-12 16:00` |
-| **patient** | Represents the unique ID of the patient when adding a `appointment`       | `patient/1` `patient/45`                          |
-| **dentist** | Represents the unique ID of the dentist when adding a `appointment`       | `dentist/1` `dentist/45`                          |
+| Field       | Description                                                             | Examples                                          |
+|-------------|-------------------------------------------------------------------------|---------------------------------------------------|
+| **ti**      | Represents the total duration of the `treatment` in hours and minutes.  | `ti/10:30` `tr/09:59`                             |
+| **cs**      | Represents the total cost of the `treatment` in dollars.                | `cs/3000` `cs/500`                                |
+| **tr**      | Represents the name of the `treatment`                                  | `tr/Whitening` `tr/Braces`                        |
+| **start**   | Represents the start date time of a `appointment` in `yyyy-mm-dd hh:mm` | `start/2023-01-01 09:05` `start/2021-10-12 16:00` |
+| **patient** | Represents the unique ID of the patient when adding a `appointment`     | `patient/1` `patient/45`                          |
+| **dentist** | Represents the unique ID of the dentist when adding a `appointment`     | `dentist/1` `dentist/45`                          |
 | **y**       | Represents the years of experience of the dentist when adding a `dentist` | `y/5` `y/10`                                      |
-| **s**       | Represents the specialization of the dentist when adding a `dentist`      | `s/Orthodontics` `s/DENTAL_PUBLIC_HEALTH`         |
-| **r**       | Represents a optional `remark` when adding a `patient`                    | `r/Peanut Allergy` `r/Soya Allergy`               |
-| **g**       | Represents  gender.                                                       | `g/M` `g/F`                                       |
-| **b**       | Represents the birthday of a  `patient` in `dd-mm-yyyy`                   | `b/06-06-1998` `b/12-11-2002`                     | 
-| **t**       | Represents  an optional tag for a `patient` or `dentist`                  | `t/urgent` `t/Not Urgent`                         | 
-| **e**       | Represents  an optional email address for a `patient` or `dentist`        | `e/freddy@gmail.com` `e/john@youmail.com`         | 
-| **h**       | Represents  a home address for a `patient` or `dentist`                   | `h/123, Clementi Ave 3, #12-34` `h/8 Farrer Road` |
-| **p**       | Represents a phone number                                                 | `p/97826376` `p/92837263`                         |
-| **n**       | Represents a name                                                         | `n/John` `n/Tom`                                  |
-   
-
+| **s**       | Represents the specialization of the dentist when adding a `dentist`    | `s/Orthodontics` `s/DENTAL_PUBLIC_HEALTH`         |
+| **r**       | Represents a optional `remark` when adding a `patient`                  | `r/Peanut Allergy` `r/Soya Allergy`               |
+| **g**       | Represents  gender.                                                     | `g/M` `g/F`                                       |
+| **b**       | Represents the birthday of a `patient` in `dd-mm-yyyy`                   | `b/06-06-1998` `b/12-11-2002`                     | 
+| **t**       | Represents  an optional tag for a `patient` or `dentist`                | `t/urgent` `t/Not Urgent`                         | 
+| **e**       | Represents  an optional email address for a `patient` or `dentist`      | `e/freddy@gmail.com` `e/john@youmail.com`         | 
+| **h**       | Represents  a home address for a `patient` or `dentist`                 | `h/123, Clementi Ave 3, #12-34` `h/8 Farrer Road` |
+| **p**       | Represents a phone number                                               | `p/97826376` `p/92837263`                         |
+| **n**       | Represents a name                                                       | `n/John` `n/Tom`                                  |
 
 
 {% include page-break.html %}

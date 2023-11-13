@@ -1,11 +1,11 @@
 ## Get Started with ToothTracker
-Welcome to ToothTracker! We're thrilled to assist you in streamlining your dental practice effortlessly. 
-This quick start guide will guide you through the setup and basic operations of ToothTracker, enabling you to start optimizing 
+Welcome to ToothTracker! We're thrilled to assist you in streamlining your dental practice effortlessly.
+This quick start guide will guide you through the setup and basic operations of ToothTracker, enabling you to start optimizing
 your clinic's workflow immediately.
 
 ### Installing ToothTracker
 
-If you haven't installed ToothTracker yet, follow our easy step-by-step guide below to have ToothTracker up and running in no time. 
+If you haven't installed ToothTracker yet, follow our easy step-by-step guide below to have ToothTracker up and running in no time.
 Our software is compatible with Windows, macOS, and Linux to ensure optimal performance on your machine.
 
 
@@ -15,7 +15,7 @@ Our software is compatible with Windows, macOS, and Linux to ensure optimal perf
     <div markdown="span" class="alert alert-success">
       :bulb: **Tip:** Unsure about your Java version? Our [troubleshooting](#troubleshooting) section has you covered with a quick guide.
     </div>
-   
+
 1. Grab the latest version of ToothTracker by downloading the `toothtracker.jar` file from our [releases page](https://github.com/AY2324S1-CS2103T-W10-3/tp/releases).
 
 1. Create an empty folder in your computer where you would like to use as the _home folder_ for ToothTracker.
@@ -110,7 +110,7 @@ It allows you to easily understand your clinic's appointments and availability a
 ### Using ToothTracker's CLI
 ToothTracker is optimized for use via a CLI, allowing you to accomplish tasks using text inputs, otherwise known as commands.
 
-Currently, ToothTracker recognizes specific commands (the complete list is available in the Features section), 
+Currently, ToothTracker recognizes specific commands (the complete list is available in the Features section),
 and these commands must be formatted in a specific way. Let's delve into how you can effectively communicate your needs to ToothTracker!
 
 {: .no_toc}
@@ -128,7 +128,7 @@ That's it! ToothTracker has just executed your command. Yes, it's as simple as t
 Every command you input follows a simple structure to help ToothTracker understand your needs:
 
 * **Command Word:** This is the first word of your command. It serves as a unique keyword that tells ToothTracker precisely the command that you want to execute.
-* **Index:** The index is a numerical identifier assigned to each patient, dentist, or appointment, serving to uniquely distinguish them. When issuing a command related to a specific patient, dentist, or appointment, you'll need to use the corresponding index. 
+* **Index:** The index is a numerical identifier assigned to each patient, dentist, or appointment, serving to uniquely distinguish them. When issuing a command related to a specific patient, dentist, or appointment, you'll need to use the corresponding index.
 * **Flags:** These serve as markers to differentiate between inputs. Typically, a flag is followed by a placeholder.
 * **Placeholders:** These are temporary labels that you'll replace with actual data. For instance, replace 'TREATMENT' in `tr/TREATMENT` with the actual name of a treatment, like `tr/Braces`.
 
