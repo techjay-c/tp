@@ -468,6 +468,16 @@ If a timing clash is found, an error message informs the user.
 For the `DENTIST_ID`, `PATIENT_ID` and treatment field, it is mandatory that the specified dentist, patient and treatment exists in ToothTracker.
 If these conditions are not met, the user will receive an error message.
 
+Users should call `list-appointment` first before adding an appointment due to the way `add-appointment` is implemented.
+When adding an appointment, the list of appointments might get filtered if the new appointment clashes with existing
+ones due to the check for clashes. The filtered list will remain until `list-appointment` is called.
+Thus, if a new appointment is immediately added after this, the new appointment may not show up on the list of
+appointments in the UI. Users would have to call `list-appointment` to view the newly added appointment on the list.
+
+After adding an appointment, the details of the appointment can no longer be changed even if the details of the dentist,
+patient or treatment are changed as we did not implement cascading. Users would have to delete the appointment and add
+a new one if they wish to change the details of the appointment.
+
 #### Deleting an Appointment
 
 The `delete-appointment` command deletes an appointment record from ToothTracker.
@@ -524,6 +534,21 @@ Otherwise, the user would receive an error message that prompts them to input th
 If no appointments with the specified dentist or patient are found in ToothTracker, it should be clearly
 communicated to the user instead of just displaying an empty list. A message stating that no appointments are found with the
 specified `DENTIST_ID` or `PATIENT_ID` should be displayed to the user.
+
+#### Listing all Appointments
+
+The `list-appointment` command lists all appointment records saved in ToothTracker.
+
+##### Feature Details
+
+1. Users would key in `list-appointment`.
+2. All appointment records saved in ToothTracker would be displayed in the appointment list area.
+
+##### Feature Considerations
+
+Since `filter-appointment` and `add-appointment` may alter the appointment list displayed, we implemented
+`list-appointment` so that users can view all the appointments saved in ToothTracker.
+
 
 ### Treatment Features
 
@@ -734,16 +759,27 @@ Front Desk Dental Clinic Administrative Staff who
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​      | I want to …​                                                      | So that I can…​                                 |
-|----------|--------------|-------------------------------------------------------------------|-------------------------------------------------|
-| `* * *`  | receptionist | create new patient profiles by entering their name, address, etc. | i can maintain patient records                  |
-| `* * *`  | receptionist | create a new dentist profile                                      | maintain dentist records                        |
-| `* * *`  | receptionist | delete a patient/dentist                                          | remove people who are no longer with the clinic |
-| `* * *`  | receptionist | list all patients/dentists                                        | find out the total number of patients/dentists  |
-| `* * *`  | receptionist | edit a dentist/patient profile                                    | keep my records up to date                      |
-| `* * *`  | receptionist | search for patients by name or ID                                 | i have quick access to patient profiles         |
-| `* * *`  | receptionist | search for dentists by name or ID                                 | i have quick access to dentist profiles         |
-| `* *`    | receptionist | view costs of various dental treatments                           | tell customers the price of a dental treatment  |
+| Priority | As a …​      | I want to …​                                          | So that I can…​                                                           |
+|----------|--------------|-------------------------------------------------------|---------------------------------------------------------------------------|
+| `* * *`  | receptionist | create a new patient profile                          | keep track and maintain patient records                                   |
+| `* * *`  | receptionist | create a new dentist profile                          | keep track and maintain dentist records                                   |
+| `* * *`  | receptionist | delete a patient/dentist                              | remove individuals who are no longer associated with the clinic           |
+| `* * *`  | receptionist | list all patients/dentists                            | view all patients/dentists in the clinic                                  |
+| `* * *`  | receptionist | edit a dentist/patient profile                        | keep my records up to date                                                |
+| `* * *`  | receptionist | search for patients by name or ID                     | access patient profiles quickly                                           |
+| `* * *`  | receptionist | search for dentists by name or ID                     | access dentist profiles quickly                                           |
+| `* * *`  | receptionist | filter for patients using any attributes of a patient | view all patients that match filter criteria based on specific attributes |
+| `* * *`  | receptionist | filter for dentists using any attributes of a dentist | view all dentists that match filter criteria based on specific attributes |
+| `* * *`  | receptionist | create a new treatment                                | record the treatment performed in an appointment                          |
+| `* * *`  | receptionist | list all treatments available                         | check what available treatments in the clinic                             |
+| `* * *`  | receptionist | delete a treatment                                    | remove treatments that are no longer provided in the clinic               |
+| `* * *`  | receptionist | create a new appointment                              | assign a patient and a dentist for an appointment                         |
+| `* * *`  | receptionist | list all appointments                                 | view all appointments available in the clinic                             |
+| `* * *`  | receptionist | delete an appointment                                 | remove appointments cancelled or postponed in the clinic                  |
+| `* * *`  | receptionist | filter for appointments using Patient ID              | view all appointments that patient has in the clinic                      |
+| `* * *`  | receptionist | filter for appointments using Dentist ID              | view all appointments that dentist has in the clinic                      |
+| `* * *`  | receptionist | view clinic schedule in a calendar                    | have an overview of the clinic's schedules for admin management           |
+
 
 
 ### Use cases
