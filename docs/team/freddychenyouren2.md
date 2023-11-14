@@ -6,6 +6,7 @@ title: Freddy Chen You Ren's Project Portfolio Page
 {: .no_toc}
 ### Project: ToothTracker
 
+{: .no_toc}
 ### Overview
 
 ToothTracker, an all-in-one solution for Front Desk Dental Clinic Administrative Staff to manage patient and dentist records efficiently.
@@ -15,7 +16,7 @@ ToothTracker is written in Java and only Java 11 supports ToothTracker.
 ToothTracker is optimized for fast-typers interacting with it through CLI.
 With ToothTracker, you can add new patient and dentist profiles, add treatments and schedule appointments, delete records, and even list all available profiles in the database, all with just a few simple commands!
 
-
+{: .no_toc}
 ### Summary of my contributions
 * **New Feature**: Added the ability for receptionists to add dentists (PR [#57](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/57))
   * What it does: The user will be able to add details of a dentist practising in the dental clinic.
@@ -32,11 +33,9 @@ With ToothTracker, you can add new patient and dentist profiles, add treatments 
   * What it does: The user will be able to list all dentists practicing in the clinic.
   * Justification: This is one of the most fundamental feature to have to allow users to view all dentists.
 
-
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=freddychenyouren2&breakdown=true)
 
-* **Project management**:
-  * [To be added soon]
+{% include page-break.html %}
 
 * **Enhancements to existing features**:
   * Introduced Optional fields for some of Patient and Dentist fields: Email and Address are optional to provide flexibility in administration. (PR [#65](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/65))
@@ -55,7 +54,7 @@ With ToothTracker, you can add new patient and dentist profiles, add treatments 
     * Contributed to user stories and use cases ideation related to adding a dentist.
     * Modify `Model` Class Diagram and descriptions to match ToothTracker design. (PR [#123](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/123))
     * Assist teammate @ruth-lim to Modify `Ui` Class Diagram to match ToothTracker design.
-    * Modify `Storage` Class Diagram for better readability.
+    * Modify `Storage` Class Diagram for better readability. (PR [#235](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/235))
     * Update User Stories to match latest version of ToothTracker. (PR [#229](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/229))
     * Add instructions for Manual Testing on all dentist features. (PR [#127](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/127))
     * Add instructions for Manual Testing on all patient features. (PR [#224](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/224))
