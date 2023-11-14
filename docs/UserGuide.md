@@ -968,38 +968,38 @@ you may use `list-appointment` before using `view-calendar`.
 ## Known issues
 
 
-### 1. Multi-screen Display:
+### Multi-screen Display:
 
 - **Issue:** When moving the application from a secondary screen to the primary screen, the GUI may open off-screen.
 - **Remedy:** Delete the `preferences.json` file before relaunching the application.
 
-### 2. List Treatment Command:
+### List Treatment Command:
 
 - **Issue:** Extra comma displayed at the end when using the `list-treatment` command.
 
-### 3. Incomplete Treatment Information:
+### Incomplete Treatment Information:
 
 - **Issue:** The `list-treatment` command only displays the names of treatments without additional information such as the cost of treatment and duration, which were fields requested during the initial addition of treatments into ToothTracker.
 
-### 4. Phone Number Validation:
+### Phone Number Validation:
 
 - **Issue:** Validation checks for phone numbers in `add-patient` and `add-dentist` commands are currently based on 8 digits and do not verify if the phone number starts with an 8 or 9.
 
-### 5. Filter Command Validation:
+### Filter Command Validation:
 
 - **Issue:** The `filter-patient` and `filter-dentist` commands only perform validation checks on the attribute to filter by and not the keywords. For example, `filter-dentist a/phone k/myphone` will still execute the command.
 
-### 6. Tag Error in Edit Commands:
+### Tag Error in Edit Commands:
 
 - **Issue:** When using non-alphanumeric characters in tags on the `edit-dentist` or `edit-patient` commands, an "Unknown command" error is sometimes displayed.
 
-### 7. Limited Tag Editing:
+### Limited Tag Editing:
 
 - **Issue:** If a patient was initially added to ToothTracker with 3 tags, only 3 tags can be edited afterward—no more, no less. Additional tags cannot be added, and attempting to edit with a different number of tags results in an error.
 - **Remedy:** To modify tags, the number must exactly match the tags initially assigned during patient creation via `add-patient`. If additional tags are required or if tags need removal, the patient or dentist must be deleted and added again. 
 Resetting tags to empty using `edit-patient [PATIENT_ID] t/` is possible, but subsequent tag editing must adhere to the original number of tags.
 
-### 8. Editing Patient Without Tags or Editing Patient previously deleted:
+### Editing Patient Without Tags or Editing Patient previously deleted:
 
 - **Issue:** Attempting to edit a patient record that originally had no tags and adding tags during the edit or editing a patient record that was previously deleted to have tags will result in a "Multiple values specified for the following single-valued field(s): t/" error.
 When editing a patient record that initially had no tags, adding tags during the editing process triggers an error related to the `t/` (tags) field. The system recognizes this as an attempt to assign multiple values to a field that is intended to be single-valued.
