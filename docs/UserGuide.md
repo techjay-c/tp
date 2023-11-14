@@ -929,7 +929,7 @@ Check that your system has the correct Java version (**Java 11 and above**) inst
 
 
 The following image shows an example of what will show up on macOS. You can expect a similar result if you’re using another operating system.
-![System Java Version](images/ug/SystemJavaVersion.png){: .centered-image }
+![System Java Version](images/ug/SystemJavaVersion.png){: .centered-image-full-size }
 
 The number in the red box highlights the Java version your system currently has.
 In the example, the system is running Java 11.0.19, which meets the requirement for ToothTracker.
