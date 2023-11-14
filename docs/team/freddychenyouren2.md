@@ -55,7 +55,7 @@ With ToothTracker, you can add new patient and dentist profiles, add treatments 
     * Contributed to user stories and use cases ideation related to adding a dentist.
     * Modify `Model` Class Diagram and descriptions to match ToothTracker design. (PR [#123](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/123))
     * Assist teammate @ruth-lim to Modify `Ui` Class Diagram to match ToothTracker design.
-    * Modify `Storage` Class Diagram for better readability.
+    * Modify `Storage` Class Diagram for better readability. (PR [#235](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/235))
     * Update User Stories to match latest version of ToothTracker. (PR [#229](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/229))
     * Add instructions for Manual Testing on all dentist features. (PR [#127](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/127))
     * Add instructions for Manual Testing on all patient features. (PR [#224](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/224))
