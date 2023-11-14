@@ -602,7 +602,7 @@ By doing so, we maintain a clean and user-friendly design while offering detaile
 
 #### Deleting a Treatment
 
-The `delete-t reatment` command deletes a treatment record in ToothTracker.
+The `delete-treatment` command deletes a treatment record in ToothTracker.
 
 The activity diagram for deleting a treatment is illustrated as follows:
 
@@ -695,8 +695,8 @@ Enhances the overall user experience by providing a familiar and intuitive comma
 
 ### List-Treatment Feature Enhancement
 #### Overview
-The current 'list-treatment' command outputs all available treatment names in a text box due to time and UI constraints. Including additional details such as duration and cost would overcrowd the command box.
-To address these limitations, a future enhancement for the 'list-treatment' command could be the introduction of a new popup window. This window would present a table with columns for treatment name, cost, and duration when the command is entered.
+The current <code>list-treatment</code> command outputs all available treatment names in a text box due to time and UI constraints. Including additional details such as duration and cost would overcrowd the command box.
+To address these limitations, a future enhancement for the <code>list-treatment</code> command could be the introduction of a new popup window. This window would present a table with columns for treatment name, cost, and duration when the command is entered.
 
 #### Benefits
 
@@ -1928,6 +1928,7 @@ Prerequisite: There is at least one Appointment stored in ToothTracker with Dent
 `filter-appointment dentist 4`
 
 Expected Output in the Appointment List: Appointments with Dentist `Bernard Tan` is displayed.
+
 Expected Output in the Command Output Box: Appointments with dentist whose dentist ID is 4 listed.
 
 `filter-appointment dentist -1`
@@ -1941,9 +1942,12 @@ Prerequisite: There is at least one Appointment stored in ToothTracker with Pati
 `filter-appointment patient 2`
 
 Expected Output in the Appointment List: Appointments with Patient `Tommy Tan Chuk Yong` is displayed.
+
 Expected Output in the Command Output Box: Appointments with patient whose patient ID is 2 listed.
 
 `filter-appointment patient -1`
+
+
 Expected Output in the Command Output Box: Error message for invalid ID provided.
 
 
@@ -2030,11 +2034,3 @@ Expected Output in the Command: ToothTracker cleared success message.
 `exit`
 
 Expected Output: ToothTracker application closes.
-
-### Saving data
-
-1. Dealing with missing/corrupted data files
-
-    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
-
-   2. _{ more test cases …​ }_
