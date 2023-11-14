@@ -14,18 +14,18 @@ Given below are my contributions to the project.
 * **New Feature**: Add Patient command.
   (PR: [#54](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/54))
     * What it does: Allows the user to enter patient records into ToothTracker
-    * Justification: This feature is vital for ToothTracker users as it ensures that patient records can be entered into the system. 
+    * Justification: This feature is vital for ToothTracker users as it ensures that patient records can be entered into the system.
 
 * **New Feature**: list-patient command.
   (PR: [#74](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/74))
     * What it does: Allows the user to view all patient records in ToothTracker
     * Justification: This feature is vital for ToothTracker users as it ensures that patient records can be viewed from the system.
-  
+
 * **New Feature**: edit-patient command.
     (PR: [#119](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/119))
     * What it does: Allows the user to edit patient records in ToothTracker
     * Justification: This feature is vital for ToothTracker users as it ensures that patient records can be edited.
-  
+
 * **New Feature**: add-treatment command.
     (PR: [#84](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/84))
     * What it does: Allows the user to enter treatment records into ToothTracker

@@ -10,17 +10,16 @@ ToothTracker is a **Dental Clinic Administrative Management System** designed fo
 From adding new patient and dentist profiles to seamlessly creating appointment schedules, ToothTracker is
 engineered to simplify every aspect of your dental clinic administrative responsibilities.
 
-<br>
+{: .no_toc}
+#### Why ToothTracker? Because Your Time Matters.
 
-**Why ToothTracker? Because Your Time Matters.** <br>
 In your bustling dental clinic, time is the rarest commodity. That is why we designed ToothTracker to match the speed of the services
 that you provide, enabling you to **manage patient and dentist records efficiently**, **schedule appointments without any overlaps**
 and ensure that your clinic operates like a well-oiled machine — all through a versatile Command Line Interface (CLI)
 that responds to your speedy typing, along with a Graphical User Interface (GUI) that includes a user-friendly calendar.
 
-<br>
-
-**ToothTracker's Core Features Designed with You in Mind**
+{: .no_toc}
+#### ToothTracker's Core Features Designed with You in Mind
 
 - **Digital Record Keeping:** Say goodbye to cumbersome physical files — store and manage patients, dentists and appointments digitally.
 - **Effortless Retrieval:** Use intuitive `search` and `filter` commands to access and retrieve patient and dentist records.
@@ -42,7 +41,7 @@ Head over to [How to use ToothTracker's User Guide](#how-to-use-toothtrackers-us
 Thank you for choosing ToothTracker! We are delighted to have you as a user!
 This user guide provides a comprehensive documentation on the various commands supported by ToothTracker.
 
-<div markdown="span" class="alert alert-primary">
+<div markdown="span" class="alert alert-success">
   <span id="text">
     :bulb: **Tip:** Our user guide is designed for **ease of navigation**. Simply click on any item in the Table of Contents
     to jump directly to that section. Within each section, clicking on the **headings** will return you to the Table of Contents,
@@ -67,19 +66,49 @@ commands for quick reference.
 
 {: .no_toc}
 #### Support and Troubleshooting
-If you come across an issue or have a question, our [Troubleshooting](#troubleshooting) and [FAQ](#faq) sections are here to swiftly 
+If you come across an issue or have a question, our [Troubleshooting](#troubleshooting) and [FAQ](#faq) sections are here to swiftly
 assist you in troubleshooting common problems and providing answers.
 
+{% include page-break.html %}
 
-### Icons used in this guide
+### Conventions used in this guide
 
-Throughout this guide, you'll find helpful tips and cautionary advice to ensure a smooth experience using ToothTracker.
+{: .no_toc}
+#### Formatting conventions
 
-| Icon                          | Meaning                                  |
-|-------------------------------|------------------------------------------|
-| :information_source:  **Note** | Information you should keep in mind.     |
-| :bulb: **Tip**                | Information you might find useful.       |
-| :exclamation: **Caution**     | Information you should be careful about. |
+| Formatting          | Description                                                                                                    |
+|---------------------|----------------------------------------------------------------------------------------------------------------|
+| `code_snippets`     | Code snippets are used to show ToothTracker commands or inputs.                                                |
+| **bold**            | Text in bold are important details you should look out for or headers to distinguish from the rest of the text. |
+| [blue hyperlink](#) | Text in blue are hyperlinks that will direct you to the relevant section of the page or to other websites.     |
+
+{: .no_toc}
+#### Call-out text box conventions
+
+Throughout this guide, you'll encounter various call-out text boxes.
+These contain helpful tips and cautionary advice that you should keep in mind to ensure a smooth experience using ToothTracker.
+
+**Note Box**
+<div markdown="span" class="alert alert-info">
+   <span id="text">
+      :information_source: **Note:** Call-outs like this contains information you should keep in mind.
+   </span>
+</div>
+
+**Tip Box**
+<div markdown="span" class="alert alert-success">
+   <span id="text">
+      :bulb: **Tip:** Call-outs like this contains tips that you might find useful.
+   </span>
+</div>
+
+**Caution Box**
+<div markdown="span" class="alert alert-warning">
+   <span id="text">
+      :exclamation: **Caution:** Call-outs like this contains warnings that you should be careful about.
+   </span>
+</div>
+
 
 {% include page-break.html %}
 
@@ -90,8 +119,15 @@ Throughout this guide, you'll find helpful tips and cautionary advice to ensure 
 ## Features
 This section shares with you more about how to use each feature in detail.
 
-<div markdown="block" class="alert alert-info">
+Similar features are grouped into the individual subsections:
+* [Dentist-related commands](#dentist-features)
+* [Patient-related commands](#patient-features)
+* [Appointment-related commands](#appointment-features)
+* [Treatment-related commands](#treatment-features)
+* [Calendar-related command](#calendar-feature)
+* [General commands](#general-features)
 
+<div markdown="block" class="alert alert-info">
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are input parameters that you need to provide.<br>
@@ -112,7 +148,6 @@ This section shares with you more about how to use each feature in detail.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines
   as space characters surrounding line-breaks may be omitted when copied over to the application.
-
 </div>
 
 {% include page-break.html %}
@@ -127,12 +162,13 @@ Adds a dentist to the list of dentists in ToothTracker. This is useful when:
 
 **Format:** `add-dentist n/NAME p/PHONE s/SPECIALIZATION y/YOE [e/EMAIL] [h/ADDRESS] [t/TAG]…​`
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-A dentist can have any number of <code>TAG</code>s (including zero tags).
-
-<code>EMAIL</code> and <code>ADDRESS</code> are optional to include.
-You may use the `edit-dentist` command to update them in future.
+<div markdown="span" class="alert alert-success">
+   <span id="text">
+      :bulb: **Tip:** A dentist can have any number of `TAG`s (including zero tags).
+      `EMAIL` and `ADDRESS` are optional to include. You may use the `edit-dentist` command to update them in future.
+   </span>
 </div>
+
 
 <div markdown="block" class="alert alert-info">
 **:information_source: Notes about Specializations:**<br>
@@ -177,20 +213,15 @@ This adds a dentist named 'Xavier Roald' with the phone number '99773311', speci
 email 'roaldxavier@hotmail.com', address 'Yishun Street 72, Blk 742, #03-354, Singapore 512742', who is a 'Trainee' into
 the list of dentists in ToothTracker.
 
-![add-dentist-example-1](images/ug/dentist/AddDentistExample1.png){: .centered-image }
+![add-dentist-example-1](images/ug/dentist/AddDentistExample1.png){: .centered-image-full-size }
 
 * `add-dentist n/Barbara Noel p/93349795 e/barbaranoel@gmail.com y/6 s/Paediatric Dentistry`<br>
 This adds a dentist named 'Barbara Noel' with the phone number '93349795' and email 'barbaranoel@gmail.com',
 who has '6 years of experience' and specializing in 'Paediatric Dentistry' into the list of dentists in ToothTracker.
 
-![add-dentist-example-2](images/ug/dentist/AddDentistExample2.png){: .centered-image }
+![add-dentist-example-2](images/ug/dentist/AddDentistExample2.png){: .centered-image-full-size }
 
-* `add-dentist n/Emmanuel Chua p/99887766 y/8 s/prosthodontics t/extraction` <br>
-This adds a dentist named 'Emmanuel Chua' with the phone number '99887766' who has '8 years of experience'
-specializing in 'prosthodontics' with a tag of 'extraction' into the list of dentists in ToothTracker.
-
-![add-dentist-example-3](images/ug/dentist/AddDentistExample3.png){: .centered-image }
-
+{% include page-break.html %}
 
 #### Listing all dentists : `list-dentist`
 
@@ -203,27 +234,33 @@ Shows a list of all dentists in ToothTracker. This is useful when:
 
 ![list-dentist](images/ug/dentist/ListDentistExample.png){: .centered-image }
 
+{% include page-break.html %}
+
 #### Deleting a dentist : `delete-dentist`
 
 Deletes the dentist with the specified `DENTIST_ID` from ToothTracker.
 
 **Format:** `delete-dentist DENTIST_ID`
 
-<div markdown="span" class="alert alert-warning">:exclamation: **CAUTION:**
-This command is DESTRUCTIVE! The records of all deleted dentists will be removed.
-**Proceed with caution!**
+<div markdown="span" class="alert alert-warning">
+   <span id="text">
+      :exclamation: **CAUTION:** This command is DESTRUCTIVE! The records of all deleted dentists will be removed.
+      **Proceed with caution!**
+   </span>
 </div>
 
-<div markdown="span" class="alert alert-primary">:bulb: Tip:
-To check the <code>DENTIST_ID</code> of a dentist, you can simply enter the command `list-dentist`.
+<div markdown="span" class="alert alert-success">
+   <span id="text">
+      :bulb: **Tip:** To check the `DENTIST_ID` of a dentist, you can simply enter the command `list-dentist`.
+   </span>
 </div>
 
-**Examples:**
+
+**Example:**
 * `delete-dentist 2` <br> This deletes the dentist with the `DENTIST_ID` 2.
-![delete-dentist-example-1](images/ug/dentist/DeleteDentistExample1.png){: .centered-image }
+![delete-dentist-example-1](images/ug/dentist/DeleteDentistExample1.png){: .centered-image-full-size }
 
-* `delete-dentist 20` <br> This deletes the dentist with the `DENTIST_ID` 20.
-
+{% include page-break.html %}
 
 #### Searching for dentists by `DENTIST_ID` : `search-dentist`
 
@@ -234,18 +271,19 @@ This command helps you find a unique dentist based on the provided `DENTIST_ID`.
 
 **Format:** `search-dentist DENTIST_ID`
 
-<div markdown="block" class="alert alert-primary">
-:bulb: **Tip:**
-The `DENTIST_ID` refers to the ID shown in the displayed list of dentists. <br>
-To check the `DENTIST_ID` of a dentist, you can simply enter the command `list-dentist`.
+<div markdown="span" class="alert alert-success">
+   <span id="text">
+      :bulb: **Tip:** The `DENTIST_ID` refers to the ID shown in the displayed list of dentists. <br>
+      To check the `DENTIST_ID` of a dentist, you can simply enter the command `list-dentist`.
+   </span>
 </div>
 
-**Examples:**
+
+**Example:**
 * `search-dentist 5` <br> This searches for the dentist with `DENTIST_ID` 5.
-![search-dentist-id-example-1](images/ug/dentist/SearchDentistIdExample1.png){: .centered-image }
+![search-dentist-id-example-1](images/ug/dentist/SearchDentistIdExample.png){: .centered-image-full-size }
 
-* `search-dentist 10` <br> This searches for the dentist with `DENTIST_ID` 10.
-
+{% include page-break.html %}
 
 #### Searching for dentists by keywords : `search-dentist`
 
@@ -257,7 +295,7 @@ This command helps you find dentists that match your search criteria. This is us
 **Format:** `search-dentist KEYWORD`
 
 <div markdown="block" class="alert alert-info">
-**:information_source: Notes for searching dentists by keyword:**<br>
+**:information_source: Notes about searching dentist by keywords:**<br>
   <ul>
     <li>The search is performed only on the dentist's name.</li>
     <li>The search is case-insensitive, meaning that it will match both uppercase and lowercase characters. For example, searching for `James` will match both `James` and `james`.</li>
@@ -267,12 +305,13 @@ This command helps you find dentists that match your search criteria. This is us
   </ul>
 </div>
 
-**Examples:**
+{% include page-break.html %}
+
+**Example:**
 * `search-dentist John` <br> This searches for dentists with names containing the keyword `John`.
-![search-dentist-keyword-example-1](images/ug/dentist/SearchDentistKeywordExample1.png){: .centered-image }
+![search-dentist-keyword-example-1](images/ug/dentist/SearchDentistKeywordExample.png){: .centered-image-full-size }
 
-* `search-dentist Ronald Lim` <br> This searches for dentists with names containing the keyword `Ronald Lim`.
-
+{% include page-break.html %}
 
 #### Filtering dentists : `filter-dentist`
 
@@ -283,25 +322,33 @@ When this command is used, there might be more than one result that matches your
 
 **Format:** `filter-dentist a/ATTRIBUTE k/KEYWORDS`
 
-<div markdown="block" class="alert alert-info">
-**:information_source: Notes about filtering dentists using keywords:**<br>
-The <code>`filter-dentist`</code> command only accepts filtering using 1 attribute and 1 set of keywords. For example, `filter-dentist` a/Address k/Serangoon k/Bishan will not work.
+<div markdown="span" class="alert alert-info">
+   <span id="text">
+      **:information_source: Notes about filtering dentists using keywords:**<br>
+      The `filter-dentist` command only accepts filtering using 1 attribute and 1 set of keywords. <br>
+      For example, `filter-dentist` a/Address k/Serangoon k/Bishan will not work.
+   </span>
 </div>
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-To check the attributes that you can filter by, you can simply enter the command `list-dentist` to view the attributes which will be displayed in the Dentist card.
-Alternatively, a message will be shown in the text box regarding the attributes that you can filter by if you entered an invalid attribute.
-We have set the attributes that can be filtered to be:
-`name`, `phone`, `specialization`, `experience`, `email`, `address`, `tags`.
+<div markdown="span" class="alert alert-success">
+   <span id="text">
+      :bulb: **Tip:** To check the attributes that you can filter by, you can simply enter the command `list-dentist` to
+      view the attributes which will be displayed in the Dentist card.
+      Alternatively, a message will be shown in the text box regarding the attributes that you can filter by if you entered an invalid attribute. <br>
+      We have set the attributes that can be filtered to be: `name`, `phone`, `specialization`, `experience`, `email`, `address`, `tags`.
+   </span>
 </div>
+
+{% include page-break.html %}
 
 **Examples:**
-* `filter-dentist a/phone k/98225677` <br> This filters dentists with the phone number 98225677.
-![filter-dentist-example-1](images/ug/dentist/FilterDentistExample1.png){: .centered-image }
+* `filter-dentist a/phone k/93526527` <br> This filters dentists with the phone number 93526527.
+![filter-dentist-example-1](images/ug/dentist/FilterDentistExample1.png){: .centered-image-full-size }
 
 * `filter-dentist a/specialization k/Orthodontics` <br> This filters dentists with the specialization Orthodontics.
-![filter-dentist-example-2](images/ug/dentist/FilterDentistExample2.png){: .centered-image }
+![filter-dentist-example-2](images/ug/dentist/FilterDentistExample2.png){: .centered-image-full-size }
 
+{% include page-break.html %}
 
 #### Editing a dentist : `edit-dentist`
 
@@ -312,12 +359,16 @@ Edits one or more attributes of the dentist with the specified `DENTIST_ID`. Thi
 
 **Format:** `edit-dentist DENTIST_ID [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SPECIALIZATION] [y/YOE] [t/TAG]…​`
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-You can edit the particulars in any order and edit more than one particular of the dentist with a single `edit-dentist` command.
+<div markdown="span" class="alert alert-success">
+   <span id="text">
+      :bulb: **Tip:** You can edit the particulars in any order and edit more than one particular of the dentist with a single `edit-dentist` command.
+   </span>
 </div>
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-To check the `DENTIST_ID` of a dentist, you can simply enter the command `list-dentist`.
+<div markdown="span" class="alert alert-success">
+   <span id="text">
+      :bulb: **Tip:** To check the `DENTIST_ID` of a dentist, you can simply enter the command `list-dentist`.
+   </span>
 </div>
 
 <div markdown="block" class="alert alert-info">
@@ -326,15 +377,17 @@ When editing tags, you must include any previous tags that were already associat
 This also implies that you can use `t/` to remove all tags from a dentist using the <code>edit-dentist</code> command.
 </div>
 
+{% include page-break.html %}
+
 **Examples:**
 
 * `edit-dentist 1 p/98987676 e/bobjuly@gmail.com` <br> This modifies the phone number and email of the dentist with
-`DENTIST_ID` 1 to 98987676 and bobjuly@gmail.com respectively.
-![edit-dentist-example-1](images/ug/dentist/EditDentistExample1.png){: .centered-image }
+`DENTIST_ID` 1 to '98987676' and 'bobjuly@gmail.com' respectively.
+![edit-dentist-example-1](images/ug/dentist/EditDentistExample1.png){: .centered-image-full-size }
 
 * `edit-dentist 5 n/Emmanuel Alexandra t/` <br>
 This modifies the name of the dentist with `DENTIST_ID` 5 to ‘Emmanuel Alexandra’ and removes all tags associated with the dentist.
-![edit-dentist-example-2](images/ug/dentist/EditDentistExample2.png){: .centered-image }
+![edit-dentist-example-2](images/ug/dentist/EditDentistExample2.png){: .centered-image-full-size }
 
 
 {% include page-break.html %}
@@ -349,43 +402,53 @@ Adds a patient to the list of patients in ToothTracker. This is useful when:
 
 **Format:** `add-patient n/NAME p/PHONE b/BIRTHDATE g/GENDER [r/REMARK] [tr/TREATMENT] [e/EMAIL] [h/ADDRESS] [t/TAG]…​`
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-A patient can have any number of <code>TAG</code>s (including zero tags).
-
-<code>EMAIL</code>, <code>ADDRESS</code>, <code>REMARK</code> and <code>TREATMENT</code> are optional to be put.
-You may use the `edit-patient` command to update them in the future.
+<div markdown="span" class="alert alert-success">
+   <span id="text">
+      :bulb: **Tip:** A patient can have any number of `TAG`s (including zero tags).
+      `EMAIL`, `ADDRESS`, `REMARK` and `TREATMENT` are optional to be put. You may use the `edit-patient` command to update them in the future.
+   </span>
 </div>
 
-<div markdown="block" class="alert alert-info">
+<div markdown="span" class="alert alert-info">
+  <span id="text">
 **:information_source: Notes about adding a patient without a remark and treatment:**<br>
-ToothTracker will set the <code>REMARK</code> and <code>TREATMENT</code> as `NIL` by default.
+ToothTracker will set the <code>REMARK</code> and <code>TREATMENT</code> as `NIL` by default. <br>
 
 If you wish to update them at a later time, you can use <code>edit-patient</code> to edit them.
+  </span>
 </div>
 
-<div markdown="block" class="alert alert-info">
+<div markdown="span" class="alert alert-info">
+  <span id="text">
 **:information_source: Notes about adding a patient without an email and address:**<br>
 ToothTracker will set the <code>EMAIL</code> as "NoEmailProvided@ToBeAdded.com"
-and <code>ADDRESS</code> as "No Address Provided." by default.
+and <code>ADDRESS</code> as "No Address Provided." by default. <br>
 
 If you wish to update them at a later time, you can use <code>edit-patient</code> to edit them.
+  </span>
 </div>
 
-<div markdown="block" class="alert alert-info">
+<div markdown="span" class="alert alert-info">
+  <span id="text">
 **:information_source: Notes about adding Treatments:**<br>
 The treatment associated with a patient must be a valid treatment in ToothTracker. To add a new treatment for your clinic, use the command `add-treatment`.
 To view the list of treatments, you can use the command `list-treatment`.
+  </span>
 </div>
 
-<div markdown="block" class="alert alert-info">
+<div markdown="span" class="alert alert-info">
+  <span id="text">
 **:information_source: Notes about adding patients with the same name:**<br>
 Each patient must have a unique name. ToothTracker does not allow multiple patients with identical names.
 We recommend that if multiple patients have the same name, add a unique suffix to their name to differentiate them (e.g., last 3 digits of their NRIC) — Mike Lim 976B.
+  </span>
 </div>
 
-<div markdown="block" class="alert alert-info">
+<div markdown="span" class="alert alert-info">
+  <span id="text">
 **:information_source: Notes about patient ID value:**<br>
 The patient ID value is auto-generated by ToothTracker and would always increase by 1 for each new patient added.
+  </span>
 </div>
 
 **Examples:**
@@ -393,12 +456,13 @@ The patient ID value is auto-generated by ToothTracker and would always increase
 * `add-patient n/John p/90676622 b/26-06-1998 g/M r/Allergic to Peanuts tr/Braces e/johntan@gmail.com h/60 Harvey Avenue t/Urgent` <br>
 This adds a new patient named ‘John’, with the phone number ‘90676622’, birthdate of '26 June 1998', gender 'M' (Male), remark that he is 'allergic to peanuts',
 requesting for 'Braces' treatment, email of ‘johntan@gmail.com’, with an address at '60 Harvey Avenue', and a tag 'Urgent'.
-![add-patient-example-1](images/ug/patient/AddPatientExample1.png){: .centered-image }
+![add-patient-example-1](images/ug/patient/AddPatientExample1.png){: .centered-image-full-size }
 
+{% include page-break.html %}
 
 * `add-patient n/Jean p/95339212 b/14-09-2001 g/F` <br>
-This adds a new patient named 'Jean', with the phone number '95339212', birthdate of 14 September 2001, gender F (Female).
-![add-patient-example-2](images/ug/patient/AddPatientExample2.png){: .centered-image }
+This adds a new patient named 'Jean', with the phone number '95339212', birthdate of '14 September 2001', gender 'F' (Female).
+![add-patient-example-2](images/ug/patient/AddPatientExample2.png){: .centered-image-full-size }
 
 
 #### Listing all patients : `list-patient`
@@ -417,22 +481,25 @@ Deletes the patient with the specified `PATIENT_ID` from ToothTracker.
 
 **Format:** `delete-patient PATIENT_ID`
 
-<div markdown="span" class="alert alert-warning">:exclamation: **CAUTION:**
-This command is DESTRUCTIVE! The records of all deleted dentists will be removed.
-**Proceed with caution!**
+<div markdown="span" class="alert alert-warning">
+  <span id="text">
+    :exclamation: **CAUTION:** This command is DESTRUCTIVE! The records of all deleted dentists will be removed.
+    **Proceed with caution!**
+  </span>
 </div>
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-To check the `PATIENT_ID` of a patient, you can simply enter the command `list-patient`.
+<div markdown="span" class="alert alert-success">
+  <span id="text">
+    :bulb: **Tip:**
+    To check the `PATIENT_ID` of a patient, you can simply enter the command `list-patient`.
+  </span>
 </div>
 
-Examples:
+Example:
 * `delete-patient 5` <br> This deletes the patient with the `PATIENT_ID` 5.
-![delete-patient-example-1](images/ug/patient/DeletePatientExample1.png){: .centered-image }
+![delete-patient-example-1](images/ug/patient/DeletePatientExample1.png){: .centered-image-full-size }
 
-* `delete-patient 34` <br> This deletes the patient with the `PATIENT_ID` 34.
-![delete-patient-example-2](images/ug/patient/DeletePatientExample2.png){: .centered-image }
-
+{% include page-break.html %}
 
 #### Searching for patients by `PATIENT_ID` : `search-patient`
 
@@ -443,18 +510,19 @@ This command helps you find a unique patient based on the provided `PATIENT_ID`.
 
 **Format:** `search-patient PATIENT_ID`
 
-<div markdown="block" class="alert alert-primary">
+<div markdown="span" class="alert alert-success">
+  <span id="text">
 :bulb: **Tip:**
 The `PATIENT_ID` refers to the ID shown in the displayed list of patients. <br>
 To check the `PATIENT_ID` of a patient, you can simply enter the command `list-patient`.
+  </span>
 </div>
 
-**Examples:**
-* `search-patient 2` <br> This searches for the patient with `PATIENT_ID` 2.
-![search-patient-id-example-1](images/ug/patient/SearchPatientIdExample1.png){: .centered-image }
+**Example:**
+* `search-patient 6` <br> This searches for the patient with `PATIENT_ID` 6.
+![search-patient-id-example](images/ug/patient/SearchPatientIdExample1.png){: .centered-image-full-size }
 
-* `search-patient 8` <br> This searches for the patient with `PATIENT_ID` 8.
-
+{% include page-break.html %}
 
 #### Searching for patients by keywords : `search-patient`
 
@@ -466,7 +534,7 @@ This command helps you find patients that match your search criteria. This is us
 **Format:** `search-patient KEYWORD`
 
 <div markdown="block" class="alert alert-info">
-**:information_source: Notes for searching patients by keyword**<br>
+**:information_source: Notes about searching patient by keywords:**<br>
   <ul>
     <li>The search is performed only on the patient's name.</li>
     <li>The search is case-insensitive, meaning that it will match both uppercase and lowercase characters. For example, searching for `James` will match both `James` and `james`.</li>
@@ -476,12 +544,13 @@ This command helps you find patients that match your search criteria. This is us
   </ul>
 </div>
 
-**Examples:**
+{% include page-break.html %}
+
+**Example:**
 * `search-patient John` <br> This searches for patients with names containing the keyword `John`.
-![search-patient-keyword-example-1](images/ug/patient/SearchPatientKeywordExample1.png){: .centered-image }
+![search-patient-keyword-example-1](images/ug/patient/SearchPatientKeywordExample1.png){: .centered-image-full-size }
 
-* `search-patient Ronald Lim` <br> This searches for patients with names containing the keyword `Ronald Lim`.
-
+{% include page-break.html %}
 
 #### Filtering patients : `filter-patient`
 
@@ -492,25 +561,32 @@ When this command is used, there might be more than one result that matches your
 
 **Format:** `filter-patient a/ATTRIBUTE k/KEYWORDS`
 
-<div markdown="block" class="alert alert-info">
+<div markdown="span" class="alert alert-info">
+  <span id="text">
 **:information_source: Notes about filtering dentists using keywords:**<br>
-The <code>filter-patient</code> command only accepts filtering using 1 attribute and 1 set of keywords. For example, `filter-patient` a/Treatment k/Cleaning k/Braces will not work.
+The `filter-patient` command only accepts filtering using 1 attribute and 1 set of keywords. For example, `filter-patient` a/Treatment k/Cleaning k/Braces will not work.
+  </span>
 </div>
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-To check the attributes that you can filter by, you can simply enter the command `list-patient` to view the attributes which will be displayed in the Patient card.
-Alternatively, a message will be shown in the text box regarding the attributes that you can filter by if you entered an invalid attribute.
-We have set the attributes that can be filtered to be:
-`name`, `phone`, `address`, `email`, `gender`, `birthday`, `remark`, `tags` and `treatment`.
+<div markdown="span" class="alert alert-success">
+  <span id="text">
+:bulb: **Tip:** To check the attributes that you can filter by, you can simply enter the command `list-patient` to view
+the attributes which will be displayed in the Patient card.
+Alternatively, a message will be shown in the text box regarding the attributes that you can filter by if you entered an invalid attribute. <br>
+We have set the attributes that can be filtered to be: `name`, `phone`, `address`, `email`, `gender`, `birthday`, `remark`, `tags` and `treatment`.
+  </span>
 </div>
+
+{% include page-break.html %}
 
 **Examples:**
-* `filter-patient a/phone k/81076655` <br> This filters for patients with the phone number '81076655'.
-![filter-patient-example-1](images/ug/patient/FilterPatientExample1.png){: .centered-image }
+* `filter-patient a/phone k/82713092` <br> This filters for patients with the phone number '82713092'.
+![filter-patient-example-1](images/ug/patient/FilterPatientExample1.png){: .centered-image-full-size }
 
 * `filter-patient a/treatment k/Braces` <br> This filters for patients with the treatment 'Braces'.
-![filter-patient-example-2](images/ug/patient/FilterPatientExample2.png){: .centered-image }
+![filter-patient-example-2](images/ug/patient/FilterPatientExample2.png){: .centered-image-full-size }
 
+{% include page-break.html %}
 
 #### Editing a patient : `edit-patient`
 
@@ -521,34 +597,46 @@ Edits one or more attributes of the patient with the specified `PATIENT_ID`. Thi
 
 **Format:** `edit-patient PATIENT_ID [n/NAME] [p/PHONE] [b/BIRTHDATE] [g/GENDER] [r/REMARK] [tr/TREATMENT] [e/EMAIL] [h/ADDRESS] [t/TAG]`
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+<div markdown="span" class="alert alert-success">
+  <span id="text">
+:bulb: **Tip:**
 You can edit the particulars in any order and edit more than one particular of the patient with a single `edit-patient` command.
+  </span>
 </div>
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+<div markdown="span" class="alert alert-success">
+  <span id="text">
+:bulb: **Tip:**
 To check the `PATIENT_ID` of a patient, you can simply enter the command `list-patient`.
+  </span>
 </div>
 
-<div markdown="block" class="alert alert-info">
+<div markdown="span" class="alert alert-info">
+  <span id="text">
 **:information_source: Notes about editing tags:**<br>
 When editing tags, you must include any previous tags that were already associated with the patient, or else these tags will be removed.
 This also implies that you can use `t/` to remove all tags from a patient using the <code>edit-patient</code> command.
+  </span>
 </div>
 
-<div markdown="block" class="alert alert-info">
+<div markdown="span" class="alert alert-info">
+  <span id="text">
 **:information_source: Notes about editing Treatments:**<br>
 The edited treatment must be a valid treatment in ToothTracker. For a list of valid treatments, you can use the command `list-treatment`.
+  </span>
 </div>
+
+{% include page-break.html %}
 
 **Examples:**
 * `edit-patient 1 p/91234567 e/johndoe@example.com r/Allergic to Peanuts`<br>
 This edits the phone number, email, and remarks of the patient with `PATIENT_ID` 1 to
 '91234567', 'johndoe@example.com', and 'Allergic to Peanuts' respectively.
-![edit-patient-example-1](images/ug/patient/EditPatientExample1.png){: .centered-image }
+![edit-patient-example-1](images/ug/patient/EditPatientExample1.png){: .centered-image-full-size }
 
-* `edit-patient 2 n/Alex` <br>
-This edits the name of the patient with `PATIENT_ID` 2 to 'Alex'.
-![edit-patient-example-2](images/ug/patient/EditPatientExample2.png){: .centered-image }
+* `edit-patient 2 n/John Tan t/` <br>
+This edits the name of the patient with `PATIENT_ID` 2 to 'John Tan' and removes all tags associated with the patient.
+![edit-patient-example-2](images/ug/patient/EditPatientExample2.png){: .centered-image-full-size }
 
 {% include page-break.html %}
 
@@ -576,12 +664,16 @@ Adds a dental appointment to ToothTracker. This is useful when:
   </ul>
 </div>
 
+{% include page-break.html %}
+
 **Example:**
 * `add-appointment dentist/1 patient/1 start/2023-10-12 16:00 tr/Braces` <br>
 This command adds an appointment with the `PATIENT_ID` 1 and the `DENTIST_ID` 1.
 The appointment starts on '12 October 2023, 4pm'. The treatment provided during the appointment is 'Braces'.
 The duration of the appointment is automatically set based on the selected treatment in ToothTracker.
-![add-appointment-example](images/ug/appointment/AddAppointmentExample.png){: .centered-image }
+![add-appointment-example](images/ug/appointment/AddAppointmentExample.png){: .centered-image-full-size }
+
+{% include page-break.html %}
 
 #### Listing all appointments : `list-appointment`
 
@@ -592,6 +684,7 @@ Shows a list of all appointments in ToothTracker. This is useful when:
 **Format:** `list-appointment` (No extra parameters required)
 ![list-appointment-example](images/ug/appointment/ListAppointmentExample.png){: .centered-image }
 
+{% include page-break.html %}
 
 #### Deleting an appointment : `delete-appointment`
 
@@ -599,22 +692,28 @@ Deletes the appointment with the specified `APPOINTMENT_ID` from ToothTracker.
 
 **Format:** `delete-appointment APPOINTMENT_ID`
 
-<div markdown="span" class="alert alert-warning">:exclamation: **CAUTION:**
-This command is DESTRUCTIVE! The records of all deleted appointments will be removed.
-Proceed with caution!
+<div markdown="span" class="alert alert-warning">
+  <span id="text">
+:exclamation: **CAUTION:** This command is DESTRUCTIVE! The records of all deleted appointments will be removed.
+**Proceed with caution!**
+  </span>
 </div>
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+<div markdown="span" class="alert alert-success">
+  <span id="text">
+:bulb: **Tip:**
 To check the `APPOINTMENT_ID` of an appointment, you can simply enter the command `list-appointment`.
+  </span>
 </div>
 
 **Example:**
 * `delete-appointment 2` <br>
 This deletes the appointment with `APPOINTMENT_ID` 2 from ToothTracker.
-![delete-appointment-example](images/ug/appointment/DeleteAppointmentExample.png){: .centered-image }
+![delete-appointment-example](images/ug/appointment/DeleteAppointmentExample.png){: .centered-image-full-size }
 
+{% include page-break.html %}
 
-#### Filtering Appointments by `DENTIST_ID` : `filter-appointment dentist`
+#### Filtering appointments by `DENTIST_ID` : `filter-appointment dentist`
 
 Narrows down your search for appointments by filtering the appointment list to
 show the list of appointments under the dentist with the specified `DENTIST_ID`.
@@ -623,18 +722,22 @@ This is useful when:
 
 **Format:** `filter-appointment dentist DENTIST_ID`
 
-<div markdown="block" class="alert alert-primary">:bulb: **Tip:**
+<div markdown="span" class="alert alert-success">
+  <span id="text">
+:bulb: **Tip:**
 `DENTIST_ID` refers to the ID shown in the displayed list of dentists. <br>
 You may use `list-dentist` to check out the `DENTIST_ID` first.
+  </span>>
 </div>
 
 **Example:**
 * `filter-appointment dentist 1` <br>
 This shows you all the appointments under the dentist with `DENTIST_ID` 1.
-![filter-appointment-dentist-example](images/ug/appointment/FilterAppointmentDentistExample.png){: .centered-image }
+![filter-appointment-dentist-example](images/ug/appointment/FilterAppointmentDentistExample.png){: .centered-image-full-size }
 
+{% include page-break.html %}
 
-#### Filtering Appointments by `PATIENT_ID` : `filter-appointment patient`
+#### Filtering appointments by `PATIENT_ID` : `filter-appointment patient`
 
 Narrows down your search for appointments by filtering the appointment list to
 show the list of appointments under the patient with the specified `PATIENT_ID`.
@@ -643,15 +746,18 @@ This is useful when:
 
 **Format:** `filter-appointment patient PATIENT_ID`
 
-<div markdown="block" class="alert alert-primary">:bulb: **Tip:**
+<div markdown="span" class="alert alert-success">
+  <span id="text">
+:bulb: **Tip:**
 `PATIENT_ID` refers to the index number shown in the displayed list of patients. <br>
 You may use `list-patient` to check the `PATIENT_ID` first.
+  </span>
 </div>
 
 **Example:**
 * `filter-appointment patient 1` <br>
 This shows you all the appointments under the patient with the `PATIENT_ID` 1.
-![filter-appointment-patient-example](images/ug/appointment/FilterAppointmentPatientExample.png){: .centered-image }
+![filter-appointment-patient-example](images/ug/appointment/FilterAppointmentPatientExample.png){: .centered-image-full-size }
 
 
 {% include page-break.html %}
@@ -665,16 +771,19 @@ This command allows you to specify the treatment name, the cost of treatment, an
 
 **Format:** `add-treatment tr/NAME cs/PRICE ti/DURATION`
 
-<div markdown="block" class="alert alert-info">
+<div markdown="span" class="alert alert-info">
+  <span id="text">
 **:information_source: Notes about adding treatments with the same name:**<br>
 Each treatment must have a unique name. ToothTracker does not allow multiple treatments with identical names.
+  </span>
 </div>
 
 **Example:**
-* `add-treatment tr/Tooth Extraction cs/1080 ti/10:30` <br>
-This adds a 'Tooth Extraction' treatment to ToothTracker with a cost of '$1080 SGD', and duration of '10 hours and 30 minutes'.
-![add-treatment-example](images/ug/treatment/AddTreatmentExample.png){: .centered-image }
+* `add-treatment tr/Tooth Extraction cs/1080 ti/01:30` <br>
+This adds a 'Tooth Extraction' treatment to ToothTracker with a cost of '$1080 SGD', and duration of '1 hour and 30 minutes'.
+![add-treatment-example](images/ug/treatment/AddTreatmentExample.png){: .centered-image-full-size }
 
+{% include page-break.html %}
 
 #### Listing all treatments : `list-treatment`
 
@@ -684,6 +793,7 @@ Shows a list of all treatments in ToothTracker. This is useful when:
 Format: `list-treatment` (No extra parameters required)
 ![list-treatment-example](images/ug/treatment/ListTreatmentExample.png){: .centered-image }
 
+{% include page-break.html %}
 
 #### Deleting a treatment : `delete-treatment`
 
@@ -691,45 +801,58 @@ Deletes the treatment with the specified `TREATMENT_NAME` from ToothTracker.
 
 **Format:** `delete-treatment TREATMENT_NAME`
 
-<div markdown="span" class="alert alert-warning">:exclamation: **CAUTION:**
+<div markdown="span" class="alert alert-warning">
+  <span id="text">
+:exclamation: **CAUTION:**
 This command is DESTRUCTIVE! The records of all deleted treatments will be removed.
-Proceed with caution!
+**Proceed with caution!**
+  </span>
 </div>
 
-<div markdown="span" class="alert alert-warning">:exclamation: **CAUTION:**
+<div markdown="span" class="alert alert-warning">
+  <span id="text">
+:exclamation: **CAUTION:**
 Before deleting a treatment in ToothTracker, confirm that it's no longer linked to any patients to maintain functionality.
+  </span>
 </div>
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+<div markdown="span" class="alert alert-success">
+  <span id="text">
+:bulb: **Tip:**
 `TREATMENT_NAME` must be an **exact** match (case-sensitive) with the name of the treatment to be deleted.
+  </span>
 </div>
 
 **Example:**
 * `delete-treatment Braces` <br> This deletes the treatment `Braces` from ToothTracker.
-![delete-treatment-example](images/ug/treatment/DeleteTreatmentExample.png){: .centered-image }
+![delete-treatment-example](images/ug/treatment/DeleteTreatmentExample.png){: .centered-image-full-size }
 
 
 
 {% include page-break.html %}
 
-### Calendar Features
+### Calendar Feature
 
 #### Viewing calendar : `view-calendar`
 
 Shows a calendar filled with all scheduled appointments in ToothTracker. This is useful when:
-* You want a visual summary of all appointments, allowing for a comprehensive overview.
+* You want a visual summary of all appointments in your clinic.
+* You need to plan ahead for upcoming weeks or months.
 
 Format: `view-calendar` (No extra parameters required)
 
-<div markdown="block" class="alert alert-info">
-**:information_source: Notes about viewing calendar:**<br>
+<div markdown="span" class="alert alert-info">
+  <span id="text">
+**:information_source: Notes about viewing the calendar:**<br>
 The appointments displayed in the calendar depends on the appointments listed in the main list.
-If the main appointment list is filtered, the appointments displayed in the calendar would be filtered too.
+If the main appointment list is filtered, the appointments displayed in the calendar would be filtered too. <br>
 Please use <code>list-appointment</code> before <code>view-calendar</code> if you want to view all appointments.
+  </span>
 </div>
 
-![view-calendar-example](images/ug/ViewCalendarExample.png){: .centered-image }
+![view-calendar-example](images/ug/ViewCalendarExample.png){: .centered-image-full-size }
 
+{% include page-break.html %}
 
 ### General Features
 
@@ -739,7 +862,7 @@ Shows a message explaining how to access the help page.
 
 **Format**: `help`
 
-![help message](images/ug/HelpWindow.png){: .centered-image }
+![help message](images/ug/HelpWindow.png){: .centered-image-size-75 }
 
 
 
@@ -747,8 +870,10 @@ Shows a message explaining how to access the help page.
 
 Clears all data from ToothTracker. **PROCEED WITH CAUTION!**
 
-<div markdown="span" class="alert alert-warning">:exclamation: **CAUTION:**
-Data cleared cannot be recovered.
+<div markdown="span" class="alert alert-warning">
+  <span id="text">
+:exclamation: **CAUTION:** Data cleared cannot be recovered.
+  </span>
 </div>
 
 **Format:** `clear`
@@ -760,6 +885,7 @@ Exits ToothTracker app.
 
 **Format:** `exit`
 
+{% include page-break.html %}
 
 #### Saving the data
 ToothTracker data is saved in the hard disk automatically after any command that changes the data. There is no need to
@@ -770,16 +896,19 @@ save manually.
 ToothTracker data is saved automatically as a JSON file `[JAR file location]/data/toothtracker.json`. Advanced users are
 welcome to update data directly by editing that data file.
 
-<div markdown="span" class="alert alert-warning">:exclamation: **CAUTION:**
+<div markdown="span" class="alert alert-warning">
+  <span id="text">
+:exclamation: **CAUTION:**
 If your changes to the data file makes its format invalid, ToothTracker will discard all data and start with an empty
 data file at the next run. Hence, it is recommended to take a backup of the file before editing it.
+  </span>
 </div>
 
 
 {% include page-break.html %}
 
 ## Troubleshooting
- 
+
 {: .no_toc}
 #### Checking your system's Java version
 Check that your system has the correct Java version (**Java 11 and above**) installed to run ToothTracker. Follow the steps below:
@@ -790,12 +919,12 @@ Check that your system has the correct Java version (**Java 11 and above**) inst
   3. Key in `java --version` and press `Enter` to check your Java version.
 
 - For macOS Users:
-  1. Press `Cmd + Space` to launch Spotlight. 
-  2. Type in `Terminal` and open the terminal. 
+  1. Press `Cmd + Space` to launch Spotlight.
+  2. Type in `Terminal` and open the terminal.
   3. Key in `java --version` and press `Return` to check your Java version.
 
 - For Linux Users:
-  1. Press `Ctrl + Alt + T` to open the Terminal. 
+  1. Press `Ctrl + Alt + T` to open the Terminal.
   2. Key in `java --version` and press `Enter` to check your Java version.
 
 
@@ -846,40 +975,39 @@ you may use `list-appointment` before using `view-calendar`.
 2. When using the `list-treatment` command, a list of treatments (e.g., Braces, Cleaning,) is displayed with an extra comma at the end.
 
 
-3. The `list-treatment` command only displays the names of treatments without additional information such as the cost of treatment and duration, 
+3. The `list-treatment` command only displays the names of treatments without additional information such as the cost of treatment and duration,
 which were fields requested during the initial addition of treatments into ToothTracker.
 
 
-4. The validation checks of phone number for `add-patient` and `add-dentist` commands is currently based on 8 digits and does not verify if the phone 
-number starts with an 8 or 9. 
+4. The validation checks of phone number for `add-patient` and `add-dentist` commands is currently based on 8 digits and does not verify if the phone
+number starts with an 8 or 9.
 
 
-5. The `filter-patient` and `filter-dentist` commands only performs validation checks on the attribute to filter by and not the keywords. 
+5. The `filter-patient` and `filter-dentist` commands only performs validation checks on the attribute to filter by and not the keywords.
 (e.g filter-dentist a/phone k/myphone will still execute the command.)
 
 {% include page-break.html %}
+
 ## Fields summary
 
-| Field       | Description                                                               | Examples                                          |
-|-------------|---------------------------------------------------------------------------|---------------------------------------------------|
-| **ti**      | Represents the total duration of the `treatment` in hours and minutes.    | `ti/10:30` `tr/09:59`                             |
-| **cs**      | Represents the total cost of the `treatment` in dollars.                  | `cs/3000` `cs/500`                                |
-| **tr**      | Represents the name of the `treatment`                                    | `tr/Whitening` `tr/Braces`                        |
-| **start**   | Represents the start date time of a `appointment` in `yyyy-mm-dd hh:mm`   | `start/2023-01-01 09:05` `start/2021-10-12 16:00` |
-| **patient** | Represents the unique ID of the patient when adding a `appointment`       | `patient/1` `patient/45`                          |
-| **dentist** | Represents the unique ID of the dentist when adding a `appointment`       | `dentist/1` `dentist/45`                          |
+| Field       | Description                                                             | Examples                                          |
+|-------------|-------------------------------------------------------------------------|---------------------------------------------------|
+| **ti**      | Represents the total duration of the `treatment` in hours and minutes.  | `ti/10:30` `tr/09:59`                             |
+| **cs**      | Represents the total cost of the `treatment` in dollars.                | `cs/3000` `cs/500`                                |
+| **tr**      | Represents the name of the `treatment`                                  | `tr/Whitening` `tr/Braces`                        |
+| **start**   | Represents the start date time of a `appointment` in `yyyy-mm-dd hh:mm` | `start/2023-01-01 09:05` `start/2021-10-12 16:00` |
+| **patient** | Represents the unique ID of the patient when adding a `appointment`     | `patient/1` `patient/45`                          |
+| **dentist** | Represents the unique ID of the dentist when adding a `appointment`     | `dentist/1` `dentist/45`                          |
 | **y**       | Represents the years of experience of the dentist when adding a `dentist` | `y/5` `y/10`                                      |
-| **s**       | Represents the specialization of the dentist when adding a `dentist`      | `s/Orthodontics` `s/DENTAL_PUBLIC_HEALTH`         |
-| **r**       | Represents a optional `remark` when adding a `patient`                    | `r/Peanut Allergy` `r/Soya Allergy`               |
-| **g**       | Represents  gender.                                                       | `g/M` `g/F`                                       |
-| **b**       | Represents the birthday of a  `patient` in `dd-mm-yyyy`                   | `b/06-06-1998` `b/12-11-2002`                     | 
-| **t**       | Represents  an optional tag for a `patient` or `dentist`                  | `t/urgent` `t/Not Urgent`                         | 
-| **e**       | Represents  an optional email address for a `patient` or `dentist`        | `e/freddy@gmail.com` `e/john@youmail.com`         | 
-| **h**       | Represents  a home address for a `patient` or `dentist`                   | `h/123, Clementi Ave 3, #12-34` `h/8 Farrer Road` |
-| **p**       | Represents a phone number                                                 | `p/97826376` `p/92837263`                         |
-| **n**       | Represents a name                                                         | `n/John` `n/Tom`                                  |
-   
-
+| **s**       | Represents the specialization of the dentist when adding a `dentist`    | `s/Orthodontics` `s/DENTAL_PUBLIC_HEALTH`         |
+| **r**       | Represents a optional `remark` when adding a `patient`                  | `r/Peanut Allergy` `r/Soya Allergy`               |
+| **g**       | Represents  gender.                                                     | `g/M` `g/F`                                       |
+| **b**       | Represents the birthday of a `patient` in `dd-mm-yyyy`                   | `b/06-06-1998` `b/12-11-2002`                     | 
+| **t**       | Represents  an optional tag for a `patient` or `dentist`                | `t/urgent` `t/Not Urgent`                         | 
+| **e**       | Represents  an optional email address for a `patient` or `dentist`      | `e/freddy@gmail.com` `e/john@youmail.com`         | 
+| **h**       | Represents  a home address for a `patient` or `dentist`                 | `h/123, Clementi Ave 3, #12-34` `h/8 Farrer Road` |
+| **p**       | Represents a phone number                                               | `p/97826376` `p/92837263`                         |
+| **n**       | Represents a name                                                       | `n/John` `n/Tom`                                  |
 
 
 {% include page-break.html %}

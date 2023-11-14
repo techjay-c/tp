@@ -6,7 +6,7 @@ title: Jaryl Chew's Project Portfolio Page
 {: .no_toc}
 ### Project: ToothTracker
 
-ToothTracker is an all-in-one application designed for front desk administration staff to efficiently manage clinic operations, 
+ToothTracker is an all-in-one application designed for front desk administration staff to efficiently manage clinic operations,
 including patient and dentist management.
 
 Given below are my contributions to the project.

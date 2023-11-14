@@ -30,7 +30,7 @@ With ToothTracker, you can add new patient and dentist profiles, add treatments 
 
 * **New Feature**: Added the ability for receptionists to list all dentists (PR [#72](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/72))
   * What it does: The user will be able to list all dentists practicing in the clinic.
-  * Justification: This is one of the most fundamental feature to have to allow users to view all dentists. 
+  * Justification: This is one of the most fundamental feature to have to allow users to view all dentists.
 
 
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=freddychenyouren2&breakdown=true)
@@ -48,8 +48,8 @@ With ToothTracker, you can add new patient and dentist profiles, add treatments 
   * User Guide:
     * Added documentation for the following dentist features: (PR [#33](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/33))
       * Add a dentist into ToothTracker
-      * Edit details of a dentist 
-      * List all dentists in ToothTracker 
+      * Edit details of a dentist
+      * List all dentists in ToothTracker
     * Standardized command format and User Guide formats during v1.3 iteration (For CS2101 User Guide Draft) (PR [#156](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/156), PR [#112](https://github.com/AY2324S1-CS2103T-W10-3/tp/pull/112))
   * Developer Guide:
     * Contributed to user stories and use cases ideation related to adding a dentist.

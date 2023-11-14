@@ -3,9 +3,19 @@ layout: page
 title: Developer Guide
 show-toc: true
 ---
-{% include toc.md header=false show-in-toc=true ordered=true %}
+## About ToothTracker
 
-## **Acknowledgements**
+ToothTracker is a **Dental Clinic Administrative Management System** designed for **dental clinic administration assistants**.
+From adding new patient and dentist profiles to seamlessly creating appointment schedules, ToothTracker is
+engineered to simplify every aspect of your dental clinic administrative responsibilities.
+
+This Developer Guide provides an in-depth documentation on how ToothTracker is designed and implemented.
+
+{% include toc.md header=true show-in-toc=true ordered=true %}
+
+## Preface
+
+### Acknowledgements
 
 * Java dependencies:
   * [JavaFX](https://openjfx.io/) for GUI
@@ -21,12 +31,12 @@ show-toc: true
   * [Pure liquid HTML table-of-contents](https://github.com/AY2324S1-CS2103T-W10-3/tp/blob/master/docs/_includes/toc.html) from [@allejo on GitHub](https://github.com/allejo/jekyll-toc)
   * [Pure CSS auto-incrementing heading counters](https://github.com/AY2324S1-CS2103T-W10-3/tp/blob/master/docs/_sass/toc.scss) adapted from [@gvgramazio on StackOverflow](https://stackoverflow.com/a/51007932/9311854)
 
-## **Setting up, getting started**
+### Setting Up, Getting Started
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 
-## **Design**
+## Design
 
 <div markdown="span" class="alert alert-primary">
 
@@ -84,6 +94,8 @@ implementation of a component), as illustrated in the (partial) class diagram be
 
 The sections below give more details of each component.
 
+{% include page-break.html %}
+
 ### UI component
 The UI component handles the user-interface portion of the application.
 
@@ -113,8 +125,7 @@ The `UI` component,
 ### Logic component
 The Logic component handles the execution of commands.
 
-**API
-** : [`Logic.java`](https://github.com/AY2324S1-CS2103T-W10-3/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : [`Logic.java`](https://github.com/AY2324S1-CS2103T-W10-3/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
 
@@ -123,10 +134,10 @@ Here's a (partial) class diagram of the `Logic` component:
 How the `Logic` component works:
 
 1. When `Logic` is called upon to execute a command, it is passed to an `AddressBookParser` object which in turn creates
-   a parser that matches the command (e.g., `DeletePatientCommandParser`) and uses it to parse the command. 
+   a parser that matches the command (e.g., `DeletePatientCommandParser`) and uses it to parse the command.
 2. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `DeletePatientCommand`) which
-   is executed by the `LogicManager`. 
-3. The command can communicate with the `Model` when it is executed (e.g. to delete a person). 
+   is executed by the `LogicManager`.
+3. The command can communicate with the `Model` when it is executed (e.g. to delete a person).
 4. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `Logic`.
 
 The sequence diagram below illustrates the interactions within the `Logic` component, taking `execute("delete-patient 1")` API
@@ -151,10 +162,11 @@ How the parsing works:
 * All `XYZCommandParser` classes (e.g., `AddPatientCommandParser`, `DeletePatientCommandParser`, ...) inherit from the `Parser`
   interface so that they can be treated similarly where possible e.g, during testing.
 
+{% include page-break.html %}
+
 ### Model component
 
-**API
-** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
+**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
 
 <img src="images/ToothTrackerModelClassDiagram.png" width="700"/>
 
@@ -172,8 +184,7 @@ The `Model` component,
 
 ### Storage component
 
-**API
-** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
 
 <img src="images/ToothTrackerStorage.png" width="650" />
 
@@ -189,14 +200,15 @@ The `Storage` component,
 ### Common classes
 
 Classes used by multiple components are in the `seedu.addressbook.commons` package.
+**API** : [`Commons`](https://github.com/AY2324S1-CS2103T-W10-3/tp/tree/master/src/main/java/seedu/address/commons)
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Implementation**
+## Implementation
 
 This section describes some noteworthy details on how certain features are implemented.
 
-The features implemented are categorized into 4 sections:
+The features implemented are categorized into 5 sections:
 
 1. [Dentist Features](#dentist-features)
 2. [Patient Features](#patient-features)
@@ -233,7 +245,7 @@ This approach prevents the "add-dentist" command from becoming excessively long.
 The working hours of a dentist is not an attribute in the `add-dentist` command as dentists might not immediately know their
 shifts when they first join, and it might change frequently.
 
-We handle duplicates by not allowing multiple dentists of the same name to be created (eg. only 1 John Tan can exist in ToothTracker). We will allow multiple dentists of 
+We handle duplicates by not allowing multiple dentists of the same name to be created (eg. only 1 John Tan can exist in ToothTracker). We will allow multiple dentists of
 the same name to be created in future implementations. For now, if there are multiple dentists with the same name, add in additional information such as their last 3 digits of NRIC
 as part of their name attribute.
 
@@ -349,7 +361,7 @@ This sequence diagram shows the interactions between the various components duri
 
 ##### Feature Considerations
 
-For the optional Treatment field, should the user opt to enter a treatment, it is mandatory that the specified treatment already exists within ToothTracker. 
+For the optional Treatment field, should the user opt to enter a treatment, it is mandatory that the specified treatment already exists within ToothTracker.
 If this condition is not met (the treatment specified does not exist in ToothTracker), the user will receive an error message.
 
 #### Deleting a Patient
@@ -521,8 +533,8 @@ The sequence diagram shows the interactions between the various components durin
 ##### Feature Details
 
 1. Users initiate a filter for appointments using either a unique `DENTIST_ID` or a unique `PATIENT_ID`.
-2. If an invalid `DENTIST_ID` or `PATIENT_ID` is provided, an error is thrown and the user is prompted to enter the command correctly via an error message. 
-3. If the user opts to filter by `DENTIST_ID`, the system processes the request to return a list of appointments with the specific dentist. 
+2. If an invalid `DENTIST_ID` or `PATIENT_ID` is provided, an error is thrown and the user is prompted to enter the command correctly via an error message.
+3. If the user opts to filter by `DENTIST_ID`, the system processes the request to return a list of appointments with the specific dentist.
 4. If the user opts to filter by `PATIENT_ID`, the system processes the request to return a list of appointments with the specific patient. 
 5. If there are no appointments with the specific dentist or patient, the system informs the user that no appointments were found with the specific dentist or patient.
 
@@ -584,8 +596,8 @@ The `list-treatment` command would list all treatments recorded in ToothTracker.
 To optimize the user interface within the limited space constraints of ToothTracker, we have chosen to only display the treatment names to the user.
 While it would be ideal to present the cost and duration of each treatment directly, this can easily lead to clutter within ToothTracker.
 
-To address this problem, we will consider implementing a separate window in future implementations that provides a comprehensive overview of all available treatments, 
-along with their respective costs and durations. This additional window will ensure that users can still access detailed information without overwhelming the main interface. 
+To address this problem, we will consider implementing a separate window in future implementations that provides a comprehensive overview of all available treatments,
+along with their respective costs and durations. This additional window will ensure that users can still access detailed information without overwhelming the main interface.
 By doing so, we maintain a clean and user-friendly design while offering detailed information regarding treatment types.
 
 #### Deleting a Treatment
@@ -612,7 +624,7 @@ The `clear` command is used to refresh the display within ToothTracker. It remov
 The `help` command is used to access a guide or information on available commands and their usage within ToothTracker. This command serves as a quick reference to assist users in navigating the application.
 
 --------------------------------------------------------------------------------------------------------------------
-## **Future Implementation**
+## Future Implementation
 
 ### Filter Feature Enhancement
 #### Overview
@@ -621,7 +633,7 @@ for the specified attribute. This enhancement aims to provide a more robust and 
 
 #### Validation of Keywords
 
-Currently, the filter feature checks the validity of the attribute to filter by but does not validate the keywords provided. For instance, if filtering by the attribute "birthday," users can enter nonsensical or invalid keywords, 
+Currently, the filter feature checks the validity of the attribute to filter by but does not validate the keywords provided. For instance, if filtering by the attribute "birthday," users can enter nonsensical or invalid keywords,
 potentially leading to undesired results.
 
 To address this, the following steps can be taken:
@@ -643,7 +655,7 @@ This enhancement contributes to the overall reliability and user experience of t
 ### Command History
 
 #### Overview
-Introduce a command history feature to enhance the user experience by allowing users to retrieve and reuse their last entered commands. 
+Introduce a command history feature to enhance the user experience by allowing users to retrieve and reuse their last entered commands.
 This functionality is similar to the up arrow functionality in most IDEs or terminals, providing users with a convenient way to recall and execute previous commands.
 
 #### Key Features
@@ -688,7 +700,7 @@ To address these limitations, a future enhancement for the 'list-treatment' comm
 
 #### Benefits
 
-1. **Improved Readability** 
+1. **Improved Readability**
    - A table format allows users to quickly scan and compare options, making it easier to digest information at a glance. Clear separation of data into columns would significantly enhance the readability of the information.
 
 2. **Enhanced User Experience**
@@ -697,13 +709,13 @@ To address these limitations, a future enhancement for the 'list-treatment' comm
 
 ### Quick Notes Feature Enhancement
 #### Overview
-The current quick notes box features white as the text selection color, which causes selected text to blend into the white background, 
+The current quick notes box features white as the text selection color, which causes selected text to blend into the white background,
 rendering it invisible. A proposed enhancement is to change the selection color to grey to maintain the visibility of the selected text.
 
 #### Benefits
-1. **Enhanced Visibility** 
+1. **Enhanced Visibility**
    - Grey text selection would stand out against a white background, making it easier for users to see what text they have selected. This would prevent the problem of text 'disappearing' upon selection.
-2. **User Accessibility** 
+2. **User Accessibility**
    - The change would be a significant improvement for users with visual impairments or those working in brightly lit environments where screen glare can make it hard to distinguish between colors with low contrast.
 
 
@@ -729,7 +741,7 @@ This would ensure the automatic removal of any future appointments related to pa
 
 
 --------------------------------------------------------------------------------------------------------------------
-## **Documentation, logging, testing, configuration, dev-ops**
+## Documentation, logging, testing, configuration, dev-ops
 
 * [Documentation guide](Documentation.md)
 * [Testing guide](Testing.md)
@@ -739,7 +751,7 @@ This would ensure the automatic removal of any future appointments related to pa
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Requirements**
+## Appendix: Requirements
 
 ### Product scope
 
@@ -1399,7 +1411,7 @@ Use case ends.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Instructions for manual testing**
+## Appendix: Instructions for manual testing
 
 Given below are instructions to test the app manually.
 
